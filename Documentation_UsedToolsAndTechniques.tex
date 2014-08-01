@@ -280,7 +280,21 @@ The relevant python scripts are the following:
  \item \textbf{RemoveZeroWeightEvents.py} which removes the events with weight equal to zero from the list and saves the non-zero events in a new .out file. On the other hand the events which failed the MadWeight computation are saved on a new .lhco file together with one succesful control event and are send again through MadWeight for a new weight calculation. \textcolor{red}{This should be updated since the new computation of MadWeight also results in weights equal to zero for these failing events. So should be investigated what is different about these events ...}
 \end{itemize}
 
+The first three histograms show the obtained Likelihood distribution for the different gridpoints which were considered. From these can be concluded that the behavior of the Likelihood normalized with the corresponding cross section divided by the Standard Model cross section is dominated by the distribution of the normalized cross section values. This means that any small deviations of the raw Likelihood values gets washed out by the multiplication with the normalized cross section values.
+\begin{figure}[!h]
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLikelihoodDistr_July2014/NormalizedLikelihoodForSMXS.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLikelihoodDistr_July2014/NormalizedXS.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLikelihoodDistr_July2014/LikelihoodForSMXS.png}
+\caption{...}
+\end{figure}
 
+The individual weight distribution for some random events can be found here.
+\begin{figure}[!h]
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLikelihoodDistr_July2014/WeightIndividualEventNr10.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLikelihoodDistr_July2014/WeightIndividualEventNr45.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLikelihoodDistr_July2014/WeightIndividualEventNr120.png}
+\caption{...\textbf{Script should be ran again, and names for the axis should be added for these individual weight histograms!}}
+\end{figure}
 
 
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°

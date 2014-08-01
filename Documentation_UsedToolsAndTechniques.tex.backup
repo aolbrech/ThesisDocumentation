@@ -259,6 +259,9 @@ However when showing the relative differences between the different weights it c
 \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/CompareMWVersions_May2014/SecondEvtCanvas_Rel.png}
 \caption{Distribution of the weights obtained from MadWeight for the two considered MadWeight versions (aMC@NLO and mc$\_$perm) for two specific ttbar semi-muonic (+) events.}
 \end{figure}
+
+The above histograms clearly indicate that however the actual values of the weight significantly differ, the normalized results are almost identical.\\
+\textbf{This implies that the results obtained with MadWeight should always be normalized with respect to another MadWeight result} (obtained using the same MadWeight version of course). 
 %**************************************************
 
 \section{Individual weight distribution for condsidered gridpoints}
@@ -274,7 +277,7 @@ And the creation of the MadWeight weights together with the python scripts makin
 The relevant python scripts are the following:
 \begin{itemize}
  \item \textbf{CalculateLikelihood.py} which simultaneously creates the histograms for the XS distribution, the raw and normalized Likelihood distribution, and if required the individual weight distributions for the selected events. All these histograms are saved in the Histos.root file.
- \item \textbf{RemoveZeroWeightEvents.py}
+ \item \textbf{RemoveZeroWeightEvents.py} which removes the events with weight equal to zero from the list and saves the non-zero events in a new .out file. On the other hand the events which failed the MadWeight computation are saved on a new .lhco file together with one succesful control event and are send again through MadWeight for a new weight calculation. \textcolor{red}{This should be updated since the new computation of MadWeight also results in weights equal to zero for these failing events. So should be investigated what is different about these events ...}
 \end{itemize}
 
 
