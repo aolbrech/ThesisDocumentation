@@ -17,4 +17,9 @@ if OneFile == "y" or OneFile == "Y":
         GitHubComment += CommentInfo[ii]+""
         print "GitHubComment for counter ",ii,"is equal to:",GitHubComment
     os.system("git commit -m '"+str(GitHubComment)+"'")
+    PerformPush = raw_input("Should the commit be pushed to 'anomCouplings' remote and 'DocumentationFile' branch or should this be done only later?  (y/n)")
+    if PerformPush == "y" or PerformPush == "Y":
+        os.system("git push anomCouplings DocumentationFile")
+    elif PerformPush == "n" or PerformPush == "N":
+        print "Commit is done but will only be sent later to GitHub!"
 
