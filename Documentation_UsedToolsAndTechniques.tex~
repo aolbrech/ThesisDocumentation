@@ -1,0 +1,364 @@
+\documentclass[a4paper,12pt]{report}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{lscape}
+%----------------------------------------------------------------------------------
+\usepackage[centersections]{vubtitlepage}
+\usepackage[title,titletoc,toc]{appendix}
+
+\faculty{Faculteit Wetenschappen en bio-ingenieurswetenschappen}
+\date{Started 4 April 2014}
+\sectone{Anomalous Couplings Project}
+\sectthree{Annik Olbrechts }
+\secttwo{Progress Report and documentation of Tools }
+
+\sectonesize{35pt}
+\sectoneskip{40pt}
+\secttwosize{30pt}
+\secttwoskip{10pt}
+\sectthreesize{24pt}
+\sectthreeskip{28pt}
+%----------------------------------------------------------------------------------
+
+\begin{document}
+\pagenumbering{roman}
+\setcounter{secnumdepth}{3} %Number up to the subsubsections!
+\setcounter{tocdepth}{2}    %Don't want the subsubsections appearing in the table of contents
+
+\maketitle
+\tableofcontents
+\newpage
+
+\pagenumbering{arabic}
+%°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+\chapter{Pending issues}
+\begin{itemize}
+  \item Does this created FeynRules model still contain Effective Field Theory?
+  \item If the kinematics doesn't change for coupling parameters larger than 1, how is then possible to differentiate the different configurations which will be studied?
+  \item Access to Mathematice for Width studies ... ?
+\end{itemize}
+
+%°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+\chapter{Used tools and techniques}
+%**************************************************
+\section{MadAnalysis}
+\subsection{How to run MadAnalysis in expert mode}
+Version v112 should be used since the expert mode in this version works exactly as explained in the manual (arXiv: 1206.1599). 
+In the more recent version v115 the expert mode doesn't work out-of-the-box and the python files need to be adapted ...\\
+\\
+Starting with a new analysis directory in MadAnalysis in expert mode can be done by typing the following command:
+\begin{equation}
+  ./bin/ma5 \; \; \; --expert
+\end{equation}
+In the questions asked by MadAnalysis after executing this command the name of the directory which needs to be created and the name of the analysis has to be given.\\
+The name of this analysis shouldn't be made too complex since it has to be typed everytime when creating plots with MadAnalysis.\\
+\\
+After the correct directory is created, the $Name$/SampleAnalyzer directory should be initialized by executing the following two commands:
+\begin{eqnarray}
+  source \; \; setup.sh \\
+  make
+\end{eqnarray}
+
+The actual analysis should be created in the Analysis directory, and a similar approach to user.cpp and user.h should be adopted.\\
+Everytime a change has been made to these two files $make$ should be executed in the SampleAnalyzer directory in order to process these changes.\\
+\\
+The .lhe files (MadAnalysis cannot process .lhe.gz files so they should be unpacked using gunzip .lhe.gz) which should be considered should be wirtten down in a .txt files which is saved in the SampleAnalyzer directory. \\
+\\
+The actual running of MadAnalysis is done with the following command:
+\begin{equation}
+  ./SampleAnalyzer \; \; --analysis="Name ~ of ~ analysis" ~~~~ List.txt
+\end{equation}
+
+\subsection{Content of analysis file in MadAnalysis}
+The latest analysis file which has been used with all the necessary information can be found in the following directory on the m-machines:
+\begin{eqnarray*}
+  AnomalousCouplings/MadAnalysis\_v112/Wtb\_PtCutInfluence/SampleAnalyzer/Analysis 
+\end{eqnarray*}
+The two analysis files with full detailed information are the LeptonPtCutInfluence.cpp and the JetPtCutInfluence.cpp files.
+They both consist of two different functions, namely the $Execute$ and the $Finalize$ function. The first one allows to access the information of each event while the second one is entered for each file.
+Therefore the particle content is reconstructed in the $Execute$ function and the histograms for all the considered files are constructed in the $Finalize$ function.
+Currently these analyzer files look at 28 different kinematic variables. All the kinematic information of each of the particles present in the expected semi-leptonic $t\bar{t}$ event is created.\\
+\\
+In order to separate the two b-quarks in the event, the Particle Id of the leptonic top quark needs to be known. Therefore an integer $LeptonicTopPdgId$ is used and the kinematic information of the b-quarks can only be stored when this integer is different from zero.
+This will normally not result in by-passing the b-quark information since the events in the .lhe files are read in in the same order as they are created by the MadGraph command. So first the top quarks are considered and only then the final state particles.\\
+\\
+\textit{? Isn't it safer to use the daughter information of the top quark? Because in the case of t t -> b jj b l v the lepton comes after the b-quark ... Should investigate what happens in this case ...} \textbf{TO CHECK: } I think some extra safety is incorporated and the actual loop of filling the event content is only done when the b's are reconstructed!\\
+\\
+In order to automatically create the 28 histograms for all the different files and distinguish the different RVR and RVL values, an automatic name-givng loop is used. The name of the content of the histogram is each of the time combined with the correct name of the RVL/RVR content of the .lhe file and the decayChannel.\\
+\\
+\textit{Currently the name of the considered .lhe files has to be adapted every time the files are changed. Maybe this should be made automatically read in from the .txt file to ease the processing of different configurations. If the .lhe files have a clear name where the RVL, RVR and PtCut values can be obtained from using a python script it shouldn't be too much work to save this in the .cpp file with this script. \textbf{TO DO!}}
+
+\subsection{Analyzing the MadGraph files}\label{subsec:MadGraphFiles}
+Currenlty the created model should be completely understood and the behavior of the model when the coupling coefficients are larger than $1$ should be investigated. Therefore new MadGraph files have been processed for the following configuration:
+\begin{eqnarray*}
+  Re(V_L) & \in & \left[  0.7, \; 1.3\right] \\
+  Re(V_R) & \in & \left[ -0.3, \; 0.3\right]
+\end{eqnarray*}
+These files can be found in the following directory on the m-machines and contain 100 000 events.
+\begin{eqnarray*}
+  /user/aolbrech/AnomalousCouplings/MadGraph\_v155/MassiveLeptons/\\ MadGraph5\_v1\_5\_5/Wtb\_ttbarSemiElMinus/ResultsXSGrid003
+\end{eqnarray*}
+
+\subsection{Width of the decay}\label{subsec:DecayWidth}
+
+%**************************************************
+\section{MadGraph}
+Currently the MadGraph version which should be used is the $MadGraph\_v155$ since this is the only one which was compatible with the used FeynRules version at the time of the creation of the model. According to a mail of Olivier Mattelaere on 6 February 2014 this issue should now be fixed.\\
+\\
+In this project MadGraph is only used to create .lhe files in order to understand the created model. Especially for Cross Section studies it is extremely useful.\\
+Hence two python scripts have been created in the following directory:
+\begin{eqnarray*}
+  & & /user/aolbrech/AnomalousCouplings/MadGraph\_v155/MassiveLeptons/\\ & & MadGraph5\_v1\_5\_5/Wtb\_ttbarSemiElMinus/RVL\_RVR\_XSGrid003.py \\
+  & & /user/aolbrech/AnomalousCouplings/MadGraph\_v155/MassiveLeptons/\\ & & MadGraph5\_v1\_5\_5/XSScript.py
+\end{eqnarray*}
+The first one automatically creates all the desired configurations, for different RVL, RVR, Lepton Pt Cut and Jet Pt Cut values. The desired output directory can be specified in this file as well.\\
+In order to save some disk space the events.lhe file is deleted using this script and only the unweighted$\_$events.lhe are kept for analysis. These are the relevant events (\textit{according to Alexis so understand what is the difference}).\\
+\\
+The second file calculates the cross section of the desired configurations. It again loops over all the different variables and creates a .txt table and a .pdf table.\\
+\textbf{Maybe this can be created automatically when executing the first python script! This to avoid copying the considered variables from one file to another!}
+
+%**************************************************
+\section{MadWeight}
+
+The running of the MadWeight event generator has to be done on localgrid since the events .lhco file has to be splitted in multiple jobs. The number of jobs which can be submitted is not limited, hence the events per job should be taken as low as possible. Running MadWeight with a large number of events per job implies that it will take a very long time since the submitted jobs have a long walltime which reduces their priority. \\
+Another important factor for the MadWeight event generator is defining the number of interaction points which have to be considered. This number has to be rather large (around 10 000 - 30 000 according to Lieselotte \textbf{TO CHECK MYSELF}) to ensure the uncertainty on the weight to be smaller than the weight itself.\\
+\\
+Currently two different MadWeight event generator versions exist, and up to now (May 6 2014) only the oldest one has been tested and used extensively. The newer one was only installed beginning of May but should be less CPU intensive and allows the user to split the interaction points in two distinct steps. The versions are:
+\begin{itemize}
+  \item madweight\_mc\_perm
+  \item MadGraph5\_aMC@NLO
+\end{itemize}
+
+The installation commands of these two versions are the following (the bzr command package has been installed on the m-machines, but not on mtop):
+\begin{itemize}
+  \item bzr branch lp:~maddevelopers/madgraph5/madweight 
+  \item bzr branch lp:~maddevelopers/mg5amcnlo/madweight
+\end{itemize}
+
+Whenever MadWeight is first used a personal directory should be initalized. This can be done in the following way:
+\begin{itemize}
+  \item Import the created model (called MassiveLeptons) in the model directory of MadGraph
+  \item Activating the MadWeight event program and initializing a personal directory.
+  \begin{enumerate}
+    \item ./bin/mg5$\_$aMC (The mg5 executable should not be used!)
+    \item import model MassiveLeptons
+    \item generate p p > t t~ , ( t > b w+ , w+ > mu+ vm ) , ( t~ > b~ w- , w- > j j ) @1 QED = 2 \textbf{CHECK: No NP option anymore needed?? -- Automatically results in values of NP =2 according to output }
+    \item output madweight
+    \item exit
+  \end{enumerate}
+\end{itemize}
+
+\subsection{MC$\_$PERM MadWeight use}
+The most important steps which have to be executed to use this MadWeight version are the following ones~\footnote{Full detailed explanation about the use of this madweight version can be found in the documentation of Bettina.}:
+\begin{enumerate}
+  \item Initialize MadWeight to run on localgrid!
+  \item Update the MadWeight$\_$card.dat
+  \item Set the correct transfer functions
+  \item Run MadWeight
+\end{enumerate}
+
+For this first step the following two files have to be changed in the /blablaMadWeight/bin/internal directory:
+\begin{itemize}
+  \item madweight$\_$interface.py
+  \item cluster.py
+\end{itemize}
+
+\subsection{Adapting MadWeight to run continously on localgrid}
+A single test with the following configuration (5000 events - 20 events/job - 10 000 initPoints) took almost 16h to finish so the full generator event sample ($>$ 2 470 000 events) would take more than 329 days!\footnote{From this can be concluded that the events on generator level should never be all run. Only a limited selection of these events should be considered.}\\
+Even the full reconstructed event sample ($>$ 210 000 events) requires more than 28 days of running this way.\\
+\textbf{TODO: Time of running should be compared against the new MadWeight version!!}\\
+\\
+A possible solution to reduce the CPU time to process these events is in stead of sending 2000 jobs, waiting until they are all finished and only then submitting the next bunch of 2000 jobs trying to adapt the MadWeight script to send continously 2000 jobs. This would imply that the script should check whether one of the jobs have been finished and immediatly submitting a new one.\\
+For this the above mentioned scripts should be adapted!\\
+\\
+
+
+%**************************************************
+\section{FeynRules}
+
+%°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+\chapter{Analyzing created FeynRules model}
+
+%**************************************************
+\section{Normalized coupling parameters}
+In order to investigate the actual influence of the value of the coupling parameters on the kinematics of the event, the considered coupling parameters should be normalized to unitarity before any hard conclusions can be made.
+Therefore the configurations which should be investigated in large detail are the ones for which the width of the decay remains unchanged. This is explained in detail in one of the previous sections (\ref{subsec:DecayWidth} on page \pageref{subsec:DecayWidth}).
+
+\section{Understanding parameters larger than 1}
+Before starting to look at the ttbar Monte Carlo and reweighting the events with MadWeight, the created model in FeynRules should be completely understood.
+Special care goes out to the behavior of the kinematic distributions for values of the coupling parameters larger than 1. Since the Standard Model expectation puts the real part of the left-handed vector coupling $V_L$ almost equal to 1, simulation should be available around this Standard Model expectation value.
+Therefore the created model should be able to cope with coupling parameters larger than 1. \\
+\\
+For this reason .lhco files were generated with MadGraph with the following configuration, as mentioned in \ref{subsec:MadGraphFiles}:
+\begin{eqnarray*}
+  Re(V_L) & \in & \left[  0.7, \; 1.3\right] \\
+  Re(V_R) & \in & \left[ -0.3, \; 0.3\right]
+\end{eqnarray*}
+For these generated events the main kinematic distributions have been investigated.
+No clear difference between the behavior below and above 1 has been found.
+
+\newpage
+\subsection{Performed checks}
+\subsubsection{Cross section change}
+\begin{table}[h!] 
+ \begin{tabular}{c|c c c c c c c} 
+  RVR &  -0.30  &  -0.20  &  -0.10  &  0.00  &  0.10  &  0.20  &   0.30  \\  
+  RVL & & & & & & & \\ 
+  \hline 
+  0.70  & 0.3775 &  0.3120  & 0.2724  & 0.3275  & 0.2632  & 0.2910 &  0.3436  \\ 
+  0.80  & 0.5964 &  0.5097  & 0.4595  & 0.4385  & 0.4444  & 0.4816 &  0.5471  \\ 
+  0.90  & 0.9011 &  0.7950  & 0.7308  & 0.7026  & 0.7103  & 0.3229 &  0.8356  \\ 
+  1.00  & 1.3187 &  1.1874  & 1.1085  & 1.0711  & 1.0823  & 1.1317 &  1.2263  \\ 
+  1.10  & 1.8700 &  1.7116  & 1.6154  & 1.5669  & 1.5763  & 1.6335 &  1.7522  \\ 
+  1.20  & 2.5858 &  2.3996  & 2.2789  & 2.2200  & 2.2263  & 2.2983 &  2.4322  \\ 
+  1.30  & 3.4896 &  3.2711  & 3.1278  & 3.0626  & 3.0655  & 3.1506 &  3.2983  \\ 
+ \end{tabular} 
+ \caption{Cross sections for the different RVR-RVL couplings normalized to the SemiElMinus Standard Model Cross section (8.261 pb)} 
+\end{table}
+From this table can be seen that the cross section increases when the real component of $V_L$ gets larger. The value of the right-handed vector coupling has only a minor influence on the cross section.
+
+\subsubsection{Relative increase visible in XS, but not in kinematic distributions}
+Since the observed model cannot represent physics at values larger than 1, one option is to look at specific fixed values of the real part of the left-handed and right-handed vector couplings. 
+A proportional change in both of these coupling parameters should change the cross section values, but the kinematic should remain unchanged. Therefore the following configurations will be investigated:
+\begin{eqnarray*}
+  Re(V_L) = 0.5 ~~~ \& ~~~ Re(V_R) = 0.5 \rightarrow ~2.07115~ pb\\
+  Re(V_L) = 1.0 ~~~ \& ~~~ Re(V_R) = 1.0 \rightarrow ~33.1479~ pb\\
+  Re(V_L) = 2.0 ~~~ \& ~~~ Re(V_R) = 2.0 \rightarrow ~530.027~ pb
+\end{eqnarray*}
+From the above numbers is clear that the Cross section becomes very large when the two coupling parameters increase.
+This can be understood quite easily since the second option allows much more decay options since the top quarks can decay both through the left-handed and the right-handed vector coupling side of the interaction vertex. The width of this configuration is not equal to the width of the Standard Model expectation and hence does not correspond to an actual physical solution. It is merely seen as a test of the model since the kinematics of the interaction should not differ.\\
+\\
+Looking at these plots clearly indicates that the kinematics doesn't change at all.\\
+Hence the created FeynRules model is able to deal in a correct way with these coupling parameters larger than 1.\\
+\\
+These MadGraph files have been created and can be found in:
+\begin{eqnarray*}
+  /user/aolbrech/AnomalousCouplings/MadGraph\_v155/MassiveLeptons/\\ MadGraph5\_v1\_5\_5/Wtb\_ttbarSemiElMinus/RelativeChange
+\end{eqnarray*}
+
+The distributions shown in this subsection are for fixed Jet Pt Cut value, set to 0. Also no Pt cut on the lepton was applied.
+\begin{center}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_CosTheta_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_EventContent_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_HadronicBMass_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_HadronicBPt_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_HadronicBR_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_HadronicBTheta_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonicBMass_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonicBPt_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonicBR_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonicBTheta_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonId_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonMass_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonPt_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonR_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonTheta_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LightAntiQuarkId_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LightAntiQuarkMass_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LightAntiQuarkPt_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LightAntiQuarkR_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LightAntiQuarkTheta_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LightQuarkId_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LightQuarkMass_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LightQuarkPt_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LightQuarkR_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LightQuarkTheta_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_TopMass_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_TopProductionId_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_WBosonMass_JetPt0.png}
+\end{center}
+
+\subsubsection{Model plots for fixed Pt Cut}
+The distributions shown in this subsection are for fixed Jet Pt Cut value, set to 0. Also no Pt cut on the lepton was applied.
+\begin{center}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_CosTheta_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_EventContent_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_HadronicBMass_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_HadronicBPt_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_HadronicBR_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_HadronicBTheta_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonicBMass_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonicBPt_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonicBR_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonicBTheta_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonId_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonMass_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonPt_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonR_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonTheta_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightAntiQuarkId_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightAntiQuarkMass_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightAntiQuarkPt_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightAntiQuarkR_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightAntiQuarkTheta_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightQuarkId_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightQuarkMass_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightQuarkPt_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightQuarkR_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightQuarkTheta_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_TopMass_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_TopProductionId_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_WBosonMass_JetPt0.png}
+\end{center}
+
+\subsubsection{Model plots for varying Pt Cut}
+Script adapted, but error obtained when running the python script ...\\
+Worked when everything was copied to the TestDir ...\\
+Maybe the use of nohup gives the problem ...
+
+%°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+\chapter{Event selection}
+
+%**************************************************
+\section{Choice of b-tag requirements}
+
+\subsection{Signal vs background comparison}
+Since the complete event should be reconstructed as accurately as possible the 'signal' is represented by the case that all four particles are matched correctly while the 'background' events are the events for which at least one particle is matched wrongly.
+Events which are not matched using the JetPartonMatching algorithm (currently ptOrderedMinDist with dR of 0.3 is used) are not included in either of these two variables and are shown separately in the tables found below.\\
+First the different b-tag options are compared for the four possible combinations which are still allowed, namely the interchange of both the two light quarks and the two b-jets.
+
+ \begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c|c} 
+ \textbf{Option} (no $\chi^{2}$ $m_{lb}$) & all 4 correct   & $\geq$ 1 wrong       & $\frac{s}{\sqrt{b}}$ & $\frac{s}{b}$ & non-matched \\ \hline 
+2 L b-tags,              & 40 & 24 & 8.16497 & 1.66667 & 170 \\ 
+2 M b-tags,              & 37 & 13 & 10.262 & 2.84615 & 122 \\ 
+2 M b-tags, light L-veto  & 27 & 10 & 8.53815 & 2.7 & 95 \\ 
+2 T b-tags,              & 26 & 3 & 15.0111 & 8.66667 & 56 \\ 
+2 T b-tags, light M-veto & 25 & 2 & 17.6777 & 12.5 & 54 \\ 
+2 T b-tags, light L-veto & 17 & 2 & 12.0208 & 8.5 & 41 \\ 
+ \end{tabular} 
+ \caption{Overview of correct and wrong reconstructed events for the different b-tags without the use of a $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method} 
+ \end{table} 
+ 
+ \begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c|c} 
+ \textbf{Option} (no $\chi^{2}$ $m_{lb}$) & 2 b's good      & $\geq$ 1 b wrong     & $\frac{s}{\sqrt{b}}$ & $\frac{s}{b}$ & non-matched \\ \hline 
+2 L b-tags,              & 48 & 16 & 12 & 3 & 170 \\ 
+2 M b-tags,              & 42 & 8 & 14.8492 & 5.25 & 122 \\ 
+2 M b-tags, light L-veto  & 31 & 6 & 12.6557 & 5.16667 & 95 \\ 
+2 T b-tags,              & 27 & 2 & 19.0919 & 13.5 & 56 \\ 
+2 T b-tags, light M-veto & 26 & 1 & 26 & 26 & 54 \\ 
+2 T b-tags, light L-veto & 18 & 1 & 18 & 18 & 41 \\ 
+ \end{tabular} 
+ \caption{Overview of correct and wrong reconstructed b-jets for the different b-tags without the use of a $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method} 
+ \end{table} 
+ 
+ \begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c|c} 
+ \textbf{Option} (no $\chi^{2}$ $m_{lb}$) & 2 light good    & $\geq$ 1 light wrong & $\frac{s}{\sqrt{b}}$ & $\frac{s}{b}$ & non-matched \\ \hline 
+2 L b-tags,              & 40 & 24 & 8.16497 & 1.66667 & 170 \\ 
+2 M b-tags,              & 38 & 12 & 10.9697 & 3.16667 & 122 \\ 
+2 M b-tags, light L-veto  & 27 & 10 & 8.53815 & 2.7 & 95 \\ 
+2 T b-tags,              & 26 & 3 & 15.0111 & 8.66667 & 56 \\ 
+2 T b-tags, light M-veto & 26 & 1 & 26 & 26 & 54 \\ 
+2 T b-tags, light L-veto & 17 & 2 & 12.0208 & 8.5 & 41 \\ 
+ \end{tabular} 
+ \caption{Overview of correct and wrong reconstructed light jets for the different b-tags without the use of a $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method} 
+ \end{table} 
+ 
+ \section{Use of $m_{lb}$ $\chi^{2}$ method for selecting the correct b-jets}
+ 
+\end{document}
