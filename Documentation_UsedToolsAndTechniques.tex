@@ -46,6 +46,9 @@
   \item XS values which are used are the ones calculated using the MadGraph$\_$v155 version. Should this be calculated again using the new MadGraphv5$\_$aMC@NLO since normally this shouldn't change ...?
   \item Create branch for localgrid scripts! (Now already a branch exists for the documentation !)
   \item Understand \textit{CorrectPhi} comment in MadWeight name \\ $\rightarrow$ Maybe related with phi issues of neutrino's ...
+  \item EventWeight calculated in analyzer should be integrated into MadWeight output (Hence multiply MadWeight weight with the EventWeight for each event!) \\ \textbf{Otherwise all the effort to include the JES and PU stuff has no influence at all and is not taken into account!							}
+  \item Update EventNumberInformation file to only cout the information when the event has passed the eventSelection requirements. Otherwise just discard this event from the output file in order to avoid a long .txt file and long running time ...
+  \item When creating ntuples for Data/MC comparison the EventNumberInformation output should be stored here as well. This will allow to calculate the likelihood and weight distributions for specific $p_T$ cuts without having to run the entire base code again. So also the different python scripts which have been created should be moved to this .cc code in the future, so better not to spent too much time on improving these python scripts to avoid double work ...\\ For storing the generator decay channel information the c++ enum should be used which can store multiple variables (\textbf{Check this out!})
 \end{itemize}
 
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
