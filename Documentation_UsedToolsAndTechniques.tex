@@ -8,6 +8,7 @@
 \usepackage{multirow}
 \usepackage[labelfont=bf]{caption}
 \usepackage{color}
+\usepackage{hyperref}
 %----------------------------------------------------------------------------------
 \usepackage[centersections]{vubtitlepage}
 \usepackage[title,titletoc,toc]{appendix}
@@ -49,6 +50,13 @@
   \item EventWeight calculated in analyzer should be integrated into MadWeight output (Hence multiply MadWeight weight with the EventWeight for each event!) \\ \textbf{Otherwise all the effort to include the JES and PU stuff has no influence at all and is not taken into account!							}
   \item Update EventNumberInformation file to only cout the information when the event has passed the eventSelection requirements. Otherwise just discard this event from the output file in order to avoid a long .txt file and long running time ...
   \item When creating ntuples for Data/MC comparison the EventNumberInformation output should be stored here as well. This will allow to calculate the likelihood and weight distributions for specific $p_T$ cuts without having to run the entire base code again. So also the different python scripts which have been created should be moved to this .cc code in the future, so better not to spent too much time on improving these python scripts to avoid double work ...\\ For storing the generator decay channel information the c++ enum should be used which can store multiple variables (\textbf{Check this out!})
+  \item Need to understand how MadWeight deals with the permutations ... Should this permutation of the light jets be done within MadWeight or should two .lhco files be created and sent separately to MadWeight. If the latter is the case, how should they be combined afterwards ?
+  \item Be careful with used Beam Energy when using MadGraph. In the newest MadGraph directory this still seems to be set to 7TeV in stead of the required 4 GeV. \\ \textbf{Could this have an influence on the obtained MadWeight results when using the new MadWeight version (connected to the newest MadGraph version) ...}
+  \item Specific MadWeight question for the latest version: \\ \textit{The 'refine' option allows you to realunch the computation of the weights which have a precision lower than X. \textbf{But how can you find this precision?}}
+  \item Should a ScaleFactor correction be applied for the Branching ratio ? \\ \textit{This is not the case in code of James, but should find recommendations somewhere ...}
+  \item \textbf{To Check:} Does MadWeight give a different weight when the Neutrino Mass changes?\\ $\rightarrow$ Currently mass is manually set to zero ...
+  \item Running the analyzer code with the PileUp and JES/JER influences correct and active, the number of preselected events in the Event Selection Table has changed. Need to understand if it is expected that these corrections have an influence (lowering the number) on the number of preselected events ...
+  \item Check whether the created root file can be trusted when the number of considered b-tags is greater than 1 ... !!
 \end{itemize}
 
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
@@ -224,6 +232,7 @@ These files can be found in the following directory on the m-machines and contai
 %**************************************************
 
 \section{FeynRules}
+\textbf{Should be understood why the mass of the top quark is equal to 180 within the created FeynRules model!}
 
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 \chapter{Understanding results obtained with MadWeight}
@@ -437,7 +446,6 @@ Maybe the use of nohup gives the problem ...
 \chapter{Event selection}
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 
-\textcolor{red}{\textbf{Not correctly considering tau's for the moment ...}}
 \section{Choice of b-tag requirements}
 
 \subsection{Signal vs background comparison}
@@ -632,6 +640,91 @@ The numbers which are relevant in these tables are exactly these two last column
  \end{table} 
 When the $m_{lb}$ method is applied, the two first columns in the given tables represent similar quantities with the only difference that now the 4 jets which are actually chosen by the $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method are considered. 
 In this case the third column represents the number of times the third jet is chosen when the two light jets are matched correctly, implying that the third jet is one of the correct ones and that the second light jet is also correctly matched. The final column only looks at the third jet and puts no requirement on the matching of the second light jet. So it compares the number of times one of the chosen jets is the third jet and in how many cases this chosen third jet is one of the correct partons.
+
+\subsection{Compare efficiencies for 3$^{rd}$ jet with 1$^{st}$ and 2$^{nd}$}
+The obtained efficiency numbers for the 3$^{rd}$ jet seemed to be rather high so to exclude any possible double-counting mistakes the percentages for the 1$^{st}$ and 2$^{nd}$ jet where also calculated and compared. Since the considered percentage represents the number of times the 3$^{rd}$ jet corresponds to one of the actual light quarks should the sum of the three percentages not become any larger than 200$\%$.\\
+The percentages were calculated both before and after the application of the $\chi^{2}$ algorithm and the results can be found in Tables \ref{table::FirstSecondThirdJetPerc} and \ref{table::FirstSecondThirdJetPercMlb}. The first table shows the numbers before the application of the $\chi^{2}$ algorithm implying that for correctly matched events 2 of the 3 light jets are correctly matched. The second table gives the results after the $\chi^2$ minimization method.
+
+\begin{table}[h!]
+ \centering
+ \begin{tabular}{c|c|c}
+                 & Number of events & Percentage ($\%$) \\
+  \hline
+  Matched events & 2455 & \\
+  \hline
+  First jet      & 1596 & 65   \\
+  Second jet     & 1740 & 70.9 \\
+  Third jet      & 1574 & 64.1 \\
+  \hline
+  Total          & 4910 & 200
+ \end{tabular}
+ \caption{Number of times the first, second or third jet corresponds to one of the two correct light jets before the application of the $\chi^{2}$ method.}\label{table::FirstSecondThirdJetPerc}
+\end{table}
+
+\begin{table}[h!]
+ \centering
+ \begin{tabular}{c|c|c}
+                 & Number of events & Percentage ($\%$) \\
+  \hline
+  Matched events & 241 & \\
+  \hline
+  First jet      & 162 & 67.2   \\
+  Second jet     & 178 & 73.8 \\
+  Third jet      & 142 & 58.9 \\
+  \hline
+  Total          & 842 & 200
+ \end{tabular}
+ \caption{Number of times the first, second or third jet corresponds to one of the two correct light jets after the application of the $\chi^{2}$ method.}\label{table::FirstSecondThirdJetPercMlb}
+\end{table}
+
+From these tables can be concluded that the obtained percentage of about $70\%$ for the 3$^{rd}$ jet is actually correct and that the result can be trusted. It also implies that in the 5-jet case (meaning that there actually is a third light jet) the three jets have a rather similar probability of being the correct jet.
+
+\subsection{Considering separate categories}
+In order to be certain whether the 3$^{rd}$ light jet should be considered the considered events have been divided into two categories. The first only consists of events with exactly 2 light jets, hence 2 or more b-tagged jets\footnote{The number of events with a third b-tagged jet is extremely small and will probably not really influence the efficiency as can be seen from the plots shown in \ref{subsec::MSPlotsNBTaggedJets}.} and 2 light jets, while the second category allows for more light jets. In case of multiple b-tagged jets only the two highest $p_T$ jets are considered.\\
+In the second category each event is treated in two separate ways. First the event is seen as a pure 4-jet event implying that only the two leading light jets are kept while for the second approach the third light jet is also included in the $\chi^{2}$ algorithm resulting in 6 possible solutions.\\ \\
+For these three cases the matching and $\chi^{2}$ minimization efficiency have been compared in order to ensure that the most efficient event selection will be used. The results can be found in Table \ref{table::LightJetCategories} and indicates that including the third light jet doesn't result in a large gain of efficiency. On the contrary, including events with more than 4 jets but discarding the third light jet results in a significant decrease of efficiency.
+
+\begin{table}[!h]
+ \centering
+ \begin{tabular}{c|c|c}
+                         & N(2 light jets) & N(2+ light jets)  \\
+  \hline
+  $\#$ events            & 9328            & 6436 \\
+  $\#$ matched events    & 4018            & 3319 \\
+  $\#$ good combi chosen & 3273            & 788 -- 1604
+ \end{tabular}
+ \caption{Number of events, number of matched events and number of events for which the correct jet combination is chosen using the $\chi^{2}$ $m_{lb} - m_{qqb}$ algorithm for the two considered categories. The first number in the right-hand bottom corner respresents the number of good combinations chosen when the event is treated as a 4-jet event while the second number is for the treatment of a 5-jet event. An event is considered as matching if the 4 jets corresponding to the generator event are included in the collection of selected jets.}\label{table::LightJetCategories}
+\end{table}
+
+The obtained results seem rather suprising since it implies that only asking the 4 leading jets results in the worst efficiencies. \\
+However it should be noted that for this configuration the 2 Tight b-tag constraint might influence this result. It could be possible that for looser b-tag requirements the mis-identification of the two b-jets results in a worse ``combination choice'' efficiency.\\
+
+\begin{table}[!h]
+ \centering
+ \begin{tabular}{c|c|c|c}
+                         & Only 4-jet events & All, but treated as 4-jet & All, but treated as 5-jet  \\
+  \hline
+  $\%$ matched events    & 43.07                   & 46.5                               & 46.5  \\
+  $\%$ good combi        & 81.4                    & 55.3                               & 66.5
+ \end{tabular}
+ \caption{Percentages for matching the reconstructed event with the generated and for selecting the good combination using the $\chi^{2}$ $m_{lb} - m_{qqb}$ algorithm. }\label{table::JetCategoryPercentages}
+\end{table}
+
+\subsubsection{Histograms for number of selected, b-tagged and light jets}\label{subsec::MSPlotsNBTaggedJets}
+\begin{figure}[!h]
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nSelectedJets_BeforeBTag_mu.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nBTaggedJets_BeforeBTag_mu.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nLightJets_BeforeBTag_mu.png}
+\caption{Number of selected, b-tagged and light jets, respectively, before requiring two Tight b-tags. These distributions are for the muon channel only.}
+\end{figure}
+
+\begin{figure}[!h]
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nSelectedJets_AfterBTag_mu.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nBTaggedJets_AfterBTag_mu.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nLightJets_AfterBTag_mu.png}
+\caption{Number of selected, b-tagged and light jets, respectively, after requiring two Tight b-tags. These distributions are for the muon channel only.}
+\end{figure}
+
 %**************************************************
  
 \section{Studying optimal cut on $\chi^{2}$ value}

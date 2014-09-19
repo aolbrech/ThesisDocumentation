@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.29)  6 AUG 2014 12:41
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.4.29)  19 SEP 2014 15:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -371,35 +371,6 @@ File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
 Package color Info: Driver file: pdftex.def on input line 130.
 )
-(./vubtitlepage.sty
-Package: vubtitlepage 2007/01/07 Title page for papers published at the Vrije U
-niversiteit Brussel
- (./textpos.sty
-Package: textpos 2006/08/10 v1.6b
-
-Package: `textpos' 1.6b <2006 August 10>
-(/usr/share/texlive/texmf-dist/tex/latex/ms/everyshi.sty
-Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
-)
-\TP@textbox=\box26
-\TP@holdbox=\box27
-\TPHorizModule=\dimen121
-\TPVertModule=\dimen122
-\TP@margin=\dimen123
-\TP@absmargin=\dimen124
-
-Grid set 16 x 16 = 37.34424pt x 52.81541pt
-\TPboxrulesize=\dimen125
-\TP@ox=\dimen126
-\TP@oy=\dimen127
-\TP@tbargs=\toks18
-\TP@prevdepth=\dimen128
-TextBlockOrigin set to 0pt x 0pt
-)) (./appendix.sty
-Package: appendix 1998/11/29 v1.0 extra appendix facilities
- (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
-))
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
 
@@ -452,7 +423,7 @@ Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
 (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
 )
-\@linkdim=\dimen129
+\@linkdim=\dimen121
 \Hy@linkcounter=\count93
 \Hy@pagecounter=\count94
 
@@ -480,10 +451,10 @@ Package hyperref Info: Bookmarks ON on input line 4688.
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 5041.
-\XeTeXLinkMargin=\dimen130
+\XeTeXLinkMargin=\dimen122
 \Fld@menulength=\count97
-\Field@Width=\dimen131
-\Fld@charsize=\dimen132
+\Field@Width=\dimen123
+\Fld@charsize=\dimen124
 Package hyperref Info: Hyper figures OFF on input line 6295.
 Package hyperref Info: Link nesting OFF on input line 6300.
 Package hyperref Info: Hyper index ON on input line 6303.
@@ -512,24 +483,53 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip43
 )
+(./vubtitlepage.sty
+Package: vubtitlepage 2007/01/07 Title page for papers published at the Vrije U
+niversiteit Brussel
+ (./textpos.sty
+Package: textpos 2006/08/10 v1.6b
+
+Package: `textpos' 1.6b <2006 August 10>
+(/usr/share/texlive/texmf-dist/tex/latex/ms/everyshi.sty
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+)
+\TP@textbox=\box26
+\TP@holdbox=\box27
+\TPHorizModule=\dimen125
+\TPVertModule=\dimen126
+\TP@margin=\dimen127
+\TP@absmargin=\dimen128
+
+Grid set 16 x 16 = 37.34424pt x 52.81541pt
+\TPboxrulesize=\dimen129
+\TP@ox=\dimen130
+\TP@oy=\dimen131
+\TP@tbargs=\toks18
+\TP@prevdepth=\dimen132
+TextBlockOrigin set to 0pt x 0pt
+)) (./appendix.sty
+Package: appendix 1998/11/29 v1.0 extra appendix facilities
+ (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+))
 (./Documentation_UsedToolsAndTechniques.aux)
 \openout1 = `Documentation_UsedToolsAndTechniques.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 30.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 31.
+LaTeX Font Info:    ... okay on input line 31.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 31.
 
 (/usr/share/texmf/tex/latex/lm/t1lmr.fd
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -599,10 +599,8 @@ e
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-
-ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box29
-Package hyperref Info: Link coloring OFF on input line 30.
+Package hyperref Info: Link coloring OFF on input line 31.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -612,15 +610,17 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count109
 )
-LaTeX Info: Redefining \ref on input line 30.
-LaTeX Info: Redefining \pageref on input line 30.
-LaTeX Info: Redefining \nameref on input line 30.
+LaTeX Info: Redefining \ref on input line 31.
+LaTeX Info: Redefining \pageref on input line 31.
+LaTeX Info: Redefining \nameref on input line 31.
 
 (./Documentation_UsedToolsAndTechniques.out)
 (./Documentation_UsedToolsAndTechniques.out)
 \@outlinefile=\write3
 \openout3 = `Documentation_UsedToolsAndTechniques.out'.
 
+
+ABD: EveryShipout initializing macros
 LaTeX Font Info:    Try loading font information for T1+phv on input line 36.
 
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
@@ -659,7 +659,7 @@ Overfull \hbox (32.96071pt too wide) in paragraph at lines 36--36
 [][] 
  []
 
-<VUB_logo.png, id=184, 214.8828pt x 43.362pt>
+<VUB_logo.png, id=192, 214.8828pt x 43.362pt>
 File: VUB_logo.png Graphic file (type png)
  <use VUB_logo.png>
 Package pdftex.def Info: VUB_logo.png used on input line 36.
@@ -748,7 +748,7 @@ Overfull \hbox (398.33858pt too wide) in paragraph at lines 36--36
 []$ 
  []
 
-<VUB_schild_nontransparent.png, id=186, 351.3125pt x 351.3125pt>
+<VUB_schild_nontransparent.png, id=194, 351.3125pt x 351.3125pt>
 File: VUB_schild_nontransparent.png Graphic file (type png)
 
 <use VUB_schild_nontransparent.png>
@@ -767,7 +767,7 @@ ing (ext4): destination with the same identifier (name{page.i}) has been alread
 y used, duplicate ignored
 <to be read again> 
                    \relax 
-l.41 ... - $m_{qqb}$ method}{27}{subsection.5.6.1}
+l.42 ...be smaller than $1$}{27}{subsection.5.5.3}
                                                    [1
 
 ])
@@ -776,159 +776,159 @@ l.41 ... - $m_{qqb}$ method}{27}{subsection.5.6.1}
 
  [2]
 Chapter 1.
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 43.
+LaTeX Font Info:    Try loading font information for OMS+lmr on input line 44.
 (/usr/share/texmf/tex/latex/lm/omslmr.fd
 File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 43.
+(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 44.
  [1
 
-]
+] [2]
 Chapter 2.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <14.4> on input line 60.
+(Font)              <14.4> on input line 68.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 60.
+(Font)              <10> on input line 68.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 60.
+(Font)              <7> on input line 68.
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 60.
+(hyperref)                removing `math shift' on input line 68.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 60.
+(hyperref)                removing `math shift' on input line 68.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 61--65
+Underfull \hbox (badness 10000) in paragraph at lines 69--73
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 68--74
+Underfull \hbox (badness 10000) in paragraph at lines 76--82
 
  []
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 75.
+(hyperref)                removing `math shift' on input line 83.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 75.
+(hyperref)                removing `math shift' on input line 83.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 76--80
+Underfull \hbox (badness 10000) in paragraph at lines 84--88
 
  []
 
-[2
+[3
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 86--91
+Underfull \hbox (badness 10000) in paragraph at lines 94--99
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 102--106
+Underfull \hbox (badness 10000) in paragraph at lines 110--114
 
  []
 
-[3]
+[4]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 130.
+(hyperref)                removing `math shift' on input line 138.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 130.
+(hyperref)                removing `math shift' on input line 138.
 
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 131.
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 155--164
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 155--164
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 167--171
-
- []
-
+(Font)              <5> on input line 139.
 [5]
-Underfull \hbox (badness 10000) in paragraph at lines 173--178
+Underfull \hbox (badness 10000) in paragraph at lines 163--172
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 183--189
+Underfull \hbox (badness 10000) in paragraph at lines 163--172
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 183--189
+Underfull \hbox (badness 10000) in paragraph at lines 175--179
+
+ []
+
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 181--186
 
  []
 
 
-Overfull \hbox (60.57286pt too wide) in alignment at lines 195--197
+Underfull \hbox (badness 10000) in paragraph at lines 191--197
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 191--197
+
+ []
+
+
+Overfull \hbox (60.57286pt too wide) in alignment at lines 203--205
  [][][] []
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 197--211
+Underfull \hbox (badness 10000) in paragraph at lines 205--219
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 197--211
+Underfull \hbox (badness 10000) in paragraph at lines 205--219
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 197--211
+Underfull \hbox (badness 10000) in paragraph at lines 205--219
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 197--211
+Underfull \hbox (badness 10000) in paragraph at lines 205--219
 
  []
 
-[6] [7]
+[7] [8]
 Chapter 3.
 
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/CompareMWVersi
-ons_May2014/FirstEvtCanvas.png, id=309, 623.32875pt x 468.75125pt>
+ons_May2014/FirstEvtCanvas.png, id=323, 623.32875pt x 468.75125pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/CompareMW
 Versions_May2014/FirstEvtCanvas.png Graphic file (type png)
 
 <use /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/CompareMWV
 ersions_May2014/FirstEvtCanvas.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
-Couplings/CompareMWVersions_May2014/FirstEvtCanvas.png used on input line 261.
+Couplings/CompareMWVersions_May2014/FirstEvtCanvas.png used on input line 270.
 (pdftex.def)             Requested size: 217.42265pt x 163.50749pt.
 
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/CompareMWVersi
-ons_May2014/SecondEvtCanvas.png, id=310, 620.3175pt x 469.755pt>
+ons_May2014/SecondEvtCanvas.png, id=324, 620.3175pt x 469.755pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/CompareMW
 Versions_May2014/SecondEvtCanvas.png Graphic file (type png)
 
 <use /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/CompareMWV
 ersions_May2014/SecondEvtCanvas.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
-Couplings/CompareMWVersions_May2014/SecondEvtCanvas.png used on input line 262.
+Couplings/CompareMWVersions_May2014/SecondEvtCanvas.png used on input line 271.
 
 (pdftex.def)             Requested size: 217.42265pt x 164.64609pt.
 
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/CompareMWVersi
-ons_May2014/FirstEvtCanvas_Rel.png, id=311, 622.325pt x 468.75125pt>
+ons_May2014/FirstEvtCanvas_Rel.png, id=325, 622.325pt x 468.75125pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/CompareMW
 Versions_May2014/FirstEvtCanvas_Rel.png Graphic file (type png)
 
@@ -936,11 +936,11 @@ Versions_May2014/FirstEvtCanvas_Rel.png Graphic file (type png)
 ersions_May2014/FirstEvtCanvas_Rel.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
 Couplings/CompareMWVersions_May2014/FirstEvtCanvas_Rel.png used on input line 2
-63.
+72.
 (pdftex.def)             Requested size: 217.42265pt x 163.76498pt.
 
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/CompareMWVersi
-ons_May2014/SecondEvtCanvas_Rel.png, id=312, 622.325pt x 468.75125pt>
+ons_May2014/SecondEvtCanvas_Rel.png, id=326, 622.325pt x 468.75125pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/CompareMW
 Versions_May2014/SecondEvtCanvas_Rel.png Graphic file (type png)
 
@@ -948,23 +948,23 @@ Versions_May2014/SecondEvtCanvas_Rel.png Graphic file (type png)
 ersions_May2014/SecondEvtCanvas_Rel.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
 Couplings/CompareMWVersions_May2014/SecondEvtCanvas_Rel.png used on input line 
-264.
+273.
 (pdftex.def)             Requested size: 217.42265pt x 163.76498pt.
- [8
+ [9
 
 ]
-Overfull \hbox (18.66982pt too wide) in paragraph at lines 272--272
+Overfull \hbox (18.66982pt too wide) in paragraph at lines 281--281
 []\T1/lmr/bx/n/17.28 Individual weight dis-tri-bu-tion for cond-sidered grid-
  []
 
-[9 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/CompareMWVe
-rsions_May2014/FirstEvtCanvas.png> </home/annik/Documents/Vub/PhD/ThesisSubject
-s/AnomalousCouplings/CompareMWVersions_May2014/SecondEvtCanvas.png> </home/anni
-k/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/CompareMWVersions_May2014
-/FirstEvtCanvas_Rel.png> </home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalou
-sCouplings/CompareMWVersions_May2014/SecondEvtCanvas_Rel.png>]
+[10 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/CompareMWV
+ersions_May2014/FirstEvtCanvas.png> </home/annik/Documents/Vub/PhD/ThesisSubjec
+ts/AnomalousCouplings/CompareMWVersions_May2014/SecondEvtCanvas.png> </home/ann
+ik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/CompareMWVersions_May201
+4/FirstEvtCanvas_Rel.png> </home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalo
+usCouplings/CompareMWVersions_May2014/SecondEvtCanvas_Rel.png>]
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLike
-lihoodDistr_July2014/NormalizedLikelihoodForSMXS.png, id=324, 1537.745pt x 863.
+lihoodDistr_July2014/NormalizedLikelihoodForSMXS.png, id=339, 1537.745pt x 863.
 225pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/Understan
 dLikelihoodDistr_July2014/NormalizedLikelihoodForSMXS.png Graphic file (type pn
@@ -974,11 +974,11 @@ g)
 LikelihoodDistr_July2014/NormalizedLikelihoodForSMXS.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
 Couplings/UnderstandLikelihoodDistr_July2014/NormalizedLikelihoodForSMXS.png us
-ed on input line 290.
+ed on input line 299.
 (pdftex.def)             Requested size: 144.95303pt x 81.3618pt.
 
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLike
-lihoodDistr_July2014/NormalizedXS.png, id=325, 1529.715pt x 866.23625pt>
+lihoodDistr_July2014/NormalizedXS.png, id=340, 1529.715pt x 866.23625pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/Understan
 dLikelihoodDistr_July2014/NormalizedXS.png Graphic file (type png)
 
@@ -986,11 +986,11 @@ dLikelihoodDistr_July2014/NormalizedXS.png Graphic file (type png)
 LikelihoodDistr_July2014/NormalizedXS.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
 Couplings/UnderstandLikelihoodDistr_July2014/NormalizedXS.png used on input lin
-e 291.
+e 300.
 (pdftex.def)             Requested size: 144.95303pt x 82.08182pt.
 
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLike
-lihoodDistr_July2014/LikelihoodForSMXS.png, id=326, 1555.8125pt x 866.23625pt>
+lihoodDistr_July2014/LikelihoodForSMXS.png, id=341, 1555.8125pt x 866.23625pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/Understan
 dLikelihoodDistr_July2014/LikelihoodForSMXS.png Graphic file (type png)
 
@@ -998,11 +998,11 @@ dLikelihoodDistr_July2014/LikelihoodForSMXS.png Graphic file (type png)
 LikelihoodDistr_July2014/LikelihoodForSMXS.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
 Couplings/UnderstandLikelihoodDistr_July2014/LikelihoodForSMXS.png used on inpu
-t line 292.
+t line 301.
 (pdftex.def)             Requested size: 144.95303pt x 80.69395pt.
 
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLike
-lihoodDistr_July2014/WeightIndividualEventNr10.png, id=327, 1508.63625pt x 842.
+lihoodDistr_July2014/WeightIndividualEventNr10.png, id=342, 1508.63625pt x 842.
 14626pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/Understan
 dLikelihoodDistr_July2014/WeightIndividualEventNr10.png Graphic file (type png)
@@ -1012,11 +1012,11 @@ dLikelihoodDistr_July2014/WeightIndividualEventNr10.png Graphic file (type png)
 LikelihoodDistr_July2014/WeightIndividualEventNr10.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
 Couplings/UnderstandLikelihoodDistr_July2014/WeightIndividualEventNr10.png used
- on input line 298.
+ on input line 307.
 (pdftex.def)             Requested size: 144.95303pt x 80.90422pt.
 
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLike
-lihoodDistr_July2014/WeightIndividualEventNr45.png, id=328, 1515.6625pt x 841.1
+lihoodDistr_July2014/WeightIndividualEventNr45.png, id=343, 1515.6625pt x 841.1
 425pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/Understan
 dLikelihoodDistr_July2014/WeightIndividualEventNr45.png Graphic file (type png)
@@ -1026,11 +1026,11 @@ dLikelihoodDistr_July2014/WeightIndividualEventNr45.png Graphic file (type png)
 LikelihoodDistr_July2014/WeightIndividualEventNr45.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
 Couplings/UnderstandLikelihoodDistr_July2014/WeightIndividualEventNr45.png used
- on input line 299.
+ on input line 308.
 (pdftex.def)             Requested size: 144.95303pt x 80.4356pt.
 
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLike
-lihoodDistr_July2014/WeightIndividualEventNr120.png, id=329, 1507.6325pt x 836.
+lihoodDistr_July2014/WeightIndividualEventNr120.png, id=344, 1507.6325pt x 836.
 12375pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/Understan
 dLikelihoodDistr_July2014/WeightIndividualEventNr120.png Graphic file (type png
@@ -1040,9 +1040,9 @@ dLikelihoodDistr_July2014/WeightIndividualEventNr120.png Graphic file (type png
 LikelihoodDistr_July2014/WeightIndividualEventNr120.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
 Couplings/UnderstandLikelihoodDistr_July2014/WeightIndividualEventNr120.png use
-d on input line 300.
+d on input line 309.
 (pdftex.def)             Requested size: 144.95303pt x 80.38943pt.
- [10 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/Understan
+ [11 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/Understan
 dLikelihoodDistr_July2014/NormalizedLikelihoodForSMXS.png> </home/annik/Documen
 ts/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLikelihoodDistr_July2014
 /NormalizedXS.png> </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCoupl
@@ -1054,329 +1054,329 @@ r45.png> </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/Under
 standLikelihoodDistr_July2014/WeightIndividualEventNr120.png>]
 Chapter 4.
 
-Underfull \hbox (badness 10000) in paragraph at lines 315--320
+Underfull \hbox (badness 10000) in paragraph at lines 324--329
 
  []
 
-[11
+[12
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 354--362
+Underfull \hbox (badness 10000) in paragraph at lines 363--371
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 354--362
+Underfull \hbox (badness 10000) in paragraph at lines 363--371
 
  []
 
-[12]
+[13]
 <../April2014/KinematicPlots_RelativeChange/StackCanvas_CosTheta_JetPt0.png, id
-=351, 698.61pt x 473.77pt>
+=365, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_RelativeChange/StackCanvas_CosTheta_JetPt0.pn
 g Graphic file (type png)
 
 <use ../April2014/KinematicPlots_RelativeChange/StackCanvas_CosTheta_JetPt0.png
 >
 Package pdftex.def Info: ../April2014/KinematicPlots_RelativeChange/StackCanvas
-_CosTheta_JetPt0.png used on input line 368.
+_CosTheta_JetPt0.png used on input line 377.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_RelativeChange/StackCanvas_EventContent_JetPt0.png
-, id=352, 698.61pt x 473.77pt>
+, id=366, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_RelativeChange/StackCanvas_EventContent_JetPt
 0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_RelativeChange/StackCanvas_EventContent_JetPt0
 .png>
 Package pdftex.def Info: ../April2014/KinematicPlots_RelativeChange/StackCanvas
-_EventContent_JetPt0.png used on input line 369.
+_EventContent_JetPt0.png used on input line 378.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_RelativeChange/StackCanvas_HadronicBMass_JetPt0.pn
-g, id=353, 698.61pt x 473.77pt>
+g, id=367, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_RelativeChange/StackCanvas_HadronicBMass_JetP
 t0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_RelativeChange/StackCanvas_HadronicBMass_JetPt
 0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_RelativeChange/StackCanvas
-_HadronicBMass_JetPt0.png used on input line 370.
+_HadronicBMass_JetPt0.png used on input line 379.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_RelativeChange/StackCanvas_HadronicBPt_JetPt0.png,
- id=354, 698.61pt x 473.77pt>
+ id=368, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_RelativeChange/StackCanvas_HadronicBPt_JetPt0
 .png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_RelativeChange/StackCanvas_HadronicBPt_JetPt0.
 png>
 Package pdftex.def Info: ../April2014/KinematicPlots_RelativeChange/StackCanvas
-_HadronicBPt_JetPt0.png used on input line 371.
+_HadronicBPt_JetPt0.png used on input line 380.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_RelativeChange/StackCanvas_HadronicBR_JetPt0.png, 
-id=355, 698.61pt x 473.77pt>
+id=369, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_RelativeChange/StackCanvas_HadronicBR_JetPt0.
 png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_RelativeChange/StackCanvas_HadronicBR_JetPt0.p
 ng>
 Package pdftex.def Info: ../April2014/KinematicPlots_RelativeChange/StackCanvas
-_HadronicBR_JetPt0.png used on input line 372.
+_HadronicBR_JetPt0.png used on input line 381.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_RelativeChange/StackCanvas_HadronicBTheta_JetPt0.p
-ng, id=356, 698.61pt x 473.77pt>
+ng, id=370, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_RelativeChange/StackCanvas_HadronicBTheta_Jet
 Pt0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_RelativeChange/StackCanvas_HadronicBTheta_JetP
 t0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_RelativeChange/StackCanvas
-_HadronicBTheta_JetPt0.png used on input line 373.
+_HadronicBTheta_JetPt0.png used on input line 382.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonicBMass_JetPt0.pn
-g, id=357, 698.61pt x 473.77pt>
+g, id=371, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonicBMass_JetP
 t0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonicBMass_JetPt
 0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_RelativeChange/StackCanvas
-_LeptonicBMass_JetPt0.png used on input line 374.
+_LeptonicBMass_JetPt0.png used on input line 383.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonicBPt_JetPt0.png,
- id=358, 698.61pt x 473.77pt>
+ id=372, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonicBPt_JetPt0
 .png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonicBPt_JetPt0.
 png>
 Package pdftex.def Info: ../April2014/KinematicPlots_RelativeChange/StackCanvas
-_LeptonicBPt_JetPt0.png used on input line 375.
+_LeptonicBPt_JetPt0.png used on input line 384.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonicBR_JetPt0.png, 
-id=359, 698.61pt x 473.77pt>
+id=373, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonicBR_JetPt0.
 png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonicBR_JetPt0.p
 ng>
 Package pdftex.def Info: ../April2014/KinematicPlots_RelativeChange/StackCanvas
-_LeptonicBR_JetPt0.png used on input line 376.
+_LeptonicBR_JetPt0.png used on input line 385.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonicBTheta_JetPt0.p
-ng, id=360, 698.61pt x 473.77pt>
+ng, id=374, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonicBTheta_Jet
 Pt0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonicBTheta_JetP
 t0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_RelativeChange/StackCanvas
-_LeptonicBTheta_JetPt0.png used on input line 377.
+_LeptonicBTheta_JetPt0.png used on input line 386.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonId_JetPt0.png, id
-=361, 698.61pt x 473.77pt>
+=375, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonId_JetPt0.pn
 g Graphic file (type png)
 
 <use ../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonId_JetPt0.png
 >
 Package pdftex.def Info: ../April2014/KinematicPlots_RelativeChange/StackCanvas
-_LeptonId_JetPt0.png used on input line 378.
+_LeptonId_JetPt0.png used on input line 387.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonMass_JetPt0.png, 
-id=362, 698.61pt x 473.77pt>
+id=376, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonMass_JetPt0.
 png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonMass_JetPt0.p
 ng>
 Package pdftex.def Info: ../April2014/KinematicPlots_RelativeChange/StackCanvas
-_LeptonMass_JetPt0.png used on input line 379.
+_LeptonMass_JetPt0.png used on input line 388.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonPt_JetPt0.png, id
-=363, 698.61pt x 473.77pt>
+=377, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonPt_JetPt0.pn
 g Graphic file (type png)
 
 <use ../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonPt_JetPt0.png
 >
 Package pdftex.def Info: ../April2014/KinematicPlots_RelativeChange/StackCanvas
-_LeptonPt_JetPt0.png used on input line 380.
+_LeptonPt_JetPt0.png used on input line 389.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonR_JetPt0.png, id=
-364, 698.61pt x 473.77pt>
+378, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonR_JetPt0.png
  Graphic file (type png)
 
 <use ../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonR_JetPt0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_RelativeChange/StackCanvas
-_LeptonR_JetPt0.png used on input line 381.
+_LeptonR_JetPt0.png used on input line 390.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonTheta_JetPt0.png,
- id=365, 698.61pt x 473.77pt>
+ id=379, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonTheta_JetPt0
 .png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonTheta_JetPt0.
 png>
 Package pdftex.def Info: ../April2014/KinematicPlots_RelativeChange/StackCanvas
-_LeptonTheta_JetPt0.png used on input line 382.
+_LeptonTheta_JetPt0.png used on input line 391.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_RelativeChange/StackCanvas_LightAntiQuarkId_JetPt0
-.png, id=366, 698.61pt x 473.77pt>
+.png, id=380, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_RelativeChange/StackCanvas_LightAntiQuarkId_J
 etPt0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_RelativeChange/StackCanvas_LightAntiQuarkId_Je
 tPt0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_RelativeChange/StackCanvas
-_LightAntiQuarkId_JetPt0.png used on input line 383.
+_LightAntiQuarkId_JetPt0.png used on input line 392.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_RelativeChange/StackCanvas_LightAntiQuarkMass_JetP
-t0.png, id=367, 698.61pt x 473.77pt>
+t0.png, id=381, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_RelativeChange/StackCanvas_LightAntiQuarkMass
 _JetPt0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_RelativeChange/StackCanvas_LightAntiQuarkMass_
 JetPt0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_RelativeChange/StackCanvas
-_LightAntiQuarkMass_JetPt0.png used on input line 384.
+_LightAntiQuarkMass_JetPt0.png used on input line 393.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_RelativeChange/StackCanvas_LightAntiQuarkPt_JetPt0
-.png, id=368, 698.61pt x 473.77pt>
+.png, id=382, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_RelativeChange/StackCanvas_LightAntiQuarkPt_J
 etPt0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_RelativeChange/StackCanvas_LightAntiQuarkPt_Je
 tPt0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_RelativeChange/StackCanvas
-_LightAntiQuarkPt_JetPt0.png used on input line 385.
+_LightAntiQuarkPt_JetPt0.png used on input line 394.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_RelativeChange/StackCanvas_LightAntiQuarkR_JetPt0.
-png, id=369, 698.61pt x 473.77pt>
+png, id=383, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_RelativeChange/StackCanvas_LightAntiQuarkR_Je
 tPt0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_RelativeChange/StackCanvas_LightAntiQuarkR_Jet
 Pt0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_RelativeChange/StackCanvas
-_LightAntiQuarkR_JetPt0.png used on input line 386.
+_LightAntiQuarkR_JetPt0.png used on input line 395.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_RelativeChange/StackCanvas_LightAntiQuarkTheta_Jet
-Pt0.png, id=370, 698.61pt x 473.77pt>
+Pt0.png, id=384, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_RelativeChange/StackCanvas_LightAntiQuarkThet
 a_JetPt0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_RelativeChange/StackCanvas_LightAntiQuarkTheta
 _JetPt0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_RelativeChange/StackCanvas
-_LightAntiQuarkTheta_JetPt0.png used on input line 387.
+_LightAntiQuarkTheta_JetPt0.png used on input line 396.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_RelativeChange/StackCanvas_LightQuarkId_JetPt0.png
-, id=371, 698.61pt x 473.77pt>
+, id=385, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_RelativeChange/StackCanvas_LightQuarkId_JetPt
 0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_RelativeChange/StackCanvas_LightQuarkId_JetPt0
 .png>
 Package pdftex.def Info: ../April2014/KinematicPlots_RelativeChange/StackCanvas
-_LightQuarkId_JetPt0.png used on input line 388.
+_LightQuarkId_JetPt0.png used on input line 397.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_RelativeChange/StackCanvas_LightQuarkMass_JetPt0.p
-ng, id=372, 698.61pt x 473.77pt>
+ng, id=386, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_RelativeChange/StackCanvas_LightQuarkMass_Jet
 Pt0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_RelativeChange/StackCanvas_LightQuarkMass_JetP
 t0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_RelativeChange/StackCanvas
-_LightQuarkMass_JetPt0.png used on input line 389.
+_LightQuarkMass_JetPt0.png used on input line 398.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_RelativeChange/StackCanvas_LightQuarkPt_JetPt0.png
-, id=373, 698.61pt x 473.77pt>
+, id=387, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_RelativeChange/StackCanvas_LightQuarkPt_JetPt
 0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_RelativeChange/StackCanvas_LightQuarkPt_JetPt0
 .png>
 Package pdftex.def Info: ../April2014/KinematicPlots_RelativeChange/StackCanvas
-_LightQuarkPt_JetPt0.png used on input line 390.
+_LightQuarkPt_JetPt0.png used on input line 399.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_RelativeChange/StackCanvas_LightQuarkR_JetPt0.png,
- id=374, 698.61pt x 473.77pt>
+ id=388, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_RelativeChange/StackCanvas_LightQuarkR_JetPt0
 .png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_RelativeChange/StackCanvas_LightQuarkR_JetPt0.
 png>
 Package pdftex.def Info: ../April2014/KinematicPlots_RelativeChange/StackCanvas
-_LightQuarkR_JetPt0.png used on input line 391.
+_LightQuarkR_JetPt0.png used on input line 400.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_RelativeChange/StackCanvas_LightQuarkTheta_JetPt0.
-png, id=375, 698.61pt x 473.77pt>
+png, id=389, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_RelativeChange/StackCanvas_LightQuarkTheta_Je
 tPt0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_RelativeChange/StackCanvas_LightQuarkTheta_Jet
 Pt0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_RelativeChange/StackCanvas
-_LightQuarkTheta_JetPt0.png used on input line 392.
+_LightQuarkTheta_JetPt0.png used on input line 401.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_RelativeChange/StackCanvas_TopMass_JetPt0.png, id=
-376, 698.61pt x 473.77pt>
+390, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_RelativeChange/StackCanvas_TopMass_JetPt0.png
  Graphic file (type png)
 
 <use ../April2014/KinematicPlots_RelativeChange/StackCanvas_TopMass_JetPt0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_RelativeChange/StackCanvas
-_TopMass_JetPt0.png used on input line 393.
+_TopMass_JetPt0.png used on input line 402.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_RelativeChange/StackCanvas_TopProductionId_JetPt0.
-png, id=377, 698.61pt x 473.77pt>
+png, id=391, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_RelativeChange/StackCanvas_TopProductionId_Je
 tPt0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_RelativeChange/StackCanvas_TopProductionId_Jet
 Pt0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_RelativeChange/StackCanvas
-_TopProductionId_JetPt0.png used on input line 394.
+_TopProductionId_JetPt0.png used on input line 403.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_RelativeChange/StackCanvas_WBosonMass_JetPt0.png, 
-id=378, 698.61pt x 473.77pt>
+id=392, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_RelativeChange/StackCanvas_WBosonMass_JetPt0.
 png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_RelativeChange/StackCanvas_WBosonMass_JetPt0.p
 ng>
 Package pdftex.def Info: ../April2014/KinematicPlots_RelativeChange/StackCanvas
-_WBosonMass_JetPt0.png used on input line 395.
+_WBosonMass_JetPt0.png used on input line 404.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
- [13 <../April2014/KinematicPlots_RelativeChange/StackCanvas_CosTheta_JetPt0.pn
+ [14 <../April2014/KinematicPlots_RelativeChange/StackCanvas_CosTheta_JetPt0.pn
 g> <../April2014/KinematicPlots_RelativeChange/StackCanvas_EventContent_JetPt0.
 png> <../April2014/KinematicPlots_RelativeChange/StackCanvas_HadronicBMass_JetP
 t0.png> <../April2014/KinematicPlots_RelativeChange/StackCanvas_HadronicBPt_Jet
@@ -1396,313 +1396,313 @@ iQuarkId_JetPt0.png> <../April2014/KinematicPlots_RelativeChange/StackCanvas_Li
 ghtAntiQuarkMass_JetPt0.png> <../April2014/KinematicPlots_RelativeChange/StackC
 anvas_LightAntiQuarkPt_JetPt0.png>]
 <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_CosTheta_JetPt0.png, 
-id=383, 698.61pt x 473.77pt>
+id=397, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_CosTheta_JetPt0.
 png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_CosTheta_JetPt0.p
 ng>
 Package pdftex.def Info: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanv
-as_CosTheta_JetPt0.png used on input line 401.
+as_CosTheta_JetPt0.png used on input line 410.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_EventContent_JetPt0.p
-ng, id=384, 698.61pt x 473.77pt>
+ng, id=398, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_EventContent_Jet
 Pt0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_EventContent_JetP
 t0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanv
-as_EventContent_JetPt0.png used on input line 402.
+as_EventContent_JetPt0.png used on input line 411.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_HadronicBMass_JetPt0.
-png, id=385, 698.61pt x 473.77pt>
+png, id=399, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_HadronicBMass_Je
 tPt0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_HadronicBMass_Jet
 Pt0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanv
-as_HadronicBMass_JetPt0.png used on input line 403.
+as_HadronicBMass_JetPt0.png used on input line 412.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_HadronicBPt_JetPt0.pn
-g, id=386, 698.61pt x 473.77pt>
+g, id=400, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_HadronicBPt_JetP
 t0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_HadronicBPt_JetPt
 0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanv
-as_HadronicBPt_JetPt0.png used on input line 404.
+as_HadronicBPt_JetPt0.png used on input line 413.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_HadronicBR_JetPt0.png
-, id=387, 698.61pt x 473.77pt>
+, id=401, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_HadronicBR_JetPt
 0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_HadronicBR_JetPt0
 .png>
 Package pdftex.def Info: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanv
-as_HadronicBR_JetPt0.png used on input line 405.
+as_HadronicBR_JetPt0.png used on input line 414.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_HadronicBTheta_JetPt0
-.png, id=388, 698.61pt x 473.77pt>
+.png, id=402, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_HadronicBTheta_J
 etPt0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_HadronicBTheta_Je
 tPt0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanv
-as_HadronicBTheta_JetPt0.png used on input line 406.
+as_HadronicBTheta_JetPt0.png used on input line 415.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonicBMass_JetPt0.
-png, id=389, 698.61pt x 473.77pt>
+png, id=403, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonicBMass_Je
 tPt0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonicBMass_Jet
 Pt0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanv
-as_LeptonicBMass_JetPt0.png used on input line 407.
+as_LeptonicBMass_JetPt0.png used on input line 416.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonicBPt_JetPt0.pn
-g, id=390, 698.61pt x 473.77pt>
+g, id=404, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonicBPt_JetP
 t0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonicBPt_JetPt
 0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanv
-as_LeptonicBPt_JetPt0.png used on input line 408.
+as_LeptonicBPt_JetPt0.png used on input line 417.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonicBR_JetPt0.png
-, id=391, 698.61pt x 473.77pt>
+, id=405, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonicBR_JetPt
 0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonicBR_JetPt0
 .png>
 Package pdftex.def Info: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanv
-as_LeptonicBR_JetPt0.png used on input line 409.
+as_LeptonicBR_JetPt0.png used on input line 418.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonicBTheta_JetPt0
-.png, id=392, 698.61pt x 473.77pt>
+.png, id=406, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonicBTheta_J
 etPt0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonicBTheta_Je
 tPt0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanv
-as_LeptonicBTheta_JetPt0.png used on input line 410.
+as_LeptonicBTheta_JetPt0.png used on input line 419.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonId_JetPt0.png, 
-id=393, 698.61pt x 473.77pt>
+id=407, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonId_JetPt0.
 png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonId_JetPt0.p
 ng>
 Package pdftex.def Info: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanv
-as_LeptonId_JetPt0.png used on input line 411.
+as_LeptonId_JetPt0.png used on input line 420.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonMass_JetPt0.png
-, id=394, 698.61pt x 473.77pt>
+, id=408, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonMass_JetPt
 0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonMass_JetPt0
 .png>
 Package pdftex.def Info: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanv
-as_LeptonMass_JetPt0.png used on input line 412.
+as_LeptonMass_JetPt0.png used on input line 421.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonPt_JetPt0.png, 
-id=395, 698.61pt x 473.77pt>
+id=409, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonPt_JetPt0.
 png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonPt_JetPt0.p
 ng>
 Package pdftex.def Info: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanv
-as_LeptonPt_JetPt0.png used on input line 413.
+as_LeptonPt_JetPt0.png used on input line 422.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonR_JetPt0.png, i
-d=396, 698.61pt x 473.77pt>
+d=410, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonR_JetPt0.p
 ng Graphic file (type png)
 
 <use ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonR_JetPt0.pn
 g>
 Package pdftex.def Info: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanv
-as_LeptonR_JetPt0.png used on input line 414.
+as_LeptonR_JetPt0.png used on input line 423.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonTheta_JetPt0.pn
-g, id=397, 698.61pt x 473.77pt>
+g, id=411, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonTheta_JetP
 t0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonTheta_JetPt
 0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanv
-as_LeptonTheta_JetPt0.png used on input line 415.
+as_LeptonTheta_JetPt0.png used on input line 424.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightAntiQuarkId_JetP
-t0.png, id=398, 698.61pt x 473.77pt>
+t0.png, id=412, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightAntiQuarkId
 _JetPt0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightAntiQuarkId_
 JetPt0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanv
-as_LightAntiQuarkId_JetPt0.png used on input line 416.
+as_LightAntiQuarkId_JetPt0.png used on input line 425.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightAntiQuarkMass_Je
-tPt0.png, id=399, 698.61pt x 473.77pt>
+tPt0.png, id=413, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightAntiQuarkMa
 ss_JetPt0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightAntiQuarkMas
 s_JetPt0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanv
-as_LightAntiQuarkMass_JetPt0.png used on input line 417.
+as_LightAntiQuarkMass_JetPt0.png used on input line 426.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightAntiQuarkPt_JetP
-t0.png, id=400, 698.61pt x 473.77pt>
+t0.png, id=414, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightAntiQuarkPt
 _JetPt0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightAntiQuarkPt_
 JetPt0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanv
-as_LightAntiQuarkPt_JetPt0.png used on input line 418.
+as_LightAntiQuarkPt_JetPt0.png used on input line 427.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightAntiQuarkR_JetPt
-0.png, id=401, 698.61pt x 473.77pt>
+0.png, id=415, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightAntiQuarkR_
 JetPt0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightAntiQuarkR_J
 etPt0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanv
-as_LightAntiQuarkR_JetPt0.png used on input line 419.
+as_LightAntiQuarkR_JetPt0.png used on input line 428.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightAntiQuarkTheta_J
-etPt0.png, id=402, 698.61pt x 473.77pt>
+etPt0.png, id=416, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightAntiQuarkTh
 eta_JetPt0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightAntiQuarkThe
 ta_JetPt0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanv
-as_LightAntiQuarkTheta_JetPt0.png used on input line 420.
+as_LightAntiQuarkTheta_JetPt0.png used on input line 429.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightQuarkId_JetPt0.p
-ng, id=403, 698.61pt x 473.77pt>
+ng, id=417, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightQuarkId_Jet
 Pt0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightQuarkId_JetP
 t0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanv
-as_LightQuarkId_JetPt0.png used on input line 421.
+as_LightQuarkId_JetPt0.png used on input line 430.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightQuarkMass_JetPt0
-.png, id=404, 698.61pt x 473.77pt>
+.png, id=418, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightQuarkMass_J
 etPt0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightQuarkMass_Je
 tPt0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanv
-as_LightQuarkMass_JetPt0.png used on input line 422.
+as_LightQuarkMass_JetPt0.png used on input line 431.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightQuarkPt_JetPt0.p
-ng, id=405, 698.61pt x 473.77pt>
+ng, id=419, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightQuarkPt_Jet
 Pt0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightQuarkPt_JetP
 t0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanv
-as_LightQuarkPt_JetPt0.png used on input line 423.
+as_LightQuarkPt_JetPt0.png used on input line 432.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightQuarkR_JetPt0.pn
-g, id=406, 698.61pt x 473.77pt>
+g, id=420, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightQuarkR_JetP
 t0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightQuarkR_JetPt
 0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanv
-as_LightQuarkR_JetPt0.png used on input line 424.
+as_LightQuarkR_JetPt0.png used on input line 433.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightQuarkTheta_JetPt
-0.png, id=407, 698.61pt x 473.77pt>
+0.png, id=421, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightQuarkTheta_
 JetPt0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightQuarkTheta_J
 etPt0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanv
-as_LightQuarkTheta_JetPt0.png used on input line 425.
+as_LightQuarkTheta_JetPt0.png used on input line 434.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_TopMass_JetPt0.png, i
-d=408, 698.61pt x 473.77pt>
+d=422, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_TopMass_JetPt0.p
 ng Graphic file (type png)
 
 <use ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_TopMass_JetPt0.pn
 g>
 Package pdftex.def Info: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanv
-as_TopMass_JetPt0.png used on input line 426.
+as_TopMass_JetPt0.png used on input line 435.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_TopProductionId_JetPt
-0.png, id=409, 698.61pt x 473.77pt>
+0.png, id=423, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_TopProductionId_
 JetPt0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_TopProductionId_J
 etPt0.png>
 Package pdftex.def Info: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanv
-as_TopProductionId_JetPt0.png used on input line 427.
+as_TopProductionId_JetPt0.png used on input line 436.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
 
 <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_WBosonMass_JetPt0.png
-, id=410, 698.61pt x 473.77pt>
+, id=424, 698.61pt x 473.77pt>
 File: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_WBosonMass_JetPt
 0.png Graphic file (type png)
 
 <use ../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_WBosonMass_JetPt0
 .png>
 Package pdftex.def Info: ../April2014/KinematicPlots_CoeffLargerThan1/StackCanv
-as_WBosonMass_JetPt0.png used on input line 428.
+as_WBosonMass_JetPt0.png used on input line 437.
 (pdftex.def)             Requested size: 144.95303pt x 98.30182pt.
- [14 <../April2014/KinematicPlots_RelativeChange/StackCanvas_LightAntiQuarkR_Je
+ [15 <../April2014/KinematicPlots_RelativeChange/StackCanvas_LightAntiQuarkR_Je
 tPt0.png> <../April2014/KinematicPlots_RelativeChange/StackCanvas_LightAntiQuar
 kTheta_JetPt0.png> <../April2014/KinematicPlots_RelativeChange/StackCanvas_Ligh
 tQuarkId_JetPt0.png> <../April2014/KinematicPlots_RelativeChange/StackCanvas_Li
@@ -1718,7 +1718,7 @@ StackCanvas_WBosonMass_JetPt0.png> <../April2014/KinematicPlots_CoeffLargerThan
 Than1/StackCanvas_HadronicBMass_JetPt0.png> <../April2014/KinematicPlots_CoeffL
 argerThan1/StackCanvas_HadronicBPt_JetPt0.png> <../April2014/KinematicPlots_Coe
 ffLargerThan1/StackCanvas_HadronicBR_JetPt0.png> <../April2014/KinematicPlots_C
-oeffLargerThan1/StackCanvas_HadronicBTheta_JetPt0.png>] [15 <../April2014/Kinem
+oeffLargerThan1/StackCanvas_HadronicBTheta_JetPt0.png>] [16 <../April2014/Kinem
 aticPlots_CoeffLargerThan1/StackCanvas_LeptonicBMass_JetPt0.png> <../April2014/
 KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonicBPt_JetPt0.png> <../April20
 14/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonicBR_JetPt0.png> <../April
@@ -1740,17 +1740,22 @@ lots_CoeffLargerThan1/StackCanvas_LightQuarkPt_JetPt0.png> <../April2014/Kinema
 ticPlots_CoeffLargerThan1/StackCanvas_LightQuarkR_JetPt0.png> <../April2014/Kin
 ematicPlots_CoeffLargerThan1/StackCanvas_LightQuarkTheta_JetPt0.png> <../April2
 014/KinematicPlots_CoeffLargerThan1/StackCanvas_TopMass_JetPt0.png> <../April20
-14/KinematicPlots_CoeffLargerThan1/StackCanvas_TopProductionId_JetPt0.png>] [16
+14/KinematicPlots_CoeffLargerThan1/StackCanvas_TopProductionId_JetPt0.png>] [17
  <../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_WBosonMass_JetPt0.pn
 g>]
 Chapter 5.
 
-Overfull \hbox (2.14136pt too wide) in paragraph at lines 449--458
+Overfull \hbox (2.14136pt too wide) in paragraph at lines 457--466
 [][] 
  []
 
 
-Overfull \hbox (4.1664pt too wide) in paragraph at lines 462--471
+Overfull \hbox (4.1664pt too wide) in paragraph at lines 470--479
+[][] 
+ []
+
+
+Overfull \hbox (29.55954pt too wide) in paragraph at lines 483--492
 [][] 
  []
 
@@ -1758,64 +1763,56 @@ Overfull \hbox (4.1664pt too wide) in paragraph at lines 462--471
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Overfull \hbox (29.55954pt too wide) in paragraph at lines 475--484
-[][] 
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 487--495
+Underfull \hbox (badness 10000) in paragraph at lines 495--503
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 487--495
+Underfull \hbox (badness 10000) in paragraph at lines 495--503
 
  []
 
-[17
+[18
 
 ]
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <17.28> on input line 496.
+(Font)              <17.28> on input line 504.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 496.
+(hyperref)                removing `math shift' on input line 504.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 496.
+(hyperref)                removing `subscript' on input line 504.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 496.
+(hyperref)                removing `math shift' on input line 504.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 496.
+(hyperref)                removing `math shift' on input line 504.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\chi' on input line 496.
+(hyperref)                removing `\chi' on input line 504.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 496.
+(hyperref)                removing `superscript' on input line 504.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 496.
+(hyperref)                removing `math shift' on input line 504.
 
 
-Overfull \hbox (2.14136pt too wide) in paragraph at lines 498--507
+Overfull \hbox (2.14136pt too wide) in paragraph at lines 506--515
 [][] 
  []
 
 
-Overfull \hbox (36.80011pt too wide) in paragraph at lines 511--520
+Overfull \hbox (36.80011pt too wide) in paragraph at lines 519--528
 [][] 
  []
 
@@ -1823,13 +1820,13 @@ Overfull \hbox (36.80011pt too wide) in paragraph at lines 511--520
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 523--529
+Underfull \hbox (badness 10000) in paragraph at lines 531--537
 
  []
 
-[18]
+[19]
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelection
-Choice_June2014/StCosTheta_BeforeEvtSel.png, id=438, 1544.77126pt x 843.15pt>
+Choice_June2014/StCosTheta_BeforeEvtSel.png, id=452, 1544.77126pt x 843.15pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSele
 ctionChoice_June2014/StCosTheta_BeforeEvtSel.png Graphic file (type png)
 
@@ -1837,11 +1834,11 @@ ctionChoice_June2014/StCosTheta_BeforeEvtSel.png Graphic file (type png)
 tionChoice_June2014/StCosTheta_BeforeEvtSel.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
 Couplings/EventSelectionChoice_June2014/StCosTheta_BeforeEvtSel.png used on inp
-ut line 534.
+ut line 542.
 (pdftex.def)             Requested size: 144.95303pt x 79.10944pt.
 
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelection
-Choice_June2014/StCosThetaNoBTag.png, id=439, 1415.2875pt x 849.1725pt>
+Choice_June2014/StCosThetaNoBTag.png, id=453, 1415.2875pt x 849.1725pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSele
 ctionChoice_June2014/StCosThetaNoBTag.png Graphic file (type png)
 
@@ -1849,11 +1846,11 @@ ctionChoice_June2014/StCosThetaNoBTag.png Graphic file (type png)
 tionChoice_June2014/StCosThetaNoBTag.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
 Couplings/EventSelectionChoice_June2014/StCosThetaNoBTag.png used on input line
- 535.
+ 543.
 (pdftex.def)             Requested size: 144.95303pt x 86.96947pt.
 
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelection
-Choice_June2014/StCosThetaLCSV.png, id=440, 1413.28pt x 852.18375pt>
+Choice_June2014/StCosThetaLCSV.png, id=454, 1413.28pt x 852.18375pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSele
 ctionChoice_June2014/StCosThetaLCSV.png Graphic file (type png)
 
@@ -1861,11 +1858,11 @@ ctionChoice_June2014/StCosThetaLCSV.png Graphic file (type png)
 tionChoice_June2014/StCosThetaLCSV.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
 Couplings/EventSelectionChoice_June2014/StCosThetaLCSV.png used on input line 5
-36.
+44.
 (pdftex.def)             Requested size: 144.95303pt x 87.3949pt.
 
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelection
-Choice_June2014/StCosThetaMCSV.png, id=441, 1410.26875pt x 849.1725pt>
+Choice_June2014/StCosThetaMCSV.png, id=455, 1410.26875pt x 849.1725pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSele
 ctionChoice_June2014/StCosThetaMCSV.png Graphic file (type png)
 
@@ -1873,11 +1870,11 @@ ctionChoice_June2014/StCosThetaMCSV.png Graphic file (type png)
 tionChoice_June2014/StCosThetaMCSV.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
 Couplings/EventSelectionChoice_June2014/StCosThetaMCSV.png used on input line 5
-37.
+45.
 (pdftex.def)             Requested size: 144.95303pt x 87.28044pt.
 
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelection
-Choice_June2014/StCosThetaTCSV.png, id=442, 1407.2575pt x 851.18pt>
+Choice_June2014/StCosThetaTCSV.png, id=456, 1407.2575pt x 851.18pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSele
 ctionChoice_June2014/StCosThetaTCSV.png Graphic file (type png)
 
@@ -1885,19 +1882,16 @@ ctionChoice_June2014/StCosThetaTCSV.png Graphic file (type png)
 tionChoice_June2014/StCosThetaTCSV.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
 Couplings/EventSelectionChoice_June2014/StCosThetaTCSV.png used on input line 5
-38.
+46.
 (pdftex.def)             Requested size: 144.95303pt x 87.66861pt.
 
-Underfull \hbox (badness 1803) in paragraph at lines 534--539
+Underfull \hbox (badness 1803) in paragraph at lines 542--547
 [][] [] []
  []
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelection
-Choice_June2014/CorrectBHadrCSVDiscr.png, id=443, 1256.695pt x 837.1275pt>
+Choice_June2014/CorrectBHadrCSVDiscr.png, id=457, 1256.695pt x 837.1275pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSele
 ctionChoice_June2014/CorrectBHadrCSVDiscr.png Graphic file (type png)
 
@@ -1905,11 +1899,11 @@ ctionChoice_June2014/CorrectBHadrCSVDiscr.png Graphic file (type png)
 tionChoice_June2014/CorrectBHadrCSVDiscr.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
 Couplings/EventSelectionChoice_June2014/CorrectBHadrCSVDiscr.png used on input 
-line 543.
+line 551.
 (pdftex.def)             Requested size: 144.95303pt x 96.55504pt.
 
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelection
-Choice_June2014/CorrectBLeptCSVDiscr.png, id=444, 1247.66125pt x 853.1875pt>
+Choice_June2014/CorrectBLeptCSVDiscr.png, id=458, 1247.66125pt x 853.1875pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSele
 ctionChoice_June2014/CorrectBLeptCSVDiscr.png Graphic file (type png)
 
@@ -1917,11 +1911,11 @@ ctionChoice_June2014/CorrectBLeptCSVDiscr.png Graphic file (type png)
 tionChoice_June2014/CorrectBLeptCSVDiscr.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
 Couplings/EventSelectionChoice_June2014/CorrectBLeptCSVDiscr.png used on input 
-line 544.
+line 552.
 (pdftex.def)             Requested size: 144.95303pt x 99.11041pt.
 
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelection
-Choice_June2014/CorrectQuark1CSVDiscr.png, id=445, 1303.87125pt x 848.16875pt>
+Choice_June2014/CorrectQuark1CSVDiscr.png, id=459, 1303.87125pt x 848.16875pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSele
 ctionChoice_June2014/CorrectQuark1CSVDiscr.png Graphic file (type png)
 
@@ -1929,11 +1923,11 @@ ctionChoice_June2014/CorrectQuark1CSVDiscr.png Graphic file (type png)
 tionChoice_June2014/CorrectQuark1CSVDiscr.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
 Couplings/EventSelectionChoice_June2014/CorrectQuark1CSVDiscr.png used on input
- line 545.
+ line 553.
 (pdftex.def)             Requested size: 144.95303pt x 94.28244pt.
 
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelection
-Choice_June2014/CorrectQuark2CSVDiscr.png, id=446, 1263.72125pt x 851.18pt>
+Choice_June2014/CorrectQuark2CSVDiscr.png, id=460, 1263.72125pt x 851.18pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSele
 ctionChoice_June2014/CorrectQuark2CSVDiscr.png Graphic file (type png)
 
@@ -1941,10 +1935,10 @@ ctionChoice_June2014/CorrectQuark2CSVDiscr.png Graphic file (type png)
 tionChoice_June2014/CorrectQuark2CSVDiscr.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
 Couplings/EventSelectionChoice_June2014/CorrectQuark2CSVDiscr.png used on input
- line 546.
+ line 554.
 (pdftex.def)             Requested size: 144.95303pt x 97.63037pt.
 
-Underfull \hbox (badness 1803) in paragraph at lines 543--547
+Underfull \hbox (badness 1803) in paragraph at lines 551--555
 [][] [] []
  []
 
@@ -1953,7 +1947,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelection
-Choice_June2014/CSVDiscrLCSVLightJets.png, id=447, 1303.87125pt x 846.16125pt>
+Choice_June2014/CSVDiscrLCSVLightJets.png, id=461, 1303.87125pt x 846.16125pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSele
 ctionChoice_June2014/CSVDiscrLCSVLightJets.png Graphic file (type png)
 
@@ -1961,7 +1955,7 @@ ctionChoice_June2014/CSVDiscrLCSVLightJets.png Graphic file (type png)
 tionChoice_June2014/CSVDiscrLCSVLightJets.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
 Couplings/EventSelectionChoice_June2014/CSVDiscrLCSVLightJets.png used on input
- line 551.
+ line 559.
 (pdftex.def)             Requested size: 144.95303pt x 94.05928pt.
 
 
@@ -1969,7 +1963,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelection
-Choice_June2014/JetTypeLCSVLightJets.png, id=448, 1235.61626pt x 844.15375pt>
+Choice_June2014/JetTypeLCSVLightJets.png, id=462, 1235.61626pt x 844.15375pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSele
 ctionChoice_June2014/JetTypeLCSVLightJets.png Graphic file (type png)
 
@@ -1977,7 +1971,7 @@ ctionChoice_June2014/JetTypeLCSVLightJets.png Graphic file (type png)
 tionChoice_June2014/JetTypeLCSVLightJets.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
 Couplings/EventSelectionChoice_June2014/JetTypeLCSVLightJets.png used on input 
-line 556.
+line 564.
 (pdftex.def)             Requested size: 144.95303pt x 99.02707pt.
 
 
@@ -1985,38 +1979,38 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelection
-Choice_June2014/JetTypeLCSV.png, id=449, 1233.60875pt x 844.15375pt>
+Choice_June2014/JetTypeLCSV.png, id=463, 1233.60875pt x 844.15375pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSele
 ctionChoice_June2014/JetTypeLCSV.png Graphic file (type png)
 
 <use /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelec
 tionChoice_June2014/JetTypeLCSV.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
-Couplings/EventSelectionChoice_June2014/JetTypeLCSV.png used on input line 561.
+Couplings/EventSelectionChoice_June2014/JetTypeLCSV.png used on input line 569.
 
 (pdftex.def)             Requested size: 144.95303pt x 99.18163pt.
 
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelection
-Choice_June2014/JetTypeMCSV.png, id=450, 1226.5825pt x 845.1575pt>
+Choice_June2014/JetTypeMCSV.png, id=464, 1226.5825pt x 845.1575pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSele
 ctionChoice_June2014/JetTypeMCSV.png Graphic file (type png)
 
 <use /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelec
 tionChoice_June2014/JetTypeMCSV.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
-Couplings/EventSelectionChoice_June2014/JetTypeMCSV.png used on input line 562.
+Couplings/EventSelectionChoice_June2014/JetTypeMCSV.png used on input line 570.
 
 (pdftex.def)             Requested size: 144.95303pt x 99.86699pt.
 
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelection
-Choice_June2014/JetTypeTCSV.png, id=451, 1228.59pt x 846.16125pt>
+Choice_June2014/JetTypeTCSV.png, id=465, 1228.59pt x 846.16125pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSele
 ctionChoice_June2014/JetTypeTCSV.png Graphic file (type png)
 
 <use /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelec
 tionChoice_June2014/JetTypeTCSV.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
-Couplings/EventSelectionChoice_June2014/JetTypeTCSV.png used on input line 563.
+Couplings/EventSelectionChoice_June2014/JetTypeTCSV.png used on input line 571.
 
 (pdftex.def)             Requested size: 144.95303pt x 99.83066pt.
 
@@ -2025,29 +2019,29 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelection
-Choice_June2014/MlbMass.png, id=452, 1365.1pt x 843.15pt>
+Choice_June2014/MlbMass.png, id=466, 1365.1pt x 843.15pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSele
 ctionChoice_June2014/MlbMass.png Graphic file (type png)
 
 <use /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelec
 tionChoice_June2014/MlbMass.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
-Couplings/EventSelectionChoice_June2014/MlbMass.png used on input line 568.
+Couplings/EventSelectionChoice_June2014/MlbMass.png used on input line 576.
 (pdftex.def)             Requested size: 144.95303pt x 89.51756pt.
 
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelection
-Choice_June2014/MqqbMass.png, id=453, 1371.1225pt x 841.1425pt>
+Choice_June2014/MqqbMass.png, id=467, 1371.1225pt x 841.1425pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSele
 ctionChoice_June2014/MqqbMass.png Graphic file (type png)
 
 <use /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelec
 tionChoice_June2014/MqqbMass.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
-Couplings/EventSelectionChoice_June2014/MqqbMass.png used on input line 569.
+Couplings/EventSelectionChoice_June2014/MqqbMass.png used on input line 577.
 (pdftex.def)             Requested size: 144.95303pt x 88.91939pt.
 
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelection
-Choice_June2014/1July2014/MlbMqqbCorrectAll.png, id=454, 1594.95876pt x 882.296
+Choice_June2014/1July2014/MlbMqqbCorrectAll.png, id=468, 1594.95876pt x 882.296
 25pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSele
 ctionChoice_June2014/1July2014/MlbMqqbCorrectAll.png Graphic file (type png)
@@ -2056,36 +2050,11 @@ ctionChoice_June2014/1July2014/MlbMqqbCorrectAll.png Graphic file (type png)
 tionChoice_June2014/1July2014/MlbMqqbCorrectAll.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
 Couplings/EventSelectionChoice_June2014/1July2014/MlbMqqbCorrectAll.png used on
- input line 570.
+ input line 578.
 (pdftex.def)             Requested size: 144.95303pt x 80.18407pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-[19]
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Overfull \hbox (8.88875pt too wide) in paragraph at lines 599--604
-[][] 
- []
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 607--612
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 607--612
-
- []
 
 [20 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelec
 tionChoice_June2014/StCosTheta_BeforeEvtSel.png> </home/annik/Documents/Vub/PhD
@@ -2094,26 +2063,17 @@ ag.png> </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventS
 electionChoice_June2014/StCosThetaLCSV.png> </home/annik/Documents/Vub/PhD/Thes
 isSubjects/AnomalousCouplings/EventSelectionChoice_June2014/StCosThetaMCSV.png>
  </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectio
-nChoice_June2014/StCosThetaTCSV.png> </home/annik/Documents/Vub/PhD/ThesisSubje
-cts/AnomalousCouplings/EventSelectionChoice_June2014/CorrectBHadrCSVDiscr.png> 
-</home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelection
-Choice_June2014/CorrectBLeptCSVDiscr.png> </home/annik/Documents/Vub/PhD/Thesis
-Subjects/AnomalousCouplings/EventSelectionChoice_June2014/CorrectQuark1CSVDiscr
-.png> </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSel
-ectionChoice_June2014/CorrectQuark2CSVDiscr.png>] [21 </home/annik/Documents/Vu
+nChoice_June2014/StCosThetaTCSV.png>] [21 </home/annik/Documents/Vub/PhD/Thesis
+Subjects/AnomalousCouplings/EventSelectionChoice_June2014/CorrectBHadrCSVDiscr.
+png> </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSele
+ctionChoice_June2014/CorrectBLeptCSVDiscr.png> </home/annik/Documents/Vub/PhD/T
+hesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/CorrectQuark1CSV
+Discr.png> </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/Eve
+ntSelectionChoice_June2014/CorrectQuark2CSVDiscr.png> </home/annik/Documents/Vu
 b/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/CSVDiscrL
 CSVLightJets.png> </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCoupli
-ngs/EventSelectionChoice_June2014/JetTypeLCSVLightJets.png> </home/annik/Docume
-nts/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/Jet
-TypeLCSV.png> </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/
-EventSelectionChoice_June2014/JetTypeMCSV.png> </home/annik/Documents/Vub/PhD/T
-hesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/JetTypeTCSV.png>
- </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectio
-nChoice_June2014/MlbMass.png> </home/annik/Documents/Vub/PhD/ThesisSubjects/Ano
-malousCouplings/EventSelectionChoice_June2014/MqqbMass.png> </home/annik/Docume
-nts/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/1Ju
-ly2014/MlbMqqbCorrectAll.png>]
-Overfull \hbox (60.86914pt too wide) in paragraph at lines 615--621
+ngs/EventSelectionChoice_June2014/JetTypeLCSVLightJets.png>]
+Overfull \hbox (8.88875pt too wide) in paragraph at lines 607--612
 [][] 
  []
 
@@ -2121,143 +2081,319 @@ Overfull \hbox (60.86914pt too wide) in paragraph at lines 615--621
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+Underfull \hbox (badness 10000) in paragraph at lines 615--620
 
-[22]
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 637.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\chi' on input line 637.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 637.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 637.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 641.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\chi' on input line 641.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 641.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 641.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 641.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 641.
-
-
-Overfull \hbox (60.86914pt too wide) in paragraph at lines 643--649
-[][] 
  []
 
 
-LaTeX Warning: `!h' float specifier changed to `!ht'.
+Underfull \hbox (badness 10000) in paragraph at lines 615--620
 
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 662.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\chi' on input line 662.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 662.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 662.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 662.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 662.
-
-
-Overfull \hbox (60.86914pt too wide) in paragraph at lines 664--670
-[][] 
  []
 
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-LaTeX Warning: `!h' float specifier changed to `!ht'.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 683.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\chi' on input line 683.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 683.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 683.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 683.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 683.
-
-
-Overfull \hbox (60.86914pt too wide) in paragraph at lines 685--691
+[22 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelec
+tionChoice_June2014/JetTypeLCSV.png> </home/annik/Documents/Vub/PhD/ThesisSubje
+cts/AnomalousCouplings/EventSelectionChoice_June2014/JetTypeMCSV.png> </home/an
+nik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_Ju
+ne2014/JetTypeTCSV.png> </home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
+Couplings/EventSelectionChoice_June2014/MlbMass.png> </home/annik/Documents/Vub
+/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/MqqbMass.p
+ng> </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelec
+tionChoice_June2014/1July2014/MlbMqqbCorrectAll.png>]
+Overfull \hbox (60.86914pt too wide) in paragraph at lines 623--629
 [][] 
  []
 
 [23]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 705.
+(hyperref)                removing `math shift' on input line 644.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 705.
+(hyperref)                removing `superscript' on input line 644.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 705.
+(hyperref)                removing `math shift' on input line 644.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 644.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 644.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 644.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 644.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 644.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 644.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 683--686
+
+ []
 
 [24]
-Underfull \hbox (badness 10000) in paragraph at lines 722--758
+Underfull \hbox (badness 10000) in paragraph at lines 699--701
+
+ []
+
+
+Overfull \hbox (19.91457pt too wide) in paragraph at lines 704--710
+ [][] 
+ []
+
+
+</home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelection
+Choice_June2014/LightJetCategories_Sept2014/CanvasStack_nSelectedJets_BeforeBTa
+g_mu.png, id=511, 928.46875pt x 668.4975pt>
+File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSele
+ctionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nSelectedJets_Befo
+reBTag_mu.png Graphic file (type png)
+
+<use /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelec
+tionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nSelectedJets_Befor
+eBTag_mu.png>
+Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
+Couplings/EventSelectionChoice_June2014/LightJetCategories_Sept2014/CanvasStack
+_nSelectedJets_BeforeBTag_mu.png used on input line 715.
+(pdftex.def)             Requested size: 144.95303pt x 104.36067pt.
+
+</home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelection
+Choice_June2014/LightJetCategories_Sept2014/CanvasStack_nBTaggedJets_BeforeBTag
+_mu.png, id=512, 928.46875pt x 666.49pt>
+File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSele
+ctionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nBTaggedJets_Befor
+eBTag_mu.png Graphic file (type png)
+
+<use /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelec
+tionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nBTaggedJets_Before
+BTag_mu.png>
+Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
+Couplings/EventSelectionChoice_June2014/LightJetCategories_Sept2014/CanvasStack
+_nBTaggedJets_BeforeBTag_mu.png used on input line 716.
+(pdftex.def)             Requested size: 144.95303pt x 104.04727pt.
+
+</home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelection
+Choice_June2014/LightJetCategories_Sept2014/CanvasStack_nLightJets_BeforeBTag_m
+u.png, id=513, 931.48pt x 667.49374pt>
+File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSele
+ctionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nLightJets_BeforeB
+Tag_mu.png Graphic file (type png)
+
+<use /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelec
+tionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nLightJets_BeforeBT
+ag_mu.png>
+Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
+Couplings/EventSelectionChoice_June2014/LightJetCategories_Sept2014/CanvasStack
+_nLightJets_BeforeBTag_mu.png used on input line 717.
+(pdftex.def)             Requested size: 144.95303pt x 103.86786pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+</home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelection
+Choice_June2014/LightJetCategories_Sept2014/CanvasStack_nSelectedJets_AfterBTag
+_mu.png, id=514, 932.48375pt x 666.49pt>
+File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSele
+ctionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nSelectedJets_Afte
+rBTag_mu.png Graphic file (type png)
+
+<use /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelec
+tionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nSelectedJets_After
+BTag_mu.png>
+Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
+Couplings/EventSelectionChoice_June2014/LightJetCategories_Sept2014/CanvasStack
+_nSelectedJets_AfterBTag_mu.png used on input line 722.
+(pdftex.def)             Requested size: 144.95303pt x 103.59981pt.
+
+</home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelection
+Choice_June2014/LightJetCategories_Sept2014/CanvasStack_nBTaggedJets_AfterBTag_
+mu.png, id=515, 931.48pt x 668.4975pt>
+File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSele
+ctionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nBTaggedJets_After
+BTag_mu.png Graphic file (type png)
+
+<use /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelec
+tionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nBTaggedJets_AfterB
+Tag_mu.png>
+Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
+Couplings/EventSelectionChoice_June2014/LightJetCategories_Sept2014/CanvasStack
+_nBTaggedJets_AfterBTag_mu.png used on input line 723.
+(pdftex.def)             Requested size: 144.95303pt x 104.02405pt.
+
+</home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelection
+Choice_June2014/LightJetCategories_Sept2014/CanvasStack_nLightJets_AfterBTag_mu
+.png, id=516, 932.48375pt x 667.49374pt>
+File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSele
+ctionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nLightJets_AfterBT
+ag_mu.png Graphic file (type png)
+
+<use /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelec
+tionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nLightJets_AfterBTa
+g_mu.png>
+Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
+Couplings/EventSelectionChoice_June2014/LightJetCategories_Sept2014/CanvasStack
+_nLightJets_AfterBTag_mu.png used on input line 724.
+(pdftex.def)             Requested size: 144.95303pt x 103.75583pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 730.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\chi' on input line 730.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 730.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 730.
+
+[25]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 734.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\chi' on input line 734.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 734.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 734.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 734.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 734.
+
+
+Overfull \hbox (60.86914pt too wide) in paragraph at lines 736--742
+[][] 
+ []
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 755.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\chi' on input line 755.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 755.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 755.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 755.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 755.
+
+
+Overfull \hbox (60.86914pt too wide) in paragraph at lines 757--763
+[][] 
+ []
+
+[26 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelec
+tionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nSelectedJets_Befor
+eBTag_mu.png> </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/
+EventSelectionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nBTaggedJ
+ets_BeforeBTag_mu.png> </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousC
+ouplings/EventSelectionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_
+nLightJets_BeforeBTag_mu.png> </home/annik/Documents/Vub/PhD/ThesisSubjects/Ano
+malousCouplings/EventSelectionChoice_June2014/LightJetCategories_Sept2014/Canva
+sStack_nSelectedJets_AfterBTag_mu.png> </home/annik/Documents/Vub/PhD/ThesisSub
+jects/AnomalousCouplings/EventSelectionChoice_June2014/LightJetCategories_Sept2
+014/CanvasStack_nBTaggedJets_AfterBTag_mu.png> </home/annik/Documents/Vub/PhD/T
+hesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/LightJetCategori
+es_Sept2014/CanvasStack_nLightJets_AfterBTag_mu.png>]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 776.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\chi' on input line 776.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `superscript' on input line 776.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 776.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 776.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 776.
+
+
+Overfull \hbox (60.86914pt too wide) in paragraph at lines 778--784
+[][] 
+ []
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 798.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `subscript' on input line 798.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 798.
+
+[27]
+Underfull \hbox (badness 10000) in paragraph at lines 815--851
 
  []
 
 
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelection
 Choice_June2014/UpdatedPtCuts_30July2014/PtDistributionFirstJet_NewPtCuts_El.pn
-g, id=500, 934.49126pt x 676.5275pt>
+g, id=542, 934.49126pt x 676.5275pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSele
 ctionChoice_June2014/UpdatedPtCuts_30July2014/PtDistributionFirstJet_NewPtCuts_
 El.png Graphic file (type png)
@@ -2267,12 +2403,12 @@ tionChoice_June2014/UpdatedPtCuts_30July2014/PtDistributionFirstJet_NewPtCuts_E
 l.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
 Couplings/EventSelectionChoice_June2014/UpdatedPtCuts_30July2014/PtDistribution
-FirstJet_NewPtCuts_El.png used on input line 760.
+FirstJet_NewPtCuts_El.png used on input line 853.
 (pdftex.def)             Requested size: 203.83417pt x 147.56677pt.
 
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelection
 Choice_June2014/UpdatedPtCuts_30July2014/PtDistributionSecondJet_NewPtCuts_El.p
-ng, id=501, 930.47626pt x 676.5275pt>
+ng, id=543, 930.47626pt x 676.5275pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSele
 ctionChoice_June2014/UpdatedPtCuts_30July2014/PtDistributionSecondJet_NewPtCuts
 _El.png Graphic file (type png)
@@ -2282,12 +2418,12 @@ tionChoice_June2014/UpdatedPtCuts_30July2014/PtDistributionSecondJet_NewPtCuts_
 El.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
 Couplings/EventSelectionChoice_June2014/UpdatedPtCuts_30July2014/PtDistribution
-SecondJet_NewPtCuts_El.png used on input line 761.
+SecondJet_NewPtCuts_El.png used on input line 854.
 (pdftex.def)             Requested size: 203.83417pt x 148.19647pt.
 
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelection
 Choice_June2014/UpdatedPtCuts_30July2014/PtDistributionThirdJet_NewPtCuts_El.pn
-g, id=502, 937.5025pt x 676.5275pt>
+g, id=544, 937.5025pt x 676.5275pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSele
 ctionChoice_June2014/UpdatedPtCuts_30July2014/PtDistributionThirdJet_NewPtCuts_
 El.png Graphic file (type png)
@@ -2297,12 +2433,12 @@ tionChoice_June2014/UpdatedPtCuts_30July2014/PtDistributionThirdJet_NewPtCuts_E
 l.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
 Couplings/EventSelectionChoice_June2014/UpdatedPtCuts_30July2014/PtDistribution
-ThirdJet_NewPtCuts_El.png used on input line 762.
+ThirdJet_NewPtCuts_El.png used on input line 855.
 (pdftex.def)             Requested size: 203.83417pt x 147.09192pt.
 
 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelection
 Choice_June2014/UpdatedPtCuts_30July2014/PtDistributionFourthJet_NewPtCuts_El.p
-ng, id=503, 933.4875pt x 676.5275pt>
+ng, id=545, 933.4875pt x 676.5275pt>
 File: /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSele
 ctionChoice_June2014/UpdatedPtCuts_30July2014/PtDistributionFourthJet_NewPtCuts
 _El.png Graphic file (type png)
@@ -2312,13 +2448,13 @@ tionChoice_June2014/UpdatedPtCuts_30July2014/PtDistributionFourthJet_NewPtCuts_
 El.png>
 Package pdftex.def Info: /home/annik/Documents/Vub/PhD/ThesisSubjects/Anomalous
 Couplings/EventSelectionChoice_June2014/UpdatedPtCuts_30July2014/PtDistribution
-FourthJet_NewPtCuts_El.png used on input line 763.
+FourthJet_NewPtCuts_El.png used on input line 856.
 (pdftex.def)             Requested size: 203.83417pt x 147.72162pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[25] [26 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/Event
+[28] [29 </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/Event
 SelectionChoice_June2014/UpdatedPtCuts_30July2014/PtDistributionFirstJet_NewPtC
 uts_El.png> </home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/Ev
 entSelectionChoice_June2014/UpdatedPtCuts_30July2014/PtDistributionSecondJet_Ne
@@ -2329,55 +2465,55 @@ ings/EventSelectionChoice_June2014/UpdatedPtCuts_30July2014/PtDistributionFourt
 hJet_NewPtCuts_El.png>]
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 800.
+(hyperref)                removing `math shift' on input line 893.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\chi' on input line 800.
+(hyperref)                removing `\chi' on input line 893.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 800.
+(hyperref)                removing `superscript' on input line 893.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 800.
+(hyperref)                removing `math shift' on input line 893.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 800.
+(hyperref)                removing `math shift' on input line 893.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 800.
+(hyperref)                removing `subscript' on input line 893.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 800.
+(hyperref)                removing `math shift' on input line 893.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 800.
+(hyperref)                removing `math shift' on input line 893.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 800.
+(hyperref)                removing `subscript' on input line 893.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 800.
+(hyperref)                removing `math shift' on input line 893.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 801--810
+Underfull \hbox (badness 10000) in paragraph at lines 894--903
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 801--810
+Underfull \hbox (badness 10000) in paragraph at lines 894--903
 
  []
 
-[27]
+[30]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
@@ -2390,72 +2526,73 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[28
+[31
 
-] [29] [30]
+] [32] [33]
 Chapter 6.
-LaTeX Font Info:    Try loading font information for T1+lmtt on input line 933.
-
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 1026
+.
 (/usr/share/texmf/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-Underfull \hbox (badness 10000) in paragraph at lines 930--935
+Underfull \hbox (badness 10000) in paragraph at lines 1023--1028
 
  []
 
 
-Overfull \hbox (3.0116pt too wide) in paragraph at lines 930--935
+Overfull \hbox (3.0116pt too wide) in paragraph at lines 1023--1028
 \T1/lmr/m/n/12 TOP Twiki page ([]$\T1/lmtt/m/n/12 https : / / twiki . cern . ch
  / twiki / bin / viewauth / CMS / TopTrigger$[]\T1/lmr/m/n/12 ) and
  []
 
 
-Overfull \hbox (39.53203pt too wide) in paragraph at lines 936--937
+Overfull \hbox (39.53203pt too wide) in paragraph at lines 1029--1030
 [][]$\T1/lmtt/m/n/12 https : / / github . com / TopBrussels / FourTops / blob /
  master / FourTop _ EventSelection .
  []
 
 
-Overfull \hbox (39.53203pt too wide) in paragraph at lines 937--938
+Overfull \hbox (39.53203pt too wide) in paragraph at lines 1030--1031
 [][]$\T1/lmtt/m/n/12 https : / / github . com / TopBrussels / FourTops / blob /
  master / FourTop _ EventSelection _
  []
 
-[31
+[34
 
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 945--949
+Underfull \hbox (badness 10000) in paragraph at lines 1038--1042
 
  []
 
 
-Overfull \hbox (3.98233pt too wide) in paragraph at lines 959--961
+Overfull \hbox (3.98233pt too wide) in paragraph at lines 1052--1054
 \T1/lmtt/m/n/12 ccc ? key = 0Apc0aJdnaVjSdFVaLVU2dlk4RDZHcjlaakE3NWIxTUE & usp 
 = sharing _ eil # gid = 0$[] 
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 963.
-[32]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 963.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1056.
+[35]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1056.
  (./Documentation_UsedToolsAndTechniques.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 963.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 963.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1056.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1056.
+
 Package rerunfilecheck Info: File `Documentation_UsedToolsAndTechniques.out' ha
 s not changed.
-(rerunfilecheck)             Checksum: 4DDD3A032448CD5849AB64874F39578E;3611.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 963.
+(rerunfilecheck)             Checksum: E22F13ECC04F3FF979212D5E88630C10;3799.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1056.
  ) 
 Here is how much of TeX's memory you used:
- 8093 strings out of 495028
- 152581 string characters out of 6181497
- 224650 words of memory out of 5000000
- 10966 multiletter control sequences out of 15000+600000
+ 8144 strings out of 495028
+ 157353 string characters out of 6181497
+ 226220 words of memory out of 5000000
+ 10997 multiletter control sequences out of 15000+600000
  120769 words of font info for 90 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 36i,12n,38p,821b,385s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 36i,12n,38p,821b,393s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/lm/lm-ec.enc}{/usr/share/texmf/fonts/enc/dv
-ips/lm/lm-mathit.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-rm.enc}{/usr/share
+ips/lm/lm-rm.enc}{/usr/share/texmf/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/share
 /texmf/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/share/texlive/texmf-dist/fonts/en
 c/dvips/base/8r.enc}</usr/share/texmf/fonts/type1/public/lm/lmbx12.pfb></usr/sh
 are/texmf/fonts/type1/public/lm/lmbxi10.pfb></usr/share/texmf/fonts/type1/publi
@@ -2467,11 +2604,11 @@ nts/type1/public/lm/lmr7.pfb></usr/share/texmf/fonts/type1/public/lm/lmr8.pfb><
 /public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy8.pfb></usr/s
 hare/texmf/fonts/type1/public/lm/lmtt12.pfb></usr/share/texlive/texmf-dist/font
 s/type1/urw/helvetic/uhvr8a.pfb>
-Output written on Documentation_UsedToolsAndTechniques.pdf (35 pages, 1593030 b
+Output written on Documentation_UsedToolsAndTechniques.pdf (38 pages, 1710264 b
 ytes).
 PDF statistics:
- 639 PDF objects out of 1000 (max. 8388607)
- 492 compressed objects within 5 object streams
- 137 named destinations out of 1000 (max. 500000)
- 806 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 687 PDF objects out of 1000 (max. 8388607)
+ 530 compressed objects within 6 object streams
+ 150 named destinations out of 1000 (max. 500000)
+ 852 words of extra memory for PDF output out of 10000 (max. 10000000)
 

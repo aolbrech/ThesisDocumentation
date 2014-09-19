@@ -8,6 +8,7 @@
 \usepackage{multirow}
 \usepackage[labelfont=bf]{caption}
 \usepackage{color}
+\usepackage{hyperref}
 %----------------------------------------------------------------------------------
 \usepackage[centersections]{vubtitlepage}
 \usepackage[title,titletoc,toc]{appendix}
@@ -44,6 +45,18 @@
   \item If the kinematics doesn't change for coupling parameters larger than 1, how is then possible to differentiate the different configurations which will be studied?
   \item Access to Mathematica for Width studies ... ?
   \item XS values which are used are the ones calculated using the MadGraph$\_$v155 version. Should this be calculated again using the new MadGraphv5$\_$aMC@NLO since normally this shouldn't change ...?
+  \item Create branch for localgrid scripts! (Now already a branch exists for the documentation !)
+  \item Understand \textit{CorrectPhi} comment in MadWeight name \\ $\rightarrow$ Maybe related with phi issues of neutrino's ...
+  \item EventWeight calculated in analyzer should be integrated into MadWeight output (Hence multiply MadWeight weight with the EventWeight for each event!) \\ \textbf{Otherwise all the effort to include the JES and PU stuff has no influence at all and is not taken into account!							}
+  \item Update EventNumberInformation file to only cout the information when the event has passed the eventSelection requirements. Otherwise just discard this event from the output file in order to avoid a long .txt file and long running time ...
+  \item When creating ntuples for Data/MC comparison the EventNumberInformation output should be stored here as well. This will allow to calculate the likelihood and weight distributions for specific $p_T$ cuts without having to run the entire base code again. So also the different python scripts which have been created should be moved to this .cc code in the future, so better not to spent too much time on improving these python scripts to avoid double work ...\\ For storing the generator decay channel information the c++ enum should be used which can store multiple variables (\textbf{Check this out!})
+  \item Need to understand how MadWeight deals with the permutations ... Should this permutation of the light jets be done within MadWeight or should two .lhco files be created and sent separately to MadWeight. If the latter is the case, how should they be combined afterwards ?
+  \item Be careful with used Beam Energy when using MadGraph. In the newest MadGraph directory this still seems to be set to 7TeV in stead of the required 4 GeV. \\ \textbf{Could this have an influence on the obtained MadWeight results when using the new MadWeight version (connected to the newest MadGraph version) ...}
+  \item Specific MadWeight question for the latest version: \\ \textit{The 'refine' option allows you to realunch the computation of the weights which have a precision lower than X. \textbf{But how can you find this precision?}}
+  \item Should a ScaleFactor correction be applied for the Branching ratio ? \\ \textit{This is not the case in code of James, but should find recommendations somewhere ...}
+  \item \textbf{To Check:} Does MadWeight give a different weight when the Neutrino Mass changes?\\ $\rightarrow$ Currently mass is manually set to zero ...
+  \item Running the analyzer code with the PileUp and JES/JER influences correct and active, the number of preselected events in the Event Selection Table has changed. Need to understand if it is expected that these corrections have an influence (lowering the number) on the number of preselected events ...
+  \item Check whether the created root file can be trusted when the number of considered b-tags is greater than 1 ... !!
 \end{itemize}
 
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
@@ -219,6 +232,7 @@ These files can be found in the following directory on the m-machines and contai
 %**************************************************
 
 \section{FeynRules}
+\textbf{Should be understood why the mass of the top quark is equal to 180 within the created FeynRules model!}
 
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 \chapter{Understanding results obtained with MadWeight}
@@ -280,7 +294,21 @@ The relevant python scripts are the following:
  \item \textbf{RemoveZeroWeightEvents.py} which removes the events with weight equal to zero from the list and saves the non-zero events in a new .out file. On the other hand the events which failed the MadWeight computation are saved on a new .lhco file together with one succesful control event and are send again through MadWeight for a new weight calculation. \textcolor{red}{This should be updated since the new computation of MadWeight also results in weights equal to zero for these failing events. So should be investigated what is different about these events ...}
 \end{itemize}
 
+The first three histograms show the obtained Likelihood distribution for the different gridpoints which were considered. From these can be concluded that the behavior of the Likelihood normalized with the corresponding cross section divided by the Standard Model cross section is dominated by the distribution of the normalized cross section values. This means that any small deviations of the raw Likelihood values gets washed out by the multiplication with the normalized cross section values.
+\begin{figure}[!h]
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLikelihoodDistr_July2014/NormalizedLikelihoodForSMXS.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLikelihoodDistr_July2014/NormalizedXS.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLikelihoodDistr_July2014/LikelihoodForSMXS.png}
+\caption{...}
+\end{figure}
 
+The individual weight distribution for some random events can be found here.
+\begin{figure}[!h]
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLikelihoodDistr_July2014/WeightIndividualEventNr10.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLikelihoodDistr_July2014/WeightIndividualEventNr45.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLikelihoodDistr_July2014/WeightIndividualEventNr120.png}
+\caption{...\textbf{Script should be ran again, and names for the axis should be added for these individual weight histograms!}}
+\end{figure}
 
 
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
@@ -418,7 +446,6 @@ Maybe the use of nohup gives the problem ...
 \chapter{Event selection}
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 
-\textcolor{red}{\textbf{Not correctly considering tau's for the moment ...}}
 \section{Choice of b-tag requirements}
 
 \subsection{Signal vs background comparison}
@@ -613,6 +640,55 @@ The numbers which are relevant in these tables are exactly these two last column
  \end{table} 
 When the $m_{lb}$ method is applied, the two first columns in the given tables represent similar quantities with the only difference that now the 4 jets which are actually chosen by the $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method are considered. 
 In this case the third column represents the number of times the third jet is chosen when the two light jets are matched correctly, implying that the third jet is one of the correct ones and that the second light jet is also correctly matched. The final column only looks at the third jet and puts no requirement on the matching of the second light jet. So it compares the number of times one of the chosen jets is the third jet and in how many cases this chosen third jet is one of the correct partons.
+
+\subsection{Compare efficiencies for 3$^{rd}$ jet with 1$^{st}$ and 2$^{nd}$}
+
+\subsection{Considering separate categories}
+In order to be certain whether the 3$^{rd}$ light jet should be considered the considered events have been divided into two categories. The first only consists of events with exactly 2 light jets, hence 2 or more b-tagged jets\footnote{The number of events with a third b-tagged jet is extremely small and will probably not really influence the efficiency as can be seen from the plots shown in \ref{subsec::MSPlotsNBTaggedJets}.} and 2 light jets, while the second category allows for more light jets. In case of multiple b-tagged jets only the two highest $p_T$ jets are considered.\\
+In the second category each event is treated in two separate ways. First the event is seen as a pure 4-jet event implying that only the two leading light jets are kept while for the second approach the third light jet is also included in the $\chi^{2}$ algorithm resulting in 6 possible solutions.\\ \\
+For these three cases the matching and $\chi^{2}$ minimization efficiency have been compared in order to ensure that the most efficient event selection will be used. The results can be found in Table \ref{table::LightJetCategories} and indicates that including the third light jet doesn't result in a large gain of efficiency. On the contrary, including events with more than 4 jets but discarding the third light jet results in a significant decrease of efficiency.
+
+\begin{table}[!h]
+ \centering
+ \begin{tabular}{c|c|c}
+                         & N(2 light jets) & N(2+ light jets)  \\
+  \hline
+  $\#$ events            & 9328            & 6436 \\
+  $\#$ matched events    & 4018            & 3319 \\
+  $\#$ good combi chosen & 3273            & 788 -- 1604
+ \end{tabular}
+ \caption{Number of events, number of matched events and number of events for which the correct jet combination is chosen using the $\chi^{2}$ $m_{lb} - m_{qqb}$ algorithm for the two considered categories. The first number in the right-hand bottom corner respresents the number of good combinations chosen when the event is treated as a 4-jet event while the second number is for the treatment of a 5-jet event. An event is considered as matching if the 4 jets corresponding to the generator event are included in the collection of selected jets.}\label{table::LightJetCategories}
+\end{table}
+
+The obtained results seem rather suprising since it implies that only asking the 4 leading jets results in the worst efficiencies. \\
+However it should be noted that for this configuration the 2 Tight b-tag constraint might influence this result. It could be possible that for looser b-tag requirements the mis-identification of the two b-jets results in a worse ``combination choice'' efficiency.\\
+
+\begin{table}[!h]
+ \centering
+ \begin{tabular}{c|c|c|c}
+                         & Only 4-jet events & All, but treated as 4-jet & All, but treated as 5-jet  \\
+  \hline
+  $\%$ matched events    & 43.07                   & 46.5                               & 46.5  \\
+  $\%$ good combi        & 81.4                    & 55.3                               & 66.5
+ \end{tabular}
+ \caption{Percentages for matching the reconstructed event with the generated and for selecting the good combination using the $\chi^{2}$ $m_{lb} - m_{qqb}$ algorithm. }\label{table::JetCategoryPercentages}
+\end{table}
+
+\subsubsection{Histograms for number of selected, b-tagged and light jets}\label{subsec::MSPlotsNBTaggedJets}
+\begin{figure}[!h]
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nSelectedJets_BeforeBTag_mu.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nBTaggedJets_BeforeBTag_mu.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nLightJets_BeforeBTag_mu.png}
+\caption{Number of selected, b-tagged and light jets, respectively, before requiring two Tight b-tags. These distributions are for the muon channel only.}
+\end{figure}
+
+\begin{figure}[!h]
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nSelectedJets_AfterBTag_mu.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nBTaggedJets_AfterBTag_mu.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nLightJets_AfterBTag_mu.png}
+\caption{Number of selected, b-tagged and light jets, respectively, after requiring two Tight b-tags. These distributions are for the muon channel only.}
+\end{figure}
+
 %**************************************************
  
 \section{Studying optimal cut on $\chi^{2}$ value}
