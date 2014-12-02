@@ -1,0 +1,35 @@
+
+\section{Which event corrections should be applied?}
+
+\subsection{Trigger choice}
+Two possible triggers exist, namely the so-called SingleLepton triggers or the CrossTriggers. The former kind only uses the information of the lepton while the latter one combines the lepton information together with the jets present in the event. These second kind of triggers were developed since it was expected that the $p_T$ cut which had to be applied on this SingleLepton trigger would become too high to be physically relevant. However it has been found that the applied $p_T$ cut doesn't differ that much between these two triggers, especially in the muon case the difference is almost negligible.\\
+\\
+Since the scale factors which should be applied are much more complex in the case of the CrossTriggers preference is given to these SingleLepton triggers.\\
+Minor disadvantage of these kind of triggers is that no information can be found on the TOP Twiki page (\url{https://twiki.cern.ch/twiki/bin/viewauth/CMS/TopTrigger}) and currently no other Twiki page has been found with similar information ... Trigger contacts of TOP group prefer the use of the CrossTriggers since a lot of time and effort has been put into the development of these triggers. Probably the reason why no clear documentation is found on the Top Twiki page.\\
+But James is using the same triggers in his analysis so all these triggers, and the different versions, can be found in the following two analyzer files:
+\begin{itemize}
+ \item \url{https://github.com/TopBrussels/FourTops/blob/master/FourTop_EventSelection.cc} which contains information about the muon event selection and used triggers.
+ \item \url{https://github.com/TopBrussels/FourTops/blob/master/FourTop_EventSelection_El.cc} which contains the same information but about the electron case.
+\end{itemize}
+
+\subsection{Lumi- or PileUp Reweighting}
+The choice of the root file which should be used for the LumiReweighting is related to the Monte Carlo samples which will be used. If the Summer 12 MC samples, which describe the 8 TeV data, are used the \textit{S10} file should be used.\\
+LumiReweighting is actually taking into account the influence of PileUp but can't be called this way when publishing results since a systematic influence of PileUp is no physical variable. However the luminosity of MinimumBias events is. This systematic influence can be calculated by comparing the influence of the up and down part.
+
+\subsection{Lepton Scale Factors}
+Lepton scale factors should be used and can be found in the code of James.\\
+In the muon case the scale factors correspond to the entire dataset (ABCD) since different scale factors have been obtained for the different runs. Therefore caution should be applied when only running over a limited range of data in order to avoid to run only over the A part. However the influence shouldn't be too large ...\\
+\\
+In the electron case the scale factors have been hard coded and do not vary for different parts of the data sample. \textbf{Therefore it should be checked whether the hard-coded numbers which are used in James code are still the correct ones which should be used. Hence a twiki with this information should be found ...}
+
+\subsection{Jet Energy Correction factors}
+Information available in the analyzer of James is up-to-date and can be copied.
+
+
+\subsection{Jet corrections (on the fly ...)}
+In James analyzer code Jet corrections are applied on the fly which is no problems, since even if the considered sample has these corrections already applied, the method of incorporating these jet corrections uses the gen information. So this avoids that these jet corrections would be applied twice ...
+%**************************************************
+
+\section{Choice of Monte Carlo samples}
+Same samples as James can be used, which are the latest Jan22 rereco samples. A full overview of these samples can be found on:
+\url{https://docs.google.com/spreadsheet/ccc?key=0Apc0aJdnaVjSdFVaLVU2dlk4RDZHcjlaakE3NWIxTUE&usp=sharing_eil#gid=0}

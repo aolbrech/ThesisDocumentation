@@ -1,0 +1,569 @@
+
+\section{Choice of b-tag requirements}
+
+\subsection{Signal vs background comparison}
+Since the complete event should be reconstructed as accurately as possible the 'signal' is represented by the case that all four particles are matched correctly while the 'background' events are the events for which at least one particle is matched wrongly.
+Events which are not matched using the JetPartonMatching algorithm (currently ptOrderedMinDist with dR of 0.3 is used) are not included in either of these two variables and are shown separately in the tables found below.\\
+First the different b-tag options are compared for the four possible combinations which are still allowed, namely the interchange of both the two light quarks and the two b-jets.
+
+ \begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c|c} 
+ \textbf{Option} (no $\chi^{2}$ $m_{lb}$) & all 4 correct   & $\geq$ 1 wrong       & $\frac{s}{\sqrt{b}}$ & $\frac{s}{b}$ & non-matched \\ \hline 
+2 L b-tags,                & 55967 & 50416 & 249.257 & 1.1101 & 225217 \\ 
+2 M b-tags,              & 49983 & 32012 & 279.361 & 1.56138 & 146633 \\ 
+2 M b-tags, light L-veto & 39661 & 27751 & 238.081 & 1.42917 & 118389 \\ 
+2 T b-tags,              & 31444 & 16061 & 248.114 & 1.95779 & 78062 \\ 
+2 T b-tags, light M-veto & 29160 & 15585 & 233.579 & 1.87103 & 73570 \\ 
+2 T b-tags, light L-veto & 23159 & 14093 & 195.082 & 1.6433 & 59997 \\ 
+ \end{tabular} 
+ \caption{Overview of correct and wrong reconstructed events for the different b-tags without the use of a $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method} 
+ \end{table} 
+ 
+ \begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c|c} 
+ \textbf{Option} (no $\chi^{2}$ $m_{lb}$) & 2 b's good      & $\geq$ 1 b wrong     & $\frac{s}{\sqrt{b}}$ & $\frac{s}{b}$ & non-matched \\ \hline 
+2 L b-tags,                & 78896 & 27487 & 475.873 & 2.8703 & 225217 \\ 
+2 M b-tags,              & 70073 & 11922 & 641.765 & 5.87762 & 146633 \\ 
+2 M b-tags, light L-veto & 58778 & 8634 & 632.57 & 6.80774 & 118389 \\ 
+2 T b-tags,              & 43804 & 3701 & 720.036 & 11.8357 & 78062 \\ 
+2 T b-tags, light M-veto & 41617 & 3128 & 744.11 & 13.3047 & 73570 \\ 
+2 T b-tags, light L-veto & 34908 & 2344 & 721.018 & 14.8925 & 59997 \\ 
+ \end{tabular} 
+ \caption{Overview of correct and wrong reconstructed b-jets for the different b-tags without the use of a $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method} 
+ \end{table} 
+ 
+ \begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c|c} 
+ \textbf{Option} (no $\chi^{2}$ $m_{lb}$) & 2 light good    & $\geq$ 1 light wrong & $\frac{s}{\sqrt{b}}$ & $\frac{s}{b}$ & non-matched \\ \hline 
+2 L b-tags,                & 58707 & 47676 & 268.869 & 1.23137 & 225217 \\ 
+2 M b-tags,              & 50676 & 31319 & 286.351 & 1.61806 & 146633 \\ 
+2 M b-tags, light L-veto & 40361 & 27051 & 245.398 & 1.49203 & 118389 \\ 
+2 T b-tags,              & 31690 & 15815 & 251.993 & 2.00379 & 78062 \\ 
+2 T b-tags, light M-veto & 29466 & 15279 & 238.382 & 1.92853 & 73570 \\ 
+2 T b-tags, light L-veto & 23456 & 13796 & 199.7 & 1.7002 & 59997 \\ 
+ \end{tabular} 
+ \caption{Overview of correct and wrong reconstructed light jets for the different b-tags without the use of a $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method} 
+ \end{table} 
+ 
+Above tables show a clear improvement for the 2 Tight b-tag case since suddenly the $\frac{s}{b}$ value goes up to almost 2. An additional benefit of the 2 Tight bt-tag case is that it as well will take care of a large part of the process backgrounds. Hence the motivation for selecting this b-tag option.\\
+Comparing the normal 2 Tight b-tag case, where the light jets are defined as not being Tight b-tagged jets, against the two possibilities using a light-jet veto indicates no motivation to go for the light-veto option.\\
+\\
+However the second table, showing only the reconstruction efficiency of the b-jets, shows an improvement when using a light-jet veto.\\
+This means that, even if the number of selected events gets lower, the percentage of correct events does improve when asking for a light-jet veto since it ensures that mistagged b-jet events doesn't by mistake get identified as light jets. So events with a b-jet with a too low CSV discriminant now don't get selected anymore because these so-called light-jets don't survive the veto cut.\\
+\\
+But, as confirmed by the last table, the efficiency of the light-jet reconstruction shows no distinct improvement. So for some reason the light-jets which are chosen with this veto method are not by definition the actual light-jets.
+%**************************************************
+
+\section{Use of $m_{lb}$ $\chi^{2}$ method for selecting the correct b-jets}
+ \begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c|c} 
+ \textbf{Option} (with $\chi^{2}$ $m_{lb}$) & all 4 correct      & $\geq$ 1 wrong  & $\frac{s}{\sqrt{b}}$ & $\frac{s}{b}$ & non-matched \\ \hline 
+2 L b-tags,                & 51055 & 55328 & 217.053 & 0.92277 & 514406 \\ 
+2 M b-tags,              & 45664 & 36331 & 239.572 & 1.25689 & 538794 \\ 
+2 M b-tags, light L-veto & 36271 & 31141 & 205.539 & 1.16473 & 553377 \\ 
+2 T b-tags,              & 28580 & 18925 & 207.752 & 1.51017 & 573284 \\ 
+2 T b-tags, light M-veto & 26513 & 18232 & 196.355 & 1.4542 & 576044 \\ 
+2 T b-tags, light L-veto & 21073 & 16179 & 165.673 & 1.30249 & 583537 \\ 
+ \end{tabular} 
+ \caption{Overview of correct and wrong reconstructed events for the different b-tags when a $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method is applied} 
+ \end{table}
+ 
+ \begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c|c} 
+ \textbf{Option} (with $\chi^{2}$ $m_{lb}$) & Correct b's & Wrong b's & $\frac{s}{\sqrt{b}}$ & $\frac{s}{b}$ & Correct option exists \\ \hline 
+2 L b-tags,                & 66882 & 12014 & 610.19 & 5.56701 & 78896 \\ 
+2 M b-tags,              & 59520 & 10553 & 579.395 & 5.6401 & 70073 \\ 
+2 M b-tags, light L-veto & 49556 & 9222 & 516.04 & 5.37367 & 58778 \\ 
+2 T b-tags,              & 37013 & 6791 & 449.146 & 5.4503 & 43804 \\ 
+2 T b-tags, light M-veto & 35015 & 6602 & 430.94 & 5.3037 & 41617 \\ 
+2 T b-tags, light L-veto & 29139 & 5769 & 383.64 & 5.05096 & 34908 \\ 
+ \end{tabular} 
+ \caption{Overview of the number of times the correct b-jet combination is chosen when using a $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method} 
+ \end{table}
+ 
+The two tables in this subsection require a different interpretation. The first one is actually a combined test of the $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method and the optimal b-tag choice while the second one is merely a performance check of the mlb method. \\
+This second table had to be added since the first table can't be directly compared against the tables in the previous subsection since currently only one b-jet combination is left while in the previous case an iteration between the different b-jets was allowed. So the numbers will be lower by definition when the $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method is applied.\\
+Therefore the second table is relevant in order to select whether some clear gain can be obtained when applying this method since it represents the number of times the correct b-jet combination. If this percentage is higher than 50$\%$, which is the case, an improvement is obtained compared to an iteration between the two possible combinations.\\
+\\
+The first table indicates again that no real difference is found between the different b-tag options, but that as soon as 2 Tight b-tags are applied the $\frac{s}{b}$ improves slightly. Also the second table shows no difference in efficiency between the different b-tag options, but shows however that the use of this $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method significantly enhances the correct choice of the b-jet combination. In about 84$\%$ of the cases the correct b-jet combination is chosen. 
+%**************************************************
+
+\section{Histograms for event selection choice}
+\begin{center}
+
+\begin{figure}[!h]
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/StCosTheta_BeforeEvtSel.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/StCosThetaNoBTag.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/StCosThetaLCSV.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/StCosThetaMCSV.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/StCosThetaTCSV.png}
+\caption{The $\cos \theta^{*}$ distribution for the different b-tag options (all of them imply double b-tag), which are not really influenced by the application of a b-tag. The only relevant distortion is caused by the event selection which is applied.}
+\end{figure}
+
+\begin{figure}[!h]
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/CorrectBHadrCSVDiscr.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/CorrectBLeptCSVDiscr.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/CorrectQuark1CSVDiscr.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/CorrectQuark2CSVDiscr.png}
+\caption{Distribution of the CSV discriminant for the different correctly matched quark-jet pairs. The value $-2$ is used to represent a non-matched jet. As expected the b-jets have a large peak at $1$, so the Tight b-tag of 0.898 will not take away to many correct b-jets. The problem in the matching is clearly represented in distribution of the second quark which is only reconstructed in less than half of the cases.}
+\end{figure}
+
+\begin{figure}[!h]
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/CSVDiscrLCSVLightJets.png}
+\caption{ Distribution of the CSV discriminant of the selected light jets (all of them). \textbf{Add same histograms for Medium and Tight option, this will show how many of the light jets actually have a large CSV discriminant (maybe only focus on the two/three leading light jets) }}
+\end{figure}
+
+\begin{figure}[!h]
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/JetTypeLCSVLightJets.png}
+\caption{Jet type of the of the light jets (all of them). The value $25$ means that the found light jet couldn't be matched to a Parton witht he JetPartonMatching method. \textbf{Same for M and T ... ?} }
+\end{figure}
+
+\begin{figure}[!h]
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/JetTypeLCSV.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/JetTypeMCSV.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/JetTypeTCSV.png}
+\caption{Jet type of the b-tagged jets (all of them) with the same convention for the non-matched jets. }
+\end{figure}
+
+\begin{figure}[!h]
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/MlbMass.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/MqqbMass.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/1July2014/MlbMqqbCorrectAll.png}
+\caption{The first two histograms show the mass distribution for the correctly matched and reconstructed particles. A gaussian fit is applied in order to obtain both the $m_{lb}$ and $m_{qqb}$ mass and sigma. The last histogram shows the 2D behavior of these distributions. }
+\end{figure}
+\end{center}
+%**************************************************
+
+\newpage
+\section{Considering 2 or 3 light jets}
+In order to try to improve the signal efficiency it can be considered to add a third light jet to the particles which have to be taken into account for the jet selection. Adding this third jet will however result in 4 additional combinations which have to be considered so this method will only benefit when the $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method is applied. Since MadWeight uses so much CPU sending the $6$ possible combinations to MadWeight will not be beneficial.
+\subsection{Event selection numbers comparison}
+ \begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c} 
+\textbf{Option} (no $\chi^{2}$ $m_{lb}$) & chosen jets are correct ($\%$)       & $\frac{s}{b}$ & 3rd jet is correct ($\%$) \\ \hline 
+ 5 jet case, 2 T b-tags              & 76.2852 & 3.21677 & 70.244\\ 
+ 4 jet case, 2 T b-tags              & 66.9091 & 2.02198 & X \\ 
+ \end{tabular} 
+\caption{Overview of correct and wrong reconstructed events for the different b-tags without the use of a $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method} 
+ \end{table} 
+ 
+ \begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c} 
+\textbf{Option} (no $\chi^{2}$ $m_{lb}$) & 2 b's chosen correctly ($\%$)        & $\frac{s}{b}$ & 3rd jet is correct ($\%$) \\ \hline 
+ 5 jet case, 2 T b-tags              & 90.5014 & 9.52784 & 64.5863\\ 
+ 4 jet case, 2 T b-tags              & 92.3745 & 12.1138 & X \\ 
+ \end{tabular} 
+\caption{Overview of correct and wrong reconstructed b-jets for the different b-tags without the use of a $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method} 
+ \end{table} 
+ 
+ \begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c} 
+\textbf{Option} (no $\chi^{2}$ $m_{lb}$) & chosen light jets are correct ($\%$) & $\frac{s}{b}$ & 3rd jet is correct ($\%$) \\ \hline 
+ 5 jet case, 2 T b-tags              & 79.2892 & 3.8284 & 70.2241\\ 
+ 4 jet case, 2 T b-tags              & 67.4722 & 2.0743 & X \\ 
+ \end{tabular} 
+\caption{Overview of correct and wrong reconstructed light jets for the different b-tags without the use of a $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method} 
+ \end{table} 
+
+These three tables look at either a pure 5 jet case or a pure 4 jet case and comparing the numbers in each table with eachother is probably not extremely relevant. This because in the pure 5 jets case the matching requirement is loosened to two out of the three chosen light jets correctly matching with the partons. So in $1$ out of $3$ possibilities the so-called correct event will not be correct resulting in too high numbers for this case.\\
+\\
+The first column gives the percentage how often the chosen jets are indeed the correct partons, hence in the 5-jet case the number of times the 5 possible jets match with the 4 correct partons. In the 4-jet case it implies that the four chosen jets are matched correctly with the 4 partons. The second column gives a similar value since the signal is defined as the number of times the matching was done correctly for the four partons while the background stands for the events where one of the matching is not succesful. The third column checks how often the third jet is one of the two correct light jets and compares it against the number in the first column. So it represents the number of times adding the third jet results in an improvement of the event reconstruction. \\
+\\
+The numbers which are relevant in these tables are exactly these two last columns. These numbers show that in about $70 \%$ of the cases the third jet is actually one of the correct quarks. Therefore it can be decided from these numbers that in quite a lot of events, an improvement can be obtained when this third light jet is considered as well.
+
+\subsection{Mlb-algorithm numbers comparison}
+  \begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c} 
+\multirow{2}{*}{\textbf{Option} (with $\chi^{2}$ $m_{lb}$)} & 4 chosen jets & $\frac{s}{b}$ & 3rd jet is one of the & 3rd jet is chosen \\ & are correct ($\%$)    & 	             & 2 correct light jets ($\%$) &  and correct ($\%$)	  \\ \hline 
+ 5 jet case,      2 T b-tags              & 73.2413 & 2.73711 & 21.3059 & 89.2513 \\ 
+ 4 jet case,      2 T b-tags              & 76.9258 & 3.33384 & 0 & -nan \\ 
+ Pure 5 jet case, 2 T b-tags              & 65.6683 & 1.91276 & 74.3984 & 89.2513 \\ 
+ \end{tabular} 
+ \caption{Overview of correct and wrong reconstructed events for the different b-tags when a $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method is applied} 
+ \end{table} 
+ 
+ \begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c} 
+ \textbf{Option} (with $\chi^{2}$ $m_{lb}$) & \% b's correct   & $\frac{s}{b}$ &  &  \\ \hline 
+ 5 jet case,      2 T b-tags              & 90.3229 & 9.33364 & 0 & 0 \\ 
+ 4 jet case,      2 T b-tags              & 90.7656 & 9.82911 & 0 & 0 \\ 
+ Pure 5 jet case, 2 T b-tags              & 89.9057 & 8.90659 & 0 & 0 \\ 
+ \end{tabular} 
+ \caption{Overview of the number of times the correct b-jet combination is chosen when using a $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method} 
+ \end{table} 
+When the $m_{lb}$ method is applied, the two first columns in the given tables represent similar quantities with the only difference that now the 4 jets which are actually chosen by the $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method are considered. 
+In this case the third column represents the number of times the third jet is chosen when the two light jets are matched correctly, implying that the third jet is one of the correct ones and that the second light jet is also correctly matched. The final column only looks at the third jet and puts no requirement on the matching of the second light jet. So it compares the number of times one of the chosen jets is the third jet and in how many cases this chosen third jet is one of the correct partons.
+
+\subsection{Compare efficiencies for 3$^{rd}$ jet with 1$^{st}$ and 2$^{nd}$}
+The obtained efficiency numbers for the 3$^{rd}$ jet seemed to be rather high so to exclude any possible double-counting mistakes the percentages for the 1$^{st}$ and 2$^{nd}$ jet where also calculated and compared. Since the considered percentage represents the number of times the 3$^{rd}$ jet corresponds to one of the actual light quarks should the sum of the three percentages not become any larger than 200$\%$.\\
+The percentages were calculated both before and after the application of the $\chi^{2}$ algorithm and the results can be found in Tables \ref{table::FirstSecondThirdJetPerc} and \ref{table::FirstSecondThirdJetPercMlb}. The first table shows the numbers before the application of the $\chi^{2}$ algorithm implying that for correctly matched events 2 of the 3 light jets are correctly matched. The second table gives the results after the $\chi^2$ minimization method.
+
+\begin{table}[h!]
+ \centering
+ \begin{tabular}{c|c|c}
+                 & Number of events & Percentage ($\%$) \\
+  \hline
+  Matched events & 2455 & \\
+  \hline
+  First jet      & 1596 & 65   \\
+  Second jet     & 1740 & 70.9 \\
+  Third jet      & 1574 & 64.1 \\
+  \hline
+  Total          & 4910 & 200
+ \end{tabular}
+ \caption{Number of times the first, second or third jet corresponds to one of the two correct light jets before the application of the $\chi^{2}$ method.}\label{table::FirstSecondThirdJetPerc}
+\end{table}
+
+\begin{table}[h!]
+ \centering
+ \begin{tabular}{c|c|c}
+                 & Number of events & Percentage ($\%$) \\
+  \hline
+  Matched events & 241 & \\
+  \hline
+  First jet      & 162 & 67.2   \\
+  Second jet     & 178 & 73.8 \\
+  Third jet      & 142 & 58.9 \\
+  \hline
+  Total          & 842 & 200
+ \end{tabular}
+ \caption{Number of times the first, second or third jet corresponds to one of the two correct light jets after the application of the $\chi^{2}$ method.}\label{table::FirstSecondThirdJetPercMlb}
+\end{table}
+
+From these tables can be concluded that the obtained percentage of about $70\%$ for the 3$^{rd}$ jet is actually correct and that the result can be trusted. It also implies that in the 5-jet case (meaning that there actually is a third light jet) the three jets have a rather similar probability of being the correct jet.
+
+\subsection{Considering separate categories}
+In order to be certain whether the 3$^{rd}$ light jet should be considered the considered events have been divided into two categories. The first only consists of events with exactly 2 light jets, hence 2 or more b-tagged jets\footnote{The number of events with a third b-tagged jet is extremely small and will probably not really influence the efficiency as can be seen from the plots shown in \ref{subsec::MSPlotsNBTaggedJets}.} and 2 light jets, while the second category allows for more light jets. In case of multiple b-tagged jets only the two highest $p_T$ jets are considered.\\
+In the second category each event is treated in two separate ways. First the event is seen as a pure 4-jet event implying that only the two leading light jets are kept while for the second approach the third light jet is also included in the $\chi^{2}$ algorithm resulting in 6 possible solutions.\\ \\
+For these three cases the matching and $\chi^{2}$ minimization efficiency have been compared in order to ensure that the most efficient event selection will be used. The results can be found in Table \ref{table::LightJetCategories} and indicates that including the third light jet doesn't result in a large gain of efficiency. On the contrary, including events with more than 4 jets but discarding the third light jet results in a significant decrease of efficiency.
+
+\begin{table}[!h]
+ \centering
+ \begin{tabular}{c|c|c}
+                         & N(2 light jets) & N(2+ light jets)  \\
+  \hline
+  $\#$ events            & 9328            & 6436 \\
+  $\#$ matched events    & 4018            & 3319 \\
+  $\#$ good combi chosen & 3273            & 788 -- 1604
+ \end{tabular}
+ \caption{Number of events, number of matched events and number of events for which the correct jet combination is chosen using the $\chi^{2}$ $m_{lb} - m_{qqb}$ algorithm for the two considered categories. The first number in the right-hand bottom corner respresents the number of good combinations chosen when the event is treated as a 4-jet event while the second number is for the treatment of a 5-jet event. An event is considered as matching if the 4 jets corresponding to the generator event are included in the collection of selected jets.}\label{table::LightJetCategories}
+\end{table}
+
+The obtained results seem rather suprising since it implies that only asking the 4 leading jets results in the worst efficiencies. \\
+However it should be noted that for this configuration the 2 Tight b-tag constraint might influence this result. It could be possible that for looser b-tag requirements the mis-identification of the two b-jets results in a worse ``combination choice'' efficiency.\\
+
+\begin{table}[!h]
+ \centering
+ \begin{tabular}{c|c|c|c}
+                         & Only 4-jet events & All, but treated as 4-jet & All, but treated as 5-jet  \\
+  \hline
+  $\%$ matched events    & 43.07                   & 46.5                               & 46.5  \\
+  $\%$ good combi        & 81.4                    & 55.3                               & 66.5
+ \end{tabular}
+ \caption{Percentages for matching the reconstructed event with the generated and for selecting the good combination using the $\chi^{2}$ $m_{lb} - m_{qqb}$ algorithm. }\label{table::JetCategoryPercentages}
+\end{table}
+
+\textit{Is it possible to understand these results using the percentages for the first, second and third jet being correct .. ? \\ When treating a 5-jet event as a 4-jet event the correct jet would have been the third, discarded, jet in $\frac{1}{3}$ of the cases which explains the significant reduction. However the difference between treating the event as a 4-jet or a 5-jet event doesn't result in a large difference. It seems that in much of the N(2+ light jet) cases the correct jet is actually still one of the following jets and is not included in the three leading light jets.}
+
+\subsubsection{Histograms for number of selected, b-tagged and light jets}\label{subsec::MSPlotsNBTaggedJets}
+\begin{figure}[!h]
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nSelectedJets_BeforeBTag_mu.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nBTaggedJets_BeforeBTag_mu.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nLightJets_BeforeBTag_mu.png}
+\caption{Number of selected, b-tagged and light jets, respectively, before requiring two Tight b-tags. These distributions are for the muon channel only.}
+\end{figure}
+
+\begin{figure}[!h]
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nSelectedJets_AfterBTag_mu.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nBTaggedJets_AfterBTag_mu.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/LightJetCategories_Sept2014/CanvasStack_nLightJets_AfterBTag_mu.png}
+\caption{Number of selected, b-tagged and light jets, respectively, after requiring two Tight b-tags. These distributions are for the muon channel only.}
+\end{figure}
+
+%**************************************************
+ 
+\section{Studying optimal cut on $\chi^{2}$ value}
+The tables shown here indicate that the application of a cut on the $\chi^{2}$ value of the $m_{lb}$ - $m_{qqb}$ method doesn't change the rates of good and wrong chosen events. Therefore it will only reduce the number of selected events, and hence reduce the needed CPU time, but still keep an as pure sample as obtained without any cut.\\
+Since there is no real difference visible between setting the cut value to $3$ or $5$ it is advisable to use the cut value of $3$ to reduce the number of selected events.
+ 
+\subsection{$\chi^{2}$ required to be smaller than $5$}
+  \begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c} 
+\multirow{2}{*}{\textbf{Option} (with $\chi^{2}$ $m_{lb}$)} & 4 chosen jets & $\frac{s}{b}$ & 3rd jet is one of the & 3rd jet is chosen \\ & are correct ($\%$)    & 	             & 2 correct light jets ($\%$) &  and correct ($\%$)	  \\ \hline 
+ 5 jet case,      2 T b-tags              & 73.1485 & 2.72419 & 21.5302 & 89.0292 \\ 
+ 4 jet case,      2 T b-tags              & 76.89 & 3.32712 & 0 & -nan \\ 
+ Pure 5 jet case, 2 T b-tags              & 65.5254 & 1.90068 & 74.5263 & 89.0292 \\ 
+ \end{tabular} 
+ \caption{Overview of correct and wrong reconstructed events for the different b-tags when a $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method is applied} 
+ \end{table} 
+ 
+ \begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c} 
+ \textbf{Option} (with $\chi^{2}$ $m_{lb}$) & \% b's correct   & $\frac{s}{b}$ &  &  \\ \hline 
+ 5 jet case,      2 T b-tags              & 90.3451 & 9.35743 & 0 & 0 \\ 
+ 4 jet case,      2 T b-tags              & 90.8573 & 9.93767 & 0 & 0 \\ 
+ Pure 5 jet case, 2 T b-tags              & 89.8465 & 8.84884 & 0 & 0 \\ 
+ \end{tabular} 
+ \caption{Overview of the number of times the correct b-jet combination is chosen when using a $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method} 
+ \end{table} 
+ 
+ \subsection{$\chi^{2}$ required to be smaller than $3$}
+ \begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c} 
+\multirow{2}{*}{\textbf{Option} (with $\chi^{2}$ $m_{lb}$)} & 4 chosen jets & $\frac{s}{b}$ & 3rd jet is one of the & 3rd jet is chosen \\ & are correct ($\%$)    & 	             & 2 correct light jets ($\%$) &  and correct ($\%$)	  \\ \hline 
+ 5 jet case,      2 T b-tags              & 72.8939 & 2.68921 & 21.7785 & 88.6241 \\ 
+ 4 jet case,      2 T b-tags              & 77.0226 & 3.3521 & 0 & -nan \\ 
+ Pure 5 jet case, 2 T b-tags              & 64.7571 & 1.83745 & 74.192 & 88.6241 \\ 
+ \end{tabular} 
+ \caption{Overview of correct and wrong reconstructed events for the different b-tags when a $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method is applied} 
+ \end{table} 
+ 
+ \begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c} 
+ \textbf{Option} (with $\chi^{2}$ $m_{lb}$) & \% b's correct   & $\frac{s}{b}$ &  &  \\ \hline 
+ 5 jet case,      2 T b-tags              & 90.1586 & 9.16114 & 0 & 0 \\ 
+ 4 jet case,      2 T b-tags              & 90.8239 & 9.89789 & 0 & 0 \\ 
+ Pure 5 jet case, 2 T b-tags              & 89.4472 & 8.47619 & 0 & 0 \\ 
+ \end{tabular} 
+ \caption{Overview of the number of times the correct b-jet combination is chosen when using a $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method} 
+ \end{table} 
+ 
+\subsection{$\chi^{2}$ required to be smaller than $1$}
+ \begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c} 
+\multirow{2}{*}{\textbf{Option} (with $\chi^{2}$ $m_{lb}$)} & 4 chosen jets & $\frac{s}{b}$ & 3rd jet is one of the & 3rd jet is chosen \\ & are correct ($\%$)    & 	             & 2 correct light jets ($\%$) &  and correct ($\%$)	  \\ \hline 
+ 5 jet case,      2 T b-tags              & 72.4364 & 2.62798 & 21.6013 & 87.5833 \\ 
+ 4 jet case,      2 T b-tags              & 77.3908 & 3.42298 & 0 & -nan \\ 
+ Pure 5 jet case, 2 T b-tags              & 62.9538 & 1.69934 & 73.7615 & 87.5833 \\ 
+ \end{tabular} 
+ \caption{Overview of correct and wrong reconstructed events for the different b-tags when a $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method is applied} 
+ \end{table} 
+ 
+ \begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c} 
+ \textbf{Option} (with $\chi^{2}$ $m_{lb}$) & \% b's correct   & $\frac{s}{b}$ &  &  \\ \hline 
+ 5 jet case,      2 T b-tags              & 90.233 & 9.23861 & 0 & 0 \\ 
+ 4 jet case,      2 T b-tags              & 90.9792 & 10.0854 & 0 & 0 \\ 
+ Pure 5 jet case, 2 T b-tags              & 89.5385 & 8.55882 & 0 & 0 \\ 
+ \end{tabular} 
+ \caption{Overview of the number of times the correct b-jet combination is chosen when using a $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method} 
+ \end{table} 
+%**************************************************
+
+\section{Influence of using $p_T$ cuts suggested by the TOP reference selection Twiki}
+
+The TOP Reference Selection Twiki, and the different subgroup Twikis, suggest to use different event selection requirements than used before. The values suggested can be found in the table below, together with the values which were used for producing the tables and figures given above.\\
+In this section the different results will be compared for these two event selections in order to ensure that the influence of this event selection can be ignored. If this is not the case, all the above tables have to be replaced and updated (which will however happen on a larger time-scale since these will be the correct values which will be used further in this analysis). The main goal is to quickly check whether the conclusion obtained from the above figures and tables still remain valid.
+\begin{table}[!h]
+ \centering
+ \begin{tabular}{c|c|c}
+                      & Old values & TOP RefSel values \\
+   \hline
+   selected jets      &   40 GeV   &       30 GeV      \\
+   selected muons     &   25 GeV   &       26 GeV      \\
+   selected electrons &   32 GeV   &       30 GeV      \\
+   veto muons         &   10 GeV   &       10 GeV      \\
+   veto electrons     &   10 GeV   &       20 GeV      
+ \end{tabular}
+\end{table}
+
+In the following table the number of selected events after the different event selection cuts which are applied in this analysis can be found. The left-handed columns contain the information when the old $p_T$ cuts are applied while the right-handed columns gives the number of selected events when the recommendations of the Top Reference Selection Twiki are followed.\\
+\\
+From the comparison of the two columns can be seen that lowering the $p_T$ cut on the selected jets significantly improves the percentage of selected events, especially because of the improved selection efficiency for the third and fourth jet. This can easily be understood from the $p_T$ distribution histogram for the different leading jets which can be found below.
+These distributions show that in the case of the fourth jet, moving the $p_T$ cut from $30$ GeV to $40$ GeV cuts away the largest percentage of this fourth jet since its distribution is peaked at a lower $p_T$ value. The influence is much lower for the first and second jet because their distrubition is maximal around $100$ GeV so changing this $p_T$ cut only affects the left side of the tail of the distribution.\\
+\begin{table}
+\caption{Event selection table before (left) and after (right) the pT cuts were updated to the ones suggested by the TOP reference twiki, for Semi-elec channel $t\bar{t}+jets$. ($19600.8~pb^{-1}$ of int. lumi.)}
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+				& \multicolumn{2}{|c|}{Old $p_T$ cuts}	& \multicolumn{2}{|c|}{New $p_T$ cuts}	\\
+\hline
+preselected			& 1.91516e+07	& 		 	& 1.91516e+07	&	 		\\
+
+trigged				& 3.52179e+06	&	18.4 $\%$	& 3.52179e+06	&	18.4 $\%$	\\
+
+Good PV				& 3.52179e+06	&	100 $\%$	& 3.52179e+06	&	100 $\%$	\\
+
+1 selected electron		& 2.76014e+06	&	78.4 $\%$	& 2.85992e+06	&	\textcolor{red}{81.2 $\%$}	\\
+
+Veto muon			& 2.75335e+06	&	99.8 $\%$	& 2.8529e+06	&	99.8 $\%$	\\
+
+Veto 2nd electron from Z-decay	& 2.7483e+06	&	99.8 $\%$	& 2.84766e+06	&	99.8 $\%$	\\
+
+Conversion veto			& 2.7483e+06	&	100 $\%$	& 2.84766e+06	&	100 $\%$	\\
+
+$\geq$ 1 jets			& 2.72998e+06	&	99.3 $\%$	& 2.84406e+06	&	\textcolor{red}{99.9 $\%$}	\\
+
+$\geq$ 2 jets			& 2.50625e+06	&	91.8 $\%$	& 2.77442e+06	&	\textcolor{red}{97.6 $\%$}	\\
+
+$\geq$ 3 jets			& 1.74245e+06	&	69.5 $\%$	& 2.34978e+06	&	\textcolor{red}{84.7 $\%$}	\\
+
+$\geq$ 4 jets			& 0.753281e+06	&	43.2 $\%$	& 1.38732e+06	&	\textcolor{red}{59.0 $\%$}	\\
+
+\hline
+\end{tabular}
+\end{table}
+
+\begin{figure}[!h]
+\includegraphics[width = 0.45 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/UpdatedPtCuts_30July2014/PtDistributionFirstJet_NewPtCuts_El.png}
+\includegraphics[width = 0.45 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/UpdatedPtCuts_30July2014/PtDistributionSecondJet_NewPtCuts_El.png}\\
+\includegraphics[width = 0.45 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/UpdatedPtCuts_30July2014/PtDistributionThirdJet_NewPtCuts_El.png}
+\includegraphics[width = 0.45 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/EventSelectionChoice_June2014/UpdatedPtCuts_30July2014/PtDistributionFourthJet_NewPtCuts_El.png}
+\caption{$P_T$ distributions for the first, second, third and fourth jet respectively. All four histograms are for the semi-electronic decay channel. (Information about the Cross Section and number of events should be ignored for the moment. Correct Cross Section value is not yet used ...) }
+\end{figure}
+
+\newpage
+The same table can be created for the semi-muonic decay channel which shows a similar result.\\
+\begin{table}
+\caption{Event selection table before (left) and after (right) the pT cuts were updated to the ones suggested by the TOP reference twiki, for Semi-muon channel $t\bar{t}+jets$. ($19600.8~pb^{-1}$ of int. lumi.)}
+\centering
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+				& \multicolumn{2}{|c|}{Old $p_T$ cuts}	& \multicolumn{2}{|c|}{New $p_T$ cuts}	\\
+\hline
+preselected			& 1.91516e+07	& 		 	& 1.91516e+07	&	 		\\
+
+trigged				& 4.01265e+06	&	20.9 $\%$	& 4.01265e+06	&	20.9 $\%$	\\
+
+Good PV				& 4.01265e+06	&	 100 $\%$	& 4.01265e+06	&	100 $\%$	\\
+
+1 selected muon			& 3.46903e+06	&	 86.4 $\%$	& 3.40822e+06	&	\textcolor{red}{84.9 $\%$}	\\
+
+Veto 2nd muon			& 3.46369e+06	&	 99.8 $\%$	& 3.40291e+06	&	99.8 $\%$	\\
+
+Veto electron			& 3.45244e+06	&	 99.7 $\%$	& 3.39184e+06	&	99.7$\%$	\\
+
+$\geq$ 1 jets			& 3.4281e+06	&	 99.3 $\%$	& 3.38698e+06	&	\textcolor{red}{99.9 $\%$}	\\
+
+$\geq$ 2 jets			& 3.14456e+06	&	 91.7 $\%$	& 3.30209e+06	&	\textcolor{red}{97.5 $\%$}	\\
+
+$\geq$ 3 jets			& 2.19456e+06	&	 69.8 $\%$	& 2.80066e+06	&	\textcolor{red}{84.8 $\%$}	\\
+
+$\geq$ 4 jets			& 944572	&	 43.0 $\%$	& 1.65345e+06	&	\textcolor{red}{59.0 $\%$}	\\
+\hline
+\end{tabular}
+\end{table}
+
+\newpage
+\subsection{Influence on choice of b-tag option and use of $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method}
+With these new values considered for the event selection requirements, the obtained percentages and $\frac{s}{b}$ values should be compared again.
+The values wich are obtained using these new $p_T$ cuts can be found in the following tables.\\
+The first three tables show the results before the use of a $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method while the last two tables give the obtained numbers when this $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method is applied.\\
+\\
+Analyzing the numbers in this tables clearly indicates that the obtained results for the old $p_T$ cuts correspond to the values obtained earlier, which implies that the obtained values can easily be compared against each other and stil represent the same variables. The small differences which are however visible can be easily explained by statistical deviations.\\
+Comparing the results obtained using the new $p_T$ cut values with the ones using the old cut values clearly indicates that the old values resulted in slightly better selection efficiency and $\frac{s}{b}$ value. Both for the selection efficiency of the b-quark jets and the light jets a higher percentage is found when using the old $p_T$ cut values. \\
+A positive remark corresponding to the new $p_T$ cut values is that the behavior of the different considered b-tag options is similar. The 2 Tight b-tag case without any veto on the light jets results in the highest selection efficiency and $\frac{b}{s}$ value. Hence the choice of the used b-tag option does not need to be updated.\\
+\\
+Even the use of a $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method doesn't improve the selection efficiency and $\frac{s}{b}$ values when changing to the newer $p_T$ cut values. However compared to the previous case when no $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method is applied the difference between the two $p_T$ cut options becomes slightly less significant (from 18 $\%$ to 13 $\%$ difference). Still no improvement can be found impying that lowering the $p_T$ cut on the jets only increases the number of selected events but doesn't insures selection more good events, on the contrary the selection efficiencies decreases even.
+\begin{landscape}
+\begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c|c|c} 
+& \textbf{Option} (no $\chi^{2}$ $m_{lb}$) & all 4 correct & $\geq$ 1 wrong & correct ($\%$)       & $\frac{s}{b}$ & non-matched \\ \hline 
+\multirow{6}{*}{\textbf{New $p_T$ cuts}} 
+& L b-tags                & 31797 & 36132 & 46.8092 & 0.880023 & 103988  \\ 
+&2 M b-tags               & 28380 & 21485 & 56.9137 & 1.32092  & 63717  \\ 
+&2 M b-tags, light L-veto & 21578 & 18821 & 53.4122 & 1.14649  & 50549  \\ 
+&2 T b-tags               & 17858 & 10684 & 62.5674 & 1.67147  & 33551  \\ 
+&2 T b-tags, light M-veto & 16574 & 10496 & 61.2264 & 1.57908  & 31778  \\ 
+&2 T b-tags, light L-veto & 12664 & 9552  & 57.004  & 1.3258   & 25440  \\
+\hline
+\multirow{6}{*}{\textbf{Old $p_T$ cuts}} 
+& 2 L b-tags              & 15285 & 13577 & 52.9589 & 1.1258 & 61307  \\ 
+& 2 M b-tags              & 13480 & 8590 & 61.0784 & 1.56927 & 39800  \\ 
+& 2 M b-tags, light L-veto & 10718 & 7461 & 58.9581 & 1.43654 & 32048 \\ 
+& 2 T b-tags              & 8555 & 4231 & 66.9091 & 2.02198 & 21234  \\ 
+& 2 T b-tags, light M-veto & 7915 & 4097 & 65.8924 & 1.9319 & 19946  \\ 
+& 2 T b-tags, light L-veto & 6327 & 3701 & 63.0933 & 1.70954 & 16156  \\ 
+ \end{tabular} 
+\caption{Overview of correct and wrong reconstructed events for the different b-tags without the use of a $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method} 
+ \end{table} 
+ 
+ \begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c|c|c} 
+&\textbf{Option} (no $\chi^{2}$ $m_{lb}$) & 2 b's correct & $\geq$ 1 b wrong & b's correct ($\%$) & $\frac{s}{b}$ & non-matched \\ \hline 
+\multirow{6}{*}{\textbf{New $p_T$ cuts}} 
+& 2 L b-tags              & 47926 & 20003 & 70.5531 & 2.39594 & 103988  \\ 
+& 2 M b-tags              & 42045 & 7820 & 84.3177 & 5.3766 & 63717  \\ 
+& 2 M b-tags, light L-veto & 34622 & 5777 & 85.7001 & 5.99308 & 50549  \\ 
+& 2 T b-tags              & 26117 & 2425 & 91.5037 & 10.7699 & 33551  \\ 
+& 2 T b-tags, light M-veto & 24974 & 2096 & 92.2571 & 11.9151 & 31778  \\ 
+& 2 T b-tags, light L-veto & 20585 & 1631 & 92.6584 & 12.6211 & 25440  \\ 
+\hline
+\multirow{6}{*}{\textbf{Old $p_T$ cuts}} 
+& 2 L b-tags              & 21456 & 7406 & 74.34 & 2.89711 & 61307  \\ 
+& 2 M b-tags              & 18863 & 3207 & 85.469 & 5.88182 & 39800  \\ 
+& 2 M b-tags, light L-veto & 15859 & 2320 & 87.238 & 6.83578 & 32048  \\ 
+& 2 T b-tags              & 11811 & 975 & 92.3745 & 12.1138 & 21234  \\ 
+& 2 T b-tags, light M-veto & 11203 & 809 & 93.2651 & 13.848 & 19946  \\ 
+& 2 T b-tags, light L-veto & 9424 & 604 & 93.9769 & 15.6026 & 16156  \\ 
+ \end{tabular} 
+\caption{Overview of correct and wrong reconstructed b-jets for the different b-tags without the use of a $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method} 
+ \end{table} 
+ 
+\begin{table}[!h] 
+\begin{tabular}{c|c|c|c|c|c|c} 
+&\textbf{Option} (no $\chi^{2}$ $m_{lb}$) & 2 light good  & $\geq$ 1 light wrong & light correct ($\%$) & $\frac{s}{b}$ & non-matched \\ \hline 
+\multirow{6}{*}{\textbf{New $p_T$ cuts}} 
+& 2 L b-tags              & 33731 & 34198 & 49.6563 & 0.986344 & 103988  \\ 
+& 2 M b-tags              & 28893 & 20972 & 57.9424 & 1.37769 & 63717  \\ 
+& 2 M b-tags, light L-veto & 22118 & 18281 & 54.7489 & 1.20989 & 50549  \\ 
+& 2 T b-tags              & 18030 & 10512 & 63.1701 & 1.71518 & 33551  \\ 
+& 2 T b-tags, light M-veto & 16788 & 10282 & 62.017 & 1.63276 & 31778  \\ 
+& 2 T b-tags, light L-veto & 12868 & 9348 & 57.9222 & 1.37655 & 25440  \\ 
+\hline
+\multirow{6}{*}{\textbf{Old $p_T$ cuts}} 
+& 2 L b-tags              & 16015 & 12847 & 55.4882 & 1.24659 & 61307  \\ 
+& 2 M b-tags              & 13688 & 8382 & 62.0208 & 1.63302 & 39800  \\ 
+& 2 M b-tags, light L-veto & 10938 & 7241 & 60.1683 & 1.51056 & 32048  \\ 
+& 2 T b-tags              & 8627 & 4159 & 67.4722 & 2.0743 & 21234  \\ 
+& 2 T b-tags, light M-veto & 8005 & 4007 & 66.6417 & 1.99775 & 19946  \\ 
+& 2 T b-tags, light L-veto & 6409 & 3619 & 63.911 & 1.77093 & 16156  \\ 
+ \end{tabular} 
+\caption{Overview of correct and wrong reconstructed light jets for the different b-tags without the use of a $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method} 
+ \end{table}
+
+ \begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c|c|c} 
+&\textbf{Option} (with $\chi^{2}$ $m_{lb}$) & all 4 correct & $\geq$ 1 wrong & 4 chosen jets correct ($\%$) & $\frac{s}{b}$ & non-matched \\ \hline 
+\multirow{6}{*}{\textbf{New $p_T$ cuts}}
+& 2 L b-tags              & 24611 & 43318 & 77.4004 & 0.568147 & 103988 \\ 
+& 2 M b-tags              & 21813 & 28052 & 76.8605 & 0.777592 & 63717 \\ 
+& 2 M b-tags, light L-veto & 16731 & 23668 & 77.5373 & 0.706904 & 50549 \\ 
+& 2 T b-tags              & 13681 & 14861 & 76.6099 & 0.920598 & 33551 \\ 
+& 2 T b-tags, light M-veto & 12674 & 14396 & 76.4692 & 0.880383 & 31778 \\ 
+& 2 T b-tags, light L-veto & 9757 & 12459 & 77.0452 & 0.783129 & 25440 \\ 
+\hline
+\multirow{6}{*}{\textbf{Old $p_T$ cuts}} 
+& 2 L b-tags              & 11893 & 16969 & 77.8083 & 0.700866 & 61307 \\ 
+& 2 M b-tags              & 10422 & 11648 & 77.3145 & 0.894746 & 39800 \\ 
+& 2 M b-tags, light L-veto & 8369 & 9810 & 78.0836 & 0.853109 & 32048 \\ 
+& 2 T b-tags              & 6581 & 6205 & 76.9258 & 1.0606 & 21234 \\ 
+& 2 T b-tags, light M-veto & 6080 & 5932 & 76.8162 & 1.02495 & 19946 \\ 
+& 2 T b-tags, light L-veto & 4903 & 5125 & 77.4933 & 0.956683 & 16156 \\ 
+ \end{tabular} 
+ \caption{Overview of correct and wrong reconstructed events for the different b-tags when a $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method is applied} 
+ \end{table} 
+ 
+ \begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c|c|c} 
+& \textbf{Option} (with $\chi^{2}$ $m_{lb}$) & Correct b's & Wrong b's & \% b's correct   & $\frac{s}{b}$ & Correct option exists \\ \hline 
+\multirow{6}{*}{\textbf{New $p_T$ cuts}}
+& 2 L b-tags              & 28190 & 3607 & 88.6562 & 7.81536 & 31797 \\ 
+& 2 M b-tags              & 25143 & 3237 & 88.5941 & 7.76738 & 28380 \\ 
+& 2 M b-tags, light L-veto & 19183 & 2395 & 88.9007 & 8.0096 & 21578 \\ 
+& 2 T b-tags              & 15736 & 2122 & 88.1174 & 7.41565 & 17858 \\ 
+& 2 T b-tags, light M-veto & 14586 & 1988 & 88.0053 & 7.33702 & 16574 \\ 
+& 2 T b-tags, light L-veto & 11178 & 1486 & 88.266 & 7.52221 & 12664 \\ 
+\hline
+\multirow{6}{*}{\textbf{Old $p_T$ cuts}} 
+& 2 L b-tags              & 13935 & 1350 & 91.1678 & 10.3222 & 15285 \\ 
+& 2 M b-tags              & 12306 & 1174 & 91.2908 & 10.4821 & 13480 \\ 
+& 2 M b-tags, light L-veto & 9808 & 910 & 91.5096 & 10.778 & 10718 \\ 
+& 2 T b-tags              & 7765 & 790 & 90.7656 & 9.82911 & 8555 \\ 
+& 2 T b-tags, light M-veto & 7172 & 743 & 90.6128 & 9.65276 & 7915 \\ 
+& 2 T b-tags, light L-veto & 5743 & 584 & 90.7697 & 9.8339 & 6327 \\ 
+ \end{tabular} 
+ \caption{Overview of the number of times the correct b-jet combination is chosen when using a $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ method} 
+ \end{table} 
+
+\end{landscape}

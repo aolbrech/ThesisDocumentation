@@ -1,0 +1,173 @@
+
+The goal is to obtain as fast as possible results on generator level in order to ensure that no bottlenecks are found when running MadWeight.
+The advantage of only using generator level results is that one can be completely sure that the studied events are properly semi-leptonic ttbar events. Hence MadWeight should not have any problems calculating the weight for these kind of events and no CPU time will be spent on uncorrect events.\\
+This implies that any deviation from the expected results implies a bias, or even a problem, concerning the MadWeight output.\\
+\\
+Once the results correspond to the expectations these preliminary results should be easily extended to reconstructed events. Finalizing the event selection then allows to fully trust the results obtained on reconstructed level and make sure that any deviation should be explained by the influence of the applied event selection.\\
+These results can then be used to optimize the event selection with respect to the MadWeight output and CPU time needed.
+
+\section{Results on generator level}
+\textit{Need to check the influence of the starting values now that the number of bins have been changed!}
+
+\subsection{Transfer Functions}
+In order to obtain results with MadWeight, the Transfer Functions which link the reconstructed energy distribution with the actual energy distributions should be calculated. In the case of generator level events this is not that important since no smearing of the energy is expected, but in order to avoid any bias from the used Transfer Functions it is adviced to use the real Transfer Functions with a slightly changed width.\\
+\\
+The method to obtain the parameters describing the energy smearing is (partly) explained in the PhD Thesis of Arnaud Pin\footnote{It should be noted that in the PhD Thesis of Arnaud, and in the current double Gaussian transfer function syntax in MadWeight, only 5 parameters are used. The narrow gaussian distribution doesn't have a normalisation parameter in front, but is normalized afterwards in the MadWeight code.} which can be found in:
+\begin{eqnarray*}
+ & & https://cp3.irmp.ucl.ac.be/upload/theses/phd/Pin\_Arnaud.pdf \\
+& & /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/\\ & & PrepareGenLevelRunning\_Sep2014/TransferFunctions
+\end{eqnarray*}
+
+\textit{For the moment (3 October 2014) I'm still waiting on feedback of Arnaud concerning the actual code he used to construct these Transfer Functions and the control checks and histograms he has built for ensuring the correctness of the built Transfer Functions.}\\
+Up to now the method to obtain the parameters of the Transfer Functions is based on the code received from Petra and Lieselotte, which was used in the Master thesis of Lieselotte.
+This code is actually based on the ROOT class FitSlicesY() but has some small differences. Some of these have already been changed in order to match with the ROOT class.\\
+One of the most important differences between the two approaches was the treatment of the underflow and overflow bin. In the personal code these two bins were respectively added to the first and last bin and hence included in the fitting range. This is not the desired behavior since the size of underflow/overflow bin can be relatively large compared to the first/last bin and significantly change the value of these bins. This would then imply that the position of the first and last bin is not located at the correct position and will, especially in the case of a limited number of bins, have a significant influence on the fit result.
+Now these underflow and overflow bins are just discarded from the fit range and will have no influence on the final result.\\
+\\
+Another important, but useful, difference between the two methods is the number of histograms which are saved. The personal code saves for each distribution which is considered the ProjectionY distribution together with the double Gaussian fit for this bin. This can not be changed in the ROOT class which only stores the distribution of the 6 parameters of the double Gaussian fit formula.\\
+\\
+However, even after carefully ensuring that both methods are identical the obtained results are not.
+Up to now it is not clear what is the reason for the discrepancy between the two results and the only way to found out is comparing the distributions and results for a significant amount of statistics.\\
+One possibility is the used fit ranges and number of bins. If the last bins are low on statistics their distribution might not agree with a double Gaussian distribution and hence result in a failed fit. Therefore the distribution for each ProjectionY bin is now closely studied for all of the considered histograms. This can be found is the following section \ref{subsubsec::FitRanges}.
+
+\subsubsection{Comparing ProjectionY distributions}\label{subsubsec::FitRanges}
+Each of the considered histograms is a 2D histogram where the x-axis represents the energy of the generator level parton and the y-axis the difference between the generator level parton and the reconstructed matched particle. This is done for the energy distribution and the $\theta$ and $\phi$ angles.
+
+\paragraph{\underline{Remark:} Using transverse momentum in stead of energy\\}
+The Transfer Function configuration files in MadWeight are flexible enough to change the kinematic variables used for the Transfer Function calculations. Hence it seems to be more relevant to utilize the transverse momentum in stead of the energy of the considered partons and jets. Especially since the LHCO file used in the MadWeight calculations has the transverse momentum as input variable. Therefore it seems much more useful and realistic to use this parameter and not the energy.\\
+This implies that the Transfer Function configuration file should be adapted to use the \textit{pt(p)} and \textit{pt(pexp)} variables and not the currently used \textit{p(0)} and \textit{pexp(0)}.
+
+\paragraph{Energy difference between parton and light jets\\}
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width = 0.4 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/Epart_vs_Enonbjet.png}
+  \includegraphics[width = 0.4 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/Epart_vs_DiffEpartEnonbjet.png}
+  \caption{Energy of the generator parton versus the reconstructed jets for the two light quarks in the semi-muonic ttbar event topology (left) and their respective difference with respect to the generator level energy (right).}
+\end{figure}
+The first bin in the left-hand histogram is asymetric because of the applied event selection cuts on the reconstructed level. These event selection cuts will not have the same influence on the generator level partons explaining the slight asymetric behavior.
+\newpage
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width = 0.3 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Bin1.png}
+  \includegraphics[width = 0.3 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Bin2.png}
+  \includegraphics[width = 0.3 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Bin3.png}
+  \includegraphics[width = 0.3 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Bin4.png}
+  \includegraphics[width = 0.3 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Bin5.png}
+  \includegraphics[width = 0.3 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Bin6.png}
+  \includegraphics[width = 0.3 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Bin7.png}
+  \includegraphics[width = 0.3 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Bin8.png}
+  \includegraphics[width = 0.3 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Bin9.png}
+  \includegraphics[width = 0.3 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Bin10.png}
+  \includegraphics[width = 0.3 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Bin11.png}
+  \includegraphics[width = 0.3 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Chi2Log.png}
+  \caption{Distribution of the energy difference between the generator level parton and the corresponding light quark jet for each of the 10 considered bins and the overflow bin. All distributions were fitted with a double Gaussian function and besides bin 8, 9 and 10 returned with status ``converged''. Bin 9 had status ``failed'' while the remaining two bins had status ``ok''.\\ The final histogram (bottom right) shows the $\chi^{2}$ distribution for this fit for each bin. }
+\end{figure}
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Fita1.png}
+  \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Fita2.png}
+  \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Fita3.png}
+  \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Fita4.png}
+  \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Fita5.png}
+  \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Fita6.png}
+  \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Fita4Zoom.png}
+  \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Fita5Zoom.png}
+  \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Fita6Zoom.png}
+  \caption{Energy dependency of the 6 parameters of the double Gaussian fit function. The two lowest rows show twice the same result, but with a different y-axis range. The double Gaussian fit parameters are combined in a histogram and then fitted with the Calorimeter energy function as explained in the PhD Thesis of Arnaud Pin.}
+\end{figure}
+
+From these fit results can be concluded that the double Gaussian distribution is well recovered for lower energy values. As can be seen from the very first histogram, the largest bulk of events have an energy value lower than 100 GeV. The low statistics in the higher energy range can partly explain the failing fitting performance. The double Gaussian function form is used in order to properly reconstruct the narrow peak together with the wider Gaussian distribution representing the tail of the energy distribution. However in the high parton energy range, this first narrow distribution dissapeared due to low statistics in this region. Hence fitting these distributions will indeed result in an unsuccesful fit status.\\
+\\
+A possible solution which can be considered is adding some of these histograms together and in this way enhancing the statistics in these combined bins. From the collection of distributions per bin could be concluded that the ``ok'' and ``failed'' fits are the ones with only about 2$\%$ of the total number of events. Hence it could be possible to adapt the code in such a way that in these cases the bin is combined with the following ones until a percentage higher than 3$\%$ is obtained.\\
+Another solution consists of reducing the range of the fitted histograms and only fit the distributions with $E_{parton}$ $<$ 150GeV. However before continuing with this option it should be completely understood whether MadWeight is able to extrapolate in a correct way to higher energy values.
+%**************************************************
+
+\newpage
+\subsection{Cross Section distribution for new grid}
+%**************************************************
+
+\subsection{First results: Wrong log(likelihood) minimum}
+
+The first obtained MadWeight results for the enlarged grid ($V_L$ $\in$ $[0.8,1.2]$ and $V_R$ $\in$ $[-1,1]$) using only parton-level ttbar events did not result in the expected minimum of $(V_L,V_R)$ = $(1, 0)$. This can be seen from Figure \ref{fig::Likelihood}, which shows the distribution of the log(likelihood) for each point in the considered grid.\\ \\
+\begin{figure}[!h]
+ \centering
+ \includegraphics[width = 0.9 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLikelihoodDistr_July2014/AnomCouplings_GenEvent_NoSelect_Oct3200Events_SingleGaussUsed/Likelihood_NoXSNorm.png}
+ \caption{Distribution of the log(likelihood) for each point in the grid using 3200 parton-level positive semi-muonic ttbar events. The transfer function used to smear the parton-level kinematics is the single-gaussian function standard included in MadWeight.}
+ \label{fig::Likelihood}
+\end{figure}
+One of the possible influences on the displaced minimim of the log(likelihood) distribution could be the normalisation of the Cross Section influence. This XS normalisation ($\frac{XS}{XS^{SM}}$) should be multiplied with the likelihood value, not the log(likelihood). Hence in order to correctly take this into account the obtained log(likelihood) value for each point in the grid should be corrected using the logarithm of this XS normalisation. The distribution of the normalisation on the Cross Section can be found in Figure \ref{fig::XSandLikelihoodNorm} together with the log(likelihood) distribution after correctly taking into account this XS normalisation.\\ \\
+\begin{figure}[!h]
+ \includegraphics[width = 0.45 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLikelihoodDistr_July2014/AnomCouplings_GenEvent_NoSelect_Oct3200Events_SingleGaussUsed/XSNorm.png}
+ \includegraphics[width = 0.45 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLikelihoodDistr_July2014/AnomCouplings_GenEvent_NoSelect_Oct3200Events_SingleGaussUsed/Likelihood_XSNorm.png}
+ \caption{Distribution of the XS normalisation for positive semi-muonic ttbar events (left) and distribution of the log(likelhood) after taking into account this normalisation. As in the previous figure 3200 positive semi-muonic have been used to obtain this distribution and a single gaussian transfer function has been applied to smear the kinematics of these parton-level events.}
+ \label{fig::XSandLikelihoodNorm}
+\end{figure}
+The formula which has been used is the following (Equation \ref{eq::ProbMW}):
+\begin{eqnarray}
+ P(y \vert a) = \frac{1}{\textcolor{red}{\sigma(a)}*Acc(a)} \int W(y|x,a)*Eff(x,a) \vert M(x,a) \vert^{2} T(x,a) dx \label{eq::ProbMW}\\
+ \mathcal{L} = \prod P(y \vert a)
+\end{eqnarray}
+The normalisation which has been applied in Figure \ref{fig::XSandLikelihoodNorm} is given in Equation \ref{eq::LikelihoodNorm}:
+\begin{equation}\label{eq::LikelihoodNorm}
+ \mathcal{L}_{Norm} = - ln(\sum P(y \vert a)*\frac{XS}{XS^{SM}}) = -ln(\mathcal{L}) - ln(\frac{XS}{XS^{SM}}*N)
+\end{equation}
+\textbf{It should be checked whether this is the correct method to take into account the normalisation of the XS. Currently it has been assumed that this XS normalisation should be applied for each weight and hence is multiplied with the number of considered events. In the case that this normalisation should just be multiplied with the overall likelihood value ($\mathcal{L}$) the sum over the number of considered events drops out of the equation implying a very small influence of the XS on the log(likelihood) distribution.}\\ \\
+
+As highlighted in the general Matrix Element Method formula (Equation \ref{eq::ProbMW}), the probability to measure the observed quantities $y$ already has a normalisation factor for the cross section. This factor is defined as the channel cross section and is calculated using Equation \ref{eq::ChannelXSMW}:\\ \\
+\begin{equation}\label{eq::ChannelXSMW}
+ \sigma(a) = \int_{X_i} \vert M(x,a) \vert^{2} T(x,a) dx
+\end{equation}
+\textbf{Hence it should be investigated in detail whether this XS normalisation should still be applied. From the above equations could be concluded that the change in cross section is actually already incorporated in the weight obtained from MadWeight. This could make sense since MadWeight has all the necessary information to calculate the cross section for each point in the considered grid. The cross section values for each point have been calculated using MadGraph and the same model as used for the MadWeight calculations. Unfortunately it is not completely clear from the MadWeight documentation whether this is actually included in the weight or not.}
+
+\subsection{Correct normalisation of Matrix Element probability}
+As could be seen in Equation \ref{eq::ProbMW} a term $\sigma(a)$ is included in the general Matrix Element Techniques formula. However it is not clear whether this cross section normalisation is actually performed within the MadWeight calculations or whether this normalisation should be done afterwards.\\
+This question is closely related to the order of the current obtained weight values with MadWeight. Up to now no weight larger than $10^{-22}$ have been obtained, resulting in a very large log(likelihood) value. \\
+\\
+This small value can be caused by many different reasons for which the most plausible ones are listed here:
+\begin{itemize}
+ \item The normalisation of the MadWeight probability should still be done and is not performed within the Matrix Element Techniques formula.\\ \textbf{This can only be ruled out by contacting the Madweight experts and asking explicitely what is done in the Madweight calculations. Also a possible hint could be found inside the MadWeight python files (but this should only be done if the received answer is not perfectly clear).}
+ \item The smallness of the weight could be caused by an error inside the created FeynRules model. \textit{Should also look for the mail where one of the MadWeight experts (Olivier/Pierre or even Celine) answered about the possible explanation for the smallness of the weight and whether this implies some wrong assumptions).}\\ \textbf{A possible way to exclude that the origin of this problem is the AnomalousCouplings FeynRules model is by comparing the results for the top mass fit when both the SM FeynRules model and the AnomalousCouplings model is used. If the weights are also this small when the SM model is used this smallness should be solved by an additional normalisation factor.}
+\end{itemize}
+
+\paragraph{Update 31/10/2014: Probability function NOT normalized (according to mail Olivier)\\}
+As was expected from the smallness of the obtained MadWeight probabilities should the cross section normalisation be applied afterwards. Only in the older versions of MadWeight (based on MG) was this normalisation included automatically.
+
+\subsubsection{Measurement of top quark mass using Matrix Element Method}
+
+\paragraph{Comparing SM model with AnomalousCouplings model\\}
+As a first step the Feynmann diagrams belonging to the two different models should be compared. This information can be found in the \textit{index.html} file in the following directories (and the files should be opened using firefox on mtop since this is the only m-machine with a working browser):
+\begin{eqnarray*}
+ \tiny{/AnomalousCouplings/MadGraph5\_aMC@NLO/madgraph5/SM\_ttbarSemiMuPlus} \\
+ \tiny{/AnomalousCouplings/MadGraph5\_aMC@NLO/madgraph5/ttbarSemiMuPlus\_QED2}
+\end{eqnarray*}
+
+\paragraph{Comparing SM cross section with MassiveLeptons cross section\\}
+In order to be sure that both models have the same Standard Model base, the cross sections for both models have been compared. This resulted in an unexpected outcome, namely that the obtained cross sections differ significantly depending on which MadGraph version is used to generate the considered events. A summary can be found in Table \ref{table::MGXS}.
+\begin{table}[h!]
+ \centering
+ \begin{tabular}{|c|c|c|c|c|c|}
+  \hline
+  \multirow{2}{*}{Top quark mass}	&  \multicolumn{2}{|c|}{MadGraph aMC@NLO}	& \multicolumn{2}{|c|}{MadGraph v155}  	\\
+					&  SM model	& MassiveLeptons model		& SM model 	& MassiveLeptons model	\\
+  \hline
+    153 				& $9.23$ pb	& $9.645$ pb			& $6.692$ pb	& $6.984$ pb		\\
+    163					& $11.12$ pb	& $11.63$ pb			& $7.844$ pb	& $8.199$ pb		\\
+    173					& $12.98$ pb	& $13.54$ pb			& $8.897$ pb	& $9.281$ pb		\\
+    183					& $14.77$ pb	& $15.4$ pb			& $9.884$ pb	& $10.3$ pb		\\
+    193					& $16.5$ pb	& $17.22$ pb			& $10.78$ pb	& $11.25$ pb		\\
+  \hline 
+ \end{tabular} 
+ \caption{Cross section values for semi-muonic (+) ttbar decay obtained using two different MadGraph versions.} \label{table::MGXS}
+\end{table}
+
+From this table can be seen that there is, for both considered MadGraph versions, a small difference between the SM FeynRules model and the MassiveLeptons one. This could be caused by the different treatment of the leptons. In the SM model they are considered to be massless while in the MassiveLeptons one they are defined to have their actual mass.\\
+A larger differrence occurs when both MadGraph versions are compared. From the answer received by Olivier it is not clear whether this difference is worrysome or could be explained by the LO theoretical uncertainties. Should also be investigated whether this difference is related to the NLO behavior of the newest MadGraph version. In case the MadGraph v155 version is not up to NLO a difference in cross section is definitely expected.
+
+%**************************************************
+
+\section{Results on reconstructed level}
+%**************************************************
+
+\section{Background influence}

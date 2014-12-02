@@ -1,0 +1,72 @@
+
+\section{Comparing the two used MadWeight versions}
+Since it was found that the latest MadWeight version (aMC@NLO) resulted in many events with weight equal to $0$ it was decided to compare this version with the previous one (mc$\_$perm). It is expected that both versions result in similar weights when identical events are considered, otherwise the used version of MadWeight would have a too large influence on the analysis result.\\
+Therefore two events which could succesfully run in the newest MadWeight version were also calculated using the old version. The obtained weights and their uncertainty can be compared in the following table and all the relevant information can be found in:
+\begin{eqnarray*}
+ /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings\\ /CompareMWVersions\_May2014
+\end{eqnarray*}
+
+\begin{table}[h!]
+ \centering
+ \begin{tabular}{|c|c|c|c|c|c|}
+  \hline
+  \multirow{2}{*}{Event Number} &  \multirow{2}{*}{$V_L$ value}	& \multicolumn{2}{|c|}{aMC@NLO version}		& \multicolumn{2}{|c|}{mc$\_$perm version}  	\\
+				&  				& Weight		& Uncertainty		& Weight 		& Uncertainty  		\\
+  \hline
+  \multirow{3}{*}{1} 		& 1.5 				& $9.76 10^{-28}$	& $4.07 10^{-30}$	& $1.44 10^{-26}$	& $4.19 10^{-29}$	\\
+				& 1.0				& $1.92 10^{-28}$	& $8.04 10^{-31}$	& $2.84 10^{-27}$	& $8.28 10^{-30}$	\\
+				& 0.5				& $1.20 10^{-29}$	& $5.03 10^{-32}$	& $1.78 10^{-28}$	& $5.17 10^{-31}$	\\
+  \hline 
+  \multirow{3}{*}{2}	 	& 1.5 				& $1.86 10^{-23}$	& $1.15 10^{-25}$	& $1.77 10^{-24}$	& $1.23 10^{-26}$	\\
+				& 1.0				& $3.65 10^{-24}$	& $2.25 10^{-26}$	& $3.57 10^{-25}$	& $2.75 10^{-27}$	\\
+				& 0.5				& $2.27 10^{-25}$	& $1.47 10^{-27}$	& $2.23 10^{-26}$	& $1.72 10^{-28}$	\\
+  \hline 
+ \end{tabular} 
+ \caption{Weight obtained from MadWeight for two specific ttbar semi-muonic (+) events. For these events the $V_R$ was fixed to its Standard Model expectation value, which is $0$, while the $V_L$ value was varied.} 
+\end{table}
+
+Comparing these values clearly shows that there is a significant difference between the two MadWeight versions which were considered in this analysis. With some effort a general difference of a facto 10 can be identified between the two versions, with a higher weight value for the older mc$\_$perm MadWeight version.\\
+However when showing the relative differences between the different weights it can be seen that the behavior of these two MadWeight versions is actually very similar. Therefore the histograms below give firstly the actual weight value and secondly the weight value normalised to the weight corresponding to the coupling parameter $V_L$ = 0.
+\begin{figure}[!h]
+\includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/CompareMWVersions_May2014/FirstEvtCanvas.png}
+\includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/CompareMWVersions_May2014/SecondEvtCanvas.png}\\
+\includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/CompareMWVersions_May2014/FirstEvtCanvas_Rel.png}
+\includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/CompareMWVersions_May2014/SecondEvtCanvas_Rel.png}
+\caption{Distribution of the weights obtained from MadWeight for the two considered MadWeight versions (aMC@NLO and mc$\_$perm) for two specific ttbar semi-muonic (+) events.}
+\end{figure}
+
+The above histograms clearly indicate that however the actual values of the weight significantly differ, the normalized results are almost identical.\\
+\textbf{This implies that the results obtained with MadWeight should always be normalized with respect to another MadWeight result} (obtained using the same MadWeight version of course). 
+%**************************************************
+
+\section{Individual weight distribution for condsidered gridpoints}
+The first Likelihood distribution for the considered gridpoints gave rise to an unexpected result. In order to understand whether this strange behavior can be explained by a couple of events with a bad weight, the indiviudual weight distribution for a couple random events was studied. If these distributions indeed result in the correct behavior the events which influence the overal Likelihood distribution can be studied individually.\\
+All the relevant information can be found in the following directory:
+\begin{eqnarray*}
+ /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/ \\ UnderstandLikelihoodDistr\_July2014
+\end{eqnarray*}
+And the creation of the MadWeight weights together with the python scripts making the corresponding histograms can be found in:
+\begin{eqnarray*}
+ /localgrid/aolbrech/madweight/ttbarSemiMuPlus\_QED2/Events
+\end{eqnarray*}
+The relevant python scripts are the following:
+\begin{itemize}
+ \item \textbf{CalculateLikelihood.py} which simultaneously creates the histograms for the XS distribution, the raw and normalized Likelihood distribution, and if required the individual weight distributions for the selected events. All these histograms are saved in the Histos.root file.
+ \item \textbf{RemoveZeroWeightEvents.py} which removes the events with weight equal to zero from the list and saves the non-zero events in a new .out file. On the other hand the events which failed the MadWeight computation are saved on a new .lhco file together with one succesful control event and are send again through MadWeight for a new weight calculation. \textcolor{red}{This should be updated since the new computation of MadWeight also results in weights equal to zero for these failing events. So should be investigated what is different about these events ...}
+\end{itemize}
+
+The first three histograms show the obtained Likelihood distribution for the different gridpoints which were considered. From these can be concluded that the behavior of the Likelihood normalized with the corresponding cross section divided by the Standard Model cross section is dominated by the distribution of the normalized cross section values. This means that any small deviations of the raw Likelihood values gets washed out by the multiplication with the normalized cross section values.
+\begin{figure}[!h]
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLikelihoodDistr_July2014/NormalizedLikelihoodForSMXS.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLikelihoodDistr_July2014/NormalizedXS.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLikelihoodDistr_July2014/LikelihoodForSMXS.png}
+\caption{...}
+\end{figure}
+
+The individual weight distribution for some random events can be found here.
+\begin{figure}[!h]
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLikelihoodDistr_July2014/WeightIndividualEventNr10.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLikelihoodDistr_July2014/WeightIndividualEventNr45.png}
+\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLikelihoodDistr_July2014/WeightIndividualEventNr120.png}
+\caption{...\textbf{Script should be ran again, and names for the axis should be added for these individual weight histograms!}}
+\end{figure}

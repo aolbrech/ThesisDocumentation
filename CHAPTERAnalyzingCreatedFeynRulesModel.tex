@@ -1,0 +1,127 @@
+
+\section{Normalized coupling parameters}
+In order to investigate the actual influence of the value of the coupling parameters on the kinematics of the event, the considered coupling parameters should be normalized to unitarity before any hard conclusions can be made.
+Therefore the configurations which should be investigated in large detail are the ones for which the width of the decay remains unchanged. This is explained in detail in one of the previous sections (\ref{subsec:DecayWidth} on page \pageref{subsec:DecayWidth}).
+%**************************************************
+
+\section{Understanding parameters larger than 1}
+Before starting to look at the ttbar Monte Carlo and reweighting the events with MadWeight, the created model in FeynRules should be completely understood.
+Special care goes out to the behavior of the kinematic distributions for values of the coupling parameters larger than 1. Since the Standard Model expectation puts the real part of the left-handed vector coupling $V_L$ almost equal to 1, simulation should be available around this Standard Model expectation value.
+Therefore the created model should be able to cope with coupling parameters larger than 1. \\
+\\
+For this reason .lhco files were generated with MadGraph with the following configuration, as mentioned in \ref{subsec:MadGraphFiles}:
+\begin{eqnarray*}
+  Re(V_L) & \in & \left[  0.7, \; 1.3\right] \\
+  Re(V_R) & \in & \left[ -0.3, \; 0.3\right]
+\end{eqnarray*}
+For these generated events the main kinematic distributions have been investigated.
+No clear difference between the behavior below and above 1 has been found.
+
+\newpage
+\subsection{Performed checks}
+\subsubsection{Cross section change}
+\begin{table}[h!] 
+ \begin{tabular}{c|c c c c c c c} 
+  RVR &  -0.30  &  -0.20  &  -0.10  &  0.00  &  0.10  &  0.20  &   0.30  \\  
+  RVL & & & & & & & \\ 
+  \hline 
+  0.70  & 0.3775 &  0.3120  & 0.2724  & 0.3275  & 0.2632  & 0.2910 &  0.3436  \\ 
+  0.80  & 0.5964 &  0.5097  & 0.4595  & 0.4385  & 0.4444  & 0.4816 &  0.5471  \\ 
+  0.90  & 0.9011 &  0.7950  & 0.7308  & 0.7026  & 0.7103  & 0.3229 &  0.8356  \\ 
+  1.00  & 1.3187 &  1.1874  & 1.1085  & 1.0711  & 1.0823  & 1.1317 &  1.2263  \\ 
+  1.10  & 1.8700 &  1.7116  & 1.6154  & 1.5669  & 1.5763  & 1.6335 &  1.7522  \\ 
+  1.20  & 2.5858 &  2.3996  & 2.2789  & 2.2200  & 2.2263  & 2.2983 &  2.4322  \\ 
+  1.30  & 3.4896 &  3.2711  & 3.1278  & 3.0626  & 3.0655  & 3.1506 &  3.2983  \\ 
+ \end{tabular} 
+ \caption{Cross sections for the different RVR-RVL couplings normalized to the SemiElMinus Standard Model Cross section (8.261 pb)} 
+\end{table}
+From this table can be seen that the cross section increases when the real component of $V_L$ gets larger. The value of the right-handed vector coupling has only a minor influence on the cross section.
+
+\subsubsection{Relative increase visible in XS, but not in kinematic distributions}
+Since the observed model cannot represent physics at values larger than 1, one option is to look at specific fixed values of the real part of the left-handed and right-handed vector couplings. 
+A proportional change in both of these coupling parameters should change the cross section values, but the kinematic should remain unchanged. Therefore the following configurations will be investigated:
+\begin{eqnarray*}
+  Re(V_L) = 0.5 ~~~ \& ~~~ Re(V_R) = 0.5 \rightarrow ~2.07115~ pb\\
+  Re(V_L) = 1.0 ~~~ \& ~~~ Re(V_R) = 1.0 \rightarrow ~33.1479~ pb\\
+  Re(V_L) = 2.0 ~~~ \& ~~~ Re(V_R) = 2.0 \rightarrow ~530.027~ pb
+\end{eqnarray*}
+From the above numbers is clear that the Cross section becomes very large when the two coupling parameters increase.
+This can be understood quite easily since the second option allows much more decay options since the top quarks can decay both through the left-handed and the right-handed vector coupling side of the interaction vertex. The width of this configuration is not equal to the width of the Standard Model expectation and hence does not correspond to an actual physical solution. It is merely seen as a test of the model since the kinematics of the interaction should not differ.\\
+\\
+Looking at these plots clearly indicates that the kinematics doesn't change at all.\\
+Hence the created FeynRules model is able to deal in a correct way with these coupling parameters larger than 1.\\
+\\
+These MadGraph files have been created and can be found in:
+\begin{eqnarray*}
+  /user/aolbrech/AnomalousCouplings/MadGraph\_v155/MassiveLeptons/\\ MadGraph5\_v1\_5\_5/Wtb\_ttbarSemiElMinus/RelativeChange
+\end{eqnarray*}
+
+The distributions shown in this subsection are for fixed Jet Pt Cut value, set to 0. Also no Pt cut on the lepton was applied. Both coupling parameters have been changed proportionally.
+\begin{center}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_CosTheta_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_EventContent_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_HadronicBMass_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_HadronicBPt_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_HadronicBR_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_HadronicBTheta_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonicBMass_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonicBPt_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonicBR_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonicBTheta_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonId_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonMass_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonPt_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonR_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LeptonTheta_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LightAntiQuarkId_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LightAntiQuarkMass_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LightAntiQuarkPt_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LightAntiQuarkR_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LightAntiQuarkTheta_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LightQuarkId_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LightQuarkMass_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LightQuarkPt_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LightQuarkR_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_LightQuarkTheta_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_TopMass_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_TopProductionId_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_RelativeChange/StackCanvas_WBosonMass_JetPt0.png}
+\end{center}
+
+\subsubsection{Model plots for fixed Pt Cut}
+The distributions shown in this subsection are for fixed Jet Pt Cut value, set to 0. Also no Pt cut on the lepton was applied. In this case the real part of the left-handed vector coupling has been varied between $0.7$ and $1.3$ in steps of $0.1$ while the right-handed parameter has been fixed to its Standard Model value ($0.0$).
+\begin{center}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_CosTheta_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_EventContent_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_HadronicBMass_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_HadronicBPt_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_HadronicBR_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_HadronicBTheta_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonicBMass_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonicBPt_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonicBR_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonicBTheta_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonId_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonMass_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonPt_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonR_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LeptonTheta_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightAntiQuarkId_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightAntiQuarkMass_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightAntiQuarkPt_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightAntiQuarkR_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightAntiQuarkTheta_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightQuarkId_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightQuarkMass_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightQuarkPt_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightQuarkR_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_LightQuarkTheta_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_TopMass_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_TopProductionId_JetPt0.png}
+\includegraphics[width = 0.32 \textwidth]{../April2014/KinematicPlots_CoeffLargerThan1/StackCanvas_WBosonMass_JetPt0.png}
+\end{center}
+
+\subsubsection{Model plots for varying Pt Cut}
+Script adapted, but error obtained when running the python script ...\\
+Worked when everything was copied to the TestDir ...\\
+Maybe the use of nohup gives the problem ...
