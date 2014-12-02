@@ -26,12 +26,29 @@ However, even after carefully ensuring that both methods are identical the obtai
 Up to now it is not clear what is the reason for the discrepancy between the two results and the only way to found out is comparing the distributions and results for a significant amount of statistics.\\
 One possibility is the used fit ranges and number of bins. If the last bins are low on statistics their distribution might not agree with a double Gaussian distribution and hence result in a failed fit. Therefore the distribution for each ProjectionY bin is now closely studied for all of the considered histograms. This can be found is the following section \ref{subsubsec::FitRanges}.
 
+\paragraph{\underline{Remark:} Using transverse momentum in stead of energy\\ SHOULD MOVE TO OTHER SPOT !!! (gives too much MadWeight detail so move down in section)}
+The Transfer Function configuration files in MadWeight are flexible enough to change the kinematic variables used for the Transfer Function calculations. Hence it seems to be more relevant to utilize the transverse momentum in stead of the energy of the considered partons and jets. Especially since the LHCO file used in the MadWeight calculations has the transverse momentum as input variable. Therefore it seems much more useful and realistic to use this parameter and not the energy. This implies that the Transfer Function configuration file should be adapted to use the \textit{pt(p)} and \textit{pt(pexp)} variables and not the currently used \textit{p(0)} and \textit{pexp(0)}.\\
+After actually implementing the created Transfer Function files\footnote{This was tested the first time on 30 November 2014.} and trying to use this Transfer Function one issue showed up which is currently not completel solved yet. MadWeight contains hard-coded files which only allow the use of the E, THETA and PHI variable for the Transfer Function dependencies. Therefore the so-called ``block name'' PT is not accepted by the $change\_tf.py$ file. However it seems that there is no clear physical motivation for this limited choice of kinematic variables, but in order to be completely sure additional information is needed from Olivier and Pierre.\\
+Once this issue is resolved the following file, which contains the limited amount of kinematic variables, should be adapted\footnote{Another solution is to keep the block name equal to E but just use the transverse momentum information. However this might result in confusion when in some files the hard-coded E parameter gets written down (for example on plots).}:
+\begin{equation}
+ bin/internal/madweight/change\_tf.py \nonumber
+\end{equation}
+
+The other relevant files used for the creation of the Transfer Functions are given in Equation \ref{eq::TFFiles}. The first one is the translation of the used $TF\_user.dat$ into a MadWeight readable file which can be implemented. This is build using the commands explained in Equation \ref{eq::TFBuildCmds}. The second file is only relevant around line $292$ where the function used for the Transfer Function creation is explained. This is the general MadWeight constructor file where all the different MadWeight functions are defined.
+\begin{eqnarray} \label{eq::TFFiles}
+ Source/MadWeight/transfer\_function/transfer\_function.f \nonumber \\
+ bin/internal/madweight\_interface.py \nonumber
+\end{eqnarray}
+
+\begin{eqnarray} \label{eq::TFBuildCmds}
+ ./bin/mw\_options \nonumber \\
+ define_transfer_fct \nonumber
+\end{eqnarray}
+
+
 \subsection{Comparing ProjectionY distributions}\label{subsubsec::FitRanges}
 Each of the considered histograms is a 2D histogram where the x-axis represents the energy of the generator level parton and the y-axis the difference between the generator level parton and the reconstructed matched particle. This is done for the energy distribution and the $\theta$ and $\phi$ angles.
 
-\paragraph{\underline{Remark:} Using transverse momentum in stead of energy\\}
-The Transfer Function configuration files in MadWeight are flexible enough to change the kinematic variables used for the Transfer Function calculations. Hence it seems to be more relevant to utilize the transverse momentum in stead of the energy of the considered partons and jets. Especially since the LHCO file used in the MadWeight calculations has the transverse momentum as input variable. Therefore it seems much more useful and realistic to use this parameter and not the energy.\\
-This implies that the Transfer Function configuration file should be adapted to use the \textit{pt(p)} and \textit{pt(pexp)} variables and not the currently used \textit{p(0)} and \textit{pexp(0)}.
 
 \paragraph{Energy difference between parton and light jets\\}
 \begin{figure}[!h]
