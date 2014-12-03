@@ -15,7 +15,7 @@ The method to obtain the parameters describing the energy smearing is (partly) e
 & & /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/\\ & & PrepareGenLevelRunning\_Sep2014/TransferFunctions
 \end{eqnarray*}
 
-The method to obtain the parameters of the Transfer Functions is based on the code received from Petra and Lieselotte, which was used in the Master thesis of Lieselotte\footnote{Additional feedback was also received from Arnaud, but he was using a completely different unbinned likelihood method. Since this only arrived after a couple of weeks waiting, it was decided to continue with the binned likelihood method used by Petra and Lieselotte.}.
+The method to obtain the parameters of the Transfer Functions is based on the code received from Petra and Lieselotte, which was used in the Master thesis of Lieselotte\footnote{Additional feedback was also received from Arnaud, but he was using a completely different unbinned likelihood method. Since this only arrived after a couple of weeks waiting, it was decided to continue with the binned likelihood method used by Petra and Lieselotte.}. However it should be noted that the original code only had $4$ bins due to limited statistics, and now $10$ bins are used.\\
 This code is almost identical to the ROOT class FitSlicesY() but has some minor differences. Some of these have already been changed in order to match better with the ROOT class.\\
 One of the most important differences between the two approaches was the treatment of the underflow and overflow bin. In the received code these two bins were respectively added to the first and last bin and hence included in the fitting range. This is not the desired behavior since the size of underflow/overflow bin can be relatively large compared to the first/last bin and significantly change the value of these bins. This would then imply that the position of the first and last bin is not located at the correct position and will, especially in the case of a limited number of bins, have a significant influence on the fit result.
 Now these underflow and overflow bins are just discarded from the fit range and will have no influence on the final result.\\
@@ -24,73 +24,106 @@ Another important, but useful, difference between the two methods is the number 
 \\
 However, even after carefully ensuring that both methods are identical the obtained results are not.
 Up to now it is not clear what is the reason for the discrepancy between the two results and the only way to found out is comparing the distributions and results for a significant amount of statistics.\\
-One possibility is the used fit ranges and number of bins. If the last bins are low on statistics their distribution might not agree with a double Gaussian distribution and hence result in a failed fit. Therefore the distribution for each ProjectionY bin is now closely studied for all of the considered histograms. This can be found is the following section \ref{subsubsec::FitRanges}.
+One possibility is the used fit ranges and number of bins. If the last bins are low on statistics their distribution might not agree with a double Gaussian distribution and hence result in a failed fit. Therefore the distribution for each ProjectionY bin is now closely studied for all of the considered histograms. This can be found is the following section \ref{subsec::FitRanges}.
 
-\paragraph{\underline{Remark:} Using transverse momentum in stead of energy\\ SHOULD MOVE TO OTHER SPOT !!! (gives too much MadWeight detail so move down in section)}
-The Transfer Function configuration files in MadWeight are flexible enough to change the kinematic variables used for the Transfer Function calculations. Hence it seems to be more relevant to utilize the transverse momentum in stead of the energy of the considered partons and jets. Especially since the LHCO file used in the MadWeight calculations has the transverse momentum as input variable. Therefore it seems much more useful and realistic to use this parameter and not the energy. This implies that the Transfer Function configuration file should be adapted to use the \textit{pt(p)} and \textit{pt(pexp)} variables and not the currently used \textit{p(0)} and \textit{pexp(0)}.\\
-After actually implementing the created Transfer Function files\footnote{This was tested the first time on 30 November 2014.} and trying to use this Transfer Function one issue showed up which is currently not completel solved yet. MadWeight contains hard-coded files which only allow the use of the E, THETA and PHI variable for the Transfer Function dependencies. Therefore the so-called ``block name'' PT is not accepted by the $change\_tf.py$ file. However it seems that there is no clear physical motivation for this limited choice of kinematic variables, but in order to be completely sure additional information is needed from Olivier and Pierre.\\
-Once this issue is resolved the following file, which contains the limited amount of kinematic variables, should be adapted\footnote{Another solution is to keep the block name equal to E but just use the transverse momentum information. However this might result in confusion when in some files the hard-coded E parameter gets written down (for example on plots).}:
-\begin{equation}
- bin/internal/madweight/change\_tf.py \nonumber
+\subsection{Creating the Transfer Function}
+In this subsection the different steps which were performed in order to built the actual Transfer Functions and implemented in MadWeight will be discussed in detail. The Transfer Functions used in this analysis are assumed to be uncorrelated, as shortly discussed in the PhD thesis of Arnaud. This assumption is necessary since otherwise it would be impossible to build them ourselves. The implication of this assumption is given in Equation \ref{eq::TFAssumption} and should be checked by looking at $E$ vs $\theta$, $E$ vs $\phi$ and $\theta$ vs $\phi$ histograms.
+\begin{equation} \label{eq::TFAssumption}
+ W(E, \theta, \phi) = W(E) W(\theta) W(\phi)
 \end{equation}
 
-The other relevant files used for the creation of the Transfer Functions are given in Equation \ref{eq::TFFiles}. The first one is the translation of the used $TF\_user.dat$ into a MadWeight readable file which can be implemented. This is build using the commands explained in Equation \ref{eq::TFBuildCmds}. The second file is only relevant around line $292$ where the function used for the Transfer Function creation is explained. This is the general MadWeight constructor file where all the different MadWeight functions are defined.
-\begin{eqnarray} \label{eq::TFFiles}
+A first important remark which should be made is the choice for using $p_{T}$ dependent Transfer Functions, in stead of the general $E$-dependent Transfer Functions already implemented in MadWeight. The changes which have to be done in order to correcty implement the Transfer Function in MadWeight are discussed in \ref{subsubsec::PtDependency}
+
+\subsubsection{Using $p_{T}$ dependency} \label{subsubsec::PtDependency}
+The Transfer Function configuration files in MadWeight are flexible enough to change the kinematic variables used for the Transfer Function calculations. Hence it seems to be more relevant to utilize the transverse momentum in stead of the energy of the considered partons and jets. Especially since the LHCO file used in the MadWeight calculations has the transverse momentum as input variable. Therefore it seems much more useful and realistic to use this parameter and not the energy. This implies that the Transfer Function configuration file should be adapted to use the \textit{pt(p)} and \textit{pt(pexp)} variables and not the currently used \textit{p(0)} and \textit{pexp(0)}.\\
+\\
+After actually implementing the created Transfer Function files\footnote{This was tested the first time on 30 November 2014.} and trying to use this Transfer Function one issue showed up which is currently not completel solved yet. MadWeight contains hard-coded files which only allow the use of the E, THETA and PHI variable for the Transfer Function dependencies. Therefore the so-called ``block name'' PT is not accepted by the $change\_tf.py$ file. However it seems that there is no clear physical motivation for this limited choice of kinematic variables, but in order to be completely sure additional information is needed from Olivier and Pierre.\\
+Once this issue is resolved the following file, containing the restricted list of kinematic variables, should be adapted\footnote{Another solution is to keep the block name equal to E but just use the transverse momentum information. However this might result in confusion when in some files the hard-coded E parameter gets written down (for example on plots).}:
+\begin{eqnarray*}
+ bin/internal/madweight/change\_tf.py
+\end{eqnarray*}
+
+\subsubsection{Creation of the Transfer Functions}
+The Transfer Functions are created from the simulated $t\bar{t}$ sample which will be used throughout the entire analysis. A very small nTuple is created from this simulated sample containing only the TLorentzVector information of both generated and reconstructed particles. From this the necessary diagrams, such as the 2D distributions of $p_T$, $\theta$ and $\eta$ difference between the generated and reconstructed particle with respect to the generated value, are created and saved in a ROOT file:
+\begin{eqnarray*}
+ AnomalousCouplings/TFInformation/PlotsForTransferFunctions\_FromTree.root 
+\end{eqnarray*}
+
+This analyzer, called $TFFit.cc$, also performs the double Gaussian fit of these 2D histograms and afterwards the $E$-dependent calorimeter fit. The technicalities and specific details of these fit procedures are documented in the following class:
+\begin{eqnarray*}
+ AnomalousCouplings/PersonalClasses/src/TFCreation.cc \\
+ AnomalousCouplings/PersonalClasses/interface/TFCreation.h
+\end{eqnarray*}
+
+The results of the two consecutive fits performed on the Y-projections of these 2D distributions are stored in another ROOT file, together with the original 2D histograms. Also the function form of the double Gaussian fit formula using the obtained fit parameters, added in order to test the robustness of the fit results outside the fitted range, can be found in this ROOT file.
+\begin{eqnarray*}
+ AnomalousCouplings/TFInformation/CreatedTFFromDistributions\_FromTree.root
+\end{eqnarray*}
+
+This analyzer also has the flexibility to perform the fit on the entire range or on pre-defined ranges set by the user. For this a separate function, called \textit{SetFitRange}, is created where for each histogram the fit range for each separate bin can be defined. This is extremely useful to optimize the doubleGaussian fit which has to cover both the peak and the tail of the distributions in order to correctly calculate the $6$ fit parameters.\\
+Another useful aspect of this analyzer is the automatic creation of the necessary .dat Transfer Function files needed for implementation in MadWeight. This is done in the \textit{WriteTF} class and the created files are:
+\begin{eqnarray*}
+ AnomalousCouplings/TFInformation/TF\_user.dat \\
+ AnomalousCouplings/TFInformation/transfer\_card\_user.dat
+\end{eqnarray*}
+This first file contains the functional form of both the $E$-dependent calorimeter fit and the functional form of how these $6$ parameters should be included in the double Gaussian formula. Also the width for the different kinematic variables is defined within this file. For the moment the method used in the Transfer Functions already implemented in MadWeight is followed, implying that the width of the Transfer Function is defined as the maximum of the $\sigma$-parameter of the two Gaussians considered in the double Gaussian fit. The only difference is that in stead of the generated kinematic information, which is the variable on the abscissa of the considered 2D histograms, the reconstructed one is used.\\
+\\
+The second file contains the actual values of the different fit parameters for all the considered kinematic variables and particle types. Therefore this file is an extensive list of values to which is referred in the previous $TF\_user.dat$ file. For each particle type and kinematic variable the numbering used should be unique such that the correct values are implemented in the functional forms of the used fit formulas.
+
+\subsubsection{Splitting in separate $\vert \eta \vert$ bins}
+Since the kinematic variables tend do depend on the pseudorapidity $\eta$ the considered 2D histograms are created for four distinctive $\vert \eta \vert$ regions. It has been chosen to split the barrel region into three separate bins while the entire endcap region is contained within one single bin. The chosen binning is given here:
+\begin{eqnarray*}
+ & \vert \eta \vert & \leq 0.375 \\
+ 0.375 < & \vert \eta \vert & \leq 0.750 \\
+ 0.750 < & \vert \eta \vert & \leq 1.450 \\
+ 1.450 < & \vert \eta \vert & \leq 2.50
+\end{eqnarray*}
+
+The analyzer mentioned above is developed in such a way that both the fit results for all events as the results for the four separate $\vert \eta \vert$ bins are stored together. Therefore all the results can always be compared in the created ROOT files and in the distinct $dat$ files. 
+
+\subsubsection{Actual implemenation in MadWeight}
+All the possible Transfer Functions which can be used in MadWeight can be found in the $Source/MadWeight/transfer\_function/data$ directory. Any file can be added to this list and used within MadWeight.\\
+The relevant files used for the creation of the Transfer Functions are given below. The first one is the translation of the used $TF\_user.dat$ into a MadWeight readable file which can be implemented. The second file is only relevant around line $292$ where the function used for the Transfer Function creation is explained. This is the general MadWeight constructor file where all the different MadWeight functions are defined.
+\begin{eqnarray} 
  Source/MadWeight/transfer\_function/transfer\_function.f \nonumber \\
  bin/internal/madweight\_interface.py \nonumber
 \end{eqnarray}
-
-\begin{eqnarray} \label{eq::TFBuildCmds}
+The commands which have to be executed in order to build this MadWeight readable file for the Transfer Function are given here:
+\begin{eqnarray} 
  ./bin/mw\_options \nonumber \\
- define_transfer_fct \nonumber
+ define\_transfer\_fct \nonumber
 \end{eqnarray}
 
-
-\subsection{Comparing ProjectionY distributions}\label{subsubsec::FitRanges}
-Each of the considered histograms is a 2D histogram where the x-axis represents the energy of the generator level parton and the y-axis the difference between the generator level parton and the reconstructed matched particle. This is done for the energy distribution and the $\theta$ and $\phi$ angles.
-
-
-\paragraph{Energy difference between parton and light jets\\}
+\subsection{Comparing ProjectionY distributions}\label{subsec::FitRanges}
+Each of the considered histograms is a 2D histogram where the abscissa represents the transverse momentum of the generator level parton and the ordinate the difference between the generator level parton and the reconstructed matched particle. This is done for the difference in transverse momentum and in $\theta$ and $\phi$ angles.\\
+All the interesting histograms can be created automatically, for each of the desired $\vert \eta \vert$ bins separately, using the following ROOT analyzer:
+\begin{eqnarray*}
+ AnomalousCouplings/TFInformation/FitDistributions/SaveFitHistograms.C
+\end{eqnarray*}
+This analyzer is able to create each of the histograms seperately, both as $pdf$ and $png$, and automatically saves all the histograms of one type in a large stacked canvas. This allows to quickly see the used 2D distributions for each of the particle types (b-jets, light jets, electrons and muons) and the three kinematic variables ($p_T$, $\eta$ and $\phi$). This stacked canvas is shown in Figure \ref{fig::ColorPlots}.  Also the general behavior of each of the fitted diagrams together with the overal $\chi^{2}$ distribution is created for each 2D histogram as can be seen from Figure \ref{fig::StackedHistoBJetPt}, showing this for the $p_T$ distribution of the b-jets. Finally the distribution of the $6$ double Gaussian fit parameters together with the fit result of the $E$-dependent calorimeter formula is also collected in a stacked canvas, as can be seen in Figure \ref{fig::FitParamsBJetPt}.\\
+\\
 \begin{figure}[!h]
   \centering
-  \includegraphics[width = 0.4 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/Epart_vs_Enonbjet.png}
-  \includegraphics[width = 0.4 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/Epart_vs_DiffEpartEnonbjet.png}
-  \caption{Energy of the generator parton versus the reconstructed jets for the two light quarks in the semi-muonic ttbar event topology (left) and their respective difference with respect to the generator level energy (right).}
+  \includegraphics[width = 0.9 \textwidth]{/home/annik/GitTopTree/TopBrussels/AnomalousCouplings/TFInformation/FitDistributions/FromTree/ColorPlots.png}
+  \caption{Used 2D distributions for double Gaussian fit. \textbf{IMPROVE CAPTION!}} \label{fig::ColorPlots} 
 \end{figure}
-The first bin in the left-hand histogram is asymetric because of the applied event selection cuts on the reconstructed level. These event selection cuts will not have the same influence on the generator level partons explaining the slight asymetric behavior.
+The 2D distributions for the difference in transverse momentum tend to show a slightly asymmetric behavior, as can be seen from Figure \ref{fig::ColorPlots}. This can be explained by the influence of the event selection, which has a difference effect on the generated particle than the reconstructed particle. This because a particle surviving the $p_T$ cut actually has a different $p_T$ value on generated level due to \textbf{bad resolution, detector effects (???)}. This effect is almost negligible for the $\phi$ and $\theta$ angles \textbf{(Definitely sure that this is the case ??)}.\\
+\\
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width = 0.9 \textwidth]{/home/annik/GitTopTree/TopBrussels/AnomalousCouplings/TFInformation/FitDistributions/FromTree/BJet_DiffPtVsGenPt/Overview_FitDistributions.png}
+  \caption{Distribution of the energy difference between the generator level parton and the corresponding light quark jet for each of the 10 considered bins and the overflow bin. All distributions were fitted with a double Gaussian function.} \label{fig::StackedHistoBJetPt}
+\end{figure}
+
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width = 0.9 \textwidth]{/home/annik/GitTopTree/TopBrussels/AnomalousCouplings/TFInformation/FitDistributions/FromTree/BJet_DiffPtVsGenPt/Overview_FitParameters.png}
+  \caption{Energy dependency of the 6 parameters of the double Gaussian fit function. The result of the double Gaussian fit for each $p_T$ bin is combined in a $p_T$ dependent histogram and then fitted with the Calorimeter energy function as explained in the PhD Thesis of Arnaud Pin.} \label{fig::FitParamsBJetPt}
+\end{figure}
+
 \newpage
-
-\begin{figure}[!h]
-  \centering
-  \includegraphics[width = 0.3 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Bin1.png}
-  \includegraphics[width = 0.3 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Bin2.png}
-  \includegraphics[width = 0.3 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Bin3.png}
-  \includegraphics[width = 0.3 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Bin4.png}
-  \includegraphics[width = 0.3 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Bin5.png}
-  \includegraphics[width = 0.3 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Bin6.png}
-  \includegraphics[width = 0.3 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Bin7.png}
-  \includegraphics[width = 0.3 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Bin8.png}
-  \includegraphics[width = 0.3 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Bin9.png}
-  \includegraphics[width = 0.3 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Bin10.png}
-  \includegraphics[width = 0.3 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Bin11.png}
-  \includegraphics[width = 0.3 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Chi2Log.png}
-  \caption{Distribution of the energy difference between the generator level parton and the corresponding light quark jet for each of the 10 considered bins and the overflow bin. All distributions were fitted with a double Gaussian function and besides bin 8, 9 and 10 returned with status ``converged''. Bin 9 had status ``failed'' while the remaining two bins had status ``ok''.\\ The final histogram (bottom right) shows the $\chi^{2}$ distribution for this fit for each bin. }
-\end{figure}
-
-\begin{figure}[!h]
-  \centering
-  \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Fita1.png}
-  \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Fita2.png}
-  \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Fita3.png}
-  \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Fita4.png}
-  \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Fita5.png}
-  \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Fita6.png}
-  \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Fita4Zoom.png}
-  \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Fita5Zoom.png}
-  \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/PrepareGenLevelRunning_Sep2014/TransferFunctions/DiffEpartEnonbjet/Epart_vs_DiffEpartEnonbjet_Fita6Zoom.png}
-  \caption{Energy dependency of the 6 parameters of the double Gaussian fit function. The two lowest rows show twice the same result, but with a different y-axis range. The double Gaussian fit parameters are combined in a histogram and then fitted with the Calorimeter energy function as explained in the PhD Thesis of Arnaud Pin.}
-\end{figure}
-
+\textbf{STILL TO REVIEW}
+\newpage
 From these fit results can be concluded that the double Gaussian distribution is well recovered for lower energy values. As can be seen from the very first histogram, the largest bulk of events have an energy value lower than 100 GeV. The low statistics in the higher energy range can partly explain the failing fitting performance. The double Gaussian function form is used in order to properly reconstruct the narrow peak together with the wider Gaussian distribution representing the tail of the energy distribution. However in the high parton energy range, this first narrow distribution dissapeared due to low statistics in this region. Hence fitting these distributions will indeed result in an unsuccesful fit status.\\
 \\
 A possible solution which can be considered is adding some of these histograms together and in this way enhancing the statistics in these combined bins. From the collection of distributions per bin could be concluded that the ``ok'' and ``failed'' fits are the ones with only about 2$\%$ of the total number of events. Hence it could be possible to adapt the code in such a way that in these cases the bin is combined with the following ones until a percentage higher than 3$\%$ is obtained.\\
