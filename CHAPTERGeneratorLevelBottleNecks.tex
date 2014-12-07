@@ -88,24 +88,24 @@ After quite a while it is possible to quickly see whether the fit distribution h
 				& \multicolumn{3}{|c}{First (narrow) gaussian} 		& \multicolumn{3}{c|}{Second (wide) gaussian}		\\
 				&  Mean $a_1$	& Sigma $a_2$ 	& Amplitude $a_3$ 	& Mean $a_4$ 	& Sigma $a_5$ 	& Amplitude $a_6$ 	\\
   \hline
-    b-jet $\Delta \phi$ 	& 0.0002	& 0.022		&	8000		& 	0.0002	& 	0.06	&	3000		\\
-    b-jet $\Delta p_T$ 		& 10		& -12		&	20000		& 	13	& 	10	&	-5000		\\
-    b-jet $\Delta \theta$  	& 0		& 0.04		&	2000		& 	0	& 	0.013	&	6000		\\
+    b-jet $\Delta \phi$ 	& 0.0002	& 0.022		&	8000		& 0.0002	& 0.06		&	3000		\\
+    b-jet $\Delta p_T$ 		& 10		& -12		&	20000		& 13		& 10		&	-5000		\\
+    b-jet $\Delta \theta$  	& 0		& 0.013		&	6000		& 0		& 0.04		&	2000		\\
   \hline
-    light jet $\Delta \phi$  	& 0		& 0.022		&	8000		& 	0.0004	& 	0.002	&	3000		\\
-    light jet $\Delta p_T$  	& 0		& 8		&	4000		& 	0	&	12	&	4000		\\
-    light jet $\Delta \theta$ 	& 0		& -0.05		&	2000		& 	0	&	-0.014	&	6000		\\
+    light jet $\Delta \phi$  	& 0		& 0.022		&	8000		& 0.0004	& 0.002		&	3000		\\
+    light jet $\Delta p_T$  	& 0		& 8		&	4000		& 0		& 12		&	4000		\\
+    light jet $\Delta \theta$ 	& 0		& -0.014	&	6000		& 0		& -0.05		&	2000		\\
   \hline 
-    electron $\Delta \phi$ 	& 0		& 0.006		& 	600 		&	0	&	0.0012	&	1500		\\
-    electron $\Delta p_T$  	& 0		& -2		& 	600		&	0	&	0.9	&	1500		\\
-    electron $\Delta \theta$ 	& 0		& 0.007		& 	600		&	0	&	0.0013	&	2500		\\
+    electron $\Delta \phi$ 	& 0		& 0.0012	&	1500		& 0		& 0.006		& 	600 		\\
+    electron $\Delta p_T$  	& 0		& 0.9		&	1500		& 0		& -2		& 	600		\\
+    electron $\Delta \theta$ 	& 0		& 0.0013	&	2500		& 0		& 0.007		& 	600		\\
   \hline
-    muon $\Delta \phi$ 		& 0		& -0.003	& 	700		&	0	&	0.0004	&	700		\\
-    muon $\frac{1}{\Delta p_T}$ & 0		& 0.0003	& 	2000		&	0	&	0.0006	&	500		\\
-    muon $\Delta \theta$ 	& 0		& 0.002		& 	500		&	0	&	0.0004	&	500		\\
+    muon $\Delta \phi$ 		& 0		& 0.0004	&	800		& 0		& 0.0026	& 	600		\\
+    muon $\frac{1}{\Delta p_T}$ & 0		& 0.0003	& 	2000		& 0		& 0.0006	&	500		\\
+    muon $\Delta \theta$ 	& 0		& 0.002		& 	500		& 0		& 0.0004	&	500		\\
   \hline
  \end{tabular} 
- \caption{caption ... \textbf{Need to make sure that the narrow and wide gaussian is always the same ... Otherwise are the start values not correct for the different eta-bins ...!!}} \label{table::StartValues}
+ \caption{caption ... \textbf{Need to make sure that the narrow and wide gaussian is always the same ... Otherwise are the start values not correct for the different eta-bins ...!!}\\ \textcolor{red}{\textbf{Need to look at the sigma value to decide on the narrow/wide gaussian!}} } \label{table::StartValues}
 \end{table}
 
 \subsubsection{Splitting in separate $\vert \eta \vert$ bins}
@@ -126,7 +126,13 @@ The analyzer mentioned above is developed in such a way that both the fit result
 \\
 One important difference between the 2D-distributions containing all events and the 2D-distributions specific for one of the $\vert \eta \vert$ bins is the number of bins used. Since the statistics is significantly lower for the $\vert \eta \vert$ specific histograms, the predefined bin number is lowered with $25 \%$. This ensures a more stable tail for the distribution and still a correct reconstruction of the peak.\\
 \\
-However for the last $\vert \eta \vert$ bin considered, the endcap part, a slightly different method is used. Since the statistics is much lower in this part of the detector the used range had to be slightly stretched in order to ensure a nice overview of the tails. This is necessary for the correctness of the double Gaussian fit. Therefore the range of the abscissa is enlarged on both sides with $20 \%$ and the used number of bins for this axis is identical to the one used for the overall 2D-distribution. 
+However for the last $\vert \eta \vert$ bin considered, the endcap part, a slightly different method is used. Since the statistics is much lower in this part of the detector the used range had to be slightly stretched in order to ensure a nice overview of the tails. This is necessary for the correctness of the double Gaussian fit. Therefore the range of the abscissa is enlarged on both sides with $20 \%$ and the used number of bins for this axis is identical to the one used for the overall 2D-distribution.
+
+\subsubsection{Separating narrow and wide gaussian}
+\textbf{\underline{Remark:} Should check whether this is actually necessary for the MadWeight implementation. MadWeight only seems to need the general fit formula and doesn't need to know which of the two distributions is the narrow and which is the wide one.}\\
+\\
+In order to select the narrow and wide gaussian both the amplitude and the $\sigma$-parameter should be compared, but keeping in mind that this second one is the most important variable. However it is expected that the distribution with the narrowest distribution also has the highest peak. In order to easily compare the two distributions a stacked canvas is added to the ROOT file which shows both distributions for different $p_{T,gen}$ values in one stacked canvas. The distinction between narrow and wide gaussian distribution is currently being made by the size of the $\sigma$ variable. Hence the histogram with the narrowest distribution is plotted in red while the widest one is plotted in green.\\
+Such a canvas is made for each of the considered 2D-histograms, both for the one containing all events and for the ones splitted in separate $\vert \eta\vert$ bins. They should be analyzed in detail in order to understand the correctness of the double Gaussian fit applied for the creation of the Transfer Functions. For the moment there a still a couple of 2D-histograms which don't show the expected behavior. Additional investigation of these stacked canvasses should be performed as soon as possible.
 
 \subsubsection{Coping with low statistics in last $\vert \eta \vert$ bin}
 Solution : Excluding bins! + combining bins
@@ -183,15 +189,14 @@ The 2D distributions for the difference in transverse momentum tend to show a sl
 \newpage
 \textbf{STILL TO REVIEW}
 \newpage
-From these fit results can be concluded that the double Gaussian distribution is well recovered for lower energy values. As can be seen from the very first histogram, the largest bulk of events have an energy value lower than 100 GeV. The low statistics in the higher energy range can partly explain the failing fitting performance. The double Gaussian function form is used in order to properly reconstruct the narrow peak together with the wider Gaussian distribution representing the tail of the energy distribution. However in the high parton energy range, this first narrow distribution dissapeared due to low statistics in this region. Hence fitting these distributions will indeed result in an unsuccesful fit status.\\
-\\
-A possible solution which can be considered is adding some of these histograms together and in this way enhancing the statistics in these combined bins. From the collection of distributions per bin could be concluded that the ``ok'' and ``failed'' fits are the ones with only about 2$\%$ of the total number of events. Hence it could be possible to adapt the code in such a way that in these cases the bin is combined with the following ones until a percentage higher than 3$\%$ is obtained.\\
-Another solution consists of reducing the range of the fitted histograms and only fit the distributions with $E_{parton}$ $<$ 150GeV. However before continuing with this option it should be completely understood whether MadWeight is able to extrapolate in a correct way to higher energy values.
+\subsection{Review of Transfer Functions}
 %**************************************************
 
 \newpage
 \section{Cross Section distribution for new grid}
 %**************************************************
+\paragraph{\underline{Remark: Cross section comparison}\\}
+Need to check how it is possible that the XS values in the XS grid are identical for both versions (first check whether this is indeed the case), but are different for the top quark mass simulation ... Table \ref{table::MGXS}.
 
 \section{First results: Wrong log(likelihood) minimum}
 
