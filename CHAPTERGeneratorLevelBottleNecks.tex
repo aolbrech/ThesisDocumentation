@@ -44,7 +44,7 @@ The following equation, Equation \ref{eq::FunctForm}, gives explicitely the func
 \subsubsection{Using $p_{T}$ dependency} \label{subsubsec::PtDependency}
 The Transfer Function configuration files in MadWeight are flexible enough to change the kinematic variables used for the Transfer Function calculations. Hence it seems to be more relevant to utilize the transverse momentum in stead of the energy of the considered partons and jets. Especially since the LHCO file used in the MadWeight calculations has the transverse momentum as input variable. Therefore it seems much more useful and realistic to use this parameter and not the energy. This implies that the Transfer Function configuration file should be adapted to use the \textit{pt(p)} and \textit{pt(pexp)} variables and not the currently used \textit{p(0)} and \textit{pexp(0)}.\\
 \\
-After actually implementing the created Transfer Function files\footnote{This was tested the first time on 30 November 2014.} and trying to use this Transfer Function one issue showed up which is currently not completel solved yet. MadWeight contains hard-coded files which only allow the use of the E, THETA and PHI variable for the Transfer Function dependencies. Therefore the so-called ``block name'' PT is not accepted by the $change\_tf.py$ file. However it seems that there is no clear physical motivation for this limited choice of kinematic variables, but in order to be completely sure additional information is needed from Olivier and Pierre.\\
+After actually implementing the created Transfer Function files\footnote{This was tested the first time on 30 November 2014.} and trying to use this Transfer Function one issue showed up which is currently not completely solved yet. MadWeight contains hard-coded files which only allow the use of the E, THETA and PHI variable for the Transfer Function dependencies. Therefore the so-called ``block name'' PT is not accepted by the $change\_tf.py$ file. However it seems that there is no clear physical motivation for this limited choice of kinematic variables, but in order to be completely sure additional information is needed from Olivier and Pierre.\\
 Once this issue is resolved the following file, containing the restricted list of kinematic variables, should be adapted\footnote{Another solution is to keep the block name equal to E but just use the transverse momentum information. However this might result in confusion when in some files the hard-coded E parameter gets written down (for example on plots).}:
 \begin{eqnarray*}
  bin/internal/madweight/change\_tf.py
@@ -119,7 +119,7 @@ Since the kinematic variables tend do depend on the pseudorapidity $\eta$ the co
     Relative $\#$ events &  26.21 $\%$				& 23.91 $\%$					&	32.54 $\%$			& 	17.34 $\%$			\\
   \hline
  \end{tabular} 
- \caption{caption ... } \label{table::EtaBins}
+ \caption{Different $\vert\eta\vert$ bins used for the Transfer Function creation. It is important to note that the $\eta$-values used for this binning are the reconstructed ones since generated values could be higher than the $2.5$ cut-value.} \label{table::EtaBins}
 \end{table}
 
 The analyzer mentioned above is developed in such a way that both the fit results for all events as the results for the four separate $\vert \eta \vert$ bins are stored together. Therefore all the results can always be compared in the created ROOT files and in the distinct $dat$ files.\\
@@ -142,7 +142,7 @@ The implementation in MadWeight should be done in such a way that the value of t
 \begin{figure}[!h]
   \centering
   \includegraphics[width = 0.9 \textwidth]{/home/annik/GitTopTree/TopBrussels/AnomalousCouplings/TFInformation/FitDistributions/FromTree/BJet_DiffPtVsGenPt/Overview_DblGausDistribution.png}
-  \caption{Extrapolation obtained using the fit parameters of the double Gaussian functional form. Values outside the fitted range show a distinctly different shape with respect to the ones actually fitted.} \label{fig::doubleGaussExtrap} 
+  \caption{Extrapolation obtained using the fit parameters of the double Gaussian functional form. Values outside the fitted range show a distinctly different shape with respect to the ones actually fitted. \textit{Maybe consider to lower the number of bins and make the titles more visible (Only $p_T$ cut value is really important!)}} \label{fig::doubleGaussExtrap} 
 \end{figure}
 
 \subsubsection{Actual implemenation in MadWeight}
@@ -189,7 +189,14 @@ The 2D distributions for the difference in transverse momentum tend to show a sl
 \newpage
 \textbf{STILL TO REVIEW}
 \newpage
-\subsection{Review of Transfer Functions}
+\subsection{Control checks for Transfer Functions}
+
+\subsubsection{Compare results with normal (single) Gaussian}
+
+\subsubsection{Compare result with previous analyses}
+This will imply to put $p_{T,reco}$ information on the abscissa in stead of the current $p_{T,gen}$ one. Also it will result in a huge change of the start values which are however necessary to perform a succesful double Gaussian fit.
+
+\subsubsection{Compare results with predefined ROOT class}
 %**************************************************
 
 \newpage
@@ -244,7 +251,7 @@ This small value can be caused by many different reasons for which the most plau
 \paragraph{Update 31/10/2014: Probability function NOT normalized (according to mail Olivier)\\}
 As was expected from the smallness of the obtained MadWeight probabilities should the cross section normalisation be applied afterwards. Only in the older versions of MadWeight (based on MG) was this normalisation included automatically.
 
-\subsubsection{Measurement of top quark mass using Matrix Element Method}
+\subsection{Measurement of top quark mass using Matrix Element Method}
 
 \paragraph{Comparing SM model with AnomalousCouplings model\\}
 As a first step the Feynmann diagrams belonging to the two different models should be compared. This information can be found in the \textit{index.html} file in the following directories (and the files should be opened using firefox on mtop since this is the only m-machine with a working browser):
@@ -274,5 +281,26 @@ In order to be sure that both models have the same Standard Model base, the cros
 
 From this table can be seen that there is, for both considered MadGraph versions, a small difference between the SM FeynRules model and the MassiveLeptons one. This could be caused by the different treatment of the leptons. In the SM model they are considered to be massless while in the MassiveLeptons one they are defined to have their actual mass.\\
 A larger differrence occurs when both MadGraph versions are compared. From the answer received by Olivier it is not clear whether this difference is worrysome or could be explained by the LO theoretical uncertainties. Should also be investigated whether this difference is related to the NLO behavior of the newest MadGraph version. In case the MadGraph v155 version is not up to NLO a difference in cross section is definitely expected.
+
+\paragraph{Understanding why Top Mass simulation does result in correct Likelihood minimum\\}
+When using the $MadGraph5\_aMC@NLO$ MadWeight version is used to scan over the different top mass values the correct minimum is obtained directly, so without any normalisation or acceptance influences. This simulation only uses the Standard Model information and doesn't consider the AnomalousCouplings FeynRules model.
+The results can be found in Table \ref{Table::MWTopMass}
+
+\begin{table}[h!]
+ \centering
+ \begin{tabular}{|c|c|}
+  \hline
+  Top quark mass	&  MadGraph aMC@NLO MadWeight log(Likelihood)\\
+  \hline
+    153 		& 196 499	\\
+    163			& 188 002	\\
+    173			& 181 027	\\
+    183			& 186 284	\\
+    193			& 192 926	\\
+  \hline 
+ \end{tabular} 
+ \caption{ caption ..} \label{table::MGXS}
+\end{table}
+
 
 %**************************************************
