@@ -302,5 +302,156 @@ The results can be found in Table \ref{Table::MWTopMass}
  \caption{ caption ..} \label{table::MGXS}
 \end{table}
 
+\subsection{Influence of the acceptance term}
 
-%**************************************************
+In order to finalize the normalisation of the weight obtained from MadWeight also the influence of the acceptance term $Acc(a)$ has to be investigated. Since no reconstructed events exist are created for the different vector coupling coefficients, the influence of the applied event selection can only be applied on generator-level. This will normally introduce a slight bias since applying the reco-level cuts on generator-level will result in more stringent cuts than actually applied on the reconstructed events due to the smaller width of the kinematic distributions. However it is the only way to get an idea of the influence of the event selection and, as long as a flat dependency is found throughout the vector couplings, an acceptable one.\\
+\\
+The event selection influence is investigated by looking both at the change in cross section and at the difference of different kinematic distributions. This first is achieved by simulating events with different vector coupling coefficients and analyze the change in cross section. This is done for 1-dimensional scans of both the left-handed as right-handed vector coupling coefficients while the other is set to its Standard Model expectation value. The results together with the procentual reduction in cross section by the application of the event selection is given in Table \ref{table::XSChangeAccVL} and Table \ref{table::XSChangeAccVR} for the 1D change of $V_L$ and $V_R$, respectively. All the created MadGraph files are located in the following directory:
+\begin{eqnarray*}
+  MadGraph5\_aMC@NLO/madgraph5/TopMassCheckQED2\_ttbarSemiMuPlus\_ML
+\end{eqnarray*}
+
+\begin{table}[h!]
+ \centering
+ \begin{tabular}{|c|c|c|c|}
+  \hline
+  \multirow{2}{*}{Top quark mass} 	&  \multicolumn{3}{|c|}{1D change of Re($V_L$)}				\\
+					&  All events	& Reco $p_T$ cuts applied	& Reduction ($\%$) 	\\
+  \hline
+    (0.8, 0.0) 				& $3.62605$ pb	& $0.9423$ pb			& $25.99$ 		\\
+    (0.9, 0.0)				& $5.81248$ pb	& $1.51$ pb			& $25.98$		\\
+    (1.0, 0.0)				& $8.85979$ pb	& $2.30454$ pb			& $26.01$ 		\\
+    (1.1, 0.0)				& $12.96357$ pb	& $3.37064$ pb			& $26.00$ 		\\
+    (1.2, 0.0)				& $18.3674$ pb	& $4.768$ pb			& $25.96$ 		\\
+  \hline 
+ \end{tabular} 
+ \caption{} \label{table::XSChangeAccVL}
+\end{table}
+
+\begin{table}[h!]
+ \centering
+ \begin{tabular}{|c|c|c|c|}
+  \hline
+  \multirow{2}{*}{Top quark mass} 	& \multicolumn{3}{|c|}{1D change of Re($V_R$)}  			\\
+					& All events	& Reco$p_T$ cuts applied	& Reduction ($\%$) 	\\
+  \hline
+    (1.0, -1.0)				& $37.7415$ pb	& $11.98$ pb			& $31.74$		\\
+    (1.0, -0.5)				& $14.5606$ pb	& $4.466$ pb			& $30.67$		\\
+    (1.0,  0.0)				& $8.85979$ pb	& $2.661$ pb			& $30.03$		\\
+    (1.0,  0.5)				& $13.1236$ pb	& $4.04$ pb			& $30.78$		\\
+    (1.0,  1.0)				& $33.1415$ pb	& $10.61$ pb			& $32.01$		\\
+  \hline 
+ \end{tabular} 
+ \caption{} \label{table::XSChangeAccVR}
+\end{table}
+
+From these Tables can be concluded that the influence of the event selection on the cross section is flat and equal throughout the entire vector coupling grid. This would be a positive result since it would imply that no additional analytical function is necessary to normalise the MadWeight output. Hence the MadWeight output should only be normalized for the Cross Section influence, but not the event selection one.\\
+\\
+The second method of analyzing the ifnluence of the event selection on the vector couplings is by comparing the kinematical distributions before and after the event selection is applied. Special attention is awarded to ensuring no difference in shape is observed for the different vector coupling coefficients after the event selection is applied. If this would be the case the influence of the event selection wouldn't be flat as suggested by the change in cross section. However, comparing all kinematic distributions indeed suggests that no significant change is observed when comparing the different kinematic distributions. The full list of distributions can be found in the directory listed below, but the ones for the $\cos \theta^{*}$ variable, the $p_T$ distribution for the lepton, for the b-quark originating from the hadronically decaying top quark and for the down-quark originating from the W-boson decay are given in Figure \ref{fig::KinChangeCosTheta}, Figure \ref{fig::KinChangeLeptonPt}, Figure \ref{fig::KinChangeBJetPt} and Figure \ref{fig::KinChangeDownQPt}, respectively.
+\begin{eqnarray*}
+ .../ThesisSubjects/AnomalousCouplings/KinematicDistributions\_AcceptanceTerm\_Dec2014 \\
+\end{eqnarray*}
+
+\begin{figure}[!h]
+ \centering
+ \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVLStable_ReVRVarying_CosTheta.pdf}
+ \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStable_ReVLVarying_CosTheta.pdf}\\
+ \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVLStable_ReVRVarying_PtCuts_CosTheta.pdf}
+ \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStable_ReVLVarying_PtCuts_CosTheta.pdf}
+ \caption{Distribution of $\cos \theta^{*}$ variable for both 1D-variation of the vector coupling coefficients. The top figures depict the distributions before the application of any event selection while the lower ones show the same distribution but after the reco-level $p_T$ cuts have been applied.}
+ \label{fig::KinChangeCosTheta}
+\end{figure}
+
+\begin{figure}[!h]
+ \centering
+ \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVLStable_ReVRVarying_LeptonPt.pdf}
+ \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStable_ReVLVarying_LeptonPt.pdf}\\
+ \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVLStable_ReVRVarying_PtCuts_LeptonPt.pdf}
+ \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStable_ReVLVarying_PtCuts_LeptonPt.pdf}
+ \caption{Distribution of transverse momentum of the lepton for both 1D-variation of the vector coupling coefficients. The top figures depict the distributions before the application of any event selection while the lower ones show the same distribution but after the reco-level $p_T$ cuts have been applied.}
+ \label{fig::KinChangeLeptonPt}
+\end{figure}
+
+\begin{figure}[!h]
+ \centering
+ \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVLStable_ReVRVarying_HadrBJetPt.pdf}
+ \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStable_ReVLVarying_HadrBJetPt.pdf}\\
+ \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVLStable_ReVRVarying_PtCuts_HadrBJetPt.pdf}
+ \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStable_ReVLVarying_PtCuts_HadrBJetPt.pdf}
+ \caption{Distribution of the transverse momentum of the b-quark originating from the hadronically decaying top quark for both 1D-variation of the vector coupling coefficients. The top figures depict the distributions before the application of any event selection while the lower ones show the same distribution but after the reco-level $p_T$ cuts have been applied.}
+ \label{fig::KinChangeBJetPt}
+\end{figure}
+
+\begin{figure}[!h]
+ \centering
+ \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVLStable_ReVRVarying_LightQuarkDownPt.pdf}
+ \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStable_ReVLVarying_LightQuarkDownPt.pdf}\\
+ \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVLStable_ReVRVarying_PtCuts_LightQuarkDownPt.pdf}
+ \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStable_ReVLVarying_PtCuts_LightQuarkDownPt.pdf}
+ \caption{Distribution of the transverse momentum of the down-type quark originating from the W-boson for both 1D-variation of the vector coupling coefficients. The top figures depict the distributions before the application of any event selection while the lower ones show the same distribution but after the reco-level $p_T$ cuts have been applied.}
+ \label{fig::KinChangeBJetPt}
+\end{figure}
+
+From the distributions given above can easily be concluded that some shape difference are visible for the 1D-variation of the right-handed vector coupling. However for the left-handed vector coupling $V_R$ no influence is visible, besides some minor statistical fluctuations, when varying the value of $V_R$. It is also clear that the influence of the $V_R$ 1D-variation is not the same for each of the kinematical distributions, and even negligible for the $p_T$ distribution of the b-jet originating from the hadronically decaying top quark. Since the shift of the distribution is different for the $p_T$ distribution of the lepton and the down-type quark of the W-boson, the result is still in agreement with the flat change in cross section. This because the additional events for one distribution are balanced out by the reduced number of events for another distribution resulting a net effect of zero and hence a flat behavior troughout the entire vector coupling coefficients grid.
+
+\subsubsection{Understanding 1D-variation of $V_L$}
+The influence of the variation of the right-handed vector coupling $V_R$ on the kinematic distributions was rather satisfactory and in some way agreeing with expactations. However the same is definetely not true for the variation of the left-handed vector coupling $V_L$. On the contrary, it can even be concluded that the obtained result was a complete surprise and needs to be understood as soon as possible in order to keep confidence in the created FeynRules model. This because a possible explanation can always be a wrong configuration of the anomalousCouplings FeynRules model with would result in a major setback for the analysis and the tight time schedule.\\
+\\
+Therefore new MadGraph files, and kinematic distributions, have been created with the same 1D-variation of the left-handed vector coupling $V_L$ but in stead of setting the $V_R$ value equal to its Standard Model expectation of $0$ it was set to $0.2$. The reason behind this different value for $V_R$ is the idea that when the right-handed vector coupling is excluded from the full $Wtb$ Lagrangian any change of $V_L$ only affects the $\vert V_{tb} \vert$ value and hence the cross section. This would imply that no real change of physical concepts is done since the Lagrangian is in a sense unchanged because no mixing of the different vector couplings appears.\\
+The results for this 1D-variation can be found in Table \ref{table::XSChangeAccVLNot0} and in Figure \ref{fig::KinChangeNot0}, and shown unfortunately identical results to the 1D-variation of $V_L$ with $V_R$ fixed to $0$. 
+
+\begin{table}[h!]
+ \centering
+ \begin{tabular}{|c|c|c|c|}
+  \hline
+  \multirow{2}{*}{Top quark mass} 	&  \multicolumn{3}{|c|}{1D change of Re($V_L$)}				\\
+					&  All events	& Reco $p_T$ cuts applied	& Reduction ($\%$) 	\\
+  \hline
+    (0.8, 0.2) 				& $4.223$ pb	& $1.201$ pb			& $28.43$ 		\\
+    (0.9, 0.2)				& $6.615$ pb	& $1.882$ pb			& $28.45$		\\
+    (1.0, 0.2)				& $9.995$ pb	& $2.787$ pb			& $27.88$ 		\\
+    (1.1, 0.2)				& $14.46$ pb	& $4.043$ pb			& $27.96$ 		\\
+    (1.2, 0.2)				& $20.26$ pb	& $5.695$ pb			& $28.11$ 		\\
+  \hline 
+ \end{tabular} 
+ \caption{} \label{table::XSChangeAccVLNot0}
+\end{table}
+
+\begin{figure}[!h]
+ \centering
+ \includegraphics[width=0.48\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVarying_CosTheta.pdf}
+ \includegraphics[width=0.48\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVarying_PtCuts_CosTheta.pdf}\\
+ \includegraphics[width=0.48\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVarying_LeptonPt.pdf}
+ \includegraphics[width=0.48\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVarying_PtCuts_LeptonPt.pdf}\\
+ \includegraphics[width=0.48\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVarying_HadrBJetPt.pdf}
+ \includegraphics[width=0.48\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVarying_PtCuts_HadrBJetPt.pdf}\\
+ \includegraphics[width=0.48\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVarying_LightQuarkDownPt.pdf}
+ \includegraphics[width=0.48\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVarying_PtCuts_LightQuarkDownPt.pdf}
+ \caption{}
+ \label{fig::KinChangeNot0}
+\end{figure}
+
+The obtained results for the 1D-variation of $V_L$ with $V_R$ fixed to $0.2$ seems to suggest that either the left-handed vector component of the full $Wtb$ Lagrangian only influences the cross section and alters in no way the kinematic distributions of the decay particles or otherwise that this component is wrongly implemented in the created FeynRules model. \\
+The following test which has been performed is looking at a larger 1D-variation of $V_L$ while still keeping the $V_R$ component equal to $0.2$. This resulted in a slightly unexpected outcome, as can be seen in Figure \ref{fig::KinChangeNot0LARGE}, since some deviation of the kinematic distribution is found for the configuration where $V_L$ is equal to $0$. However there is no difference between the four remaining configurations considered for the large $V_L$ 1D-variation.\\
+This is surprising since there was actually some hope that the lack of influence on the kinematic distributions when varying the $V_L$ component could be caused by the small variation applied. This was motivated by the small influence when changing the $V_R$ component to the boundaries of the coupling coefficients grid while originally the $V_L$ coupling was contained within a small region due to its precise measurement.\\
+However the result seems to suggest that there is really no influence on the kinematic distributions and that only the $V_R$ component is responsible for these distortions. Probably a similar result would have been found when a different value of $V_R$ would have been used.
+\begin{figure}[!h]
+ \centering
+ \includegraphics[width=0.48\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVaryingLARGE_CosTheta.pdf}
+ \includegraphics[width=0.48\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVaryingLARGE_LeptonPt.pdf}\\
+ \includegraphics[width=0.48\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVaryingLARGE_HadrBJetPt.pdf}
+ \includegraphics[width=0.48\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVaryingLARGE_LightQuarkDownPt.pdf}
+ \caption{}
+ \label{fig::KinChangeNot0}
+\end{figure}
+
+\subsubsection{Fixing normalisation for 1D-variation of $V_R$ only}
+Since the above mentioned results seem to predict that the left-handed vector coupling actually only influences the cross section and not the kinematics, it has been decided to ensure a correct cross section normalization for the 1D-variation of $V_R$ only. This because the influence of the left-handed vector coupling \\
+
+\paragraph{\underline{Remark:} Correct way of thinking?\\}
+Isn't it just the opposite normalisation which should be corrected? The left-handed vector coupling only influences the cross section so the log(likelihood) should actually be normalized in such a way that it results in a flat distribution for the 1D-variation of $V_L$. This is which is currently still not correct because of the large difference in relative cross section for values with $V_L$ smaller than $1.0$. While I think that the 1D-variation will, just as was the case for the top quark mass, result in the correct minimization of the log(likelihood) distribution. This because both the influence of this 1D-variation on the kinematic distribution and the variation of the cross section is symmetric around the Standard Model expectation value of $0$.\\
+\\
+Possible suggestion could be to check the influence of another coupling constant, for instance the imaginary part of the left-handed vector coupling. The distinct difference between the left-handed vector coupling and all the other coupling parameters implemented in the FeynRules model is its Standard Model value. The left-handed vector coupling is the only parameter which is supposed to contribute to the $Wtb$ Lagrangian, and hence the only one different from $0$. Therefore it could be a possible test of the created FeynRules model to check both the variation of the cross section as the influence on the kinematic distributions when a different coupling constant is considered. If it would only be that the real part of the $V_R$ doesn't contribute to the kinematics of the decay particles while all the other ones do have a distinct effect, it could be a clear indication that the created FeynRules model is not capable of dealing with coupling constants higher than $1$.\\
+\\
+\paragraph{Thinking $\cdots$ \\} 
+However this last conclusion is not completely correct because then a possible effect would have been visible when the $V_L$ variable was varied in a larger range. In this case also the configurations $V_L$ = 0.5 and $V_L$ = 0.0 was compared to the Standard Model expectation of $1.0$ but no effect was found. So there is more behind the non-influence of the left-handed vector coupling $V_L$ than just a problem with dealing with coupling coefficients larger than $1.0$ $\cdots$.

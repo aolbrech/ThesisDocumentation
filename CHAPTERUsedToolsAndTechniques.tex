@@ -43,10 +43,10 @@ All these files can still be changed once the \textit{./bin/generate$\_$events} 
 
 \section{MadWeight}
 
-The running of the MadWeight event generator has to be done on localgrid since the events .lhco file has to be splitted in multiple jobs. The number of jobs which can be submitted is not limited, hence the events per job should be taken as low as possible. Running MadWeight with a large number of events per job implies that it will take a very long time since the submitted jobs have a long walltime which reduces their priority. \\
+The running of the MadWeight event generator has to be done on localgrid since the $lhco$ file containing all the events has to be splitted in multiple jobs. The number of jobs which can be submitted is limited to $2000$, hence the events per job should be taken as low as possible while not exceeding this limt.. Running MadWeight with a large number of events per job implies that it will take a very long time since the submitted jobs will have a long walltime and therefore their priority will reduce. \\
 Another important factor for the MadWeight event generator is defining the number of interaction points which have to be considered. This number has to be rather large (around 10 000 - 30 000 according to Lieselotte \textbf{TO CHECK MYSELF}) to ensure the uncertainty on the weight to be smaller than the weight itself.\\
 \\
-Currently two different MadWeight event generator versions exist, and up to now (May 6 2014) only the oldest one has been tested and used extensively. The newer one was only installed beginning of May but should be less CPU intensive and allows the user to split the interaction points in two distinct steps. The versions are:
+Currently two different MadWeight event generator versions exist, and up to now (May 6 2014) only the oldest one has been tested and used extensively. The newer one was only installed beginning of May but should be less CPU intensive and allows the user to split the interaction points in two distinct steps. Since September 2014 solely the newest version is being used. The two versions are still installed on localgrid and are given here:
 \begin{itemize}
   \item madweight\_mc\_perm
   \item MadGraph5\_aMC@NLO
@@ -95,6 +95,11 @@ Different command which should be used to check whether jobs are running are run
 
 \subsection{Influence of the used Transfer Function}
 
+\subsection{Complementarity with Git}
+In order to keep track of all the changes done to the configuration files of MadWeight, and keep to separate branches for both the original $E$-dependent Transfer Functions and the newly created $p_{T}$-dependent Transfer Functions the MadWeight directory on localgrid has been added to the AnomalousCouplings GitHub repository.\\
+However this has an important restrictions on the use of the m-machines for compiling and running MadWeight and for performing GitHub related activities. This restriction is caused by the initialization command needed to run MadWeight, namely activating python 2.7.3, which results in a conflict with the GitHub requirements. Therefore the GitHub related activities have to be done either in a separate terminal window where no python initialization is done or otherwise on $mtop$ where this command can't be executed. The compiling and running of MadWeight on the other hand can only be done in a different terminal window on the m-machines.\\
+This implies that in the terminal window where the analysis is being executed no Git check can be done for checking the active branch or changing to another branch. These commands have to be done in the separate window.
+
 \subsection{Adapting MadWeight to run continously on localgrid}
 A single test with the following configuration (5000 events - 20 events/job - 10 000 initPoints) took almost 16h to finish so the full generator event sample ($>$ 2 470 000 events) would take more than 329 days!\footnote{From this can be concluded that the events on generator level should never be all run. Only a limited selection of these events should be considered.}\\
 Even the full reconstructed event sample ($>$ 210 000 events) requires more than 28 days of running this way.\\
@@ -107,6 +112,8 @@ According to Olivier (D) this can't be changed by the grid admins, but should be
 %**************************************************
 
 \section{MadAnalysis}
+At first sight it seems that since the update of the m-machines to Scientific Linux 6 ($slc6$) MadAnalysis can only be used on $mtop$. Whenever MadAnalysis is trying to be compiled on any of the other m-machines an error message about a missing library appears, while compiling on $mtop$ works from the first go.
+
 \subsection{How to run MadAnalysis in expert mode}
 Version v112 should be used since the expert mode in this version works exactly as explained in the manual (arXiv: 1206.1599). 
 In the more recent version v115 the expert mode doesn't work out-of-the-box and the python files need to be adapted ...\\
