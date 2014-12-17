@@ -36,9 +36,9 @@ A first important remark which should be made is the choice for using $p_{T}$ de
 \\
 The following equation, Equation \ref{eq::FunctForm}, gives explicitely the functional form of both the double Gaussian fit and the $p_T$-dependent calorimeter formula. As can be seen from this equation, the calorimeter part should not be taken to literally since it is only the actual calorimeter $p_T$ dependency in the case of the $\sigma$-parameters of the two Gaussian fits.
 \begin{eqnarray}
- a_3 * e^{-\frac{(x-a_1)^2}{2*a_{2}^{2}}} + a_6 * e^{-\frac{(x-a_4)^2}{2*a_{5}^{2}}} \nonumber \\
- a_{x,0} + a_{x,1} * \sqrt{p_T} + a_{x,2} * p_T \;\;\;  \textrm{( for x = 2 \& 5 )}\nonumber \\
- a_{x,0} + a_{x,1} * p_T + a_{x,2} * p_{T}^{2} + a_{x,3} * p_{T}^{3} + a_{x,4} * p_{T}^{4} \;\;\; \textrm{(for x = 1, 3, 4 \& 6)} \label{eq::FunctForm}
+ a_3 \times e^{-\frac{(x-a_1)^2}{2*a_{2}^{2}}} + a_6 \times e^{-\frac{(x-a_4)^2}{2*a_{5}^{2}}} \nonumber \\
+ a_{x,0} + a_{x,1} \times \sqrt{p_T} + a_{x,2} \times p_T \;\;\;  \textrm{( for x = 2 \& 5 )}\nonumber \\
+ a_{x,0} + a_{x,1} \times p_T + a_{x,2} \times p_{T}^{2} + a_{x,3} \times p_{T}^{3} + a_{x,4} \times p_{T}^{4} \;\;\; \textrm{(for x = 1, 3, 4 \& 6)} \label{eq::FunctForm}
 \end{eqnarray}
 
 \subsubsection{Using $p_{T}$ dependency} \label{subsubsec::PtDependency}
@@ -389,7 +389,7 @@ The second method of analyzing the ifnluence of the event selection on the vecto
  \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVLStable_ReVRVarying_PtCuts_LightQuarkDownPt.pdf}
  \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStable_ReVLVarying_PtCuts_LightQuarkDownPt.pdf}
  \caption{Distribution of the transverse momentum of the down-type quark originating from the W-boson for both 1D-variation of the vector coupling coefficients. The top figures depict the distributions before the application of any event selection while the lower ones show the same distribution but after the reco-level $p_T$ cuts have been applied.}
- \label{fig::KinChangeBJetPt}
+ \label{fig::KinChangeDownQPt}
 \end{figure}
 
 From the distributions given above can easily be concluded that some shape difference are visible for the 1D-variation of the right-handed vector coupling. However for the left-handed vector coupling $V_R$ no influence is visible, besides some minor statistical fluctuations, when varying the value of $V_R$. It is also clear that the influence of the $V_R$ 1D-variation is not the same for each of the kinematical distributions, and even negligible for the $p_T$ distribution of the b-jet originating from the hadronically decaying top quark. Since the shift of the distribution is different for the $p_T$ distribution of the lepton and the down-type quark of the W-boson, the result is still in agreement with the flat change in cross section. This because the additional events for one distribution are balanced out by the reduced number of events for another distribution resulting a net effect of zero and hence a flat behavior troughout the entire vector coupling coefficients grid.
@@ -442,7 +442,7 @@ However the result seems to suggest that there is really no influence on the kin
  \includegraphics[width=0.48\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVaryingLARGE_HadrBJetPt.pdf}
  \includegraphics[width=0.48\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVaryingLARGE_LightQuarkDownPt.pdf}
  \caption{}
- \label{fig::KinChangeNot0}
+ \label{fig::KinChangeNot0LARGE}
 \end{figure}
 
 \subsubsection{Fixing normalisation for 1D-variation of $V_R$ only}
@@ -451,7 +451,7 @@ Since the above mentioned results seem to predict that the left-handed vector co
 \paragraph{\underline{Remark:} Correct way of thinking?\\}
 Isn't it just the opposite normalisation which should be corrected? The left-handed vector coupling only influences the cross section so the log(likelihood) should actually be normalized in such a way that it results in a flat distribution for the 1D-variation of $V_L$. This is which is currently still not correct because of the large difference in relative cross section for values with $V_L$ smaller than $1.0$. While I think that the 1D-variation will, just as was the case for the top quark mass, result in the correct minimization of the log(likelihood) distribution. This because both the influence of this 1D-variation on the kinematic distribution and the variation of the cross section is symmetric around the Standard Model expectation value of $0$.\\
 \\
-Possible suggestion could be to check the influence of another coupling constant, for instance the imaginary part of the left-handed vector coupling. The distinct difference between the left-handed vector coupling and all the other coupling parameters implemented in the FeynRules model is its Standard Model value. The left-handed vector coupling is the only parameter which is supposed to contribute to the $Wtb$ Lagrangian, and hence the only one different from $0$. Therefore it could be a possible test of the created FeynRules model to check both the variation of the cross section as the influence on the kinematic distributions when a different coupling constant is considered. If it would only be that the real part of the $V_R$ doesn't contribute to the kinematics of the decay particles while all the other ones do have a distinct effect, it could be a clear indication that the created FeynRules model is not capable of dealing with coupling constants higher than $1$.\\
-\\
+Possible suggestion could be to check the influence of another coupling constant, for instance the imaginary part of the left-handed vector coupling. The distinct difference between the left-handed vector coupling and all the other coupling parameters implemented in the FeynRules model is its Standard Model value. The left-handed vector coupling is the only parameter which is supposed to contribute to the $Wtb$ Lagrangian, and hence the only one different from $0$. Therefore it could be a possible test of the created FeynRules model to check both the variation of the cross section as the influence on the kinematic distributions when a different coupling constant is considered. If it would only be that the real part of the $V_R$ doesn't contribute to the kinematics of the decay particles while all the other ones do have a distinct effect, it could be a clear indication that the created FeynRules model is not capable of dealing with coupling constants higher than $1$.
+
 \paragraph{Thinking $\cdots$ \\} 
 However this last conclusion is not completely correct because then a possible effect would have been visible when the $V_L$ variable was varied in a larger range. In this case also the configurations $V_L$ = 0.5 and $V_L$ = 0.0 was compared to the Standard Model expectation of $1.0$ but no effect was found. So there is more behind the non-influence of the left-handed vector coupling $V_L$ than just a problem with dealing with coupling coefficients larger than $1.0$ $\cdots$.

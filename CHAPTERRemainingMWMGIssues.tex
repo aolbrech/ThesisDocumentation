@@ -1,0 +1,16 @@
+The goal of this chapter is to collect all the remaining issues encountered when using the MadWeight and/or MadGraph software.\\
+This chapter will serve as the starting point for setting up a detailed planning for the discussion moment scheduled on Thursday 8 and Friday 9 January.\\
+The idea is to keep the second day mainly for the cross section normalisation since Jorgen will only be present on Friday. On Thursday the smaller issues should be discussed such as for example the different variables defined in the new MadWeight card and the explanation for events returning with weight equal to zero.
+
+\section{Running of MadWeight events}
+
+\subsection{Explanation for zero-weights}
+When doing the different test on the m-machines after the PBS-submission issue, it was found that as soon as the personally created Transfer Functions were used $4$ out of the $20$ considered events had the MadWeight weight equal to zero while this was not the case when the predefined single Gaussian Transfer Function was used.\\
+Therefore it would be nice to understand what is the reason when specific events return from MadWeight calculations with the weight for each configuration equal to zero. Does this imply that the kinematic configuration of the entire event can't be matched with the variance allowed by the Transfer Function. And how important is the influence of the Transfer Functions on the returned weight?\\
+Because this example clearly shows that events which returned succesfully with the standard single Gaussian Transfer Function get screwed up when using a Transfer Function specific to the considered kinematical configuration.
+
+\section{Transfer Function configuration}
+
+\subsection{$P_{T}$-dependent Transfer Functions}
+What is meant in your last mail with the sentence \textit{However, the width associated to the transfer function should be the one corresponding to the energy since those might be different} ?\\
+If you construct the entire Transfer Function to be $p_{T}$ dependent does it then make sense to define the width of this transfer function using the energy in stead of the transverse momentum?
