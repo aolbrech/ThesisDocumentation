@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{report}
+\documentclass[a4paper,12pt]{book}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
@@ -32,7 +32,7 @@
 \begin{document}
 \pagenumbering{roman}
 \setcounter{secnumdepth}{3} %Number up to the subsubsections!
-\setcounter{tocdepth}{3}    %Don't want the subsubsections appearing in the table of contents (then change back to 2)
+\setcounter{tocdepth}{3}    %Don't want the subsubsections appearing in the table of contents (-> then change back to 2!)
 
 \maketitle
 \tableofcontents
@@ -43,21 +43,21 @@
 \chapter{Pending issues}
 \begin{itemize}
   \item Does this created FeynRules model still contain Effective Field Theory?
-  \item If the kinematics doesn't change for coupling parameters larger than 1, how is it than possible to differentiate the different configurations which will be studied?
-  \item Access to Mathematica for Width studies ... ?
-  \item XS values which are used are the ones calculated using the MadGraph$\_$v155 version. Should this be calculated again using the new MadGraphv5$\_$aMC@NLO since normally this shouldn't change ...?
-  \item Create branch for localgrid scripts! (Now already a branch exists for the documentation !)
+  \item If the kinematics doesn't change for coupling parameters larger than $1$, how is it than possible to differentiate the different configurations which will be studied?
+  %\item Access to Mathematica for Width studies ... ?
+  %\item XS values which are used are the ones calculated using the MadGraph$\_$v155 version. Should this be calculated again using the new MadGraphv5$\_$aMC@NLO since normally this shouldn't change ...?
+  %\item Create branch for localgrid scripts! (Now already a branch exists for the documentation !)
   \item Understand \textit{CorrectPhi} comment in MadWeight name \\ $\rightarrow$ Maybe related with phi issues of neutrino's ...
-  \item EventWeight calculated in analyzer should be integrated into MadWeight output (Hence multiply MadWeight weight with the EventWeight for each event!) \\ \textbf{Otherwise all the effort to include the JES and PU stuff has no influence at all and is not taken into account!							}
+  \item EventWeight calculated in analyzer should be integrated into MadWeight output (Should MadWeight weight just be multiplied with the EventWeight for each event?) \\ \textbf{Otherwise all the effort to include JES and PU has no influence at all.							}
   \item Update EventNumberInformation file to only cout the information when the event has passed the eventSelection requirements. Otherwise just discard this event from the output file in order to avoid a long .txt file and long running time ...
-  \item When creating ntuples for Data/MC comparison the EventNumberInformation output should be stored here as well. This will allow to calculate the likelihood and weight distributions for specific $p_T$ cuts without having to run the entire base code again. So also the different python scripts which have been created should be moved to this .cc code in the future, so better not to spent too much time on improving these python scripts to avoid double work ...\\ For storing the generator decay channel information the c++ enum should be used which can store multiple variables (\textbf{Check this out!})
+  \item Construct nTuple in such a way that the likelihood and weight distributions can be calculated for specific $p_T$ cuts without having to run the entire base code again. So perhaps also necessary to include some of the different python scripts which have been created. Hence avoid spending too much time on improving them.
   \item Need to understand how MadWeight deals with the permutations ... Should this permutation of the light jets be done within MadWeight or should two .lhco files be created and sent separately to MadWeight. If the latter is the case, how should they be combined afterwards ?
-  \item Be careful with used Beam Energy when using MadGraph. In the newest MadGraph directory this still seems to be set to 7TeV in stead of the required 4 GeV. \\ \textbf{Could this have an influence on the obtained MadWeight results when using the new MadWeight version (connected to the newest MadGraph version) ...}
+  %\item Be careful with used Beam Energy when using MadGraph. In the newest MadGraph directory this still seems to be set to 7TeV in stead of the required 4 GeV. \\ \textbf{Could this have an influence on the obtained MadWeight results when using the new MadWeight version (connected to the newest MadGraph version) ...}
   \item Specific MadWeight question for the latest version: \\ \textit{The 'refine' option allows you to realunch the computation of the weights which have a precision lower than X. \textbf{But how can you find this precision?}}
-  \item Should a ScaleFactor correction be applied for the Branching ratio ? \\ \textit{This is not the case in code of James, but should find recommendations somewhere ...}
+  \item Should a ScaleFactor correction be applied for the Branching ratio ? \\ \textit{This is not the case in code of James, but should find recommendations somewhere.}
   \item \textbf{To Check:} Does MadWeight give a different weight when the Neutrino Mass changes?\\ $\rightarrow$ Currently mass is manually set to zero ...
-  \item Running the analyzer code with the PileUp and JES/JER influences correct and active, the number of preselected events in the Event Selection Table has changed. Need to understand if it is expected that these corrections have an influence (lowering the number) on the number of preselected events ...
-  \item Check whether the created root file can be trusted when the number of considered b-tags is greater than 1 ... !!
+  %\item Running the analyzer code with the PileUp and JES/JER influences correct and active, the number of preselected events in the Event Selection Table has changed. Need to understand if it is expected that these corrections have an influence (lowering the number) on the number of preselected events ...
+  \item Check whether the created root file can be trusted when the number of considered b-tags is greater than 1 ... \textit{Why this comment??}
 \end{itemize}
 
 \newpage
@@ -74,27 +74,33 @@
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+%	CHAPTER: Transfer Functions
+\chapter{Transfer Functions}
+\input{CHAPTERTransferFunctions.tex}
+%°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+
+%°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 %	CHAPTER: Preliminary Results
 \chapter{Preliminary Results}
-%\input{CHAPTERPreliminaryResults.tex}
+\input{CHAPTERPreliminaryResults.tex}
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 %	CHAPTER: Understanding Results Obtained With MadWeight
-\chapter{Understanding Results Obtained With MadWeight}
-%\input{CHAPTERUnderstandingResultsObtainedWithMadWeight.tex}
+\chapter{Understanding MadWeight Results}
+\input{CHAPTERUnderstandingMWResults.tex}
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 %	CHAPTER: Analyzing created FeynRules model
-\chapter{Analyzing created FeynRules model}
-%\input{CHAPTERAnalyzingCreatedFeynRulesModel.tex}
+\chapter{Analyzing FeynRules model}
+\input{CHAPTERAnalyzingFRModel.tex}
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
-%	CHAPTER: Remaining MadGraph/MadWeight issues
-\chapter{Remaining MadGraph/MadWeight issues}
-\input{CHAPTERRemainingMWMGIssues.tex}
+%	CHAPTER: MadGraph/MadWeight issues
+\chapter{MadGraph/MadWeight issues}
+\input{CHAPTERMWMGIssues.tex}
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°

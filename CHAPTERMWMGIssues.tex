@@ -1,0 +1,48 @@
+\section{Discussion with Olivier Mattelaer (8-9/01/2015)}
+
+During this discussion moment with Olivier Mattelaer many interesting subjects have been discussed, the most important of them are summarized below. A detailed overview with all suggestions and recommendations is also created, but not all of them have been added in this document. Many of these items ended up in the to-do list added further in the section.
+
+\subsection{Transfer Functions}
+
+The suggested way to investigate the influence of the created Transfer Functions is by first running the sample with a pure delta function for parton-level events. Afterwards the kinematics of the parton-level events of this sample should be smeared with the created Transfer Functions and then the sample should be ran again, this time with the new Transfer Functions. This ensures that in both cases the Transfer Function which is applied corresponds to the kinematics of the considered events. Any difference between the two results indicates a bias introduced by the Transfer Function.\\
+
+An important remark was the missing normalisation of the double Gaussian Transfer Function. Currently the necessary normalisation factors have not been added and should be done as soon as possible. This because a non-normalized Transfer Function could result in wrong weights and introduce a significant bias to the obtained results.\\
+
+A final important comment about the correct implementation of personal Transfer Functions is the behaviour outside the considered fit range. The strange distributions obtained for $p_T$ values outside the considered fit range did not appear in the results of Olivier (and Arnaud) because they had a different fitting algorithm which explicitely forced the Minuit fitter to search only for a local minimum where the relative normalisation of both Gaussians was positive\footnote{This is actually an allowed and physically motivated restriction which can be applied since it simply corresponds to requiring a probability to always stay positive.}.\\
+Since probabilities should always remain positive, the negative distributions should be excluded from the allowed options. This can be done by either adapting the used fitting algorithm to only consider positive probabilities or by simply changing the fit formula to use $max(0,a_{3})$ in stead of $a_{3}$. The second solution is the most straightforward to implement, but has as disadvantage that any event with very high or low $p_T$ will have weight $0$ and hence be thrown away.
+
+\subsection{Likelihood normalization}
+
+The correct formula for the $\ln(\mathcal{L})$ is given in Equation (\ref{eq::LLNorm}):
+\begin{equation} \label{eq::LLNorm}
+ - \sum_{i}^{N} \ln (\frac{1}{\sigma Acc} weight_{MW}) = N \ln \sigma + N \ln Acc - \sum_{i}^{N} \ln weight_{MW}
+\end{equation}
+
+The above given normalisation formula has already been applied succesfully on 1D-variation of the $V_R$ parameter while keeping the $V_{L}$ value fixed to its Standard Model expectation value. However similar success has not been obtained for the variation of the $V_L$ component. It is currently been investigated whether this is caused by considering a too restricted grid or whether it is caused by a lack of sensitivity of the $V_L$ variable. Both possibilities are likely because the observed variation between the different $V_L$ configurations is comparable to the uncertainty introduced by the XS normalisation part in the formula.\\
+
+This directly points the largest danger of using such a normalisation based on the XS of the considered configuration, namely the strong dependence on the uncertainty of the calculated cross section. This is illustrated in Equation (\ref{eq::LLNormUnc}):
+\begin{equation} \label{eq::LLNormUnc}
+ unc \sim N \frac{\Delta \sigma}{\sigma} + \sum \frac{\Delta weight_{MW}}{weight_{MW}}
+\end{equation}
+
+The first term in this Equation scales as $N$ while the second term only scales as $\sqrt{N}$ meaning that the first term quickly starts to dominate the total uncertainty. Therefore it is important to calculate these MadGraph cross sections for a large number of events in order to reduce the uncertainty as much as possible. The size of the relative uncertainty is also closely related to the number of events which will be calculated by MadWeight and hence a good balance should be found\footnote{Important to note is that the $N$ in the uncertainty formula should not be the same as the number of events used to calculate the MadGraph cross section. This $N$ variable is really the number of events which are submitted to MadWeight in order to calculate the corresponding weight for each specific configuration.}.
+
+\subsection{Cluster optimization}
+
+When discussing with Olivier about the restrictions of the IIHE cluster he mentioned the possibility to set a maximum number of jobs which can be submitted simultaneously to the cluster. This means that this maximum can be set to $2000$ in order to be in agreement with the maximum number of allowed jobs at the IIHE cluster. There exists even the option to explicitely set the number of remaining jobs which should be reached before a new bunch of jobs should be submitted. Hence this allows to wait until the number of jobs running is reduced to about $1500$ before a new set of jobs is submitted in order to reach again the maximum number of $2000$.\\
+This can all be changed in the $cluster.py$ file which has a class ``PBSCluster'' at about line $1016$.\\
+\\
+The huge benefit of the above mentioned cluster optimization is that it allows to keep using the ``collect'' option of MadWeight without the necessity of combining multiple separate runs of each $2000$ jobs. Hence one should just wait until all the events have been submitted and run the final collect step of the MadWeight setup.
+
+\subsection{Optimizations and bug fix}
+
+During this two-day discussion moment a couple of small optimizations of the used MadWeight configuration have been discovered.\\
+At first it was clear that the used MadWeight version was considered to be an old version for Olivier. Since rather recently a stable version is kept with multiple updates and necessary bug-fixes. The installation command for this newer version is the following and is currently installed as a new directory $NewestMW\_amcnlo$ on $/localgrid$.
+\begin{equation}
+  bzr ~~ branch ~~ lp: mg5amcnlo \nonumber
+\end{equation}
+
+Secondly the issue of negative weights when using a $\delta$ Transfer Function was resolved. This was caused by a discrepancy between the integral implemented in MadWeight and the one developed by Olivier. The reason for a second integral is in order to deal with multiple Transfer Functions during one single submission. The bug-fix was directly created by Olivier and is currently implemented in all directories on $/localgrid$.\\
+
+A final but rather important remark was the fact that the developed model allowed CKM suppressed W-boson decays. This did not influence the final result since the probability for such decays was extremely small but significantly enlarged the CPU time since MadWeight considers each possible decay and does the calculation of the probability for all of them. Hence excluding these types of decays should improve the CPU running time with possible a factor $4$.\\
+The restrictions on the model can easily be added in MadGraph as explained in the launchpad FAQ, and are currently implemented in the newest $/localgrid$ directory.
