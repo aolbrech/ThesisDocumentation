@@ -1,34 +1,25 @@
+In order to obtain reliable MadWeight results, the Transfer Functions which link the reconstructed energy distribution with the actual energy distributions should be taken into account. In the case of generator-level events this is less relevant since no significant smearing of the energy is expected. However in order to avoid any bias related to the used Transfer Functions it has been opted to use the constructed Transfer Functions, possibly with reduced width.\\
 
-In order to obtain reliable MadWeight results, the Transfer Functions which link the reconstructed energy distribution with the actual energy distributions should be taken into account. In the case of generator-level events this is less relevant since no significant smearing of the energy is expected. However in order to avoid any bias related to the used Transfer Functions it is prefered to use the constructed Transfer Functions but with reduced width.\\
-
-In this analysis it has been chosen to use a double Gaussian Transfer Function. This type of function is succesful in describing both the Gaussian distribution of the peak of the distributions, but also correctly takes into account the tail. This is prefered to a single Gaussian which only fits the peak and just discards the tail of the distribution. However, as can be seen from some of the distributions further in the text, the tail can become rather significant depending on the amount of available statistics.
-The following equation, Equation \ref{eq::FunctForm}, gives explicitely the functional form of the double Gaussian fit and the $p_T$-dependent ``calorimeter'' formula. As can be seen from this equation, the name calorimeter should not be taken to literally since it is only the actual calorimeter $p_T$-dependency in the case of the $\sigma$-parameters ($2 \& 5$) of the two Gaussian fits.
+In this analysis it has been chosen to use a double Gaussian Transfer Function\footnote{Some information about this kind of TF can be found in the thesis of Arnaud Pin ($cp3.irmp.ucl.ac.be/upload/theses/phd/$). The main difference is that he has chosen to use only 5 parameters and hence a slightly different normalisation factor. The current definition is based on code received from Petra and Lieselotte, which has been applied in the Master Thesis of Lieselotte.}. This type of function is succesful in describing both the Gaussian distribution of the peak of the distributions, but also correctly takes into account the tail. This is prefered to a single Gaussian which only fits the peak and just discards the tail of the distribution. However, as can be seen from some of the distributions further in the text, the tail can become rather significant depending on the amount of available statistics.
+Equation \ref{eq::FunctForm} gives explicitely the functional form of the double Gaussian fit and Equations (\ref{eq::PtCaloTF})-(\ref{eq::PtOtherTF}) the $p_T$-dependent ``calorimeter'' formula. This name should not be taken to literally since it is only the actual calorimeter $p_T$-dependency for the $\sigma$-parameters ($2$ $\&$ $5$) of the two Gaussian fits.
 \begin{eqnarray}
- a_3 \times e^{-\frac{(x-a_1)^2}{2*a_{2}^{2}}} + a_6 \times e^{-\frac{(x-a_4)^2}{2*a_{5}^{2}}} \\
- a_{x,0} + a_{x,1} \times \sqrt{p_T} + a_{x,2} \times p_T \;\;\;  \textrm{( for x = 2 \& 5 )} \\
- a_{x,0} + a_{x,1} \times p_T + a_{x,2} \times p_{T}^{2} + a_{x,3} \times p_{T}^{3} + a_{x,4} \times p_{T}^{4} \;\;\; \textrm{(for x = 1, 3, 4 \& 6)} \label{eq::FunctForm}
+ & & \frac{1}{\sqrt{2\pi}}*\frac{1}{a_2 ~ a_3 + a_3 ~ a_5}\left( a_3 ~ \exp\left[-\frac{(x-a_1)^2}{2*a_{2}^{2}}\right] + a_6 ~ \exp \left[-\frac{(x-a_4)^2}{2*a_{5}^{2}} \right] \right) \label{eq::FunctForm} \\
+ & & a_{x,0} + a_{x,1} \times \sqrt{p_T} + a_{x,2} \times p_T \;\;\;  \textrm{( for x = 2 \& 5 )} \label{eq::PtCaloTF} \\
+ & & a_{x,0} + a_{x,1} \times p_T + a_{x,2} \times p_{T}^{2} + a_{x,3} \times p_{T}^{3} + a_{x,4} \times p_{T}^{4} \;\;\; \textrm{(for x = 1, 3, 4 \& 6)} \label{eq::PtOtherTF} 
 \end{eqnarray}
 
-The method to obtain the parameters describing the energy smearing is (partly) explained in the PhD Thesis of Arnaud Pin\footnote{It should be noted that in his thesis (available on $cp3.irmp.ucl.ac.be/upload/theses/phd/$), and in the current double Gaussian transfer function syntax in MadWeight, only 5 parameters are used. The narrow gaussian distribution doesn't have a normalisation parameter in front, but is normalized afterwards in the MadWeight code.}.
+The method used to calculate the Transfer Functions is based on the $FitSlicesY()$ $ROOT$ class, however originally some differences existed\footnote{Even even after carefully ensuring that both methods are identical the obtained results were not. Up to now it is not clear what is the reason for the discrepancy between the two results and the only way to find out is comparing the distributions and results for a significant amount of statistics.}.
+The most important difference between the two approaches was the treatment of the underflow and overflow bin. In the original method these two bins were added to the first and last bin, respectively, and hence included in the fit input. This is not desired since the size of the underflow/overflow bin can be relatively large compared to the first/last bin and significantly change the bin content. This could then result in a wrong position of the first/last bin and, especially in the case of a limited number of bins, have a significant influence on the fit output.
+Now these underflow and overflow bins are excluded from the fit range and will have no influence on the final result.\\
+The benefit of using this method is that it is able to save much more histograms than the $ROOT$ class. It saves for each considered distribution, the ProjectionY distribution together with the double Gaussian fit for this bin. 
 
-The used calculation of the Transfer Functions is based on the code received from Petra and Lieselotte, which was used in the Master thesis of Lieselotte\footnote{Additional feedback was also received from Arnaud, but he was using a completely different unbinned likelihood method. Since this only arrived after a couple of weeks waiting, it was decided to continue with the binned likelihood method used by Petra and Lieselotte.}.% However it should be noted that the original code only had $4$ bins due to limited statistics, and now $10$ bins are used.\\
-Detailed information can be found in the following directories:
+Detailed information is stored in the following directories:
 \begin{eqnarray*}
- & & /home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/\\ 
- & & PrepareGenLevelRunning\_Sep2014/TransferFunctions \\
- & & m-machines directory?
+ & & AnomalousCouplings/PrepareGenLevelRunning\_Sep2014/TransferFunctions \\
+ & & m-machines ~~ directory?
 \end{eqnarray*}
 
-The received code is almost identical to the so-called $ROOT$ class $FitSlicesY()$ but has some differences, some of them have already been changed in order to match better with the ROOT class.
-One of the most important differences between the two approaches was the treatment of the underflow and overflow bin. In the received code these two bins were respectively added to the first and last bin and hence included in the fitting range. This is not the desired behavior since the size of underflow/overflow bin can be relatively large compared to the first/last bin and significantly change the value of these bins. This would then imply that the position of the first and last bin is not located at the correct position and will, especially in the case of a limited number of bins, have a significant influence on the fit result.
-Now these underflow and overflow bins are just discarded from the fit range and will have no influence on the final result.
-
-Another important, but useful, difference between the two methods is the number of histograms which are saved. The received code saves for each distribution which is considered, the ProjectionY distribution together with the double Gaussian fit for this bin. This can not be changed in the ROOT class which only stores the distribution of the 6 parameters of the double Gaussian fit formula.\\
-
-However, even after carefully ensuring that both methods are identical the obtained results are not.
-Up to now it is not clear what is the reason for the discrepancy between the two results and the only way to fund out is comparing the distributions and results for a significant amount of statistics.\\
-One possibility is the used fit ranges and number of bins. If the last bins are low on statistics their distribution might not agree with a double Gaussian distribution and hence result in a failed fit. Therefore the distribution for each ProjectionY bin is now closely studied for all of the considered histograms. This can be found is the following section \ref{subsec::FitRanges}.
-
+STILL TO REVIEW
 \section{Creation of the Transfer Function}
 In this section the different steps which were performed in order to built and implement the Transfer Function (TF) will be discussed in detail. The TF's used in this analysis are assumed to be uncorrelated, as shortly discussed in the PhD thesis of Arnaud. This assumption is important since otherwise it allows to built them for each variable separately, as given in Equation~\ref{eq::TFAssumption}. The correctness of this assumption can be checked by looking at $E$ vs $\theta$, $E$ vs $\phi$ and $\theta$ vs $\phi$ histograms.
 \begin{equation} \label{eq::TFAssumption}
