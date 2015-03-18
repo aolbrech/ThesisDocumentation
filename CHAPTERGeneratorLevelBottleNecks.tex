@@ -1,16 +1,17 @@
 
-The goal is to obtain results on generator-level as fast as possible in order to ensure that no bottlenecks are encountered when running MadWeight.
-The advantage of only using these events is that one can be completely sure that they are actual semi-leptonic ttbar events. Hence MadWeight should not have any problems calculating the weight for these kind of events and no CPU time will be spent on uncorrect events.\\
+The idea behind studying generator-level results is to ensure that no bottlenecks are encountered when running MadWeight.
+The advantage of only using these type of events is that one can be completely sure that they are actual semi-leptonic ttbar events. Hence MadWeight should not have any problems calculating the weight for these kind of events and no CPU time will be spent on uncorrect events.
 This implies that any deviation from the expected results implies a bias, or even a problem, concerning the MadWeight output.\\
-\\
-Once the results correspond to the expectations these preliminary results could be easily extended to reconstructed events. Finalizing the event selection then allows to fully trust the results obtained on reconstructed level and make sure that any new deviation can be explained by the influence of the applied event selection.\\
-These results can then be used to optimize the event selection with respect to the MadWeight output and CPU time needed.\\
-\\
-However the first results obtained with MadWeight in this personally FeynRules model did not result in the desired solution. It was observed that the minimum of the obtained $\ln(\mathcal{L})$ did not correspond the the expected Standard Model value of ($V_{L}, V_R)$) = ($1.0, 0.0$). This was then investigated further and a possible solution was found in the missing cross section normalisation. Hence a detailed calculation of the cross section value of each point in the grid was performed, and also here some discrepancies were found. The most important one was the observation that the cross section values varied when moving from one MadGraph version to the other one. Hence also here a thourough investigation was performed.
+
+Once the results correspond to the expectations, these preliminary results could be easily extended to reconstructed events. Finalizing the event selection then allows to fully trust the results obtained on reconstructed level and make sure that any new deviation can be explained by the influence of the applied event selection.
+These results can then be used to optimize the event selection with respect to the MadWeight output and CPU time needed.
+%
+%However the first results obtained with MadWeight in this created FeynRules model did not result in the desired solution. It was observed that the minimum of the obtained $-\ln(\mathcal{L})$ did not correspond the the expected Standard Model value of ($V_{L}, V_R)$) = ($1.0, 0.0$). This was then investigated further and a possible solution was found in the missing cross section normalisation. Hence a detailed calculation of the cross section value of each point in the grid was performed, and also here some discrepancies were found. 
+%The most important one was the observation that the cross section values varied when moving from one MadGraph version to the other one. Hence also here a thourough investigation was performed.
 
 \section{Uncorrect $\ln(\mathcal{L})$ minimization}
-
-The first obtained MadWeight results for the enlarged grid ($V_L$ $\in$ $[0.8,1.2]$ and $V_R$ $\in$ $[-1,1]$) using only parton-level ttbar events did not result in the expected minimum of $(V_L,V_R)$ = $(1, 0)$. This can be observed in Figure~\ref{fig::Likelihood} which contains the distribution of the $\ln(\mathcal{L})$ for each point of the grid. Looking at these values in detail clearly shows that the minimum of this distribution can be found in both upper corners, and not in the expected center of the grid. It is even worse than at first sight, because the Standard Model value actually almost corresponds to the maximum of the distribution. The only two values which are still slightly higher are the ($0.9,0.0$) and ($0.8,0.0$) ones.\\
+The first obtained results for the full grid ($V_L$ $\in$ $[0.8,1.2]$ and $V_R$ $\in$ $[-1,1]$) using only parton-level ttbar events did not result in the expected minimum of $(V_L,V_R)$ = $(1, 0)$. This can be observed in Figure~\ref{fig::Likelihood} which contains the distribution of the $\ln(\mathcal{L})$ for each point of the grid. Looking at these values in detail clearly shows that the minimum of this distribution can be found in both upper corners, and not in the expected center of the grid. It is even worse than at first sight, because the Standard Model value corresponds almost to the maximum of the distribution. The only two values which are still slightly higher are the ($0.9,0.0$) and ($0.8,0.0$) ones.\\
+A possible explanation for this discrepancy is the missing normalisation of the cross section for each point in the grid. Figure~\ref{fig::XS} contains the relative cross section, $\frac{XS}{XS^{SM}}$, for each point in the grid and clearly shows that this distribution has the opposite behavior as the $-\ln(\mathcal{L})$. Hence normalising the MadWeight output with this relative cross section factor might result in a correct minimization.\\
 \begin{figure}[htb!]
  \centering
  \includegraphics[width = 0.9 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLikelihoodDistr_July2014/AnomCouplings_GenEvent_NoSelect_Oct3200Events_SingleGaussUsed/Likelihood_NoXSNorm.png}
@@ -18,62 +19,43 @@ The first obtained MadWeight results for the enlarged grid ($V_L$ $\in$ $[0.8,1.
  \label{fig::Likelihood}
 \end{figure}
 
-The reason why the cross section normalisation is seen as a possible explanation can be understood from the left distribution in Figure~\ref{fig::XS}. This shows the XS normalisation, $\frac{XS}{XS^{SM}}$, for each point in the grid. It clearly indicates the exactly opposite behavior as the $\ln(\mathcal{L})$ distribution which might hint at an uncorrected XS influence breaking down the $\ln(\mathcal{L})$ minimization.
 \begin{figure}
   \includegraphics[width = 0.9 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLikelihoodDistr_July2014/AnomCouplings_GenEvent_NoSelect_Oct3200Events_SingleGaussUsed/XSNorm.png}
  \caption{Distribution of the XS normalisation for positive semi-muonic ttbar events. As in the previous figure 3200 positive semi-muonic have been used to obtain this distribution and a single gaussian transfer function has been applied to smear the kinematics of these parton-level events.}
  \label{fig::XS}
 \end{figure}
 
-This XS normalisation was originally applied to the Madweight output, but has been removed since the MadGraph5 version. However in the following papers, $arXiv:1101.2259$ and $inspirehep:854451$, motivation has been found for the original used implementation. The so-called general Matrix Element formula takes the following form:
+Originally XS normalisation was applied in MadWeight, but has been removed in the MadGraph5 version. But correct implementation can easily be derived from the so-called general Matrix Element\footnote{Obtained from papers $arXiv:1101.2259$ and $inspirehep:854451$.} formula which is given in Equation (\ref{eq::ProbMW}). 
 \begin{eqnarray}
- & & P(y \vert a) = \frac{1}{\textcolor{red}{\sigma(a)}*Acc(a)} \int W(y|x,a)*Eff(x,a) \vert M(x,a) \vert^{2} T(x,a) dx \label{eq::ProbMW}\\
- & & \mathcal{L} = \prod P(y \vert a)
+ & & P(y \vert a) = \frac{1}{\textcolor{red}{\sigma(a)}*Acc(a)} \int W(y|x,a) \vert M(x,a) \vert^{2} dx \label{eq::ProbMW}\\
+ & & \mathcal{L} = \prod P(y \vert a) \\
+ & &  \sigma(a) = \int_{X_i} \vert M(x,a) \vert^{2} dx
 \end{eqnarray}
 
-In this Equation, (\ref{eq::ProbMW}), the factor $\sigma(a)$ is defined the channel cross section and can actually be seen as a sort of XS normalisation factor. This factor was the one which was originally implemented in the older MadWeight versions but now is removed. However this still seems to suggest that the current normalisation $\frac{XS}{XS^{SM}}$ might be too simplistic and should be changed towards this channel cross section which is defined as:
-\begin{equation}\label{eq::ChannelXSMW}
- \sigma(a) = \int_{X_i} \vert M(x,a) \vert^{2} T(x,a) dx
-\end{equation}
-
-Besides the correctness of the used XS normalisation, special care should be awarded to the implementation of this normalisation. At first it was uncorrectly multiplied with the $\ln(\mathcal{L})$ value, but such an implementation would only be correct in case the full $\mathcal{L}$ is used and not when the $\ln$ is taken. 
-Hence the implemenation has been adapted in such a way that the logarithm is correctly taken into account\footnote{\textit{It should be checked whether this is the correct method to take into account the normalisation of the XS. Currently it has been assumed that this XS normalisation should be applied for each weight and hence is multiplied with the number of considered events. In the case that this normalisation should just be multiplied with the overall likelihood value ($\mathcal{L}$) the sum over the number of considered events drops out of the equation implying a very small influence of the XS on the $\ln(\mathcal{L})$ distribution.}}, as given in Equation (\ref{eq::LikelihoodNorm}). 
-Figure~\ref{fig::XS} contains the above mentioned implementation but the caption has not yet been updated. 
+The factor $\sigma(a)$ is defined as the channel cross section and is the XS normalisation factor which should be applied. So the previous use of $\frac{XS}{XS_{SM}}$ was incorrect, especially because the new cross section value was placed in the numerator in stead of in the denominator. The additional part with normalising with respect to the Standard Model cross section, $XS_{SM}$, is less important because it will only introduce a general up- or down-scaling of the overall normalisation factor since it is the same for each point in the grid.\\
+Since the negative log of the likelihood is used as MadWeight output, special care should be awarded to the correct implementation of this normalisation factor. Since it has to be applied for each weight separately, the correct formula is the one in Equation (\ref{eq::LikelihoodNorm}). 
 \begin{equation}\label{eq::LikelihoodNorm}
- \mathcal{L}_{Norm} = - ln(\sum P(y \vert a)*\frac{XS}{XS^{SM}}) = -ln(\mathcal{L}) - ln(\frac{XS}{XS^{SM}}*N)
+ -\ln(\mathcal{L}_{Norm}) = - ln(\sum P(y \vert a)*\frac{1}{XS}) = -ln(\mathcal{L}) + N*ln(XS)
 \end{equation}
 
 \begin{figure}[!h]
  \includegraphics[width = 0.9 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/UnderstandLikelihoodDistr_July2014/AnomCouplings_GenEvent_NoSelect_Oct3200Events_SingleGaussUsed/Likelihood_XSNorm.png}
- \caption{Distribution of the $\ln(\mathcal{L})$ after taking into account the XS normalisation. Again 3200 positive semi-muonic have been used and a single gaussian transfer function has been applied.}
+ \caption{Distribution of the $\ln(\mathcal{L})$ after taking into account the XS normalisation. Again 3200 positive semi-muonic have been used and a single gaussian transfer function has been applied. \textbf{WRONG NORMALISATION!}}
  \label{fig::LikelihoodNorm}
 \end{figure}
-However, even after applying this normalisation, the minimization of the $\ln(\mathcal{L})$ still does not return the Standard Model value. Therefore additional research has been performed in order to understand the origin of this discrepancy. The most likely solution is still related to the XS normalisation and is maybe expected that the current normalisation applied does not have the correct form. More detail about this matter can be found in Section~\ref{sec::MWNorm}.
 
-\section{Normalisation of Matrix Element probability}\label{sec::MWNorm}
-As mentioned before, the general Matrix Element formula (Equation~\ref{eq::ProbMW}) contains a normalisation term $\sigma(a)$. According to a mail received on 31/10/2014 this normalisation is not applied anymore automatically and should be implemented personally. 
-
-\paragraph{Smallness of obtained weights\\}
-All the weights calculated by MadWeight when using this AnomalousCouplings FeynRules model result in very small values and uncertainties. Up to now no weight larger than $10^{-22}$ have been encountered which results in a very large $\ln(\mathcal{L})$ value.
-
-It is not clear what is the cause of these small values, but some possibilities are listed below. For the moment it is also not completely understood whether this smallness of the weights is actually related to the missing XS normalisation. First tests already have been performed in order to rule out whether such small weights are only obtained when the AnomalousCouplings FeynRules model is used and this seems not to be the case. Even when the Standard Model is used and the top mass is simulated, the calculated weights are as small as in the case of the personal FeynRules model.
-\begin{itemize}
- \item The normalisation of the MadWeight probability should still be done and is not performed within the Matrix Element Techniques formula.
- \item The smallness of the weight could be caused by an error inside the created FeynRules model\footnote{Should also look for the mail where one of the MadWeight experts (Olivier/Pierre or even Celine) answered about the possible explanation for the smallness of the weight and whether this implies some wrong assumptions.}.
-\end{itemize}
+After applying this normalisation, the minimization of $-\ln(\mathcal{L})$ returns the correct value for the $V_R$ component but not for the $V_L$ component. A possible explanation for the wrong results for the left-handed vector coupling is the fact that this parameter only influences the cross section and not the kinematics of the particles present in the decay. Hence it is possible that MadWeight is not optimized for measuring these kind of variables since it focusses on kinematic information. Variables which are directly influenced can be measured by a counting experiment, as is done for the $V_L$ coupling in single-top events. Some additional investigation in this subject is performed and will be discussed further.
 
 \subsection{Control check: Top Mass Measurement}
-In order to check whether this XS normalisation results in an overall influence on the obtained MadWeight output, the MadWeight generator had been used to select the most plausible top-quark mass. So instead of generator different ($V_L, V_R$) grid points, five different top-quark masses have been simulated. If this would also return a completely wrong, it would be an important indication of an important issue with MadWeight. This because MadWeight has already been used succesfully to measure the top-quark mass.
+In order to check whether this XS normalisation results in an overall influence on the obtained MadWeight output, the MadWeight generator had been used to select the most plausible top-quark mass. So instead of generator different ($V_L, V_R$) grid points, five different top-quark masses have been simulated. If this would also return a completely wrong, it would be an important indication of an important issue with MadWeight. This because MadWeight has already been used succesfully to measure the top-quark mass.\\
 
-In order to compare the top-quark mass result with the ($V_L,V_R$) one, a couple of additional comparisons have been performed as will be discussed in detail next.
+In order to compare the top-quark mass result with the ($V_L,V_R$) one, a couple of additional comparisons have been performed as will be discussed in detail next. This mainly corresponds to comparing the predefined Standard Model FeynRules model with the newly created Anomalous Couplings one.
 
-STILL TO REVIEW
-
-\paragraph{Comparing SM model with AnomalousCouplings model\\}
-As a first step the Feynmann diagrams belonging to the two different models should be compared. This information can be found in the \textit{index.html} file in the following directories (and the files should be opened using firefox on mtop since this is the only m-machine with a working browser):
+\paragraph{Comparing Feynman diagramsSM model with AnomalousCouplings model\\}
+As a first step the Feynmann diagrams belonging to the two different models should be compared. This information can be found in the \textit{index.html} file in the following directories:
 \begin{eqnarray*}
- \tiny{/AnomalousCouplings/MadGraph5\_aMC@NLO/madgraph5/SM\_ttbarSemiMuPlus} \\
- \tiny{/AnomalousCouplings/MadGraph5\_aMC@NLO/madgraph5/ttbarSemiMuPlus\_QED2}
+ \tiny{MadGraph5\_aMC@NLO/madgraph5/SM\_ttbarSemiMuPlus}  \\
+ \tiny{MadGraph5\_aMC@NLO/madgraph5/ttbarSemiMuPlus\_QED2}
 \end{eqnarray*}
 
 \paragraph{Comparing SM cross section with MassiveLeptons cross section\\}
@@ -99,14 +81,14 @@ From this table can be seen that there is, for both considered MadGraph versions
 A larger differrence occurs when both MadGraph versions are compared. From the answer received by Olivier it is not clear whether this difference is worrysome or could be explained by the LO theoretical uncertainties. Should also be investigated whether this difference is related to the NLO behavior of the newest MadGraph version. In case the MadGraph v155 version is not up to NLO a difference in cross section is definitely expected.
 
 \paragraph{Understanding why Top Mass simulation does result in correct Likelihood minimum\\}
-When using the $MadGraph5\_aMC@NLO$ MadWeight version is used to scan over the different top mass values the correct minimum is obtained directly, so without any normalisation or acceptance influences. This simulation only uses the Standard Model information and doesn't consider the AnomalousCouplings FeynRules model.
+When using the $MadGraph5\_aMC@NLO$ MadWeight version is used to scan over the different top mass values the correct minimum is obtained directly, so without any normalisation or acceptance influences. This simulation only uses the Standard Model information and doesn't consider the AnomalousCouplings FeynRules model.\\
+\textbf{Repeat with smaller top quark differences ...}\\
 The results can be found in Table \ref{Table::MWTopMass}
-
 \begin{table}[h!]
  \centering
  \begin{tabular}{|c|c|c|}
   \hline
-  \multirow{2}{*}{$m_{t}$}	&  \multicolumn{2}{|c|}{$\ln(\mathcal{L})$} \\ 
+  \multirow{2}{*}{$m_{t}$}	&  \multicolumn{2}{|c|}{Negative log likelihood ($-\ln(\mathcal{L})$)} \\ 
 				& MW$\_$aMC@NLO	& MW$\_$aMC@NLO ML model\\
   \hline
     153 			& 196 499	& 118 238\\
@@ -116,23 +98,23 @@ The results can be found in Table \ref{Table::MWTopMass}
     193				& 192 926	& 119 717\\
   \hline 
  \end{tabular} 
- \caption{ caption ..} \label{table::MGXS}
+ \caption{ caption ..} \label{table::MWTopMass}
 \end{table}
 
 \subsection{Influence of the acceptance term}
-
-In order to finalize the normalisation of the weight obtained from MadWeight also the influence of the acceptance term $Acc(a)$ has to be investigated. Since no reconstructed events exist are created for the different vector coupling coefficients, the influence of the applied event selection can only be applied on generator-level. This will normally introduce a slight bias since applying the reco-level cuts on generator-level will result in more stringent cuts than actually applied on the reconstructed events due to the smaller width of the kinematic distributions. However it is the only way to get an idea of the influence of the event selection and, as long as a flat dependency is found throughout the vector couplings, an acceptable one.\\
+As could be seen from the general Matrix Element formula, Equation (\ref{eq::ProbMW}), also the acceptance $Acc(a)$ has to be taken into account. This term represents the influence of the event selection, which can be different for each point in the considered grid.
+Since no reconstructed events exist for the different vector coupling coefficients, the influence of the event selection is currently only be measured on generator-level\footnote{A Fast/FullSim comparison should be done afterwards for a full detailed influence!}. This can introduce a slight bias since applying the reco-level cuts on generator-level result in slightly tighter cuts due to the smaller width of the kinematic distributions. But it is a good way to get an idea of the influence of the event selection and, as long as a flat dependency is found throughout the vector couplings, an acceptable one.\\
 \\
-The event selection influence is investigated by looking both at the change in cross section and at the difference of different kinematic distributions. This first is achieved by simulating events with different vector coupling coefficients and analyze the change in cross section. This is done for 1-dimensional scans of both the left-handed as right-handed vector coupling coefficients while the other is set to its Standard Model expectation value. The results together with the procentual reduction in cross section by the application of the event selection is given in Table \ref{table::XSChangeAccVL} and Table \ref{table::XSChangeAccVR} for the 1D change of $V_L$ and $V_R$, respectively. All the created MadGraph files are located in the following directory:
+The event selection influence is investigated by looking at the variation in cross section and influence on the kinematic distributions. The variation in cross section is measured using 1-dimensional scans of both the left-handed as right-handed vector coupling coefficients while the other is set to its Standard Model expectation value. The results are given in Table \ref{table::XSChangeAccVL} and Table \ref{table::XSChangeAccVR} for the 1D change of $V_L$ and $V_R$, respectively. All the created MadGraph files are located in the following directory:
 \begin{eqnarray*}
-  MadGraph5\_aMC@NLO/madgraph5/TopMassCheckQED2\_ttbarSemiMuPlus\_ML
+  \scriptsize MadGraph5\_aMC@NLO/madgraph5/TopMassCheckQED2\_ttbarSemiMuPlus\_ML
 \end{eqnarray*}
 
 \begin{table}[h!]
  \centering
  \begin{tabular}{|c|c|c|c|}
   \hline
-  \multirow{2}{*}{Top quark mass} 	&  \multicolumn{3}{|c|}{1D change of Re($V_L$)}				\\
+  \multirow{2}{*}{$(V_L,V_R)$} 	&  \multicolumn{3}{|c|}{1D change of Re($V_L$)}				\\
 					&  All events	& Reco $p_T$ cuts applied	& Reduction ($\%$) 	\\
   \hline
     (0.8, 0.0) 				& $3.62605$ pb	& $0.9423$ pb			& $25.99$ 		\\
@@ -149,7 +131,7 @@ The event selection influence is investigated by looking both at the change in c
  \centering
  \begin{tabular}{|c|c|c|c|}
   \hline
-  \multirow{2}{*}{Top quark mass} 	& \multicolumn{3}{|c|}{1D change of Re($V_R$)}  			\\
+  \multirow{2}{*}{$(V_L,V_R)$} 	& \multicolumn{3}{|c|}{1D change of Re($V_R$)}  			\\
 					& All events	& Reco$p_T$ cuts applied	& Reduction ($\%$) 	\\
   \hline
     (1.0, -1.0)				& $37.7415$ pb	& $11.98$ pb			& $31.74$		\\
@@ -162,66 +144,61 @@ The event selection influence is investigated by looking both at the change in c
  \caption{} \label{table::XSChangeAccVR}
 \end{table}
 
-From these Tables can be concluded that the influence of the event selection on the cross section is flat and equal throughout the entire vector coupling grid. This would be a positive result since it would imply that no additional analytical function is necessary to normalise the MadWeight output. Hence the MadWeight output should only be normalized for the Cross Section influence, but not the event selection one.\\
+From these Tables can be concluded that the influence of the event selection on the cross section is flat and equal throughout the entire vector coupling grid. This would be a positive result since it would imply that no additional analytical function is necessary to normalise the MadWeight output. Hence the MadWeight output should only be normalized for the Cross Section influence, but not for the event selection one.\\
 \\
-The second method of analyzing the ifnluence of the event selection on the vector couplings is by comparing the kinematical distributions before and after the event selection is applied. Special attention is awarded to ensuring no difference in shape is observed for the different vector coupling coefficients after the event selection is applied. If this would be the case the influence of the event selection wouldn't be flat as suggested by the change in cross section. However, comparing all kinematic distributions indeed suggests that no significant change is observed when comparing the different kinematic distributions. The full list of distributions can be found in the directory listed below, but the ones for the $\cos \theta^{*}$ variable, the $p_T$ distribution for the lepton, for the b-quark originating from the hadronically decaying top quark and for the down-quark originating from the W-boson decay are given in Figure \ref{fig::KinChangeCosTheta}, Figure \ref{fig::KinChangeLeptonPt}, Figure \ref{fig::KinChangeBJetPt} and Figure \ref{fig::KinChangeDownQPt}, respectively.
-\begin{eqnarray*}
- .../ThesisSubjects/AnomalousCouplings/KinematicDistributions\_AcceptanceTerm\_Dec2014 \\
-\end{eqnarray*}
-
+The influence of the event selection on the kinematic distributions is measured by comparing the distributions before and after the event selection is applied. Also here, no significant change is observed implying again that the influence of the event selection can be assumed to be flat throughout the entire grid. All the distributions can be found in the local directory $KinematicDistributions\_AcceptanceTerm\_Dec2014$, but the ones for the $\cos \theta^{*}$ variable, the $p_T$ distribution for the lepton, for the b-quark originating from the hadronically decaying top quark and for the down-quark originating from the W-boson decay are given in Figure \ref{fig::KinChangeCosTheta}, Figure \ref{fig::KinChangeLeptonPt}, Figure \ref{fig::KinChangeBJetPt} and Figure \ref{fig::KinChangeDownQPt}, respectively.\\
 \begin{figure}[!h]
  \centering
- \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVLStable_ReVRVarying_CosTheta.pdf}
- \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStable_ReVLVarying_CosTheta.pdf}\\
- \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVLStable_ReVRVarying_PtCuts_CosTheta.pdf}
- \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStable_ReVLVarying_PtCuts_CosTheta.pdf}
+ \includegraphics[width = 0.45 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVLStable_ReVRVarying_CosTheta.pdf}
+ \includegraphics[width = 0.45 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStable_ReVLVarying_CosTheta.pdf}\\
+ \includegraphics[width = 0.45 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVLStable_ReVRVarying_PtCuts_CosTheta.pdf}
+ \includegraphics[width = 0.45 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStable_ReVLVarying_PtCuts_CosTheta.pdf}
  \caption{Distribution of $\cos \theta^{*}$ variable for both 1D-variation of the vector coupling coefficients. The top figures depict the distributions before the application of any event selection while the lower ones show the same distribution but after the reco-level $p_T$ cuts have been applied.}
  \label{fig::KinChangeCosTheta}
 \end{figure}
 
 \begin{figure}[!h]
  \centering
- \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVLStable_ReVRVarying_LeptonPt.pdf}
- \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStable_ReVLVarying_LeptonPt.pdf}\\
- \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVLStable_ReVRVarying_PtCuts_LeptonPt.pdf}
- \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStable_ReVLVarying_PtCuts_LeptonPt.pdf}
+ \includegraphics[width = 0.45 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVLStable_ReVRVarying_LeptonPt.pdf}
+ \includegraphics[width = 0.45 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStable_ReVLVarying_LeptonPt.pdf}\\
+ \includegraphics[width = 0.45 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVLStable_ReVRVarying_PtCuts_LeptonPt.pdf}
+ \includegraphics[width = 0.45 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStable_ReVLVarying_PtCuts_LeptonPt.pdf}
  \caption{Distribution of transverse momentum of the lepton for both 1D-variation of the vector coupling coefficients. The top figures depict the distributions before the application of any event selection while the lower ones show the same distribution but after the reco-level $p_T$ cuts have been applied.}
  \label{fig::KinChangeLeptonPt}
 \end{figure}
 
 \begin{figure}[!h]
  \centering
- \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVLStable_ReVRVarying_HadrBJetPt.pdf}
- \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStable_ReVLVarying_HadrBJetPt.pdf}\\
- \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVLStable_ReVRVarying_PtCuts_HadrBJetPt.pdf}
- \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStable_ReVLVarying_PtCuts_HadrBJetPt.pdf}
+ \includegraphics[width = 0.45 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVLStable_ReVRVarying_HadrBJetPt.pdf}
+ \includegraphics[width = 0.45 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStable_ReVLVarying_HadrBJetPt.pdf}\\
+ \includegraphics[width = 0.45 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVLStable_ReVRVarying_PtCuts_HadrBJetPt.pdf}
+ \includegraphics[width = 0.45 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStable_ReVLVarying_PtCuts_HadrBJetPt.pdf}
  \caption{Distribution of the transverse momentum of the b-quark originating from the hadronically decaying top quark for both 1D-variation of the vector coupling coefficients. The top figures depict the distributions before the application of any event selection while the lower ones show the same distribution but after the reco-level $p_T$ cuts have been applied.}
  \label{fig::KinChangeBJetPt}
 \end{figure}
 
 \begin{figure}[!h]
  \centering
- \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVLStable_ReVRVarying_LightQuarkDownPt.pdf}
- \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStable_ReVLVarying_LightQuarkDownPt.pdf}\\
- \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVLStable_ReVRVarying_PtCuts_LightQuarkDownPt.pdf}
- \includegraphics[width = 0.48 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStable_ReVLVarying_PtCuts_LightQuarkDownPt.pdf}
+ \includegraphics[width = 0.45 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVLStable_ReVRVarying_LightQuarkDownPt.pdf}
+ \includegraphics[width = 0.45 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStable_ReVLVarying_LightQuarkDownPt.pdf}\\
+ \includegraphics[width = 0.45 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVLStable_ReVRVarying_PtCuts_LightQuarkDownPt.pdf}
+ \includegraphics[width = 0.45 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStable_ReVLVarying_PtCuts_LightQuarkDownPt.pdf}
  \caption{Distribution of the transverse momentum of the down-type quark originating from the W-boson for both 1D-variation of the vector coupling coefficients. The top figures depict the distributions before the application of any event selection while the lower ones show the same distribution but after the reco-level $p_T$ cuts have been applied.}
  \label{fig::KinChangeDownQPt}
 \end{figure}
 
-From the distributions given above can easily be concluded that some shape difference are visible for the 1D-variation of the right-handed vector coupling. However for the left-handed vector coupling $V_R$ no influence is visible, besides some minor statistical fluctuations, when varying the value of $V_R$. It is also clear that the influence of the $V_R$ 1D-variation is not the same for each of the kinematical distributions, and even negligible for the $p_T$ distribution of the b-jet originating from the hadronically decaying top quark. Since the shift of the distribution is different for the $p_T$ distribution of the lepton and the down-type quark of the W-boson, the result is still in agreement with the flat change in cross section. This because the additional events for one distribution are balanced out by the reduced number of events for another distribution resulting a net effect of zero and hence a flat behavior troughout the entire vector coupling coefficients grid.
+From the distributions given here can easily be concluded that some shape differences are visible for the 1D-variation of the right-handed vector coupling. However for the left-handed one no influence is visible when varying the value of $V_R$, besides some negligible statistical fluctuations. It is also clear that the influence of the $V_R$ 1D-variation is not the same for each of the kinematical distributions, and even negligible for the $p_T$ distribution of the b-jet originating from the hadronically decaying top quark. Since the shift of the distribution is different for the $p_T$ distribution of the lepton and the down-type quark of the W-boson, the result is still in agreement with the flat change in cross section. This because the additional events for one distribution are balanced out by the reduced number of events for another distribution resulting a net effect of zero and hence a flat behavior troughout the entire vector coupling coefficients grid.
 
 \subsubsection{Understanding 1D-variation of $V_L$}
-The influence of the variation of the right-handed vector coupling $V_R$ on the kinematic distributions was rather satisfactory and in some way agreeing with expactations. However the same is definetely not true for the variation of the left-handed vector coupling $V_L$. On the contrary, it can even be concluded that the obtained result was a complete surprise and needs to be understood as soon as possible in order to keep confidence in the created FeynRules model. This because a possible explanation can always be a wrong configuration of the anomalousCouplings FeynRules model with would result in a major setback for the analysis and the tight time schedule.\\
-\\
-Therefore new MadGraph files, and kinematic distributions, have been created with the same 1D-variation of the left-handed vector coupling $V_L$ but in stead of setting the $V_R$ value equal to its Standard Model expectation of $0$ it was set to $0.2$. The reason behind this different value for $V_R$ is the idea that when the right-handed vector coupling is excluded from the full $Wtb$ Lagrangian any change of $V_L$ only affects the $\vert V_{tb} \vert$ value and hence the cross section. This would imply that no real change of physical concepts is done since the Lagrangian is in a sense unchanged because no mixing of the different vector couplings appears.\\
-The results for this 1D-variation can be found in Table \ref{table::XSChangeAccVLNot0} and in Figure \ref{fig::KinChangeNot0}, and shown unfortunately identical results to the 1D-variation of $V_L$ with $V_R$ fixed to $0$. 
+The influence of the variation of the right-handed vector coupling $V_R$ on the kinematic distributions was rather satisfactory and in some way agreeing with expactations. However the same is definetely not true for the variation of the left-handed vector coupling $V_L$. On the contrary, it can even be stated that the obtained result was a complete surprise and needs to be understood as soon as possible in order to keep confidence in the created FeynRules model. This because a possible explanation can still be a wrong configuration of the anomalousCouplings FeynRules model.
 
+Therefore new MadGraph files, and kinematic distributions, have been created with the same 1D-variation of the left-handed vector coupling $V_L$ but in stead of setting the $V_R$ value equal to its Standard Model expectation of $0$ it was set to $0.2$. The reason behind this different value for $V_R$ is the idea that when the right-handed vector coupling is excluded from the full $Wtb$ Lagrangian any change of $V_L$ only affects the $\vert V_{tb} \vert$ value and hence the cross section. This would imply that no real change of physical concepts is done since the Lagrangian is in a sense unchanged because no mixing of the different vector couplings appears.
+The results for this 1D-variation can be found in Table \ref{table::XSChangeAccVLNot0} and in Figure \ref{fig::KinChangeNot0}, and show identical results as for the 1D-variation of $V_L$ with $V_R$ fixed to $0$. 
 \begin{table}[h!]
  \centering
  \begin{tabular}{|c|c|c|c|}
   \hline
-  \multirow{2}{*}{Top quark mass} 	&  \multicolumn{3}{|c|}{1D change of Re($V_L$)}				\\
+  \multirow{2}{*}{$(V_L,V_R)$} 	&  \multicolumn{3}{|c|}{1D change of Re($V_L$)}				\\
 					&  All events	& Reco $p_T$ cuts applied	& Reduction ($\%$) 	\\
   \hline
     (0.8, 0.2) 				& $4.223$ pb	& $1.201$ pb			& $28.43$ 		\\
@@ -236,45 +213,45 @@ The results for this 1D-variation can be found in Table \ref{table::XSChangeAccV
 
 \begin{figure}[!h]
  \centering
- \includegraphics[width=0.48\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVarying_CosTheta.pdf}
- \includegraphics[width=0.48\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVarying_PtCuts_CosTheta.pdf}\\
- \includegraphics[width=0.48\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVarying_LeptonPt.pdf}
- \includegraphics[width=0.48\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVarying_PtCuts_LeptonPt.pdf}\\
- \includegraphics[width=0.48\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVarying_HadrBJetPt.pdf}
- \includegraphics[width=0.48\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVarying_PtCuts_HadrBJetPt.pdf}\\
- \includegraphics[width=0.48\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVarying_LightQuarkDownPt.pdf}
- \includegraphics[width=0.48\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVarying_PtCuts_LightQuarkDownPt.pdf}
+ \includegraphics[width=0.45\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVarying_CosTheta.pdf}
+ \includegraphics[width=0.45\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVarying_PtCuts_CosTheta.pdf}\\
+ \includegraphics[width=0.45\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVarying_LeptonPt.pdf}
+ \includegraphics[width=0.45\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVarying_PtCuts_LeptonPt.pdf}\\
  \caption{}
  \label{fig::KinChangeNot0}
 \end{figure}
+%\begin{figure}[!h]
+% \centering
+% \includegraphics[width=0.45\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVarying_HadrBJetPt.pdf}
+% \includegraphics[width=0.45\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVarying_PtCuts_HadrBJetPt.pdf}\\
+% \includegraphics[width=0.45\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVarying_LightQuarkDownPt.pdf}
+% \includegraphics[width=0.45\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVarying_PtCuts_LightQuarkDownPt.pdf}
+% \caption{}
+% \label{fig::KinChangeNot0}
+%\end{figure}
 
-The obtained results for the 1D-variation of $V_L$ with $V_R$ fixed to $0.2$ seems to suggest that either the left-handed vector component of the full $Wtb$ Lagrangian only influences the cross section and alters in no way the kinematic distributions of the decay particles or otherwise that this component is wrongly implemented in the created FeynRules model. \\
-The following test which has been performed is looking at a larger 1D-variation of $V_L$ while still keeping the $V_R$ component equal to $0.2$. This resulted in a slightly unexpected outcome, as can be seen in Figure \ref{fig::KinChangeNot0LARGE}, since some deviation of the kinematic distribution is found for the configuration where $V_L$ is equal to $0$. However there is no difference between the four remaining configurations considered for the large $V_L$ 1D-variation.\\
-This is surprising since there was actually some hope that the lack of influence on the kinematic distributions when varying the $V_L$ component could be caused by the small variation applied. This was motivated by the small influence when changing the $V_R$ component to the boundaries of the coupling coefficients grid while originally the $V_L$ coupling was contained within a small region due to its precise measurement.\\
-However the result seems to suggest that there is really no influence on the kinematic distributions and that only the $V_R$ component is responsible for these distortions. Probably a similar result would have been found when a different value of $V_R$ would have been used.
-\begin{figure}[!h]
+The obtained results for the 1D-variation of $V_L$ with $V_R$ $=$ $0.2$ seem to suggest that either the $V_L$ component only influences the cross section and alters in no way the kinematic distributions or otherwise that this component is wrongly implemented in the created FeynRules model. 
+As a final test, a larger 1D-variation of $V_L$ is performed with the $V_R$ component still equal to $0.2$. This resulted in a slightly unexpected outcome, as can be seen in Figure \ref{fig::KinChangeNot0LARGE}, since some deviation of the kinematic distribution is found for the configuration where $V_L$ is equal to $0$. However there is no difference between the four other configurations, which is unfortunate because there was some hope that the lack of influence on the kinematic distributions for the $V_L$ component could be caused by the small variation applied.
+\begin{figure}[h]
  \centering
- \includegraphics[width=0.48\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVaryingLARGE_CosTheta.pdf}
- \includegraphics[width=0.48\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVaryingLARGE_LeptonPt.pdf}\\
- \includegraphics[width=0.48\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVaryingLARGE_HadrBJetPt.pdf}
- \includegraphics[width=0.48\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVaryingLARGE_LightQuarkDownPt.pdf}
+ \includegraphics[width=0.45\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVaryingLARGE_CosTheta.pdf}
+ \includegraphics[width=0.45\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVaryingLARGE_LeptonPt.pdf}\\
+ \includegraphics[width=0.45\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVaryingLARGE_HadrBJetPt.pdf}
+ \includegraphics[width=0.45\textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/KinematicDistributions_AcceptanceTerm_Dec2014/ReVRStableButNot0_ReVLVaryingLARGE_LightQuarkDownPt.pdf}
  \caption{}
  \label{fig::KinChangeNot0LARGE}
 \end{figure}
 
-\subsubsection{Fixing normalisation for 1D-variation of $V_R$ only}
-Since the above mentioned results seem to predict that the left-handed vector coupling actually only influences the cross section and not the kinematics, it has been decided to ensure a correct cross section normalization for the 1D-variation of $V_R$ only. This because the influence of the left-handed vector coupling \\
-
-\paragraph{\underline{Remark:} Correct way of thinking?\\}
-Isn't it just the opposite normalisation which should be corrected? The left-handed vector coupling only influences the cross section so the log(likelihood) should actually be normalized in such a way that it results in a flat distribution for the 1D-variation of $V_L$. This is which is currently still not correct because of the large difference in relative cross section for values with $V_L$ smaller than $1.0$. While I think that the 1D-variation will, just as was the case for the top quark mass, result in the correct minimization of the log(likelihood) distribution. This because both the influence of this 1D-variation on the kinematic distribution and the variation of the cross section is symmetric around the Standard Model expectation value of $0$.\\
-\\
-Possible suggestion could be to check the influence of another coupling constant, for instance the imaginary part of the left-handed vector coupling. The distinct difference between the left-handed vector coupling and all the other coupling parameters implemented in the FeynRules model is its Standard Model value. The left-handed vector coupling is the only parameter which is supposed to contribute to the $Wtb$ Lagrangian, and hence the only one different from $0$. Therefore it could be a possible test of the created FeynRules model to check both the variation of the cross section as the influence on the kinematic distributions when a different coupling constant is considered. If it would only be that the real part of the $V_R$ doesn't contribute to the kinematics of the decay particles while all the other ones do have a distinct effect, it could be a clear indication that the created FeynRules model is not capable of dealing with coupling constants higher than $1$.
-
-\paragraph{Thinking $\cdots$ \\} 
-However this last conclusion is not completely correct because then a possible effect would have been visible when the $V_L$ variable was varied in a larger range. In this case also the configurations $V_L$ = 0.5 and $V_L$ = 0.0 was compared to the Standard Model expectation of $1.0$ but no effect was found. So there is more behind the non-influence of the left-handed vector coupling $V_L$ than just a problem with dealing with coupling coefficients larger than $1.0$ $\cdots$.
+%\paragraph{\underline{Remark:} Correct way of thinking?\\}
+%Isn't it just the opposite normalisation which should be corrected? The left-handed vector coupling only influences the cross section so the log(likelihood) should actually be normalized in such a way that it results in a flat distribution for the 1D-variation of $V_L$. This is which is currently still not correct because of the large difference in relative cross section for values with $V_L$ smaller than $1.0$. While I think that the 1D-variation will, just as was the case for the top quark mass, result in the correct minimization of the log(likelihood) distribution. This because both the influence of this 1D-variation on the kinematic distribution and the variation of the cross section is symmetric around the Standard Model expectation value of $0$.\\
+%\\
+%Possible suggestion could be to check the influence of another coupling constant, for instance the imaginary part of the left-handed vector coupling. The distinct difference between the left-handed vector coupling and all the other coupling parameters implemented in the FeynRules model is its Standard Model value. The left-handed vector coupling is the only parameter which is supposed to contribute to the $Wtb$ Lagrangian, and hence the only one different from $0$. Therefore it could be a possible test of the created FeynRules model to check both the variation of the cross section as the influence on the kinematic distributions when a different coupling constant is considered. If it would only be that the real part of the $V_R$ doesn't contribute to the kinematics of the decay particles while all the other ones do have a distinct effect, it could be a clear indication that the created FeynRules model is not capable of dealing with coupling constants higher than $1$.
+%
+%\paragraph{Thinking $\cdots$ \\} 
+%However this last conclusion is not completely correct because then a possible effect would have been visible when the $V_L$ variable was varied in a larger range. In this case also the configurations $V_L$ = 0.5 and $V_L$ = 0.0 was compared to the Standard Model expectation of $1.0$ but no effect was found. So there is more behind the non-influence of the left-handed vector coupling $V_L$ than just a problem with dealing with coupling coefficients larger than $1.0$ $\cdots$.
 
 %**************************************************
 
-\section{Cross Section distribution for new grid}
-\paragraph{\underline{Remark: Cross section comparison}\\}
-Need to check how it is possible that the XS values in the XS grid are identical for both versions (first check whether this is indeed the case), but are different for the top quark mass simulation ... Table \ref{table::MGXS}.
+%\section{Cross Section distribution for new grid}
+%\paragraph{\underline{Remark: Cross section comparison}\\}
+%Need to check how it is possible that the XS values in the XS grid are identical for both versions (first check whether this is indeed the case), but are different for the top quark mass simulation ... Table \ref{table::MGXS}.
