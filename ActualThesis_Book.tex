@@ -1,0 +1,183 @@
+\documentclass[a4paper,12pt]{book}
+%\usepackage[utf8]{inputenc}         %What is this?
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% Document preamble %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{appendix}
+\usepackage[english]{babel}   %Spell-checker
+%% extra symbols
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{wasysym}
+%\usepackage{gensymb}    %Package not found ...
+% hyperref
+\usepackage[plainpages=false,pdfpagelabels=true,naturalnames=false,colorlinks=true,linkcolor=blue,citecolor=magenta,a4paper]{hyperref} %% online version
+%\usepackage[plainpages=false,pdfpagelabels=true,naturalnames=false,colorlinks=false,linkcolor=blue,citecolor=magenta]{hyperref} %% print version 
+% nice citations; hypernat needed to make natbib and hyperref interoperate
+\usepackage[sort&compress,square,comma,numbers]{natbib}
+\usepackage{hypernat}
+% for figures
+\usepackage{pstricks}
+\usepackage{graphicx} 
+
+\usepackage{caption}
+\usepackage{subcaption}
+
+%\usepackage{feynmf}    %Package not found
+%\usepackage{axodraw} 
+
+\usepackage{xspace}
+
+%\usepackage[center,tight]{subfigure}
+\usepackage{eso-pic}
+\usepackage{multirow}
+\usepackage{epigraph}
+% allow more text and floats per page
+\renewcommand{\textfraction}{0.10}
+\renewcommand{\topfraction}{0.90}
+\setcounter{totalnumber}{5}
+
+% change fonts: 
+\usepackage[T1]{fontenc} % Needed? Makes feynmf crash...
+
+% latin modern
+%\usepackage{lmodern}
+% sans serif for normal text
+%\renewcommand*\familydefault{\sfdefault}     %STIJN
+% sans serif for math text
+%\usepackage[lm]{sfmath}                      %STIJN
+%\usepackage{helvet}
+%% Choose one of the following (if not choosing the default, 
+%% viz., Computer Modern, font family):
+ %\usepackage{lmodern}
+ %\usepackage{mathpazo}  %Can't write sigma
+ %\usepackage{kpfonts} % CAVAKES
+ %\usepackage{mathptmx}  %VUIL
+ %\usepackage{times,mtpro2}
+ %\usepackage{stix}
+ %\usepackage{txfonts}   %VUIL
+ %\usepackage{bookman}    %HEEL VUIL
+ %\usepackage{newcent}   %VUIL
+ %\usepackage{charter}    %OK, wiskundige symbolen slecht :(
+ %\usepackage{chancery}   %VERKEERD!!
+ %\usepackage{cmbright} % CAVAKES, min of meer
+ %\usepackage{fourier} % NIET OK
+ %\usepackage{euler} % NIET OK
+ %\usepackage[adobe-utopia]{mathdesign}  %NIET OK
+ % \usepackage[light,math,condensed]{anttor}  %ZEER RAAR
+ % \usepackage{boisik} %Lelijk
+ %\usepackage[bitstream-charter]{mathdesign}  %Voor mij ok, afgeprint zien
+
+% try to get dot working
+% from http://www.maths.qmul.ac.uk/~rwb/latex.html
+\DeclareSymbolFont{upright}       {OT1}{pnc}{m}{n}
+\DeclareMathAccent{\dot}{\mathalpha}{upright}{"5F}  % single dot
+\DeclareMathAccent{\ddot}{\mathalpha}{upright}{"7F} % double dot
+\DeclareMathAccent{\bar}{\mathalpha}{upright}{"16}  % bar
+
+% adjust page width (needs to be done before fancy headers)
+\addtolength{\textwidth}{18mm}
+% fancy page headers
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\chaptername}\ \thechapter:\ #1}{}}
+\renewcommand{\sectionmark}[1]{}
+\fancyhf{}
+\fancyhead[LE,RO]{\begin{footnotesize}\thepage\end{footnotesize}}
+\fancyhead[RE,LO]{\begin{small}\leftmark\end{small}}
+\renewcommand{\headrulewidth}{0.4pt}
+% adjust rest of page layout (needs to be done after fancy headers)
+\addtolength{\headheight}{2.5pt} % bring header closer
+\addtolength{\headsep}{-2.5pt}
+\addtolength{\topmargin}{-10mm} % enlarge vertical space
+\addtolength{\textheight}{25mm}
+\addtolength{\oddsidemargin}{-8mm} % adjust odd&even margins for texwidth
+\addtolength{\evensidemargin}{-10mm}
+% Add rotating possibility in columns and such
+\usepackage{rotating}
+% Add table row/column spans, extra space
+\usepackage{multirow,array}
+% Add linenumbers
+%\usepackage{lineno}      %Package not found
+
+% my definitions
+\include{FrontMatter/definitions}
+
+% my hyphenations
+%\hyphenation{si-mu-la-ted stu-died middle-ware re-nor-ma-li-za-tion}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% The document itself %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+%\begin{linenumbers}
+
+\frontmatter
+
+% the titlepage
+%\cleardoublepage
+\include{FrontMatter/titlepageAnnik}
+
+% the table of contents
+\cleardoublepage
+\phantomsection
+%\addcontentsline{toc}{chapter}{Contents}
+\tableofcontents
+
+\mainmatter
+
+% the introduction
+\cleardoublepage
+\phantomsection
+%\addcontentsline{toc}{chapter}{Introduction}
+%\include{Chapters/introduction}
+
+% the chapters
+%\include{Chapters/Chapter1_SM/chapterSM}
+%\include{Chapters/Chapter2_CERN/chapterCERN}
+\include{Chapters/Chapter3/chapter3}
+%\include{Chapters/Chapter4_EvtSel/chapterEvtSel}
+%\include{chapter5/chapter5}
+%\include{chapter6/chapter6}
+%\include{chapter7/chapter7}
+%\include{chapter8/chapter8}
+
+%Appendix
+%\appendix
+%\include{Appendix/appendix_fastfull}
+
+\backmatter
+
+% references
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliography}
+%\bibliography{references}                                           %Why error for the moment?
+%\bibliographystyle{lucas_unsrt} % The CMS publication style
+%\bibliographystyle{bibstyle}
+
+% the summary
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Summary}
+%\include{BackMatter/summary}
+
+% resume in dutch
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Samenvatting}
+%\include{BackMatter/summarydutch}
+
+% acknowledgments
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Acknowledgements}
+%\include{BackMatter/acknowledgements}
+
+\cleardoublepage
+
+%\end{linenumbers}
+\end{document}
