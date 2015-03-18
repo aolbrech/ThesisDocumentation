@@ -4,30 +4,37 @@
 %**************************************************
 \section{MadGraph}
 
-In the beginning of this analysis only the MadGraph version $MadGraph\_v155$ was used since this was the only one compatible with the FeynRules version used to create the model. According to a mail of Olivier Mattelaere on 6 February 2014 the newer version is currently compatible as well.\\
-The newer MadGraph version MadGraph5$\_$aMC@NLO was released in the spring of 2014, together with a new MadWeight version. It is expected that the calculated cross sections are identical between these two MadGraph versions and this has been examined.\\
-\textit{Put some results here!}\\
+In the beginning of this analysis only the MadGraph version $MadGraph\_v155$ was used since this was the v1511 version was not compatible with the FeynRules version used to create the model\footnote{According to a mail of Olivier Mattelaere on 6 Feb 2014 the newer version is now compatible as well.}
+A newer MadGraph version MadGraph5$\_$aMC@NLO was released in the spring of 2014, together with a new MadWeight version. Finally in January 2015 a more up-to-date version of this MadGraph5$\_$aMC@NLO release has been installed. %It is expected that the calculated cross sections are identical between these different MadGraph versions and this has been examined.\\
+%\textit{Put some results here!}\\
 
-In this project MadGraph is only used to create .lhe files and study the variation of the cross section in order to understand the created model. The following two python scripts have been created for this reason:
+The different versions currenlty installed on the m-machines are:
+\begin{eqnarray}
+ & & /user/aolbrech/AnomalousCouplings/MadGraph\_v155 \nonumber \\
+ & & /user/aolbrech/AnomalousCouplings/MadGraph\_v1511 \nonumber \\
+ & & /user/aolbrech/AnomalousCouplings/MadGraph5\_aMC@NLO/madgraph5 \nonumber \\
+ & & /user/aolbrech/AnomalousCouplings/MadGraph5\_aMC@NLO/MG5\_aMC\_v2\_2\_2 \nonumber
+\end{eqnarray}
+
+
+In this analysis MadGraph is only used to create .lhe files and study the variation of the cross section in order to understand the created model. The following two python scripts have been created for this reason:
 \begin{eqnarray*}
-  & & /user/aolbrech/AnomalousCouplings/MadGraph\_v155/MassiveLeptons/\\ & & MadGraph5\_v1\_5\_5/Wtb\_ttbarSemiElMinus/RVL\_RVR\_XSGrid003.py \\
-  & & /user/aolbrech/AnomalousCouplings/MadGraph\_v155/MassiveLeptons/\\ & & MadGraph5\_v1\_5\_5/XSScript.py
+  & RVL\_RVR\_XSGrid.py \qquad \& \qquad XSScript.py \nonumber
 \end{eqnarray*}
 The first script automatically creates all the desired configurations for different RVL, RVR, Lepton Pt Cut and Jet Pt Cut values and stores them in the desired output directory.
-In order to save some disk space the events.lhe file is deleted directly and only the unweighted$\_$events.lhe files are kept for analysis. \textit{According to Alexis these are the only relevant ones so understand what is the difference between the two...}.\\
+In order to save some disk space the events.lhe file is deleted directly and only the unweighted$\_$events.lhe files are kept for analysis\footnote{According to Alexis the unweighted$\_$events.lhe are the only relevant ones. \textit{Still need to understand what is the difference between the two}}.\\
 The second script loops over all the different directories and creates a .txt table and a .pdf table with the cross section results.\\
-%\textbf{Maybe this can be created automatically when executing the first python script! This to avoid copying the considered variables from one file to another!}
 
-In order to use MadGraph and calculate the cross section values for the desired processes and decay channels the following commands should be used:
+In order to use MadGraph and calculate the cross section values for the desired processes and decay channels the following commands should be used\footnote{The model with name MassiveLeptons-MassiveLeptons is the one with the CKM restrictions applied and hence the FCNC decays excluded! This will result in a reduced CPU time needed.}:
 \begin{eqnarray}
- ./bin/mg5_aMC ~~ (./bin/mg5 ~~~ \textrm{for old MW version)}\\
- import ~~ model ~~ MassiveLeptons \\
-  generate ~ p p > t t\sim , ( t > b w+ , w+ > mu+ vm ) \nonumber \\
-  , ( t\sim > b\sim w- , w- > j j ) @1 QED = 2 \\
- output dirName \\
- exit
+ & & ./bin/mg5\_aMC \nonumber\\
+ & & import ~~ model ~~ MassiveLeptons(-MassiveLeptons) \nonumber\\
+ & &  generate ~ p p > t t\sim , ( t > b w+ , w+ > mu+ vm ) \nonumber \\
+ & &  \qquad, ( t\sim > b\sim w- , w- > j j )~~ @1 ~~ QED = 2 \nonumber\\
+ & & output ~~ \textbf{Name} \nonumber\\
+ & & exit \nonumber
 \end{eqnarray}
-The \textit{index.html} file in this new directory contains all the Feynmann Diagrams which correspond to the generated process and can be opened using $firefox$ on mtop.\\
+The \textit{index.html} file in the created directory contains all the Feynmann Diagrams of to the generated process and can be opened using $firefox$ on mtop. When saved in .ps format the resolution is good enough to include in PDF documents.\\
 The FeynRules model is created in such a way that it contains a \textbf{NP}, \textbf{QCD}, \textbf{QED} and \textbf{TEST} variable representing the different interaction vertices. Hence asking \textbf{QED} $=$ $2$ results in the desired 16 independent diagrams, namely an altered top quark decay while the other interaction vertices are still described by the Standard Model.\\
 \\
 Whenever the cross section should be calculated for a specific process the following configuration files in the Cards directory should be updated:
@@ -42,121 +49,103 @@ As a consequence, when using a script to run MadGraph continously, the \textbf{m
 
 \section{MadWeight}
 
-As was the case with MadGraph, two different versions of the MadWeight event generator exist. All original tests have been performed with the older one, installed under $madweight\_mc\_perm$, and used until July 2014. The newer one, installed as $MadGraph5\_aMC@NLO$, is supposed to be less CPU intensive and allows the user to split the interaction points in two distinct steps. More detail about the different options can be found in~\ref{sec::MWOptions}.
-Since September 2014 this newest version is used as standard, but both versions are still installed on localgrid and the user disks.
+As was the case with MadGraph, two different versions of the MadWeight event generator exist. All original tests have been performed with the older one, installed under $madweight\_mc\_perm$, and used until July 2014. The newer one, installed as $MadGraph5\_aMC@NLO$, is supposed to be less CPU intensive and allows the user to split the interaction points in two distinct steps.
+Since September 2014 this newest version is used as standard and has been updated in January 2015.
 
 Each version can be installed using the following command:
 \begin{itemize}
-  \item bzr\footnote{The bzr package has been installed on the m-machines, but not on mtop. Due to some conflicht with the $libz.so$ package it cannot be executed after initializing the alias $setMGpython$. More information about this issue can be found in~\ref{sec::GitIssues}} branch lp:$\sim$maddevelopers/madgraph5/madweight 
-  \item bzr branch lp:$\sim$maddevelopers/mg5amcnlo/madweight
+  \item bzr\footnote{The bzr package has been installed on the m-machines, but not on mtop. Due to some conflicht with the $libz.so$ package it cannot be executed after initializing the alias $setMGpython$.} branch lp:$\sim$maddevelopers/madgraph5/madweight 
+  \item bzr branch lp:$\sim$mg5amcnlo
 \end{itemize}
 
-After a fresh MadWeight install with the $bzr$ command the created MassiveLeptons FeynRules model should be copied to the ``model'' directory. Otherwise it cannot be accessed by the MadWeight event generator.\\
-In MadWeight each specific model can be generated but will be stored in a separate directory. Hence special care should be awarded to the chosen directory name. The necessary commands to create such a new MadWeight directory are listed here:
-  \begin{enumerate}
-    \item ./bin/mg5$\_$aMC (The mg5 executable should not be used!)
-    \item import model MassiveLeptons
-    \item generate p p > t t$\sim$ , ( t > b w+ , w+ > mu+ vm ) , ( t$\sim$ > b$\sim$ w- , w- > j j ) @1 QED = 2 
-    \item output madweight \textbf{Name}
-    \item exit
-  \end{enumerate}
+After the MadWeight installation with the $bzr$ command the created MassiveLeptons FeynRules model should be copied to the ``model'' directory. Otherwise it cannot be accessed by the MadWeight event generator. In order to generate a process with the model of choice, the following commands have to be executed:
+\begin{eqnarray}
+   & & ./bin/mg5\_aMC \nonumber \\
+   & & import ~ model ~ MassiveLeptons-MassiveLeptons \nonumber \\
+   & & generate ~ p p > t t\sim , ( t > b w+ , w+ > mu+ vm ) , ( t\sim > b\sim w- , w- > j j ) ~ @1 ~ QED = 2 \nonumber \\
+   & & output ~ madweight ~ \textbf{Name} \nonumber \\
+   & & exit \nonumber
+\end{eqnarray}
   
 In order to actually calculate Matrix Elements using this MadWeight software the relevant configuration files should be adapted in order to select the correct configuration. Just as was the case when using the MadGraph software, the concerned files are the \textbf{run$\_$card.dat}, \textbf{param$\_$card.dat} and the \textbf{proc$\_$card.dat}.\\
-The only relevant new card is the \textbf{MadWeight$\_$card.dat} file where the simulated parameters of the corresponding \textbf{param$\_$card.dat} can be introduced. For the rest this file contains all the different run options which can be set and which will be discussed in detail in Section~\ref{sec::MWOptions}.
+The only relevant new card is the \textbf{MadWeight$\_$card.dat} file where the simulated parameters of the corresponding \textbf{param$\_$card.dat} can be introduced. For the rest this file contains all the different run options which can be set.
 
-As a next step the correct Transfer Function should be chosen from the list of available ones. This list is given after the following two commands have been executed and allows the use of tab-completetion. If no option is chosen within the 60s waiting time, the underlined one is chosen.
-\begin{itemize}
- \item ./bin/mw$\_$options
- \item define$\_$transfer$\_$fct
-\end{itemize}
+As a next step the correct Transfer Function should be chosen from the list of available ones. If no option is chosen within the 60s waiting time, the underlined one is chosen.
+\begin{eqnarray}
+  & & ./bin/mw\_options \nonumber \\
+  & & define\_transfer\_fct \nonumber
+\end{eqnarray}
 
-Finally MadWeight is completely initialized and can be used. Running MadWeight is done with the $./bin/madweight$ command combined with the option $-1$ to create all the param$\_$cards, option $-2$ to ..., option $-3$ to ..., option $-4$ to ..., option $-6$ for actually starting to run MadWeight and afterwards with option $-8$ to collect all the weights and store them in the corresponding Events directory.
+The actual running of MadWeight is done with the $./bin/madweight$ command combined with the option $-1$ to create all the param$\_$cards, option $-2$ to ..., option $-3$ to ..., option $-4$ to ..., option $-6$ for actually starting to run MadWeight and afterwards with option $-8$ to collect all the weights and store them in the corresponding Events directory.
 
 \subsection{Synchronizing MadWeight with localgrid submission}\label{sec::MWOptions}
 
-Running the MadWeight event generator is preferable done with localgrid submission since this allows to split the $.lhco$ file containing all event in multiple jobs. However the standard MadWeight configuration is not directly compatible with the IIHE cluster submission. For this to work out-of-the-box the following adaptations should be done:
-For this first step the following two files have to be changed in the /blablaMadWeight/bin/internal directory:
+Running the MadWeight event generator is preferable done using localgrid submission since this allows to split the $.lhco$ file containing all events in multiple jobs. However the standard MadWeight configuration is not directly compatible with the IIHE cluster submission. For this to work out-of-the-box the following adaptations should be done:
+For this first step the following two files have to be changed in the /bin/internal directory. Both files are now included as default file in the madgraph/interface/ and madgraph/various/ directories respectively.
 \begin{itemize}
-  \item madweight$\_$interface.py
-  \item cluster.py
+  \item madweight$\_$interface.py: Change ...
+  \item cluster.py: Add ... on line ... and activate maximum local submission
 \end{itemize}
 
-Once jobs are running on localgrid their performance and running time can be checked easily and, if needed, they can be killed. This should be avoided as much as possible since it can influence the priority of the following jobs sent.
+The activation of the maximum local submission is rather important since it allows to continously send 2000 jobs, the maximum allowed by the PBS Cluster. In case more than 2000 jobs are originally submitted this function keeps them in the queue and only submits once the number of running jobs is lower than the maximum specified.\\
+In the \textbf{MadWeight$\_$card.dat} file, the number of events in one job can be specified. This value should be chosen as low as possible without needing millions of jobs submitted to the cluster. The larger the number of jobs per event, the longer the run time of one job needs and the lower the priority will become. So with the possibility of specifying the maximum number of jobs which can be submitted at once, the number of jobs per event can be chosen rather low.
+
+%In the newest MadWeight version, an option to split the interaction in two distinct steps is added. \textbf{What is ideal configuration?}
+
+Once the jobs are running on localgrid their performance and running time can be checked using the \textit{qstat} and, if needed, they can be killed using the \textit{qdel}~\footnote{Killing jobs should be avoided as much as possible since it negatively influences the priority.} command.
 \begin{eqnarray}
- qstat \; \; @cream02 \; | \; grep \; \; aolbrech \\
- qdel \; \; 394402.cream02
+ qstat \; \; @cream02 \; | \; grep \; \; aolbrech \qquad \& \qquad qdel \; \; XXX.cream02 \nonumber
 \end{eqnarray}
 
-As mentioned before, the \textbf{MadWeight$\_$card.dat} contains a bunch of run options which can be defined. One of these options is the number of events and the number of events in one job. Since the number of simultaneous jobs on localgrid is limited to $2000$ the number  of processed events in each job should be taken as low as possible without exceeding this limit. It should be avoided to run MadWeight with a large number of events in one single job since this will result in a very long walltime and reduced priority.
-
-Another important factor for the MadWeight event generator is defining the number of interaction points which have to be considered. This number has to be rather large (around 10 000 - 30 000 according to Lieselotte \textbf{TO CHECK MYSELF}) to ensure the uncertainty on the weight to be smaller than the weight itself \textbf{Is this really a consequence?}.
-
-In the newest MadWeight version, an option to split the interaction in two distinct steps is added. \textbf{What is ideal configuration?}
-
-\paragraph{Adapting MadWeight to run continously on localgrid}
-A single test with the following configuration (5000 events - 20 events/job - 10 000 initPoints) performed with the oldest MadWeight version\footnote{TODO: Compare needed time of running explicitely against the new MadWeight version!} took almost 16h to finish. This implies that running the full generator event sample ($>$ 2 470 000 events) would take more than 329 days!\footnote{From this can be concluded that the events on generator level should never be all run. Only a limited selection of these events should be considered.}
-Even the full reconstructed event sample ($>$ 210 000 events) requires more than 28 days of running this way. It is expected that with the newest MadWeight version this time can be reduced significantly, but still a long running time should be foreseen.
-
-Big improvements on running time can possible be reached if the MadWeight event generator is optimized for running as efficient as possible on localgrid. One characteristic of running MadWeight on localgrid which significantly influences the running time is the fact that it is not capable of continously submitting jobs. In stead the maximum allowed number of 2000 jobs is sent and one then has to wait until they are all finished before a new bunch can be submitted. It would be much more favourable if the MadWeight submission script would submit a new job as soon as one of the 2000 has finished.
-
-According to Olivier Devroede this could indeed be possible but since this is a change in the MadWeight cluster configuration it has to be done by the MadWeight developers. It cannot be adapted by the grid admins.
-
 \subsection{Influence of the used Transfer Function}
+Location of script $PlotFittedPt.py$ which plots the distribution of the different pT points integrated by MadWeight:
+\begin{eqnarray}
+ \scriptsize NewestMW\_amcnlo\_PTDependentTF/mg5amcnlo/ttbarSemiMuPlus\_QED2\_CKMRestrictions \nonumber
+\end{eqnarray}
 
-\subsection{Complementarity with Git}\label{sec::GitIssues}
-In order to keep track of all the changes necessary for the configuration files of MadWeight, the localgrid MadWeight directory has been added to the AnomalousCouplings GitHub repository. This also allows to keep two separate branches for both the original $E$-dependent Transfer Functions and the newly created $p_{T}$-dependent Transfer Functions. \\
-However this has an important restriction on the use of the m-machines for compiling and running MadWeight and for performing GitHub related activities. This restriction is caused by the initialization command needed to run MadWeight, namely activating python 2.7.3, which results in a conflict with the GitHub requirements. Therefore the GitHub related activities have to be done either in a separate terminal window where no python initialization is done or otherwise on $mtop$ where this python command can't be executed. The compiling and running of MadWeight on the other hand has to be done in a different terminal window on the m-machines.\\
-This implies that in the terminal window where the analysis is being executed no Git commands can be executed, like for example checking the active branch or changing to another branch. These commands are only allowed in the separate window. 
+%\subsection{Complementarity with Git}\label{sec::GitIssues}
+%In order to keep track of all the changes necessary for the configuration files of MadWeight, the localgrid MadWeight directory has been added to the AnomalousCouplings GitHub repository. This also allows to keep two separate branches for both the original $E$-dependent Transfer Functions and the newly created $p_{T}$-dependent Transfer Functions. \\
+%However this has an important restriction on the use of the m-machines for compiling and running MadWeight and for performing GitHub related activities. This restriction is caused by the initialization command needed to run MadWeight, namely activating python 2.7.3, which results in a conflict with the GitHub requirements. Therefore the GitHub related activities have to be done either in a separate terminal window where no python initialization is done or otherwise on $mtop$ where this python command can't be executed. The compiling and running of MadWeight on the other hand has to be done in a different terminal window on the m-machines.\\
+%This implies that in the terminal window where the analysis is being executed no Git commands can be executed, like for example checking the active branch or changing to another branch. These commands are only allowed in the separate window. 
 %**************************************************
 
 \section{MadAnalysis}
-At first sight it seems that since the update of the m-machines to Scientific Linux 6 ($slc6$) MadAnalysis can only be used on $mtop$. Whenever MadAnalysis is trying to be compiled on any of the other m-machines an error message about a missing library appears, while compiling on $mtop$ works from the first try.\\
+Since the update of the m-machines to Scientific Linux 6 ($slc6$), MadAnalysis can only be used on $mtop$. Whenever MadAnalysis is compiled on any of the other m-machines an error message about a missing library appears, while compiling on $mtop$ works without any problem.\\
 
 MadAnalysis is most useful in the expert mode since this allows to develop a personal analysis file where an event selection can be applied and specific kinematic variables, such as the $\cos \theta^{*}$ one, can be defined. Also for MadAnalysis two different versions exist, but only the expert mode in version $v112$ is compatible with the explanation in the manual ($arXiv: 1206.1599$). The expert mode of the more recent version, $v115$, does not work out-of-the-box and requires adaptations to the python files.
 
 In order to start with a new analysis the following command has to be used:
-\begin{equation}
-  ./bin/ma5 \; \; \; --expert
-\end{equation}
+\begin{eqnarray}
+  ./bin/ma5 \; \; \; --expert \nonumber
+\end{eqnarray}
 This results in a series of questions such as the name of the directory which has to be created and the name of the analysis.
 The latter one should not be taken too complex since it has to be entered each time a series of plots is created for this analysis.
 After the desired directory is created, the $Name$/SampleAnalyzer directory should be initialized by executing the following two commands:
 \begin{eqnarray}
-  source \; \; setup.sh \\
-  make
+  & & source \; \; setup.sh \qquad \& \qquad make \nonumber
 \end{eqnarray}
 
-The actual analysis should be created in the Analysis directory, and a similar approach as in $user.cpp$ and $user.h$ should be adopted.\\
-Everytime a change has been made to any these two files, $make$ should be executed in the SampleAnalyzer directory in order to process the changes.\\
-\\
-The different $.lhe$ files\footnote{MadAnalysis cannot process .lhe.gz files so they should be unpacked using $gunzip .lhe.gz$} which should be considered should be defined in a $List.txt$ files which is saved in the SampleAnalyzer directory. \\
-\\
+The actual analysis should be created in the Analysis directory, and a similar approach as in $user.cpp$ and $user.h$ should be adopted.
+Everytime a change has been made to any these two files, $make$ should be executed in the SampleAnalyzer directory in order to process the changes.
+The different $.lhe$ files\footnote{MadAnalysis cannot process .lhe.gz files so they should be unpacked using $gunzip .lhe.gz$} which should be considered should be defined in a $List.txt$ file which is saved in the SampleAnalyzer directory. \\
+
 The actual running of MadAnalysis is then done using the following command:
 \begin{equation}
-  ./SampleAnalyzer \; \; --analysis="Name ~ of ~ analysis" ~~~~ List.txt
+  ./SampleAnalyzer \; \; --analysis="Name ~ of ~ analysis" ~~~~ List.txt   \nonumber
 \end{equation}
 
 \subsection{Content of analysis file in MadAnalysis}
-The latest analysis file which has been used and containing all the necessary information can be found in the following directory on the m-machines:
+The analysis files which contain all the necessary information can be found in the following directory on the m-machines and are called $LeptonPtCutInfluence.cpp$ and $JetPtCutInfluence.cpp$. They both consist of two different functions, namely the $Execute$ and the $Finalize$ function. The first one allows to access the information of each event while the second one is only accessed once for each file. Therefore the particle content is reconstructed in the $Execute$ function and the histograms for all the considered files are constructed in the $Finalize$ function.
 \begin{eqnarray*}
-  AnomalousCouplings/MadAnalysis\_v112/Wtb\_PtCutInfluence/SampleAnalyzer/Analysis 
+  MadAnalysis\_v112/Wtb\_PtCutInfluence/SampleAnalyzer/Analysis \nonumber
 \end{eqnarray*}
-The two analysis files with full detailed information are the $LeptonPtCutInfluence.cpp$ and the $JetPtCutInfluence.cpp$ files.
-They both consist of two different functions, namely the $Execute$ and the $Finalize$ function. The first one allows to access the information of each event while the second one is only accessed once for each file.
-Therefore the particle content is reconstructed in the $Execute$ function and the histograms for all the considered files are constructed in the $Finalize$ function.
-Currently these analyzer files looks at 28 different kinematic variables. All the kinematic information of each of the particles present in the expected semi-leptonic $t\bar{t}$ event is created.\\
-\\
+
+These analyzer files look at 28 different kinematic variables, and store the kinematic information of each of the particles present in the expected semi-leptonic $t\bar{t}$ event. 
 In order to separate the two b-quarks in the event, the Particle Id of the leptonic top quark needs to be known. Therefore an integer $LeptonicTopPdgId$ is used and the kinematic information of the b-quarks can only be stored when this integer is different from zero.
-This will normally not result in by-passing the b-quark information since the events in the .lhe files are read in in the same order as they are created by the MadGraph command. So first the top quarks are considered and only then the final state particles.\\
-\\
-%\textit{? Isn't it safer to use the daughter information of the top quark? Because in the case of t t -> b jj b l v the lepton comes after the b-quark ... Should investigate what happens in this case ...} \textbf{TO CHECK: } I think some extra safety is incorporated and the actual loop of filling the event content is only done when the b's are reconstructed!\\
-%\\
-In order to automatically create the 28 histograms for all the different files and distinguish the different RVR and RVL values, an automatic name-giving loop is developed. The name of the content of the histogram is each time combined with the correct name of the RVL/RVR content of the $.lhe$ file and the decayChannel.
-%\\
-%\textit{Currently the name of the considered .lhe files has to be adapted every time the files are changed. Maybe this should be made automatically read in from the .txt file to ease the processing of different configurations. If the .lhe files have a clear name where the RVL, RVR and PtCut values can be obtained from using a python script it shouldn't be too much work to save this in the .cpp file with this script. \textbf{TO DO!} ... probably too much work for not much gain ...}
+This will normally not result in by-passing the b-quark information since the events in the .lhe files are read in in the same order as they are created by the MadGraph command. So first the top quarks are considered and only then the final state particles.
 
 \subsection{Analyzing the MadGraph files}\label{subsec:MadGraphFiles}
-Currenlty the created model should be completely understood and the behavior of the model when the coupling coefficients are larger than $1$ should be investigated. Therefore new MadGraph files have been processed for the following configuration:
+Currently the created model should be completely understood and the behavior of the model when the coupling coefficients are larger than $1$ should be investigated. Therefore new MadGraph files have been processed for the following configuration:
 \begin{eqnarray*}
   Re(V_L) & \in & \left[  0.7, \; 1.3\right] \\
   Re(V_R) & \in & \left[ -0.3, \; 0.3\right]
