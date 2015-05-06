@@ -1,4 +1,59 @@
 %\dropchapter{0.4in}
-\chapter{title} \label{chp:labelTitle}
+\chapter{CERN's accelerator complex and its main-purpose particle detectors} \label{chp:labelTitle}
 %\epigraphhead[70]{\epigraph{\textit{If I could remember the names of all these particles, I'd be a botanist.}}{Enrico Fermi}}
 %\undodrop
+
+\section{The Large Hadron Collider}
+
+\section{(The) Compact Muon Solenoid experiment} 
+
+One of the two main-purpose particle detectors of the Large Hadron Collider is the Compact Muon Solenoid (CMS) experiment which was constructed to perform a wide variety of physics measurements. Hence the design of the CMS experiment was led by the goals of the LHC physics programme which required good identification and momentum resolution throughout the entire detector.
+In order to ensure good identification and reconstruction efficiency of all the different particles emerging from the interaction point, the CMS experiment contains four different subdetectors which are all designed in order to detect a specific type of particles: a tracker detector, an electromagnetic and hadronic calorimeter, and a muon system.
+
+The main distinguishing feature of the CMS experiment, which even drives the design of each of the subdetectors, is the high-field solenoid magnet of $3.8$ Tesla as depicted in Figure \ref{fig::CMSFig}. This to ensure good momentum resolution within a compact spectrometer without the need to make use of heavily restricted muon chambers. The other three subdetectors are required to be placed within this magnet coil (because ...?) which significantly restricts the size of these detectors. The tracker detector is placed closely around the beam pipe and actually consists of a silicon-based pixel and strip detector to guarantee track reconstruction in the high density environment close to the interaction point. Both the electromagnetic calorimeter (ECAL) and hadronic calorimeter (HCAL) are also located within the solenoid implying that they are designed to be as compact as possible without losing any granularity. The former one is a scintillating crystal-based calorimeter while the latter one is a brass/scintillator sampling calorimeter.
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.4 \textwidth]{Afbeeldingen/CMS.png}
+ \caption{CMS Figure with all subdetectors clearly visible} \label{fig::CMSFig}
+\end{figure}
+
+The design of the CMS experiment is also optimized for the reconstruction of neutrino's, which cannot be measured directly and hence only appear in the form of missing energy, by ensuring a hermetically closed detector. This resulted in the construction of a cylindrical barrel part located centrally with respect to the interaction point and an endcap part represented by a sort of disklike closure componenents for each of the different subdetectors.
+Even though the CMS experiment is denominated as ``compact'', its overal dimensions are a total length of $21.6$ m and a diameter of $14.6$ m resulting in a total weight of $12500$ tons.
+
+The CMS experiment has adopted a proper coordinate system for which the origin is centered at the nominal collision point within the detector. The $y$-axis (ordinate) is pointing upwards and the $x$-axis (abscissa) radially inwards toward the center of the LHC. Hence, according to the right-hand rule, the $z$-axis follows along the anticlockwise-beam direction. This coordinate system can easily be converted into a spherical coordinate system where the azimuthal angle $\phi$ is measured in the $x$-$y$ plane and the polar angle $\theta$ from the $z$-axis. 
+A very important variable, which is used widely in accelerator physics, can now be derived from this coordinate system. The pseudorapidity $\eta$ is used to describe the angle of a particle with respect to the beam axis (or the $z$-axis) and is defined in Equation (\ref{eq::PseudoRapidity}). The key reason why this variable is so crucial in particle detectors is its invariance with respect to Lorentz boosts along the beam axis.
+
+\begin{equation} \label{eq::PseudoRapidity}
+ \eta = - \ln \tan \frac{\theta}{2}
+\end{equation}
+
+Another variable that is closely related is the rapidity, also denoted using the symbol $y$. Since this variable needs both the energy and total momentum of a particle it is much more challenging to correctly determine, but in the case of high energy collisions both quantities are almost identical.
+
+\begin{equation}
+ y = \frac{1}{2} \ln \left( \frac{E+p_{z}c}{E - p_{z}c} \right)
+\end{equation}
+
+\subsection{The silicon tracking apparatus}
+
+\subsubsection*{Hit and track reconstruction in the pixel and strip tracker}
+\textit{? Is this hit reconstruction (with fast and template-based algorithms) relevant?}\\
+\\
+
+\textit{Remark: Information is mainly found in 'Description and performance of track and primary-vertex reconstruction with the CMS tracker', but seems to differ from the information in Stijn's thesis... --  \textbf{Also read section 6.4 page 240 in the TDR volume 1!!}}\\
+
+The energy deposits detected in the pixel and strip tracker will be translated into actual charged particles' tracks by a track reconstruction algorithm. This is a computationally challenging tasks which is performed by a Combinatorial Track Finder (CTF), an extension of the Kalman Filter technique allowing the combined use of track fitting and pattern recognition. The process is performed iteratively, where each iteration proceeds in a similar manner:
+\begin{itemize}
+ \item \textbf{Seed generation} \\
+ During the first step of the CTF algorithm initial track candidates are identified which will serve as starting point for the reconstruction of the actual track parameters. The five parameters needed for representing the particle's trajectory in the tracker's magnetic field are retrieved by either three 3-D hits or two 2D-hits combined with a beam-spot constraint. The search for the seeds starts from the most inner layers of the pixel detector for efficiency optimization.
+ \item \textbf{Track finding} \\
+ In this step an inside-out Kalman Filter is applied in order to identify hits in successive detector layers compatible with the trajectory seed. After each layer the track parameters are updated taking into account the effects of multiple scattering and energy loss. This iterative process continues until the outermost layer of the tracker has been reached.
+ \item \textbf{Track fitting} \\
+ In order to obtain the most optimal track parameters, including the 
+ \item \textbf{Track selection} \\
+\end{itemize}
+
+\subsection{The calorimetry subdetectors}
+
+\subsection{The muon system}
+
+\subsection{Trigger and data acquisition}
