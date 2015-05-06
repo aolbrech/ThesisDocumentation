@@ -148,20 +148,27 @@ In 1987, Sj\"ostrand and van Zijl proposed a first detailed Monte Carlo model fo
 
 \subsection{Muon reconstruction}\label{subsec::Muon}
 
-\textit{Difference between Global Muons and Tracker muons explained in ``Performance of CMS muon reconstruction in pp collision events at 7 TeV''. Both of them are used as basis for the PF algorithm, and hence can be considered as the ``reco muon'' collection in ``Commissioning of the PF event reconstruction with leptons from J/Psi and W decays at 7 TeV''.}
+The muon reconstruction algorithm is developed in such a way to fully benefit from the very high reconstruction efficiency in both the tracker detector and the muon system.
+%Since the muon traverses the entire tracker detector without siginificant energy loss it will produce detectable hits in multiple layers of the tracking system. 
+Hence the information of tracks reconstructed in the inner tracker and the muon system solely are combined into actual muon candidates. In order to distinguish these tracks they are called, respectively, \textit{tracker track} and \textit{standalone-muon track}.
+
+Identifying standalone-muon tracks is done in two consecutive steps. First local reconstruction starts by constructing track segments from the detected hits in the DT and/or CSC chambers. Afterwards the track segments found in the innermost chambers are used as seeds for the standard reconstruction algorithm based on the Kalman Filter technique, as discussed in Section \ref{sec::KFTracking}. The reconstruction algorithm performs first an inside-out Kalman Filter which\footnote{ (takes into account the muon energy loss in the material, the effect of multiple scattering and the non-uniform magnetic field. -- or is this general the case for a KF?) This procedure} propagates the muon track to the next layer, compares with the measured energy deposits and updates the track parameters accordingly. Once the most outer layer of the muon system is reached, an outside-in Kalman Filter is performed such that the track parameters at the most inner muon station are also defined. Finally, in order to improve the momentum resolution, an additional beamspot constraint is applied to the track parameters before the actual standalone-muon track is identified.
+
+From these two types of track collections muon candidates can be reconstructed in two different ways by combining information from both the muon system and the tracker detector. In case the muon identification starts from the standalone-muon tracks so-called \textit{global muons} are reconstructed while the collection of tracker tracks gives rise to \textit{tracker muons}.
+%Depending on whether the the muon candidate is reconstructed starting from the standalone-muon tracks or from the tracker tracks, it is defined as a \textit{global muon} or a \textit{tracker muon}, respectively. 
+The global muon candidates are reconstructed by identifying a matching tracker track, for each standalone-muon track, by propagating both track parameters onto a common surface. Then for each pair the hits of both tracks are used to fit a global-muon track using an outside-in Kalman Filter Technique. The identificitation of muon candidates as global muons is especially powerful when a high quality muon track was found in the muon detector. However in some cases it can occur that the standalone-muon reconstruction fails because of a lack of hits. This is most likely to occur for low transverse momentum muons which are not able to deposit sufficient energy deposits in the muon spectrometer. Hence for these type of muons the tracker-muon reconstruction is very useful since it extrapolates all tracker tracks with transverse momentum $p_T$ $>$ $0.5$ $\GeV$ and total momentum $p$ $>$ $2.5$ $\GeV$ to the muon system. In case at least one muon segment matches this extrapolated track, the tracker track fullfilled the tracker muon requirements and is identified as such.
+%The first collection is created by matching a tracker track for each standalone-muon track using again an outside-in Kalman Filter technique to combine the track parameters.
+%The second collection follows an inside-out approach and extrapolates all tracker tracks with transverse momentum $p_{T}$ $>$ 0.5 GeV and total momentum $p$ $>$ 2.5 GeV to the muon system.
+
+Since both approaches have specific benefits, tracker muon reconstruction is more efficient for low momentum muons while global muon reconstruction is efficient for high energetic muons which traverse multiple muon segments, they are combined in order to have a robust and highly efficient (\textbf{How much?}) muon reconstruction (\textit{throughout all energy ranges}). \textit{\textbf{Useful?}}
 \\
 
-\textbf{\underline{Remark:}}\\
-The standard reconstruction algorithm for standalone muons can be found in Section 9.1.1 of CMS TDR 8.1\\
-More details on the standard reconstruction of global muons can be found in Section 9.1.2 of CMS TDR 8.1\\
-Only strange that no information is found about the Tracker Muon reconstruction. Currently only found some information in \textit{Performance of CMS muon reconstruction in pp collision events at 7 TeV}.\\
-
-\textit{Seems that at first standalone muons are constructed, which only use information from the muon system. This is done by first identifying the track segments using a linear fit to the hit positions found in the layers of the DT or CSC. These track segments are then afterwards used as starting point for the Kalman filter which utilizes segments and hits from the DT, CSC and also the RPC. \textbf{Still need to check TDR! This states that there is first the local reconstruction and then a inside-out KF}}
-
-In order to take advantage of the high momentum-resolution in the silicon tracker for low-momentum muons the obtained standalone muon is compared with corresponding tracks reconstructed in the tracker.
-A Kalman-filter based track fit, which uses information from all hits in both the tracker track and the muon track, is performed. The considered standalone muon, combined with its best-matching tracker track, is then promoted to a so-called global muon. 
+\textit{Something about charge identification necessary?}
+%\textit{Difference between Global Muons and Tracker muons explained in ``Performance of CMS muon reconstruction in pp collision events at 7 TeV''. Both of them are used as basis for the PF algorithm, and hence can be considered as the ``reco muon'' collection in ``Commissioning of the PF event reconstruction with leptons from J/Psi and W decays at 7 TeV''.}
+%
+%In order to take advantage of the high momentum-resolution in the silicon tracker for low-momentum muons the obtained standalone muon is compared with corresponding tracks reconstructed in the tracker.
+%A Kalman-filter based track fit, which uses information from all hits in both the tracker track and the muon track, is performed. The considered standalone muon, combined with its best-matching tracker track, is then promoted to a so-called global muon. 
  
-
 \subsection{Electron reconstruction} \label{subsec::Electron}
 
 Due to the thickness of the CMS tracker a dedicated elektron-track reconstruction is necessary in order to correctly account for the energy loss caused by Brehmsstrahlung. 
@@ -218,6 +225,55 @@ Whenever a particle track linked with a calorimeter cluster that has compatible 
 
 \subsection{Jet reconstruction}
  \textit{Check ``Commissioning of the PF event reconstruction with the first LHC collisions recorded in the CMS detector'' section 6!}\\
- $\rightarrow$ Is rather limited on jets ...
+ $\rightarrow$ Is rather limited on jets ...\\
+ 
+The reconstruction of jets is less straightforward than the other physics objects explained before because they should be seen as a collection of hadronic activity combined into a single cone. However the event topology of interest, $t\bar{t}$ $\rightarrow$ $bjjbl\nu_{l}$, contains four jets so reconstructing this object in a correct and accurate way is very important.
+ 
+\subsubsection*{Jet clustering algorithm}
+Many different jet clustering algorithms exist but in this thesis only the cluster-based ones will be explained in detail. This type of jet clustering algorithms starts from a collection of stable partons and calorimeter cells and combines them into a cone with radius $R$ \textit{(Is this really correct? --  can also use 'into a jet')}. This clustering procedure uses a distance-based approach since it looks for each object $i$ whether another object $j$ can be found within the predefined cone radius $R$ taking into account the transverse momentum $k_{\bot}$ of both objects.
 
-\subsection{Identification of b-quark jets}
+The distance measures used in this jet clustering algorithm are given in Equations (\ref{eq::JetClustering1}) and (\ref{eq::JetClustering2}) where the first one defines the distance between the two objects while the second one represents the distance between the object $i$ and the beam (B). Here $\Delta_{ij}^{2}$ $=$ $(y_i - y_j)^{2} + (\phi_i - \phi_j)^2$, the $(y,\phi)$ distance between both objects and $p$ can be intepreted as a parameter which controls the relative power between the energy and the geometrical scales.
+\begin{eqnarray}
+ d_{ij} & = & \min(k_{\bot i}^{2p}, k_{\bot j}^{2p}) \frac{\Delta_{ij}^{2}}{R^{2}} \label{eq::JetClustering1} \\
+ d_{iB} & = & k_{\bot i}^{2p}                                                      \label{eq::JetClustering2}
+\end{eqnarray}
+
+The jet clustering algorithm now creates jets by looking for the smallest of these distances. Whenever the distance $d_{ij}$ is smallest, the objects $i$ and $j$ are merged into a single object and stored as such in the list. However, in case the distance $d_{iB}$ is smallest, the object $i$ is removed from the list of input objects and categorized as a final jet. Afterwards the distances are recalculated and this procedure continues until no input objects remain.
+
+The merging of two different objects into a single one is done using one of the existing recombination scheme, in the case of this thesis the E recombination scheme is used. This scheme calculates the four-momentum of the new object by simply adding the four-momentum of its constituents. (\textit{What about eta and phi?? -- explanation about ET scheme needed as well?})
+
+The value given to the parameter $p$ defined in the two distance definitions, which governs the relative power of $k_{\bot}$ versus $\Delta_{ij}^{2}$, results in different cluster-based jet algorithms; two of which are used in this thesis. When this parameter takes the value $1$ the $k_{\bot}$ algorithm can be retrieved, which is used in ... . 
+
+In the case of $p$ $=$ $-1$ the jet algorithm is defined as the anti-$k_{\bot}$ algorithm. This algorithm is used for ... (\textit{\textcolor{red}{How to know where which algorithm is used??}})
+Within this jet clustering algorithm soft particles prefer/tend to cluster with hard particles (in stead of with other soft particles) implying robust jet boundaries with respect to soft radiation. Both jet clustering algorithms are infrared and collinear safe, meaning that the created jet collection is not sensitive to soft emission and collinear splitting, respectively.
+
+\subsubsection*{Jet Energy Scale corrections}
+\textit{Also so much detail needed as in case of Stijn? Or only if this is an important systematic?}
+
+Will need to explain here that the ``raw jet energies are corrected to obtain a uniform response in $\eta$ and an absolute calibration in $p_T$''. (See arXiv 1107.4277)
+
+\subsubsection*{Jet energy resolutions}
+
+\subsubsection*{Identification of b-quark jets}
+
+B-jet identification \textit{consists} of building observables which can be used to exploit the differences between b-quark and light flavoured jets. These algorithms, many exist in literature, allow to distinghuish the event topology of interest from the large bulk of background events which only contain light-parton jets.
+The different b-jet identification or b-tagging algorithms rely on the reconstructed objects defined above altough some minor optimization requirements are implied in the case of track selection. (in order to improve the b-tagging efficiency).
+
+One of the main b-quark jet characteristics which is exploited by the b-tagging algorithms is its relatively long lifetime resulting in the presence of a displaced vertex with respect to the interaction point. Since only the tracking detectors offer the spatial resolution needed to detect the displacement between the primary and secondary vertices, they are reconstructed purely from the track collection. In order to be able to cope with multiple proton-proton interactions the tracks are required to be within a cone of $\Delta R$ $=$ $0.3$ around the jet axis, defined by the direction of the jet momentum. 
+The actual reconstruction of secondary vertices is an iterative process using an adaptive vertex fit. This fit algorithm estimates the position of the vertex candidate and removes all its associated tracks from the track collection. This fit procedure is repeated until no new vertex candidates can be found. During the first iteration the interaction point is used as a constraint in order to identify the prompt\footnote{Prompt tracks are tracks originating near the pp interaction point!} tracks.
+
+The different b-tagging algorithms which exist can be divided into two distinct categories; one which distinghuishes b-quark jets from light jets based on the track impact parameters and another based on the secondary vertices. Within this thesis only the second type of b-tagging will be utilized, namely the \textit{Combined Secondary Vertex} (CSV) algorithm. This algorithm combines the secondary vertex information together with the track-based lifetime properties (\textit{What are these?}). Because both characteristics are combined the algorithm is also capable of discriminating between both types of jets in cases where no secondary vertex was found but where reduced track constraints give rise to a pseudo-vertex and even in cases were no vertex could be reconstructed.
+
+The b-tagging algorithms are constructed in such a way that they should only be applied for three predefined operating points which correspond to a specific misidentification probability for light partons of roughly $10 \%$, $1 \%$ and $0.1 \%$ for an average jet $p_T$ of about $80$ $\GeV$ defined respectively as \textit{Loose}, \textit{Medium} and \textit{Tight}. In this analysis only the Tight operating point is considered (\textit{\textcolor{red}{Where do you find these percentages??}})
+
+%\subsubsection*{Old b-tagging}
+%The specific characteristics of b-quark jets; long lifetime, large mass, decay to final states with high charged track multiplicities, $\cdots$; can be exploited in order to distinguish event topologies which produce $b$ jets in the final state from background events only containing light flavoured jets.
+
+%Multiple different b-jet identification (b-tagging) algorithms exist which exploit different specific b-quark properties. Within this thesis only the b-tagging algorithm based on the information of the secondary vertices together with the track-based lifetime information, defined as the \textit{Combined Secondary Vertex} (CSV) algorithm, is used.
+%Because each of the b-tagging algorithms requires a collection of well-reconstructed tracks of high purity some additional requirements are imposed on this sample of tracks. Also the reconstruction of the secondary vertices, vertices displaced with respect to the primary vertex, has an optimized track selection, this time because of the additional combinatorial reconstruction complexity in the presence of multiple proton-proton interactions. Hence tracks are required to lie within a cone of $\Delta R$ $=$ $0.3$ around the jet axis, defined by the direction of the jet momentum.
+
+%The collection of secondary vertices is than constructed starting from this sample of optimized tracks and continues iteratively. A vertex candidate is identified by applying an adaptive vertex fit which assigns a weight based on the track's compatibility with the vertex position. All tracks with weight $>$ $0.5$ are removed from the list and the fit procedure is repeated until no new vertex candidates can be found. The motivation for applying an iterative fit algorithm is because the first iteration is mainly used for identifying the prompt tracks in the jet while the following ones produce decay vertex candidates. \textit{\textbf{So what does this actually mean??}}
+
+%\textit{So what is actually the point, are tracks matched to the collection of secondary vertices or is something else done??}
+
+\subsection{Missing transverse energy}
