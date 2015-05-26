@@ -88,30 +88,22 @@ The freedom of choosing this factorization scale $\mu_{F}$, generally around $1$
 \begin{equation}\label{eq::PSProb_NoSudakov}
  \mu_{F}^2 \dfrac{d f_{a}^{h}(x,\mu_{F}^{2})}{d \mu_{F}^{2}} = \sum_{a \in \{q,g\} } \int_{x}^{1} \dfrac{dz}{z} \dfrac{\alpha_{S}}{2 \pi} \hat{P}_{ba}(z) f_{b}^{h}(x/z, \mu_{F}^{2})
 \end{equation}
-
----------------------------------------------\\
-
-The probability for a parton branching $b$ $\rightarrow$ $a$, represented by $\mathcal{P}_{ba}$, diverges in the limit of soft-gluon radiation
-%, dependent on the numerator of the splitting function $z$ $\rightarrow$ $0$ and/or $z$ $\rightarrow$ $1$, 
-and in the limit of collinear parton radiation, $Q^{2}$ $\rightarrow$ $0$.
-%$z$ $\rightarrow$ $0$ and $Q^{2}$ $\rightarrow$ $0$, corresponding to soft gluon radiation and collinear parton radiation respectively. 
-Both divergences are regulated by introducing a cut-off scale $Q_{0}$ for the parton shower iteration at about $1$ $\GeV$. In the occurence of soft-quark branching (\textit{Why is this still allowed, even after the cut-off is applied? (or is soft quark still larger than 1 GeV?})), the parton branching probability $\mathcal{P}_{ba}$ exceeds unity which would violate the total conservation of probability. This conservation is restored by including a Sudakov form factor, which represents the probability of a parton not to undergo a branching. Hence Equation~(\ref{eq::PSProb_NoSudakov}) has to be multiplied by this Sudakov factor and reformulated as:
+Even though the introduction of the factorization scale resolved the divergencies, the branching probability in Equation~(\ref{eq::PSProb_NoSudakov}) can still exceed unity. Hence total conservation of probability should be restored by introducing a Sudakov form factor, which represents the probability of a parton not to undergo a branching. 
+This form factor compels the branching probability to be rewritten in the following form:
 \begin{equation}
  d\mathcal{P}_{ba} = \dfrac{\alpha_{S}}{2\pi} \dfrac{4}{3} \dfrac{dQ^{2}}{Q^{2}} P_{ba}(z)dz ~ \exp \left\lbrace - \int_{Q_{0}^{2}}^{Q^{2}} \dfrac{dQ^{'2}}{Q^{'2}} \dfrac{\alpha_{S}}{2\pi} \int dz^{'} P_{ba}(z^{'})  \right\rbrace
 \end{equation}
+
 %\\
 %\textit{$P_{ba}$ can be easily translated to $P_{b \rightarrow a+c}$ by applying the allowed emissions.\\
 %qq corresponds to q $\rightarrow$ q which can only be accompanied by gluon radiation hence $P_{qq}$ = $P_{q \rightarrow q g}$ in the definition used above. (check papers for rest)}\\
-%\\
-%\textit{Such higher order corrections occur in processes where a soft gluon is emitted or when a gluon or light quark splits into two almost collinear partons (NOT OWN WORDS)\\
-%Only here does the Sudakov Form Factor and DGLAP equations enter the picture. So they describe the non-perturbative corrections to the hard interaction cross section caused by the soft and collinear splitting of the initial and final state partons.}
 
-The parton shower algorithm outlined above is applicable for both initial and final state radiation since the branching probabilities are similar in both cases. However the actual implementation in the Monte Carlo event generators is performed in an entirely different way. This because each parton branching significantly reduces the energy of the initial partons and therefore the possibility to produce the hard process of interest, such as top-quark pair production. 
+The parton shower algorithm outlined above is applicable for both initial and final state radiation since the branching probabilities are similar in both cases. However the actual implementation in the Monte Carlo event generators is performed in an entirely different manner. 
+Initial state radiation is simulated by employing a backward evolution: the Monte Carlo event generator starts from the desired hard interaction and surround the initial partons with additional radiation (\textit{only}) afterwards. This because each parton branching significantly reduces the energy of the initial partons and therefore the possibility to produce the hard process of interest, such as top-quark pair production. 
 %In order to avoid the generation of billions of events and keeping only a couple relevant ones, the Monte Carlo event generators employ a backward method. 
-Hence the Monte Carlo event generators employ a backward method, meaning that they start from the desired hard interaction and surround the initial partons with additional radiation (\textit{only}) afterwards.
+Final state radiation on the other hand is taken into account in a much more straightforward way: the parton branching starts at the hard interaction scale $Q^{2}$ and is sequentially lowered until the factorization scale $\mu_{F}^{2}$ is reached.
 
 \subsubsection{Combine hard scattering with parton showering}
-\textit{Is this also relevant for LO calculations?}\\
 \textit{Is only matching used or also merging? (Seems to be applied in HERWIG)}\\
 
 \textit{At leading order correct matching between the produced jets and the original partons asked during the hard interaction is also important. This because additional hard gluon radiation in a X+parton interaction results in the same pattern as the hard interaction of a X+2-parton event. At LO there are two existing methods that can be used in order to avoid double counting: CKKW and MLM. The latter one, MLM named after M.L. Mangano, is the easier of the two and currently implemented in $ALPGEN$ for use with both $\Herwig$ and $\Pythia$.\\
