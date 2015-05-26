@@ -40,8 +40,9 @@ Most events studied at the LHC involve high-momentum transfers in order to creat
 \begin{equation} \label{eq::HSXS}
  \sigma_{h_{1}h_{2} \rightarrow X} =\sum_{a,b \in \{q,g\} } \int dx_{a} \int dx_{b} f_{a}^{h_{1}}(x_{a},\mu^{2}_{F}) f_{b}^{h_{2}}(x_{b},\mu^{2}_{F}) \int d\Phi_{ab \rightarrow X} \dfrac{d\hat{\sigma}(\Phi_{ab \rightarrow X},\mu^{2}_{F})}{d\Phi_{ab \rightarrow X}}
 \end{equation}
-From Equation~(\ref{eq::HSXS}) can be concluded that the hadronic cross section, valid for all orders in perturbation theory, is actually a convolution of a perturbatively short-distance component $\hat{\sigma}_{ab \rightarrow X}$, calculable from Matrix Elements, and an approximately long-distance one, represented by the parton distribution functions (PDF). The PDF $f_{a}^{h}(x_{a},\mu_{F})$ is the probability of encountering parton $a$ with momentum fraction $x_a$ in parent hadron $h$ at energy scale $\mu_{F}$. This factorization scale $\mu_{F}$ symbolizes the transition from the short-distance process to the long-distance one. The partonic scattering cross section $\hat{\sigma}(\Phi_{ab \rightarrow X},\mu^{2}_{F})$ depends on the final state phase space $\Phi_{ab \rightarrow X}$. \\
-\textit{\textbf{Does this sentence really add something?}} \textit{Should the terms of the second integrand be mentioned specifically??}\\
+From Equation~(\ref{eq::HSXS}) can be concluded that the hadronic cross section, valid for all orders in perturbation theory, is actually a convolution of a perturbatively short-distance component $\hat{\sigma}_{ab \rightarrow X}$, calculable from Matrix Elements, and an approximately long-distance one, represented by the parton distribution functions (PDF). The PDF $f_{a}^{h}(x_{a},\mu_{F})$ is the probability of encountering parton $a$ with momentum fraction $x_a$ in parent hadron $h$ when this is probed at energy scale $\mu_{F}$. This factorization scale $\mu_{F}$ symbolizes the transition from the short-distance process to the long-distance one (\textit{But this scale is motivated by the soft and collinear divergences which occur whenever a gluon is emitted from a quark so why already introduced in the hard interaction part ?}). 
+The partonic scattering cross section $\hat{\sigma}(\Phi_{ab \rightarrow X},\mu^{2}_{F})$ depends on the final state phase space $\Phi_{ab \rightarrow X}$. 
+\textit{\textbf{Does this last sentence really add something?}}\\
 
 Equation~(\ref{eq::HSXS}) serves as the starting point for event simulation in general-purpose Monte Carlo event generators which, due to the perturbative nature of the parton-level differential cross section, can be expanded in orders of QCD coupling $\alpha_{S}$. Originally these calculations were performed at leading order (LO), corresponding to $\mathcal{O}(\alpha_{S}^{2})$, however this only describes the simplest processes taking place in hadron colliders and does not correspond to reality where additional radiation on top of $X$ occurs. Moreover the current theoretical precision for QCD requires at least next-to-leading order (NLO) calculations. Hence much effort has been devoted in order to overcome the infrared singularities in QCD allowing to extend the matrix element generators to perform these NLO calculations in an automated way and thereby (?) significantly improving accuracy and predictive power.\\
 
@@ -71,40 +72,24 @@ The partons formed during the hard scattering are prone to gluon radiation emiss
 
 The parton shower formalism's objective is to convert the inclusive cross section for the production of parton $a$ into the exclusive cross section taking into account a number of additional less-energetic particles.
 %represent the large number of final state partons as a primary hard interaction surrounded with (chains of parton branchings) showers. 
-Hence the complex $2$ $\rightarrow$ $n$ process will be decomposed into a hard interaction with energy $Q$ and a succession of gluon radiations each with energy $Q_{i}$; a justifiable approach in the approximation $Q_{i}^{2}$ $\ll$ $Q_2$ which is defined as the collinear\footnote{Two particles are collinear in case they are close in angle.} limit. 
-%\textit{The exclusive cross section of the overall process can be associated with the cross section of the hard interaction but incorporates minor deviations to take into account the reduced energy available for the hard scattering due to the initial state radiation. \textbf{Really useful this XS info?}} 
+Hence the complex $2$ $\rightarrow$ $n$ process will be decomposed into a hard interaction with momentum transfer $Q$ and a succession of gluon radiations each with momentum transfer $Q_{i}$; a justifiable approach in the approximation $Q_{i}^{2}$ $\ll$ $Q^2$ which is defined as the collinear\footnote{Two particles are collinear in case they are close in angle.} limit. 
+%\textit{The exclusive cross section of the overall process can be associated with the cross section of the hard interaction but incorporates minor deviations to take into account the reduced energy available for the hard scattering due to the initial state radiation. \textbf{Really useful this XS info?}}
+The Alterelli-Parisi splitting functions, denoted $P_{ba}(z)$, describe this collinear splitting of parton $b$ into parton $a$ and are defined as~\cite{}:
+%The collinear splitting of parton $b$ into parton $a$ is described by the Alterelli-Parisi splitting functions $\hat{P}_{ba}(z)$, defined as~\cite{}:
+\begin{eqnarray}
+ & P_{qq}(z) = \dfrac{4}{3} \dfrac{1+z^{2}}{1-z}    & P_{qg}(z) = \dfrac{4}{3} \frac{1+(1-z)^{2}}{z} \\
+ & P_{gq}(z) = \dfrac{n_{f}}{2} (z^{2} + (1-z)^{2}) & P_{gg}(z) = 3 \dfrac{z^{4}+1+(1-z)^{4}}{z(1-z)}
+\end{eqnarray}
+where $n_{f}$ represents the number of quark flavours.
 \\
-Within this limit a single scattering can be described by the DGLAP (Dokshitzer-Gribov-Lipatov-Altarelli-Parisi) evolution equations~\cite{}, which represent the fact that any parton $a$ may have been produced by the branching of parton $b$ at slightly higher scale $\mu_{F}^2 + d\mu_{F}^2$:
+These splitting functions are divergent in the case of $z$ $\rightarrow$ $0$, corresponding to soft gluon emission as $z$ is the momentum fraction carried away by the parton $a$. 
+Since reality is known to be finite these soft divergences, together with the collinear divergencies ($\theta$ $\rightarrow$ $0$), have to be excluded by introducing a cut-off scale on the transverse momentum $k_{t}$ ($\simeq$ $E\theta$ \textit{relevant?}) below which all remaining perturbative effects are absorbed by the parton distribution functions. 
+The freedom of choosing this factorization scale $\mu_{F}$, generally around $1$ $\GeV$, necessitates the introduction of the DGLAP (Dokshitzer-Gribov-Lipatov-Altarelli-Parisi) evolution equations~\cite{}, which represent the fact that any parton $a$ may have been produced by the branching of parton $b$ at slightly higher scale $\mu_{F}^2 + d\mu_{F}^2$:\\
 \begin{equation}\label{eq::PSProb_NoSudakov}
  \mu_{F}^2 \dfrac{d f_{a}^{h}(x,\mu_{F}^{2})}{d \mu_{F}^{2}} = \sum_{a \in \{q,g\} } \int_{x}^{1} \dfrac{dz}{z} \dfrac{\alpha_{S}}{2 \pi} \hat{P}_{ba}(z) f_{b}^{h}(x/z, \mu_{F}^{2})
 \end{equation}
-The form functions $P_{ba}$ in Equation (\ref{eq::PSProb_NoSudakov}) are the Alterelli-Parisi splitting functions which describe the splitting of parton $b$ into parton $a$. They are defined as~\cite{}:  
-%(\textit{Use something else than eqnarray!!}):
-\begin{eqnarray}
- & P_{qq}(z) = \dfrac{4}{3} \dfrac{1+z^{2}}{1-z} & P_{qg}(z) = \dfrac{4}{3} \frac{1+(1-z)^{2}}{z} \\
- & P_{gq}(z) = \dfrac{n_{f}}{2} (z^{2} + (1-z)^{2}) & P_{gg}(z) = 3 \dfrac{z^{4}+1+(1-z)^{4}}{z(1-z)}
-\end{eqnarray}
-where $n_{f}$ represents the number of quark flavours.
 
-----------------------------------------------\\
-
-%The hard scattering interaction simulated by the event generator occurs at high energy scales and should (\textit{nevertheless}) still be connected to the lower scale where confinement into hadrons takes place. The communication between these two distinct energy scales is described by the Parton Shower (PS) formalism, a phenomena extractable from QCD's first principles.
-%As in QED where charged particles (\textit{or only electrons?)} radiate Brehmstrahlung, QCD partons are susceptible to the emission of gluon radiation. Moreover, due to the non-Abelian nature of QCD, gluon branching $g$ $\rightarrow$ $gg$ is also permitted.\\
-%\\
-%\textit{Does the soft and collinear follows from the processes or from the fact that these result in divergences? I think the latter ...}\\
-%Since both processes correspond to soft and collinear QCD radiation, parton branching cannot be described by a perturbative calculation and will results in soft divergences. %This iterative splitting (is described by a Markov chain and) reduces the transverse momentum of the original parton until the QCD confinement limit is reached.\\
-
-%The objective of the PS formalism is decomposing this complex process into an iterative parton branching procedure. This sequential splitting lowers stepwize the transverse momentum of the contributing partons until the QCD confinement limit is reached and gives rise to a parton cascade. The basic ingredient of this factorization is the probability distribution of a single parton emission from a hard interaction, which is represented by the DGLAP (Dokshitzer-Gribov-Lipatov-Altarelli-Parisi) evolution equations \cite{}:
-%\begin{equation}\label{eq::PSProb_NoSudakov}
-% d\mathcal{P}_{ba} = \dfrac{\sigma_{ME}}{\sigma_{0}} = \dfrac{\alpha_{S}}{2\pi} \frac{4}{3} \frac{dQ^{2}}{Q^{2}} P_{ba}(z)dz
-%\end{equation}
-%with $Q^{2}$ \textit{blabla}, $\sigma_{ME}$ the cross section of the hard interaction calculable from Matrix Elements, $\sigma_{0}$ the cross section without parton emission and $z$ the energy fraction carried away by the emitted parton in the hard interaction (\textit{with all divergences and sudakov, can one really call this a 'hard' interaction?}).\\
-The form functions $P_{ba}$ in Equation (\ref{eq::PSProb_NoSudakov}) are the Alterelli-Parisi splitting functions which describe the splitting of parton $b$ into parton $a$. They are defined as~\cite{}:  (\textit{Use something else than eqnarray!!}):
-\begin{eqnarray}
- & P_{qq}(z) = \dfrac{4}{3} \dfrac{1+z^{2}}{1-z} & P_{qg}(z) = \dfrac{4}{3} \frac{1+(1-z)^{2}}{z} \\
- & P_{gq}(z) = \dfrac{n_{f}}{2} (z^{2} + (1-z)^{2}) & P_{gg}(z) = 3 \dfrac{z^{4}+1+(1-z)^{4}}{z(1-z)}
-\end{eqnarray}
-where $n_{f}$ represents the number of quark flavours.
+---------------------------------------------\\
 
 The probability for a parton branching $b$ $\rightarrow$ $a$, represented by $\mathcal{P}_{ba}$, diverges in the limit of soft-gluon radiation
 %, dependent on the numerator of the splitting function $z$ $\rightarrow$ $0$ and/or $z$ $\rightarrow$ $1$, 
