@@ -7,17 +7,17 @@
 
 \section{(The) Compact Muon Solenoid experiment} 
 
-One of the two main-purpose particle detectors of the Large Hadron Collider is the Compact Muon Solenoid (CMS) experiment which was constructed to perform a wide variety of physics measurements. Hence the design of the CMS experiment was led by the goals of the LHC physics programme which required good identification and momentum resolution throughout the entire detector.
-In order to ensure good identification and reconstruction efficiency of all the different particles emerging from the interaction point, the CMS experiment contains four different subdetectors which are all designed in order to detect a specific type of particles: a tracker detector, an electromagnetic and hadronic calorimeter, and a muon system.
+One of the two main-purpose particle detectors of the Large Hadron Collider is the Compact Muon Solenoid (CMS) experiment which was constructed to perform a wide variety of physics measurements. Hence the design of the CMS experiment was led by the LHC physics programme goals which required good identification and momentum resolution throughout the entire detector.
+In order to efficiently detect all the different particles emerging from the interaction point, the CMS apparatus consists of four separate subdetectors which are all designed in order to identify specific types of particles: a tracker detector, an electromagnetic and hadronic calorimeter, and a muon system.
 
-The main distinguishing feature of the CMS experiment, which even drives the design of each of the subdetectors, is the high-field solenoid magnet of $3.8$ Tesla as depicted in Figure \ref{fig::CMSFig}. This to ensure good momentum resolution within a compact spectrometer without the need to make use of heavily restricted muon chambers. The other three subdetectors are required to be placed within this magnet coil (because ...?) which significantly restricts the size of these detectors. The tracker detector is placed closely around the beam pipe and actually consists of a silicon-based pixel and strip detector to guarantee track reconstruction in the high density environment close to the interaction point. Both the electromagnetic calorimeter (ECAL) and hadronic calorimeter (HCAL) are also located within the solenoid implying that they are designed to be as compact as possible without losing any granularity. The former one is a scintillating crystal-based calorimeter while the latter one is a brass/scintillator sampling calorimeter.
+The main distinguishing feature of the CMS experiment (which even drives the design of each of the subdetectors,) is the high-field solenoid magnet of $3.8$ Tesla as depicted in Figure \ref{fig::CMSFig}. This to ensure good momentum resolution within a compact spectrometer without the need to make use of heavily restricted muon chambers. The other three subdetectors are required to be placed within this magnet coil (because ...?) which significantly restricts their size. The tracker detector is placed closely around the beam pipe and actually consists of a silicon-based pixel and strip detector to guarantee track reconstruction in the high density environment close to the interaction point. Since also the electromagnetic calorimeter (ECAL) and hadronic calorimeter (HCAL) are located within the solenoid they are designed to be as compact as possible without any loss of granularity. The former calorimeter is a scintillating crystal-based type while the latter is a brass/scintillator sampling one.
 \begin{figure}[h!t]
  \centering
- \includegraphics[width = 0.4 \textwidth]{Afbeeldingen/CMS.png}
+ %\includegraphics[width = 0.4 \textwidth]{Afbeeldingen/CMS.png}
  \caption{CMS Figure with all subdetectors clearly visible} \label{fig::CMSFig}
 \end{figure}
 
-The design of the CMS experiment is also optimized for the reconstruction of neutrino's, which cannot be measured directly and hence only appear in the form of missing energy, by ensuring a hermetically closed detector. This resulted in the construction of a cylindrical barrel part located centrally with respect to the interaction point and an endcap part represented by a sort of disklike closure componenents for each of the different subdetectors.
+The design of the CMS experiment is \textbf{also} optimized for the reconstruction of neutrino's, which cannot be measured directly and hence only appear in the form of missing energy, by ensuring a hermetically closed detector. This resulted\footnote{Is this really the motivation why a barrel and endcap design has been adopted??} in the construction of a cylindrical barrel part located centrally with respect to the interaction point and an endcap part represented by a sort of disklike closure componenents for each of the different subdetectors.
 Even though the CMS experiment is denominated as ``compact'', its overal dimensions are a total length of $21.6$ m and a diameter of $14.6$ m resulting in a total weight of $12500$ tons.
 
 The CMS experiment has adopted a proper coordinate system for which the origin is centered at the nominal collision point within the detector. The $y$-axis (ordinate) is pointing upwards and the $x$-axis (abscissa) radially inwards toward the center of the LHC. Hence, according to the right-hand rule, the $z$-axis follows along the anticlockwise-beam direction. This coordinate system can easily be converted into a spherical coordinate system where the azimuthal angle $\phi$ is measured in the $x$-$y$ plane and the polar angle $\theta$ from the $z$-axis. 
@@ -36,21 +36,45 @@ Another variable that is closely related is the rapidity, also denoted using the
 \subsection{The silicon tracking apparatus}
 
 \subsubsection*{Hit and track reconstruction in the pixel and strip tracker}
-\textit{? Is this hit reconstruction (with fast and template-based algorithms) relevant?}\\
-\\
 
-\textit{Remark: Information is mainly found in 'Description and performance of track and primary-vertex reconstruction with the CMS tracker', but seems to differ from the information in Stijn's thesis... --  \textbf{Also read section 6.4 page 240 in the TDR volume 1!!}}\\
+The tracking detector is responsible for translating the measured energy deposits in the pixel and strip tracker into charged particles' tracks. This process is done using a computationally challenging track reconstruction algorithm which proceeds in an iterative manner in order to first identify the straightforward prompt tracks.
+The dense environment in the inner tracker is the main challenge for the track reconstruction implying the need of an efficient search for hits during the pattern recognition stage and a fast propagation of trajectory candidates. Hence the use of a Combinatiorial Track Finder (CTF), an extension of the Kalman Filter technique which allows the combination of track fitting and pattern recognition.
 
-The energy deposits detected in the pixel and strip tracker will be translated into actual charged particles' tracks by a track reconstruction algorithm. This is a computationally challenging tasks which is performed by a Combinatorial Track Finder (CTF), an extension of the Kalman Filter technique allowing the combined use of track fitting and pattern recognition. The process is performed iteratively, where each iteration proceeds in a similar manner:
-\begin{itemize}
- \item \textbf{Seed generation} \\
- During the first step of the CTF algorithm initial track candidates are identified which will serve as starting point for the reconstruction of the actual track parameters. The five parameters needed for representing the particle's trajectory in the tracker's magnetic field are retrieved by either three 3-D hits or two 2D-hits combined with a beam-spot constraint. The search for the seeds starts from the most inner layers of the pixel detector for efficiency optimization.
- \item \textbf{Track finding} \\
- In this step an inside-out Kalman Filter is applied in order to identify hits in successive detector layers compatible with the trajectory seed. After each layer the track parameters are updated taking into account the effects of multiple scattering and energy loss. This iterative process continues until the outermost layer of the tracker has been reached.
- \item \textbf{Track fitting} \\
- In order to obtain the most optimal track parameters, including the 
- \item \textbf{Track selection} \\
-\end{itemize}
+The local reconstruction is performed prior to the iterative tracking and clusters energy deposits by combining neighbouring pixels or strips which fullfill specific signal over noise (S/N) requirements. The cluster position is determined from the charge-weighted average or from the cluster edges in the case of the strip or pixel detector, respectively.
+
+The track reconstruction algorithm can be decomposed into four separate steps: seed generation, pattern recognition, ambiguity resolution and track fitting.
+The benefit of using an iterative process is that during the first iteration the easist to find tracks are identified such that their associated hits can be removed from the list in order to reduce combinatorial complexity for the following iterations.
+
+\begin{myindentpar}
+  \begin{description}
+    \item[Seed generation] \hfill \\
+    This step of the track reconstruction provides initial trajectory candidates from pairs of pixel hits. The track finding starts from trajectory seeds created in the innermost region of the tracker because the high granularity of the pixel detector ensures lower channel occupancy in the inner pixel layer than in the outer strip layer. 
+    %Hence optimal efficiency is retrieved when the tracks are built in the outward direction.
+    The starting trajectory parameters and their uncertainty in the quasi-uniform magnetic field of the tracker can be determined from five parameters. Hence either three 3-D hits or two 2D-hits combined with a beam spot constraint should be extracted in order to construct the seed trajectory.
+    \item[Pattern recognition] \hfill \\
+    This module of the CTF algorithm is basically a Kalman Filter which proceeds iteratively from the seed layer until the outermost tracker layer is reached. % taking into account the effects of multiple scattering and energy loss. 
+    %Combining the information of successive layers significantly improves the precision of the track parameters for each layer. 
+    First a dedicated navigation (step) is performed in order to identify the layers possibly intersected by the trajectory of the seed. Then, for each hit on this layer, a new trajectory candidate is created and its track parameters are recalculated using the Kalman Fiter formalism by combining the predicted trajectory state with the added hits in a weighted mean.
+    \item[Ambiguity resolution] \hfill \\
+    Since the track of a single charged particle can be reconstructed more than once, either originating from different seeds or when one single seed resulted in more than one trajectory candidate, double-counting is possible and should be resolved. Hence exclusion of specific tracks is performed based on the number of hits shared between two trajectories. 
+    %The track with the fewest hits is removed and the trajectory cleaner is applied again on the remaining list of trajectory candidates. 
+    \item[Track fitting] \hfill \\
+    During the final step of the iterative tracking process the trajectory parameters are refitted using all hits in order to exclude any bias introduced during the seeding stage. The Kalman Filter used here starts from the innermost hit and proceeds outwards. Afterwards a so-called smoothing stage is applied in the form of an outside-in Kalman Fitler which uses the result of the first one. This approach yields optimal estimates of the parameters.
+  \end{description}
+\end{myindentpar}
+
+%\textit{? Is this hit reconstruction (with fast and template-based algorithms) relevant?}
+
+%The energy deposits detected in the pixel and strip tracker will be translated into actual charged particles' tracks by a track reconstruction algorithm. This is a computationally challenging tasks which is performed by a Combinatorial Track Finder (CTF), an extension of the Kalman Filter technique allowing the combined use of track fitting and pattern recognition. The process is performed iteratively, where each iteration proceeds in a similar manner:
+%\begin{itemize}
+% \item \textbf{Seed generation} \\
+% During the first step of the CTF algorithm initial track candidates are identified which will serve as starting point for the reconstruction of the actual track parameters. The five parameters needed for representing the particle's trajectory in the tracker's magnetic field are retrieved by either three 3-D hits or two 2D-hits combined with a beam-spot constraint. The search for the seeds starts from the most inner layers of the pixel detector for efficiency optimization.
+% \item \textbf{Track finding} \\
+% In this step an inside-out Kalman Filter is applied in order to identify hits in successive detector layers compatible with the trajectory seed. After each layer the track parameters are updated taking into account the effects of multiple scattering and energy loss. This iterative process continues until the outermost layer of the tracker has been reached.
+% \item \textbf{Track fitting} \\
+% In order to obtain the most optimal track parameters, including the 
+% \item \textbf{Track selection} \\
+%\end{itemize}
 
 \subsection{The calorimetry subdetectors}
 
