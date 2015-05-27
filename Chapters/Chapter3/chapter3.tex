@@ -82,18 +82,26 @@ The Alterelli-Parisi splitting functions, denoted $P_{ba}(z)$, describe this col
 \end{eqnarray}
 where $n_{f}$ represents the number of quark flavours.
 \\
-These splitting functions are divergent in the case of $z$ $\rightarrow$ $0$, corresponding to soft gluon emission as $z$ is the momentum fraction carried away by the parton $a$. 
+These splitting functions are divergent in the case of $z$ $\rightarrow$ $1$, corresponding to soft gluon emission as $z$ is the momentum fraction carried away by the parton $a$. 
 Since reality is known to be finite these soft divergences, together with the collinear divergencies ($\theta$ $\rightarrow$ $0$), have to be excluded by introducing a cut-off scale on the transverse momentum $k_{t}$ ($\simeq$ $E\theta$ \textit{relevant?}) below which all remaining perturbative effects are absorbed by the parton distribution functions. 
 The freedom of choosing this factorization scale $\mu_{F}$, generally around $1$ $\GeV$, necessitates the introduction of the DGLAP (Dokshitzer-Gribov-Lipatov-Altarelli-Parisi) evolution equations~\cite{}, which represent the fact that any parton $a$ may have been produced by the branching of parton $b$ at slightly higher scale $\mu_{F}^2 + d\mu_{F}^2$:\\
 \begin{equation}\label{eq::PSProb_NoSudakov}
- \mu_{F}^2 \dfrac{d f_{a}^{h}(x,\mu_{F}^{2})}{d \mu_{F}^{2}} = \sum_{a \in \{q,g\} } \int_{x}^{1} \dfrac{dz}{z} \dfrac{\alpha_{S}}{2 \pi} \hat{P}_{ba}(z) f_{b}^{h}(x/z, \mu_{F}^{2})
+ \mu_{F}^2 \dfrac{d f_{a}^{h}(x,\mu_{F}^{2})}{d \mu_{F}^{2}} = \sum_{b \in \{q,g\} } \int_{x}^{z_{max}} \dfrac{dz}{z} \dfrac{\alpha_{S}}{2 \pi} P_{ba}(z) f_{b}^{h}(x/z, \mu_{F}^{2})
 \end{equation}
-Even though the introduction of the factorization scale resolved the divergencies, the branching probability in Equation~(\ref{eq::PSProb_NoSudakov}) can still exceed unity. Hence total conservation of probability should be restored by introducing a Sudakov form factor, which represents the probability of a parton not to undergo a branching. 
-This form factor compels the branching probability to be rewritten in the following form:
+Even though the introduction of the factorization scale resolved the divergencies, the branching probability in Equation~(\ref{eq::PSProb_NoSudakov}) can still exceed unity. This because also the virtual divergencies which lead to cancelations have been removed by this cut-off. Hence total conservation of probability should be restored by adding an additional term to the DGLAP equations:
+\begin{eqnarray}
+ \mu_{F}^2 \dfrac{d f_{a}^{h}(x,\mu_{F}^{2})}{d \mu_{F}^{2}} & = & \sum_{b \in \{q,g\} } \int_{x}^{z_{max}} \dfrac{dz}{z} \dfrac{\alpha_{S}}{2 \pi} P_{ba}(z) f_{b}^{h}(x/z, \mu_{F}^{2}) \nonumber \\
+                                                             &   & - f_{a}(x,\mu_{F}^{2}) \sum_{b \in \{q,g\}} \int_{z_{min}}^{z_{max}} dz \dfrac{\alpha_{S}}{2 \pi} \dfrac{1}{2} P_{ab}(z)
+\end{eqnarray}
+The above equation can be further simplified by identifying the Sudakov form factor, which represents the probability for a parton not to undergo a branching between the energy scales $t^{'}$ and $t$.
 \begin{equation}
- d\mathcal{P}_{ba} = \dfrac{\alpha_{S}}{2\pi} \dfrac{4}{3} \dfrac{dQ^{2}}{Q^{2}} P_{ba}(z)dz ~ \exp \left\lbrace - \int_{Q_{0}^{2}}^{Q^{2}} \dfrac{dQ^{'2}}{Q^{'2}} \dfrac{\alpha_{S}}{2\pi} \int dz^{'} P_{ba}(z^{'})  \right\rbrace
+ \Delta_{a}(t,t^{'}) = \exp \left\lbrace - \sum_{b \in \{q,g\}} \int_{t}^{t^{'}} \dfrac{dk_{T}^{2}}{k_{T}^{2}} \int_{z_{min}}^{z_{max}} dz \dfrac{\alpha_{S}}{2 \pi} \dfrac{1}{2} P_{ab}(z) \right\rbrace
 \end{equation}
-
+Now the basic building block of the parton shower algorithm, the probability distribution for one emission to be accompanied by a parton with momentum fraction $z$, that will be iterated over during the shower process can be summarized as:
+\begin{equation}
+ \dfrac{d}{d \log \mu_{F}^{2}} \log \dfrac{f_{a}(x,\mu_{F}^{2})}{\Delta_{a}(t_{c},t)} = \sum_{b \in \{q,g\}} \int_{x}^{z_{max}} \dfrac{dz}{z} P_{ba}(z) \dfrac{f_{b}(x/z,\mu_{F}^{2})}{f_{a}(x,\mu_{F}^{2})}
+\end{equation}
+\textit{\textbf{Is this transformation between t and $\mu_{F}^{2}$ completely correct ??  How to set $t_c$ in this $\Delta$ term .. ? Formula's taken from ``Introduction to PS event generators''!}}\\
 %\\
 %\textit{$P_{ba}$ can be easily translated to $P_{b \rightarrow a+c}$ by applying the allowed emissions.\\
 %qq corresponds to q $\rightarrow$ q which can only be accompanied by gluon radiation hence $P_{qq}$ = $P_{q \rightarrow q g}$ in the definition used above. (check papers for rest)}\\
@@ -104,6 +112,9 @@ Initial state radiation is simulated by employing a backward evolution: the Mont
 Final state radiation on the other hand is taken into account in a much more straightforward way: the parton branching starts at the hard interaction scale $Q^{2}$ and is sequentially lowered until the factorization scale $\mu_{F}^{2}$ is reached.
 
 \subsubsection{Combine hard scattering with parton showering}
+From the overview of both the hard scattering process and the parton shower algorithm can be concluded that the two approaches for simulating additional radiation are rather complementary. The former one is able, by introducing NLO corrections, to incorporate hard large-angle scattering processes while the latter one is optimized for soft and collinear parton branchings. However special care should be awarded to applying a correct combination of the matrix elements on the one hand and the low-energy parton cascade on the other hand in order to overcome any possible double-counting which can occur. This because an $(n+1)$-jet process can be simulated either by an $n+1$-jet hard interaction process calculated using matrix elements surrounded with additional soft radiation or by the emission of an additional hard parton during the parton shower algorithm of an $n$-jet hard interaction.
+\\
+
 \textit{Is only matching used or also merging? (Seems to be applied in HERWIG)}\\
 
 \textit{At leading order correct matching between the produced jets and the original partons asked during the hard interaction is also important. This because additional hard gluon radiation in a X+parton interaction results in the same pattern as the hard interaction of a X+2-parton event. At LO there are two existing methods that can be used in order to avoid double counting: CKKW and MLM. The latter one, MLM named after M.L. Mangano, is the easier of the two and currently implemented in $ALPGEN$ for use with both $\Herwig$ and $\Pythia$.\\
