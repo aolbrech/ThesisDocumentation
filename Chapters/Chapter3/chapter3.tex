@@ -5,8 +5,8 @@ An accurate understanding of simulated events and their reconstruction is crucia
 \section{QCD for hadron colliders} \label{sec::QCDHadron}
 
 The composite nature of protons together with the high-momentum transfers reachable \textit{(conceivable)} at the LHC significantly complicates the event structure. 
-Hence for a thorough understanding of the different processes taking place during the generation of a single proton-proton collision it is factorized into separate steps.
-An overview of this factorization is shown in Figure~\ref{fig::EvtShower} with the different stages briefly discussed below.
+For a complete comprehension of the different processes taking place during the generation of a single proton-proton collision the overall algorithm is factorized.
+An overview of this factorization is shown in Figure~\ref{fig::EvtShower} for which the different stages are briefly discussed below.
 
 \begin{figure}[htb]
  \centering
@@ -30,9 +30,9 @@ An overview of this factorization is shown in Figure~\ref{fig::EvtShower} with t
 
 The main challenge at hadron colliders \textit{(compared to lepton colliders)} is the missing information about the partons responsible for the hard interaction. 
 The event generation process at the LHC is even more arduous due to the QCD activity in a widespread range of involved momentum transfer. %, according to the scale of momentum transfer involved. 
-The interaction starts at a scale of barely $1$ $\GeV$ with partons confined in a proton beam, then produces during the hard interaction a few high-energetic outgoing leptons, gauge bosons or partons of which the latter afterwards transform non-perturbatively into final-state hadrons. This large variation in energy range, and corresponding QCD coupling strength, implies that only the high-momentum transfer part of the event generation can be derived exactly from the QCD Lagrangian while the other aspects have to be expressed using phenomenological non-perturbative models.
+The interaction starts at a scale of barely $1$ $\GeV$ with partons confined in a proton beam, then produces during the hard interaction a few high-energetic outgoing leptons, gauge bosons or partons of which the latter afterwards transform non-perturbatively into final-state hadrons. This large variation in energy range, and corresponding QCD coupling strength, implies that only the event generation's high-momentum transfer contribution can be derived exactly from the QCD Lagrangian while the other aspects have to be expressed using phenomenological non-perturbative models.
 
-\subsection{Hard Scattering (=? Jet Fragmentation)} \label{sec::HardScattering}
+\subsection{Hard Scattering} \label{sec::HardScattering}
 Most events studied at the LHC involve high-momentum transfers in order to create massive particles or high-energetic jets. The inclusive production cross section of an observable $X$ from hadrons $h_1$ and $h_2$ for these type of interactions can be factorized into:
 
 %Due to the internal structure of the protons, the inclusive cross section $\sigma_{h_{1}h_{2} \rightarrow X}$ cannot be calculated exactly from first principles but has to be factorized in terms of the partonic scattering cross section $\hat{\sigma}_{ab \rightarrow X}$ and the parton distribution functions $f_{a}^{h}$. Therefore, within the collinear limit~\cite{ColLimit}, the inclusive cross section for $X$-production can be written as:
@@ -83,12 +83,12 @@ The Alterelli-Parisi splitting functions, denoted $P_{ba}(z)$, describe this col
 where $n_{f}$ represents the number of quark flavours.
 \\
 These splitting functions are divergent in the case of $z$ $\rightarrow$ $1$, corresponding to soft gluon emission as $z$ is the momentum fraction carried away by the parton $a$. 
-Since reality is known to be finite these soft divergences, together with the collinear divergencies ($\theta$ $\rightarrow$ $0$), have to be excluded by introducing a cut-off scale on the transverse momentum $k_{t}$ ($\simeq$ $E\theta$ \textit{relevant?}) below which all remaining perturbative effects are absorbed by the parton distribution functions. 
+Since reality is known to be finite these soft divergences, together with the collinear divergencies ($\theta$ $\rightarrow$ $0$), have to be excluded by introducing a cutoff scale on the transverse momentum $k_{t}$ ($\simeq$ $E\theta$ \textit{relevant?}) below which all remaining perturbative effects are absorbed by the parton distribution functions. 
 The freedom of choosing this factorization scale $\mu_{F}$, generally around $1$ $\GeV$, necessitates the introduction of the DGLAP (Dokshitzer-Gribov-Lipatov-Altarelli-Parisi) evolution equations~\cite{}, which represent the fact that any parton $a$ may have been produced by the branching of parton $b$ at slightly higher scale $\mu_{F}^2 + d\mu_{F}^2$:\\
 \begin{equation}\label{eq::PSProb_NoSudakov}
  \mu_{F}^2 \dfrac{d f_{a}^{h}(x,\mu_{F}^{2})}{d \mu_{F}^{2}} = \sum_{b \in \{q,g\} } \int_{x}^{z_{max}} \dfrac{dz}{z} \dfrac{\alpha_{S}}{2 \pi} P_{ba}(z) f_{b}^{h}(x/z, \mu_{F}^{2})
 \end{equation}
-Even though the introduction of the factorization scale resolved the divergencies, the branching probability in Equation~(\ref{eq::PSProb_NoSudakov}) can still exceed unity. This because also the virtual divergencies which lead to cancelations have been removed by this cut-off. Hence total conservation of probability should be restored by adding an additional term to the DGLAP equations:
+Even though the introduction of the factorization scale resolved the divergencies, the branching probability in Equation~(\ref{eq::PSProb_NoSudakov}) can still exceed unity. This because also the virtual divergencies which lead to cancelations have been removed by this cutoff. Hence total conservation of probability should be restored by adding an additional term to the DGLAP equations:
 \begin{eqnarray}
  \mu_{F}^2 \dfrac{d f_{a}^{h}(x,\mu_{F}^{2})}{d \mu_{F}^{2}} & = & \sum_{b \in \{q,g\} } \int_{x}^{z_{max}} \dfrac{dz}{z} \dfrac{\alpha_{S}}{2 \pi} P_{ba}(z) f_{b}^{h}(x/z, \mu_{F}^{2}) \nonumber \\
                                                              &   & - f_{a}(x,\mu_{F}^{2}) \sum_{b \in \{q,g\}} \int_{z_{min}}^{z_{max}} dz \dfrac{\alpha_{S}}{2 \pi} \dfrac{1}{2} P_{ab}(z)
@@ -106,64 +106,110 @@ Now the basic building block of the parton shower algorithm, the probability dis
 %\textit{$P_{ba}$ can be easily translated to $P_{b \rightarrow a+c}$ by applying the allowed emissions.\\
 %qq corresponds to q $\rightarrow$ q which can only be accompanied by gluon radiation hence $P_{qq}$ = $P_{q \rightarrow q g}$ in the definition used above. (check papers for rest)}\\
 
-The parton shower algorithm outlined above is applicable for both initial and final state radiation since the branching probabilities are similar in both cases. However the actual implementation in the Monte Carlo event generators is performed in an entirely different manner. 
-Initial state radiation is simulated by employing a backward evolution: the Monte Carlo event generator starts from the desired hard interaction and surround the initial partons with additional radiation (\textit{only}) afterwards. This because each parton branching significantly reduces the energy of the initial partons and therefore the possibility to produce the hard process of interest, such as top-quark pair production. 
+The parton shower algorithm outlined above is applicable for both initial and final state radiation since their branching probabilities are similar. However the actual implementation in the Monte Carlo event generators is performed in an entirely different manner. 
+Initial state radiation is simulated by employing a backward evolution: the Monte Carlo event generator starts from the desired hard interaction and surrounds the initial partons with additional radiation only afterwards. This because each parton branching significantly reduces the energy of the initial partons and therefore the possibility to produce the hard process of interest, such as top-quark pair production. 
 %In order to avoid the generation of billions of events and keeping only a couple relevant ones, the Monte Carlo event generators employ a backward method. 
 Final state radiation on the other hand is taken into account in a much more straightforward way: the parton branching starts at the hard interaction scale $Q^{2}$ and is sequentially lowered until the factorization scale $\mu_{F}^{2}$ is reached.
 
 \subsubsection{Combine hard scattering with parton showering}
-From the overview of both the hard scattering process and the parton shower algorithm can be concluded that the two approaches for simulating additional radiation are rather complementary. The former one is able, by introducing NLO corrections, to incorporate hard large-angle scattering processes while the latter one is optimized for soft and collinear parton branchings. However special care should be awarded to applying a correct combination of the matrix elements on the one hand and the low-energy parton cascade on the other hand in order to overcome any possible double-counting which can occur. This because an $(n+1)$-jet process can be simulated either by an $n+1$-jet hard interaction process calculated using matrix elements surrounded with additional soft radiation or by the emission of an additional hard parton during the parton shower algorithm of an $n$-jet hard interaction.
+From the overview given above can be understood that the Matrix-Element and Parton-Shower algorithm have some crucial differences in how to simulate $X+n$-jet topologies.
+The former one reliably describes the simulation of well separated hard partons but lacks information about the collinear and soft partons while for the latter one this is exactly the contrary. Hence for accurately describing the entire event simulation chain up to the final-state hadrons both approaches should be combined. However this is not a straightforward process since possible double-counting can occur since a hard parton of a $X+2$-jet event can originate either from a $X+2$-jet fixed-order matrix-element calculation or from a hard emission during the showering of the $X+1$-jet event.
 \\
 
-\textit{Is only matching used or also merging? (Seems to be applied in HERWIG)}\\
-
-\textit{At leading order correct matching between the produced jets and the original partons asked during the hard interaction is also important. This because additional hard gluon radiation in a X+parton interaction results in the same pattern as the hard interaction of a X+2-parton event. At LO there are two existing methods that can be used in order to avoid double counting: CKKW and MLM. The latter one, MLM named after M.L. Mangano, is the easier of the two and currently implemented in $ALPGEN$ for use with both $\Herwig$ and $\Pythia$.\\
-At next-to-leading order the situation is a bit more complex and two different methods have been developed, $MC@NLO$ and $Powheg$. The former one has a wide range of processes available but can only be used in combination with $HERWIG$. However since recently, effort has been made to also combine the $MC@NLO$ approach with $\Pythia$ and $HERWIG++$. This in contrast to the latter one, which can be intertwined with both $HERWIG$ and $PYTHIA$ but is only recently catching up in the number of available processes.}\\
-
-\textit{What should exactly be discussed?}
-The current progress in calculating NLO hard cross section implies a profound understanding and description of the matching between the hard scattering and the parton shower. This is necessary in order to avoid double-counting.
-
-%\subsubsection{Initial State Radiation (ISR)}
-%The probability for the incoming partons in the parton bunch to radiate is similar to the branching probability of the partons produced by the hard scattering. Therefore exactly the same formulas and theory can be applied to the radiation of the inital-state partons. However there is an important difference between the initial-state radiation in reality and the implementation in the Monte Carlo event generators. This because the high branching probability significantly reduces the energy of the initial partons and hence the possibility to maintain sufficient energy to produce the hard process of interest, such as top-quark pair production. It would imply, as occurs in reality, the generation of billions of events in order to keep only a couple of thousand of interest. As a result, the Monte Carlo event generators actually start from the relevant hard process and work their way back to the initial partons to surround them with additional radiation.
+Different approaches exist for correctly dealing with this double-counting issue and the ones used in this thesis are outlined below. A distinction should be made whether the matrix-element calculations have been performed at LO or NLO accuracy since the latter significantly complicates the combination procedure.\\
+In case LO matrix-elements have to be combined with the parton shower the MLM approach is applied which imposes a cut on the jet transverse momentum to ensure any hard jet in the event to originate from the hard interaction. So an event is rejected in case more than the requested number of jets have transverse momentum above the merging scale. The hard jets produced in this way are certain to be described by tree-level matrix elements since the merging scale is chosen to be larger or equal than the matrix-element cutoff scale.
+As in the parton shower algorithm, this approach can be depicted by introducing Sudakov factors that represent the probability for not undergoing a hard scattering below the merging scale during the showering process.
+The MLM approach is used in $\Herwig$ and $\Pythia$ (\textbf{when used?}) and results in a parton shower structure with LO accuracy which is applied in a broad range of LHC analyses.
+\\
+Even though the LO results using the MLM approach are successful in describing shapes of experimental distributions considerable gain can be reached by extending to NLO accuracy. 
+%\textit{Such a matching aims to, beside the real corrections which are included in the LO process as well, include the virtual corrections correctly (\textit{useful??})} 
+The main challenge of matching NLO calculations with parton showers is to overcome the additional double-counting introduced by the approximate NLO corrections included in the parton shower generators. 
+One of the first acceptable NLO matching methods which correctly tackles this double-counting issue was the so-called $MC@NLO$ algorithm, which only applies the parton-shower algorithm on PS-corrected NLO matrix-elements.
+The correction term is obtained by first computing the NLO matrix-element corrections to $n$-body decay, then calculating how the first shower of a $n$-body decay would populate the $n+1$-body phase space and finally subtracting this approximate shower calculation from the exact NLO matrix-element. The downside of the $MC@NLO$ approach is two-fold: the subtraction of the two contributions can lead to negative weights and the subtraction terms are generator-dependent such that for now only $\Herwig$ can be used for performing the parton shower. 
+\\
+Hence a new NLO matching method was developed to overcome both the presence of negative weights and the generator-dependency of the $MC@NLO$ approach. The $Powheg$ approach starts from the hardest emission using full NLO accuracy and applies normal showering afterwards. This implies that only one emission beyond LO should be generated in order to obtain NLO accuracy. In this thesis the $Powheg$ approach is combined with the $\Pythia$ parton shower algorithm.
 
 \subsection{Hadronisation} \label{sec::Hadronisation}
-The event generation algorithm designed up to now correctly describes the desired hard interaction and adequately surrounds it with soft-gluon radiation and parton production without any risk of double-counting. However one important aspect is still missing, namely the hadronization process, (\textit{comma issue with namely ...}) which describes how the quarks and gluons turn into experimentally observable colour-neutral hadrons.
-This final step of the event generation cannot be calculated from first principles and is hence represented by phenomenological models.
-Two distinct models for describing this non-perturbative process are used today, (\textit{Correct comma use?}) the Lund string model~\cite{Lund} and the cluster model~\cite{ClusterModel}, which are implemented in $\Pythia$ and $\Herwig$, respectively.
-
-The former one is based on linear confinement, which states that the potential $V$ between a quark-antiquark increases with separation distance $r$ due to the presence of a strong QCD colour field.%, as depicted in Equation~(\ref{eq::VQCD}).
+The missing link in the event generation process is how the quarks and gluons produced during both the hard interaction and the showering turn into experimentally observable colour-neutral hadrons. This step is defined as the hadronisation or fragmentation process and is represented by phenomenological models since it cannot be calculated from first principles due to the corresponding low energy scales.
+Two distinct models for describing this non-perturbative process are used today: the Lund string model~\cite{Lund} and the cluster model~\cite{ClusterModel}. The former one is implemented in $\Pythia$ while the latter one is used by $\Herwig$.
+\\
+The Lund string model is based on linear confinement, which states that the potential $V$ between a quark-antiquark increases with separation distance $r$ due to the presence of a strong QCD colour field: %, as depicted in Equation~(\ref{eq::VQCD}).
 \begin{equation}\label{eq::VQCD}
  V = \kappa r ~~~ \kappa \sim 1 \dfrac{\GeV}{fm}
 \end{equation}
-Hence the kinetic energy of this parton pair will transform into potential energy as they move further away. If the energy stored within the colour string stretched between the quark $q$ and anti-quark $\bar{q}$ is large enough, it will split into a new $q\bar{q}$ pair with two distinct colour strings surrounding the parton pairs. The newly created particles have partly absorbed the potential energy of the original colour string and this process continues until the potential energy is too low for any additional string splittings to occur.
+Hence the kinetic energy of such a parton pair will transform into potential energy and accumulate while receding. 
+Once sufficient energy is stored in the colour string stretched between the quark $q$ and anti-quark $\bar{q}$, the string will split into a new $q\bar{q}$ pair with a colour string surrounding each parton pair.
+A fraction of the potential energy will be absorbed by the parton creation and, as a consequence, lowering the remaining energy during each following string splitting until no subsequent splittings can occur.
+The probability for the creation of a quark with mass $m$ and transverse momentum $\pT$ during such a splitting is given by:
+\begin{equation}\label{eq::mBot}
+ %\exp \left( -\frac{\pi m^{2}_{\bot}}{\kappa} \right) =
+ \exp \left( -\frac{\pi m^{2}}{\kappa} \right) \exp \left(-\frac{\pi \pT^{2}}{\kappa} \right)
+\end{equation}
+However, the above formula only represents the formation of light $u$-, $d$- and $s$-quarks since the presence of the mass term implies that the production of heavier quarks is suppressed during this step of the event generation process. 
+%Heavier mesons are only created afterwards when the unstable light mesons decay further into stable final-state hadrons.
+%The Lund string model is also valid for baryon creation, which in it simplest form is obtained by allowing antidiquark-diquark production during string breaks.
 \\
-This splitting, $(q\bar{q})$ $\rightarrow$ $(q\bar{q}^{'})$ + $(\bar{q}q^{'})$, is not known from first principles and is(, in this Lund string model,) explained by quantum mechanical tunneling phenomena. The probability for the creation of a quark with mass $m$ and transverse momentum $p_{T}$ during such a splitting is given by:
+%The quantity $m^{2}_{\bot}$ $=$ $m^{2} + p_{x}^{2} + p_{y}^{2}$ in Equation (\ref{eq::mBot}) is the transverse mass 
+The transition of these free quarks into bound states is described by the Lund fragmentation function which gives the probability of a colour string to produce a hadron $h$ with mass $m_{h}$, transverse momentum $p_{T}$ and longitudinal momentum fraction $z$ during the string-breaking process. The fragmentation function exhibits a ``left-right'' symmetry since the splitting sequence should be identical whether is started from the quark or anti-quark.
 \begin{equation}
- \exp \left( -\frac{\pi m^{2}}{\kappa} \right) \exp \left(-\frac{\pi p_{T}^{2}}{\kappa} \right)
+ f(z) \propto \frac{1}{z} (1-z)^{a} \exp \left( - \frac{b(m_{h}^{2} + p_{\rm T,h}^{2})}{z} \right)
 \end{equation}
-The above formula only describes the formation of light $u$-, $d$- and $s$-mesons. Due to the presence of the quark-mass term, the production of heavier mesons is suppressed during this step of the event generation process. The string model also explains baryon-formation, this by allowing string breaks to produce diquarks according to the Lund symmetric fragmentation function:
-\begin{equation}
- f(z) \propto \frac{1}{z} (1-z)^{a} \exp \left( - \frac{b(m_{h}^{2} + p_{T,h}^{2})}{z} \right)
-\end{equation}
-with $z$ the fraction of longitudinal momentum \textit{fraction of what???} carried by the hadron. For the creation of heavy $c$- and $b$-baryons an additional factor of $1/z^{bm_{Q}^{2}}$ has to be taken into account~\cite{} (\textit{Check reference 75 of paper QCD for collider physics}).
-
-The second hadronisation model, the so-called cluster model, is based on the preconfinement property of QCD~\footnote{This implies that colour singlet combinations of partons (= clusters) can be formed with an asymptotically universal invariant mass distribution \textit{NOT OWN WORDS}}. At the end of the parton shower gluons are splitted into $q\bar{q}$ pairs and colour-connected pairs give rise to clusters from which hadrons are formed. \textit{More detail needed on this second model ?}
-
+with $a$ and $b$ free parameters of the model.
+In order to overcome the suppression of heavier hadrons an additional $1/z^{bm_{Q}^{2}}$~\cite{} factor has to be taken into account.
+\\
+The second hadronisation model, the cluster model, is based on the preconfinement property of QCD and splits the gluons non-perturbatively into $q\bar{q}$ pairs after the parton shower. From this clusters, or colour singlet combinations of partons, can be created which transform into hadrons either directly or through splitting processes depending on their mass. 
+%~\footnote{This implies that colour singlet combinations of partons (= clusters) can be formed with an asymptotically universal invariant mass distribution \textit{NOT OWN WORDS}}. At the end of the parton shower gluons are splitted into $q\bar{q}$ pairs and colour-connected pairs give rise to clusters from which hadrons are formed. 
+\textit{More detail needed on this second model ?}
+\\
 \textit{Something about decay of unstable particles?}
 
-\subsection{Underlying event}% and Multiple Parton Interactions (?)}
-Up to now only the ideal situation has been considered: the event generation process when only one parton present in the proton results in a hard interaction. However reality is a completely different story, and, since all the exchanged QCD particles carry colour charge, rather complex.\\
-(\textit{Link sentences ...}) Two distinct soft phenomena contribute to the so-called underlying event (UE), the beam remnants and the multiple parton interactions (MPI). The beam remnant is defined as the remainder of the proton after the hard-interacting parton is knocked out. Originally the interacting proton was colour-neutral but the beam remnant ends up with a non-zero colour charge. Therefore it will start to hadronise and will influence the formation of hadrons during the hadronisation process. (\textit{Is this completely correct?}) The contribution of the multiple parton interactions can easily be understood by depicting the hadrons as a bunch of protons. Hence each of these protons is as likely to undergo scattering processes within one single hadron-hadron interaction\footnote{This can also result in hard scattering no? But if this happens the event will not be chosen and rejected?}.
+\subsection{Additional event activity (find good title)}% and Multiple Parton Interactions (?)}
 
-As mentioned before, the exchanged QCD particles have colour charge implying that even a limited number of soft particles produced in this underlying event can have a major influence on the particle multiplicity in the final state. 
-\textit{Mention something about the consequences ...}
+The previous sections have provided a detailed overview of the event generation process from start to finish, but were limited to the ideal situation where only one parton present in each parton contributes to the production of final-state hadrons. A more realistic representation would be to take into account the additional activity which occurs in coincidence with the primary parton collision. 
+\\
 
-In 1987, Sj\"ostrand and van Zijl proposed a first detailed Monte Carlo model for perturbative MPI, which is still considered as the basis for modern implementations~\cite{SjostrandAndZijl} (Check reference 76 of QCD for Collider Physics). \textit{Is this model-part necessary?}\\
-\textit{Now something about implementation in Monte Carlo event generators maybe ?}\\
-
+The term Underlying Event (UE) has been adopted as collective noun to depict the types of additional interactions during a single hadron-hadron collision that could possibly alter the final-state. At the LHC where protons are used as incoming particles, two distinct soft phenomena contribute to the UE: the beam remnants and the multiple parton interactions (MPI).
+The beam remnant is defined as the remainder of the proton after the hard-interacting partons are extracted. The non-zero colour charge of the beam remnant implies the creation of additional hadrons during the hadronisation process.
+Multiple parton interactions represent the distinct scattering processes that could take place between other incoming partons. 
+The presence of MPI can be understood from the composite nature of protons implying that each parton is as likely to undergo scattering interactions within one single hadron-hadron interaction.
+The jets produced from the MPI  are in general less energetic than the principal hard interaction and the chances of producing an extra hard interaction during this process are very rare.
+As a result the underlying event is mainly saturated with low-energetic partons which tend to travel along the beamline such that it can be studied by selecting a specific topological structure.
+%tend to travel along the beamline, allowing the possibility to study the underlying event in more detail. The chances of producing an additional hard interaction 
+\\
+The complexity of the underlying event lies in the fact that it involves both non-perturbative and perturbative QCD making it, at least for the moment, practically impossible to understand the physics. Hence Monte Carlo models have to be tuned; i.e.\ constraining free parameters using existing data; in order to accurately describe the collider physics.
+\\
+\textit{Necessary to explain the specific methods used by Pythia and Herwig?}
+\\
+%As mentioned before, the exchanged QCD particles have colour charge implying that even a limited number of soft particles produced in this underlying event can have a major influence on the particle multiplicity in the final state. 
+%\textit{Mention something about the consequences ...}
+%In 1987, Sj\"ostrand and van Zijl proposed a first detailed Monte Carlo model for perturbative MPI, which is still considered as the basis for modern implementations~\cite{SjostrandAndZijl} (Check reference 76 of QCD for Collider Physics). \textit{Is this model-part necessary?}\\
 \textit{Should check whether UE is one of the important systematics or not... This determines in how much detail this section should be explained!}
+\\
+
+Another important contribution to additional event activity which significantly complicates the final-state topology of hadron-hadron collisions is pileup (PU) or additional hadron-hadron collisions. These type of interactions occur because hadron-hadron collisions are not performed between two single hadrons but between bunches of hadrons. Therefore it is again likely for multiple hadrons to result in a hard interactions surrounded with UE during one bunch crossing. A distinction can be made whether the PU originates from the same bunch crossing as the hard interaction or from a previous bunch crossing, which are defined as in-time PU and out-of-time PU, respectively. The latter one can manifest itself when the bunches are spaced such that the next one arrives before the previous one evacuated completely from the detector.
 
 \section{Simulating detector response} \label{sec::DetectorSim} %Detector simulation (CHANGE TITLE!)}
+The Monte Carlo event generators adopt an approach independent of the considered accelerator complex, besides starting with the correct incoming partons, and can thus be applied in a very broad physics range. In order to study specifically proton-proton collisions collected at the CMS detector, the simulated events are pushed through a dedicated detector simulation chain based on the $\Geant$ software toolkit~\cite{}. This software package contains a full geometrical description of the CMS detector and a detailed mapping of the magnetic field, implemented in a flexible way allowing the activation and deactivation of specific detector subsystems.
+\\
+This detailed detector simulation treats the simulated events as actual data originating from the interaction point and propagates them through the entire detector while taking into account energy loss caused by interactions with the detector material. 
+The simulated energy deposits in the different subsystems are converted into electronic signals based on the actual detector behavior resulting in a completely identical treatment as for real data.
+During this step pileup is included by overlaying the primary interaction with generated proton-proton events simulated in an identical manner. 
+The mixing procedure applied depends on the specific subdetector considered, especially for incorporating out-of-time pileup since different numbers of preceding and succeeding bunch crossings should be regarded.
+Employing the full simulation chain results in very good agreement with actual data and is therefore widely used in many physics analyses, including this thesis. However this full simulation or FullSim is very time-consuming, in general several minutes are necessary for processing a single event, resulting in the development of a fast simulation chain, denominated as FastSim. 
+The simplified geometry adopted in the FastSim approach reduces the CPU-time with roughly a factor $100$.
+\textit{Is FastSim somewhere used in my thesis?}\\
+An overview of the Monte Carlo samples used in this thesis are listed in Table~\ref{table::Samples}.
+
+\begin{table}[h!t]
+ \caption{Title above for tables.} \label{table::Samples}
+ \centering
+ \begin{tabular}{|c|c|}
+  \hline
+  Sample & Generator \\
+  blabla & blabla \\
+  \hline
+ \end{tabular}
+\end{table}
 
 \section{Physics object reconstruction (CHANGE TITLE!)} \label{sec::PhysicsObjects}
 
@@ -171,26 +217,18 @@ In 1987, Sj\"ostrand and van Zijl proposed a first detailed Monte Carlo model fo
 
 \subsection{Muon reconstruction}\label{subsec::Muon}
 
-The muon reconstruction algorithm is designed such to fully exploint the excellent reconstruction efficiency in both the tracker and the muon system.
+The muon reconstruction algorithm is designed such to fully exploit the excellent reconstruction efficiency in both the tracker and the muon system.
 %Since the muon traverses the entire tracker detector without siginificant energy loss it will produce detectable hits in multiple layers of the tracking system. 
 Hence tracks reconstructed in the inner tracker and the muon system separately are combined into actual muon candidates. In order to distinguish these two types of muon-seeds they are called \textit{tracker track} and \textit{standalone-muon track}, respectively.
-
-The identification of standalone-muon tracks is performed in two consecutive steps. First local reconstruction \textit{starts by (?)} constructing track segments from the detected hits in the DT and/or CSC chambers. Afterwards the track segments found in the innermost chambers are used as seeds for the standard reconstruction algorithm based on the Kalman Filter technique, as discussed in Section \ref{sec::KFTracking}. First an inside-out Kalman Filter is applied which\footnote{ (takes into account the muon energy loss in the material, the effect of multiple scattering and the non-uniform magnetic field. -- or is this general the case for a KF?) This procedure} propagates the muon track to the next layer, compares with the measured energy deposits and updates the track parameters accordingly. Once the most outer layer of the muon system is reached, an outside-in Kalman Filter is performed which calculates the track parameters at the most inner muon station. Finally, in order to improve the momentum resolution, an additional beamspot constraint is applied to the track parameters before the actual standalone-muon track is identified.
-
-Actual muon candidates combining information from both the tracker detector and muon system can be obtained using two separate methods. In case the muon identification starts from the standalone-muon tracks so-called \textit{global muons} are reconstructed while the collection of tracker tracks gives rise to \textit{tracker muons}.
-%Depending on whether the the muon candidate is reconstructed starting from the standalone-muon tracks or from the tracker tracks, it is defined as a \textit{global muon} or a \textit{tracker muon}, respectively. 
-The global muon candidates are reconstructed by identifying a matching tracker track, for each standalone-muon track, by propagating both track parameters onto a common surface. Then for each pair the hits of both tracks are used to fit a global-muon track using an outside-in Kalman Filter Technique. The identificitation of muon candidates as global muons is especially powerful when a high quality muon track was found in the muon detector. However in some cases it can occur that the standalone-muon reconstruction fails because of a lack of hits. This is most likely to happen in the presence of low transverse momentum muons which are not able to deposit sufficient energy deposits in the muon spectrometer. Hence for these type of muons the tracker-muon reconstruction is very useful since it extrapolates all tracker tracks with transverse momentum $p_T$ $>$ $0.5$ $\GeV$ and total momentum $p$ $>$ $2.5$ $\GeV$ to the muon system. If at least one muon segment matches this extrapolated track, the tracker track fullfilled the tracker muon requirements and is identified as such.
-%The first collection is created by matching a tracker track for each standalone-muon track using again an outside-in Kalman Filter technique to combine the track parameters.
-%The second collection follows an inside-out approach and extrapolates all tracker tracks with transverse momentum $p_{T}$ $>$ 0.5 GeV and total momentum $p$ $>$ 2.5 GeV to the muon system.
-
-Since both approaches have specific benefits, tracker muon reconstruction is more efficient for low momentum muons while global muon reconstruction is efficient for high energetic muons which traverse multiple muon segments, they are combined in order to have a robust and highly efficient (\textbf{How much?}) muon reconstruction (\textit{throughout all energy ranges}). \textit{\textbf{Useful? -- Best to mention this after the two types of muons are explained or is within the text above also helpful?}}
 \\
+The identification of standalone-muon tracks is performed in two consecutive steps. First local reconstruction starts by constructing track segments from the detected hits in the DT and/or CSC chambers. Afterwards the track segments found in the innermost chambers are used as seeds for the standard reconstruction algorithm based on the Kalman Filter technique, as discussed in Section \ref{sec::KFTracking}. First an inside-out Kalman Filter is applied which\footnote{ (takes into account the muon energy loss in the material, the effect of multiple scattering and the non-uniform magnetic field. -- or is this general the case for a KF?) This procedure} propagates the muon track to the next layer, compares with the measured energy deposits and updates the track parameters accordingly. Once the most outer layer of the muon system is reached, a second Kalman Filter is used to calculate the track parameters at the most inner muon station. Finally, in order to improve the momentum resolution, an additional beamspot constraint is applied to the track parameters before identifying the standalone-muon track.
 
+Proper muon candidates combining information from both the tracker detector and muon system can be obtained using two different methods. In case the muon identification starts from the standalone-muon tracks so-called \textit{global muons} are reconstructed while the collection of tracker tracks gives rise to \textit{tracker muons}.
+The global muon candidates are reconstructed by identifying a matching tracker track, for each standalone-muon track, by propagating both track parameters onto a common surface. Then for each pair the hits are combined into a global-muon track using an outside-in Kalman Filter Technique. The identificitation of muon candidates as global muons is especially powerful when a high quality muon track was found in the muon detector. However in some cases it can occur that the standalone-muon reconstruction fails because of a lack of hits. This is most likely to happen in the presence of low transverse momentum muons which are unable to deposit sufficient energy deposits in the muon spectrometer. Hence for these muons the tracker-muon reconstruction is very useful since it extrapolates all tracker tracks with transverse momentum $\pT$ $>$ $0.5$ $\GeV$ and total momentum $p$ $>$ $2.5$ $\GeV$ to the muon system. If at least one muon segment corresponds with the extrapolated track, the tracker track fullfilled the tracker muon requirements and is identified as such.
+\\
+Since both approaches have specific benefits they are combined in order to have a robust and highly efficient (\textbf{How much?}) muon reconstruction (\textit{throughout all energy ranges}).
+\\
 \textit{Something about charge identification necessary?}
-%\textit{Difference between Global Muons and Tracker muons explained in ``Performance of CMS muon reconstruction in pp collision events at 7 TeV''. Both of them are used as basis for the PF algorithm, and hence can be considered as the ``reco muon'' collection in ``Commissioning of the PF event reconstruction with leptons from J/Psi and W decays at 7 TeV''.}
-%
-%In order to take advantage of the high momentum-resolution in the silicon tracker for low-momentum muons the obtained standalone muon is compared with corresponding tracks reconstructed in the tracker.
-%A Kalman-filter based track fit, which uses information from all hits in both the tracker track and the muon track, is performed. The considered standalone muon, combined with its best-matching tracker track, is then promoted to a so-called global muon. 
  
 \subsection{Electron reconstruction} \label{subsec::Electron}
 
@@ -273,7 +311,7 @@ Within this jet clustering algorithm soft particles prefer/tend to cluster with 
 \subsubsection*{Jet Energy Scale corrections}
 \textit{Also so much detail needed as in case of Stijn? Or only if this is an important systematic?}
 
-Will need to explain here that the ``raw jet energies are corrected to obtain a uniform response in $\eta$ and an absolute calibration in $p_T$''. (See arXiv 1107.4277)
+Will need to explain here that the ``raw jet energies are corrected to obtain a uniform response in $\eta$ and an absolute calibration in $\pT$''. (See arXiv 1107.4277)
 
 \subsubsection*{Jet energy resolutions}
 
@@ -287,7 +325,7 @@ The actual reconstruction of secondary vertices is an iterative process using an
 
 The different b-tagging algorithms which exist can be divided into two distinct categories; one which distinghuishes b-quark jets from light jets based on the track impact parameters and another based on the secondary vertices. Within this thesis only the second type of b-tagging will be utilized, namely the \textit{Combined Secondary Vertex} (CSV) algorithm. This algorithm combines the secondary vertex information together with the track-based lifetime properties (\textit{What are these?}). Because both characteristics are combined the algorithm is also capable of discriminating between both types of jets in cases where no secondary vertex was found but where reduced track constraints give rise to a pseudo-vertex and even in cases were no vertex could be reconstructed.
 
-The b-tagging algorithms are constructed in such a way that they should only be applied for three predefined operating points which correspond to a specific misidentification probability for light partons of roughly $10 \%$, $1 \%$ and $0.1 \%$ for an average jet $p_T$ of about $80$ $\GeV$ defined respectively as \textit{Loose}, \textit{Medium} and \textit{Tight}. In this analysis only the Tight operating point is considered (\textit{\textcolor{red}{Where do you find these percentages??}})
+The b-tagging algorithms are constructed in such a way that they should only be applied for three predefined operating points which correspond to a specific misidentification probability for light partons of roughly $10 \%$, $1 \%$ and $0.1 \%$ for an average jet $\pT$ of about $80$ $\GeV$ defined respectively as \textit{Loose}, \textit{Medium} and \textit{Tight}. In this analysis only the Tight operating point is considered (\textit{\textcolor{red}{Where do you find these percentages??}})
 
 %\subsubsection*{Old b-tagging}
 %The specific characteristics of b-quark jets; long lifetime, large mass, decay to final states with high charged track multiplicities, $\cdots$; can be exploited in order to distinguish event topologies which produce $b$ jets in the final state from background events only containing light flavoured jets.
