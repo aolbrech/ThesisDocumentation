@@ -308,10 +308,34 @@ The jet clustering algorithm creates jets by looking for the smallest of these d
 \\
 The merging of two different objects into a single one is done using one of the existing recombination scheme, in the case of this thesis the E recombination scheme is used. This scheme calculates the four-momentum of the new object by simply adding the four-momentum of its constituents. (\textit{What about eta and phi?? -- explanation about ET scheme needed as well?})
 
-\subsubsection*{Jet Energy Scale corrections}
+\subsubsection*{Jet energy calibration}
+
+Idea of jet energy calibration is to relate, on average, the energy measured for the detector jet to the energy of the corresponding true particle jet (\textit{\textbf{Line taken EXACTLY from 1107.4277 page 8}})\\
+Important point is that this takes place in a factorized approach where each subsequent correction term is applied on transverse momentum corrected with all previous correction terms.
+
+\begin{myindentpar}
+  \begin{description}
+    \item[L1 pileup offset correction] \hfill \\
+    The first contribution\footnote{Is applied on the ``remainder of diffiuse energy'' after the Charged Hadron Subtraction (CHS)} to the factorized correction chain aims to remove the additional energy deposits originating from pileup interactions in order to remain with a only the high-$\pT$ scattering. The corresponding correction term is determined uniquely from simulation and is based on the average difference in transverse momentum between matched jets with and without additional pileup interactions.
+    \\
+    
+    \indPar The offset energy needed to be subtracted from the jets is calculated with a \textit{hybrid jet area method}, which uses the effective area of the jets multiplied by the average energy density in the event. This variable gives an idea of the softness of the jet activity. (\textbf{Find link between sentences}) The full correction formula used at CMS is:
+    
+    \begin{equation}
+     \mathcal{C}\left(\pT^{raw}, \eta, A_{j}, \rho \right) = 1 - A_{j} \dfrac{\left\lbrace \rho_{0}(\eta) + \rho . \beta(\eta) . \left[ 1 + \gamma(\eta).\log(\pT^{raw}) \right] \right\rbrace}{\pT^{raw}}
+    \end{equation}
+    with $\eta$ the jet pseudo-rapidity, $A_{j}$ the jet area and $\rho$ the per-event $\pT$ offset density. The correction factors $\rho_{0}$, $\beta$ and $\gamma$ are parametrized with a binned-fitting procedure using uniquely matched reconstructed jets from the with-PU sample and without-PU sample.
+    \\
+    
+    Previous studies have indicated a small discrepancy between data and simulation, which needs to be accounted for since the pileup offset correction is determined completely from simulation. Therefore an additional scale factor needs to be applied to data events to ensure that on average the energy of the reconstructed jets corresponds with the generated MC particle jets. This scale factor is multipied with the jets' PU-offset corrected transverse momenta. 
+
+  \end{description}
+\end{myindentpar}
+
 Will need to explain here that the ``raw jet energies are corrected to obtain a uniform response in $\eta$ and an absolute calibration in $\pT$''. (See arXiv 1107.4277)
 
 \subsubsection*{Jet energy resolutions}
+Corresponds to the shift in width in stead of shift in mean!
 
 \subsubsection*{Identification of b-quark jets}
 
@@ -325,25 +349,13 @@ The different b-tagging algorithms existing today can be divided into two distin
 \\
 The b-tagging algorithms are constructed in such a way that they should only be applied for three predefined operating points which correspond to a specific misidentification probability for light partons of roughly $10 \%$, $1 \%$ and $0.1 \%$ for an average jet $\pT$ of about $80$ $\GeV$ defined respectively as \textit{Loose}, \textit{Medium} and \textit{Tight}. In this analysis only the Tight operating point is considered (\textit{\textcolor{red}{Where do you find these percentages??}})
 
-%\subsubsection*{Old b-tagging}
-%The specific characteristics of b-quark jets; long lifetime, large mass, decay to final states with high charged track multiplicities, $\cdots$; can be exploited in order to distinguish event topologies which produce $b$ jets in the final state from background events only containing light flavoured jets.
-
-%Multiple different b-jet identification (b-tagging) algorithms exist which exploit different specific b-quark properties. Within this thesis only the b-tagging algorithm based on the information of the secondary vertices together with the track-based lifetime information, defined as the \textit{Combined Secondary Vertex} (CSV) algorithm, is used.
-%Because each of the b-tagging algorithms requires a collection of well-reconstructed tracks of high purity some additional requirements are imposed on this sample of tracks. Also the reconstruction of the secondary vertices, vertices displaced with respect to the primary vertex, has an optimized track selection, this time because of the additional combinatorial reconstruction complexity in the presence of multiple proton-proton interactions. Hence tracks are required to lie within a cone of $\Delta R$ $=$ $0.3$ around the jet axis, defined by the direction of the jet momentum.
-
-%The collection of secondary vertices is than constructed starting from this sample of optimized tracks and continues iteratively. A vertex candidate is identified by applying an adaptive vertex fit which assigns a weight based on the track's compatibility with the vertex position. All tracks with weight $>$ $0.5$ are removed from the list and the fit procedure is repeated until no new vertex candidates can be found. The motivation for applying an iterative fit algorithm is because the first iteration is mainly used for identifying the prompt tracks in the jet while the following ones produce decay vertex candidates. \textit{\textbf{So what does this actually mean??}}
-
-%\textit{So what is actually the point, are tracks matched to the collection of secondary vertices or is something else done??}
-
 \subsection{Missing transverse energy}
 
 The vast majority of physical objects produced in particle collisions can be reconstructed from the collection of energy deposits. 
 However neutrinos are the exception to the rule since they are weakly interacting and carry neutral charge. Therefore they will traverse the entire detector and escape detection rendering an accurate reconstruction rather challenging.
-%The vast majority of the physical objects produced during particle collisions can be reconstructed using the collected energy deposits, however neutrinos are the exception to the rule. Neutrinos are weakly interacting particles and will therefore traverse the entire detector without leaving behind a single energy deposit. Hence neutrinos escape detection and cannot be reconstructed in a straightforward manner. 
 \\
 So in order to ensure the reconstruction of neutrinos, a signal extremely important for many physics analyses, a specific work-around is applied which is based on indirect observations rather than direct measurements. The solution lies to a great extent in the geometrical characteristics of the particle detectors, by requiring them to be hermeticcaly closed such that all other particles are propertly detected and cannot leave the detector unseen.
 Thus the missing transverse momentum, which corresponds to all neutrinos and other hypothetical neutral weakly interacting particles present in the event, can be defined from the total transverse momentum of all observed final-state particles. This procedure allows to exploit the high reconstruction efficiency of the particle-flow algorithm for the neutrino reconstruction.
-%The solution for obtaining an accurate neutrino reconstruction, primordial for describing $t\bar{t}$ events, lies to a great extent in the geometric structure of the particle detector. The CMS detector is developed to be as hermeticcaly closed as possible in order to ensure that the sole particles leaving the detector without interaction are neutrinos, and perhaps other hypothetical neutral weakly interacting particles. As such the high reconsctruction efficiency of the particle-flow algorithm can be exploited by using the total transverse momentum of all observed final-state particles to define the missing transverse momentum.
 \begin{equation}
  \vecmet = - \sum \vec{\pT}
 \end{equation}
