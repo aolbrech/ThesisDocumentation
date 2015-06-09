@@ -310,32 +310,62 @@ The merging of two different objects into a single one is done using one of the 
 
 \subsubsection*{Jet energy calibration}
 
-Idea of jet energy calibration is to relate, on average, the energy measured for the detector jet to the energy of the corresponding true particle jet (\textit{\textbf{Line taken EXACTLY from 1107.4277 page 8}})\\
-Important point is that this takes place in a factorized approach where each subsequent correction term is applied on transverse momentum corrected with all previous correction terms.
+%Idea of jet energy calibration is to relate, on average, the energy measured for the detector jet to the energy of the corresponding true particle jet (\textit{\textbf{Line taken EXACTLY from 1107.4277 page 8}})\\
+%Important point is that this takes place in a factorized approach where each subsequent correction term is applied on transverse momentum corrected with all previous correction terms.
+%\\
+%Maybe good idea to mention here why it is advisable to determine the corrections purely from simulation. In order to account for remaining discrepancies between data and simulation additional scale factors or dedicated corrections are applied afterwards!
+%\\
+The jet reconstruction algorithm is developed such that the original generator-level particle can be related to the reconstructed PF jet. However the contribution of additional proton-proton interactions and influences of dead or badly functioning regions in the different subdetectors will slightly decrease the transverse momentum of the reconstructed jet.
+Within CMS a factorized approach has been adopted to resolve in a sequential way all the undesired effects by dedicated jet energy scale (JES) calibrations.
+\\
+The main bulk of these JES calibrations are determined using purely simulated samples since this allows to also extract information for corners of phase space badly accessible in data and hence to obtain correction factors which are valid in a widespread range. The downside is that whenever discrepancies between data and simulation occur, additional correction factors have to be applied to data to ensure good agreement between both.
+\\
+The jet energy calibrations which will be applied in this thesis are discussed in detailed below. 
+Within CMS additional correction terms exist but will not be applied within this thesis since it concerns optional calibrations with minor contributions. They correspond to corrections for jet-flavour dependency of the jet response, for the underlying event and for the parton-level energy (L5-L7).
+%The factorized approach starts by firstly removing the contribution of pileup events
 
 \begin{myindentpar}
   \begin{description}
     \item[L1 pileup offset correction] \hfill \\
-    The first contribution\footnote{Is applied on the ``remainder of diffiuse energy'' after the Charged Hadron Subtraction (CHS)} to the factorized correction chain aims to remove the additional energy deposits originating from pileup interactions in order to remain with a only the high-$\pT$ scattering. The corresponding correction term is determined uniquely from simulation and is based on the average difference in transverse momentum between matched jets with and without additional pileup interactions.
+    The first contribution\footnote{Is applied on the ``remainder of diffiuse energy'' after the Charged Hadron Subtraction (CHS)} to the factorized correction chain aims to remove the additional energy deposits originating from pileup interactions in order to only maintain the high-$\pT$ scattering. The corresponding correction term is determined purely from simulation and is based on the average difference in transverse momentum between matched jets with and without additional pileup interactions.
     \\
     
-    \indPar The offset energy needed to be subtracted from the jets is calculated with a \textit{hybrid jet area method}, which uses the effective area of the jets multiplied by the average energy density in the event. This variable gives an idea of the softness of the jet activity. (\textbf{Find link between sentences}) The full correction formula used at CMS is:
-    
+    \indPar The offset energy needed to be subtracted from the jet energy is calculated with a \textit{hybrid jet area method}, which uses the effective area of the jets multiplied by the average energy density in the event and represents the softness of the jet activity. The full correction formula used at CMS is:    
     \begin{equation}
-     \mathcal{C}\left(\pT^{raw}, \eta, A_{j}, \rho \right) = 1 - A_{j} \dfrac{\left\lbrace \rho_{0}(\eta) + \rho . \beta(\eta) . \left[ 1 + \gamma(\eta).\log(\pT^{raw}) \right] \right\rbrace}{\pT^{raw}}
+     \mathcal{C}_{L1}\left(\pT^{raw}, \eta, A_{j}, \rho \right) = 1 - A_{j} \dfrac{\left\lbrace \rho_{0}(\eta) + \rho . \beta(\eta) . \left[ 1 + \gamma(\eta).\log(\pT^{raw}) \right] \right\rbrace}{\pT^{raw}}
     \end{equation}
-    with $\eta$ the jet pseudo-rapidity, $A_{j}$ the jet area and $\rho$ the per-event $\pT$ offset density. The correction factors $\rho_{0}$, $\beta$ and $\gamma$ are parametrized with a binned-fitting procedure using uniquely matched reconstructed jets from the with-PU sample and without-PU sample.
-    \\
+    with $\eta$ the jet pseudo-rapidity, $A_{j}$ the jet area and $\rho$ the per-event $\pT$ offset density. 
+    The correction factors $\rho_{0}$, $\beta$ and $\gamma$ are determined in bins of $\eta$ by fitting the offset function using uniquely matched reconstructed jets from the with-PU sample and without-PU sample. 
+    The correction formula is applied to both simulated and data events such that an additional scale factor should be taken into account in order to incorporate the small discrepancy between data and simulation.
+    This scale factor is only applied for data events and is calculated from the PU-offset corrected transverse momenta of the reconstructed jets.
+    %Previous studies have indicated a small discrepancy between data and simulation, which needs to be accounted for since the pileup offset correction is determined completely from simulation. Therefore an additional scale factor needs to be applied to data events to ensure that on average the energy of the reconstructed jets corresponds with the generated MC particle jets. This scale factor is multipied with the jets' PU-offset corrected transverse momenta. 
     
-    Previous studies have indicated a small discrepancy between data and simulation, which needs to be accounted for since the pileup offset correction is determined completely from simulation. Therefore an additional scale factor needs to be applied to data events to ensure that on average the energy of the reconstructed jets corresponds with the generated MC particle jets. This scale factor is multipied with the jets' PU-offset corrected transverse momenta. 
+    \item[L2L3 Monte Carlo calibration] \hfill \\
+    Now that the $\pT$-response of the jets is independent of the pileup, represented by the number of primary vertices, a following correction should be applied to ensure that the energy of the reconstructed jets corresponds - on average - with the generated jets at particle level and to obtain an $\eta^{PF}$-dependent response. This second calibration is again completely simulation-based and is determined by inverting the in bins of $\pT^{gen}$ and $\eta^{PF}$ divided response.
+    \begin{equation}
+     \mathcal{C}_{L2L3}(p_{\rm T, L1}^{PF}) = \dfrac{1}{\left\langle \frac{p_{\rm T, L1}^{PF}}{\pT^{gen}} \right\rangle \left(\pT^{gen}, \eta^{PF} \right)}
+    \end{equation}
+    The correction factors are derived from a QCD multijet sample for which a jet reconstruction identical to data is applied.
+    
+    \item[L2Residual data-based relative ($\eta$-dependent) correction] \hfill \\
+    This first data-based calibration, abbreviated to L2Res, aims at removing the residual difference in $\eta^{PF}$-dependence between data and simulation. For this dijet events with one jet contained in the barrel ($\vert \eta \vert$ $<$ $1.3$) are used. This approach allows to correct the $\pT$ response of all jets relative to the response of central jets based on the expected $\pT$ balance between both jets in the event.
+        
+    \item[L3Residual data-based absolute ($\pT$-dependent) correction] \hfill \\
+    After correcting the relative jet energy scale, the absolute jet energy scale should still be determined. This should only be done for central jets since the L2Res calibration ensures that these values can be used outside the barrel safely. 
+    The correction factors are determined using $Z+$jet (with $Z$ $\rightarrow$ $\mu^{+}\mu^{-}$ or $e^{+}e^{-}$) and $\gamma+$jet events since this allows to exploit the precise measurement of the $Z$ and $\gamma$ as reference objects.
+    \\
+    The L3Res correction tackles the two main remaining differences between data and simulation: slightly lower response for data than for simulation and $\pT$-dependency for the ratio of data to simulation response. This two contributions are independent and can thus be factorized as well. The constant scale factor is determined from the very precise $Z$ $\rightarrow$ $\mu^{+} \mu^{-}+$jet events while the $\pT$-dependent correction factors are obtained by combining the response of all different decay channels in a global fit.
 
   \end{description}
 \end{myindentpar}
 
-Will need to explain here that the ``raw jet energies are corrected to obtain a uniform response in $\eta$ and an absolute calibration in $\pT$''. (See arXiv 1107.4277)
+Each subcorrection in this factorized approach has specific JES uncertainties which are combined into a systematic uncertainty used in physics analyses. The overall uncertainty is obtained by quadratically adding the uncertainties of each level and is dominated by the $\pT$-dependent difference in pileup offset between data and simulation, the uncertainty of the jet $\pT$ resolution and the lepton/photon scale uncertainties for the L1, L2Res and L3Res subcorrection, respectively.
 
 \subsubsection*{Jet energy resolutions}
-Corresponds to the shift in width in stead of shift in mean!
+Besides the jet energy scale also the transverse momentum or energy resolution (JER) can be influenced by discrepancies between data and simulation. (\textit{\textbf{Nothing here about difference wrt original configuration?}})
+%should be compared to the original information and corrected for possible discrepancies between data and simulation.
+Measurement of JER is performed using similar methods as applied for determining the JES, but in stead of looking at the mean of the response distribution the width is considered.
+The jet $\pT$ resolution is determined using QCD dijet and $\gamma+$jet events and results in an $\eta$-dependent data/MC scale factor exceeding unity. Hence the $\pT$ resolution is about $10 \%$ worse for data than for simulation in the barrel, a value which quickly raises to roughly $25\%$ -on average- in the endcap. In order to account for this difference, the resolution for simulation events is worsened by smearing the energy of the corrected PF jets.
 
 \subsubsection*{Identification of b-quark jets}
 
