@@ -1,17 +1,21 @@
 \chapter{Event simulation and reconstruction} \label{chp:labelTitle}
 
 An accurate understanding of simulated events and their reconstruction is crucial for a thorough understanding of the collected data. Hence event generators such as $\Madgraph$, $\Pythia$ and $\Herwig$ play the role of hadron colliders and allow some improvement of analyzing power by using an efficient background and signal discriminator.
+\\
+This is accomplished by a detailed simulation of the different processes taking place during proton-proton collisions, explained in Section~\ref{sec::QCDHadron}. Such an accurate description of the theoretical phenomena is useless without a realistic representation of the detector response. This translation is briefly discussed in Section~\ref{sec::DetectorSim}. The remaining part of this chapter, Section~\ref{sec::PhysicsObjects}, contains the reconstruction of physical objects from the electronic readout of the CMS particle detector.
+In order to compare simulated events with real data in a direct way, identical reconstruction algorithms are applied.
 
 \section{QCD for hadron colliders} \label{sec::QCDHadron}
 
 The composite nature of protons together with the high-momentum transfers reachable at the LHC significantly complicates the event structure. 
-For a complete comprehension of the different processes taking place during the generation of a single proton-proton collision the overall algorithm is factorized.
+For a complete comprehension of the different processes taking place during the generation of a single proton-proton collision the overall algorithm is factorized~\cite{}.
 An overview of this factorization is shown in Figure~\ref{fig::EvtShower} for which the different stages are briefly discussed below.
 
 \begin{figure}[htb]
  \centering
  \includegraphics[width = 0.8 \textwidth]{Chapters/Chapter3/Figures/f_shg_event.eps}
- \caption{Schematical overview of the consecutive steps of the event generation process.}  \label{fig::EvtShower}
+ \caption{Schematical overview of the consecutive steps of the event generation process.}  
+ \label{fig::EvtShower}
 \end{figure}
 
 \begin{myindentpar}
@@ -19,7 +23,7 @@ An overview of this factorization is shown in Figure~\ref{fig::EvtShower} for wh
     \item[Parton Distribution Functions] \hfill \\
       In proton-proton collisions both incoming protons can be viewed as a collection of partons whose momentum fraction $x$ within the hadron is parametrized by the so-called parton distribution functions.
     \item[Hard scattering] \hfill \\
-      Hard scattering is the perturbative process of two colliding partons, one originating from each proton, that creates high-energetic particles. It can be represented by a factorized product of short-and long-distance contributions as discussed in Section~\ref{sec::HardScattering}.
+      Hard scattering is the perturbative process of two colliding partons, one originating from each proton, that creates high-energetic particles. It can be represented by a factorized product of short-and long-distance contributions as described in Section~\ref{sec::HardScattering}.
     \item[Parton shower] \hfill \\
       This phase of the event generation process describes the approximate higher-order corrections induced by emission of additional gluon and/or quarks, as will be explained in Section~\ref{sec::PS}. Depending whether this radiation originates from the incoming or outgoing partons it is denominated, respectively, Initial State Radiation (ISR) or Final State Radiation (FSR).
     \item[Hadronisation] \hfill \\
@@ -45,11 +49,10 @@ The partonic scattering cross section $\hat{\sigma}(\Phi_{ab \rightarrow X},\mu^
 
 Equation~(\ref{eq::HSXS}) serves as the starting point for event simulation in general-purpose Monte Carlo event generators which, due to the perturbative nature of the parton-level differential cross section, can be expanded in orders of QCD coupling $\alpha_{S}$. Originally these calculations were performed at leading order (LO), corresponding to $\mathcal{O}(\alpha_{S}^{2})$, however this only describes the simplest processes taking place in hadron colliders and does not correspond to reality where additional radiation on top of $X$ occurs. Moreover the current theoretical precision for QCD requires at least next-to-leading order (NLO) calculations. Hence much effort has been devoted in order to overcome the infrared singularities in QCD allowing to extend the matrix element generators to perform these NLO calculations in an automated way and thereby significantly improving accuracy and predictive power.\\
 
-\textit{\textbf{Rewrite this part once is known which generators are actually used and which not at all ...\\} Many different event generators exist, but not all seem to be actually used for MC samples used in this thesis...}\\
-Herwig and Pythia are two general-purpose event generators, but they are both lacking NLO information. Only way to acquire NLO calculations is by incorporating full NLO corrections in the parton shower using the \Powheg formalism. 
+\textit{\textbf{Will (re)write this part once is known which generators are actually used and which not at all ...\\} Many different event generators exist, but not all seem to be actually used for MC samples used in this thesis...}\\
+$\Herwig$~\cite{} and $\Pythia$~\cite{} are two general-purpose event generators, but they are both lacking NLO information. Only way to acquire NLO calculations is by incorporating full NLO corrections in the parton shower using the $\Powheg$ formalism. 
 %Sherpa is another event generator which has NLO information but does not seem to be used (so no need to discuss).\\
-The more widely used event generators incorporate NLO corrections in the hard interaction: $\MGME$, $\MCNLO$ and $\Powheg$.
-
+The more widely used event generators incorporate NLO corrections in the hard interaction: $\MGME$~\cite{}, $\MCNLO$~\cite{} and $\Powheg$~\cite{}.
 \begin{myindentpar}
   \begin{description}
     \item[MadGraph/MadEvent] \hfill \\
@@ -58,7 +61,6 @@ The more widely used event generators incorporate NLO corrections in the hard in
       $\Powheg$ and $\MCNLO$ are two event generators which are capable of calculating NLO corrections and, even more important, correctly matching them with the additional particles created during the parton shower step, which will be discussed in detail in \ref{sec::PS}
   \end{description}
 \end{myindentpar}
-
 %\textit{Maybe brief discussion about LHAPDF and the used PDF set in this thesis (or does this only come after the Parton Shower part has been explained?)}
 
 \subsection{Parton shower} \label{sec::PS}
@@ -70,7 +72,7 @@ The partons formed during the hard scattering are prone to gluon radiation emiss
 
 The parton shower formalism's objective is to convert the inclusive cross section for the production of parton $a$ into the exclusive cross section taking into account a number of additional less-energetic particles.
 Hence the complex $2$ $\rightarrow$ $n$ process will be decomposed into a hard interaction with momentum transfer $Q$ and a succession of gluon radiations each with momentum transfer $Q_{i}$; a justifiable approach in the approximation $Q_{i}^{2}$ $\ll$ $Q^2$ which is defined as the collinear\footnote{Two particles are collinear in case they are close in angle.} limit. 
-The Alterelli-Parisi splitting functions, denoted $P_{ba}(z)$, describe this collinear splitting of parton $b$ into parton $a$ and are defined as~\cite{}:
+The Alterelli-Parisi splitting functions~\cite{}, denoted $P_{ba}(z)$, describe this collinear splitting of parton $b$ into parton $a$ and are defined as:
 \begin{eqnarray}
  & P_{qq}(z) = \dfrac{4}{3} \dfrac{1+z^{2}}{1-z}    & P_{qg}(z) = \dfrac{4}{3} \frac{1+(1-z)^{2}}{z} \\
  & P_{gq}(z) = \dfrac{n_{f}}{2} (z^{2} + (1-z)^{2}) & P_{gg}(z) = 3 \dfrac{z^{4}+1+(1-z)^{4}}{z(1-z)}
@@ -121,9 +123,9 @@ Hence a new NLO matching method was developed to overcome both the presence of n
 
 \subsection{Hadronisation} \label{sec::Hadronisation}
 The missing link in the event generation process is how the quarks and gluons produced during both the hard interaction and the showering turn into experimentally observable colour-neutral hadrons. This step is defined as the hadronisation or fragmentation process and is represented by phenomenological models since it cannot be calculated from first principles due to the corresponding low energy scales.
-Two distinct models for describing this non-perturbative process are used today: the Lund string model~\cite{Lund} and the cluster model~\cite{ClusterModel}. The former one is implemented in $\Pythia$ while the latter one is used by $\Herwig$.
+Two distinct models for describing this non-perturbative process are used today: the Lund string model and the cluster model. The former one is implemented in $\Pythia$ while the latter one is used by $\Herwig$.
 \\
-The Lund string model is based on linear confinement, which states that the potential $V$ between a quark-antiquark increases with separation distance $r$ due to the presence of a strong QCD colour field: %, as depicted in Equation~(\ref{eq::VQCD}).
+The Lund string model is based on linear confinement, which states that the potential $V$ between a quark-antiquark increases with separation distance $r$ due to the presence of a strong QCD colour field~\cite{Lund}: %, as depicted in Equation~(\ref{eq::VQCD}).
 \begin{equation}\label{eq::VQCD}
  V = \kappa r ~~~ \kappa \sim 1 \dfrac{\GeV}{fm}
 \end{equation}
@@ -143,17 +145,17 @@ The transition of these free quarks into bound states is described by the Lund f
 with $a$ and $b$ free parameters of the model.
 In order to overcome the suppression of heavier hadrons an additional $1/z^{bm_{Q}^{2}}$~\cite{} factor has to be taken into account.
 \\
-The second hadronisation model, the cluster model, is based on the preconfinement property of QCD and splits the gluons non-perturbatively into $q\bar{q}$ pairs after the parton shower. From this clusters, or colour singlet combinations of partons, can be created which transform into hadrons either directly or through splitting processes depending on their mass. 
+The second hadronisation model, the cluster fragmentation model, is based on the preconfinement property of QCD and splits the gluons non-perturbatively into $q\bar{q}$ pairs after the parton shower~\cite{ClusterModel}. From this clusters, or colour singlet combinations of partons, can be created which transform into hadrons either directly or through splitting processes depending on their mass. 
 %\textit{More detail needed on this second model ?}
 %\\
 %\textit{Something about decay of unstable particles?}
 
-\subsection{Additional event activity (find good title)}% and Multiple Parton Interactions (?)}
+\subsection{Additional event activity}% and Multiple Parton Interactions (?)}
 
 The previous sections have provided a detailed overview of the event generation process from start to finish, but were limited to the ideal situation where only one parton present in each parton contributes to the production of final-state hadrons. A more realistic representation would be to take into account the additional activity which occurs in coincidence with the primary parton collision. 
 \\
 
-The term Underlying Event (UE) has been adopted as collective noun to depict the types of additional interactions during a single hadron-hadron collision that could possibly alter the final-state. At the LHC where protons are used as incoming particles, two distinct soft phenomena contribute to the UE: the beam remnants and the multiple parton interactions (MPI).
+The term Underlying Event (UE) has been adopted as collective noun to depict the types of additional interactions during a single hadron-hadron collision that could possibly alter the final-state. At the LHC where protons are used as incoming particles, two distinct soft phenomena contribute to the UE: the beam remnants and the multiple parton interactions (MPI)~\cite{}.
 The beam remnant is defined as the remainder of the proton after the hard-interacting partons are extracted. The non-zero colour charge of the beam remnant implies the creation of additional hadrons during the hadronisation process.
 Multiple parton interactions represent the distinct scattering processes that could take place between other incoming partons. 
 The presence of MPI can be understood from the composite nature of protons implying that each parton is as likely to undergo scattering interactions within one single hadron-hadron interaction.
@@ -167,7 +169,7 @@ The complexity of the underlying event lies in the fact that it involves both no
 %\textit{Should check whether UE is one of the important systematics or not... This determines in how much detail this section should be explained!}
 %\\
 
-Another important contribution to additional event activity which significantly complicates the final-state topology of hadron-hadron collisions is pileup (PU) or additional hadron-hadron collisions. These type of interactions occur because hadron-hadron collisions are not performed between two single hadrons but between bunches of hadrons. Therefore it is again likely for multiple hadrons to result in a hard interactions surrounded with UE during one bunch crossing. A distinction can be made whether the PU originates from the same bunch crossing as the hard interaction or from a previous bunch crossing, which are defined as in-time PU and out-of-time PU, respectively. The latter one can manifest itself when the bunches are spaced such that the next one arrives before the previous one evacuated completely from the detector.
+Another important contribution to additional event activity which significantly complicates the final-state topology of hadron-hadron collisions is pileup (PU) or additional hadron-hadron collisions~\cite{}. These type of interactions occur because hadron-hadron collisions are not performed between two single hadrons but between bunches of hadrons. Therefore it is again likely for multiple hadrons to result in a hard interactions surrounded with UE during one bunch crossing. A distinction can be made whether the PU originates from the same bunch crossing as the hard interaction or from a previous bunch crossing, which are defined as in-time PU and out-of-time PU, respectively. The latter one can manifest itself when the bunches are spaced such that the next one arrives before the previous one evacuated completely from the detector.
 
 \section{Simulating detector response} \label{sec::DetectorSim} %Detector simulation (CHANGE TITLE!)}
 The Monte Carlo event generators adopt an approach independent of the considered accelerator complex, besides starting with the correct incoming partons, and can thus be applied in a very broad physics range. In order to study specifically proton-proton collisions collected at the CMS detector, the simulated events are pushed through a dedicated detector simulation chain based on the $\Geant$ software toolkit~\cite{}. This software package contains a full geometrical description of the CMS detector and a detailed mapping of the magnetic field, implemented in a flexible way allowing the activation and deactivation of specific detector subsystems.
@@ -177,7 +179,7 @@ The simulated energy deposits in the different subsystems are converted into ele
 During this step pileup is included by overlaying the primary interaction with generated proton-proton events simulated in an identical manner. 
 The mixing procedure applied depends on the specific subdetector considered, especially for incorporating out-of-time pileup since different numbers of preceding and succeeding bunch crossings should be regarded.
 Employing the full simulation chain results in very good agreement with actual data and is therefore widely used in many physics analyses, including this thesis. However this full simulation or FullSim is very time-consuming, in general several minutes are necessary for processing a single event, resulting in the development of a fast simulation chain, denominated as FastSim. 
-The simplified geometry adopted in the FastSim approach reduces the CPU-time with roughly a factor $100$.
+The simplified geometry adopted in the FastSim approach reduces the CPU-time significantly. %with roughly a factor $100$.
 %\textit{Is FastSim somewhere used in my thesis?}\\
 An overview of the Monte Carlo samples used in this thesis are listed in Table~\ref{table::Samples}.
 
@@ -192,16 +194,25 @@ An overview of the Monte Carlo samples used in this thesis are listed in Table~\
  \end{tabular}
 \end{table}
 
-\section{Physics object reconstruction (CHANGE TITLE!)} \label{sec::PhysicsObjects}
+\section{Physics object reconstruction} \label{sec::PhysicsObjects}
 
-\textit{Important to first explain the separate construction of both the muon and electron candidates because they are actually used as a starting point for the PF algorithm. The PF algorithm should not be seen as something completely disconnected because was actually added on top of the already existing reconstruction methods in order to improve the efficiency and reduce the corresponding fake rates.}
+The detector readout results in a collection of electronic signals which still need to be translated into actual particle signatures, a process described by the reconstruction algorithms.
+Within CMS emphasis was placed on developing a physics object reconstruction algorithm capable of combining information from multiple subdetectors. 
+Compared to older algorithms that only used specific parts of the detector for reconstructing particles, such a combined approach has the capability to exploit the different optimizations of each of the separate subdetectors.
+The algorithm requires a set of building blocks distributed across the entire detector which are afterwards linked in order to construct stable final-state particles.
+Two of these building blocks are muon and electron candidates obtained from the standard reconstruction algorithms as explained in Sections~\ref{subsec::Muon} and~\ref{subsec::Electron}. The other are specifically developed for this dedicated reconstruction algorithm and are covered in detail in Section~\ref{subsec::PF}.
+Afterwards the jet reconstruction algorithm is discussed together with the method used for distinghuising jets originating from b-quarks in Section~\ref{subsec::jetReco} and finally the identification of missing transverse energy in Section~\ref{subsec::MET}.
+%The event generation and simulation chain are developed such to ensure a similar format for simulation and actual data events, and also the reconstruction algorithms will be identical. However, since it is always possible to overlook minor detector effects, dedicated correction factors can be applied later to eliminate existing discrepancies between data and simulation.
+%This is especially relevant in the case of jet reconstruction which is explained in detail in Section~\ref{subsec::jetReco}. %(Never applied to muon and other stuff??)
+%Finally the method used for distinghuishing jets originating from b-quarks is discussed
+%\textit{Important to first explain the separate construction of both the muon and electron candidates because they are actually used as a starting point for the PF algorithm. The PF algorithm should not be seen as something completely disconnected because was actually added on top of the already existing reconstruction methods in order to improve the efficiency and reduce the corresponding fake rates.}
 
 \subsection{Muon reconstruction}\label{subsec::Muon}
 
 The muon reconstruction algorithm is designed such to fully exploit the excellent reconstruction efficiency in both the tracker and the muon system.
 Hence tracks reconstructed in the inner tracker and the muon system separately are combined into actual muon candidates. In order to distinguish these two types of muon-seeds they are called \textit{tracker track} and \textit{standalone-muon track}, respectively.
 \\
-The identification of standalone-muon tracks is performed in two consecutive steps. First local reconstruction starts by constructing track segments from the detected hits in the DT and/or CSC chambers. Afterwards the track segments found in the innermost chambers are used as seeds for the standard reconstruction algorithm based on the Kalman Filter technique, as discussed in Section \ref{sec::KFTracking}. First an inside-out Kalman Filter is applied which propagates the muon track to the next layer, compares with the measured energy deposits and updates the track parameters accordingly. Once the most outer layer of the muon system is reached, a second Kalman Filter is used to calculate the track parameters at the most inner muon station. Finally, in order to improve the momentum resolution, an additional beamspot constraint is applied to the track parameters before identifying the standalone-muon track.
+The identification of standalone-muon tracks is performed in two consecutive steps~\cite{}. First local reconstruction starts by constructing track segments from the detected hits in the DT and/or CSC chambers. Afterwards the track segments found in the innermost chambers are used as seeds for the standard reconstruction algorithm based on the Kalman Filter technique, as discussed in Section \ref{sec::KFTracking}. First an inside-out Kalman Filter is applied which propagates the muon track to the next layer, compares with the measured energy deposits and updates the track parameters accordingly. Once the most outer layer of the muon system is reached, a second Kalman Filter is used to calculate the track parameters at the most inner muon station. Finally, in order to improve the momentum resolution, an additional beamspot constraint is applied to the track parameters before identifying the standalone-muon track.
 
 Proper muon candidates combining information from both the tracker detector and muon system can be obtained using two different methods. In case the muon identification starts from the standalone-muon tracks so-called \textit{global muons} are reconstructed while the collection of tracker tracks gives rise to \textit{tracker muons}.
 The global muon candidates are reconstructed by identifying a matching tracker track, for each standalone-muon track, by propagating both track parameters onto a common surface. Then for each pair the hits are combined into a global-muon track using an outside-in Kalman Filter Technique. The identificitation of muon candidates as global muons is especially powerful when a high quality muon track was found in the muon detector. However in some cases it can occur that the standalone-muon reconstruction fails because of a lack of hits. This is most likely to happen in the presence of low transverse momentum muons which are unable to deposit sufficient energy deposits in the muon spectrometer. Hence for these muons the tracker-muon reconstruction is very useful since it extrapolates all tracker tracks with transverse momentum $\pT$ $>$ $0.5$ $\GeV$ and total momentum $p$ $>$ $2.5$ $\GeV$ to the muon system. If at least one muon segment corresponds with the extrapolated track, the tracker track fullfilled the tracker muon requirements and is identified as such.
@@ -213,7 +224,7 @@ Since both approaches have specific benefits they are combined in order to have 
 \subsection{Electron reconstruction} \label{subsec::Electron}
 
 The thickness of the CMS tracker requires a dedicated elektron-track reconstruction such to correctly incorporate the energy loss caused by Brehmsstrahlung. 
-This photon radiation significantly lowers and smears the initial momentum of the electron, predominantly along the $\phi$ direction, resulting in a more complex and less straightforward electron reconstruction algorithm.
+This photon radiation significantly lowers and smears the initial momentum of the electron, predominantly along the $\phi$ direction, resulting in a more complex and less straightforward electron reconstruction algorithm~\cite{}.
 Hence in stead of applying the general Kalman Filter track reconstruction approach, a dedicated electron-reconstruction algorithm based on a Gausian Sum Filter (GSF) fit is developed. The main benefit of the GSF algorithm is the possibility to model changes in curvature radius throughout the different tracker layers. 
 Unfortunately the GSF fit is rather CPU intensive and is therefore only be applied on a subset of track seeds defined as electron seeds.
 
@@ -227,10 +238,10 @@ In case the ECAL-based seeding algorithm is used for identifying the electron se
 
 \subsection{The Particle-Flow event reconstruction algorithm} \label{subsec::PF}
 
-In order to reconstruct the direction, energy and type of all stable particles as accurately as possible the particle-flow (PF) algorithm combines the information of the different CMS subdetectors. The obtained collection of individual particles is then used to reconstruct jets and determine missing transverse energy.
-The main benefit of the PF approach is the large gain in efficiency by combining less precise subdetectors with more granular ones.
+In order to reconstruct the direction, energy and type of all stable particles as accurately as possible the particle-flow (PF) event reconstruction algorithm combines the information of the different CMS subdetectors. The obtained collection of individual particles is then used to reconstruct jets and determine missing transverse energy.
+The main benefit of the PF approach is the large gain in efficiency by combining less precise subdetectors with more granular ones~\cite{}.
 \\
-The PF algorithm uses a stepwize approach \cite{}, starting by identifying fundamental elements such as charged-particle tracks, calorimeter clusters and muon tracks. Then the algorithm links these distinct building bricks of the different subdetectors topologically such to construct specific building blocks. As a final step the building blocks are converted into stable particles.
+The PF algorithm uses a stepwize approach, starting by identifying fundamental elements such as charged-particle tracks, calorimeter clusters and muon tracks. Then the algorithm links these distinct building bricks of the different subdetectors topologically such to construct specific building blocks. As a final step the building blocks are converted into stable particles.
 
 \subsubsection*{Reconstructing and combining the fundamental elements}
 
@@ -242,7 +253,7 @@ The iterative tracking algorithm used to reconstruct charged-particle tracks ful
 The calorimeter clusters are reconstructed in a high efficient and low fake rate manner using a clustering algorithm specifically developed for the PF event reconstruction. In this algorithm the seeds are defined as calorimeter cells with energy above a certain threshold. These cluster seeds are then transformed into so-called topological clusters by accumulating calorimeter cells adjacent to the cells present in the cluster. In order to suppress electronics noise the calorimeter cells are required to exceed a given energy threshold. Finally each topological cluster results in several particle-flow clusters: as much as cluster seeds present in the topological cluster.
 \\
 
-Since each particle is expected to give rise to multiple building bricks a non ambiguous linking algorithm that excludes any possible double-counting is applied. This algorithm connects elements presumed to correspond to the same particle and quantifies the quality of the linkage by the distance between the considered elements. For example a charged-particle track is linked with a PF calorimeter cluster if its extrapolated position lies within the cluster boundaries. This specific linking is also performed between charged-particle tracks and ECAL clusters in order to take into account the energy deposited by Bremsstrahlung photons emitted by electrons. Because the above explained clustering algorithm is performed separately in each of the calorimeter sub-detectors linking between different calorimeter clusters is also considered. In this case a linkage is established when the cluster position of the more granular calorimeter is within the cluster envelope of the less granular one. Finally the linking algorithm matches charged-particle tracks and muon tracks based on a global $\chi^{2}$ track fit in order to create so-called global muons. \textit{Is this really part of the PF algorithm, this is the Global Muon reconstruction ...}
+Since each particle is expected to give rise to multiple building bricks a non ambiguous linking algorithm that excludes any possible double-counting is applied. This algorithm connects elements presumed to correspond to the same particle and quantifies the quality of the linkage by the distance between the considered elements. For example a charged-particle track is linked with a PF calorimeter cluster if its extrapolated position lies within the cluster boundaries. This specific linking is also performed between charged-particle tracks and ECAL clusters in order to take into account the energy deposited by Bremsstrahlung photons emitted by electrons. Because the above explained clustering algorithm is performed separately in each of the calorimeter sub-detectors linking between different calorimeter clusters is also considered. In this case a linkage is established when the cluster position of the more granular calorimeter is within the cluster envelope of the less granular one. Finally the linking algorithm matches charged-particle tracks and muon tracks based on a global $\chi^{2}$ track fit in order to create global muons. %\textit{Is this really part of the PF algorithm, this is the Global Muon reconstruction ...}
 %\\
 %\textit{Nothing specific about muon tracks??}
 
@@ -261,12 +272,13 @@ After the identification of the PF muon and PF electron candidates the remaining
 Whenever a linkage can be performed between a particle track and a calorimeter cluster with compatible energy measurements, it is defined as a charged hadron candidate. In case the calorimeter measurement is larger the excess is assigned to a photon or a neutral hadron depending whether the cluster is found within the ECAL or HCAL, respectively.
 The collection of remaining calorimeter clusters unable to be linked with a charged particle track are also identified as photons or neutral hadrons.
 
-\subsection{Jet reconstruction}
-The reconstruction of jets is less straightforward than the other physics objects explained before because they should be seen as a collection of hadronic activity combined into a single cone. However the event topology of interest, $t\bar{t}$ $\rightarrow$ $bjjbl\nu_{l}$, contains four jets so reconstructing this object in a correct and accurate way is very important.
+\subsection{Jet reconstruction}\label{subsec::jetReco}
+The reconstruction of jets is less straightforward than the other physics objects explained before because jets should be seen as a collection of hadronic activity combined into a single cone. However the event topology of interest, $t\bar{t}$ $\rightarrow$ $b\bar{b}q\bar{q}l\nu_{l}$, results into a final state containing four jets so reconstructing this object in a correct and accurate way is very important.
+At first clustering algorithms are used to collect the showering and hadronisation activity of these initial quarks and relate their transverse momenta with this of the jet.
+Afterwards additional corrections are applied to overcome the possible detector imperfections in the area of jet energy response. Finally the specific properties only appearing in particle jets originating from b-quarks allowing to distinghuish them are listed. 
 
- 
 \subsubsection*{Jet clustering algorithm}
-Many different jet clustering algorithms exist but in this thesis only the cluster-based ones will be used and hence explained. This type of jet clustering algorithms starts from a collection of stable partons and calorimeter cells and combines them into a cone with radius $R$. This clustering procedure uses a distance-based approach since it looks for each object $i$ whether another object $j$ can be found within the predefined cone radius $R$ taking into account the transverse momentum $k_{\bot}$ of both objects.
+Many different jet clustering algorithms exist but in this thesis only the cluster-based ones will be used and hence explained~\cite{}. This type of jet clustering algorithms starts from a collection of stable partons and calorimeter cells and combines them into a cone with radius $R$. This clustering procedure uses a distance-based approach since it looks for each object $i$ whether another object $j$ can be found within the predefined cone radius $R$ taking into account the transverse momentum $k_{\bot}$ of both objects.
 \\
 The distance measures used in this jet clustering algorithm are given in Equations (\ref{eq::JetClustering1}) and (\ref{eq::JetClustering2}) where the first one defines the distance between the two objects while the second one represents the distance between the object $i$ and the beam (B). Here $\Delta_{ij}^{2}$ $=$ $(y_i - y_j)^{2} + (\phi_i - \phi_j)^2$, the $(y,\phi)$ distance between both objects and $p$ can be intepreted as a parameter which controls the relative power between the energy and the geometrical scales.
 \\
@@ -275,22 +287,28 @@ The distance measures used in this jet clustering algorithm are given in Equatio
  d_{iB} & = & k_{\bot i}^{2p}                                                      \label{eq::JetClustering2}
 \end{eqnarray}
 The value given to the parameter $p$ defined in the two distance definitions, which governs the relative power of $k_{\bot}$ versus $\Delta_{ij}^{2}$, results in different cluster-based jet algorithms; two of which are used in this thesis. When this parameter takes the value $1$ the $k_{\bot}$ algorithm can be retrieved and in the case of $p$ $=$ $-1$ the jet algorithm is defined as the anti-$k_{\bot}$ algorithm, which is used for the jet clustering in this thesis. %This algorithm is used for ... (\textit{\textcolor{red}{How to know where which algorithm is used??}})
-Within this jet clustering algorithm soft particles prefer/tend to cluster with hard particles (in stead of with other soft particles) implying robust jet boundaries with respect to soft radiation. Both jet clustering algorithms are infrared and collinear safe, meaning that the created jet collection is not sensitive to soft emission and collinear splitting, respectively.
+Within this jet clustering algorithm soft particles prefer to cluster with hard particles implying robust jet boundaries with respect to soft radiation. Both jet clustering algorithms are infrared and collinear safe, meaning that the created jet collection is not sensitive to soft emission and collinear splitting, respectively.
 \\
 
 The jet clustering algorithm creates jets by looking for the smallest of these distances. Whenever the distance $d_{ij}$ is smallest, the objects $i$ and $j$ are merged into a single object and stored as such in the list. However, in case the distance $d_{iB}$ is smallest, the object $i$ is removed from the list of input objects and categorized as a final jet. Afterwards the distances are recalculated and this procedure continues until no input objects remain.
 \\
-The merging of two different objects into a single one is done using one of the existing recombination scheme, in the case of this thesis the E recombination scheme is used. This scheme calculates the four-momentum of the new object by simply adding the four-momentum of its constituents. %(\textit{What about eta and phi?? -- explanation about ET scheme needed as well?})
+The merging of two different objects into a single one is done using one of the existing recombination scheme, in the case of this thesis the E recombination scheme is used~\cite{}. This scheme calculates the four-momentum of the new object by simply adding the four-momentum of its constituents. %(\textit{What about eta and phi?? -- explanation about ET scheme needed as well?})
 
 \subsubsection*{Jet energy calibration}
 
 The jet reconstruction algorithm is developed such that the original generator-level particle can be related to the reconstructed PF jet. However the contribution of additional proton-proton interactions and influences of dead or badly functioning regions in the different subdetectors will slightly decrease the transverse momentum of the reconstructed jet.
-Within CMS a factorized approach has been adopted to resolve in a sequential way all the undesired effects by dedicated jet energy scale (JES) calibrations.
+Within CMS a factorized approach has been adopted to resolve in a sequential way all the undesired effects by dedicated jet energy scale (JES) calibrations~\cite{}.
 \\
 The main bulk of these JES calibrations are determined using purely simulated samples since this allows to also extract information for corners of phase space badly accessible in data and hence to obtain correction factors which are valid in a widespread range. The downside is that whenever discrepancies between data and simulation occur, additional correction factors have to be applied to data to ensure good agreement between both.
 \\
 The jet energy calibrations which will be applied in this thesis are discussed in detailed below. 
-Within CMS additional correction terms exist but will not be applied within this thesis since it concerns optional calibrations with minor contributions. They correspond to corrections for jet-flavour dependency of the jet response, for the underlying event and for the parton-level energy (L5-L7).
+Within CMS additional correction terms exist concerning optional calibrations with minor contributions. They correspond to corrections for jet-flavour dependency of the jet response, for the underlying event and for the parton-level energy (L5-L7) and will not be considered here.
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.6 \textwidth]{Chapters/Chapter3/Figures/JEClevels.pdf}
+ \caption{Schematical overview of the factorized approach adopted in CMS for incorporating jet energy calibrations for data and simulation (MC).}
+ \label{fig::JEClevels}
+\end{figure}
 %The factorized approach starts by firstly removing the contribution of pileup events
 
 \begin{myindentpar}
@@ -323,7 +341,6 @@ Within CMS additional correction terms exist but will not be applied within this
     The correction factors are determined using $Z+$jet (with $Z$ $\rightarrow$ $\mu^{+}\mu^{-}$ or $e^{+}e^{-}$) and $\gamma+$jet events since this allows to exploit the precise measurement of the $Z$ and $\gamma$ as reference objects.
     \\
     The L3Res correction tackles the two main remaining differences between data and simulation: slightly lower response for data than for simulation and $\pT$-dependency for the ratio of data to simulation response. This two contributions are independent and can thus be factorized as well. The constant scale factor is determined from the very precise $Z$ $\rightarrow$ $\mu^{+} \mu^{-}+$jet events while the $\pT$-dependent correction factors are obtained by combining the response of all different decay channels in a global fit.
-
   \end{description}
 \end{myindentpar}
 
@@ -332,27 +349,27 @@ Each subcorrection in this factorized approach has specific JES uncertainties wh
 \subsubsection*{Jet energy resolutions}
 Besides the jet energy scale also the transverse momentum or energy resolution (JER) can be influenced by discrepancies between data and simulation. %(\textit{\textbf{Nothing here about difference wrt original configuration?}})
 Measurement of JER is performed using similar methods as applied for determining the JES, but in stead of looking at the mean of the response distribution the width is considered.
-The jet $\pT$ resolution is determined using QCD dijet and $\gamma+$jet events and results in an $\eta$-dependent data/MC scale factor exceeding unity. Hence the $\pT$ resolution is about $10 \%$ worse for data than for simulation in the barrel, a value which quickly raises to roughly $25\%$ -on average- in the endcap. In order to account for this difference, the resolution for simulation events is worsened by smearing the energy of the corrected PF jets.
+The jet $\pT$ resolution is determined using QCD dijet and $\gamma+$jet events and results in an $\eta$-dependent data/MC scale factor exceeding unity~\cite{}. Hence the $\pT$ resolution is about $10 \%$ worse for data than for simulation in the barrel, a value which quickly raises to roughly $25\%$ -on average- in the endcap. In order to account for this difference, the resolution for simulation events is worsened by smearing the energy of the corrected PF jets.
 
 \subsubsection*{Identification of b-quark jets}
 
 Identifying the jets originating from a b-quark decay consists of constructing observables in order to exploit the differences between b-quark jets and light jets. The algorithms developed for this purpose, many exist in literature, are capable of distinghuishing the event topology of interest from the large bulk of background events which only contain light-parton jets.
-The different b-jet-identification or b-tagging algorithms rely on the reconstructed objects defined above altough some minor optimization requirements are implied for the track selection to improve efficiency.
+The different b-jet-identification or b-tagging algorithms rely on the reconstructed objects defined above altough some minor optimization requirements are implied for the track selection to improve efficiency~\cite{}.
 \\
 One of the main b-quark jet characteristics is its relatively long lifetime resulting in the presence of a displaced vertex with respect to the interaction point. Since only the tracking detectors offer the spatial resolution needed to detect the displacement between the primary and secondary vertices, they are reconstructed purely from the track collection. In order to be able to cope with multiple proton-proton interactions the tracks are required to be within a cone of $\Delta R$ $=$ $0.3$ around the jet axis, defined by the direction of the jet momentum. 
 The actual reconstruction of secondary vertices is an iterative process using an adaptive vertex fit. This fit algorithm estimates the position of the vertex candidate and removes all its associated tracks from the track collection. This fit procedure is repeated until no new vertex candidates can be found. During the first iteration the interaction point is used as a constraint in order to identify the prompt\footnote{Prompt tracks are tracks originating near the pp interaction point.} tracks.
 
-The different b-tagging algorithms existing today can be divided into two distinct categories; one which distinghuishes b-quark jets from light jets based on the track impact parameters and another based on the secondary vertices. Within this thesis only the second type of b-tagging algorithms will be considered, namely the \textit{Combined Secondary Vertex} (CSV) algorithm. This algorithm combines the secondary vertex information with the track-based lifetime properties. Because both characteristics are combined the algorithm is also capable of discriminating between b-quark and light-parton jets when no secondary vertex was reconstructed. In such a configuration the reduced track constraints sometimes give rise to a pseudo-vertex.
+The different b-tagging algorithms existing today can be divided into two distinct categories; one which distinghuishes b-quark jets from light jets based on the track impact parameters and another based on the secondary vertices. Within this thesis only the second type of b-tagging algorithms will be considered, namely the \textit{Combined Secondary Vertex} (CSV) algorithm~\cite{}. This algorithm combines the secondary vertex information with the track-based lifetime properties. Because both characteristics are combined the algorithm is also capable of discriminating between b-quark and light-parton jets when no secondary vertex was reconstructed. In such a configuration the reduced track constraints sometimes give rise to a pseudo-vertex.
 \\
 The b-tagging algorithms are constructed in such a way that they should only be applied for three predefined operating points which correspond to a specific misidentification probability for light partons of roughly $10 \%$, $1 \%$ and $0.1 \%$ for an average jet $\pT$ of about $80$ $\GeV$ defined respectively as \textit{Loose}, \textit{Medium} and \textit{Tight}. In this analysis only the Tight operating point is considered (\textit{\textcolor{red}{Need to determine the efficiency percentages from the ttbar sample}})
 
-\subsection{Missing transverse energy}
+\subsection{Missing transverse energy}\label{subsec::MET}
 
 The vast majority of physical objects produced in particle collisions can be reconstructed from the collection of energy deposits. 
 However neutrinos are the exception to the rule since they are weakly interacting and carry neutral charge. Therefore they will traverse the entire detector and escape detection rendering an accurate reconstruction rather challenging.
 \\
 So in order to ensure the reconstruction of neutrinos, a signal extremely important for many physics analyses, a specific work-around is applied which is based on indirect observations rather than direct measurements. The solution lies to a great extent in the geometrical characteristics of the particle detectors, by requiring them to be hermeticcaly closed such that all other particles are propertly detected and cannot leave the detector unseen.
-Thus the missing transverse momentum, which corresponds to all neutrinos and other hypothetical neutral weakly interacting particles present in the event, can be defined from the total transverse momentum of all observed final-state particles. This procedure allows to exploit the high reconstruction efficiency of the particle-flow algorithm for the neutrino reconstruction.
+Thus the missing transverse momentum, which corresponds to all neutrinos and other hypothetical neutral weakly interacting particles present in the event, can be defined from the total transverse momentum of all observed final-state particles~\cite{}. This procedure allows to exploit the high reconstruction efficiency of the particle-flow algorithm for the neutrino reconstruction.
 \begin{equation}
  \vecmet = - \sum \vec{\pT}
 \end{equation}
