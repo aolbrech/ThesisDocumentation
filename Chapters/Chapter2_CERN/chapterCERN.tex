@@ -35,37 +35,72 @@ In order to reach this design luminosity the LHC should contain 2802 proton bunc
 \\
 In order to fullfill these challenging conditions protons need to be produced in adequate amounts, a process which is not realizable for anti-protons. This is the prime motivation why the LHC yields proton-proton interactions, and not $p\bar{p}$ collisions as was done at the Tevatron.
 %These challenging requirements are the main reason why the LHC yields proton-proton interactions instead of $p\bar{p}$ collisions at the Tevatron: anti-protons can not be produced in adequate amounts in order to end up with such high luminosities.
-However this introduces an additional challenge since two separate magnetic fields are required in order to bend the protons in opposite directions. For the LHC design this lead to the development of twin-bore magnets 
+However the use of partons with the same electric charge introduces an additional challenge since two separate magnetic fields are required to bend the protons in opposite directions. For the LHC this lead to the development of twin-bore magnets containing two separate beam pipes and surrounding superconducting coils within the same mechanical structure. A schematic cross-section of such an LHC dipole magnet is given in Figure~\ref{fig::LHCDipole}.
 \\
+The relatively small circumference of the LHC tunnel combined with the extremely high velocity of the protons circulating compels the use of superconducting magnets. Although superconductivity was already used extensively in previous accelerators, the LHC (design) pushed the existing technology to a new level by operating at a record-breaking temperature of 1.9 $\K$ allowing the magnets to produce a magnetic field of 8.33 $\T$. Within the LHC 1232 of these dipole magnets exist which are responsible for bending the proton's trajectory.
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.6 \textwidth]{Chapters/Chapter2_CERN/Figures/lhc-pho-1998-341.jpg}
+ \caption{Cross-section of an LHC dipole magnet with the twin-bore design.}%Taken from http://cds.cern.ch/record/841539/
+ \label{fig::LHCDipole}
+\end{figure}
 
-Start with choice of protons (because anti-protons can not be produced in adequate quantities to attain the design luminosity), then mention this requires two separate magnetic beams since the particles need to be bend in opposite directions and then explain this required the development of twin-bore magnets which contain two beampipes. Also mention that the required magnetic field \textit{``implies'' (need better word)} the need of superconducting coils at extremely low temperatures (1.9 K, never done before). End with given a ``cross-section'' of the LHC dipole structure.
+The tunnel of the Large Hadron Collider is not a perfect circle but consists of eight arcs and eight straight sections each with its specific functions. 
+The arcs are responsible for preserving the circular orbit and contain the 15 $\m$ long dipole magnets.
+The straight sections ensure that the beams remain aligned and do not drift apart by using specific quadrupole magnets. These type of magnets are able to squeeze the beam either vertically or horizontally and are also installed just before the different detectors where they provide an additional squeezing to increase the chances on a collision. A second role which is provided by these straight section is accelerating the beam with radiofrequency (RF) cavities.
 
 \subsubsection{The LHC injection chain}
-The LHC does not only reuse the existing LEP tunnel it also benefits strongly from the complete accelerator complex existing at CERN in order to reach the record energy of 7 $\TeV$. As a first step of the injection scheme a linear accelerator (Linac2) is used which accelerates protons that were electrically stripped from hydrogen atoms up to an energy of 50 $\MeV$. They are then injected in the first circular accelerator, the Proton Synchrotron Booster (PSB), until they reach an energy of 1.4 $\GeV$ and can be passed on further in the injection scheme to the Proton Synchrotron (PS). 
+The LHC does not only reuse the existing LEP tunnel it also benefits strongly from the complete accelerator complex present at CERN in order to reach the record energy of 7 $\TeV$. 
+The protons run through a series of interconnected linear and circular accelerators and are only passed on to the next in line once they attained the maximum speed possible for that specific accelerator. A schematic overview of the sequence used for the proton acceleration at the LHC is given in Figure~\ref{fig::LHCChain}.\\
+The entire LHC injection chain originates from a box of hydrogen atoms from which protons are electrically stripped and directly accelerated to an energy of about 50 $\MeV$ by the Linac2.
+From here they are injected into the first circular accelerator, the Proton Synchrotron Booster (PSB), until they reach an energy of 1.4 $\GeV$ and are energetic enough to be shot into the Proton Synchrotron (PS). Here they will circulate until they arrive at the maximum speed possible for the PS, which corresponds to an energy of 25 $\GeV$, and are inserted in the final pre-accelerating machine: the Super Proton Synchrotron (SPS). The SPS is responsible for accelerating the protons up to 450 $\GeV$ after which the LHC is capable of accelerating them further until the nominal energy of 7 $\GeV$, a process which takes about 20 minutes.
 
-\textbf{\textit{How are the bunches formed??}} \\
-Seems to be caused by the harmonic oscillations of the Radiofrequency (RF) cavities which either accelerate or deccelerate protons such that they oscillate around the ideal energy and combine into bunches. (\textit{What is actually the benefit of using bunches? ... Probably improving collision probability})\\
-Difficult to be completely sure that bunches only start at the level of the PS, seems to be the case already in the PSB ...
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.8 \textwidth]{Chapters/Chapter2_CERN/Figures/CERNAcceleratorComplex_Few.jpg}
+ \caption{Overview with fewest detail}
+\end{figure}
 
-The next accelerator in line is the Proton Synchrotron (PS) -- here the LHC-bunches are formed!
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.99 \textwidth]{Chapters/Chapter2_CERN/Figures/CERNAcceleratorComplex_Detail.jpg}
+ \caption{Overview with most detail (seems to be less fine than in thesis Stijn)} \label{fig::LHCChain}
+\end{figure}
+
+
+The Large Hadron Collider does not simply collide individual protons but actually provides collisions between bunches of $10^{11}$ protons to ensure at least one proton-proton interaction during a single bunch crossing. The design of the LHC is optimized not only for providing $pp$ collision with a record-breaking beam energy, but also with the highest luminosity ever recorded. In order to satisfy this last requirement the LHC should contain multiple proton bunches in a so-called bunch train with the smallest separation possible between individual bunches, a technique also used in many older parton accelerators. 
+However for the LHC this bunch separation, which specifies the time available between consecutive proton-proton interactions, has a nominal value of only 25 or 50 $\ns$, many times lower than currently adopted. \textbf{NOT GOOD!} (Maybe specify which value used for 8 TeV and 7 TeV)
+\\
+The formation of these proton bunches is provided by the RF cavities responsible for accelerating the protons and already starts during the first stages of the LHC injection chain. 
+Radiofrequency cavities produce a resonant electromagnetic wave that oscillates at a given frequency and accelerates the protons up to an ideal energy since protons travelling too fast will undergo a deceleration while those arriving late will feel an additional push.
+Hence inverting the electromagnetic field ensures that the protons become organized into discrete packets or bunches.
+%and hence organize the protons into discrete packets or bunches. %, which is the reason why the protons get organized into large bunches.
+%Inverting the electromagnetic field ensures that the protons will be accelerated up to an ideal energy since protons travelling too fast will undergo a deceleration while those arriving late will feel an additional push.
+%The protons traversing such an RF cavity will feel the overall force and direction of the electromagnetic wave 
+%Inverting the electromagnetic field ensures that the protons either get decelerated or accelerated whether they are faster or slower than the ideal proton energy for this resonant wave. Hence once the full energy is reached, this ideal proton will not feel any acceleration
+%Due to the inversion of the electromagnetic field \underline{will the protons} either be decelerated or accelerated 
+%Organizing the protons in bunches already starts during the first stages of the LHC injection chain and is provided by the RF cavities. These type of accelerating cavities 
+%These proton bunches are produced during the first stages of the LHC injection chain and is taken care of by the use of RF cavities ....
+%and the filling of the accelerator next in line already 
+%is done as such 
+%The creation of these proton bunches already starts in the first stages of the LHC injection chain and the filling of the next accelerator in line is done in such a way that the bunch trains are also created from the start.
+\\
+The RF cavities of the accelerators in the LHC injection chain are constructed such that each consecutive accelerator is capable of holding more bunches such that the bunch train can be expanded in a stepwise manner. This way the time needed to fill the LHC can be reduced significantly since the maximum number of bunches possible is accelerated and then passed on to the next accelerator in line. (\textit{so what does this mean, does the next accelerator has to wait until all the bunches are filled or is it capable to hold bunches with different speeds ???})
+
+%Besides accelerating the protons this injection chain is also used to create the bunch structure which ... (benefit of these bunches)
+
+
+
+%\textbf{\textit{How are the bunches formed??}} \\
+%Seems to be caused by the harmonic oscillations of the Radiofrequency (RF) cavities which either accelerate or deccelerate protons such that they oscillate around the ideal energy and combine into bunches. (\textit{What is actually the benefit of using bunches? ... Probably improving collision probability})\\
+%Difficult to be completely sure that bunches only start at the level of the PS, seems to be the case already in the PSB ...
+
+%The next accelerator in line is the Proton Synchrotron (PS) -- here the LHC-bunches are formed!
 
 \subsubsection{Particle detectors}
 
 \subsubsection{2010-2012 data taking}
 These collisions occured not at the design beam energy but at a reduced energy of only 3.5 and 4 $\TeV$ resulting in a luminosity of ..., a fraction .. lower than the design luminosity.
-
-%\begin{myindentpar}
-%  \begin{description}
-%    \item[LHC design, driven by the LEP legacy] \hfill \\    
-%    Start with choice of protons (because anti-protons can not be produced in adequate quantities to attain the design luminosity), then mention this requires two separate magnetic beams since the particles need to be bend in opposite directions and then explain this required the development of twin-bore magnets which contain two beampipes. Also mention that the required magnetic field \textit{``implies'' (need better word)} the need of superconducting coils at extremely low temperatures (1.9 K, never done before). End with given a ``cross-section'' of the LHC dipole structure.\\
-%    \textit{?Is there another pp collider which exists or existed before? Otherwise ``The LHC machine is the first ever to collide protons with protons instead of the previously adopted approach of ppbar interactions''...}
-%    \item[The LHC injection chain] \hfill \\
-%    The LHC does not only reuse the existing LEP tunnel it also benefits from the entire accelerator complex existing at CERN in order to reach beam-energies up to 7 $\TeV$.
-%    \item[Particle detectors] \hfill \\
-%    \item[2010-2012 data taking] \hfill \\
-%    These collisions occured not at the design beam energy but at a reduced energy of only 3.5 and 4 $\TeV$ resulting in a luminosity of ..., a fraction .. lower than the design luminosity.
-%  \end{description}
-%\end{myindentpar}
 
 \section{The Compact Muon Solenoid detector} 
 
@@ -75,7 +110,8 @@ In order to efficiently detect all the different particles emerging from the int
 The main distinguishing feature of the CMS experiment (which even drives the design of each of the subdetectors,) is the high-field solenoid magnet of $3.8$ Tesla as depicted in Figure \ref{fig::CMSFig}. This to ensure good momentum resolution within a compact spectrometer without the need to make use of heavily restricted muon chambers. The other three subdetectors are required to be placed within this magnet coil (because ...?) which significantly restricts their size. The tracker detector is placed closely around the beam pipe and actually consists of a silicon-based pixel and strip detector to guarantee track reconstruction in the high density environment close to the interaction point. Since also the electromagnetic calorimeter (ECAL) and hadronic calorimeter (HCAL) are located within the solenoid they are designed to be as compact as possible without any loss of granularity. The former calorimeter is a scintillating crystal-based type while the latter is a brass/scintillator sampling one.
 \begin{figure}[h!t]
  \centering
- %\includegraphics[width = 0.4 \textwidth]{Afbeeldingen/CMS.png}
+ \includegraphics[width = 0.8 \textwidth]{Chapters/Chapter2_CERN/Figures/cms.png} \\ %Taken from http://inspirehep.net/record/884672/files/cms.png
+ \includegraphics[width = 0.8 \textwidth]{Chapters/Chapter2_CERN/Figures/cms_MuchText.png}%Taken from https://cms-docdb.cern.ch/cgi-bin/PublicDocDB/RetrieveFile?docid=11514&version=1&filename=cms_120918_03.png
  \caption{CMS Figure with all subdetectors clearly visible} \label{fig::CMSFig}
 \end{figure}
 
