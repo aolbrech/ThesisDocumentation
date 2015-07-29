@@ -81,7 +81,6 @@ The two smaller experiments, ALICE and LHCb, tend to focus on a dedicated type o
 \\
 The CERN site contains many other smaller experiments which try to grasp the physics behind some of the remaining unsolved mysteries and possibly result in useful future applications. 
 Specific for the LHC tunnel are the three experiments which are located in the vicinity of one of the main particle detectors sharing the same experimental cavern.
-%In the LHC tunnel three such experiments are located in the vicinity of one of the four large particle detectors and share the experimental cavern. \textbf{CHANGE}
 The first one is the TOTEM~\cite{TotemDetectorPaper} experiment, which is placed close to the CMS detector along the beampipe and is designed to investigate the proton structure\footnote{Definitely certain that 'structure' is good to be used??} in the very forward region. The LHCf~\cite{LHCfDetectorPaper}, installed near ATLAS, will also focus on physics in the very forward region, but aims to better understand hadron interaction models used in the simulation of high-energy cosmic rays.
 The last experiment, MOEDAL~\cite{MoedalDetectorPaper} is deployed around the LHCb interaction region and will try to detect the magnetic monopole, a hypothetical particle with magnetic charge.
 
@@ -114,7 +113,7 @@ The layout of the CMS detector is mainly driven by the superconducting solenoid 
 \\
 The tracking detector is placed closely around the beam pipe and consists of a separate silicon-based pixel part and a strip detector as will be explained in Section~\ref{sec::Tracker}, in order to guarantee track reconstruction in the high density environment close to the interaction point.
 Around the tracking detector the electromagnetic calorimeter (ECAL) and hadronic calorimeter (HCAL) are positioned, which are responsible for accurately measuring the energy of the particles emerging from the interaction region. More detail about the characteristics of the calorimeter systems will be given in Section~\ref{sec::CAL}. Finally, surrounding the magnet coil, the muon chambers interleaved with the steel return yokes can be found. This part of the CMS detector, discussed in detail in Section~\ref{sec::MuonChamber}, provides an accurate muon identification, crucial for distinguishing promising muon final state signatures from the extensive background. 
-The overall dimensions of the full CMS detector are a total length of $21.6$ m and a diameter of $14.6$ m resulting in a total weight of $12500$ tons.
+The overall dimensions of the full CMS detector are a total length of $21.6$ m and a diameter of $14.6$ m resulting in a total weight of 12 500 tons.
 \\
 \\
 %The design of the CMS experiment is \textbf{also} optimized for the reconstruction of neutrino's, which cannot be measured directly and hence only appear in the form of missing energy, by ensuring a hermetically closed detector. This resulted\footnote{Is this really the motivation why a barrel and endcap design has been adopted??} in the construction of a cylindrical barrel part located centrally with respect to the interaction point and an endcap part represented by a sort of disklike closure componenents for each of the different subdetectors.
@@ -134,14 +133,14 @@ is used to describe the angle of a particle with respect to the $z$-axis. The ps
 The CMS tracking detector is located at the most inner point of the magnet bore close to the interaction point and is hence exposed to the harsh radiation environment produced by the proton-proton collisions. In order to survive these challenging conditions and still be capable of providing fast and accurate read-out of the particle's hits, it was decided to fully equip this tracking detector with active silicon, making it the largest silicon tracker ever constructed.
 \\
 For the CMS tracking apparatus it has been decided to adopt two different detection techniques .
-The most inner part of the detector will consist of pixel cells of size 100 $\times$ 150 $\mu$m$^{2}$, capable of achieving similar track resolution in both $r-\phi$ and $z$ direction, while the outer part contains silicon micro-strip sensors with diverse track resolution. 
+The most inner part of the detector will consist of pixel cells of size 100 $\times$ 150 $\unit{\mu m}^{2}$, capable of achieving similar track resolution in both $r-\phi$ and $z$ direction, while the outer part contains silicon micro-strip sensors with diverse track resolution. 
 This choice is motivated by the varying particle flux conditions throughout the tracking detector, which start out rather extreme at low radii but become more sensible when moving further away from the interaction region. 
 Therefore the technology used in the first layers of the CMS tracker should be able to identify individual particle hits in a very dense track regime, which would not be feasible when silicon strips were placed in this region. However the use of silicon strips is more than justifiable in the outer regions of the tracking detector where the track rate is significantly lower.
 From Figure~\ref{fig::CMSTracker}, which shows the geometry of the CMS tracker, the two structures are clearly visible together with the general subdetector layout containing central barrel layers closed with endcap disks allowing a larger $\eta$-coverage.
 \begin{figure}[h!t]
  \centering
  \includegraphics[width = 0.99 \textwidth]{Chapters/Chapter2_CERN/Figures/CMS_TrackerLayout_Overview-eps-converted-to.pdf}
- %\includegraphics[width = 0.9 \textwidth]{Chapters/Chapter2_CERN/Figures/CMS_TrackerLayout_Overview.eps}
+ %\includegraphics[width = 0.99 \textwidth]{Chapters/Chapter2_CERN/Figures/TrackerLayout_Color.pdf}(If color one is used, the difference between blue (=3-D hit positions) and black (=2-D hit positions) need to be understood and explained!!!)
  \caption{Schematic cross-section of the CMS tracking detector.} \label{fig::CMSTracker}
 \end{figure}
 
@@ -149,35 +148,37 @@ The pixel part of the tracker subdetector consists of three cylindrical barrel l
 
 \subsubsection*{Hit and track reconstruction in the pixel and strip tracker}
 
-The CMS tracker is responsible for translating the detected hits in the pixel and strip tracker into charged particles' tracks. This process is done using a computationally challenging track reconstruction algorithm which proceeds in an iterative manner in order to first identify the straightforward prompt tracks.
-The dense environment in the inner tracker is the main challenge for the track reconstruction implying the need of an efficient search for hits during the pattern recognition stage and a fast propagation of trajectory candidates. Hence the use of a Combinatiorial Track Finder (CTF), an extension of the Kalman Filter technique which allows the combination of track fitting and pattern recognition.
-
-The local reconstruction is performed prior to the iterative tracking and clusters energy deposits by combining neighbouring pixels or strips which fulfill specific signal over noise (S/N) requirements. The cluster position is determined from the charge-weighted average or from the cluster edges in the case of the strip or pixel detector, respectively.
-
-The track reconstruction algorithm can be decomposed into four separate steps: seed generation, pattern recognition, ambiguity resolution and track fitting.
-The benefit of using an iterative process is that during the first iteration the easiest to find tracks are identified such that their associated hits can be removed from the list in order to reduce combinatorial complexity for the following iterations.
-
+This track reconstruction algorithm is a computational complex and iterative process. It is designed to start from the innermost hit of the pixel detector and proceed outwards layer by layer. Hence this algorithm is active in the most dense environment of the tracker and therefore requires an efficient search for hits and a fast trajectory propagation. The track reconstruction within CMS is defined as the Combinatiorial Track Finder~\cite{TrackAndPVReco} (CTF) and can be decomposed into four different steps: seed generation, pattern recognition, ambiguity resolution and track fitting.
+%The local reconstruction is performed prior to the iterative tracking and clusters energy deposits by combining neighbouring pixels or strips which fulfill specific signal over noise (S/N) requirements. The cluster position is determined from the charge-weighted average or from the cluster edges in the case of the strip or pixel detector, respectively.
 \begin{myindentpar}
   \begin{description}
     \item[Seed generation] \hfill \\
-    This step of the track reconstruction provides initial trajectory candidates from pairs of pixel hits. The track finding starts from trajectory seeds created in the innermost region of the tracker because the high granularity of the pixel detector ensures lower channel occupancy in the inner pixel layer than in the outer strip layer. 
-    %Hence optimal efficiency is retrieved when the tracks are built in the outward direction.
-    The starting trajectory parameters and their uncertainty in the quasi-uniform magnetic field of the tracker can be determined from five parameters. Hence either three 3-D hits or two 2D-hits combined with a beam spot constraint should be extracted in order to construct the seed trajectory.
-    \item[Pattern recognition] \hfill \\
-    This module of the CTF algorithm is basically a Kalman Filter which proceeds iterative from the seed layer until the outermost tracker layer is reached. % taking into account the effects of multiple scattering and energy loss. 
-    %Combining the information of successive layers significantly improves the precision of the track parameters for each layer. 
-    First a dedicated navigation (step) is performed in order to identify the layers possibly intersected by the trajectory of the seed. Then, for each hit on this layer, a new trajectory candidate is created and its track parameters are recalculated using the Kalman Fiter formalism by combining the predicted trajectory state with the added hits in a weighted mean.
+    This step of the track reconstruction provides initial trajectory candidates from pairs of pixel hits. 
+    The starting trajectory parameters and associated uncertainty can be determined from only five parameters since the magnetic field remains quasi-uniform in a large part of the tracker volume. Hence either three hits or two hits combined with a beam spot constraint are sufficient to determine the seed trajectory of potential tracks.
+    \item[Pattern recognition or track finding] \hfill \\
+    This part of the CTF algorithm determines which hits are compatible with the seed trajectory using a combinatiorial Kalman Filter~\cite{KalmanFilter} method.
+    It starts by scanning for layers likely to be intersected by the track candidate. Then the trajectory parameters are extrapolated to this layer and the compatible hits are identified. Finally the track parameters are updated by adding one of the compatible hits and the procedure is repeated until the outermost layer is reached.
     \item[Ambiguity resolution] \hfill \\
-    Since the track of a single charged particle can be reconstructed more than once, either originating from different seeds or when one single seed resulted in more than one trajectory candidate, double-counting is possible and should be resolved. Hence exclusion of specific tracks is performed based on the number of hits shared between two trajectories. 
-    %The track with the fewest hits is removed and the trajectory cleaner is applied again on the remaining list of trajectory candidates. 
+    Since for each of the compatible hits the trajectory candidated are grown in parallel, a single seed can result in multiple tracks or two identical tracks can originate from a different seed. This possible double-counting can be avoided by excluding specific tracks based on the number of hits shared among them. 
     \item[Track fitting] \hfill \\
-    During the final step of the iterative tracking process the trajectory parameters are refitted using all hits in order to exclude any bias introduced during the seeding stage. The Kalman Filter used here starts from the innermost hit and proceeds outwards. Afterwards a so-called smoothing stage is applied in the form of an outside-in Kalman Filter which uses the result of the first one. This approach yields optimal estimates of the parameters.
+    The remaining mutually exclusive trajectory candidates are recalculated during the last step of the iterative tracking algorithm. It uses a Kalman Filter method on the full list of hits starting from the innermost one. Afterwards a smoothing stage is applied in the form of an outside-in Kalman Filter based on the result of the first one. This approach yields optimal estimates of the parameters.
   \end{description}
 \end{myindentpar}
-%\textit{? Is this hit reconstruction (with fast and template-based algorithms) relevant?}
+Executing this CTF sequence multiple times and removing the hits associated with reconstructed tracks after each iteration significantly decreases the combinatorics. % combinatiorial complexity. 
+By first identifying the more straightforward track candidates the streamlined collection of unmatched hits allows the recovery of tracks slightly deviating from the simplified pattern/behaviour. 
+Therefore the track reconstruction algorithm is implemented such that first the prompt tracks are identified and only afterwards the ones originating from outside the luminous region of the proton-proton collisions.
+The algorithm is defined in a flexible way permitting it to be adapted to changing pile-up\footnote{Is this term already explained???} conditions.
+
+The performance of the track reconstruction is outstanding, and optimal results are obtained for muons. For isolated muons with 1 $<$ $\pT$ $<$ 100$\GeV$ the tracking efficiency is higher than 99 $\%$ for the entire $\eta$ and $\pT$ range~\cite{TrackAndPVReco}. The transverse momentum resolution for a muon with $\pT$ = 100$\GeV$ and $\vert \eta \vert$ $<$ 1.6 is of the order of 2-3 $\%$ but quickly deteriorates for higher pseudorapidity values.
+The efficiency for charged hadrons in $t\bar{t}$ events varies between 85 and 95 $\%$ depending on the $\pT$ and $\eta$ value, and the \textit{What is it for this??? Only given separately for barrel/endcap/transition region ...}
+
+\subsubsection*{Primary vertex reconstruction}
+Once the full collection of reconstructed tracks is recovered the location and corresponding uncertainty of the associated proton-proton interaction vertices should be determined. Since only prompt tracks originating from near the interaction region are relevant for the primary vertex, these type of tracks need to be selected first. Afterwards the tracks that appear to originate from the same interaction vertex are clustered based on their $z$-coordinates. Finally the actual vertex fitting can be applied on the candidates which contain at least two tracks using an adaptive vertex filter~\cite{AdaptiveVertexFitting}. This fitting procedure computes the vertex parameters and assigns a weight to each track in the vertex, reflecting the probability that it actually belongs to the considered vertex.\\
+\textit{So what about secondary vertices??}
+
+The complete primary vertex reconstruction results in an accurate measurement of the position of the primary vertices. For events with a reconstructed jet with transverse energy $\ET$ $>$ 20$\GeV$ the obtained resolutions are about 10 $\unit{\mu m}$ in $x$ and $y$, and 12 $\unit{\mu m}$ in $z$~\cite{TrackAndPVReco}. 
 
 \subsection{The calorimetry subdetectors}\label{sec::CAL}
-
 Any charged particle emerging from the interaction point will be detected by the tracker detector and its trajectory will be reconstructed. However in order to fully identify the observed particle this information should be combined with the measured energy deposits, a task performed by the electromagnetic and hadronic calorimeters. The ECAL is designed to measure the parton showers produced by interactions with electrons and photons while the HCAL will absorb the hadron and neutron showers.
 
 \subsubsection{The electromagnetic calorimeter}
@@ -185,8 +186,7 @@ The ECAL is a hermetic homogeneous detector made of lead tungstate (PbWO$_{4}$) 
 %As a downside, the yield of these type of cristals is rather low such that photodetectors are needed to detect the scintillator light produced when particles traverse the calorimeter cells. 
 The ECAL subdetector contains in total 75 848 of lead tungstate scintillating crystals, of which 
 61 200 are placed in the barrel part (EB) while the remaining are equally distributed among the two the endcap structures (EC).% holds 7 324 of these crystals.
-The pseudorapidity coverage of the EB is $\vert \eta \vert$ $<$ 1.479, which is further extended by the two endcaps to $\vert \eta \vert$ $<$ 3.0, as can be seen in Figure~\ref{fig::ECAL}. The crystals used in the two subdetector parts vary slightly, for the barrel crystals with a front-face cross section of 2.2 $\times$ 2.2 $\cm^{2}$ with a total length of 23 $\cm$ were constructed while for the endcap 
-these values take 2.86 $\times$ 2.86 $\cm^{2}$ and 22 $\cm$, respectively.
+The pseudorapidity coverage of the EB is $\vert \eta \vert$ $<$ 1.479, which is further extended by the two endcaps to $\vert \eta \vert$ $<$ 3.0, as can be seen in Figure~\ref{fig::ECAL}. The crystals used in the two subdetector parts vary slightly, for the barrel crystals with a front-face cross section of 2.2 $\times$ 2.2 $\cm^{2}$ with a total length of 23 $\cm$ were constructed while for the endcap these values take 2.86 $\times$ 2.86 $\cm^{2}$ and 22 $\cm$, respectively.
 \begin{figure}[h!t]
  \centering
  \includegraphics[width = 0.99 \textwidth]{Chapters/Chapter2_CERN/Figures/Experimental_Apparatus_ECAL.pdf}
@@ -196,7 +196,8 @@ these values take 2.86 $\times$ 2.86 $\cm^{2}$ and 22 $\cm$, respectively.
 The ECAL contains besides the barrel and endcap an additional third substructure: the Preshower (ES). This is a sampling calorimeter consisting of lead radiators combined with silicon strip sensors specifically designed to identify and reject signals originating from neutral pions and minimum ionizing particles. (\textit{Is this last part also correct??}) The ES is only 20 $\cm$ thick and is restricted to the $\vert \eta \vert$ coverage between 1.653 and 2.6. 
 Originally it was foreseen to also position a preshower calorimeter in front of the barrel detector but this appeared unrealistic due to the limited space available inside the magnet bore.
 
-\textit{Now something about performance~\cite{ECALPerformance}!!}
+The energy resolution obtained for photons and electrons measured with the electromagnetic calorimeter has been determined from 125$\GeV$ Higgs boson decays and from Z-boson decays, respectively~\cite{ECALResolution}. For the photons this resolution varies between 1.1 and 2.6$\%$ in the barrel and between 2.2 to 5$\%$ in the endcaps. 
+For the electrons similar results are obtained, a resolution of 2$\%$ in the central region and 2-5$\%$ elsewhere.
 
 \subsubsection{The hadronic calorimeter}
 The HCAL subdetector surrounds the electromagnetic one and is the last part of the CMS experiment confined within the solenoid.
@@ -213,6 +214,8 @@ However only the HB and HE are not sufficient for measuring all hadronic activit
 For the barrel part the restricted size available due to the confinement in the solenoid results in possible leakages of hadron showers in the muon chambers.
 Hence this part has been expanded with an outer tail catcher (HO), positioned just outside the magnet coil and limited to the $\vert \eta \vert$ range of 1.26. Also the endcap calorimeters require a complementary structure capable of measuring energy deposits in the very forward region. These forward calorimeters (HF) are positioned at 125 $\cm$ from the interaction point, cover the range 3.0 $<$ $\vert \eta \vert$ $<$ 5.0 and are therefore exposed to enormous particle fluxes. Since the HF needs to survive at least a decade in these harsh conditions, the choice has been made to construct the HF as a steel/quartz fiber calorimeter.
 
+\textit{Can't find any paper on performance ...}
+
 \subsection{The muon system}\label{sec::MuonChamber}
 
 The last subdetector of the CMS experiment, the only one which is positioned completely outside the magnet coil, is the muon system. The sole goal of the muon chambers is to provide an accurately identify and measure the muons created during proton-proton interactions, a signature labeled as the ``golden channel'' for discovery of the Brout-Englert-Higgs boson (and also an essential channel for multiple SuperSymmetry (SUSY) searches). 
@@ -224,7 +227,7 @@ The large surface which needed to be covered by this single substructure combine
  \caption{Cross section of one quarter of the CMS muon system.} \label{fig::MuonAndCMS}
 \end{figure}
 
-The central region of the muon system consists of four concentric layers which cover $\vert \eta \vert$ $<$ 1.2 and are equipped with drift tubes (DT) while the endcap part ($\vert \eta \vert$ $<$ 2.4) has four stations containing cathode strip chambers (CSC). The DTs are designed for the low rate which is expected in the barrel region and thus have a slower response time than the CSC's in the endcap. For the pseudorapidity region $\vert \eta \vert$ $<$ 1.6 additional resistive plate chambers (RPC) are added in order to ensure a fast response with good time resolution.
+The central region of the muon system consists of four concentric layers which cover $\vert \eta \vert$ $<$ 1.2 and are equipped with drift tubes (DT) while the endcap part ($\vert \eta \vert$ $<$ 2.4) has four stations containing cathode strip chambers (CSC). The DTs are designed for the low rate which is expected in the barrel region and thus have a slower response time than the CSC's in the endcap. Even though the used technology is different for the barrel and endcap, similar resolutions should be obtained. As expected, the first data results provided a clear confirmation with a spatial resolution of 80-120 $\unit{\mu m}$ for the DTs and 40-150 $\unit{\mu m}$ for the CSCs~\cite{MuonPerformance}. For the pseudorapidity region $\vert \eta \vert$ $<$ 1.6 additional resistive plate chambers (RPC) are added in order to ensure a fast response with good time resolution. Since the RPCs were specifically designed for an accurate time measurement the spatial resolutions are of less importance, which is indeed reflected from the obtained resolution of 0.8-1.2$\cm$ for this type of gaseous detectors.
 
 \subsection{Online event filtering}
 The Large Hadron Collider is designed to provide about 40 million bunch crossings per second during which multiple simultaneous proton-proton collisions can occur. Storing such a large amount of data is in practice not feasible implying that the stored event rate should be drastically reduced by filtering out the seemingly interesting interactions. Such a selection process is possible since the produced proton-proton collisions are actually dominated by a large bunch of low-energetic QCD events (\textit{Definitely true?}).
