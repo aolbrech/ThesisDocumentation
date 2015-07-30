@@ -163,7 +163,7 @@ This track reconstruction algorithm is a computational complex and iterative pro
     This part of the CTF algorithm determines which hits are compatible with the seed trajectory using a combinatiorial Kalman Filter~\cite{KalmanFilter} method.
     It starts by scanning for layers likely to be intersected by the track candidate. Then the trajectory parameters are extrapolated to this layer and the compatible hits are identified. Finally the track parameters are updated by adding one of the compatible hits and the procedure is repeated until the outermost layer is reached.
     \item[Ambiguity resolution] \hfill \\
-    Since for each of the compatible hits the trajectory candidated are grown in parallel, a single seed can result in multiple tracks or two identical tracks can originate from a different seed. This possible double-counting can be avoided by excluding specific tracks based on the number of hits shared among them. 
+    Since for each of the compatible hits the trajectory candidates are grown in parallel, a single seed can result in multiple tracks or two identical tracks can originate from a different seed. This possible double-counting can be avoided by excluding specific tracks based on the number of hits shared among them. 
     \item[Track fitting] \hfill \\
     The remaining mutually exclusive trajectory candidates are recalculated during the last step of the iterative tracking algorithm. It uses a Kalman Filter method on the full list of hits starting from the innermost one. Afterwards a smoothing stage is applied in the form of an outside-in Kalman Filter based on the result of the first one. This approach yields optimal estimates of the parameters.
   \end{description}
@@ -266,5 +266,5 @@ The CMS detector reached an efficiency of 92.24 $\%$, 90.98 $\%$ and 93.52 $\%$ 
  \caption{Integrated luminosity delivered by the LHC and recorded by the CMS experiment during the 2012 data-taking at $\sqrt{s}$ = 8 $\TeV$.} \label{fig::LumiEff}
 \end{figure}
 
-Afterwards the recorded data is validated by the offline Data Quality Monitoring (DQM) to ensure that it is suited for physics analysis. This largely automated tool determines whether all subdetectors were working properly during data-taking and monitors the reconstruction of the various physics objects. \textbf{Need to find integrated lumi plot wiht the validated percentage ... !}
+Afterwards the recorded data is validated by the offline Data Quality Monitoring (DQM) to ensure that it is suited for physics analysis. This largely automated tool determines whether all subdetectors were working properly during data-taking and monitors the reconstruction of the various physics objects. \textbf{Need to find integrated lumi plot with the validated percentage ... !}
 
