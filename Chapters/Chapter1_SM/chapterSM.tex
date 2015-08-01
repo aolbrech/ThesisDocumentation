@@ -1,5 +1,5 @@
 %\dropchapter{0.4in}
-\chapter{title} \label{chp:SM}
+\chapter{title} \label{chp::SM}
 %\epigraphhead[70]{\epigraph{\textit{If I could remember the names of all these particles, I'd be a botanist.}}{Enrico Fermi}}
 %\undodrop
 
@@ -16,12 +16,88 @@ In this perspective the Standard Model of elementary particle physics should be 
 \section{Standard Model}
 The Standard Model of elementary particle physics (SM) is a theoretical framework designed in 1978 which contains three of the four fundamental interactions.
 
-\subsection{Theory framework}
-Try to explain the framework starting from the theory (the particles should follow automatically ... \textit{But maybe you first need to mention which are these fundamental interactions and building blocks ...})
-
 \subsection{Particle content}
 
-\subsection{Successes and shortcomings of the Standard Model}
+The extensive search for elementary particles and the chain of discoveries during the 20$^{th}$ century continously altered the understanding of the fundamental theory describing them.
+%It almost appears that every new particle discovery resulted in a complete destruction of the existing theory assumptions.
+Every new discovery divided the physics community and often required the development of a completely new structure capable of describing the observations.
+Hence the Standard Model, officially established in the early 1970s, actually consists of many ingenious contributions from many renown physicists~\cite{Griffiths}. 
+
+For the last decades the general belief on elementary particles is conceived rather stable, especially since the new discoveries only reinforced the Standard Model. % and summarized in Table~\ref{table::ElemParticles}.
+The elementary particles have been subdivided based on their spin. Fermions, containing both leptons and quarks, have half-integer spin while bosons, also called force mediators, have integer spin. 
+The collection of fermions can be stored into three separate generations, characterized by increasing mass, and is summarized in Table~\ref{table::ElemParticles}.  Each fermion $f$ has an antiparticle, which is defined to have the same mass but opposite electrical charge and is denoted as $\bar{f}$. The only exception is the antiparticle of the charged leptons $l^{-}$ which are represented as $l^{+}$.\\
+Even though the Standard Model is only complete when all three generations are considered, the first one is the one which is relevant for describing all stable matter visible around us.
+The up- and down-quarks can bond together to form protons and neutrons, with respective quark-content $uud$ and $udd$. Together with the electron this is sufficient to form atoms and hence build every known chemical element.
+%The atom of each chemical element consists of a nucleus surrounded with electrons while the nucleus can be  
+%The core of any nucleus atom consists of protons and neutrons, with quark-content $uud$ and $udd$, respectively, 
+\setlength\extrarowheight{5pt}
+\begin{table}[h!t]
+ \centering
+ \caption{Overview of the fermions in the Standard Model and their corresponding electrical charge.} \label{table::ElemParticles}
+ \begin{tabular}{|c|cr|cc|cc|cc|c|}
+  \hline
+  \textbf{Generation} 		& \multicolumn{4}{c|}{\textbf{Quarks}} 				& \multicolumn{4}{c|}{\textbf{Leptons}} 				\\
+  \hline
+  1$^{st}$ 			& up 		& $u$ 		& down 		& $d$ 		& electron neutrino	& $\nu_{e}$ 	& electron	& $e^{-}$ 	\\
+  \hline
+  2$^{nd}$ 			& charm 	& $c$ 		& strange 	& $s$		& muon neutrino		& $\nu_{\mu}$ 	& muon		& $\mu^{-}$ 	\\
+  \hline
+  3$^{rd}$ 			& top		& $t$ 		& bottom 	& $b$ 		& tau neutrino 		& $\nu_{\tau}$ 	& tau		& $\tau^{-}$ 	\\
+  \hline
+  \hline
+  \textbf{Electrical charge} 	& \multicolumn{2}{c|}{+2/3} 	& \multicolumn{2}{c|}{-1/3} 	& \multicolumn{2}{c|}{0} 		& \multicolumn{2}{c|}{1}	\\
+  \hline
+ \end{tabular}
+\end{table}
+
+The division of fermions into leptons and quarks is motivated by the different fundamental forces they interact with. The Standard Model comprises three of the four fundamental interactions, only gravity is still missing in the overall picture. The interactions which are included are the electromagnetic one, responsible for ..., the weak force, used for describing ..., and the strong force, ... . The leptons only interact through the weak and electromagnetic force, with the exceptions of the neutrinos which are not influenced by the electromagnetic force since they are neutral, while the quarks in addition also interact through the strong force. 
+
+The fundamental forces described by the Standard Model are each represented by a spin-1 boson, which is mediated during the interactions.
+The only interaction which is mediated by a massless force carrier is the weak force as can be seen from Table~\ref{table::ForceCarriers}.
+This table also clearly indicates that the number of bosons for each force is allowed to vary since the electromagnetic one is provided by one single photon, the weak force by three massive bosons and the strong force even has 8 gluons. The only difference between the different gluons is the colour charge they carry and which is exchanged with the quarks.
+%Within the Standard Model 11 of these force mediators exist, of which 8 are gluons with only a different color charge. \textbf{BETTER!!}
+
+\begin{table}[h!t]
+ \centering
+ \caption{Overview of the spin-1 force-carriers in the Standard Model and their mass~\cite{WMass,ZMass}.} \label{table::ForceCarriers}
+ \begin{tabular}{|c|cc|c|}%c|}
+  \hline
+  \textbf{Force} 		&\multicolumn{2}{c|}{\textbf{Boson}} 	& \textbf{Mass ($\GeV$)}	\\%& \textbf{Spin}	\\
+  \hline
+  Strong force 			& gluon 	& g 			& 0 				\\%& 1		\\
+  \hline
+  Electromagnetic force		& photon 	& $\gamma$ 		& 0 				\\%& 1 		\\
+  \hline
+  \multirow{2}{*}{Weak force} 	& W-boson 	& W$^{\pm}$ 		& $\pm$ 			\\%& 1 		\\
+				& Z-boson 	& Z$^{0}$ 		& $\pm$ 			\\%& 1 		\\
+  \hline
+ \end{tabular}
+\end{table}
+
+A final, but definitely not less important, boson which is incorporated in the Standard Model is the spin-0 Brout-Englert-Higgs (BEH) boson. This particle is responsible for providing mass to all other particles through the mechanism of electroweak symmetry breaking, as will be explained in Section~\ref{sec::SuccessAndFailSM}. Its existence was postulated in 1964 but was only discovered rather recently~\cite{Higgs}.
+
+\subsection{Theory framework}
+The elementary interactions of the quarks and leptons can be understood as consequences of gauge symmetries. (Quigg book)\\
+SM = relativistic quantum field theory of interacting particles\\
+
+\paragraph{Remark}
+Important to understand what the difference is between local and global gauge invariance, and why the global invariance doesn't automatically implies local invariance ...\\
+Book Quigg: The interactions arise as a consequence of local gauge invariance!\\
+
+The different weak-isospin doublets are:
+\begin{equation}
+ \begin{pmatrix} u \\ d \end{pmatrix}_{L}~, \qquad \begin{pmatrix} c \\ s \end{pmatrix}_{L}~, \qquad \begin{pmatrix} t \\ b \end{pmatrix}_{L}
+\end{equation}
+and:
+\begin{equation}
+ \begin{pmatrix} \nu_{e} \\ e^{-} \end{pmatrix}_{L}~, \qquad \begin{pmatrix} \nu_{\mu} \\ \mu^{-} \end{pmatrix}_{L}~, \qquad \begin{pmatrix} \nu_{\tau} \\ \tau^{-} \end{pmatrix}_{L}
+\end{equation}
+where the $L$ subscript denotes the left-handed structure.
+
+\subsection{Successes and shortcomings of the Standard Model} \label{sec::SuccessAndFailSM}
+\subsubsection{Electroweak symmetry breaking}
+
+\subsubsection{Remaining open questions}
 
 \section{Top-quark physics}
 
