@@ -1,5 +1,5 @@
 %\dropchapter{0.4in}
-\chapter{title} \label{chp::SM}
+\chapter{Anomalous couplings in the top quark sector} \label{chp::SM}
 %\epigraphhead[70]{\epigraph{\textit{If I could remember the names of all these particles, I'd be a botanist.}}{Enrico Fermi}}
 %\undodrop
 
@@ -11,9 +11,10 @@ In order to achieve a new breakthrough on the level of elementary particle physi
 In this perspective the Standard Model of elementary particle physics should be seen as a first step towards a grand unification of all fundamental interactions which has met every test endured up to now.
 %endured is ``tested to the limit'' time after time, but for the moment has met every test.
 \\
-\textit{Now shortly summarize what will be discussed in this chapter!}
+\textit{Now shortly summarize what will be discussed in this chapter!}\\
+\textbf{More focus ont he role of top in SM searches!}
 
-\section{Standard Model}
+\section{Standard Model of elementary particle physics}
 The Standard Model of elementary particle physics (SM) is a theoretical framework designed in 1978 which contains three of the four fundamental interactions.
 
 \subsection{Particle content}
@@ -22,8 +23,8 @@ The extensive search for elementary particles and the chain of discoveries durin
 %It almost appears that every new particle discovery resulted in a complete destruction of the existing theory assumptions.
 Every new discovery divided the physics community and often required the development of a completely new structure capable of describing the observations.
 Hence the Standard Model, officially established in the early 1970s, actually consists of many ingenious contributions from many renown physicists~\cite{Griffiths}. 
+For the last decades the general belief on elementary particles is conceived rather stable, especially since every new discovery validated the theory described by the Standard Model. % and summarized in Table~\ref{table::ElemParticles}.
 
-For the last decades the general belief on elementary particles is conceived rather stable, especially since the new discoveries only reinforced the Standard Model. % and summarized in Table~\ref{table::ElemParticles}.
 The elementary particles have been subdivided based on their spin. Fermions, containing both leptons and quarks, have half-integer spin while bosons, also called force mediators, have integer spin. 
 The collection of fermions can be stored into three separate generations, characterized by increasing mass, and is summarized in Table~\ref{table::ElemParticles}.  Each fermion $f$ has an antiparticle, which is defined to have the same mass but opposite electrical charge and is denoted as $\bar{f}$. The only exception is the antiparticle of the charged leptons $l^{-}$ which are represented as $l^{+}$.\\
 Even though the Standard Model is only complete when all three generations are considered, the first one is the one which is relevant for describing all stable matter visible around us.
@@ -76,13 +77,119 @@ This table also clearly indicates that the number of bosons for each force is al
 
 A final, but definitely not less important, boson which is incorporated in the Standard Model is the spin-0 Brout-Englert-Higgs (BEH) boson. This particle is responsible for providing mass to all other particles through the mechanism of electroweak symmetry breaking, as will be explained in Section~\ref{sec::SuccessAndFailSM}. Its existence was postulated in 1964 but was only discovered rather recently~\cite{Higgs}.
 
-\subsection{Theory framework}
+\subsection{Interactions through gauge invariance}
+The most powerful aspect of the Standard Model is that it is able to describe the interactions of the particles as a relativistic quantum field theory. The basic property on which it is based is gauge invariance under each of the three included interactions. From this the interactions between the different particles follows automatically (\textbf{or only the case for fermions?}).
+\\
+Since the fermions are half integer spin particles they are represented by a Dirac spinor field which is described by the Dirac Lagrangian:
+\begin{equation} \label{eq::DiracL}
+ \mathcal{L}_{Dirac} = i \bar{\psi} \gamma^{\mu} \partial_{\mu} \psi - m \bar{\psi} \psi
+\end{equation}
+
+The gauge invariance requires the fields to be invariant under the corresponding transformation
+\begin{equation} \label{eq::GaugeTransf}
+ \psi \rightarrow U(x) \psi =  \exp \left( -i \vec{\alpha}(x) \cdot \frac{\vec{\tau}}{2} \right) \psi
+\end{equation}
+where $\vec{\alpha}$ are the rotation parameters in the symmetry group represented by the Lie group generators $\vec{\tau}$.\\
+
+Invariance of the Dirac Lagrangian under the transformation given in Equation (\ref{eq::GaugeTransf}) can only be accomplished by replacing the partial derivative $\partial$ by a covariant derivative $D$. This however comes at the price of introducing new gauge fields $A_{\mu}$ which will interact with the fermion fields with coupling strenght $g$.
+% which transforms the same way as the matter field $\psi$. 
+\begin{equation} \label{eq::CovDer}
+ D_{\mu} = \partial_{\mu} -i g \vec{A}_{\mu} \cdot \frac{\vec{\tau}}{2}
+\end{equation}
+Inserting this covariant derivative results in an additional term in the Dirac Lagrangian of Equation (\ref{eq::DiracL}), which describes the interaction between the fermion fields mediated by the gauge field.
+\begin{equation} \label{eq::DiracLInter}
+ \mathcal{L}_{Dirac} = i \bar{\psi} \gamma^{\mu} \partial_{\mu} \psi - m \bar{\psi} \psi + g \bar{\psi} \gamma^{\mu} \psi \vec{A}_{\mu} \cdot \frac{\vec{\tau}}{2}
+\end{equation}
+
+Requiring that the covariant derivative transforms in the same way as the matter fields $\psi$ in order to ensure the Lagrangian to remain invariant under the considered gauge transformation, this new vector field should incorporate the local changes and transform in the following way (\textbf{is this not general enough? why using the matrix U?}):
+\begin{equation}
+ A_{\mu}^{'} =  A_{\mu} - \frac{1}{g} \partial_{\mu} (\vec{\alpha}\cdot\frac{\vec{\tau}}{2})
+\end{equation}
+\paragraph{Remark: } Is this $\cdot$ and vector arrow always necessary??
+
+\subsubsection{Elementary fermion interactions in the Standard Model}
+The theory of gauge invariance has been explained in a general way with the introduced matrix $U(x)$ being the most general rotation matrix of the symmetry group SU(N). This can however easily be simplified in order to obtain the three gauge interactions for which the Standard Model is invariant, which each introduce a number of vector fields responsible for the interactions between the fermions. 
+
+\begin{myindentpar}
+  \begin{description}
+    \item[Quantum chromodynamics gauge transformations] \hfill \\
+    As mentioned before the strong interaction is represented by the quantum number colour implying that each quark can exist in three equivalent states. Hence the fermion fields in the Dirac equation actually should be seen as three-component column vector such that the symmetry group for quantum chromodynamics (QCD) is SU(3). This explains the existence of 8 gluons, which are introduced as the gauge fields $G_{\mu}^{a}$ in order for the Lagrangian to remain invariant under the gauge transformations. The generators $\tau$ in Equation (\ref{eq::GaugeTransf}) are in this case the Gell-Mann matrices $\lambda_{i}^{a}$. As a result the covariant derivative of the strong interaction takes the form:
+    \begin{equation}
+      D_{\mu} = \partial_{\mu} - i g_{S} \frac{\lambda^{a}}{2} G_{\mu}^a
+    \end{equation}
+    where $g_{S}$ is the coupling constant of the strong interaction. \\
+    The three-component or triplet representation is only valid for particles carrying this colour charge, otherwise they should be represented as singlets in $SU(3)_{C}$. Hence only the triplets will be able to interact by exchanging colour.
+    
+    \item[Electroweak gauge theory] \hfill \\
+    The electroweak interaction combines the electromagnetic and weak theories and should be able to explain the parity violation observed in the weak interaction. The smallest group capable of doing so is $SU(2)_{L} \times U(1)_{Y}$ where the subscript $L$ stands for left-handed\footnote{
+      Left-handed and right-handed fermions can be distinghuished using the left-handed and right-handed operator $P_{L,R}$ = $(1 - \gamma_{5})$ with $\gamma_5$ defined as the fifth gamma matrix ($\gamma_5$ = i$\gamma_0 \gamma_1 \gamma_2 \gamma_3$). 
+    }
+ fermions and $Y$ for the weak hypercharge. The overall covariant derivative which should be used for the electroweak interaction is thus:
+    \begin{equation}
+     D_{\mu} = \partial_{\mu} - i g \frac{\tau}{2} W_{\mu}^{i} - i g^{'} \frac{Y}{2} B_{\mu}
+    \end{equation}
+    where $g$ and $g^{'}$ are the respective coupling strengths, $\tau_{i}$ the Pauli matrices. This gauge invariances introduces a total of four gauge fields, three from the $SU(2)_L$ transformations and one from the $U(1)_Y$ ones.
+    
+    The structure of this symmetry group implies that only the left-handed fermions can be represented as a doublet in SU(2) while all other fermions are mere singlets and therefore do not interact with the gauge fields $W_{\mu}^{i}$. However these gauge fields are not directly identifiable as the gauge bosons observed for the electromagnetic interaction, the photon $A_{\mu}$, and the weak interaction, the $W^{\pm}$ and $Z^{0}$ bosons. These actual gauge bosons are linear combinations of the four introduced gauge fields as is shown in Equation (\ref{eq::EWGaugeBosons}).
+    \begin{eqnarray}
+     A_{\mu} & = & W_{\mu}^{3} \sin \theta_{W} + B_{\mu} \cos \theta_{W} \nonumber \\
+     W_{\mu}^{\pm} & = & \frac{1}{\sqrt{2}} \left( W_{\mu}^{1} \mp i W_{\mu}^{2} \right) \label{eq::EWGaugeBosons} \\
+     Z_{\mu} & = & W_{\mu}^{3} \cos \theta_{W} - B_{\mu} \sin \theta_{W} \nonumber
+    \end{eqnarray}
+    The angle $\theta_{W}$ used in this equations is the weak mixing or Weinberg angle and is defined as:
+    \begin{equation}
+     \tan \theta_{W} = \frac{g^{'}}{g}
+    \end{equation}
+    
+   \end{description}
+\end{myindentpar}
+
+An important property of the introduced gauge fields follows from the fact whether the underlying gauge group is abelian or non-abelian. Only in the latter case self-interactions among the gauge fields themselves are allowed, as is thus the case for the gluons and the three vector bosons. The photon on the other hand is not able to have any self-interactions.
+
+\subsubsection{Electroweak symmetry breaking}
+The gauge field in Equation (\ref{eq::DiracLInter}) is allowed to have a kinetic term however the introduction of a mass term of the form $m^{2} A_{\mu}A^{\mu}$ would violate gauge invariance. Hence the gauge bosons are required to be massless, which is in contradiction with the known massive electroweak vector bosons $W^{\pm}$ and $Z^0$. Additionally for the electroweak interaction the different behaviour of the right-handed and left-handed fermions implies that the fermion mass term, $m_{f} \psi \psi$, violates the SU(2)$\times$U(1) gauge invariance. Therefore mechanism should be developed which gives mass to both the massive gauge bosons and the fermions.
+\\
+
+Within the Standard Model this mechanism, denoted the Brout-Englert-Higgs (BEH) mechanism~\cite{Englert, Higgs, Kibble}, is based on spontaneous symmetry breaking of SU(2)$\times$U(1). It has been developed in 1964 and introduces a single scalar doublet which leaves the Lagrangian invariant but breaks the ground state of the vacuum.
+
+\begin{equation}
+ \phi = \begin{pmatrix}
+            \phi^{+} \\
+            \phi^{0}
+           \end{pmatrix}
+\end{equation}
+
+For this doublet or Higgs field with non-zero hypercharge (\textbf{Mention something more about this U(1) part?}) the following terms can be added to the Lagrangian without violating gauge invariance: 
+\begin{eqnarray} \label{eq::HiggsL}
+ \mathcal{L}_{BEH} & = & (D^{\mu} \phi)^{\dagger}(D_{\mu} \phi) - V(\phi) \nonumber \\
+                   & = & (D^{\mu} \phi)^{\dagger}(D_{\mu} \phi) - \mu^{2} (\phi^{\dagger} \phi) - \lambda (\phi^{\dagger} \phi)^{2}
+\end{eqnarray}
+where $\mu^{2}$ and $\lambda$ ($>$ 0) are two real values representing a mass parameter and the scalar's self-interaction strenght, respectively.
+In case the mass parameter is positive the potential only has the trivial minimum at $\phi$ = 0 and Equation (\ref{eq::HiggsL}) simply describes a massive scalar particle with mass $\mu$ and quartic coupling strenght $\lambda$. However if the mass parameter is negative the situation is much less trivial since a non-unique vacuum state is retrieved for the potential resulting in spontaneous symmetry breaking.
+\begin{equation}
+ \left< \phi^{\dagger} \phi \right> = v^{2} = \frac{\vert \mu^{2} \vert}{\lambda}
+\end{equation}
+\textbf{Every book and thesis has a different notation .... (which one is correct??)}
+
+A particular vacuum is then chosen (is this the same as the unitary gauge or still something different?) and an expansion about this minimum is performed:
+\begin{equation}
+ \phi_{0} = \frac{1}{\sqrt{2}}\begin{pmatrix}
+             0 \\
+             v + H(x)
+            \end{pmatrix}
+\end{equation}
+This field H(x) is the only remaining (\textbf{What exactly?}).\\
+Implementing the covariant derivative of Equation (\ref{eq::CovDer}) in the BEH Lagrangian and evaluating at the scalar field vacuum expectation value gives the mass term for the three vector bosons of the weak interaction and keeps the photon massless. The masses of the three vector bosons are related as can be seen from Equation (\ref{eq::VectorBosonMasses}).
+
+\begin{equation}\label{eq::VectorBosonMasses}
+ M_W = \frac{1}{2} v g \qquad \qquad M_Z = \frac{1}{2} v \sqrt{g^2 + g^{'2}}
+\end{equation}
+
+
+
+\subsubsection{Thinking ....}
 The elementary interactions of the quarks and leptons can be understood as consequences of gauge symmetries. (Quigg book)\\
 SM = relativistic quantum field theory of interacting particles\\
-
-\paragraph{Remark}
-Important to understand what the difference is between local and global gauge invariance, and why the global invariance doesn't automatically implies local invariance ...\\
-Book Quigg: The interactions arise as a consequence of local gauge invariance!\\
 
 The different weak-isospin doublets are:
 \begin{equation}
@@ -94,13 +201,10 @@ and:
 \end{equation}
 where the $L$ subscript denotes the left-handed structure.
 
-\subsection{Successes and shortcomings of the Standard Model} \label{sec::SuccessAndFailSM}
-\subsubsection{Electroweak symmetry breaking}
+\subsection{Unanswered questions in the Standard Model} \label{sec::QuestionsSM}
 
-\subsubsection{Remaining open questions}
+\section{Anomalous couplings in the top-quark interaction vertex}
 
-\section{Top-quark physics}
+\subsection{Top quark physics}
 
-\subsection{Production and decay}
-
-\subsection{Anomalous couplings in the top-quark sector}
+\subsection{Anomalous couplings}
