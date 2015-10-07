@@ -198,7 +198,7 @@ In case the mass parameter is positive the potential only has the trivial minimu
 \begin{equation}
  \left< \phi^{\dagger} \phi \right> = v^{2} = \frac{\vert \mu^{2} \vert}{\lambda} \qquad \textrm{\textbf{Correct?? (different in each book)}}
 \end{equation}
-The selected vacuum is chosen to be neutral and only has one scalar real field H(x) remaining defined as the BEH field. 
+%The selected vacuum is chosen to be neutral and only has one scalar real field H(x) remaining defined as the BEH field. 
 In order to study the particle spectrum in the theory small perturbations around this minimum should be considered:
 %which is neutral, hence leaving U(1)$_{EM}$ invariant. 
 %A particular vacuum is then chosen (is this the same as the unitary gauge or still something different?) and an expansion about this minimum is performed:
@@ -208,8 +208,9 @@ In order to study the particle spectrum in the theory small perturbations around
              v + H(x)
             \end{pmatrix}
 \end{equation}
-Implementing the covariant derivative of Equation (\ref{eq::CovDer}) in the BEH Lagrangian and evaluating at the scalar field vacuum expectation value indicates that the three dissapearing scalar fields of $\phi$
-transform three originally massless vector fields into massive ones, corresponding to the intermediate vector bosons of the weak interaction. The BEH boson $H^{0}$, originating from the BEH field, itself acquires a mass $m_{H}$ = $\sqrt{2 \lambda}v$ while the photon remains massless. The mass of the three vector bosons is now defined as: %can easily be determined from the following relation:
+%Implementing the covariant derivative of Equation (\ref{eq::CovDer}) in the BEH Lagrangian and evaluating at the scalar field vacuum expectation value indicates that the three dissapearing scalar fields of $\phi$ transform three originally massless vector fields into massive ones, corresponding to the intermediate vector bosons of the weak interaction.
+From the four original fields of the scalar doublet only one remains: the BEH field H. The three other real fields have been ``eaten'' by the massless vector fields of the weak interaction making them massive.
+The BEH boson $H^{0}$, originating from the BEH field, itself acquires a mass $m_{H}$ = $\sqrt{2 \lambda}v$ while the photon remains massless. The mass of the three vector bosons is given by: %can easily be determined from the following relation:
 %gives the mass term for the three vector bosons of the weak interaction and keeps the photon massless. The BEH field itself is associated to a new boson, the  The masses of the three vector bosons are related as can be seen from Equation (\ref{eq::VectorBosonMasses}).
 \begin{equation}\label{eq::VectorBosonMasses}
  M_W = \frac{1}{2} v g \qquad \qquad M_Z = \frac{1}{2} v \sqrt{g^2 + g^{'2}}
@@ -224,15 +225,19 @@ transform three originally massless vector fields into massive ones, correspondi
 %\end{equation}
 %where the $L$ subscript denotes the left-handed structure.
 
-This explains in detail how the bosons acquire mass in the Standard Model, but for the moment the fermions are still supposed to be massless. Their mass also follows from the BEH mechanism but in a slightly less trivial manner. %The presence of the additional scalar doublet $\phi$ allows to add terms of the form $\bar{\psi}_{L}\phi \psi_{R}$, which are defined as Yukawa couplings and are gauge-invariant under SU(2)$\times$U(1).
-With the presence of the additional BEH field $\phi$ it is now permitted to introduce the following gauge-invariant terms to the Lagrangian:
+The principle of electroweak symmetry breaking illustrates elegantly how the bosons acquire mass within the Standard Model, but no mass term for the fermions is yet included.
+Their mass, however, also follows from the same BEH mechanism but in a slightly less trivial manner. %The presence of the additional scalar doublet $\phi$ allows to add terms of the form $\bar{\psi}_{L}\phi \psi_{R}$, which are defined as Yukawa couplings and are gauge-invariant under SU(2)$\times$U(1).
+\\
+The existence of the additional BEH field $\phi$ allows for the introduction of the following gauge-invariant terms in the Lagrangain:
+%With the presence of the additional BEH field $\phi$ it is now permitted to introduce the following gauge-invariant terms to the Lagrangian:
 %The presence of the additional scalar doublet in the model now allows to add the following gauge-invariant terms to the Lagrangian:
 \begin{equation}
  \mathcal{L}_{Yukawa} = - Y_{ij} \bar{\psi}_{L,i} \phi \psi_{R,j} + h.c. 
 \end{equation}
 with $Y_{ij}$ the unknown Yukawa matrices. Hence the fermion masses arise from the Yukawa interactions describing the couplings of the fermions with the BEH field.
+\\
 
-For the quarks the weak-interaction eigenstates which have been considered up to now have been observed to differ slightly from the mass eigenstates. Hence a matrix conversion is required which diagonalizes the mass matrix. This is done by the $3 \times3$ Cabibbo-Kobayashi-Maskawa (CKM) matrix:
+For the quarks the weak-interaction eigenstates, considered up to now, have been observed to differ slightly from the mass eigenstates. Hence a matrix conversion is required which diagonalizes the mass matrix. This is done by the $3 \times3$ Cabibbo-Kobayashi-Maskawa (CKM) matrix~\cite{?}, which represents the probability of a transition from a quark $q$ into a quark $q^{'}$ by the matrix element $\vert V_{q^{'}q} \vert$.
 \begin{equation}
  \begin{pmatrix}
   d^{weak} \\ s^{weak} \\ b^{weak} 
@@ -244,7 +249,6 @@ For the quarks the weak-interaction eigenstates which have been considered up to
     d \\ s \\ b
    \end{pmatrix}
 \end{equation}
-This CKM matrix allows to represent the probability of a transition from a quark $q$ into a quark $q^{'}$ by the matrix element $\vert V_{q^{'}q} \vert$.
 
 \subsection{Unanswered questions in the Standard Model} \label{sec::QuestionsSM}
 The Standard Model has been deemed as very succesful and experimentally verified to the percent level. However it still bares some important shortcomings which cannot be ignored and should be understood in order to denote the Standard Model as a ``theory of everything''. 
@@ -252,39 +256,95 @@ The Standard Model has been deemed as very succesful and experimentally verified
 \begin{myindentpar}
   \begin{description}
     \item[Grand Unified Theory] \hfill \\
-    The hope of representing the three forces of the Standard Model by one general force with a single coupling strenght stems from the succesful unification of the weak and electromagnetic interaction into the electroweak one.
-    Such an inufication for the elementary forces is currently not yet included in the Standard Model, and new physics at a very high scale ($\Lambda_{GUT} \sim 10^{16} \GeV$) is required in order to do so.
-    Once this first step has been taken it is hoped that this unified theory can easily be related to gravity. (\textit{in order to establish a theory of everything (TOE).})
+    The successful unification of the weak and electromagnetic interaction into the electroweak one sparked hope of one day respresenting the three forces of the Standard Model by a single one.
+    %The hope of representing the three forces of the Standard Model by one general force with a single coupling strenght stems from the succesful unification of the weak and electromagnetic interaction into the electroweak one.
+    Such a(n) unification of the elementary forces is currently not yet explicable by the Standard Model since it requires new physics at a very high energy scale ($\Lambda_{GUT} \sim 10^{16} \GeV$).
+    %included in the Standard Model, and new physics at a very high scale  is required in order to do so.
+    Such a Grand Unified Theory (GUT) is believed to be a first step to the incorporation of gravity in the Standard Model.
+    %Once this first step has been taken it is hoped that this unified theory can easily be related to gravity. (\textit{in order to establish a theory of everything (TOE).})
     
     \item[Hierarchy problem] \hfill \\
-    The principle of electroweak symmetry breaking is supposed to occur at an energy scale of $\mu^{2} \sim (100 \GeV)^{2}$ in order to explain the vector boson masses. Hence up to the GUT or Planck scale ($\Lambda_{Planck} \sim 10^{19} \GeV$), where the gravitional attraction becomes comparable to the other elementary forces, a wide energy regime exists without any new physics. 
-        This enormeous scale difference or hierarchy problem implies a fine-tuning of at least 28 orders of magnitude, way too large to be comfortable. 
+    The observed vector boson masses indicate that the principle of electroweak symmetry breaking should occur at an energy scale of $\mu^{2} \sim (100 \GeV)^{2}$.
+    %The principle of electroweak symmetry breaking is supposed to occur at an energy scale of $\mu^{2} \sim (100 \GeV)^{2}$ in order to explain the vector boson masses.
+    The large energy gap up to the GUT or Planck scale ($\Lambda_{Planck} \sim 10^{19} \GeV$), energy regime where the gravitional attraction becomes comparable to the other elementary interactions, implies a significant fine-tuning of at least 28 orders of magnitude is required. 
+    A scale difference of this size, also known as the hierarchy problem, is far from desirable for a complete theory.
+    %This large scale difference is also known as the hierarchy problem. 
+    %Hence up to the GUT or Planck scale ($\Lambda_{Planck} \sim 10^{19} \GeV$), where the gravitional attraction becomes comparable to the other elementary forces, a wide energy regime exists without any new physics. 
+    %This enormeous scale difference or hierarchy problem implies a fine-tuning of at least 28 orders of magnitude, way too large to be comfortable. 
     %has devastating effects on the mass of the scalar BEH field since it will receive additive radiative corrections 
     %(Is this full explanation with radiative corrections and \Lambda cut-off necessary??)
     %Not really clear what comes first and what follows from what ... The hierarchy problem follows from the fact that gravity lies in a complete different energy regime, but the actual scale used for the corrections seems to be related to the SU(5) breaking in order to explain a unification of the three other forces ...
     
     \item[Dark matter and energy] \hfill \\
-    Cosmological observations have indicated that the matter described by the Standard Model only constitutes about $4.8 \%$ of the matter in the universum~\cite{PlanckResults}. The remaining part is occupied by dark matter ($25.8 \%$) and dark energy ($69.4 \%$), two cosmological concepts which cannot be detected in a direct manner.
+    Cosmological observations have pointed out that the matter described by the Standard Model only constitutes about $4.8 \%$ of the matter in the universum~\cite{PlanckResults}. The remaining part is occupied by dark matter ($25.8 \%$) and dark energy ($69.4 \%$), two cosmological concepts which cannot be detected in a direct manner.
     
-    \item[Flavor problem] \hfill \\
-    Is this not relevant for my analysis? Should go through the notes of the Fermilab summer school!
+    %\item[Flavor problem] \hfill \\
+    %Is this not relevant for my analysis? Should go through the notes of the Fermilab summer school!
+    
    \end{description}
 \end{myindentpar}
-The selected shortcomings outlined above are not the full story and other issues are still unexplained within the Standard Model. However compared to the wide range of successes the Standard Model is not renounced but general belief is that an extension should exists. One of this widely spread accepted extensions is obtained by introducing an additional symmetry: Supersymmetry (SUSY). In this theory every particle has a superpartner with identical quantum numbers except for spin which differs by a half-integer. Hence the theory links fermions with bosons. This theory builts from the strong foundation of the Standard Model and introduces a whole variety of new supersymmetric particles called sparticles. It solves the hierarchy problem, but only if the new particles' masses are of the order of $100 \GeV$ implying that they should be observed with the current particle colliders if they exist. As a bonus the theory introduces a possible dark matter candidate.
+The shortcomings outlined above are not the full story but merely a selected list of unexplained issues within the Standard Model. 
+However, this does not weighs up to the numerous successes of the Standard Model such that the underlying theoretical framework has not been abandoned but rather an extension is searched for.
 \\
-The main difficulty that arises with studying cosmological aspects is the limited number of experimental data due to its complex nature and detection probability. Hence in order to expand the Standard Model with a quantum field theory description of gravity much more experimental observations are required.
-
-\section{Anomalous couplings in the top-quark interaction vertex}
-The top quark sector is extremely relevant to study new physics phenomena since it is the heaviest quark and is the only one for which the Yukawa coupling is of the order $1$. This section will start with some general information about top quark physics and emphasis will be set on the production and decay mechanisms together with a concise overview of the latest observations. Afterwards the presence of anomalous couplings in the top quark decay vertex and their importance will be explained.
+Supersymmetry (SUSY) is one of the more widely accepted suggestions%( solving a couple of the discussed shortcomings)
+, which introduces an additional symmetry relating bosons and fermions.
+In this framework each particle has a superpartner with identical quantum numbers, except for the spin parameter differing by a half-integer.
+SUSY gives a possible explanation for the hierarchy problem because of the large variety of new supersymmetric particles required. 
+%However, their masses should be of the order of $100 \GeV$ implying that they should be observable with the current particle colliders. 
+As a bonus the lightest supersymmetric particle is a possible dark matter candidate.
 \\
+Other extensions are studied by as well such as theories including additional dimensions or theories where particles are replaced by strings. These type of theories require a significant number cosmological observations, which is rather challenging due to its complex nature and lower detection probability. 
+%The main difficulty that arises with studying cosmological aspects is the limited number of experimental data due to its complex nature and detection probability. 
+Hence in order to decide upon the correct Standard Model extension much more experimental data of both cosmological and elementary particle physics processes are required. The latter can be achieved by constructing state-of-the art particle colliders.
 
-\textit{The different transformation between right-and left-handed fermions in the weak interaction has already shortly been mentioned in the previous section. However here it will come clear what are the consequences of this parity violation, and emphasis will be set on the top quark sector.}
+\section{Importance of the top-quark interaction vertex}
+One of the regions of interest to look for new physics phenomena in elementary particle physics is the top quark sector. This heaviest elementary particle has been discovered more than 20 years ago, in 1995, but still remains a challenging research subject due to its important role in physics theories beyond the Standard Model. 
+\\
+The high mass of the top quark has rendered its observation very arduous due to the extreme energy conditions required to produce such a quark. 
+However it is exactly this property that makes the top quark such an interesting particle to investigate.
+Since it is the only elementary particle for which the Yukawa coupling is of the order of $1$ it is believed that the top quark might shed some light on the principle of electroweak symmetry breaking.
+\\
+\textit{Link with anomalous couplings in Wtb required here? Yes, say something about the left-right handed properties which can be studied in the interaction vertex ...}
+%The top quark sector is extremely relevant to study new physics phenomena since it is the heaviest quark and is the only one for which the Yukawa coupling is of the order $1$. This section will start with some general information about top quark physics and emphasis will be set on the production and decay mechanisms together with a concise overview of the latest observations. Afterwards the presence of anomalous couplings in the top quark decay vertex and their importance will be explained.
+%
+%\textit{The different transformation between right-and left-handed fermions in the weak interaction has already shortly been mentioned in the previous section. However here it will come clear what are the consequences of this parity violation, and emphasis will be set on the top quark sector.}
 
 \subsection{Top quark physics}
-Observing the top quark has been proven to be very challenging, mainly due to its high mass which requires extreme energy conditions in order to be produced. This energy regime was first reachable at the Tevatron, resulting in its discovery in 1995.
+The energy regime required to produce the heavy top quarks was only reachable at the Tevatron~\cite{Tevatron}, where they were finally discovered in 1995 by the CDF~\cite{CDF} and D$\varnothing$~\cite{D0} experiments. However since a couple of years the Tevatron has been superseded by the LHC~\cite{} at CERN~\cite{CERN} as ``top-quark machine'', which can produce top quarks in ample amounts due to the higher centre-of-mass energy. %(8 $\TeV$ in stead of 1.96 $\TeV$).
+At hadron colliders top quarks can be produced either in pairs or singly, although the former one is the more dominant production method.
+\\
+The top quark pair production cross-section can be determined theoretically in a very precise manner and compared to the measured cross-sections at the LHC. These theoretical and experimental cross-section values have been summarized in Table~\ref{table::XSTopPair}, containing the final 8 $\TeV$ and even the first 13 $\TeV$ results. 
+All experimental observations have provided for good agreement with the theory predictions.
+%This is governed by the strong interaction and originates at the LHC in most of the cases from gluon fusion. (interesting to mention?)
+\begin{table}[h!t]
+ \centering
+ \caption{Comparison between the theoretical predictions~\cite{CzakonTopPairXS, CzakonGluonPDF} and experimental measurements~\cite{TevatronTTbarXS, CMSTTbarXS} of the $\ttbar$ production cross-section $\sigma_{\ttbar}$.} \label{table::XSTopPair}
+ \begin{tabular}{|cl|c|c|}
+  \hline
+		&						& Theory prediction (pb) 	& Measured $\sigma_{\ttbar}$ (pb) 	\\
+  \hline						
+  Tevatron: 	& $p\bar{p}$ at $\sqrt{s}$ = 1.96 $\TeV$ 	& $7.164^{+0.391}_{-0.475}$	& 7.60 $\pm$ 0.41			\\
+  LHC: 		& $pp$ at $\sqrt{s}$ = 7 $\TeV$ 		& $172.0^{+12.1}_{-13.4}$	& 174.5 $\pm$ 6.2			\\
+  LHC: 		& $pp$ at $\sqrt{s}$ = 8 $\TeV$ 		& $245.8^{+16.6}_{-18.7}$	& 245.6 $\pm$ 9.3			\\
+  %LHC: 		& $pp$ at $\sqrt{s}$ = 13 $\TeV$ 		& 				& 				\\
+  \hline
+ \end{tabular}
+\end{table}
 
-\subsubsection{Production and decay mechanisms}
+Top quarks can also be produced individually, denoted as single top quark processes, but the lower probability and significantly higher background makes detection much more challenging. Single top quark production can occur in three different channels: s- and t-channel through exchange of a W-boson or associated tW channel (\textit{Need more detail ... Check slides of Top2015!}). The t-channel production is the dominant one ... (First evidence of s-channel production at the LHC only obtained in 2015 by ATLAS).
+\\
+Results in measurement of the $V_{tb}$ component of the CKM matrix. Combination of the 7 and 8 $\TeV$ results gives~\cite{CMSVtbResult}:
+\begin{equation}
+ \vert V_{tb} \vert = 0.998 \pm 0.038 (exp.) \pm 0.016 (theo.) \quad \Rightarrow \quad \vert V_{tb} \vert > 0.92 ~ @ ~ 95 \% ~ CL
+\end{equation}
 
-\subsubsection{Important experimental measurements}
+Even though the production of the top quark can be governed by either strong interactions, describing $\ttbar$ pair production, or by electroweak interactions, responsible for the single top quark production, the decay of the top quark is purely characterized by electroweak processes. This is indeed confirmed by observations which also indicate a decay probability of almost 100 $\%$ of a top quark into a W-boson and b-quark.
+\\
+
+Another consequence of its high mass is that the top quark is the only elementary particle that decays before hadronisation (\textit{But this is only explained in the next chapter ...})
+
+%\subsubsection{Production and decay mechanisms}
+
+%\subsubsection{Important experimental results}
 
 \subsection{Anomalous couplings}
