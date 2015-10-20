@@ -29,7 +29,7 @@
 %\usepackage{axodraw} 
 
 \usepackage{xspace}
-
+\usepackage{color}
 %\usepackage[center,tight]{subfigure}
 \usepackage{eso-pic}
 \usepackage{multirow}
@@ -41,6 +41,7 @@
 
 % change fonts: 
 \usepackage[T1]{fontenc} % Needed? Makes feynmf crash...
+\usepackage[utf8]{inputenc}
 
 % latin modern
 %\usepackage{lmodern}
@@ -106,6 +107,37 @@
 % my definitions
 \include{FrontMatter/definitions_Thesis}
 
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\bfseries\huge}
+%  {\filleft\Large\chaptertitlename~\thechapter}
+  {\hrulefill ~\Large\chaptertitlename~\thechapter ~\hrulefill}
+%  {3ex}
+  {0.3ex}
+%  {\titlerule\vspace{1.5ex}\filright}
+  {\filright}
+  [\vspace{0.5ex}\titlerule]
+
+%\makeatletter
+%\def\thickhrulefill{\leavevmode \leaders \hrule height 1.2ex \hfill \kern \z@}
+%\def\@makechapterhead#1{
+%  \vspace*{10\p@}%
+%  {\parindent \z@ \centering \reset@font
+%        \thickhrulefill\quad 
+%        \scshape\bfseries\textit{\@chapapp{}  \thechapter}  
+%        \quad \thickhrulefill
+%        \par\nobreak
+%        \vspace*{10\p@}%
+%        \interlinepenalty\@M
+%        \hrule
+%        \vspace*{10\p@}%
+%        \Huge \bfseries #1 \par\nobreak
+%        \par
+%        \vspace*{10\p@}%
+%        \hrule
+%        \vskip 100\p@
+%  }}
+
 % my hyphenations
 %\hyphenation{si-mu-la-ted stu-died middle-ware re-nor-ma-li-za-tion}
 
@@ -137,12 +169,12 @@
 %\include{Chapters/introduction}
 
 % the chapters
-%\include{Chapters/Chapter1_SM/chapterSM}
-\include{Chapters/Chapter2_CERN/chapterCERN}
-\include{Chapters/Chapter3/chapter3}
+\include{Chapters/Chapter1_SM/chapterSM}
+%\include{Chapters/Chapter2_CERN/chapterCERN}
+%\include{Chapters/Chapter3/chapter3}
 %\include{Chapters/Chapter4_EvtSel/chapterEvtSel}
-%\include{chapter5/chapter5}
-%\include{chapter6/chapter6}
+%\include{Chapters/Chapter5_MadWeight/chapterMadWeight}
+%\include{Chapters/Chapter6_Analysis/chapterAnalysis}
 %\include{chapter7/chapter7}
 %\include{chapter8/chapter8}
 
@@ -156,9 +188,10 @@
 \cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{Bibliography}
-%\bibliography{references}                                           %Why error for the moment?
-%\bibliographystyle{lucas_unsrt} % The CMS publication style
+\bibliographystyle{lucas_unsrt} % The CMS publication style
 %\bibliographystyle{bibstyle}
+\bibliography{references}
+%\bibliographystyle{plain}
 
 % the summary
 \cleardoublepage
