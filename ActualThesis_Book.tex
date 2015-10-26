@@ -115,7 +115,7 @@
 %  {3ex}
   {0.3ex}
 %  {\titlerule\vspace{1.5ex}\filright}
-  {\filright}
+  {\filcenter}
   [\vspace{0.5ex}\titlerule]
 
 %\makeatletter
@@ -148,7 +148,7 @@
 \begin{document}
 %\begin{linenumbers}
 
-\frontmatter
+% \frontmatter     %Commented temporarily during writing to have the pagenumbers matching with the counter
 
 % the titlepage
 %\cleardoublepage
@@ -160,7 +160,7 @@
 %\addcontentsline{toc}{chapter}{Contents}
 \tableofcontents
 
-\mainmatter
+%\mainmatter        %Commented temporarily during writing to have the pagenumbers matching with the counter
 
 % the introduction
 \cleardoublepage
@@ -170,9 +170,9 @@
 
 % the chapters
 \include{Chapters/Chapter1_SM/chapterSM}
-%\include{Chapters/Chapter2_CERN/chapterCERN}
-%\include{Chapters/Chapter3/chapter3}
-%\include{Chapters/Chapter4_EvtSel/chapterEvtSel}
+\include{Chapters/Chapter2_CERN/chapterCERN}
+\include{Chapters/Chapter3/chapter3}
+\include{Chapters/Chapter4_EvtSel/chapterEvtSel}
 %\include{Chapters/Chapter5_MadWeight/chapterMadWeight}
 %\include{Chapters/Chapter6_Analysis/chapterAnalysis}
 %\include{chapter7/chapter7}
