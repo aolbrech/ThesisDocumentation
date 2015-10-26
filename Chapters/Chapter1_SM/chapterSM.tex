@@ -1,5 +1,5 @@
 %\dropchapter{0.4in}
-\chapter{Anomalous couplings in top-quark physics} \label{chp::SM}
+\chapter{Anomalous couplings in the top-quark sector} \label{chp::SM}
 %\epigraphhead[70]{\epigraph{\textit{If I could remember the names of all these particles, I'd be a botanist.}}{Enrico Fermi}}
 %\undodrop
 
@@ -15,7 +15,7 @@
 %\textbf{More focus on he role of top in SM searches!}
 
 In elementary particle physics the ultimate goal is to achieve a complete and profound understanding of the most fundamental constituents surrounding us, and preferably doing so using a single theory.
-The quest to such a ``theory of everything'' led to the development of the Standard Model of elementary particle physics, which can be seen as a first step towards a grand unification of all fundamental interactions. %has met every test endured up to now ...
+The quest to such a ``theory of everything'' led to the development of the Standard Model of elementary particle physics, which symbolises the first step towards a grand unification of all fundamental interactions. %has met every test endured up to now ...
 The most important aspects of the Standard Model, particle content and theoretical framework, will be discussed in detail in Section~\ref{sec::SM}.
 \\
 \\
@@ -62,10 +62,10 @@ This because a single atom consists of an electron circulating around a proton-n
 Separating fermions into leptons and quarks is motivated by the different fundamental forces they interact with.
 The Standard Model comprises three of the four fundamental interactions: the electromagnetic force responsible for ..., the weak force used for describing ... and finally the strong interaction ... .
 The only missing piece of the puzzle is gravity which is unfortunately not yet included.
-The leptons only interact through the weak and electromagnetic force although the neutral ones, the neutrinos, are obviously not influenced by the latter one. The quarks on the other hand are, in addition, affected by the strong interaction as well.
+The leptons only interact through the weak and electromagnetic force although the neutral ones, the neutrinos, are obviously not influenced by the latter one. The quarks on the other hand are, besides by the two previously mentioned interactions, also affected by the strong force.
 \\
-Within the of the Standard Model, force mediation is represented by the exchange of a spin-1 boson as has been summarised in Table~\ref{table::ForceCarriers}.
-The number of force mediators belonging to a specific interaction is determined from the underlying theoretical framework and depends on the type of charge mediated by the boson. The electromagnetic interaction is described by a single force mediator, while the weak one has three massive bosons and the strong force even contains eight gluons.
+Within the Standard Model force mediation is represented by the exchange of a spin-1 boson. 
+The number of force mediators belonging to a specific interaction is determined from the underlying theoretical framework and depends on the type of charge mediated by the boson. The electromagnetic interaction is described by a single force mediator, while the weak one has three massive bosons and the strong force even contains eight gluons as can be seen from Table~\ref{table::ForceCarriers}.
 This last number follows from the fact that from the point of view of the strong interaction each quark occurs in three different colours which is mediated during the interactions, resulting in eight possible gluon combinations.
 %The fundamental forces described by the Standard Model are each represented by a spin-1 boson or force mediator.
 %For the weak interaction this is a massive boson, as can be seen from Table~\ref{table::ForceCarriers}.
@@ -81,7 +81,7 @@ This last number follows from the fact that from the point of view of the strong
   \hline
   \textbf{Force} 		&\multicolumn{2}{c|}{\textbf{Boson}} 	& \textbf{Mass ($\GeV$)}	\\ %& \textbf{Spin}	\\
   \hline
-  Strong force 			& gluon 	& g 			& 0 				\\ %& 1		\\
+  Strong force 			& gluon 	& $g^{a}$		& 0 				\\ %& 1		\\
   \hline
   Electromagnetic force		& photon 	& $\gamma$ 		& 0 				\\ %& 1 		\\
   \hline
@@ -97,14 +97,14 @@ A final, but definitely not less important, boson which is incorporated in the S
 \end{equation}
 
 \subsection{Interactions through gauge invariance}
-The Standard Model goes much further than being an exhaustive collection of elementary particles, the supporting theoretical framework is that of a relativistic quantum field theory.
+The Standard Model goes much further than merely being an exhaustive collection of elementary particles, the supporting theoretical framework is that of a relativistic quantum field theory.
 %The Standard Model is much more than a mere collection of elementary particles, its theoretical framework is that of a relativistic quantum field theory.
-From this mathematical description, based on gauge invariance under the fundamental forces, follows the interactions between the fermions and bosons in an automatic manner.
+From this mathematical description, based on gauge invariance under the fundamental forces, arises the interactions between the fermions and bosons in an automatic manner.
 %With this purely mathematical description, based on gauge invariance under each of the three included forces, the fermion interactions follow automatically. 
-This statement will now be illustrated for invariance under a general local gauge transformation and afterwards specified for each interaction.
+This statement will here be illustrated for invariance under a general local gauge transformation since each interaction follows the same principle.
 \\
 
-Since fermions are half-integer spin particles they can be represented by a Dirac spinor field:
+As mentioned before, fermions are half-integer spin particles and can thus be represented by a Dirac spinor field:
 %Hence the particles and their interactions can be described in a purely mathematical manner and is based on gauge invariance under each of the three included forces.
 %The most powerful aspect of the Standard Model is that it is able to describe the interactions of the particles as a relativistic quantum field theory. The basic property on which it is based is gauge invariance under each of the three included interactions. From this the interactions between the different particles follows automatically (\textbf{or only the case for fermions?}).
 %Since the fermions are half integer spin particles they are represented by a Dirac spinor field which is described by the Dirac Lagrangian:
@@ -116,10 +116,8 @@ The imposed local gauge invariance requires the fermion fields, and the overall 
 \begin{equation} \label{eq::GaugeTransf}
  \psi \rightarrow U(x) \psi =  \exp \left( -i \vec{\alpha}(x) \cdot \frac{\vec{\tau}}{2} \right) \psi
 \end{equation}
-where $\vec{\alpha}$ are the rotation parameters in the symmetry group represented by the Lie group generators $\vec{\tau}$. The fact that these rotation parameters depend on $x$ is crucial and emphasises that it is a local gauge invariance and not just a global. It is precisely the presence of local gauge transformation that will introduce the fermion interactions.
-\\
-\\
-Invariance of the Dirac Lagrangian under the transformation given in Equation (\ref{eq::GaugeTransf}) can only be accomplished by replacing the partial derivative $\partial_{\mu}$ by a covariant derivative $D_{\mu}$. This however comes at the price of introducing new gauge fields $A_{\mu}$, which interact with the fermion fields with coupling strength $g$.
+where $\vec{\alpha}$ are the rotation parameters in the symmetry group represented by the Lie group generators $\vec{\tau}$~\footnote{It is important to notice that these rotation parameters depend on $x$ since this implies the considered transformation is a local one. It is precisely the presence of local gauge transformation that will introduce the fermion interactions.}.
+Invariance of the Dirac Lagrangian under this transformation can only be accomplished by replacing the partial derivative $\partial_{\mu}$ by a covariant derivative $D_{\mu}$. This however comes at the price of introducing new gauge fields $A_{\mu}$, which interact with the fermion fields with coupling strength $g$.
 % which transforms the same way as the matter field $\psi$. 
 \begin{equation} \label{eq::CovDer}
  D_{\mu} = \partial_{\mu} -i g \vec{A}_{\mu} \cdot \frac{\vec{\tau}}{2}
@@ -146,12 +144,12 @@ This procedure can however be simplified in order to obtain the three gauge inte
     \item[Quantum chromodynamics gauge transformations] \hfill \\
     As mentioned before the strong interaction is represented by the quantum number colour such that each quark has three equivalent states. Therefore the fermion fields should be seen as a three-component column vector such that the quantum chromodynamics (QCD) symmetry group is SU(3) containing eight gauge fields $G_{\mu}^{a}$. 
     %This explains the existence of 8 gluons, which are introduced as the gauge fields $G_{\mu}^{a}$ in order for the Lagrangian to remain invariant under the gauge transformations. 
-    The generators $\tau$ in Equation (\ref{eq::GaugeTransf}) are in this case the Gell-Mann matrices $\lambda_{i}^{a}$, giving the covariant derivative of the strong interaction the following form:
+    The generators $\tau$ in Equation (\ref{eq::GaugeTransf}) are for this symmetry group the Gell-Mann matrices $\lambda_{i}^{a}$, giving the covariant derivative of the strong interaction the following form:
     \begin{equation}
       D_{\mu} = \partial_{\mu} - i g_{S} \frac{\lambda^{a}}{2} G_{\mu}^a
     \end{equation}
     where $g_{S}$ is the coupling constant of the strong interaction. \\
-    The three-component or triplet representation is only valid for particles carrying colour charge, otherwise they should be represented as singlets in $SU(3)_{C}$. 
+    The three-component or triplet representation is only valid for particles carrying colour charge, otherwise they are merely $SU(3)_{C}$ singlets. 
     %Hence only the triplets will be able to interact by exchanging colour.
     
     \item[Electroweak gauge theory] \hfill \\
@@ -166,7 +164,8 @@ This procedure can however be simplified in order to obtain the three gauge inte
     where $g$ and $g^{'}$ are the respective coupling strengths of the weak and electromagnetic interaction and $\tau_{i}$ the Pauli matrices. 
     
     This gauge invariances introduces a total of four gauge fields, three from the $SU(2)_L$ transformations and one from the $U(1)_Y$ one.
-    However they are not directly identifiable as the electromagnetic photon $A_{\mu}$ and the weak vector bosons, $W^{\pm}$ and $Z^{0}$ since they are linear combinations of the four introduced gauge fields in the following way:
+    The physical gauge fields, the electromagnetic photon $A_{\mu}$ and the weak vector bosons, $W^{\pm}_{\mu}$ and $Z^{0}_{\mu}$, can be derived from these gauge fields in the following way:
+    %However they are not directly identifiable as the electromagnetic photon $A_{\mu}$ and the weak vector bosons, $W^{\pm}$ and $Z^{0}$ since they are linear combinations of the four introduced gauge fields in the following way:
     \begin{eqnarray}
      A_{\mu} & = & W_{\mu}^{3} \sin \theta_{W} + B_{\mu} \cos \theta_{W} \nonumber \\
      W_{\mu}^{\pm} & = & \frac{1}{\sqrt{2}} \left( W_{\mu}^{1} \mp i W_{\mu}^{2} \right) \label{eq::EWGaugeBosons} \\
@@ -177,11 +176,12 @@ This procedure can however be simplified in order to obtain the three gauge inte
      \tan \theta_{W} = \frac{g^{'}}{g}
     \end{equation}
     %The structure of this symmetry group implies that 
-    Only the left-handed fermions can be represented as a doublet in SU(2) while all other fermions are mere singlets and therefore do not interact with the gauge fields $W_{\mu}^{i}$. 
+    Only the left-handed fermions can be represented as a doublet in SU(2) while the right-handed ones are again singlets and therefore do not interact with the gauge fields $W_{\mu}^{i}$. (\textit{What about Z?})
    \end{description}
 \end{myindentpar}
 
-An important property of the introduced gauge fields follows from the fact whether the underlying gauge group is abelian or non-abelian. Only in the latter case self-interactions among the gauge fields are allowed, as is the case for the gluons and the three vector bosons. The photon on the other hand is not able to have any self-interactions. (\textbf{Only the gauge fields can commute, not the related bosons (so this would mean that ZZ is also not possible since it contains a $B_{\mu}$ in the relation .. ?)})
+An important property of the introduced gauge fields follows from the fact whether the underlying gauge group is abelian or non-abelian. Only in the latter case self-interactions among the gauge fields are allowed, as is the case for the gluons and the three vector bosons. The photon on the other hand is not able to have any self-interactions. (\textit{What about ZZ?})
+%(\textbf{Only the gauge fields can commute, not the related bosons (so this would mean that ZZ is also not possible since it contains a $B_{\mu}$ in the relation .. ?)})
 
 \subsubsection{Electroweak symmetry breaking} \label{sec::EWSB}
 The mathematical framework of gauge invariance explains in detail the interactions of the fermions and bosons, their mass acquirement however remains a big mystery. Simply introducing a bosonic mass term of the form $m^{2} A_{\mu}A^{\mu}$ would violate gauge invariance.
@@ -224,7 +224,7 @@ In order to study the particle spectrum in the theory small perturbations around
 \end{equation}
 %Implementing the covariant derivative of Equation (\ref{eq::CovDer}) in the BEH Lagrangian and evaluating at the scalar field vacuum expectation value indicates that the three disappearing scalar fields of $\phi$ transform three originally massless vector fields into massive ones, corresponding to the intermediate vector bosons of the weak interaction.
 From the four original fields of the scalar doublet only one remains: the BEH field H. The three other real fields have been absorbed by the massless vector fields of the weak interaction converting them into massive fields.
-The BEH boson $H^{0}$, originating from the BEH field, itself acquires a mass $m_{H}$ = $\sqrt{2 \lambda}v$ while the photon remains massless. The mass of the vector bosons of the weak interaction is given by: %can easily be determined from the following relation:
+The BEH boson $H^{0}$, originating from the BEH field, acquires itself a mass $m_{H}$ = $\sqrt{2 \lambda}v$ while the photon remains massless. The mass of the vector bosons of the weak interaction is given by: %can easily be determined from the following relation:
 %gives the mass term for the three vector bosons of the weak interaction and keeps the photon massless. The BEH field itself is associated to a new boson, the  The masses of the three vector bosons are related as can be seen from Equation (\ref{eq::VectorBosonMasses}).
 \begin{equation}\label{eq::VectorBosonMasses}
  M_W = \frac{1}{2} v g \qquad \qquad M_Z = \frac{1}{2} v \sqrt{g^2 + g^{'2}}
@@ -251,7 +251,7 @@ The existence of the additional BEH field $\phi$ allows for the introduction of 
 with $Y_{ij}$ the unknown Yukawa matrices. Hence the fermion masses arise from the Yukawa interactions describing the couplings of the fermions with the BEH field.
 \\
 
-For the quarks the weak-interaction eigenstates, considered up to now, have been observed to differ slightly from the mass eigenstates. Hence a matrix conversion is required which diagonalises the mass matrix. This is done by the $3 \times3$ Cabibbo-Kobayashi-Maskawa (CKM) matrix~\cite{?}, which represents the probability of a transition from a quark $q$ into a quark $q^{'}$ by the matrix element $\vert V_{q^{'}q} \vert$.
+For the quarks the weak-interaction eigenstates, considered up to now, have been observed to differ slightly from the mass eigenstates. Hence a matrix conversion is required which diagonalises the mass matrix. This is done by the $3 \times3$ Cabibbo-Kobayashi-Maskawa (CKM) matrix~\cite{CStartCKM, KMExtCKM}, which represents the probability of a transition from a quark $q$ into a quark $q^{'}$ by the matrix element $\vert V_{q^{'}q} \vert$.
 \begin{equation}
  \begin{pmatrix}
   d^{weak} \\ s^{weak} \\ b^{weak} 
@@ -265,7 +265,7 @@ For the quarks the weak-interaction eigenstates, considered up to now, have been
 \end{equation}
 
 \subsection{Unanswered questions in the Standard Model} \label{sec::QuestionsSM}
-The Standard Model has been deemed as very successful and experimentally verified to the percent level. However it still bares some important shortcomings which cannot be ignored and should be understood in order to denote the Standard Model as a ``theory of everything''. 
+The Standard Model is regarded as an extremely successful theory, which has been experimentally verified up to the percent level. However, it still bares some important shortcomings which cannot be ignored and should be understood in order to denote the Standard Model as a ``theory of everything''. 
 
 \begin{myindentpar}
   \begin{description}
@@ -290,7 +290,7 @@ The Standard Model has been deemed as very successful and experimentally verifie
     %Not really clear what comes first and what follows from what ... The hierarchy problem follows from the fact that gravity lies in a complete different energy regime, but the actual scale used for the corrections seems to be related to the SU(5) breaking in order to explain a unification of the three other forces ...
     
     \item[Dark matter and energy] \hfill \\
-    Cosmological observations have pointed out that the matter described by the Standard Model only constitutes about $4.8 \%$ of the matter in the universe~\cite{PlanckResults}. The remaining part is occupied by dark matter ($25.8 \%$) and dark energy ($69.4 \%$), two cosmological concepts which cannot be detected in a direct manner.
+    Cosmological observations have pointed out that the matter described by the Standard Model only constitutes about $4.8 \%$ of the matter in the universe~\cite{PlanckResults}. The remaining part is occupied by dark matter ($25.8 \%$) and dark energy ($69.4 \%$), two cosmological concepts that are extremely challenging to detect.
     
     %\item[Flavor problem] \hfill \\
     %Is this not relevant for my analysis? Should go through the notes of the Fermilab summer school!
@@ -299,13 +299,14 @@ The Standard Model has been deemed as very successful and experimentally verifie
     
    \end{description}
 \end{myindentpar}
-The shortcomings outlined above are not the full story but merely a selected list of unexplained issues within the Standard Model. 
-However, this does not weigh(s) up to the numerous successes of the Standard Model such that the underlying theoretical framework has not been abandoned but rather an extension is sought for.
+The shortcomings outlined above is by no means an exhaustive list but merely gives an indication that the Standard Model should not be seen as the holy grail of physics. However, this couple of unsettled issues do not weigh up to the numerous successes of the Standard Model, which is deemed as firm enough to incorporate new physics phenomena through theoretical extensions.
+%are not the full story but merely a selected list of unexplained issues within the Standard Model. 
+%However, this does not weigh(s) up to the numerous successes of the Standard Model such that the underlying theoretical framework has not been abandoned but rather an extension is sought for.
 \\
-Supersymmetry (SUSY) is one of the more widely accepted suggestions%( solving a couple of the discussed shortcomings)
+Supersymmetry is one of the more widely accepted suggestions%( solving a couple of the discussed shortcomings)
 , which introduces an additional symmetry relating bosons and fermions.
 In this framework each particle has a superpartner with identical quantum numbers, except for the spin parameter differing by a half-integer.
-SUSY gives a possible explanation for the hierarchy problem because of the large variety of new supersymmetric particles required. 
+Supersymmetry gives a possible explanation for the hierarchy problem because of the large variety of new supersymmetric particles required. 
 %However, their masses should be of the order of $100 \GeV$ implying that they should be observable with the current particle colliders. 
 As a bonus the lightest supersymmetric particle is a possible dark matter candidate.
 \\
@@ -354,7 +355,7 @@ This production mechanism is governed by the strong interaction, in contrast to 
 Their relative contribution is different at the Tevatron and the LHC because the latter is dominated by processes with initial gluons. %(\textit{, as was the case for $\ttbar$ pair production}). 
 %However for both the t-channel single top quark production channel is clearly the largest contributor.
 \\
-Single top-quark physics has been an extremely challenging research subject over the last couple of years since this production mechanism was first time observed in 2009~\cite{STDiscovery1, STDiscovery2} by the CDF and \DZ collaborations. Moreover, evidence of the single top quark s-channel at the LHC was only provided this year by the ATLAS collaboration~\cite{AtlasSTsChEvidence}.
+Single top-quark physics has been an extremely challenging research subject over the last couple of years, especially since this production mechanism was only for the first time observed in 2009~\cite{STDiscovery1, STDiscovery2} by the CDF and \DZ collaborations. Moreover, evidence of the single top quark s-channel at the LHC was not observed until this year~\cite{AtlasSTsChEvidence}.
 %Due to its elusive nature more than 15 years of research by the CDF and \DZ collaborations were required before the single top quark was finally observed in 2009. And only this year the ATLAS collaboration provided the first evidence of the single top quark s-channel at the LHC. Also in this field of study all results are in good agreement with the Standard Model predictions.
 %It lasted more than 15 years until the CDF and \DZ collaborations finally managed to observe the elusive single top quark in 2009. And ever since single top physics remained a thrilling research area with numerous discoveries and first evidences of the respective decay channel, the last even in 2015 for the s-channel at the LHC by the Atlas collaboration~\cite{AtlasSTsChEvidence}.
 %Single top physics is still a widely studied subject with first evidence of the s-channel at the LHC, the smallest channel, only obtained rather recently~\cite{}.
@@ -366,20 +367,19 @@ Single top-quark physics has been an extremely challenging research subject over
 % \sigma_{t, CDF+D\O} = 2.25^{0.29}_{-0.31} pb \qquad \sigma_{s+t, CDF+D\O} = 3.30^{+0.52}_{-0.40} pb \qquad \sigma_{s, CDF+D\O} = 1.29^{+0.26}_{-0.24}
 %\end{eqnarray}
 \\
-The single top-quark sector is of particular interest for measuring the $V_{tb}$ matrix element since the production cross-section is directly proportional to the squared of the matrix element. The latest results~\cite{CMSVtbResult} clearly demonstrate that its value is close to unity, implying that the top quark decays predominantly into a W-boson and a bottom quark. 
+The single top-quark sector is of particular interest in order to accurately determine the CKM matrix element $V_{tb}$ since the production cross-section is directly proportional to the squared of the matrix element. The latest results~\cite{CMSVtbResult} clearly demonstrate that its value is close to unity, implying that the top quark decays predominantly into a W-boson and a bottom quark. 
 %\textit{One of the important measurements which follows from detailed knowledge about the single top sector is the $V_{tb}$ CKM matrix element since its production cross-section is directly proportional to the squared matrix element.
 %Combination of the 7 and 8 $\TeV$ results gives:}
 \begin{equation}
  \vert V_{tb} \vert = 0.998 \pm 0.038 (exp.) \pm 0.016 (theo.) \quad \Rightarrow \quad \vert V_{tb} \vert > 0.92 ~ @ ~ 95 \% ~ CL
 \end{equation}
 
-Even though the production of the top quark can be governed either by strong or electroweak interactions, its decay is purely characterised by electroweak processes. As mentioned before, this occurs with a branching probability close to $100\%$ and results in a W-boson and a b-quark. 
+Even though top-quark production can be governed either by strong or electroweak interactions, its decay is purely characterised by electroweak processes. As known from the $V_{tb}$ coefficient, this occurs with a branching probability close to $100\%$ and results in a W-boson and a b-quark. 
 The produced W-boson is known to be unstable and thus decays directly: either into a quark and anti-quark (mainly W $\rightarrow$ $u\bar{d}$ or $c\bar{s}$) or into a charged lepton and corresponding neutrino (W $\rightarrow$ $\ell^{+}\nu$ with $\ell$ = $e$, $\mu$ or $\tau$).
 %For the leptons no cross-generational couplings are allowed since this would violate electron, muon or tau number such that the possible decay options for the W-boson are W $\rightarrow$ $l^{+}\nu$ with $l$ = $e$, $\mu$ or $\tau$. For the quarks on the other hand such couplings are possible but they are Cabibo-suppressed as can be seen from the CKM matrix such that the main channels are W $\rightarrow$ $u\bar{d}$ or $c\bar{s}$.
-Since the quarks can take three different colours there are 6 distinct hadronic decay channels implying that the leptonic branching ratio of the W-boson is about $33\%$ while the hadronic one is close to $67\%$. %, resulting in a total number of 9 with similar branching probability. 
+Since the quarks can take three different colours there are 6 distinct hadronic decay channels such that the leptonic branching ratio of the W-boson is about $33\%$ while the hadronic one is close to $67\%$. %, resulting in a total number of 9 with similar branching probability. 
 \\
-Therefore in the $\ttbar$ pair production context, the production process of interest for this thesis, there are three clearly distinguishable decay channels: the hadronic channel where both W-bosons decay into a quark-antiquark pair, the dilepton one where they both decay into a lepton and neutrino and finally the semileptonic channel where one of the two W-bosons decays hadronically and the other one leptonically. 
-\\
+Thus in the $\ttbar$ pair production context, the production process of interest for this thesis, three decay channels can be distinguished: the hadronic channel where both W-bosons decay into a quark-antiquark pair, the dilepton one where they both decay into a lepton and neutrino and finally the semileptonic channel where one of the two W-bosons decays hadronically and the other one leptonically. 
 In this thesis only the semileptonic (with $\ell$ = $e$ or $\mu$) top-quark decay-channel will be studied, which has a branching ratio of $14.8\%$ per lepton flavour.
 \\
 
@@ -396,65 +396,68 @@ Prior to the discovery of the BEH boson a precise determination of the top-quark
  m_t = 172.44 \pm 0.13 (stat) \pm 0.47 (syst) \GeV = 172.44 \pm 0.48 \GeV
 \end{equation}
 
-Due to its high mass the top quark has a very short lifetime, shorter than the QCD hadronisation scale, such that it can be studied as a free quark. Another important consequence is that its spin information is transmitted to its decay products, making it possible to study spin correlations and W-boson helicity fraction.
+Due to its high mass the top quark has a very short lifetime, shorter than the QCD hadronisation scale, such that it can be studied as a free quark. As a result, the top-quark spin information is transmitted to its decay products allowing for a study of the top-quark spin correlations and the W-boson helicity fractions.
 \\
 Same and opposite gluon-fusion contributions result in positive and negative top-quark pair spin-correlations, respectively, and results in a net spin-correlation strength of about $30 \%$ at the LHC.
 %Since they dominate in different energy regimes the overall spin correlation strength at the LHC is close to $30 \%$.
 %Spin correlations between the top quark pairs is passed on from the same and opposite helicity gluon fusion contributions 
-A common strategy adopted in spin-correlations studies is in stead of measuring the spin-correlation strength to determine the degree of spin correlation relative to the SM prediction $f_{SM}$. 
+A common strategy adopted in spin-correlations studies is, in stead of measuring the spin-correlation strength, to determine the degree of spin correlation relative to the SM prediction $f_{SM}$. 
 %If no deviation from the SM is observed this value should be equal to $1$ and a result of $f_{SM}$ = $0$ would indicate that the top quark spins are uncorrelated. 
 %The most precise result has been obtained by ATLAS in the dilepton channel (\textit{by exploiting the azimuthal angle between the two leptons})~\cite{AtlasSpinCorr}, and is in good agreement with the SM expectations:
-The most precise result has been obtained by ATLAS and is in good agreement with the SM expectations: $f_{SM} = 1.20 \pm 0.14$.
+The most precise result has been obtained by ATLAS and is in good agreement with the SM expectations~\cite{AtlasSpinCorr}: $f_{SM} = 1.20 \pm 0.14$.
 \\
-%\begin{equation}
-% f_{SM} = 1.20 \pm 0.14
-%\end{equation}
-Within the Standard Model the positive W-boson polarisation is suppressed compared to the longitudinal and negative polarisations. 
-The measurement exploits the fact that the decay products of the top quark still carry its spin information and is consistent with the SM expectations.
-%Measuring these helicity fractions serves as an excellent test of the Standard Model and exploits the fact that the decay products of the top quark still carry its spin information. 
-%The obtained results have a good compatibility with the Standard Model expectations since the positive, longitudinal and negative polarisation are found to be -0.009 $\pm$ 0.021, 0.350 $\pm$ 0.026 and 0.659 $\pm$ 0.027, respectively.
-The positive, longitudinal and negative polarisation are found to be -0.009 $\pm$ 0.021, 0.350 $\pm$ 0.026 and 0.659 $\pm$ 0.027, respectively~\cite{CMSWHelicity}.
-
-%\subsubsection{Production and decay mechanisms}
-%\subsubsection{Important experimental results}
+For the W-boson helicity fractions, the right-handed polarisation is supposed to be suppressed in the Standard Model.
+This measurement serces as an excellent test of the Standard Model and exploits the fact that the top-quark spin information is transfered to its decay products.
+The obtained results are compatible with the Standard Model expectations since the positive, longitudinal and negative polarisation are found to be -0.009 $\pm$ 0.021, 0.350 $\pm$ 0.026 and 0.659 $\pm$ 0.027, respectively~\cite{CMSWHelicity}.
 
 \subsection{Phenomenology of the Wtb interaction}
 
 %Performing a consistency check of the Standard Model can be achieved in numerous ways, with the most obvious manner being the comparison of the variables most sensitive to the imposed new physics phenomena with their Standard Model prediction. 
 %However it is also an option to introduce, through effective field theories, numerous dimension-six operators which might modify the overall Wtb vertex. So in stead of focusing on a specific kinematic variable this approach exploits the full kinematic phase space of the considered interaction vertex.
 
-The different top-quark properties discussed earlier all serve as individual consistency checks of the Standard Model and, in case no deviation from the Standard Model prediction is found, result in constraints on the considered SM extensions with a specific level of confidence.
+Each measurement discussed before serves as individual consistency checks of the Standard Model and, in case no deviation from the Standard Model prediction is found, results in constraints on the related SM extensions.
 %However, in some cases the measurements allow for a comparison with a \textbf{more broader} range of the Standard Model, either by combining multiple results or otherwise in an indirect manner.
 %In most cases the results are interpret as influence of a particular new physics phenomena, often in a model-dependent manner, without clear overview how this fits within the Standard Model at low energies. % and the interpretations of new physics influences are often model-dependent.
 Actual searches for new physics signatures can be done in two distinct manners: either by looking for the production of new particles or by probing novel interactions of the known Standard Model particles.
 \\
-In this thesis the latter approach will be discussed, which allows to represent the overall interaction vertex through effective field theories~\cite{EFTOld}. This way the Standard Model can be interpret as an effective low-energy theory influenced by higher dimensional interaction terms, or so-called anomalous couplings.
+In this thesis the latter approach will be discussed, which allows to represent the overall interaction vertex through effective field theories (EFT)~\cite{EFTOld}. This way the Standard Model can be interpret as an effective low-energy theory influenced by higher dimensional interaction terms, or so-called anomalous couplings.
 \begin{equation}
  \mathcal{L}_{EFT} = \mathcal{L}_{SM} + \sum_{i} \frac{c_i}{\Lambda^{2}} \mathcal{O}_i
 \end{equation}
 where $c_i$ are the coupling coefficients of the SM fields to the new fields, $\Lambda$ the characteristic scale of new physics and $\mathcal{O}_i$ the dimension-six effective operators.
 \\
 \\
-For the Wtb coupling this EFT construction can be simplified using the vertex-function approach since only a couple of the introduced operators influence the top-quark sector.
-Within this framework the most general Wtb interaction vertex containing terms up to dimension five takes the following form~\cite{EFTLinkWithWtb, RecentWtbZhang}:
+For the Wtb coupling this Lagrangian can be simplified significantly using the vertex-function approach because only a couple of the introduced operators influence the top-quark sector.
+This allows to write down the most general Wtb interaction vertex containing terms up to dimension five in the following way~\cite{EFTLinkWithWtb, RecentWtbZhang}:
 %H(\textit{consistent with Lorentz invariance, coupling a virtual W-boson to an on-shell top and bottom quark})
 \begin{eqnarray} \label{eq::FullWtbLagr}
   \mathcal{L}_{Wtb} & = & - \frac{g}{\sqrt{2}} \bar{b} \gamma^{\mu} \left( V_L P_L + V_R P_R \right) t W_{\mu}^{-} + h.c. \nonumber \\
 		    &   & - \frac{g}{\sqrt{2}} \bar{b} \frac{i\sigma^{\mu \nu} q_{\nu}}{m_{W}} \left( g_L P_L + g_R P_R \right) t W_{\mu}^{-} + h.c.
 \end{eqnarray}
-where $V_L$, $V_R$, $g_L$ and $g_R$ are the complex coupling coefficients for the vector and tensor interaction, respectively. Assuming CP conservation, which has been verified experimentally by the measurement of the top-quark mass difference~\cite{}, obliges these coupling coefficients to be real~\footnote{The only CP violation is in the CKM matrix.}.
-\\
-
+where $V_L$, $V_R$, $g_L$ and $g_R$ are the complex coupling coefficients for the vector and tensor interaction, respectively.
 In the Standard Model limit both tensor couplings and the right-handed vector coupling vanish at tree-level, corresponding with the observed left-handedness of the weak interaction.
-Parity violation in the weak force has been postulated in 1956 by T.D. Lee and C.N. Yang and soon after experimentally verified~\cite{PViolationLeeYang, PViolationWu}. Hence in 1957, the vector-axial (V-A) or left-handed structure of the weak interaction was put forward in order to account for this maximal parity violation. Such an interaction implies a different treatment for left- and right-handed fields, which is indeed the case for the weak force since the W-boson only couples with left-handed fermions.
-\\
-As a consequence of this left-handed behaviour of the weak interaction the top quark decays as a left-handed fermion, implying the suppression of the right-handed W-boson in the Wtb interaction vertex.
-This can be experimentally verified by measuring the W-boson helicities and comparing the observed rate of right-handed W-bosons with the Standard Model predictions. As was already mentioned in the previous section, all results obtained so far are in agreement with the Standard Model.
-\\
-%\textit{\underline{Question:} Is this V-A in anyway relevant for the full Wtb study?? Doesn't seem to go about left- or right-handed couplings anymore ... \\
-%But maybe interesting since next paragraphs focus again on these W-helicity fractions?}
-%\\
+The operators $P_L$ and $P_R$ are defined as the left- and right-haned operators representing the different treatment of left-handed and right-handed fermions in the weak interaction.
+\begin{equation}
+ \psi_L = P_L \psi = \frac{1-\gamma_5}{2} \psi \quad \& \quad \psi_R = P_R \psi = \frac{1+\gamma_5}{2} \psi
+\end{equation}
 
+This so-called parity violation in the weak force has been postulated in 1956 by T.D. Lee and C.N. Yang and soon after experimentally verified~\cite{PViolationLeeYang, PViolationWu}. 
+The observed maximal parity violation could only be incorporated in the theoretical framework of the Standard Model by introducing a vector-axial (V-A) structure for the weak interaction that treats the right- and left-handed fermions differently.
+The left-handed behaviour of the weak interaction can be verified experimentally by measuring the W-boson helicity fractions since the right-handed polarisation is not allowed within the Standard Model.
+As mentioned before, excellent agreement with the Standard Model predictions has been obtained for this measurement.
+%Hence in 1957, the vector-axial (V-A) or left-handed structure of the weak interaction was put forward in order to account for this maximal parity violation. Such an interaction implies a different treatment for left- and right-handed fields, which is indeed the case for the weak force since the W-boson only couples with left-handed fermions.
+\\
+
+However, the influence of this V-A structure of the weak interaction is much more difficult to depict and requires either indirect information of otherwise complex analysis techniques. The only strigent constraint on the coupling coefficients of the Wtb interaction vertex originates from the CP conservation~\footnote{The only CP violation is in the CKM matrix. \textbf{So what?}} requiring them to be real.
+Determining the actual values of the anomalous coupling coefficients proves to be rather challenging since it affects the entire decay process of the top quark and thus influences all decay products as well.
+\\
+To make matters even worse, there is no physical observable which allows to depict the full influence of the different anomalous couplings. Hence the importance of these coupling coefficients can only be visualised partially bo looking at variables known to be sensitive to changes in the interaction vertex. The most affected variables are the W-boson helicity fractions, the angular asymmetries and ... (see paper saavedra).
+\\
+Each of these observables have in common that the angle between the lepton and the reversed top quark, measured in the rest-frame of the W-boson, is of particular interest (\textbf{Check that this is true!}). It is this variable, denoted as $\theta_{l}^{*}$, which will be considered in order to outline the optimal analysis strategy to study the anomalous couplings in the Wtb interaction vertex.
+\\
+\textit{Easily linked with theory formulas.}
+\\
+\hline \hfill \\
 The main difficulty arising when measuring the anomalous coupling coefficients in the Wtb interaction vertex is the absence of a clear and direct visualisation.
 This because no single variable exist that summarises the influence of altering the Wtb vertex, only the effect on distinct kinematic properties can be studied. % in order to understand the relative importance.
 The strength of the adopted approach to measure the anomalous coupling coefficients in a direct way in stead of using indirect constraints from a specific kinematic variable is that the use of the full kinematic phase space should result in more stringent limits.
