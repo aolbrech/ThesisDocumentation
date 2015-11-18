@@ -2,28 +2,71 @@
 
 In the previous section it was thoroughly described how the different physics objects can be identified and reconstructed.
 However, in order to study a specific type of interactions, semi-leptonically decaying top-quark events in this thesis, special attention should be devoted in order to select exactly these event topologies.
-This ... occurs in a sequential manner, starting from the general and centrally managed trigger system which aims to only store the events matching some predefined requirements and ranges up to an analysis-specific event optimisation to reject particular event signatures.
+This ... occurs in a sequential manner, starting from the general and centrally managed trigger system which aims to only store the events matching some predefined requirements and ranges up to an analysis-specific event optimisation to discard particular event signatures.
 \\
 \\
 This multi-layered event selection procedure will be explained in detail here, first focusing in Section~\ref{sec::MainSelec} on the more general steps such as triggering and cleaning of the relevant events together with the main selection criteria.
 Afterwards the additional selection constraints applied in order to single out the specific characterisations of this analysis will be discussed in Section~\ref{sec::SpecificSelec}.
 
-\section{Main selection}\label{sec::MainSelec}
+\section{Selecting (clean) $\ttbar$+$\mu$ event topologies}\label{sec::MainSelec}
+An important part of any physics analysis consists of selecting the event topologies compatible with the considered decay process and avoiding similar signatures by noisy events mimicking the requested final state particles. Hence a dedicated selection and cleaning procedure should be applied in order to remain with only the expected event topology. This is in general achieved by combining the online trigger system with a dedicated offline event selection (as will be discussed below).
 
 \subsection{Triggering and cleaning of events}\label{subsec::Trigger}
-\textit{Where can you find information about this trigger path and what is actually applied?}\\
-As was already briefly mentioned in Chapter~\ref{chp:CERN}, CMS possesses a complex trigger system consisting of two/three levels.
-\textit{Briefly mention something about the trigger ...}
-However since every analysis focusses on a different event topology the event filtering system is used to select only the desired final state products, drastically reducing the event rate.
+As was already briefly mentioned in Chapter~\ref{chp:CERN}, CMS possesses a complex trigger system consisting of two levels in order to first perform a fast online decision to decide whether the event is deemed interesting enough to be calculated in more detail and eventually stored.
+This trigger system contains an exhaustive list of slightly distinct trigger paths which all aim to identify a specific type of final state particles and rejecting the events not corresponding with the desired event topology, hence drastically reducing the stored event rate.
 
-\subsection{Jet selection criteria}
+The final state signature expected for semi-leptonically decaying $\ttbar$ events can be distinghuished from the enormeous background in a rather straightforward manner by simply requiring the presence of a well-isolated lepton.
+Hence the applied trigger asks for at least one isolated muon with the specific kinematic requirements of $\pT$ $>$ 24 $\GeV$ and $\vert \eta \vert$ $<$ 2.4 to be fullfilled.
+\\
+\textit{Is the cleaning part of the triggering? Or is this a separate thing which has to be applied by hand?}
 
 \subsection{Lepton selection criteria}
+Even though the chosen trigger path has restricted the lepton kinematics, the analysis-specific lepton selection should still be applied in order to further exclude unwanted events.
+This because a trigger path is kept as general as possible such that it can be applied by various analyses.
+The considered trigger for example is not specific enough for semi-leptonic $\ttbar$ events, which contain exactly one lepton originating from one of the W-bosons.
+Therefore the offline selection criteria applied afterwards rejects events that contain more than one isolated muon for which the kinematic constraints are rather similar with the ones applied in the trigger: $\pT$ $>$ 26 $\GeV$ and $\vert \eta \vert$ $<$ 2.1. 
+
+The next step in the event selection procedure focusses less on the kinematic information but aims to determine whether the considered lepton can be identified as a well-reconstructed one. 
+In the case of the muon channel, these so-called muon identification criteria start from Particle-Flow muons, as discussed in Section~\ref{subsec::PF}, are responsible to suppress hadronic punch-throughs, cosmic muons and muons from decays in flight of other particles.
+Therefore it is required that the candidate muon is reconstructed as a global muon for which the global-muon track fit, with normalised $\chi^{2}$ $<$ 10, should at least contain one muon chamber hit. 
+Moreover the muon track should have at least two muon stations with matched segments, contain at least one pixel hit and more than five tracker layers with hits. The latter requirement will guarantee, besides suppressing muons from decays in flight, a good $\pT$ measurement for the muon.
+Finally the muon candidate should originate from the primary vertex, which can be ensured by limiting both the longitudinal and transverse impact parameters ($\vert d_0 \vert$ $<$ 0.2 and $\vert \Delta z \vert$ $<$ 0.5).
+
+Another important identification variable is the isolation which allows to distinghuish prompt muons with high purity from the ones embedded in jets since it determines the hadronic (what about photon) activity around the muon candidate at the interaction vertex. %in a cone of radius $\Delta R$ = 0.4 around the muon candidate. 
+The isolation variable is defined as the scalar sum of the transverse energy of all the reconstructed particles contained within a cone of radius $\Delta R$ = 0.4, excluding the contribution of the muon itself.
+\\
+However the large number of additional proton-proton interactions complicates the identification of the interaction vertex such that a correction variable should be applied to ensure correct treatment of these supplementary interactions. Hence for the charged hadrons (CH) only the ones associated with the primary vertex are included in the scalar sum and for the neutral ones (NH and $\gamma$) a correction is applied which substracts the estimated PU contribution. This can be calculated by halving the PU contribution for charged particles since jets contain on average twice more charged PF particles than neutral ones~\cite{CHContrVsN}.
+The $\Delta \beta$-corrected definition for the isolation variable is given in Equation (\ref{eq::DeltaBetaIso}) and is required to be fullfill $I_{\textrm{rel}}^{\Delta \beta}$ $<$ 0.12.
+\begin{equation}\label{eq::DeltaBetaIso}
+ I_{\textrm{rel}}^{\Delta \beta} = \frac{1}{\pT^{\mu}} \left( \sum_{\textrm{CH}} \pT^{\textrm{CH}} + \max(0, \sum_{\textrm{NH}} \pT^{NH} + \sum_{\gamma} \pT^{\gamma} - 0.5 \sum_{PU} \pT^{PU}) \right)
+\end{equation}
+\textit{Is it pT or ET?}\\
+\textit{Need plots?}
+
+\subsection{Jet selection criteria}
+An notable difference in contrast to the leptons discussed before is that the PF jets require a few calibrations in order to correct for the small discrepancies observed between data and simulation (see \ref{subsec::jetReco}). These corrections need to be applied prior to the event selection for all jets \textbf{accounted for} in the event with $\pT$ $>$ 10 $\GeV$: charged hadron subtraction (CHS) which removes all the contributions of charged pileup, energy calibration using the L1L2L3 corrections and energy smearing in simulated events.
+\\
+
+Since the chosen trigger path does not restrict in any way the jets present in the considered event implies that the entire selection and cleaning process is taken care of by the offline jet identification criteria (\textit{Not even a minimum requirement on the pt?})
+The actual event selection applied in this analysis requires an event to contain at least four high energetic jets ($\pT$ $>$ 30 $\GeV$) located within $\vert \eta \vert$ $<$ 2.4, which all have to be well separated from the identified lepton ($\Delta R$ $>$ 0.3).
+The actual jet identification criteria have as goal to reject fake, badly reconstructed and noisy jets while still remaining with a pure sample of real jets and restrict the energy fractions of the different jet constituents. These criteria constrain the energy fraction of the charged electromagnetic PF particles ($f_{CEM}$ $<$ 0.99), the energy fraction of the charged PF hadrons ($f_{CH}$ $>$ 0), the energy fraction of the neutral electromagnetic PF particles ($f_{NEM}$ $<$ 0.99) and the energy fraction of the neutral PF hadrons ($f_{NH}$ $<$ 0.99).
+\\
+
+\textit{What about number of constituents and muon fraction ?? (+ what is this fHPD (0.98) and n90Hits in event selection file?)}
 
 \subsection{Data-MC agreement/Kinematics of selected events}
+\textit{Does not really make that much sense to show here the MSPlots since they do not agree at all ...}
 
-\section{Analysis-specific selection}\label{sec::SpecificSelec}
+\section{Fine-tuning of event selection}\label{sec::SpecificSelec}
+Up to now only general event selection constraints have been discussed, which are in general managed centrally and thus applicable numerous analyses. The different values of these kinematic constraints and identification criteria have been studied in great detail and are optimised in order to ensure the selection of a relatively pure sample of events.
+\\
+This however does not take into account the specific demands of the analysis discussed in this thesis where the followed procedure requires a small event sample. 
+This choice is motivated by the large processing time needed to process an individual event, such that it is beneficial to not waist resources on uncomplete events.
+As a result a couple of supplementary event selection requirements will be discussed in this section, with the largest background reduction one being the b-jet identification. The other selection constraints are smaller and focus purely on optimising the signal versus background ratio for the selected event sample.
+
 \subsection{B-tagging}
+
+\subsection{Number of light jets}
 
 \subsection{Signal optimisation}
 
