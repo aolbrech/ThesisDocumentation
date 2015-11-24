@@ -1,12 +1,21 @@
-\chapter{Event selection (change)} \label{chp:labelTitle}
+\chapter{Recovering signal event topology} \label{chp:labelTitle}
 
-In the previous section it was thoroughly described how the different physics objects can be identified and reconstructed.
-However, in order to study a specific type of interactions, semi-leptonically decaying top-quark events in this thesis, special attention should be devoted in order to select exactly these event topologies.
-This ... occurs in a sequential manner, starting from the general and centrally managed trigger system which aims to only store the events matching some predefined requirements and ranges up to an analysis-specific event optimisation to discard particular event signatures.
+The previous chapter described in detail how the individual physics objects can be identified and reconstructed.
+However, due to the enormeous amount of proton-proton collisions produced at the LHC and collected by the CMS experiment, the main challenge of any physics analysis is achieving a succesful combination of identifying the relevant physics objects and ensuring the separation of the event topology of interest from the large bulk of background events.
+This can be realized by developing an elaborate event selection procedure that excludes events based on specific kinematic requirements in a sequential manner, as will be discussed here.
 \\
 \\
-This multi-layered event selection procedure will be explained in detail here, first focusing in Section~\ref{sec::MainSelec} on the more general steps such as triggering and cleaning of the relevant events together with the main selection criteria.
-Afterwards the additional selection constraints applied in order to single out the specific characterisations of this analysis will be discussed in Section~\ref{sec::SpecificSelec}.
+Such an event selection follows a logical order and  \\
+This event selection process generally starts from 
+%\\
+%\\
+%In the previous section it was thoroughly described how the different physics objects can be identified and reconstructed.
+%However, in order to study a specific type of interactions, semi-leptonically decaying top-quark events in this thesis, special attention should be devoted in order to select exactly these event topologies.
+%This ... occurs in a sequential manner, starting from the general and centrally managed trigger system which aims to only store the events matching some predefined requirements and ranges up to an analysis-specific event optimisation to discard particular event signatures.
+%\\
+%\\
+%This multi-layered event selection procedure will be explained in detail here, first focusing in Section~\ref{sec::MainSelec} on the more general steps such as triggering and cleaning of the relevant events together with the main selection criteria.
+%Afterwards the additional selection constraints applied in order to single out the specific characterisations of this analysis will be discussed in Section~\ref{sec::SpecificSelec}.
 
 \section{Selecting (clean) $\ttbar$+$\mu$ event topologies}\label{sec::MainSelec}
 An important part of any physics analysis consists of selecting the event topologies compatible with the considered decay process and avoiding similar signatures by noisy events mimicking the requested final state particles. Hence a dedicated selection and cleaning procedure should be applied in order to remain with only the expected event topology. This is in general achieved by combining the online trigger system with a dedicated offline event selection (as will be discussed below).
@@ -54,17 +63,32 @@ The actual jet identification criteria have as goal to reject fake, badly recons
 
 \textit{What about number of constituents and muon fraction ?? (+ what is this fHPD (0.98) and n90Hits in event selection file?)}
 
-\subsection{Data-MC agreement/Kinematics of selected events}
-\textit{Does not really make that much sense to show here the MSPlots since they do not agree at all ...}
+%\subsection{Data-MC agreement/Kinematics of selected events}
+%\textit{Does not really make that much sense to show here the MSPlots since they do not agree at all ...}
 
-\section{Fine-tuning of event selection}\label{sec::SpecificSelec}
-Up to now only general event selection constraints have been discussed, which are in general managed centrally and thus applicable numerous analyses. The different values of these kinematic constraints and identification criteria have been studied in great detail and are optimised in order to ensure the selection of a relatively pure sample of events.
+\section{Fine-tuning of the event selection}\label{sec::SpecificSelec}
+
+The event selection constraints discussed in the previous section are kept as general as possible in order to be applicable for numerous analyses examining the same signal.
+Since these selection criteria are centrally managed, their performance is continiously monitored and changing detector conditions are easily taken into account.
+In addition, the various synchronization exercises between the different analyses using the same selection criteria significantly improves the selection efficiency. (\textbf{Be sure this is the case!})
 \\
-This however does not take into account the specific demands of the analysis discussed in this thesis where the followed procedure requires a small event sample. 
-This choice is motivated by the large processing time needed to process an individual event, such that it is beneficial to not waste resources on uncomplete events.
-As a result a couple of supplementary event selection requirements will be discussed in this section, with the largest background reduction one being the b-jet identification. The other selection constraints are smaller and focus purely on optimising the signal versus background ratio for the selected event sample.
 
-\subsection{Background reduction using b-jet identification}
+The above-mentioned selection criteria, however, still have to be fine-tuned in order to incorporate the analysis-specific requirements.
+The analysis discussed in this thesis actually requires a very stringent event selection mainly motivated by the choice to use a Matrix Element method, see Chapter~\ref{ch::MW}, to measure the anomalous couplings in the Wtb interaction vertex. Such a method examines an event using the full kinematic information and thus necessitates a large processing time for each event. As a result it has been decided to restrict the considered event sample as much as possible in order to avoid wasting computational resources on incorrect event topologies.
+\\
+\\
+Two important background-reduction constraints have been applied, each focussing on a different kinematic property and thus aiming to exclude distinct types of events. 
+The first one, which is discussed in Section~\ref{subsec::BTag}, exploits the characteristic signature of semi-leptonically decaying top-quark pair events: the expected presence of two jets originating from the decay of a b-quark. The second requirement, Section~\ref{subsec::MassCuts} focuses more on the kinematic properties of the reconstructed jets by demanding their mass combinations to correspond with the top-quark and W-boson mass.
+To finalize, Section~\ref{subsec::DataMC} will give an overview of the applied event selection and will demonstrate some of the kinematic properties of the remaining event sample.
+%An overview of the applied event selection and the kinematic properties of the remaining event sample will be discussed in Section~\ref{subsec::DataMC}.
+
+%Up to now only general event selection constraints have been discussed, which are in general managed centrally and thus applicable numerous analyses. The different values of these kinematic constraints and identification criteria have been studied in great detail and are optimised in order to ensure the selection of a relatively pure sample of events.
+%\\
+%This however does not take into account the specific demands of the analysis discussed in this thesis where the followed procedure requires a small event sample. 
+%This choice is motivated by the large processing time needed to process an individual event, such that it is beneficial to not waste resources on uncomplete events.
+%As a result a couple of supplementary event selection requirements will be discussed in this section, with the largest background reduction one being the b-jet identification. The other selection constraints are smaller and focus purely on optimising the signal versus background ratio for the selected event sample.
+
+\subsection{Background reduction using b-jet identification}\label{subsec::BTag}
 An important background reduction for semi-muonically decaying $\ttbar$ events can be achieved when the expected presence of two b-jets in the event topology is exploited. Since this is a rather characteristic property of these type of events it will significantly decrease the contribution of events with the incorrect final state products.
 As has been explained in Section~\ref{subsec::jetReco} the algorithms responsible for the identification of the jets originating from b-quark decays exploit the fact that this decay does not take place at the interaction point due to the relatively long lifetime of the b-quark.
 For this analysis the b-jet identification is a beneficial asset since it will significantly reduce the risk of selecting non-$\ttbar$ events in the final event sample (\textit{, which would consume valuable resources}).
@@ -220,6 +244,6 @@ Line
 \newpage
 \subsection{Number of light jets}
 
-\subsection{Signal optimisation}
+\subsection{Signal optimisation}\label{subsec::MassCuts}
 
-\subsection{Data-MC agreement}
+\subsection{Data-MC agreement}\label{subsec::DataMC}
