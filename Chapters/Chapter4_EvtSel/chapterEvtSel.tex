@@ -68,7 +68,7 @@ The actual jet identification criteria have as goal to reject fake, badly recons
 
 \section{Fine-tuning of the event selection}\label{sec::SpecificSelec}
 
-The event selection constraints discussed in the previous section are kept as general as possible in order to be applicable for numerous analyses examining the same signal.
+The event selection constraints discussed in the previous section are kept as general as possible in order to be applicable for numerous analyses examining a similar event topology.
 Since these selection criteria are centrally managed, their performance is continiously monitored and changing detector conditions are easily taken into account.
 In addition, the various synchronization exercises between the different analyses using the same selection criteria significantly improves the selection efficiency. (\textbf{Be sure this is the case!})
 \\
@@ -89,20 +89,56 @@ To finalize, Section~\ref{subsec::DataMC} will give an overview of the applied e
 %As a result a couple of supplementary event selection requirements will be discussed in this section, with the largest background reduction one being the b-jet identification. The other selection constraints are smaller and focus purely on optimising the signal versus background ratio for the selected event sample.
 
 \subsection{Background reduction using b-jet identification}\label{subsec::BTag}
-An important background reduction for semi-muonically decaying $\ttbar$ events can be achieved when the expected presence of two b-jets in the event topology is exploited. Since this is a rather characteristic property of these type of events it will significantly decrease the contribution of events with the incorrect final state products.
-As has been explained in Section~\ref{subsec::jetReco} the algorithms responsible for the identification of the jets originating from b-quark decays exploit the fact that this decay does not take place at the interaction point due to the relatively long lifetime of the b-quark.
-For this analysis the b-jet identification is a beneficial asset since it will significantly reduce the risk of selecting non-$\ttbar$ events in the final event sample (\textit{, which would consume valuable resources}).
+
+Top-quark pair-production events for which one of the W-bosons decays hadronically and the other one leptonically are not merely characterised by the presence of a muon but also by the presence of two jets originating from the decay of the b-quarks.
+Exploiting this latter property is an effective manner of distinguishing the event topology from the background, since the decay of the b-quarks has the peculiar feature that it gives rise to a displaced vertex. This is due to the relatively long lifetime of the b-quark such that the decay does not occur at the interaction vertex, as has previously been discussed in Section~\ref{subsec::jetReco}.
+\\ 
+
+For this analysis the b-jet identification is a crucial asset in reducing the background contribution since there has been opted for only selecting events for which at least two jets survive the b-tagging requirement. Since the main background samples for semi-leptonically decaying top-quark events might have events with one jet fullfilling this condition, the probability of having two such jets is significantly smaller (\textbf{Possible to give percentages?}). Hence the considered background samples; W-boson production in association with jets (W+jets), Z-boson production in association with jets (Z+jets) and single-top production in the t-, tW- and s-channel; will almost completely vanish/dissapear. (\textit{Check if this is also in someway the case when only a double light is applied! .. Yes, main background of W+jets is only 10 $\%$ of ttbar sample! (Total is 20$\%$ of ttbar)})
 \\
 
-The b-jet identification or b-tagging algorithms currently existing can be deployed at specific working points corresponding to a specific misidentification probability. In order to be confident that the applied b-tagging algorithm \textbf{ameliorates/improves} the analysis, the three possible working points (\textit{Loose}, \textit{Medium} and \textit{Tight}) have been considered and compared.
-The common factor in each of the investigated b-tagging configurations is the requirement of at least two jets in the event being tagged as a b-jet.
-The influence of restricting the CSV discriminant value of the light jets has also been studied, but the gain of applying this was almost negligible and will therefore not be considered further. (\textit{Drop this since it has a marginal effect and only complicates the btag SF ...!})
+The b-jet identification algorithms developed by the CMS collaboration are advised to only be deployed at specific working points defined as \textit{Loose}, \textit{Medium} and \textit{Tight}.
+These correspond to a predefined tagging and misidentification probability of around 85$\%$, 69$\%$ and 52$\%$ and a mistagging efficiency of 19$\%$, 5$\%$ and 1$\%$, respectively, for the Combined Secondary Vertex (CSV) b-tagging algorithm. (\textit{Good to repeat again ?})\\
+%As this analysis \textbf{prioritizes} a pure \\
+As for this analysis emphasis is set on obtaining a pure event sample the double Tight b-tagging requirement is expected to show the best results, which is also what is shown in Table~\ref{table::bTagResults}. In this table events with the four jets correctly reconstructed after the b-tag constraint are defined as signal and events without any jet correctly reconstructed as background, since this way the reconstruction efficiency can easily be compared. \textbf{REWRITE!!} 
+\textit{Now shortly mention what is compared, so what is s/b in this table!}\\
+%\textit{Now discuss the different working points (give the efficiency) and how the optimal point has been retrieved. }%-- Maybe do this first ...! (now everything of previous paragraph is based on significant reduction but this is probably less the case for a double Loose b-tag !!!)}
+\\
+%The b-jet identification or b-tagging algorithms currently existing can be deployed at specific working points corresponding to a specific misidentification probability. In order to be confident that the applied b-tagging algorithm \textbf{ameliorates/improves} the analysis, the three possible working points (\textit{Loose}, \textit{Medium} and \textit{Tight}) have been considered and compared.
+%The common factor in each of the investigated b-tagging configurations is the requirement of at least two jets in the event being tagged as a b-jet.
+%The influence of restricting the CSV discriminant value of the light jets has also been studied, but the gain of applying this was almost negligible and will therefore not be considered further. (\textit{Drop this since it has a marginal effect and only complicates the btag SF ...!})
+
+The only relevant sample of background events comes from the single-top quark contribution, and especially the tW-channel. \\
+\textit{Now maybe give a Feynman diagram of single top to explain why it remains important.}\\
+This double b-tag requirement is also the reason why, besides the background samples discussed before, no other background samples have been considered for this analysis as they will become completely negligible.
+\\
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+\\
+
+%An important background reduction for semi-muonically decaying $\ttbar$ events can be achieved when the expected presence of two b-jets in the event topology is exploited. Since this is a rather %characteristic property of these type of events it will significantly decrease the contribution of events with the incorrect final state products.
+%As has been explained in Section~\ref{subsec::jetReco} the algorithms responsible for the identification of the jets originating from b-quark decays exploit the fact that this decay does not take place at the interaction point due to the relatively long lifetime of the b-quark.
+%For this analysis the b-jet identification is a beneficial asset since it will significantly reduce the risk of selecting non-$\ttbar$ events in the final event sample (\textit{, which would consume valuable resources}).
+%\\
 
 \begin{figure}[h!t]
  \centering
  \includegraphics[width = 0.85 \textwidth]{Chapters/Chapter4_EvtSel/Figures/CSVDiscr_LightAndBJets.pdf}
  \caption{CSV discriminant} \label{fig::CSVDiscr}
 \end{figure}
+
+\begin{table}[h!t]
+ \centering
+ \caption{b-tag efficiency for the different working points of the CSV b-tagger.}
+ \begin{tabular}{c|c|c|c|c}
+  b-tag workin point 	& b-jet efficiency 	& udscg efficiency 	& c-jet efficiency 	& udsg efficiency 	\\
+  \hline
+  double Loose 		& 83.79 $\%$		& 18.91 $\%$		& 42.44 $\%$ 		& 13.4 $\%$		\\
+  double Medium 	& 68.71 $\%$		& 4.57 $\%$		& 18.88 $\%$		& 1.21 $\%$		\\
+  double Tight 		& 52.11 $\%$ 		& 1.22 $\%$ 		& 5.74 $\%$ 		& 0.16 $\%$ 		\\
+ \end{tabular}
+\end{table}
+
 
 Since in this analysis emphasis lies on the correct reconstruction of the event topology, the choice of the b-tag working point has been based on the efficiency to precisely select the four jets present in the event. Hence, as was to be expected, the requirement of having at least two of these jets to be tagged using the most stringent working point results in the optimal reconstruction efficiency. As an additional bonus, this significantly reduces the event rates such that this additional event selection constraint also has a beneficial effect on the required processing time.
 \\
