@@ -61,11 +61,163 @@ The actual jet identification criteria have as goal to reject fake, badly recons
 Up to now only general event selection constraints have been discussed, which are in general managed centrally and thus applicable numerous analyses. The different values of these kinematic constraints and identification criteria have been studied in great detail and are optimised in order to ensure the selection of a relatively pure sample of events.
 \\
 This however does not take into account the specific demands of the analysis discussed in this thesis where the followed procedure requires a small event sample. 
-This choice is motivated by the large processing time needed to process an individual event, such that it is beneficial to not waist resources on uncomplete events.
+This choice is motivated by the large processing time needed to process an individual event, such that it is beneficial to not waste resources on uncomplete events.
 As a result a couple of supplementary event selection requirements will be discussed in this section, with the largest background reduction one being the b-jet identification. The other selection constraints are smaller and focus purely on optimising the signal versus background ratio for the selected event sample.
 
-\subsection{B-tagging}
+\subsection{Background reduction using b-jet identification}
+An important background reduction for semi-muonically decaying $\ttbar$ events can be achieved when the expected presence of two b-jets in the event topology is exploited. Since this is a rather characteristic property of these type of events it will significantly decrease the contribution of events with the incorrect final state products.
+As has been explained in Section~\ref{subsec::jetReco} the algorithms responsible for the identification of the jets originating from b-quark decays exploit the fact that this decay does not take place at the interaction point due to the relatively long lifetime of the b-quark.
+For this analysis the b-jet identification is a beneficial asset since it will significantly reduce the risk of selecting non-$\ttbar$ events in the final event sample (\textit{, which would consume valuable resources}).
+\\
 
+The b-jet identification or b-tagging algorithms currently existing can be deployed at specific working points corresponding to a specific misidentification probability. In order to be confident that the applied b-tagging algorithm \textbf{ameliorates/improves} the analysis, the three possible working points (\textit{Loose}, \textit{Medium} and \textit{Tight}) have been considered and compared.
+The common factor in each of the investigated b-tagging configurations is the requirement of at least two jets in the event being tagged as a b-jet.
+The influence of restricting the CSV discriminant value of the light jets has also been studied, but the gain of applying this was almost negligible and will therefore not be considered further. (\textit{Drop this since it has a marginal effect and only complicates the btag SF ...!})
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.85 \textwidth]{Chapters/Chapter4_EvtSel/Figures/CSVDiscr_LightAndBJets.pdf}
+ \caption{CSV discriminant} \label{fig::CSVDiscr}
+\end{figure}
+
+Since in this analysis emphasis lies on the correct reconstruction of the event topology, the choice of the b-tag working point has been based on the efficiency to precisely select the four jets present in the event. Hence, as was to be expected, the requirement of having at least two of these jets to be tagged using the most stringent working point results in the optimal reconstruction efficiency. As an additional bonus, this significantly reduces the event rates such that this additional event selection constraint also has a beneficial effect on the required processing time.
+\\
+With the b-tag working point fixed, the topology reconstruction proceeds by assigning the two most energetic jets surviving the b-tag requirement to the two jets originating from the b-quark decay. All other jets are then labelled as ``light jets'' and will need to be appointed \textbf{to the two} remaining jets in the event. 
+In order to increase the efficiency of identifying the two correct light jets in the event the topology reconstruction has been adapted to consider the three most energetic light jets, if available, and assign the two most plausible ones to the jets produced during the hadronic decay of one of the W-bosons.
+This choice again improves the topology reconstruction efficiency since for a significant number of events this third light jet is actually one of the correct jets.
+\\
+This light jet selection procedure is based on a $\chi^{2}$ method using both the mass of the lepton and the leptonic b and the mass of the hadronic b together with the two light quarks. Hence, this allows to, beside determining the two light jets, simultaneously distinguish the b-jet originating from the hadronic and the leptonic decaying top quark.
+The expected values for both masses, denoted as $M_{lb}$ and $M_{qqb}$ respectively, have been determined using the semi-leptonically decaying top quarks with only the main event/the full event selection discussed up to now applied.\footnote{ (\textit{Why do you determine this before the b-tag? The b-tag will significantly influence the obtained mass values ... but will also reduce the available statistics ...} \textbf{Actually have also determined these values after the b-tags and the difference is almost negligible ...})}
+The selection procedure then selects the event configuration for which these two mass values correspond the most with the expected values, taking into account their uncertainties.
+\begin{equation}
+ \chi^{2}_{M_{lb}, M_{qqb}} = \frac{(\hat{M_{lb}} - M_{lb})^{2}}{\sigma^{2}(\hat{M_{lb}})} + \frac{(\hat{M_{qqb}} - M_{qqb})^{2}}{\sigma^{2}(\hat{M_{qqb}})}
+\end{equation}
+
+An important motivation to use the $M_{lb}$ value in stead of the more obvious leptonic topquark mass is related to the difficult reconstruction of the neutrino.
+Since only information on the $z$-component of this particle is available in particle detectors requires the determination of the $x$- and $y$-component the use of complex calculations based on the reconstructed masses. As a result it would not make much sense to reconstruct this particle, using the mass information, for then only using the leptonical top-quark mass. Especially since the $M_{lb}$ value can easily be reconstructed and fitted, although attention should be awarded to restrict the range where the fit is applied since this distribution is not expected to demonstrate the perfect Gaussian behaviour expected for the top quark mass.
+
+\begin{table}[h!t]
+ \centering
+ \begin{tabular}{c|c|c|c}
+		& $\hat{M_{lb}}$ ($\GeV$) 	& $\hat{M_{qqb}}$ ($\GeV$) 	& $\hat{M_{W}}$ ($\GeV$) 	\\
+  \hline
+  no b-tag 	& 106.9388 $\pm$ 32.0410 	& 174.5792 $\pm$ 17.5196 	& 83.7810 $\pm$ 10.2311 	\\
+  b-tag 	& 107.7945 $\pm$ 32.4255 	& 175.0311 $\pm$ 17.0589 	& 83.6161 $\pm$ 10.2171 	
+ \end{tabular}
+ \caption{Obtained masses from Gaussian fit on distribution obtained before and after the application of the b-tagging requirement.}
+\end{table}
+
+Line
+\\
+\\
+\textit{It is here that the choice of the two light jets takes place, in case of more than three light jets being present in the event!}\\
+\textit{Will need to recalculate the numbers for the different b-tag options since the definition of light jets has changed ...} \\
+\textit{And will also need to get these numbers for muon channel events alone ... Currently everything is done for muon and electron channel combined!}
+\\
+\\
+\newpage
+\paragraph{\underline{Comparing the 4 and 5 jet case for all the b-tags:}}
+\subsubsection{4-jet case}
+\begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c|c} 
+  \textbf{Option} & all 4 correct & $\geq$ 1 wrong       & correct ($\%$)       & $\frac{s}{b}$ & non-matched \\ \hline 
+  2 L b-tags              & 426636 & 612386 & 41.0613 & 0.696678 & 1568843\\ 
+  %2 L b-tags, light L-veto & 345646 & 487775 & 41.4732 & 0.708618 & 1268935\\ 
+  2 M b-tags              & 325578 & 327020 & 49.8895 & 0.995591 & 826872\\ 
+  %2 M b-tags, light M-veto & 310201 & 306237 & 50.3215 & 1.01294 & 783840\\ 
+  %2 M b-tags, light L-veto & 237042 & 262674 & 47.4353 & 0.902419 & 625001\\ 
+  2 T b-tags              & 198204 & 162941 & 54.8821 & 1.21642 & 422919\\ 
+  %2 T b-tags, light T-veto & 195569 & 159603 & 55.0632 & 1.22535 & 415450\\ 
+  %2 T b-tags, light M-veto & 181012 & 155451 & 53.7985 & 1.16443 & 394155\\ 
+  %2 T b-tags, light L-veto & 138583 & 137450 & 50.2052 & 1.00824 & 317064\\ 
+ \end{tabular} 
+ \caption{Overview of correct and wrong reconstructed events for the different b-tags (no $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ applied)}
+\end{table} 
+ 
+\begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c|c} 
+  \textbf{Option} & 2 b's correct & $\geq$ 1 b wrong     & b's correct ($\%$)   & $\frac{s}{b}$ & non-matched \\ \hline 
+  2 L b-tags              & 589953 & 449069 & 56.7796 & 1.31372 & 1568843\\ 
+  %2 L b-tags, light L-veto & 500672 & 332749 & 60.0743 & 1.50465 & 1268935\\ 
+  2 M b-tags              & 460691 & 191907 & 70.5934 & 2.4006 & 826872\\ 
+  %2 M b-tags, light M-veto & 445064 & 171374 & 72.1993 & 2.59703 & 783840\\ 
+  %2 M b-tags, light L-veto & 360899 & 138817 & 72.2208 & 2.59982 & 625001\\ 
+  2 T b-tags              & 280306 & 80839 & 77.6159 & 3.46746 & 422919\\ 
+  %2 T b-tags, light T-veto & 277571 & 77601 & 78.1511 & 3.5769 & 415450\\ 
+  %2 T b-tags, light M-veto & 263210 & 73253 & 78.2285 & 3.59316 & 394155\\ 
+  %2 T b-tags, light L-veto & 213584 & 62449 & 77.3763 & 3.42013 & 317064\\ 
+ \end{tabular} 
+ \caption{Overview of correct and wrong reconstructed b-jets for the different b-tags (no $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ applied)}
+\end{table} 
+ 
+\begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c|c} 
+  \textbf{Option} & 2 light good  & $\geq$ 1 light wrong & light correct ($\%$) & $\frac{s}{b}$ & non-matched \\ \hline 
+  2 L b-tags              & 504181 & 534841 & 48.5246 & 0.942675 & 1568843\\ 
+  %2 L b-tags, light L-veto & 415812 & 417609 & 49.8922 & 0.995697 & 1268935\\ 
+  2 M b-tags              & 374193 & 278405 & 57.339 & 1.34406 & 826872\\ 
+  %2 M b-tags, light M-veto & 358096 & 258342 & 58.0912 & 1.38613 & 783840\\ 
+  %2 M b-tags, light L-veto & 274331 & 225385 & 54.8974 & 1.21717 & 625001\\ 
+  2 T b-tags              & 227716 & 133429 & 63.0539 & 1.70665 & 422919\\ 
+  %2 T b-tags, light T-veto & 225072 & 130100 & 63.3699 & 1.72999 & 415450\\ 
+  %2 T b-tags, light M-veto & 209171 & 127292 & 62.1676 & 1.64324 & 394155\\ 
+  %2 T b-tags, light L-veto & 160090 & 115943 & 57.9967 & 1.38076 & 317064\\ 
+ \end{tabular} 
+ \caption{Overview of correct and wrong reconstructed light jets for the different b-tags (no $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ applied)}
+\end{table} 
+
+\newpage
+\subsubsection{5-jet case}
+\begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c|c} 
+  \textbf{Option} & all 4 correct & $\geq$ 1 wrong       & correct ($\%$)       & $\frac{s}{b}$ & non-matched \\ \hline 
+  2 L b-tags              & 512367 & 526655 & 49.3124 & 0.97287 & 1568843\\ 
+  %2 L b-tags, light L-veto & 410486 & 422935 & 49.2531 & 0.970565 & 1268935\\ 
+  2 M b-tags              & 396904 & 255694 & 60.8191 & 1.55226 & 826872\\ 
+  %2 M b-tags, light M-veto & 377217 & 239221 & 61.193 & 1.57686 & 783840\\ 
+  %2 M b-tags, light L-veto & 282672 & 217044 & 56.5665 & 1.30237 & 625001\\ 
+  2 T b-tags              & 241394 & 119751 & 66.8413 & 2.0158 & 422919\\ 
+  %2 T b-tags, light T-veto & 238024 & 117148 & 67.0165 & 2.03182 & 415450\\ 
+  %2 T b-tags, light M-veto & 219617 & 116846 & 65.2723 & 1.87954 & 394155\\ 
+  %2 T b-tags, light L-veto & 164817 & 111216 & 59.7092 & 1.48195 & 317064\\ 
+ \end{tabular} 
+ \caption{Overview of correct and wrong reconstructed events for the different b-tags (no $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ applied, 5 jets considered)}
+\end{table} 
+ 
+\begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c|c} 
+  \textbf{Option} & 2 b's correct & $\geq$ 1 b wrong     & b's correct ($\%$)   & $\frac{s}{b}$ & non-matched \\ \hline 
+  2 L b-tags              & 589953 & 449069 & 56.7796 & 1.31372 & 1568843\\ 
+  %2 L b-tags, light L-veto & 500672 & 332749 & 60.0743 & 1.50465 & 1268935\\ 
+  2 M b-tags              & 460691 & 191907 & 70.5934 & 2.4006 & 826872\\ 
+  %2 M b-tags, light M-veto & 445064 & 171374 & 72.1993 & 2.59703 & 783840\\ 
+  %2 M b-tags, light L-veto & 360899 & 138817 & 72.2208 & 2.59982 & 625001\\ 
+  2 T b-tags              & 280306 & 80839 & 77.6159 & 3.46746 & 422919\\ 
+  %2 T b-tags, light T-veto & 277571 & 77601 & 78.1511 & 3.5769 & 415450\\ 
+  %2 T b-tags, light M-veto & 263210 & 73253 & 78.2285 & 3.59316 & 394155\\ 
+  %2 T b-tags, light L-veto & 213584 & 62449 & 77.3763 & 3.42013 & 317064\\ 
+ \end{tabular} 
+ \caption{Overview of correct and wrong reconstructed b-jets for the different b-tags (no $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ applied, 5 jets considered)}
+\end{table} 
+ 
+\begin{table}[!h] 
+ \begin{tabular}{c|c|c|c|c|c} 
+  \textbf{Option} & 2 light good  & $\geq$ 1 light wrong & light correct ($\%$) & $\frac{s}{b}$ & non-matched \\ \hline 
+  2 L b-tags              & 603601 & 435421 & 58.0932 & 1.38625 & 1568843\\ 
+  %2 L b-tags, light L-veto & 493376 & 340045 & 59.1989 & 1.45091 & 1268935\\ 
+  2 M b-tags              & 452953 & 199645 & 69.4077 & 2.26879 & 826872\\ 
+  %2 M b-tags, light M-veto & 432443 & 183995 & 70.1519 & 2.3503 & 783840\\ 
+  %2 M b-tags, light L-veto & 324766 & 174950 & 64.9901 & 1.85634 & 625001\\ 
+  2 T b-tags              & 275125 & 86020 & 76.1813 & 3.19838 & 422919\\ 
+  %2 T b-tags, light T-veto & 271763 & 83409 & 76.5159 & 3.2582 & 415450\\ 
+  %2 T b-tags, light M-veto & 251381 & 85082 & 74.7128 & 2.95457 & 394155\\ 
+  %2 T b-tags, light L-veto & 188773 & 87260 & 68.3878 & 2.16334 & 317064\\ 
+ \end{tabular} 
+ \caption{Overview of correct and wrong reconstructed light jets for the different b-tags (no $\chi^{2}$ $m_{lb}$ - $m_{qqb}$ applied, 5 jets considered)}
+\end{table} 
+ 
+
+\newpage
 \subsection{Number of light jets}
 
 \subsection{Signal optimisation}
