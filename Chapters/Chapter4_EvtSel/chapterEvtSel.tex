@@ -63,9 +63,6 @@ The actual jet identification criteria have as goal to reject fake, badly recons
 
 \textit{What about number of constituents and muon fraction ?? (+ what is this fHPD (0.98) and n90Hits in event selection file?)}
 
-%\subsection{Data-MC agreement/Kinematics of selected events}
-%\textit{Does not really make that much sense to show here the MSPlots since they do not agree at all ...}
-
 \section{Fine-tuning of the event selection}\label{sec::SpecificSelec}
 
 The event selection constraints discussed in the previous section are kept as general as possible in order to be applicable for numerous analyses examining a similar event topology.
@@ -97,16 +94,30 @@ Exploiting this latter property is an effective manner of distinguishing the eve
 For this analysis the b-jet identification is a crucial asset in reducing the background contribution since there has been opted for only selecting events for which at least two jets survive the b-tagging requirement. Since the main background samples for semi-leptonically decaying top-quark events might have events with one jet fullfilling this condition, the probability of having two such jets is significantly smaller (\textbf{Possible to give percentages?}). Hence the considered background samples; W-boson production in association with jets (W+jets), Z-boson production in association with jets (Z+jets) and single-top production in the t-, tW- and s-channel; will almost completely vanish/dissapear. (\textit{Check if this is also in someway the case when only a double light is applied! .. Yes, main background of W+jets is only 10 $\%$ of ttbar sample! (Total is 20$\%$ of ttbar)})
 \\
 
-The b-jet identification algorithms developed by the CMS collaboration are advised to only be deployed at specific working points defined as \textit{Loose}, \textit{Medium} and \textit{Tight}.
+The b-jet identification algorithms developed by the CMS collaboration are recommended to only be deployed at specific working points defined as \textit{Loose}, \textit{Medium} and \textit{Tight}.
 These correspond to a predefined tagging and misidentification probability of around 85$\%$, 69$\%$ and 52$\%$ and a mistagging efficiency of 19$\%$, 5$\%$ and 1$\%$, respectively, for the Combined Secondary Vertex (CSV) b-tagging algorithm. (\textit{Good to repeat again ?})\\
-%As this analysis \textbf{prioritizes} a pure \\
-As for this analysis emphasis is set on obtaining a pure event sample the double Tight b-tagging requirement is expected to show the best results, which is also what is shown in Table~\ref{table::bTagResults}. In this table events with the four jets correctly reconstructed after the b-tag constraint are defined as signal and events without any jet correctly reconstructed as background, since this way the reconstruction efficiency can easily be compared. \textbf{REWRITE!!} 
-\textit{Now shortly mention what is compared, so what is s/b in this table!}\\
-%\textit{Now discuss the different working points (give the efficiency) and how the optimal point has been retrieved. }%-- Maybe do this first ...! (now everything of previous paragraph is based on significant reduction but this is probably less the case for a double Loose b-tag !!!)}
+Since for this analysis priority is given to selecting event topologies matching with the expected topology as much as possible the double Tight b-tagging requirement is expected to result in the most desirable outcome, which is indeed the conclusion from Table~\ref{table::bTagResults}.
+This table summarizes the number of events for which all four jets are correctly picked out from the collection of reconstructed jets, denoted as signal s, and for which at least one has been wrongly chosen. These two categories, together with the events for which the no information about the underlying parton is available, represents the background such that the $s/b$ value gives an idea of the jet reconstruction efficiency for the different b-tag working points.
 \\
+It has also been studied whether an improvement can be achieved by limiting the CSV discriminant of the light jets using an anti-tagging algorithm, but since the effect was close to negligible it will not be considered further.
+%As for this analysis emphasis is set on obtaining a pure event sample the double Tight b-tagging requirement is expected to show the best results, which is also what is shown in Table~\ref{table::bTagResults}. 
+%In this table events with the four jets correctly reconstructed after the b-tag constraint are defined as signal and events without any jet correctly reconstructed as background, since this way the reconstruction efficiency can easily be compared. \textbf{REWRITE!!} 
+%\textit{Now shortly mention what is compared, so what is s/b in this table!}\\
+%\textit{Now discuss the different working points (give the efficiency) and how the optimal point has been retrieved. }%-- Maybe do this first ...! (now everything of previous paragraph is based on significant reduction but this is probably less the case for a double Loose b-tag !!!)}
+%
 %The b-jet identification or b-tagging algorithms currently existing can be deployed at specific working points corresponding to a specific misidentification probability. In order to be confident that the applied b-tagging algorithm \textbf{ameliorates/improves} the analysis, the three possible working points (\textit{Loose}, \textit{Medium} and \textit{Tight}) have been considered and compared.
 %The common factor in each of the investigated b-tagging configurations is the requirement of at least two jets in the event being tagged as a b-jet.
 %The influence of restricting the CSV discriminant value of the light jets has also been studied, but the gain of applying this was almost negligible and will therefore not be considered further. (\textit{Drop this since it has a marginal effect and only complicates the btag SF ...!})
+\begin{table}[h!t]
+ \centering
+ \caption{}\label{table::bTagResults}
+ \begin{tabular}{c|c|c|c|c|c} 
+  \textbf{Option} 	& all 4 correct 	& $\geq$ 1 wrong 	& correct ($\%$) 	& $\frac{s}{b}$ 	& non-matched 	\\ \hline 
+  2 L b-tags		& 426636 		& 612386 		& 41.0613 		& 0.696678 		& 1568843	\\ 
+  2 M b-tags 		& 325578 		& 327020 		& 49.8895 		& 0.995591 		& 826872	\\ 
+  2 T b-tags 		& 198204 		& 162941 		& 54.8821 		& 1.21642 		& 422919	\\ 
+ \end{tabular} 
+\end{table}
 
 The only relevant sample of background events comes from the single-top quark contribution, and especially the tW-channel. \\
 \textit{Now maybe give a Feynman diagram of single top to explain why it remains important.}\\
