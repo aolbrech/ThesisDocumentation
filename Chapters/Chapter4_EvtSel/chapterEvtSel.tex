@@ -33,7 +33,7 @@ Finally muon candidates not originating from the primary vertex are rejected by 
 Another important identification criterion is the isolation variable which allows to distinghuish prompt muons with high purity from the ones embedded in jets since it determines the hadronic (what about photon) activity around the muon candidate at the interaction vertex. %in a cone of radius $\Delta R$ = 0.4 around the muon candidate. 
 It is defined as the scalar sum of the transverse energy of all the reconstructed particles contained within a cone of radius $\Delta R$ = 0.4, excluding the contribution of the muon itself.
 However the large number of additional proton-proton interactions significantly complicates the identification of the interaction vertex requiring a correction variable to be applied in order to ensure a correct treatment of these supplementary interactions. 
-For this reason a $\Delta \beta$-corrected isolation variable has been developed, which includes for the charged hadrons (CH) only the partons associated with the primary vertex while for the neutral ones (NH and $\gamma$) the estimated PU contribution is substracted. This contribution can be calculated by halving the PU contribution for charged particles since jets contain on average twice more charged PF particles than neutral ones~\cite{CHContrVsN}. The formula to determine this $\Delta \beta$-corrected isolation variable is given in Equation (\ref{eq::DeltaBetaIso}) and in this analysis $I_{\textrm{rel}}^{\Delta \beta}$ is required to be smaller than 0.12 in order to guarantee the reconstructed muon is well isolated.
+For this reason a $\Delta \beta$-corrected isolation variable has been developed, which includes for the charged hadrons (CH) only the partons associated with the primary vertex while for the neutral ones (NH and $\gamma$) the estimated PU contribution is subtracted. This contribution can be calculated by halving the PU contribution for charged particles since jets contain on average twice more charged PF particles than neutral ones~\cite{CHContrVsN}. The formula to determine this $\Delta \beta$-corrected isolation variable is given in Equation (\ref{eq::DeltaBetaIso}) and in this analysis $I_{\textrm{rel}}^{\Delta \beta}$ is required to be smaller than 0.12 in order to guarantee the reconstructed muon is well isolated.
 \begin{equation}\label{eq::DeltaBetaIso}
  I_{\textrm{rel}}^{\Delta \beta} = \frac{1}{\pT^{\mu}} \left( \sum_{\textrm{CH}} \pT^{\textrm{CH}} + \max(0, \sum_{\textrm{NH}} \pT^{NH} + \sum_{\gamma} \pT^{\gamma} - 0.5 \sum_{PU} \pT^{PU}) \right)
 \end{equation}
@@ -41,20 +41,24 @@ For this reason a $\Delta \beta$-corrected isolation variable has been developed
 \textit{Need plots?}\\
 \textit{Muon veto discussed?}
 
-\subsection{Jet selection criteria}
+\subsection{Jet selection criteria}   %Info on: https://twiki.cern.ch/twiki/bin/view/CMS/TopJMERun1#Jets
 With the lepton selection clearly established, the next step consists of applying a similar type of identification and cleaning criteria to the selected events.
+The goal here is to drastically reduce the fake, badly reconstructed and noise jets while keeping close to 99 $\%$ of the real jets. These jet identification criteria have been studied in detail on 7 TeV data~\cite{JetId7TeV} (is probably private...), and only minor adaptations have been suggested for the 8 TeV data-taking period.
+\\
+The jet-identification criteria should be applied on the ParticleFlow jets after the different corrections discussed in Section~\ref{subsec::jetReco}: L1L2L3 correction, charged hadron subtraction (\textbf{Is this discussed in a previous chapter?)} %to remove all contributions from charged pileup 
+and jet-energy smearing. These calibrations are needed in order to correct for the small discrepancies observed between data and simulation.
 \\
 \\
-
-An notable difference in contrast to the leptons discussed before is that the PF jets require a few calibrations in order to correct for the small discrepancies observed between data and simulation (see \ref{subsec::jetReco}). These corrections need to be applied prior to the event selection for all jets \textbf{accounted for} in the event with $\pT$ $>$ 10 $\GeV$: charged hadron subtraction (CHS) which removes all the contributions of charged pileup, energy calibration using the L1L2L3 corrections and energy smearing in simulated events.
+In order to select top-quark pairs decaying semi-leptonically, characterised by a well-isolated lepton and four high-energetic jets, each event has to contain at least four jets fullfilling the requirements: $\pT$ $>$ 30 $\GeV$ and $\vert \eta \vert$ $<$ 2.4.
+Since each of these jets have to be well separated from the muon identified in the event, all jets for which the $\Delta R$ based distance is lower than 0.3 will be rejected.
 \\
-
-Since the chosen trigger path does not restrict in any way the jets present in the considered event implies that the entire selection and cleaning process is taken care of by the offline jet identification criteria (\textit{Not even a minimum requirement on the pt?})
-The actual event selection applied in this analysis requires an event to contain at least four high energetic jets ($\pT$ $>$ 30 $\GeV$) located within $\vert \eta \vert$ $<$ 2.4, which all have to be well separated from the identified lepton ($\Delta R$ $>$ 0.3).
-The actual jet identification criteria have as goal to reject fake, badly reconstructed and noisy jets while still remaining with a pure sample of real jets and restrict the energy fractions of the different jet constituents. These criteria constrain the energy fraction of the charged electromagnetic PF particles ($f_{CEM}$ $<$ 0.99), the energy fraction of the charged PF hadrons ($f_{CH}$ $>$ 0), the energy fraction of the neutral electromagnetic PF particles ($f_{NEM}$ $<$ 0.99) and the energy fraction of the neutral PF hadrons ($f_{NH}$ $<$ 0.99).
+The actual jet-identification criteria look at the distribution of the energy fractions and the composition of the different jet constituents.
+They reject the noise jets by constraining the energy fraction carried by the charged electromagnetic PF particles ($f_{CEM}$ $<$ 0.99), the energy fraction carried by the charged PF hadrons ($f_{CH}$ $>$ 0), the energy fraction carried by the neutral electromagnetic PF particles ($f_{NEM}$ $<$ 0.99) and the energy fraction carried by the neutral PF hadrons ($f_{NH}$ $<$ 0.99).
 \\
-
 \textit{What about number of constituents and muon fraction ?? (+ what is this fHPD (0.98) and n90Hits in event selection file?)}
+\\
+
+Another interesting jet-selection contraint, which will be discussed in more detail in Section~\ref{subsec::BTag}, is the requirement to have some of the jets present in the event to be identified as originating from b-quark decays. Even if most of the backgrounds considered for $\ttbar$ decays can have events containing mulitple jets, the possibility that they are labelled as a b-jet is significantly smaller.
 
 \section{Fine-tuning of the event selection}\label{sec::SpecificSelec}
 
@@ -64,49 +68,46 @@ In addition, the various synchronization exercises between the different analyse
 \\
 
 The above-mentioned selection criteria, however, still have to be fine-tuned in order to incorporate the analysis-specific requirements.
-The analysis discussed in this thesis actually requires a very stringent event selection mainly motivated by the choice to use a Matrix Element method, see Chapter~\ref{ch::MW}, to measure the anomalous couplings in the Wtb interaction vertex. Such a method examines an event using the full kinematic information and thus necessitates a large processing time for each event. As a result it has been decided to restrict the considered event sample as much as possible in order to avoid wasting computational resources on incorrect event topologies.
+The analysis discussed in this thesis actually requires a very stringent event selection mainly motivated by the choice to use a Matrix Element method (MEM), see Chapter~\ref{ch::MW}, (to perform the measurement). Such a MEM examines an event using the full kinematic information and thus needs a large processing time for each event. As a result there has been opted for to restrict the event sample as much as possible in order to avoid using computational resources on incorrect event topologies.
 \\
 \\
 Two important background-reduction constraints have been applied, each focussing on a different kinematic property and thus aiming to exclude distinct types of events. 
-The first one, which is discussed in Section~\ref{subsec::BTag}, exploits the characteristic signature of semi-leptonically decaying top-quark pair events: the expected presence of two jets originating from the decay of a b-quark. The second requirement, Section~\ref{subsec::MassCuts} focuses more on the kinematic properties of the reconstructed jets by demanding their mass combinations to correspond with the top-quark and W-boson mass.
+The first one, which is discussed in Section~\ref{subsec::BTag}, exploits the characteristic signature of semi-leptonically decaying top-quark pair events that two of the jets originate from the decay of a b-quark. The second requirement, Section~\ref{subsec::MassCuts}, focuses more on the kinematic properties of the reconstructed jets by demanding their mass combinations to correspond with the top-quark and W-boson mass.
 To finalize, Section~\ref{subsec::DataMC} will give an overview of the applied event selection and will demonstrate some of the kinematic properties of the remaining event sample.
 
 \subsection{Background reduction using b-jet identification}\label{subsec::BTag}
 
 Top-quark pair-production events for which one of the W-bosons decays hadronically and the other one leptonically are not merely characterised by the presence of a muon but also by the presence of two jets originating from the decay of the b-quarks.
-Exploiting this latter property is an effective manner of distinguishing the event topology from the background, since the decay of the b-quarks has the peculiar feature that it gives rise to a displaced vertex. This is due to the relatively long lifetime of the b-quark such that the decay does not occur at the interaction vertex, as has previously been discussed in Section~\ref{subsec::jetReco}.
+Exploiting this latter property is an effective manner of distinguishing the event topology from the background, since the decay of the b-quarks has the peculiar feature that it gives rise to a displaced vertex. This because the relatively long lifetime of the b-quark implies that the decay does not occur at the interaction vertex; for more detail see Section~\ref{subsec::jetReco}.
 \\ 
 
-For this analysis the b-jet identification is a crucial asset in reducing the background contribution since there has been opted for only selecting events for which at least two jets survive the b-tagging requirement. Since the main background samples for semi-leptonically decaying top-quark events might have events with one jet fullfilling this condition, the probability of having two such jets is significantly smaller (\textbf{Possible to give percentages?}). Hence the considered background samples; W-boson production in association with jets (W+jets), Z-boson production in association with jets (Z+jets) and single-top production in the t-, tW- and s-channel; will almost completely be excluded by applying this constraint.
+For this analysis the b-jet identification is a crucial asset in reducing the background contribution since only events for which at least two jets survive the b-tagging requirement will be considered. The main background samples for semi-leptonically decaying top-quark events might have events with one jet fullfilling this condition, having two  is less likely (\textbf{Possible to give percentages?}). Hence the considered background samples; W-boson production in association with jets (W+jets), Z-boson production in association with jets (Z+jets) and single-top production in the t-, tW- and s-channel; will almost be completely negligible after applying this b-tagging requirement.
 %(\textit{Check if this is also in someway the case when only a double light is applied! .. Yes, main background of W+jets is only 10 $\%$ of ttbar sample! (Total is 20$\%$ of ttbar)})
 \\
 
-The b-jet identification algorithms developed by the CMS collaboration are recommended to only be deployed at specific working points defined as \textit{Loose}, \textit{Medium} and \textit{Tight} and this advice has been followed here.
-These working points correspond to a predefined tagging probability of around 85$\%$, 69$\%$ and 52$\%$ and a misidentification one of 19$\%$, 5$\%$ and 1$\%$, respectively, for the Combined Secondary Vertex (CSV) b-tagging algorithm. (\textit{Good to repeat again ?})
-\\
-Since for this analysis priority is given to selecting event topologies matching with the expected topology as much as possible the double Tight b-tagging requirement is expected to result in the most desirable outcome, which can indeed be concluded from Table~\ref{table::bTagResults}.
-This table summarizes the number of events for which all four jets are correctly picked out from the collection of reconstructed jets, denoted as signal s, and for which at least one has been wrongly chosen. These two categories, together with the events for which no information about the underlying parton is available, represents the background such that the $s/b$ value gives an idea of the jet reconstruction efficiency for the different b-tag working points.
-\\
-It has also been studied whether an improvement can be achieved by limiting the CSV discriminant of the light jets using an anti-tagging algorithm, but since the effect was close to negligible it will not be considered further.
-\begin{table}[h!t]
+The b-jet identification algorithms developed by the CMS collaboration are recommended to only be deployed at specific working points, defined as \textit{Loose}, \textit{Medium} and \textit{Tight}. This advice has been followed in this analysis for which the Combined Secondary Vertex (CSV) b-tagging algorithm has been considered, with the three working points corresponding to a discriminant value of 0.244, 0.679 and 0.898; a tagging probability of around 85$\%$, 69$\%$ and 52$\%$; and a misidentification one of 19$\%$, 5$\%$ and 1$\%$; respectively.
+The impressive efficiency for this b-jet identification procedure can be understood by looking at the distribution of the CSV discriminant for different jet flavours given in Figure~\ref{fig::CSVDiscr}, allowing for a clear distinction between the two.
+\begin{figure}[h!t]
  \centering
- \caption{}\label{table::bTagResults}
- \begin{tabular}{c|c|c|c|c|c} 
-  \textbf{Option} 	& all 4 correct 	& $\geq$ 1 wrong 	& correct ($\%$) 	& $\frac{s}{b}$ 	& non-matched 	\\ \hline 
-  2 L b-tags		& 426636 		& 612386 		& 41.0613 		& 0.696678 		& 1568843	\\ 
-  2 M b-tags 		& 325578 		& 327020 		& 49.8895 		& 0.995591 		& 826872	\\ 
-  2 T b-tags 		& 198204 		& 162941 		& 54.8821 		& 1.21642 		& 422919	\\ 
- \end{tabular} 
-\end{table}
+ \includegraphics[width = 0.85 \textwidth]{Chapters/Chapter4_EvtSel/Figures/CSVDiscr_LightAndBJets.pdf}
+ \caption{Combined Secondary Vertex b-tag discriminant for the different jet-flavours.} \label{fig::CSVDiscr}
+\end{figure}
+
+Since for the analysis discussed here priority is given to selecting event topologies closely agreeing with the expected topology the double Tight CSV b-tagging requirement is expected to result in the most desirable outcome.
+This is indeed retrieved when comparing the number of events for which the four leading $\pT$ jets in the event are correctly picked out from the collection of reconstructed jets for the different b-tag working points. The corresponding $s/b$ value increases from 0.697 up to 0.996 and ends at 1.216 when tightening the CSV discriminant value.
+%, which is indeed what can be concluded from Table~\ref{table::bTagResults}.
+%This table gives an idea for how many events the four leading $\pT$ jets in the event are correctly picked out from the collection of reconstructed events. This number has been denoted as signal $s$ and will background
+%summarizes the number of events for which all four jets are correctly picked out from the collection of reconstructed jets, denoted as signal s, and for which at least one has been wrongly chosen. These two categories, together with the events for which no information about the underlying parton is available, represents the background such that the $s/b$ value gives an idea of the jet reconstruction efficiency for the different b-tag working points.
+It has also been investigation whether an improvement can be achieved by limiting the CSV discriminant of the light jets using an anti-tagging algorithm, but since the effect was almost negligible it will not be considered further.
+\\
 
 After these double b-tagging requirement the background samples have been significantly reduced and the only remaining contribution comes from the single-top quark events, and then in particular the tW-channel.
-This can be explained 
+This can be understood 
 \\
 \textit{Now maybe give a Feynman diagram of single top to explain why it remains important.}\\
 The application of this double Tight b-tagging algorithm is also the motivation why, besides the background samples discussed before, no other background contributions have been considered for this analysis as they will become completely redundant.
 \\
-
------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------
 \\
 
 %An important background reduction for semi-muonically decaying $\ttbar$ events can be achieved when the expected presence of two b-jets in the event topology is exploited. Since this is a rather %characteristic property of these type of events it will significantly decrease the contribution of events with the incorrect final state products.
@@ -114,11 +115,7 @@ The application of this double Tight b-tagging algorithm is also the motivation 
 %For this analysis the b-jet identification is a beneficial asset since it will significantly reduce the risk of selecting non-$\ttbar$ events in the final event sample (\textit{, which would consume valuable resources}).
 %\\
 
-\begin{figure}[h!t]
- \centering
- \includegraphics[width = 0.85 \textwidth]{Chapters/Chapter4_EvtSel/Figures/CSVDiscr_LightAndBJets.pdf}
- \caption{CSV discriminant} \label{fig::CSVDiscr}
-\end{figure}
+
 
 \begin{table}[h!t]
  \centering
