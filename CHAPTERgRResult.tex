@@ -1,0 +1,195 @@
+The benefit of looking also at the $\gR$ coefficient, and not only focussing on the $\VR$ one is that the relative changes in kinematics for this right-handed tensor coupling are expected to be much larger. This is explained by the way the coefficient enters the width formulas and the mixing which occurs with the $\VR$ coefficient.\\
+This different sensitivity is clearly visible in Figure~\ref{fig::VRvsgR}. An additional bonus for the $\gR$ coefficient is that the distributions are not symmetrical compared to 0.0 allowing the use of a simple second-order polynomial instead of a more complex $\fth$ order one which is needed for the $\VR$ case.
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/May2015_LikelihoodEvtSel/CosThetaVariation/CosThetaChange_RVRScan_FewerPoints.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/May2015_LikelihoodEvtSel/CosThetaVariation/RgRStudy/CosThetaVariation_RgRVariationNarrow.pdf}
+ \caption{Stronger dependence of the $\csTh$ distribution on the $\gR$ coefficient than on the $\VR$ one. Therefore the $\gR$ coefficient will be measured in a more narrow range than the one used for the $\VR$ measurement.}
+ \label{fig::VRvsgR}
+\end{figure}
+
+\section{Results prior to any pT-cuts}
+
+The first results for this $\gR$ coefficient are given in Figure~\ref{fig::gRResultsNoCut} which shows the obtained likelihood distribution for most of the $\gR$ values in the studied range:
+\begin{equation}
+ \gR \in \left[-0.2, -0.15, -0.1, -0.05, 0.0, 0.05, 0.1, 0.15, 0.2 \right]
+\end{equation}
+Currently the result for $\gR$ = 0.1 is still missing together with the values at the outer edges of the considered range. These last two are missing since the results for $\gR$ $\pm$ 0.15 seem to suggest that values further away from the expected Standard Model configuration value do not agree anymore with the simulated value. For all the smaller $\gR$ values a nice agreement is found with the value used for generating the MadGraph sample.\\
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/Neg015/AllThreeDistributions_Acc_NoCuts_Neg015.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/Neg01/AllThreeDistributions_Acc_NoCuts_Neg01.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/Neg005/AllThreeDistributions_Acc_NoCuts_Neg005.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/SM/AllThreeDistributions_Acc_NoCuts_SM.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/Pos005/AllThreeDistributions_Acc_NoCuts_Pos005.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/Pos015/AllThreeDistributions_Acc_NoCuts_Pos015.pdf}
+ \caption{Obtained $\loglik$ distribution for MadGraph samples created with different $\gR$ values. From top left to bottom right the values used are -0.15, -0.01, -0.05, 0.0, 0.05 and 0.15 respectively.}
+ \label{fig::gRResultsNoCut}
+\end{figure}
+
+From these $\loglik$ distributions can be concluded that the correct $\gR$ coefficient is recoverd for most of the considered MadGraph samples. However the deviation from the outer edges of the range are clearly visible and should be investigated further by looking at the result for a MadGraph sample created with $\gR$ = 0.1.\\
+Also the presence of large deviations in the kinematics, even for low changes in $\gR$, opens the possibility to add the $\gR$ = 0.025 parameter to improve the accuracy close to the Standard Model expectation value.
+
+\section{Results afer applying the event selection cuts}
+Since it is possible that MadWeight and MadGraph have different event cleaning procedures for low-momentum events, it is interesting to study the likelihood distributions with a full event selection applied. The one which is currently used is the following:
+\begin{table}[h!]
+ \centering
+ \caption{Event selection constraints applied for the MadGraph samples created.}\label{table::EvtSelCutsgR}
+ \begin{tabular}{c|c|c|c}
+		& pT-cut 	& $\eta$ 	& $\Delta$ R 	\\
+  \hline
+  jet 		& 30 $\GeV$ 	& 2.5 		& 0.3 		\\
+  lepton 	& 26 $\GeV$ 	& 2.5 		& 0.3 		\\
+  neutrino 	& 25 $\GeV$ 	& 2.5 		& 0.3
+ \end{tabular}
+\end{table}
+
+Another important difference with respect to the $\loglik$ distributions shown before is the adapted range which is made significantly wider in order to capture the possible minima that might occur further away from the expected Standard Model value. The considered range is given below but for the moment only the $\loglik$ distributions for the cases $-0.15$, $0.0$ and $0.05$ have been calculated.
+\begin{equation}\label{eq::FullgRRange}
+ \left[-0.5, -0.3, -0.2, -0.15, -0.1, -0.05, -0.025, 0, 0.025, 0.05, 0.1, 0.15, 0.2, 0.3, 0.5 \right]
+\end{equation}
+
+The result for these three $\gR$ configurations is given in the Figure~\ref{fig::gRAllCuts}.
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width=0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/CutsAppliedAlsoOnMET/Neg015/AllThreeDistributions_Acc_NoCuts_Neg015.pdf}
+ \includegraphics[width=0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/CutsAppliedAlsoOnMET/SM/AllThreeDistributions_Acc_NoCuts_SM.pdf}
+ \includegraphics[width=0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/CutsAppliedAlsoOnMET/Pos005/AllThreeDistributions_Acc_NoCuts_Pos005.pdf}
+ \caption{Obtained $\loglik$ distributions from three configurations when the above-mentioned event selection constraints have been applied (Table~\ref{table::EvtSelCutsgR}). The final distribution is still lacking additional information from the extended range.}
+ \label{fig::gRAllCuts}
+\end{figure}
+
+The biggest improvement is obtained for the configuration where $\gR$ = -0.15 since the applied event selection also ensures that the ``almost'' the correct minimum is retrieved. However it seems that also the enlarged range plays an important role.
+\\
+The Standard Model configuration does not correspond that well with the expected minimum but this is maybe caused by an issue with the cross-section calculated for $\gR$ = 0.05 which is for both the \textit{SM} as the \textit{Pos005} case larger than the surrounding configurations. \textbf{TO CHECK!}\\
+\\
+\textit{\textbf{Also mention something about the chi-sq distributions!}}
+
+\subsection{Including $\csTh$ reweighting}
+A next step in the event-selection calculations is applying the $\csTh$ reweighting which corrects the $\csTh$ distribution for the applied event selection constraints.
+As before this weight is determined for each event by comparing the $\csTh$ value prior to the applied cuts with the value obtained after these event selection is applied.
+\begin{equation}
+ weight = \frac{\csTh_{All}}{\csTh_{Cut}}
+\end{equation}
+
+This results in a weight for each event but in order to apply the reweighting correctly to the MadWeight output this weight should be equal for each of the $\gR$ configurations. If this would not be the case the $\csTh$ reweighting should be determined individually for each of the considered $\gR$ configurations considered in the studied range. This would definitely complexify the application of this reweighting procedure.\\
+Hence the obtained $\csTh$ fraction for each of the $\gR$ configurations has been plotted together in Figure~\ref{fig::CosThetagR_FullRange}, which shows a nice agreement between the different $\gR$ configurations although a clear discrepancy is visible for the so-called \textit{Neg05} case.
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.44 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/CutsAppliedAlsoOnMET/RelativeCutFunctionRgR_PtCutsApplied_AlsoOnMET.pdf}
+ \includegraphics[width = 0.55 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/CutsAppliedAlsoOnMET/WeightDistributionRgR_MGSamplePos015_CutsAppliedAlsoOnMET.pdf}
+ \caption{Fraction of $\csTh$ distribution before and after event selection cuts have been applied for all the different $\gR$ configurations considered. They all have a similar distribution with the exeption of the \textit{Neg05} case. (left) Distribution of the obtained $\csTh$ weight for all the events in the \textit{Pos015} case. (right)} \label{fig::CosThetagR_FullRange}
+\end{figure}
+
+The weights obtained for the $\gR$ configuration are not yet normalised as can be seen from the title of the right-handed distribution in Figure~\ref{fig::CosThetagR_FullRange}. This makes the application of this $\csTh$ reweighting a bit more challenging since it implies that an additional normalisation factor should be introduced in order to ensure correct implementation of this reweighting procedure.\\
+\textbf{\underline{Remark: }} Maybe interesting to check whether the weight remains similar (maybe also for the $\VR$ case) when only a reduced number of events is considered! This because the $\csTh$ weights are determined using 100 000 events but only 10 000 events or less are considered during the MadWeight calculations which might distort the normalisation of this reweighting procedure ...
+
+For the moment the $\csTh$ reweighting is applied without altering the normalisation and the obtained distributions are given in Figure~\ref{fig::gRAllCuts_CosTheta}, again for the same limited number of $\gR$ configurations which is currently calculated by MadWeight. The calculations of the other $\gR$ parameters will be done as soon as possible in order to ensure a similar behaviour for configurations further away from the Standard Model.
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width=0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/CutsAppliedAlsoOnMET/Neg015/AllThreeDistributions_Acc_NoCuts_Neg015_CosThetaReweightingApplied.pdf}
+ \includegraphics[width=0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/CutsAppliedAlsoOnMET/SM/AllThreeDistributions_Acc_NoCuts_SM_CosThetaReweightingApplied.pdf}
+ \includegraphics[width=0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/CutsAppliedAlsoOnMET/Pos005/AllThreeDistributions_Acc_NoCuts_Pos005_CosThetaReweightingApplied.pdf}
+ \caption{Obtained $\loglik$ distributions from three configurations when the above-mentioned event selection constraints have been applied together with the $\csTh$ reweighting  (Table~\ref{table::EvtSelCutsgR}). The final distribution is still lacking additional information from the extended range.}
+ \label{fig::gRAllCuts_CosTheta}
+\end{figure}
+
+The influence of this $\csTh$ reweighting procedure is extremely small and is almost only visible by the different range of the y-axis in the distributions in Figure~\ref{fig::gRAllCuts} and \ref{fig::gRAllCuts_CosTheta}. The current implementation of this reweighting is given in Equation (\ref{eq::CosThetaReweight}) and has an effect on both the MadWeight probability and the cross-section normalisation. The detailed influence of this $\csTh$ reweighting procedure is summarised in Figure~\ref{fig::CosThetaInfluence}, which contains the $\loglik$ distribution for the first polynomial fit before and after this reweighting is applied.
+
+\begin{equation}\label{eq::CosThetaReweight}
+ \mathcal{L}^{\csTh} = \sum (- \ln P^{MW}_{evt} + \ln \sigma) * weight_{\csTh,evt}
+\end{equation}
+\newpage
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/CutsAppliedAlsoOnMET/Neg015/CosThetaReweightingInfluence_Neg015_FullRange.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/CutsAppliedAlsoOnMET/SM/CosThetaReweightingInfluence_SM_FullRange.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/CutsAppliedAlsoOnMET/Pos005/CosThetaReweightingInfluence_Pos005_NarrowRange.pdf}
+ \caption{Influence of the $\csTh$ reweighting procedure for the three $\gR$ configurations currently studied.} \label{fig::CosThetaInfluence}
+\end{figure}
+
+\textbf{\underline{Remark: }} Rather unexpected that the influence of this $\csTh$ reweighting procedure is so small, especially when keeping in mind the large shape difference obtained in the $\VR$ case. The implementation used seems to be correct since the goal of this reweighting is to include an event with weight $x$ $x$ times in the sum over the events. (\textit{Or should it also be inside the logarithm??})
+
+\subsection{Adding additional constraint on slope of fit}
+A second point which has been studied in order to further improve the $\loglik$ distributions for the different $\gR$ configurations was the value of the second derivative which gives an idea whether the $\loglik$ distribution has the desired minimum-like shape or the maximum-like shape. Since the $\gR$ distributions can be fitted with a simple $\scd$ polynomial fit it makes sense to require this second derivative to be positive.\\
+When looking at all the events which have been studied rather a lot actually have this undesired maximum-like shape as can be seen from Figure~\ref{fig::ScdDerAllEvts_Neg015} which shows the value of this second derivative for the first polynomial fit. 
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/CutsAppliedAlsoOnMET/Neg015/ScdDerAllEvts_RgRNeg015.pdf}
+ \caption{Distribution of second derivative of polynomial fit (Neg015 case).} \label{fig::ScdDerAllEvts_Neg015}
+\end{figure}
+
+Therefore the $\loglik$ distributions obtained when requiring this second derivative to be positive were created and compared to the ones obtained when combining all events. Strangely enough this requirement does not result in a nice minimum-like overall $\loglik$ distribution but gives a distribution which does not agree at all with the expectations. This is shown in Figure~\ref{fig::LogLik_PosSlope} which contains the $\loglik$ distributions for events with positive second derivative.
+\\
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/CutsAppliedAlsoOnMET/Neg015/PosSlopeInfluence_Neg015.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/CutsAppliedAlsoOnMET/SM/PosSlopeInfluence_SM.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/CutsAppliedAlsoOnMET/Pos005/PosSlopeInfluence_Pos005.pdf}
+ \caption{Comparison between the $\loglik$ distribution (first polynomial fit) when all events are used (red) and when only the events which have a positive second derivative are considered (blue). This selection requirement clearly does not result in the desired improvement ...} \label{fig::LogLik_PosSlope}
+\end{figure}
+
+So this requirement is clearly not sufficient and does not result in the desired improvement. Hence detailed study of the events removed by this requirement should be done since this result seems to suggest that in order to obtain a correct $\loglik$ minimum the so-called \textit{wrong} events have to be incorporated in order to end up with an overall shape which matches with expectation. It still is very strange that the obtained result is so sensitive to these type of constraints and therefore a sample with 50 000 instead of the currently studied 10 000 events is being processed by MadWeight. This will hopefully be able to help decide whether these large changes can be caused by a kind of statistical fluctuations or whether there is really a profound physics reason behind...
+\\
+
+Another variable which was considered in order to serve as a ``weight cleaning'' requirement was the \textit{slope steepness}. 
+%Another observation that did not correspond with the expectations was the distribution of the ``steepness of the slope'' for all the events.  --> Combined all three normalisations ....
+This variable looks at the difference in value between the outermost point and the expected minimum point such that it gives an idea of the sharpness of the individual $\loglik$. 
+%For some strange reason this results in two separate peaks as can be seen from Figure~\ref{fig::SlopeSteepness_gR}. The peak positioned around 0 seems to suggest that a large portion of the events actually contain not much information and are almost flat while the events with a lot of information are represented by this second peak at higher values.
+From Figure~\ref{fig::SlopeSteepness_gRSM} can be seen that the slope steepness does not have the same sign as the second derivative of the fit and can therefore maybe be combined with this previous constraint. Figure~\ref{fig::SlopeSteepness_gRNeg015} confirms that the same behaviour is recovered for the Standard Model case and the \textit{Neg015} one.
+
+\begin{figure}[h!t]
+ \centering
+ %\includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/CutsAppliedAlsoOnMET/Neg015/SlopeSteepness_RgR_MGSampleNeg015.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/CutsAppliedAlsoOnMET/SM/SlopeSteepness_RgR_MGSampleSM.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/CutsAppliedAlsoOnMET/SM/SlopeSteepness_PosScdDer_RgR_MGSampleSM.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/CutsAppliedAlsoOnMET/SM/SlopeSteepness_NegScdDer_RgR_MGSampleSM.pdf}
+ \caption{Steepness of the slope using MadWeight probabilities (so no fit information is used) for the Standard Model configuration.} \label{fig::SlopeSteepness_gRSM}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/CutsAppliedAlsoOnMET/Neg015/SlopeSteepness_RgR_MGSampleNeg015.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/CutsAppliedAlsoOnMET/Neg015/SlopeSteepness_PosScdDer_RgR_MGSampleNeg015.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/CutsAppliedAlsoOnMET/Neg015/SlopeSteepness_NegScdDer_RgR_MGSampleNeg015.pdf}
+ \caption{Steepness of the slope using MadWeight probabilities (so no fit information is used) for the \textit{Neg015} configuration.} \label{fig::SlopeSteepness_gRNeg015}
+\end{figure}
+
+\textit{Rather strange that these two plots are so identical ... Would expect much less steeper slope in the ``Neg015'' case since the two points are located much closer together than in the ``SM'' case.}
+
+But also this does not result in the desired improvement, it even seems that requiring this ``slope steepness'' to be positive again makes the position of the minimum deviate further from the expected minimum ... The example given in Figure~\ref{fig::LogLik_PosSlope_PosSteepness} is the distribution obtained for the Standard Model configuration. It contains the comparison between the original $\loglik$ distribution, the one where only the slope is required to be positive and finally the distribution where both slope and steepness are constrained.
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/CutsAppliedAlsoOnMET/SM/PosSlopeInfluence_AlsoSteepness_SM.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/CutsAppliedAlsoOnMET/SM/PosSlopeInfluence_BothSteepness_SM.pdf} 
+ \caption{Comparing the $\loglik$ distributions for events with a positive second derivative (obtained from fit) and a positive difference between the outermost $\gR$ point (-0.5) and the expected minimum value (0.0) for the Standard Model case. The second distribution also contains the additional requirement that the slope on the other side should be negative.} \label{fig::LogLik_PosSlope_PosSteepness}
+\end{figure}
+
+
+\section{Cross-section dependency}
+
+As a test to determine how sensitive the obtained $\loglik$ distributions are to the used cross-section value for normalisation a sort of scaling of the cross-section has been applied. This is applied by multiplying the cross-section value for a specific $\gR$ configuration with the following function:
+\begin{equation}
+ f(\gR) = 1 + \gR *x ~ ~ ~ \textrm{with } x = \left\lbrace -0.1, -0.05, 0, 0.05, 0.1 \right\rbrace
+\end{equation}
+
+Since the cross-section normalisation term is a logarithmic term it was expected that even small changes in the cross-section can have enormeous effects, and this is indeed what is found and summarised in Figure~\ref{fig::XSScaling}. Strangely enough the event selection constraints applied for the bottom two configurations do not seem to reduce the dependency on this cross-section value. Since here the cross-section values are drastically reduced by these cuts it would seem more logical that the variations between the different scalings considered become less pronounced, but this is clearly not the case ...
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/XSScaling/MGSample_RgRNeg005_XSScaledComparison.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/XSScaling/MGSample_RgRPos015_XSScaledComparison.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/XSScaling/MGSample_RgRNeg015_CutsAppliedAlsoOnMET_XSScaledComparison.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/July2015_gRResults/XSScaling/MGSample_RgRPos005_CutsAppliedAlsoOnMET_XSScaledComparison.pdf}
+ \caption{Influence of the considered cross-section scaling both with and without event selection constraints applied.} \label{fig::XSScaling}
+\end{figure}
+
+
+
+

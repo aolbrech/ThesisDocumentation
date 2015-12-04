@@ -1,0 +1,52 @@
+\section{Issue: Change of VR not found in likelihood shape}
+
+\underline{First test configuration:} \\
+MadGraph sample created with $Re(V_{R})$ = + 0.08 \\
+$\Rightarrow$ Should result in a minimum around +0.08 when looking at summed likelihood!
+\\
+\\
+\textbf{\underline{But obtained result is not as expected ...}}\\
+Distributions given below are the total -ln(likelihood) when no cuts are applied, when only $\chi^{2}$-cut is applied and when the $\chi^{2}$-cut is combined with requiring the slope of the polynomial fit to be positive.\\
+\\
+For each of the cases this result is obtained by first fitting all the 21 points with a 2nd degree polynomial, removing the 7 points which are the farthest away from this fit distribution and then fitting again the remaining 14 points with another 2nd degree polynomial.\\
+The overal -ln(likelihood) distribution is obtained by summing all the separate -ln(L) fit distributions.\\
+\\
+The cuts which are applied always use the $\chi^{2}$ or the slope of this second fit.\\
+\\
+\underline{Remark: Low statistics ..}\\
+For the moment the statistics is still rather low, because my MadWeight calculation for the full 10000 events crashed yesterday.\\
+They are currently still running and should be finished later today.
+\newpage
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.71 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/May2015_LikelihoodEvtSel/SecondPolAcc_Summed_NoCuts_MGSampleWithRVR008.pdf}
+ \includegraphics[width = 0.71 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/May2015_LikelihoodEvtSel/SecondPolAcc_Summed_ChiSqCut_MGSampleWithRVR008.pdf}
+ \includegraphics[width = 0.71 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/May2015_LikelihoodEvtSel/SecondPolAcc_Summed_ChiSqCutPosSlope_MGSampleWithRVR008.pdf}
+\end{figure}
+
+So in order to make sure whether this unexpected position of the minimum was caused by the created ROOT macros I decided to repeat this test also for the top mass. If the position of the minimum would correspond with the top mass used for creating the MadGraph sample, the VR-issue above is not caused by the used ROOT macros ...\\
+\\
+As expected for the top mass all results look as expected. However since the top mass can be measured much more precisely the influence of the cuts on the -ln(likelihood) are less significant. The -ln(L) distribution without any cut applied already results in the correct position of the minimum ..\\
+\\
+Here only 5 points have been used (mainly for speeding up MadWeight CPU time) so only 1 point is removed before the second fit is applied.\\
+\\
+The first three distributions correspond to the MadGraph sample created with $m_{top}$ = 172 GeV while the second one was created with $m_{top}$ = 174 GeV.\\
+\\
+\textbf{\underline{Search for VR-issue}}\\
+Now that the control check using the top mass MadGraph samples indicated that the created ROOT macros and the consecutive fitting procedure does work as should be, I will continue to investigate why this is not the case for the anomalous couplings.\\
+Maybe the use of more statistics can help but I found it rather strange that with reduced statistics the position of the minimum is nicely positioned around $0$. Maybe the change of VR-component was not translated into the produced MadGraph sample, this I will check by creating some MadAnalysis plots which easily compares the kinematic information of different MadGraph samples.
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.71 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/May2015_LikelihoodEvtSel/SecondPolAcc_Summed_NoCuts_MGSampleWith172GeV.pdf}
+ \includegraphics[width = 0.71 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/May2015_LikelihoodEvtSel/SecondPolAcc_Summed_ChiSqCut_MGSampleWith172GeV.pdf}
+ \includegraphics[width = 0.71 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/May2015_LikelihoodEvtSel/SecondPolAcc_Summed_ChiSqCutPosSlope_MGSampleWith172GeV.pdf}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.71 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/May2015_LikelihoodEvtSel/SecondPolAcc_Summed_NoCuts_MGSampleWith174GeV.pdf}
+ \includegraphics[width = 0.71 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/May2015_LikelihoodEvtSel/SecondPolAcc_Summed_ChiSqCut_MGSampleWith174GeV.pdf}
+ \includegraphics[width = 0.71 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/May2015_LikelihoodEvtSel/SecondPolAcc_Summed_ChiSqCutPosSlope_MGSampleWith174GeV.pdf}
+\end{figure}

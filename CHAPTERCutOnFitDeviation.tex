@@ -1,0 +1,8 @@
+The problem of applying a cut on the $\chisq$ of the $\fth$ order polynomial through the number of reduced points is that it is likely to not have the complete physical meaning due to the lack of uncertainties on the MadWeight probabilities. Hence the $\chisq$ calculation will need to choose an arbitrary value to use as uncertainty when calculating the $\chisq$ of the fitted function.
+A possible solution can lie in using the ``FitDeviation'' variable which represents the total deviation of the measured points from the value suggested by the fit, relative to the value of the measured point.
+
+\begin{equation}
+ \textrm{FitDeviation} = \sum_{\textrm{bin}~i} \frac{\vert x_i - f(x_i) \vert}{x_i}
+\end{equation}
+
+This distribution should also be considered for ensuring that the number of excluded points is sufficient. This is the case when this distribution does not have a tail property anymore.

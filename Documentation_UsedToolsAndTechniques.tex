@@ -11,6 +11,8 @@
 \usepackage{hyperref}
 \usepackage{amsmath}
 %\hypersetup{colorlinks,urlcolor=blue}
+\usepackage{color}
+\usepackage{bm,array}      %Needed for changing width of boxes in tables!
 %----------------------------------------------------------------------------------
 \usepackage[centersections]{vubtitlepage}
 \usepackage[title,titletoc,toc]{appendix}
@@ -28,9 +30,10 @@
 \sectthreesize{24pt}
 \sectthreeskip{28pt}
 %----------------------------------------------------------------------------------
-
 \usepackage{hyperref}
 \begin{document}
+\include{definitions}
+
 \pagenumbering{roman}
 \setcounter{secnumdepth}{3} %Number up to the subsubsections!
 \setcounter{tocdepth}{3}    %Don't want the subsubsections appearing in the table of contents (-> then change back to 2!)
@@ -65,49 +68,49 @@
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 %	CHAPTER: Used Tools and Techniques
 \chapter{Used Tools and Techniques}
-%\input{CHAPTERUsedToolsAndTechniques.tex} %
+\input{CHAPTERUsedToolsAndTechniques.tex} %
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 %	CHAPTER: Generator level bottlenecks
 \chapter{Generator level bottlenecks}
-%\input{CHAPTERGeneratorLevelBottleNecks.tex}
+\input{CHAPTERGeneratorLevelBottleNecks.tex}
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 %	CHAPTER: Transfer Functions
 \chapter{Transfer Functions}
-%\input{CHAPTERTransferFunctions.tex}
+\input{CHAPTERTransferFunctions.tex}
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 %	CHAPTER: Preliminary Results
 \chapter{Preliminary Results}
-%\input{CHAPTERPreliminaryResults.tex}
+\input{CHAPTERPreliminaryResults.tex}
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 %	CHAPTER: Understanding Results Obtained With MadWeight
 \chapter{Understanding MadWeight Results}
-%\input{CHAPTERUnderstandingMWResults.tex}
+\input{CHAPTERUnderstandingMWResults.tex}
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 %	CHAPTER: Analyzing created FeynRules model
 \chapter{Analyzing FeynRules model}
-%\input{CHAPTERAnalyzingFRModel.tex}
+\input{CHAPTERAnalyzingFRModel.tex}
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 %	CHAPTER: MadGraph/MadWeight issues
 \chapter{MadGraph/MadWeight issues}
-%\input{CHAPTERMWMGIssues.tex}
+\input{CHAPTERMWMGIssues.tex}
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 %	CHAPTER: Event Selection
 \chapter{Event Selection}
-%\input{CHAPTEREventSelection.tex}
+\input{CHAPTEREventSelection.tex}
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
@@ -122,5 +125,52 @@
 \input{CHAPTERTheoryLinkWithPartialWidths.tex}
 %°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 
+%°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+%	CHAPTER: Likelihood optimization
+\chapter{Likelihood optimization}
+\input{CHAPTERLikelihoodOptimization.tex}
+%°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+
+%°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+%	CHAPTER: Likelihood event selection
+\chapter{Likelihood event selection}
+\input{CHAPTERLikelihoodEvtSel.tex}
+%°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+
+%°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+%	CHAPTER: Results after applying double fit
+\chapter{Obtained result after applying double fit}
+\input{CHAPTERDoubleFitResult.tex}
+%°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+
+%°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+%	CHAPTER: Comparison of SM behaviour
+\chapter{Comparison of SM behaviour}
+\input{CHAPTERComparisonSMBehaviour.tex}
+%°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+
+%°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+%	CHAPTER: Influence of generator-level event selection
+\chapter{Influence of generator-level event selection}
+\input{CHAPTERInfluenceGenLevelEventSelection.tex}
+%°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+
+%°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+%	CHAPTER: Effect of applying cut on FitDeviation in stead of $\chisq$
+\chapter{Effect of applying cut on FitDeviation in stead of on $\chisq$}
+\input{CHAPTERCutOnFitDeviation.tex}
+%°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+
+%°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+%	CHAPTER: Comparision between first and second polynomial fit
+\chapter{Comparision between first and second polynomial fit}
+\input{CHAPTERFirstOrSecondPolFit.tex}
+%°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+
+%°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+%	CHAPTER: Results from gR coefficient
+\chapter{Results from gR coefficient}
+\input{CHAPTERgRResult.tex}
+%°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
 
 \end{document}

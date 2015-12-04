@@ -1,0 +1,178 @@
+First results of the \NegLL distribution of the right-handed vector coefficient, $\VR$, for reco-level events indicated that the expected shape, a minimum around $\VR$ = 0, is not retrieved. However this behavior is recovered for generator-level events. Therefore this can be seen as a clear influence of the event selection and further investigation of the origin of this deviation might possibly result in an improved likelihood distribution. Hence effort has been put in investigating whether a specific cut on the likelihood distribution can result in the desired distribution.\\
+Since the reco-level events are simulated using the Standard Model constraints, namely $\VR$ = 0, this value should be recovered using the MadWeight output in order to exclude any bias caused by the event selection.
+
+\section{Comparison between correct, wrong and un-matched jet combinations}
+As a first step the chosen \ttbar jet combination has been divided in distinct categories based on the jet-parton matching output: correctly matched, wrongly matched and un-matched jet combinations. Since the wrongly-matched can be considered as a kind of background sample while the correctly matched correspond to clear signal events, their comparison can result in a possible hint for an optimal cut in order to reduce the contribution of background events. The number of events in each of these categories is given in the following table:
+\begin{table}[!h]
+ \centering
+ \caption{Grouping of the different jet-matching types for 10 000 ttbar semi-muonic (+) events.}
+ \begin{tabular}{c|c|c}
+  Correctly matched 	& Wrongly matched  	& Unmatched  	\\
+  \hline
+  13 608 		& 15 345 		& 34 176    	\\
+  21.56 $\%$ 		& 24.31 $\%$		& 54.14 $\%$
+ \end{tabular}
+\end{table}
+
+The top mass distributions, leptonically and hadronically decaying top, for each of the categories can be seen in Figure \ref{fig::MTRecoDistr}.
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/TopMassInfluence/CorrectReco_TopMassHadr.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/TopMassInfluence/CorrectReco_TopMassLept.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/TopMassInfluence/WrongReco_TopMassHadr.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/TopMassInfluence/WrongReco_TopMassLept.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/TopMassInfluence/UnmatchedReco_TopMassHadr.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/TopMassInfluence/UnmatchedReco_TopMassLept.pdf}
+ \caption{Distributions for the hadronically (left) and leptonically (right) decaying top quark mass for the correctly matched, wrongly matched and unmatched jet combinations, respectively.}
+ \label{fig::MTRecoDistr}
+\end{figure}
+
+The obtained mass distributions show mostly the expected behavior, indicating that the leptonically decaying top quark is less dependent of the correctness of the chosen jet combinations. The hadronically decyaing top quark on the other hand is significantly influenced by the chosen jet combination as can be seen by the large difference in tail for the correctly and wrongly matched jet combinations. \\
+
+The mass distribution of the hadronically decaying top quark for un-matched reco-level events show a rather unexpected behavior on the other hand ...\\
+\textit{I expected that this distribution would more be like a combination of the correctly and wrongly matched ones since in quite a lot of cases the correct parton-level jet combination is not available in the list of matched jet combinations. These should then be recovered when looking at the entire list of unmatched jet combinations. Of course quite often the wrong combination will be chosen, but still it seems rather strange that the tail of the unmatched jet combinations is significantly higher and more energetic than the one corresponding to the wrongly matched jet combinations ...}
+
+\subsection{Inefficiency of MadWeight depends on category-type}
+When using the different categories for for Matrix Element calculations, the number of events succesfully calculated depends quite heavily on the category considered. Althought it is important to mention that quite often this efficiency can vary when resubmitting the same configuration which could hint towards an influence of the cluster used for running the calculations.\\
+The number of remaining events which have been used for the measurements discussed further in this Chapter are given in Table \ref{table::MWEff}.
+
+\begin{table}[h!t]
+ \caption{Number of events for each of the four considered categories succesfully calculated by MadWeight. The number of failing events, for which a weight equal to $0.0$ has been returned or for which one of the considered configurations is missing, is especially significant for the category of unmatched reco-level events.}
+ \label{table::MWEff}
+ \begin{tabular}{c|c|c|c|c}
+  \multirow{2}{*}{Category}	& Generator-level 	& \multicolumn{3}{|c}{Reco-level events} 			\\
+				& events 		& Correctly matched	& Wrongly matched 	& Unmatched 	\\
+  \hline
+  Succesfull events 		& 10000 		& 9982 			& 9085			& 7538 		
+ \end{tabular}
+\end{table}
+
+\section{Measurement of top-quark mass using Matrix Element Method}
+In order to check the influence of the event selection, first the measurement of the top-quark mass has been performed using MadWeight.
+This event selection influence can then be understood by comparing the obtained measurement of the top quark mass on generator level with the one on reco-level.
+The results of the generator-level measurement can be found in Figure \ref{fig::MTGenLL} and Table \ref{table::MTGenFit} while Figure \ref{fig:MTGenDistr}\\
+For this type of events no acceptance normalisation can be applied since no event selection is applied on these generator-level events. Hence the only normalisation which can be applied is the cross-section normalisation.
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.95 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/TopMassInfluence/LLTopMass_Gen.pdf}
+ \caption{\NegLL distribution for $10 000$ generator-level \ttbar semi-mu (+) events. The minimum of the distribution corresponds to the correct minimum used for simulating these events, namely 172.5.}
+ \label{fig::MTGenLL}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.45 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/TopMassInfluence/Gen_TopMassHadr.pdf}
+ \includegraphics[width = 0.45 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/TopMassInfluence/Gen_TopMassLept.pdf}
+ \caption{Distributions for the hadronically (left) and leptonically (right) decaying top quark for generator-level events.}\label{fig::MTGenDistr}
+\end{figure}
+
+\begin{table}[h!t]
+ \centering 
+ \caption{Fit parameters of 2nd degree polynomial ($a_{0} + a_{1}*x + a_{2}*x^{2}$) and corresponding minimum for Gen events.} \label{table::MTGenFit} 
+ \begin{tabular}{c|c|c|c|c} 
+  & $a_{0}$ & $a_{1}$ & $a_{2}$ & $m_{top}$ \\ 
+  \hline 
+  no normalisation & 4390547.54588 & -44426.0021316 & 127.642247948 & 174.199999984 \\ 
+  XS normalisation & 4357397.72421 & -43885.9177784 & 126.428128287 & 173.400000012 
+ \end{tabular} 
+\end{table} 
+
+Similar results have been calculated for the three considered categories of reco-level events, and they are summarised in the Figures and Tables given below. The order of both the figures and the tables is the same: first correctly matched jet combinations, then wrongly matched ones and finally the unmatched jet combinations.\\
+The \NegLL distribution for the correctly matched jet combinations, which correspond the most with generator-level events, is the only one which follows the distribution obtained for the generator-level events. The two other distributions show a significant deviation of the position of the minimum indicating an important bias introduced by the applied event selection.
+
+\begin{figure}[h!]
+ \centering
+ \includegraphics[width = 0.75 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/TopMassInfluence/LLTopMass_CorrectReco.pdf}
+ \includegraphics[width = 0.75 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/TopMassInfluence/LLTopMass_WrongReco.pdf}
+ \includegraphics[width = 0.75 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/TopMassInfluence/LLTopMass_UnmatchedReco.pdf}
+ \caption{\NegLL distributions for $10000$ reco-level \ttbar semi-mu (+) events, respectively correctly matched, wrongly matched and unmatched jet combinations. The position of the minimum for the correctly matched jet combinations still corresponds with the value used for simulating these events, while the wrongly matched or unmatched jet combinations significantly distort the agreement with the expected minimum position.}
+ \label{fig::MTRecoLL}
+\end{figure}
+
+\begin{table}[h!]
+ \caption{Fit parameters of 2nd degree polynomial ($a_{0} + a_{1}*x + a_{2}*x^{2}$) and corresponding minimum for CorrectReco events.} \label{table::MTRecoCFit}
+ \begin{tabular}{c|c|c|c|c} 
+  \centering 
+  & $a_{0}$ & $a_{1}$ & $a_{2}$ & $m_{top}$ \\ 
+  \hline 
+  no normalisation & 2231296.75883 & -19063.0863774 & 54.4843673637 & 175.099999986 \\ 
+  XS normalisation & 2198831.67235 & -18531.2718603 & 53.2936154243 & 173.839999993 \\ 
+  Acc normalisation & 2127835.59494 & -18006.1769325 & 52.1206777931 & 172.580000005  
+ \end{tabular} 
+\end{table} 
+
+
+\begin{table}[h!]
+ \caption{Fit parameters of 2nd degree polynomial ($a_{0} + a_{1}*x + a_{2}*x^{2}$) and corresponding minimum for WrongReco events.} \label{table::MTRecoWFit}
+ \begin{tabular}{c|c|c|c|c} 
+  \centering 
+  & $a_{0}$ & $a_{1}$ & $a_{2}$ & $m_{top}$ \\ 
+  \hline 
+  no normalisation & 1430120.89175 & -9693.4402167 & 26.7893587541 & 180.999999991 \\ 
+  XS normalisation & 1400565.78862 & -9209.34336566 & 25.7054394299 & 179.000000001 \\ 
+  Acc normalisation & 1335938.33746 & -8731.32874723 & 24.6376683024 & 177.000000004
+ \end{tabular} 
+\end{table} 
+
+\begin{table}[h!]
+ \caption{Fit parameters of 2nd degree polynomial ($a_{0} + a_{1}*x + a_{2}*x^{2}$) and corresponding minimum for UnmatchedReco events.} \label{table::MTRecoUFit}
+ \begin{tabular}{c|c|c|c|c} 
+  \centering 
+  & $a_{0}$ & $a_{1}$ & $a_{2}$ & $m_{top}$ \\ 
+  \hline 
+  no normalisation & 1246891.66214 & -8364.64777064 & 22.579725034 & 185.399999984 \\ 
+  XS normalisation & 1222399.17029 & -7963.32843204 & 21.6813673937 & 183.79999998 \\ 
+  Acc normalisation & 1168822.11268 & -7567.24056311 & 20.7969519086 & 181.800000013
+ \end{tabular} 
+\end{table} 
+
+Comparing the different $m_{top}$ measurements for each of the categories and for the different normalisations applied clearly shows that applying both the cross-section normalisation and the acceptance normalisation significantly improves the measurement of the top-quark mass and brings it closer to the expected value.\\
+\textit{Current results are given without uncertainties.}
+
+\subsection{Improvement of top-quark mass measurement by applying cuts on \NegLL}
+In order to reduce the influence of the event selection on the top-quark mass measurement using a Matrix Element Method, MadWeight, the effect of applying a cut on the obtained \NegLL has been studied. For this only the events for which the \NegLL has a negative second derivative, and hence behaves as a parabola with a minimum in the range of interest, have been used to perform the top-quark mass measurement.\\
+
+The results of this study are summarized in Tables \ref{table::LLCutEff} and \ref{table::LLCutMT}, first the efficiency of this cut has been given by showing the percentage of remaining events after applying this cut on the different categories. The second table shows the obtained top-quark mass measurement after requiring one or both of the second derivatives to be positive.\\
+For the calculation of this second derivative 5 different points have been studied with the middle point the expected SM value. Hence a distinction can be made whether the second derivative of the inner three points, the second derivative of the two outer ones with the middle point or both of the two should be positive. This distinction, and their respective influence, can be retrieved in Table \ref{table::LLCutMT} where the categories have been named \textit{Inner}, \textit{Outer} and \textit{Both}, respectively.
+
+\newcolumntype{C}{>{\centering\arraybackslash}p{6.8em}} %Defined such that each of the boxes with numbers has the same width!!
+\begin{table}[h!t]
+ \caption{Percentage of remaining events for the four considered categories and three possible second derivative requirements. The numbers given here have been found by applying the above-mentioned cut on the \NegLL obtained by running MadWeight on $10 000$ \ttbar semi-mu (+) events. The number of successfully calculated events by MadWeight have been given before in Table \ref{table::MWEff}.}
+ \label{table::LLCutEff}
+ \begin{tabular}{c|C|C|C}
+					& \multicolumn{3}{c}{Events remaining after requiring $2^{nd}$ derivative $>$ $0$}  	\\
+					& \textit{Inner} ($\%$) 	& \textit{Outer} ($\%$) 	& \textit{Both}	($\%$)	\\
+  \hline
+  Generator level 			& 89.87				& 94.75				& 88.91			\\
+  Reco-level, correctly matched 	& 84.32 			& 75.22 			& 71.27 		\\
+  Reco-level, wrongly matched 		& 73.31 			& 67.58 			& 59.87 		\\
+  Reco-level, unmatched 		& 70.60 			& 66.40 			& 57.38 		
+ \end{tabular}
+\end{table}
+
+\begin{table}[h!t]
+ \caption{Measured top-quark mass for the four considered categories and the three possible second derivative requirements compared to the mass measured originally and documented in Tables \ref{table::MTGenFit} - \ref{table::MTRecoUFit}.}
+ \label{table::LLCutMT}
+ \begin{tabular}{c|c||c|c|c}
+					& \multirow{2}{*}{Original $m_{top}$} 	& \multicolumn{3}{c}{$m_{top}$ after requiring $2^{nd}$ derivative $>$ $0$}  		\\
+					& 					& \textit{Inner} (GeV) 	& \textit{Outer} (GeV) 	& \textit{Both}	(GeV)	\\
+  \hline
+  Generator level 			& 173.40 				& 172.73 		& 172.77		& 172.72		\\
+  Reco-level, correctly matched 	& 172.58 				& 172.69		& 172.92		& 172.86		\\
+  Reco-level, wrongly matched 		& 177.00 				& 173.24		& 173.07		& 173.08		\\
+  Reco-level, unmatched 		& 181.80 				& 173.55		& 173.26		& 173.27		
+ \end{tabular}
+\end{table}
+
+Table \ref{table::LLCutMT} clearly indicates the large improvement which can be gained when applying a requirement on the sign of the second derivative of the \NegLL. 
+The difference between the three cut options is almost negligible, but the influence of applying a restriction on the sign of the second derivative significantly approaches the measured top-quark mass to the one used for the simulation.\\
+However since the efficiency of the three different cut options, shown in Table \ref{table::LLCutEff}, clearly differs a lot the optimal cut is on the inner second derivative. Hence using the mass-points $172$, $173$ and $174$ GeV.\\
+
+However this conclusion only holds in the case of the top-quark mass measurement and will have to be revised for the measurement of the anomalous couplings. The main message which should be kept from this study is the fact that a clear and important improvement can be obtained when applying a cut on the \NegLL distribution. Using the case of the top-quark mass measurement, which was already quite decent without applying any cut, indicated that the considered method can be trusted and behaves as expected.\\
+
+\textit{\textbf{\textcolor{blue}{Only point which should still be considered (and which is probably more imporant for RVR measurement) is how the outer points are distributed with respect to the inner five points which are used for the fit ... This to have an idea whether the cut requirement results in weird-shaped events (and in the case of RVR now a reversed Mexican hat shape for example ...)}}}
+
+\section{Measurement of right-handed vector coupling, $\VR$, using Matrix Element Method}
+Now that the method and the influence of the event selection has been, partially, understood by first studying the measurement of the top-quark mass, the Matrix Element Technique can be applied on the right-handed vector coupling.\\
+Again the measurement has been done in a similar way and has been repeated for generator-level events and for correctly, wrongly and unmatched jet combinations of reco-level events.

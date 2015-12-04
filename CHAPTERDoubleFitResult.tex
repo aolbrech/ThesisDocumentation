@@ -1,0 +1,175 @@
+In order to overcome the influence of the few configuration points which destroy the shape of the likelihood distribution, it had been decided to apply a double-fit procedure in order to extract the measured anomalous coupling coefficient.
+This double fit procedure will be similar for both the $\VR$ and $\gR$ coefficient, however the symmetry in $\VR^{2}$ implies that for this coefficient a $4^{th}$ order polynomial should be applied while for $\gR$ a $2^{nd}$ degree polynomial is sufficient.
+\\
+\\
+The double-fit procedure is the following, defined on an event-by-event basis, and follows the following structure:
+\begin{enumerate}
+ \item The first fit is applied onto all the considered configuration points which have been calculated by MadWeight.
+ \item For each configuration point which has been used in the first fit, the deviation between the fit distribution and the actual MadWeight measurement is calculated and compared against all other configuration points. Depending on the original number of configuration points considered, a specific number of points with the highest fit deviation is excluded as input for the following fit.
+ \item Once these points have been identified a second, completely identical for the rest, fit is applied onto the remaining configuration points. This second fit is then used as the final fit from which the $\VR$ and $\gR$ coefficients will be extracted.
+\end{enumerate}
+The main benefit of such a double-fit approach is that the dependence with respect to a couple of deviating configuration points can easily be avoided by simply excluding them from the final fit.
+This will definitely help to make sure that the shape of the final fit corresponds the best with the actual likelihood shape and ensures that the distribution used for the coefficient measurement is not influenced by statistical fluctuations or erroneous MadWeight calculations.
+It is therefore important to exclude this type of configuration points since it is not advisable that the extracted measurements are sensitive to possible phase-space issues occuring during the MadWeight calculation step.
+\\
+\\
+Another important advantage of applying a double-fit on an event-by-event basis is that the likelihood distribution for each event is replaced by a smooth $\scd$ or $\fth$ order polynomial. The fact that a double-fit method is used even ensures that the $\chisq$ value and other characteristics make sense because the $x$ worst points have been removed from the fitted range. Hence it is possible, in the case of the $\scd$ order polynomial, to put a constraint on the slope of the likelihood shape by using the corresponding fit. Also cutting on the $\chisq$ value can help to select events for which a lot of events deviate from the proposed polynomial shape and not just contain two or three completely ``crazy'' events.
+\\
+The obtained improvement of the $\chisq$ variable between the first and second fit is shown in Figure~\ref{fig::ChiSqImprovement}. This corresponds to a simulated generator-level sample created by MadGraph using a different anomalous couplings coefficient than originally included in the Standard Model. Hence as expected, even the $\chisq$ distribution of the first fit is rather smooth and exhibits a nice peak around very low values. Still a clear improvement is visible when applying the second fit on a limited range.
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.8 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_DoubleFitResults/ChiSqImprovementBetweenFits.pdf}
+ \caption{Obtained $\chisq$ distribution when applying the first fit (blue) and when applying the second fit on the reduced number of configuration points (red).}
+ \label{fig::ChiSqImprovement}
+\end{figure}
+
+In order to select the optimal $\chisq$ constraint that should be applied a comparison of the $\chisq$ distribution for generator-level, signal reco and background reco events. Studying the overall $\loglik$ distribution for different $\chisq$ cuts indicated that cutting too tight might result in an altered shape in a rather negative way. So it seems that restricting the event selection too much actually has the opposite effect on the overall $\loglik$ distribution, probably because the power of MadWeight lies in the fact that the integrated phase space gets flattened out by considering multiple events. Comparing the individual MadWeight weight distributions on an event-by-event level clearly indicates that quite a lot of variation can be found in the shape, even in the case of the well-measured $\mT$. But again here the overall $\loglik$ shows a nice minimum almost at the expected position indicating again that MadWeight output should not be taken too serious for one single event.\\
+A couple of these type of event comparisons between the original MadWeight calculations and the second polynomial fit are given in Figure \ref{fig::SplitCanvas}.
+\\
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.9 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_DoubleFitResults/SplitCanvasLLXS_Nr47.pdf}
+ \caption{Overview of the MadWeight output for $25$ different, but consecutive, events fitted with the second $fth$ order polynomial. The used sample is a MadGraph sample created with $\VR$ $=$ $0.3$.}
+ \label{fig::SplitCanvas}
+\end{figure}
+
+For the moment three different $\chisq$ constraints have been studied, which should possibly be good enough to be applied for both gen-level events as reco-level events.
+In the following table, Table~\ref{table::ChiSqCuts}, the number of selected events for the different $\chisq$-cuts considered are listed for as much as possible generator- and reco-level samples.
+\\
+\begin{table}[h!t]
+ \centering
+ \caption{Number of selected events after applying the different $\chisq$-cuts considered. } 
+ \label{table::ChiSqCuts}
+ \begin{tabular}{c|c|c|c}
+  Sample 									& $\chisq$ $<$ 0.001 	& $\chisq$ $<$ 0.0005 	& $\chisq$ $<$ 0.0002 	\\
+  \hline
+  MG with $\VR$ $=$ 0.3 in $\left[-0.5, -0.3, -0.2, ..., 0.3, 0.5 \right]$ 	& 99.91 $\%$		& 99.78 $\%$		& 99.02 $\%$		\\
+  MG with $\VR$ $=$ -0.1 in $\left[-0.3, -0.275, ..., 0.3 \right]$ 		& 94.74 $\%$		& 90.30 $\%$		& 80.89 $\%$		\\
+  MG with $\VR$ $=$ -0.08 in $\left[-0.1, -0.09, ..., 0.1 \right]$ 		& 96.99 $\%$		& 93.85 $\%$		& 87.26 $\%$		\\
+  MG SM in $\left[-0.5, -0.3, -0.2, ..., 0.3, 0.5 \right]$ 			& 99.82 $\%$		& 99.62 $\%$		& 98.89 $\%$		\\
+  Gen in $\left[-0.5, -0.3, -0.2, ..., 0.3, 0.5 \right]$ 			& 97.35 $\%$		& 95.82 $\%$		& 92.63 $\%$		\\
+  Correct reco in $\left[-0.5, -0.3, -0.2, ..., 0.3, 0.5 \right]$ 	 	& 93.57 $\%$		& 90.58 $\%$		& 85.75 $\%$		\\
+  Wrong reco in $\left[-0.5, -0.3, -0.2, ..., 0.3, 0.5 \right]$			& 77.91 $\%$		& 72.55 $\%$		& 64.95 $\%$		\\
+  \hline
+ \end{tabular}
+\end{table}
+
+The improvement obtained when applying the $\chisq$ cuts on the final $\loglik$ distributions can be understood from the shape comparisons given in Figure~\ref{fig::ChiSqOnLL}, which show the original $\loglik$ distribution and the distribution of the events remaining after applying the specific $\chisq$ cuts.\\
+Strangly enough can be concluded from these distributions that applying the $\chisq$ cuts especially improves the bias in the case of the reco-level events. The middle-left histogram shows the influence on the $\loglik$ in the case of generator-level events and for these type of events the $\chisq$ cuts almost do not alter the position of the minimum. Maybe this observation can be explained by the much lower $\chisq$ values of the fit in the generator-level case such that requiring $\chisq$ $<$ $0.0005$ does not have the same influence on the shape. In order to be sure about this, maybe an additional $\chisq$ cut of, for example $0.00005$ can be applied in order to ensure that some influence can be seen on the overall $\loglik$ shape.\\
+\textbf{Update: } The middle-right histogram now contains almost the same distributions, but the $\chisq$-cut of $0.0005$ has been replaced by $0.00005$ in order to double-check whether applying a $\chisq$ cut also influences or improves the generator-level distributions. The obtained result is rather positive, since the blue distribution in this case nicely corresponds to a minimum around $\VR$ $=$ $0.0$ as suggested by the Standard Model! The corresponding percentages for this $\chisq$ cut is given in the Table~\ref{table::ChiSqCutTight}.
+\begin{table}[h!t]
+ \centering
+ \caption{Number of selected events after applying the different $\chisq$-cuts considered. Here the tighter $\chisq$-cuts have been applied which are only useful for generator-level events.} 
+ \label{table::ChiSqCutTight}
+ \begin{tabular}{c|c|c|c}
+  Sample 							& $\chisq$ $<$ 0.001 	& $\chisq$ $<$ 0.0002 	& $\chisq$ $<$ 0.00005 	\\
+  \hline
+  Gen in $\left[-0.5, -0.3, -0.2, ..., 0.3, 0.5 \right]$ 	& 97.35 $\%$		& 92.63 $\%$		& 85.66 $\%$		\\
+  MG SM in $\left[-0.5, -0.3, -0.2, ..., 0.3, 0.5 \right]$ 	& 99.82 $\%$		& 98.89 $\%$		& 95.77 $\%$		
+ \end{tabular}
+\end{table}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_DoubleFitResults/LLComparison_ChiSqCutsMGSample_RVR_10000Evts.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_DoubleFitResults/LLComparison_ChiSqCutsMGSampleNew_RVR_10000Evts.pdf}\\
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_DoubleFitResults/LLComparison_ChiSqCutsGen_RVR_10000Evts.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_DoubleFitResults/LLComparison_ChiSqCutsGen_RVR_10000Evts_TighterCut.pdf}\\
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_DoubleFitResults/LLComparison_ChiSqCutsCorrectReco_RVR_9995Evts.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_DoubleFitResults/LLComparison_ChiSqCutsWrongReco_RVR_9376Evts.pdf}
+ \caption{Influence of the different $\chisq$ cuts on the overall $\loglik$ distribution.}
+ \label{fig::ChiSqOnLL}
+\end{figure}
+
+A second strange, and even slightly worrysome, observation concerns the two upper distributions. These contain the likelihood distributions obtained for two MadGraph samples, both created separately using the Standard Model configuration. Hence they should definitely correspond to a minimum around $\VR$ $=$ $0.0$ since they are not even influenced by event selection or reconstruction effects ... In order to be completely sure that the first obtained result was created with a correct MG sample, a second one was created but as can be seen by comparing the right and left figure, they are clearly identical. Both of them correspond to a minimum at around $\VR$ $=$ $-0.2$. How this is possible, especially when the generator-level distribution does correspond with the predicted Standard Model value, is not really understood. Even the tighter $\chisq$ cut which is applied in the right distribution does not solve the issue of the positioning of the minimum.\\
+As a sort of consistency check which will be performed is comparing these two distributions with the result obtained when looking at a MG sample created with $\VR$ $=$ $0.05$. 
+
+\section{Double-check of method using $gR$ coefficient}
+In order to compare the correctness of the method, the same results can also be studied for the $\gR$ coefficient. In the best case looking at this anomalous couplings coefficient can give a possible explanation of the incorrect position of the minimum when looking at the Standard Model MG sample. However, then should still be understood why this issue arises for the $\VR$ coefficient.
+Otherwise the obtained results and distributions all have similar properties such that the double-fit method is completely double-checked and hence reliable to be used for analysing actual data events.
+\\
+
+One of the most important differences between measuring the $\VR$ coefficient and the $\gR$ coefficient is the fit function which has to be applied. As said before the $\gR$ coefficient is not supposed to be symmetric around $0$ implying that a quadratic function is sufficient for correctly measuring the anomalous coupling coefficient. Another important difference between the two coefficients is the sensitivity at low values, which is much higher in the $\gR$ case than in the $\VR$ case. This should normally imply that the $\gR$ coefficient can be studied in a narrower range than the $\VR$ one without introducing statistical fluctuations.\\
+The reason for this different sensitivity follows directly from the theoretical equations and is depicted in Figure~\ref{fig::CoefSensitivity}, which contains the shape influence on the $\csTh$ distribution when considering the same range.\\
+The range which will be used for the two anomalous coupling coefficient can easily be motivated by looking at these distributions, see Table~\ref{table::CoefRange}. However from the variation of the $\csTh$ distribution can be expected that even in the more narrow range used for the $\gR$ coefficient, the measurements will still be more sensitive since the variations here are still larger than in the range for the $\VR$ coefficient. But it is not wise to consider an even wider range for the $\VR$ measurement since the uncertainty on the likelihood distribution is so small, in general less than $0.1$ fluctuation on $\VR$ is retrieved, that the $5\sigma$ interval will not be visible anymore. Hence it can be concluded that the range given in the table can be somewhat seen as the minimum range for which fluctuations of the $\VR$ coefficient should be detectable. Considering a smaller range will result in a shape dominated by statistical fluctuations since the kinematics cannot be differentiated between the different coefficients calculated.
+
+\begin{table}[h!t]
+ \centering
+ \caption{Range which will be used for the two anomalous coupling coefficient considered here.}
+ \label{table::CoefRange}
+ \begin{tabular}{c|c}
+  coefficient 	& Range 								\\
+  \hline
+  $\VR$ 	& $\left[-0.5, -0.3, -0.2, -0.1, 0.0, 0.1, 0.2, 0.3, 0.5 \right]$ 	\\
+  $\gR$ 	& $\left[-0.2, -0.15, -0.1, -0.05, 0.0, 0.05, 0.1, 0.15, 0.2 \right]$
+ \end{tabular}
+\end{table}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/May2015_LikelihoodEvtSel/CosThetaVariation/CosThetaChange_RVRScan_FewerPoints.pdf}
+ \includegraphics[width = 0.4 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/May2015_LikelihoodEvtSel/CosThetaVariation/CosThetaVariation_RVRVariation_RgRNarrowRange.pdf}\\
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/May2015_LikelihoodEvtSel/CosThetaVariation/RgRStudy/CosThetaVariation_RgRVariation.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/May2015_LikelihoodEvtSel/CosThetaVariation/RgRStudy/CosThetaVariation_RgRVariationNarrow.pdf}
+ \caption{Stronger dependence of the $\csTh$ distribution on the $\gR$ coefficient than on the $\VR$ one. Therefore the $\gR$ coefficient will be measured in a more narrow range than the one used for the $\VR$ measurement.}
+ \label{fig::CoefSensitivity}
+\end{figure}
+
+For the moment it seems that there is an issue for the $\gR$ measurement when the acceptance normalisation is applied. As can be seen from Figure~\ref{fig::ChiSqgR}, the $\chisq$ distribution is completely wrong when going from the XS-normalisation to the acceptance-normalisation distribution. Looking at the individual distributions for both normalisation cases also shows that something strange is happening. Strangely enough the overall $\loglik$ distribution obtained from the double-fit procedure still seems pretty decent when no $\chisq$-cut is applied, which seems to suggest that the overall distribution should not be used without looking at the $\chisq$ distribution to ensure that only good fits are considered. 
+\\
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.6 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_DoubleFitResults/gRResults/ChiSqDistribution_XSandACCNorm.pdf}
+ \includegraphics[width = 0.7 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_DoubleFitResults/gRResults/SplitCanvas_gRAccNorm.pdf}
+ \includegraphics[width = 0.6 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_DoubleFitResults/gRResults/SecondPolAcc_Summed.pdf}
+ \caption{Strange behavior for $\chisq$ distribution when the acceptance normalisation is applied.}
+ \label{fig::ChiSqgR}
+\end{figure}
+
+
+%In order to be able to compare the obtained results of the $\gR$ case with the $\VR$ coefficient, at first the percentage of events surviving the $\chisq$ cuts are given in Table~\ref{table::ChiSqCutgR}. For each of the samples considered, the range used is the one given in Table~\ref{table::CoefRange}.
+
+%\begin{table}[h!t]
+% \centering
+% \caption{Number of selected events after applying the different $\chisq$-cuts considered. } 
+% \label{table::ChiSqCutgR}
+% \begin{tabular}{c|c|c|c}
+%  Sample 	& $\chisq$ $<$ 0.001 	& $\chisq$ $<$ 0.0005 	& $\chisq$ $<$ 0.0002 	& $\chisq$ $<$ 0.00005 	\\
+%  \hline
+%  MG SM  	&  $\%$		&  $\%$		&  $\%$		& 			\\
+%  Gen  		&  $\%$		&  $\%$		&  $\%$		& 			\\
+%  Correct reco 	&  $\%$		&  $\%$		&  $\%$		& 			\\
+%  Wrong reco 	&  $\%$		&  $\%$		&  $\%$		& 			
+%  \hline
+% \end{tabular}
+%\end{table}
+
+\newpage
+\section{Bias-dependence on used $\VR$ value MG sample}
+
+As a next check the measured $\VR$ should be compared with the $\VR$ coefficient used for generating the MadGraph sample. Therefore multiple MadWeight calculations should be done for each of the configurations considered in the range. It would be advisable that the bias found between the coefficient used for generating the sample and the coefficient retrieved from the measurement is independent of the value used for generating the sample. This kind of behavior would be more difficult to understand since it implies that the bias is not perfectly linear and influenced by some other effects.
+
+\begin{table}[h!t]
+ \centering
+ \begin{tabular}{c|c|c}
+  $\VR$ coefficient 	& Present? 	& Measurement 	\\
+  \hline
+  -0.5 			& Yes 		& 		\\
+  -0.3 			& Yes 		& 		\\
+  -0.2 			& Yes 		& 		\\
+  -0.1 			& Yes 		& 		\\
+  0.0 			& Yes 		& 		\\
+  0.1 			& Yes 		& 		\\
+  0.2 			& No 		& 		\\
+  0.3 			& Yes 		& 		\\
+  0.5 			& No 		& 		\\
+ \end{tabular}
+\end{table}
+
+\section{Influence of tighter $\chisq$ cuts}
+
+
+
+
+
+

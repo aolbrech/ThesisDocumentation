@@ -1,0 +1,356 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{lscape}
+\usepackage{multirow}
+\usepackage[labelfont=bf]{caption}
+\usepackage{color}
+\usepackage{hyperref}
+\usepackage{amsmath}
+%\hypersetup{colorlinks,urlcolor=blue}
+\usepackage{color}
+\usepackage{bm,array}      %Needed for changing width of boxes in tables!
+
+\newcommand{\NegLL}{-$\ln(\mathcal{L})$~}
+\newcommand{\RVR}{$Re(V_R)$~}
+\newcommand{\VR}{$V_{R}$}
+\newcommand{\ttbar}{$t\bar{t}$~}
+\newcommand{\mTop}{$m_{top}$~}
+
+%opening
+\title{Influence of Likelihood cut}
+
+\begin{document}
+
+\maketitle
+
+\underline{Problem: } Minimum of \VR~ not found at zero as expected ... \\
+
+$\Rightarrow$ Forcing the \NegLL to have a minimum between $-0.1$/$-0.05$ and $0.1$/$0.05$ can help!
+
+%First results of the \NegLL distribution of the right-handed vector coefficient, \VR, for reco-level events indicated that the expected shape, a minimum around \VR~ = 0, is not retrieved. However this behavior is recovered for generator-level events. Therefore this can be seen as a clear influence of the event selection and further investigation of the origin of this deviation might possibly result in an improved likelihood distribution. Hence effort has been put in investigating whether a specific cut on the likelihood distribution can result in the desired distribution.\\
+%Since the reco-level events are simulated using the Standard Model constraints, namely \VR~ = 0, this value should be recovered using the MadWeight output in order to exclude any bias caused by the event selection.
+
+\section{Comparison between correct, wrong and un-matched jet combinations}
+%As a first step the chosen \ttbar jet combination has been divided in distinct categories based on the jet-parton matching output: correctly matched, wrongly matched and un-matched jet combinations. Since the wrongly-matched can be considered as a kind of background sample while the correctly matched correspond to clear signal events, their comparison can result in a possible hint for an optimal cut in order to reduce the contribution of background events. 
+The number of events in each of these categories is given in the following table:
+\begin{table}[!h]
+ \centering
+ \caption{Grouping of the different jet-matching types for 10 000 ttbar semi-muonic (+) events.}
+ \begin{tabular}{c|c|c}
+  Correctly matched 	& Wrongly matched  	& Unmatched  	\\
+  \hline
+  13 608 		& 15 345 		& 34 176    	\\
+  21.56 $\%$ 		& 24.31 $\%$		& 54.14 $\%$
+ \end{tabular}
+\end{table}
+
+The top mass distributions for each of the categories are given in Figure \ref{fig::MTRecoDistr}. These distributions can give an idea which \mTop value should be retrieved from the MadWeight calculations.
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/TopMassInfluence/CorrectReco_TopMassHadr.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/TopMassInfluence/WrongReco_TopMassHadr.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/TopMassInfluence/UnmatchedReco_TopMassHadr.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/TopMassInfluence/CorrectReco_TopMassLept.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/TopMassInfluence/WrongReco_TopMassLept.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/TopMassInfluence/UnmatchedReco_TopMassLept.pdf}
+ \caption{Distributions for the hadronically (upper) and leptonically (lower) decaying top quark mass for the correctly matched, wrongly matched and unmatched jet combinations, respectively.}
+ \label{fig::MTRecoDistr}
+\end{figure}
+
+%The obtained mass distributions show mostly the expected behavior, indicating that the leptonically decaying top quark is less dependent of the correctness of the chosen jet combinations. The hadronically decyaing top quark on the other hand is significantly influenced by the chosen jet combination as can be seen by the large difference in tail for the correctly and wrongly matched jet combinations. \\
+
+%The mass distribution of the hadronically decaying top quark for un-matched reco-level events show a rather unexpected behavior on the other hand ...\\
+%\textit{I expected that this distribution would more be like a combination of the correctly and wrongly matched ones since in quite a lot of cases the correct parton-level jet combination is not available in the list of matched jet combinations. These should then be recovered when looking at the entire list of unmatched jet combinations. Of course quite often the wrong combination will be chosen, but still it seems rather strange that the tail of the unmatched jet combinations is significantly higher and more energetic than the one corresponding to the wrongly matched jet combinations ...}
+
+\subsection{Inefficiency of MadWeight depends on category-type ...}
+%When using the different categories for Matrix Element calculations, the number of events succesfully calculated depends quite heavily on the category considered. Althought it is important to mention that quite often this efficiency can vary when resubmitting the same configuration which could hint towards an influence of the cluster used for running the calculations.\\
+The number of remaining events which have been used for the measurements discussed further in this Chapter are given in Table \ref{table::MWEff}. The dependence of the MadWeight inefficiency on the considered category can be understood from the large number of wrong event topologies in the wrongly matched and unmatched category.
+
+\begin{table}[h!t]
+ \caption{Number of events for each of the four considered categories succesfully calculated by MadWeight. The number of failing events, for which a weight equal to $0.0$ has been returned or for which one of the considered configurations is missing, is especially significant for the category of unmatched reco-level events.}
+ \label{table::MWEff}
+ \begin{tabular}{c|c|c|c|c}
+  \multirow{2}{*}{Category}	& Generator-level 	& \multicolumn{3}{c}{Reco-level events} 			\\
+				& events 		& Correctly matched	& Wrongly matched 	& Unmatched 	\\
+  \hline
+  Succesful events (\mTop)	& 10000 		& 9982 			& 9085			& 7538 		\\
+  Succesful events (\RVR) 	& 10000 		& 9995 			& 9376 			& 8059
+ \end{tabular}
+\end{table}
+
+\section[Measurement of $m_{top}$ using MEM]{Measurement of top-quark mass using Matrix Element Method}
+In order to check the influence of the event selection, first the measurement of the top-quark mass has been performed.
+%This event selection influence can then be understood by comparing the obtained measurement of the top quark mass on generator level with the one on reco-level.
+The distributions for the generator-level events can be found in Figure \ref{fig::MTGenLL} and Figure \ref{fig::MTGenDistr}~.
+Both the \NegLL distribution and the obtained mass distributions show the expected behavior.
+% while Figure \ref{fig:MTGenDistr}\\
+%For this type of events no acceptance normalisation can be applied since no event selection is applied on these generator-level events. Hence the only normalisation which can be applied is the cross-section normalisation.
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.75 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/TopMassInfluence/LLTopMass_Gen.pdf}
+ \caption{\NegLL distribution for $10 000$ generator-level \ttbar semi-mu (+) events. The minimum of the distribution seems to be located around the value used for simulating these events, namely 172.5 GeV.}
+ \label{fig::MTGenLL}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.4 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/TopMassInfluence/Gen_TopMassHadr.pdf}
+ \includegraphics[width = 0.4 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/TopMassInfluence/Gen_TopMassLept.pdf}
+ \caption{Distributions for the hadronically (left) and leptonically (right) decaying top quark for generator-level events.}\label{fig::MTGenDistr}
+\end{figure}
+
+Also for the generator-level events the \NegLL distributions, given in Figure \ref{fig::MTRecoLL}, can be studied.
+%Similar results have been calculated for the three considered categories of reco-level events, and they are summarised in the Figures and Tables given below. The order of both the figures and the tables is the same: first correctly matched jet combinations, then wrongly matched ones and finally the unmatched jet combinations.\\
+The \NegLL distribution for the correctly matched jet combinations is the only one which follows the distribution obtained for the generator-level events. The two other distributions show a significant deviation of the position of the minimum indicating an important bias introduced by the applied event selection.\\
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.65 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/TopMassInfluence/LLTopMass_CorrectReco.pdf}
+ \includegraphics[width = 0.65 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/TopMassInfluence/LLTopMass_WrongReco.pdf}
+ \includegraphics[width = 0.65 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/TopMassInfluence/LLTopMass_UnmatchedReco.pdf}
+ \caption{\NegLL distributions for $10000$ reco-level \ttbar semi-mu (+) events, respectively correctly matched, wrongly matched and unmatched jet combinations. The position of the minimum for the correctly matched jet combinations still corresponds with the value used for simulating these events, while the wrongly matched or unmatched jet combinations significantly distort the agreement with the expected minimum position.}
+ \label{fig::MTRecoLL}
+\end{figure}
+
+Fitting the \NegLL distributions of the generator-level events and the three categories of reco-level events with a $2^{nd}$ degree polynomial gives a measurement of the \mTop mass. The results of this fit is given in Table \ref{table::mTopResults}.
+Comparing the different $m_{top}$ measurements for each of the categories and for the different normalisations applied clearly shows that applying both the cross-section normalisation and the acceptance normalisation significantly improves the measurement of the top-quark mass and brings it closer to the expected value.\\
+\textit{Current results are given without uncertainties.}
+
+\begin{table}[h!t]
+ \caption{Obtained measurement for \mTop for the different categories considered. Fit on the obtained \NegLL has been done using a 2nd degree polynomial.}\label{table::mTopResults}
+ \centering
+ \begin{tabular}{l|c|c|c}
+					& \multicolumn{3}{c}{Applied normalisation on \NegLL} 			\\
+					& None (GeV) 			& Cross-section (GeV) 	& Acceptance (GeV)	\\
+  \hline
+  Generator level 			& $173.014^{+0.0442}_{-0.0442}$	& $172.783^{+0.0441}_{-0.0441}$	& X 		\\
+  Reco-level, correctly matched 	& 175.10 	& 173.84 		& 172.58 	\\
+  Reco-level, wrongly matched 		& 181.00 	& 179.00 		& 177.00 	\\
+  Reco-level, unmatched 		& 185.40 	& 183.80 		& 181.80 	
+ \end{tabular}
+\end{table}
+
+\subsection{Improvement of top-quark mass measurement by applying cuts on \NegLL}
+In order to reduce the influence of the event selection the effect of requiring the second derivative to be positive (= \NegLL is parabola with a minimum) is studied.
+%on the top-quark mass measurement using a Matrix Element Method, MadWeight, the effect of applying a cut on the obtained \NegLL has been studied. For this only the events for which the \NegLL has a negative second derivative, and hence behaves as a parabola with a minimum in the range of interest, have been used to perform the top-quark mass measurement.\\
+
+The results are summarized in Tables \ref{table::LLCutEff} and \ref{table::LLCutMT}: first the efficiency of this cut has been given by showing the percentage of remaining events after applying this cut on the different categories and afterwards the obtained \mTop value after the cut is given.
+%The second table shows the obtained top-quark mass measurement after requiring one or both of the second derivatives to be positive.\\
+For the calculation of this second derivative 5 different points have been studied with the middle point the expected SM value. Hence a distinction can be made whether the second derivative of the inner three points, the second derivative of the two outer ones with the middle point or both of the two should be positive. %This distinction, and their respective influence, can be retrieved in Table \ref{table::LLCutMT} where the categories have been named \textit{Inner}, \textit{Outer} and \textit{Both}, respectively.
+
+\newcolumntype{C}{>{\centering\arraybackslash}p{6.8em}} %Defined such that each of the boxes with numbers has the same width!!
+\begin{table}[h!t]
+ \caption{Percentage of remaining events for the four considered categories and three possible second derivative requirements. The numbers given here have been found by applying the above-mentioned cut on the \NegLL obtained by running MadWeight on $10 000$ \ttbar semi-mu (+) events. The number of successfully calculated events by MadWeight have been given before in Table \ref{table::MWEff}.}
+ \label{table::LLCutEff}
+ \centering
+ \begin{tabular}{c|C|C|C}
+					& \multicolumn{3}{c}{Events remaining after requiring $2^{nd}$ derivative $>$ $0$}  	\\
+					& \textit{Inner} ($\%$) 	& \textit{Outer} ($\%$) 	& \textit{Both}	($\%$)	\\
+  \hline
+  Generator level 			& 89.87				& 94.75				& 88.91			\\
+  Reco-level, correctly matched 	& 84.32 			& 75.22 			& 71.27 		\\
+  Reco-level, wrongly matched 		& 73.31 			& 67.58 			& 59.87 		\\
+  Reco-level, unmatched 		& 70.60 			& 66.40 			& 57.38 		
+ \end{tabular}
+\end{table}
+
+\begin{table}[h!t]
+ \caption{Measured top-quark mass for the four considered categories and the three possible second derivative requirements compared to the mass measured originally (see Table \ref{table::mTopResults}). The fit has been applied on the acceptance normalised (cross-section normalised) \NegLL for reco-level (generator-level) events.}
+ \label{table::LLCutMT}
+ \centering
+ \renewcommand{\arraystretch}{1.3}
+ \begin{tabular}{c|c||c|c|c}
+					& \multirow{2}{*}{Original $m_{top}$} 	& \multicolumn{3}{c}{$m_{top}$ after requiring $2^{nd}$ derivative $>$ $0$}  			\\
+					& 					& \textit{Inner} (GeV)		& \textit{Outer} (GeV)		& \textit{Both}	(GeV)		\\
+  \hline
+  Generator level 			& $172.783^{+0.0441}_{-0.0441}$		& $172.730^{+0.0450}_{-0.0450}$	& $172.768^{+0.0434}_{-0.0434}$	& $172.724^{+0.0447}_{-0.0447}$	\\
+  Reco-level, correctly matched 	& $172.849^{+0.0697}_{-0.0697}$		& $172.694^{+0.0639}_{-0.0639}$	& $172.919^{+0.0544}_{-0.0544}$	& $172.860^{+0.0572}_{-0.0572}$	\\
+  Reco-level, wrongly matched 		& $174.116^{+0.0664}_{-0.0664}$		& $173.238^{+0.0518}_{-0.0518}$	& $173.070^{+0.0353}_{-0.0353}$	& $173.079^{+0.0412}_{-0.0412}$	\\
+  Reco-level, unmatched 		& $175.056^{+0.0695}_{-0.0695}$		& $173.548^{+0.0520}_{-0.0520}$	& $173.260^{+0.0334}_{-0.0334}$	& $173.268^{+0.0389}_{-0.0389}$	
+ \end{tabular}
+\end{table}
+
+From this the large gain of requiring the \NegLL to have a minimum around the Standard Model value is clearly visible. And it doesn't seem to introduce an additional bias such that it can definitely be applied on the anomalous couplings measurement as well!\\
+
+%Table \ref{table::LLCutMT} clearly indicates the large improvement which can be gained when applying a requirement on the sign of the second derivative of the \NegLL. 
+%The difference between the three cut options is almost negligible, but the influence of applying a restriction on the sign of the second derivative significantly approaches the measured top-quark mass to the one used for the simulation.\\
+%However since the efficiency of the three different cut options, shown in Table \ref{table::LLCutEff}, clearly differs a lot the optimal cut is on the inner second derivative. Hence using the mass-points $172$, $173$ and $174$ GeV.\\
+
+%However this conclusion only holds in the case of the top-quark mass measurement and will have to be revised for the measurement of the anomalous couplings. The main message which should be kept from this study is the fact that a clear and important improvement can be obtained when applying a cut on the \NegLL distribution. Using the case of the top-quark mass measurement, which was already quite decent without applying any cut, indicated that the considered method can be trusted and behaves as expected.\\
+
+\textit{\textcolor{blue}{Only point which should still be considered (and which is probably more imporant for RVR measurement) is how the outer points are distributed with respect to the inner five points which are used for the fit ... This to have an idea whether the cut requirement results in weird-shaped events }}
+
+\section[Measurement of \VR~ using MEM]{Measurement of right-handed vector coupling, \VR, using Matrix Element Method}
+Applying exactly the same condition on the measurement of \VR!\\
+
+In the case of the \VR~ measurement the influence of the cross-section is even important to obtain the correct minimum for generator-level events. This can be seen in Figure \ref{fig::RVRXSNeeded} which first shows the non-normalized \NegLL and then the one after applying this normalisation.
+
+\begin{figure}[h!t]
+ \caption{\NegLL distribution for generator-level events} \label{fig::RVRXSNeeded}
+ \centering
+ \includegraphics[width = 0.6 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/RVRInfluence/RVR_GenEvents.pdf}
+ \includegraphics[width = 0.6 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/RVRInfluence/RVR_GenEvents_ZoomOnXSNorm.pdf}
+\end{figure}
+
+The same \NegLL has also been obtained when the range of the \VR~ component is restricted between $-0.3$ and $0.3$ because the value of $\pm 0.5$ is too far from the expected value when taking into account the existing uncertainties on the value! This is given in Figure \ref{fig::RVRNarrowLL}.\\
+
+However it seems that the added points on $\pm 0.05$ (for having enough data-points around the minimum) actually distort the smooth curve ... \textit{\textcolor{blue}{Maybe this is caused by the influence of the XS which actually varies more than would be expected based on the uncertainty given by MadGraph ...}}\\
+\begin{figure}[h!t]
+ \caption{\NegLL distribution for generator-level events (narrow range of \RVR)} \label{fig::RVRNarrowLL}
+ \centering
+ \includegraphics[width = 0.6 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/RVRInfluence/LLNarrowRVR_Gen.pdf}
+\end{figure}
+
+Similar distributions (zoomed on normalized \NegLL) for the reco-level events when considering the narrow \RVR range can be found in Figure \ref{fig::RVRNarrowLLRECO}. From these can be concluded that the influence of requiring the \NegLL to have a minimum will probably have a very large effect... Since the shape currently looks a little bit random it seems to suggest that quite a lot of events will be discarded when applying this requirement!\\
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.6 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/RVRInfluence/LLNarrowRVR_RecoCorrect.pdf}
+ \includegraphics[width = 0.6 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/RVRInfluence/LLNarrowRVR_RecoWrong.pdf}
+ \includegraphics[width = 0.6 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/RVRInfluence/LLNarrowRVR_RecoUnmatched.pdf}
+ \caption{\NegLL distributions for reco-level events. (narrow range of \RVR)} \label{fig::RVRNarrowLLRECO}
+\end{figure}
+
+\subsection{Improvement when applying cuts on \NegLL}
+Since it seems completely ridiculous to fit the reco-level \NegLL distributions with a quadratic function, only an attempt to calculate the \RVR value using generator-level events has been done. This both for the full and narrow range of the coefficient as shown in Table \ref{table::RVRGenResults}.\\
+\textit{\textcolor{blue}{Before any conclusion can be made from this table, the uncertainties on this \RVR value should be added ...}}
+
+\begin{table}[h!t]
+ \caption{Obtained measurement for \RVR for the two ranges considered for generator-level events. Again the fit on the obtained \NegLL has been done using a 2nd degree polynomial. The full \RVR generator-level measurement is done using 20 000 events while the narrow one only uses 10 000 events.}\label{table::RVRGenResults}
+ \centering
+ \renewcommand{\arraystretch}{1.3}
+ \begin{tabular}{l|c|c}
+					& \multicolumn{2}{c}{Applied normalisation on \NegLL} 	\\
+					& None 		& Cross-section 	 		\\
+  \hline
+  Generator level (full \RVR) 		& 		& 		\\
+  Generator level (narrow \RVR) 	& 		& 
+ \end{tabular}
+\end{table}
+
+Applying the \NegLL-level event selection will be rather important for measuring the anomalous couplings coefficient. As expected, the number of events which gets excluded by this requirement is higher than for the \mTop measurement.\\
+From this it seems that applying a cut on the second derivative of ($-0.05/0.0/0.05$) actually cuts away a higher percentage of events. However if this has a positive influence on the obtained measurement (\textit{\textcolor{blue}{with uncertainties}}) it can be interesting to apply this cut and only have a pure sample of signal events!
+
+\begin{table}[h!t]
+ \caption{Percentage of remaining events for the four considered categories and three possible second derivative requirements. The numbers given here have been found by applying the above-mentioned cut on the \NegLL obtained by running MadWeight on $10 000$ \ttbar semi-mu (+) events. The number of successfully calculated events by MadWeight have been given before in Table \ref{table::MWEff}.}
+ \label{table::LLCutEff}
+ \centering
+ \begin{tabular}{l|C|C|C}
+					& \multicolumn{3}{c}{Events remaining after requiring $2^{nd}$ derivative $>$ $0$}  	\\
+					& \textit{Inner} ($\%$) 	& \textit{Outer} ($\%$) 	& \textit{Both}	($\%$)	\\
+  \hline
+  Generator level (full \RVR)		& 56.27				& 59.74				& 48.51			\\
+  Generator level (narrow \RVR)		& 52.01				& 56.31				& 40.40			\\
+  Reco-level, correctly matched 	& 30.99				& 54.08				& 24.84			\\
+  Reco-level, wrongly matched 		& 37.13				& 38.85				& 28.53			\\
+  Reco-level, unmatched 		& 34.42				& 42.36				& 26.27			
+ \end{tabular}
+\end{table}
+
+\begin{table}[h!t]
+ \caption{ The fit has been applied on the acceptance normalised (cross-section normalised) \NegLL for reco-level (generator-level) events.}
+ \label{table::LLCutMT}
+ \centering
+ \renewcommand{\arraystretch}{1.3}
+ \footnotesize
+ \begin{tabular}{l|c||c|c|c}
+					& \multirow{2}{*}{Original \RVR}	& \multicolumn{3}{c}{\RVR after requiring $2^{nd}$ derivative $>$ $0$}  			\\
+					& 					& \textit{Inner} 		& \textit{Outer} 		& \textit{Both}			\\
+  \hline
+  Generator level (full \RVR, 20k Evts) & -0.05648 $\pm$ 0.020715		& 0.00703 $\pm$ 0.009937	& 0.00744 $\pm$ 0.008011	& 0.00808 $\pm$ 0.008944	\\
+  Generator level (full \RVR, 10k Evts) & x					& 0.00846 $\pm$ 0.013902	& 0.00704 $\pm$ 0.011307	& 0.00819 $\pm$ 0.012585	\\
+  Generator level (narrow \RVR)		& -0.02990 $\pm$ 0.026524		& 0.00318 $\pm$ 0.012949	& 0.00470 $\pm$ 0.007933	& 0.00455 $\pm$ 0.009982	\\
+  Reco-level, correctly matched		& 0.01389 $\pm$ 0.017817		& 0.00024 $\pm$ 0.010231	& 0.00433 $\pm$ 0.005542	& 0.00181 $\pm$ 0.007454	\\
+  Reco-level, wrongly matched 		& 0.12500 $\pm$ 0.000186		& 0.04724 $\pm$ 0.006188	& 0.01089 $\pm$ 0.002932	& 0.02162 $\pm$ 0.003857	\\
+  Reco-level, unmatched 		& 0.12500 $\pm$ 0.000304		& 0.01531 $\pm$ 0.006617	& 0.00551 $\pm$ 0.002625	& 0.00687 $\pm$ 0.003568		
+ \end{tabular}
+\end{table}
+
+\subsection{Likelihood distributions}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/RVRInfluence/LLXSFit_RVRWide_NoCutApplied_20000GenEvts.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/RVRInfluence/LLXSFit_RVRWide_OuterScdDerCut_20000GenEvts.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/RVRInfluence/LLXSFit_RVRWide_InnerScdDerCut_20000GenEvts.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/RVRInfluence/LLXSFit_RVRWide_BothScdDerCut_20000GenEvts.pdf}
+ \caption{\NegLL distributions for 20000 generator level events (looking at wide \RVR range, -0.5 to 0.5)}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/RVRInfluence/LLXSFit_RVRNarrow_NoCutApplied_Gen.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/RVRInfluence/LLXSFit_RVRNarrow_OuterScdDerCut_Gen.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/RVRInfluence/LLXSFit_RVRNarrow_InnerScdDerCut_Gen.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/RVRInfluence/LLXSFit_RVRNarrow_BothScdDerCut_Gen.pdf}
+ \caption{\NegLL distributions for 10000 generator level events (looking at narrow \RVR range, -0.3 to 0.3)}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/RVRInfluence/LLAccFit_NoCutApplied_CorrectReco.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/RVRInfluence/LLAccFit_OuterScdDerCut_CorrectReco.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/RVRInfluence/LLAccFit_InnerScdDerCut_CorrectReco.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/RVRInfluence/LLAccFit_BothScdDerCut_CorrectReco.pdf}
+ \caption{\NegLL distributions for 10000 correctly matched reco-level events (looking at narrow \RVR range, -0.3 to 0.3)}
+\end{figure}
+
+\subsection{Relative derivative distribution}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/RVRInfluence/FirstDerAccOuter_Plus_RelativeToUnc_CorrectReco.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/RVRInfluence/FirstDerAccOuter_Min_RelativeToUnc_CorrectReco.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/RVRInfluence/FirstDerAccInner_Plus_RelativeToUnc_CorrectReco.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/RVRInfluence/FirstDerAccInner_Min_RelativeToUnc_CorrectReco.pdf}
+ \caption{Relative derivative distribution for correctly matched reco events ((\NegLL(pos/neg) - \NegLL(min))/$\sigma$(\NegLL(min)))}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/RVRInfluence/FirstDerXSOuter_Plus_RelativeToUnc_GenNarrow.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/RVRInfluence/FirstDerXSOuter_Min_RelativeToUnc_GenNarrow.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/RVRInfluence/FirstDerXSInner_Plus_RelativeToUnc_GenNarrow.pdf}
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodCuts/RVRInfluence/FirstDerXSInner_Min_RelativeToUnc_GenNarrow.pdf}
+ \caption{Relative derivative distribution generator level events ((\NegLL(pos/neg) - \NegLL(min))/$\sigma$(\NegLL(min)))}
+\end{figure}
+
+\section{Dependence on used cross-section values ...}
+
+The shape of the \NegLL distribution is heavily influenced by the cross-section values used for the XS and Acc normalisation.\\
+For the acceptance normalisation the percentages can either be calculated using the original MadGraph files and apply the event selection using MadAnalysis or otherwise by calculating the cross-sections directly using the cuts in MadGraph.\\
+Unfortunately both methods differ a little bit but are probably consistent within the statistical fluctuations. This because the difference in efficiency between the differen \RVR values is very low ... This is not the case for the top mass measurements.
+Figure \ref{fig::AccComp} shows the event selection efficiency for both methods.
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.6 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodShape/AcceptanceComparision_RVR.pdf}
+\caption{Event selection efficiency using either MadAnalysis or MadGraph.} \label{fig::AccComp}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodShape/AcceptanceComparison_MTop.pdf}
+  \includegraphics[width = 0.49 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodShape/AcceptanceComparison_Zoom_MTop.pdf}
+\caption{Event selection efficiency using either MadAnalysis or MadGraph.} \label{fig::AccCompMTop}
+\end{figure}
+
+\section{\NegLL variations on limited range}
+
+Looking at the \RVR interval of (-0.1, -0.09, -0.08, -0.07, -0.06, -0.05, -0.04, -0.03, -0.02, -0.01, 0.0, 0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.1) can help to see how the \NegLL distribution fluctuates around the expected minimum. This interval corresonds very approximately to a 5$\sigma$ interval using the preliminary results given above.\\
+As can be seen from Figure \ref{fig::LLComp} there is a significant influence from the acceptance on the \NegLL distribution. This because the less narrow range is calculated using the MadAnalysis efficiencies while the narrow range used the MadGraph cross-sections.\\
+However there can still be decided that the \NegLL distribution fluctuates quite heavily inside the range of interest ...
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.5 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodShape/LLComparison_CorrectReco_RVR.pdf}
+ \includegraphics[width = 0.5 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/April2015_LikelihoodShape/LLAccComparison_CorrectReco_RVR.pdf}
+ \caption{Variation of the \NegLL distribution within a limited range. The obtained distribution on a less narrow range is also added in order to compare the \NegLL distributions for different MadWeight calculations and get an idea of the importance of the event selection efficiency.} \label{fig::LLComp}
+\end{figure}
+
+
+\end{document}

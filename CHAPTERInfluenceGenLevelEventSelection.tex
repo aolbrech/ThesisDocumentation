@@ -1,0 +1,674 @@
+A quick way to see the influence of the event selection, and avoid the submission of all samples to MadWeight, is to apply the event selection requirements after the MadWeight calculation has been performed. This implies that the event selection constraints can be applied in a similar way as the $\chisq$-cut by simply using the kinematic information stored in the $.lhco$ file for each individual event. The main difference with the $\chisq$-cut is that the event selection should be applied prior to the double-fit procedure since this takes place in an event-by-event basis. So during this step the event selection constraints should give as additional information a ``keep'' or ``hold'' flag such that the fitting procedure is only done for the good events. The constraints which will be applied should contain the general $\pT$ ones but also the $\Delta R$ ones should be added for example.
+\\
+However at first a simplified check will be performed where only a requirement on the $\pT$ of the different particles present in the event will be applied.
+\\
+
+The influence of the event selection (limited to $\pT$-cut and $\chisq$ requirement) is summarised in Figures~\ref{fig::PtCutInflPos05} - \ref{fig::PtCutInflNeg05}.
+These figures each contain three different $\loglik$ distributions where the left one is the result when no $\pT$-cut is applied, the middle when $\pT$ $>$ 15 $\GeV$ is asked and the right one requires $\pT$ $>$ 30 $\GeV$.
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_7572Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_2689Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = 0.5.}
+ \label{fig::PtCutInflPos05}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos03/LLComparison_ChiSqCutsRVR_MGSamplePos03_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos03/LLComparison_ChiSqCutsRVR_MGSamplePos03_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_7539Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos03/LLComparison_ChiSqCutsRVR_MGSamplePos03_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_2563Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value ($0$ $\GeV$, $15$ $\GeV$ and $30$ $\GeV$) for a MG sample created with $\VR$ $=$ $0.3$.}
+ \label{fig::PtCutInflPos03}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_7405Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_2526Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = 0.2.}
+ \label{fig::PtCutInflPos02}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos01/LLComparison_ChiSqCutsRVR_MGSamplePos01_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos01/LLComparison_ChiSqCutsRVR_MGSamplePos01_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_7512Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos01/LLComparison_ChiSqCutsRVR_MGSamplePos01_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_2664Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = 0.1.}
+ \label{fig::PtCutInflPos01}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_7425Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_2542Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = 0.0.}
+ \label{fig::PtCutInflSM}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg01/LLComparison_ChiSqCutsRVR_MGSampleNeg01_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg01/LLComparison_ChiSqCutsRVR_MGSampleNeg01_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_7461Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg01/LLComparison_ChiSqCutsRVR_MGSampleNeg01_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_2526Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = -0.1.}
+ \label{fig::PtCutInflNeg01}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_7506Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_2548Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = -0.2.}
+ \label{fig::PtCutInflNeg02}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg03/LLComparison_ChiSqCutsRVR_MGSampleNeg03_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg03/LLComparison_ChiSqCutsRVR_MGSampleNeg03_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_7519Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg03/LLComparison_ChiSqCutsRVR_MGSampleNeg03_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_2625Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = -0.3.}
+ \label{fig::PtCutInflNeg03}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_7488Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_2752Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = -0.5.}
+ \label{fig::PtCutInflNeg05}
+\end{figure}
+
+From the $\loglik$ distributions given for each of the $\VR$ configurations can easily be concluded that requiring the $\pT$ value of the particles in the event (excluding the neutrino) does not have the desired effect. On the contrary it seems that only looking at events with high $\pT$ broadens the $\fth$-order polynomial and actually converts the overall distribution into one with a maximum shape. Since the considered sample concerns generator-level event, it should be understood how the correct minimum-position can be recovered. This different options considered will be discussed in detail in the following sections.
+
+\section{Reweighting MadWeight probability using $\csTh$}
+As a first possible solution to the $\loglik$ distortion caused by the event selection, it was studied how the $\csTh$ normalisation could fix the issue. To apply this reweighting the $\csTh$ distribution is calculated for each of the different $\VR$ configurations considered in the studied range and for each of the $\pT$-cuts which could be applied. Then for each of the 35 bins considered in the $\csTh$ distribution the bin content of the distribution prior to the cut is divided by the one after the cut.
+\begin{equation}
+ weight_{i} = f(\csTh) = \frac{g_{i,All}}{g_{i,Cut}}
+\end{equation}
+where $i$ runs over all bins of the distribution.\\
+Hence this results in a weight for each event which is then multiplied with the MadWeight probability corresponding to this event (for each of the considered $\VR$ configurations). The effect of this normalisation or reweighting on the $\loglik$ distributions is shown in Figure~\ref{fig::CosThetaNorm} for some $\VR$ configurations.
+\begin{figure}[h!t]
+ \centering
+ %Pos05
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_7572Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_2689Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_7572Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_2689Evts.pdf}
+ %Pos02
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_7405Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_2526Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_7405Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_2526Evts.pdf}
+ %Standard Model
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_7425Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_2542Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_7425Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_2542Evts.pdf}
+ %Neg02
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_7506Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_2548Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_7506Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_2548Evts.pdf}
+ %Neg05
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_7488Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_2752Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_7488Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_2752Evts.pdf}
+ \caption{Influence of combining the $\csTh$ reweighting with the MadWeight probability on an event-by-event basis. From left to right the different plots always show the same distributions: first the 15 $\GeV$ case and 30 $\GeV$ case without this normalisation and then both with the reweighting. From top to bottom the different $\VR$ configurations which have been shown are $-0.5$, $-0.2$, $0.0$, $0.2$ and $0.5$.}
+ \label{fig::CosThetaNorm}
+ \end{figure}
+
+Figure~\ref{fig::CosThetaNorm} is useful for comparing the influence of this $\csTh$ reweighting in a direct way since the original distributions can be found next, but in order to have some more detail and larger size they are also all listed in Figures~\ref{fig::CosThetaPos05} - \ref{fig::CosThetaNeg05}.
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_7572Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_2689Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = 0.5 with $\csTh$ reweighting applied.}
+ \label{fig::CosThetaPos05}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos03/LLComparison_ChiSqCutsRVR_MGSamplePos03_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos03/LLComparison_ChiSqCutsRVR_MGSamplePos03_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_7539Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos03/LLComparison_ChiSqCutsRVR_MGSamplePos03_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_2563Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value ($0$ $\GeV$, $15$ $\GeV$ and $30$ $\GeV$) for a MG sample created with $\VR$ $=$ $0.3$ with $\csTh$ reweighting applied.}
+ \label{fig::CosThetaPos03}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_7405Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_2526Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = 0.2 with $\csTh$ reweighting applied.}
+ \label{fig::CosThetaPos02}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos01/LLComparison_ChiSqCutsRVR_MGSamplePos01_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos01/LLComparison_ChiSqCutsRVR_MGSamplePos01_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_7512Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos01/LLComparison_ChiSqCutsRVR_MGSamplePos01_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_2664Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = 0.1 with $\csTh$ reweighting applied.}
+ \label{fig::CosThetaPos01}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_7425Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_2542Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = 0.0 with $\csTh$ reweighting applied.}
+ \label{fig::CosThetaSM}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg01/LLComparison_ChiSqCutsRVR_MGSampleNeg01_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg01/LLComparison_ChiSqCutsRVR_MGSampleNeg01_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_7461Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg01/LLComparison_ChiSqCutsRVR_MGSampleNeg01_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_2526Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = -0.1 with $\csTh$ reweighting applied.}
+ \label{fig::CosThetaNeg01}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_7506Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_2548Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = -0.2 with $\csTh$ reweighting applied.}
+ \label{fig::CosThetaNeg02}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg03/LLComparison_ChiSqCutsRVR_MGSampleNeg03_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg03/LLComparison_ChiSqCutsRVR_MGSampleNeg03_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_7519Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg03/LLComparison_ChiSqCutsRVR_MGSampleNeg03_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_2625Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = -0.3 with $\csTh$ reweighting applied.}
+ \label{fig::CosThetaNeg03}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_7488Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_2752Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = -0.5 with $\csTh$ reweighting applied.}
+ \label{fig::CosThetaNeg05}
+\end{figure}
+ 
+The $\loglik$ distributions obtained when the $\csTh$ reweighting is applied shows a significant improvement compared to the original distributions. In most of the cases the desired minimum position can almost be retrieved, however this is somewhat undone by the high $\pT$-cut of 30 $\GeV$. It seems that the best agreement is found for lower $\pT$ cuts such as 15 $\GeV$, which is probably also closer to the preselection cleaning applied in the CMS generator-level sample. The possible bias introduced by the more realistic event selection constraints is also visible for the reco-level $t\bar{t}$ sample which was already studied.
+
+\section{Difference between $\csTh$ reweighting and acceptance normalisation}
+However after that this $\csTh$ reweighting has been applied it was clear that it plays almost the role of the acceptance normalisation since it gives a higher weight to events which have a higher probability to be cut away by the applied event selection based on their $\csTh$ value. Therefore in order to know whether the issue shown in the beginning cannot just be resolved by the acceptance normalisation, which actually should be applied since not all $\VR$ values react the same on the applied $\pT$ constraints. 
+\\
+
+Just as was the case for visualizing the influence of the $\csTh$ reweighting discussed in the previous section, first a selection of $\loglik$ distributions will be showed allowing a comparison between the $\csTh$ reweighting (Fig~\ref{fig::AccNorm}) and the acceptance normalisation and afterwards the full list of distributions will be given for each $\VR$ configuration (Figs~\ref{fig::AccNormPos05} - \ref{fig::AccNormNeg05}).
+
+\begin{figure}[h!t]
+ \centering
+ %Pos05
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_7572Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_2689Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_AccNormApplied_7572Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_AccNormApplied_2689Evts.pdf}
+ %Pos02
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_7405Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_2526Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_AccNormApplied_7405Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_AccNormApplied_2526Evts.pdf}
+ %Standard Model
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_7425Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_2542Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_AccNormApplied_7425Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_AccNormApplied_2542Evts.pdf}
+ %Neg02
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_7506Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_2548Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_AccNormApplied_7506Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_AccNormApplied_2548Evts.pdf}
+ %Neg05
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_7488Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_2752Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_AccNormApplied_7488Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_AccNormApplied_2752Evts.pdf}
+ \caption{Influence of combining the acceptance normalisation with the MadWeight probability on an event-by-event basis. From left to right the different plots always show the same distributions: first the 15 $\GeV$ case and 30 $\GeV$ case with the $\csTh$ reweighting and then both with the acceptance normalisation. From top to bottom the different $\VR$ configurations which have been shown are $-0.5$, $-0.2$, $0.0$, $0.2$ and $0.5$.}
+ \label{fig::AccNorm}
+ \end{figure}
+
+The full list of $\loglik$ distributions is given with the original distribution on the left as was the case in the previous Figures.
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_AccNormApplied_7572Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_AccNormApplied_2689Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = 0.5 with acceptance normalisation applied.}
+ \label{fig::AccNormPos05}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos03/LLComparison_ChiSqCutsRVR_MGSamplePos03_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos03/LLComparison_ChiSqCutsRVR_MGSamplePos03_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_AccNormApplied_7539Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos03/LLComparison_ChiSqCutsRVR_MGSamplePos03_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_AccNormApplied_2563Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value ($0$ $\GeV$, $15$ $\GeV$ and $30$ $\GeV$) for a MG sample created with $\VR$ $=$ $0.3$ with acceptance normalisation applied.}
+ \label{fig::AccNormPos03}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_AccNormApplied_7405Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_AccNormApplied_2526Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = 0.2 with acceptance normalisation applied.}
+ \label{fig::AccNormPos02}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos01/LLComparison_ChiSqCutsRVR_MGSamplePos01_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos01/LLComparison_ChiSqCutsRVR_MGSamplePos01_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_AccNormApplied_7512Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos01/LLComparison_ChiSqCutsRVR_MGSamplePos01_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_AccNormApplied_2664Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = 0.1 with acceptance normalisation applied.}
+ \label{fig::AccNormPos01}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_AccNormApplied_7425Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_AccNormApplied_2542Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = 0.0 with acceptance normalisation applied.}
+ \label{fig::AccNormSM}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg01/LLComparison_ChiSqCutsRVR_MGSampleNeg01_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg01/LLComparison_ChiSqCutsRVR_MGSampleNeg01_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_AccNormApplied_7461Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg01/LLComparison_ChiSqCutsRVR_MGSampleNeg01_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_AccNormApplied_2526Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = -0.1 with acceptance normalisation applied.}
+ \label{fig::AccNormNeg01}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_AccNormApplied_7506Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_AccNormApplied_2548Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = -0.2 with acceptance normalisation applied.}
+ \label{fig::AccNormNeg02}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg03/LLComparison_ChiSqCutsRVR_MGSampleNeg03_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg03/LLComparison_ChiSqCutsRVR_MGSampleNeg03_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_AccNormApplied_7519Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg03/LLComparison_ChiSqCutsRVR_MGSampleNeg03_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_AccNormApplied_2625Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = -0.3 with acceptance normalisation applied.}
+ \label{fig::AccNormNeg03}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_AccNormApplied_7488Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_AccNormApplied_2752Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = -0.5 with acceptance normalisation applied.}
+ \label{fig::AccNormNeg05}
+\end{figure}
+ 
+\section{Applying both $\csTh$ and acceptance normalisation?}
+
+As a final test, motivated by the fact that the results obtained from the $\csTh$ reweighting and the acceptance normalisation show some differences, is to see whether both corrections can be applied together.
+\\
+However on first sight it seems that this would actually result in overcorrecting the type of events which are more likely to be affected by the applied event selection constraints. But not very certain whether there exists a control check which can be performed in order to make sure that it is actually doing the right thing ...
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_AccNormApplied_7572Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_AccNormApplied_2689Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = 0.5 with acceptance normalisation and $\csTh$ reweighting applied.}
+ \label{fig::AccNormCosPos05}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos03/LLComparison_ChiSqCutsRVR_MGSamplePos03_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos03/LLComparison_ChiSqCutsRVR_MGSamplePos03_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_AccNormApplied_7539Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos03/LLComparison_ChiSqCutsRVR_MGSamplePos03_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_AccNormApplied_2563Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value ($0$ $\GeV$, $15$ $\GeV$ and $30$ $\GeV$) for a MG sample created with $\VR$ $=$ $0.3$ with acceptance normalisation and $\csTh$ reweighting applied.}
+ \label{fig::AccNormCosPos03}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_AccNormApplied_7405Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_AccNormApplied_2526Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = 0.2 with acceptance normalisation and $\csTh$ reweighting applied.}
+ \label{fig::AccNormCosPos02}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos01/LLComparison_ChiSqCutsRVR_MGSamplePos01_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos01/LLComparison_ChiSqCutsRVR_MGSamplePos01_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_AccNormApplied_7512Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos01/LLComparison_ChiSqCutsRVR_MGSamplePos01_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_AccNormApplied_2664Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = 0.1 with acceptance normalisation and $\csTh$ reweighting applied.}
+ \label{fig::AccNormCosPos01}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_AccNormApplied_7425Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_AccNormApplied_2542Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = 0.0 with acceptance normalisation and $\csTh$ reweighting applied.}
+ \label{fig::AccNormCosSM}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg01/LLComparison_ChiSqCutsRVR_MGSampleNeg01_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg01/LLComparison_ChiSqCutsRVR_MGSampleNeg01_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_AccNormApplied_7461Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg01/LLComparison_ChiSqCutsRVR_MGSampleNeg01_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_AccNormApplied_2526Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = -0.1 with acceptance normalisation and $\csTh$ reweighting applied.}
+ \label{fig::AccNormCosNeg01}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_AccNormApplied_7506Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_AccNormApplied_2548Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = -0.2 with acceptance normalisation and $\csTh$ reweighting applied.}
+ \label{fig::AccNormCosNeg02}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg03/LLComparison_ChiSqCutsRVR_MGSampleNeg03_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg03/LLComparison_ChiSqCutsRVR_MGSampleNeg03_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_AccNormApplied_7519Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg03/LLComparison_ChiSqCutsRVR_MGSampleNeg03_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_AccNormApplied_2625Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = -0.3 with acceptance normalisation and $\csTh$ reweighting applied.}
+ \label{fig::AccNormCosNeg03}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_AccNormApplied_7488Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_AccNormApplied_2752Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = -0.5 with acceptance normalisation and $\csTh$ reweighting applied.}
+ \label{fig::AccNormCosNeg05}
+\end{figure}
+
+\section{Adapting the implementation used}
+In the previous sections the $\csTh$ reweighting has not been applied in a correct way. For these distributions the calculated weight was only multiplied with the MadWeight probability and the cross-section normalisation was not taken into account.
+Since this weight has to be applied on an event-by-event basis it should be multiplied with the term $\frac{P_{MW}}{\sigma}$ \textbf{before} the logarithm is taken.
+Hence the way the reweighting is currently implemented is the following:
+
+\begin{equation}
+ -\ln \mathcal{L} = - \ln P_{MW} * w_{i,\csTh} + \ln \sigma_{XS/Acc} * w_{i,\csTh}
+\end{equation}
+
+And this is updated to:
+\begin{equation}
+ -\ln \mathcal{L} = - \ln (P_{MW} * w_{i,\csTh}) + \ln \sigma_{XS/Acc}
+\end{equation}
+
+The only results which differ with this altered definition are the one in the following cases:
+\begin{itemize}
+ \item $\csTh$ reweighting applied but no acceptance normalisation applied
+ \item Both $\csTh$ reweighting and acceptance normalisation applied
+\end{itemize}
+For these two the corresponding histograms will be listed again and should be compared with the previously obtained ones:
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_CosThetaMultipliedWithWeight_7572Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_CosThetaMultipliedWithWeight_2689Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = 0.5 with $\csTh$ reweighting applied (updated implementation).}
+ \label{fig::CosThetaPos05Update}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos03/LLComparison_ChiSqCutsRVR_MGSamplePos03_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos03/LLComparison_ChiSqCutsRVR_MGSamplePos03_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_CosThetaMultipliedWithWeight_7539Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos03/LLComparison_ChiSqCutsRVR_MGSamplePos03_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_CosThetaMultipliedWithWeight_2563Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value ($0$ $\GeV$, $15$ $\GeV$ and $30$ $\GeV$) for a MG sample created with $\VR$ $=$ $0.3$ with $\csTh$ reweighting applied (updated implementation).}
+ \label{fig::CosThetaPos03Update}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_CosThetaMultipliedWithWeight_7405Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_CosThetaMultipliedWithWeight_2526Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = 0.2 with $\csTh$ reweighting applied (updated implementation).}
+ \label{fig::CosThetaPos02Update}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos01/LLComparison_ChiSqCutsRVR_MGSamplePos01_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos01/LLComparison_ChiSqCutsRVR_MGSamplePos01_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_CosThetaMultipliedWithWeight_7512Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos01/LLComparison_ChiSqCutsRVR_MGSamplePos01_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_CosThetaMultipliedWithWeight_2664Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = 0.1 with $\csTh$ reweighting applied (updated implementation).}
+ \label{fig::CosThetaPos01Update}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_CosThetaMultipliedWithWeight_7425Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_CosThetaMultipliedWithWeight_2542Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = 0.0 with $\csTh$ reweighting applied (updated implementation).}
+ \label{fig::CosThetaSMUpdate}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg01/LLComparison_ChiSqCutsRVR_MGSampleNeg01_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg01/LLComparison_ChiSqCutsRVR_MGSampleNeg01_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_CosThetaMultipliedWithWeight_7461Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg01/LLComparison_ChiSqCutsRVR_MGSampleNeg01_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_CosThetaMultipliedWithWeight_2526Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = -0.1 with $\csTh$ reweighting applied (updated implementation).}
+ \label{fig::CosThetaNeg01Update}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_CosThetaMultipliedWithWeight_7506Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_CosThetaMultipliedWithWeight_2548Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = -0.2 with $\csTh$ reweighting applied (updated implementation).}
+ \label{fig::CosThetaNeg02Update}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg03/LLComparison_ChiSqCutsRVR_MGSampleNeg03_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg03/LLComparison_ChiSqCutsRVR_MGSampleNeg03_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_CosThetaMultipliedWithWeight_7519Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg03/LLComparison_ChiSqCutsRVR_MGSampleNeg03_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_CosThetaMultipliedWithWeight_2625Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = -0.3 with $\csTh$ reweighting applied (updated implementation).}
+ \label{fig::CosThetaNeg03Update}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_CosThetaMultipliedWithWeight_7488Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_CosThetaMultipliedWithWeight_2752Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = -0.5 with $\csTh$ reweighting applied (updated implementation).}
+ \label{fig::CosThetaNeg05Update}
+\end{figure}
+ 
+A direct comparison between the two definitions used can be found in Figure~\ref{fig::CosThInflBothDefs}.
+\begin{figure}[h!t]
+ \centering
+ %Pos05
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_7572Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_2689Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_CosThetaMultipliedWithWeight_7572Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_CosThetaMultipliedWithWeight_2689Evts.pdf}
+ %Pos02
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_7405Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_2526Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_CosThetaMultipliedWithWeight_7405Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_CosThetaMultipliedWithWeight_2526Evts.pdf}
+ %Standard Model
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_7425Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_2542Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_CosThetaMultipliedWithWeight_7425Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_CosThetaMultipliedWithWeight_2542Evts.pdf}
+ %Neg02
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_7506Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_2548Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_CosThetaMultipliedWithWeight_7506Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_CosThetaMultipliedWithWeight_2548Evts.pdf}
+ %Neg05
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_7488Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_2752Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_CosThetaMultipliedWithWeight_7488Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_CosThetaMultipliedWithWeight_2752Evts.pdf}
+ \caption{Influence of combining the $\csTh$ reweighting with the MadWeight probability on an event-by-event basis. From left to right the different plots always show the same distributions: first the 15 $\GeV$ case and 30 $\GeV$ case with the first $\csTh$ reweighting implemented and then with the updated definition. From top to bottom the different $\VR$ configurations which have been shown are $-0.5$, $-0.2$, $0.0$, $0.2$ and $0.5$.}
+ \label{fig::CosThInflBothDefs}
+ \end{figure}
+
+Now the same will be shown when both the $\csTh$ reweighting and the acceptance normalisation have been applied. This is given in Figures~\ref{fig::AccNormCosPos05Update} to \ref{fig::AccNormCosNeg05Update}. Afterwards the comparison between the two considered $\csTh$ reweighting implementations is given in Figure~\ref{fig::CosThAccNormBothDefs}.
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_CosThetaMultipliedWithWeight_AccNormApplied_7572Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_CosThetaMultipliedWithWeight_AccNormApplied_2689Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = 0.5 with $\csTh$ reweighting and acceptance normalisation applied (updated implementation).}
+ \label{fig::AccNormCosPos05Update}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos03/LLComparison_ChiSqCutsRVR_MGSamplePos03_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos03/LLComparison_ChiSqCutsRVR_MGSamplePos03_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_CosThetaMultipliedWithWeight_AccNormApplied_7539Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos03/LLComparison_ChiSqCutsRVR_MGSamplePos03_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_CosThetaMultipliedWithWeight_AccNormApplied_2563Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value ($0$ $\GeV$, $15$ $\GeV$ and $30$ $\GeV$) for a MG sample created with $\VR$ $=$ $0.3$ with $\csTh$ reweighting and acceptance normalisation applied (updated implementation).}
+ \label{fig::AccNormCosPos03Update}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_CosThetaMultipliedWithWeight_AccNormApplied_7405Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_CosThetaMultipliedWithWeight_AccNormApplied_2526Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = 0.2 with $\csTh$ reweighting and acceptance normalisation applied (updated implementation).}
+ \label{fig::AccNormCosPos02Update}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos01/LLComparison_ChiSqCutsRVR_MGSamplePos01_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos01/LLComparison_ChiSqCutsRVR_MGSamplePos01_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_CosThetaMultipliedWithWeight_AccNormApplied_7512Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos01/LLComparison_ChiSqCutsRVR_MGSamplePos01_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_CosThetaMultipliedWithWeight_AccNormApplied_2664Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = 0.1 with $\csTh$ reweighting and acceptance normalisation applied (updated implementation).}
+ \label{fig::AccNormCosPos01Update}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_CosThetaMultipliedWithWeight_AccNormApplied_7425Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_CosThetaMultipliedWithWeight_AccNormApplied_2542Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = 0.0 with $\csTh$ reweighting and acceptance normalisation applied (updated implementation).}
+ \label{fig::AccNormCosSMUpdate}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg01/LLComparison_ChiSqCutsRVR_MGSampleNeg01_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg01/LLComparison_ChiSqCutsRVR_MGSampleNeg01_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_CosThetaMultipliedWithWeight_AccNormApplied_7461Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg01/LLComparison_ChiSqCutsRVR_MGSampleNeg01_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_CosThetaMultipliedWithWeight_AccNormApplied_2526Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = -0.1 with $\csTh$ reweighting and acceptance normalisation applied (updated implementation).}
+ \label{fig::AccNormCosNeg01Update}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_CosThetaMultipliedWithWeight_AccNormApplied_7506Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_CosThetaMultipliedWithWeight_AccNormApplied_2548Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = -0.2 with $\csTh$ reweighting and acceptance normalisation applied (updated implementation).}
+ \label{fig::AccNormCosNeg02Update}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg03/LLComparison_ChiSqCutsRVR_MGSampleNeg03_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg03/LLComparison_ChiSqCutsRVR_MGSampleNeg03_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_CosThetaMultipliedWithWeight_AccNormApplied_7519Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg03/LLComparison_ChiSqCutsRVR_MGSampleNeg03_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_CosThetaMultipliedWithWeight_AccNormApplied_2625Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = -0.3 with $\csTh$ reweighting and acceptance normalisation applied (updated implementation).}
+ \label{fig::AccNormCosNeg03Update}
+\end{figure}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_10000Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_CosThetaMultipliedWithWeight_AccNormApplied_7488Evts.pdf}
+ \includegraphics[width = 0.32 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_CosThetaMultipliedWithWeight_AccNormApplied_2752Evts.pdf}
+ \caption{Influence of the $\pT$-cut on the $\loglik$ distribution for increasing $\pT$-cut value (0 $\GeV$, 15 $\GeV$ and 30 $\GeV$) for a MG sample created with $\VR$ = -0.5 with $\csTh$ reweighting and acceptance normalisation applied (updated implementation).}
+ \label{fig::AccNormCosNeg05Update}
+\end{figure}
+ 
+\begin{figure}[h!t]
+ \centering
+ %Pos05
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_AccNormApplied_7572Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_AccNormApplied_2689Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_CosThetaMultipliedWithWeight_AccNormApplied_7572Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos05/LLComparison_ChiSqCutsRVR_MGSamplePos05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_CosThetaMultipliedWithWeight_AccNormApplied_2689Evts.pdf}
+ %Pos02
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_AccNormApplied_7405Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_AccNormApplied_2526Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_CosThetaMultipliedWithWeight_AccNormApplied_7405Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Pos02/LLComparison_ChiSqCutsRVR_MGSamplePos02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_CosThetaMultipliedWithWeight_AccNormApplied_2526Evts.pdf}
+ %Standard Model
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_AccNormApplied_7425Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_AccNormApplied_2542Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_CosThetaMultipliedWithWeight_AccNormApplied_7425Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/SM/LLComparison_ChiSqCutsRVR_MGSampleSMNew_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_CosThetaMultipliedWithWeight_AccNormApplied_2542Evts.pdf}
+ %Neg02
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_AccNormApplied_7506Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_AccNormApplied_2548Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_CosThetaMultipliedWithWeight_AccNormApplied_7506Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg02/LLComparison_ChiSqCutsRVR_MGSampleNeg02_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_CosThetaMultipliedWithWeight_AccNormApplied_2548Evts.pdf}
+ %Neg05
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_ApplyCosThetaReweighting_AccNormApplied_7488Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_ApplyCosThetaReweighting_AccNormApplied_2752Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut15_CosThetaMultipliedWithWeight_AccNormApplied_7488Evts.pdf}
+ \includegraphics[width = 0.24 \textwidth]{/home/annik/Documents/Vub/PhD/ThesisSubjects/AnomalousCouplings/June2015_PtCutInfluence/Neg05/LLComparison_ChiSqCutsRVR_MGSampleNeg05_SingleGausTF_10000Evts_WideRange_NoLowPtEvts_Cut30_CosThetaMultipliedWithWeight_AccNormApplied_2752Evts.pdf}
+ \caption{Influence of combining the $\csTh$ reweighting with the MadWeight probability on an event-by-event basis. From left to right the different plots always show the same distributions: first the 15 $\GeV$ case and 30 $\GeV$ case with the first $\csTh$ reweighting implemented and then with the updated definition (acceptance normalisation is applied each time). From top to bottom the different $\VR$ configurations which have been shown are $-0.5$, $-0.2$, $0.0$, $0.2$ and $0.5$.}
+ \label{fig::CosThAccNormBothDefs}
+ \end{figure}
+
+It seems that this new implementation of the $\csTh$ reweighting actually has no influence at all on the $\loglik$ shape ...
+
+\newpage
+\section{Ensuring $\csTh$ normalisation}
+In order to apply this $\csTh$ reweighting it has to be checked in detail whether the applied correction does not break the normalisation of the MadWeight probability\footnote{This normalisation was checked by calculating which likelihood value is obtained when the cross-section normalisation is not applied. This value should correspond to the MadWeight cross-section which is then proven to be the necessary normalisation factor needed to ensure a probability density.}.
