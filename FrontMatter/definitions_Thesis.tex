@@ -1,0 +1,194 @@
+%My definitions!!
+\newcommand{\ttbar}{t\bar{t}}
+\newcommand{\gR}{g_{R}}
+\newcommand{\csTh}{\cos \theta^{*}}
+\newcommand{\DO}{D\O}
+\newcommand{\DZ}{D$\varnothing$~}
+\newcommand{\LWtb}{\mathcal{L}_{Wtb}}
+
+% Units
+\newcommand{\unit}[1]{\, \mathrm{#1}}	% units: roman + small space before
+\newcommand{\eV}{\unit{eV}}		% electronvolt
+\newcommand{\MeV}{\unit{MeV}}		% mega-electronvolt
+\newcommand{\GeV}{\unit{GeV}}		% giga-electronvolt
+\newcommand{\TeV}{\unit{TeV}}		% tera-electronvolt
+\newcommand{\pbinv}{\pb^{-1}}		% 1/picobarn
+\newcommand{\Hz}{\unit{Hz}}		% hertz
+\newcommand{\MHz}{\unit{MHz}}		% megahertz
+\newcommand{\km}{\unit{km}}             % kilometer
+\newcommand{\cm}{\unit{cm}}             % centimeter
+\newcommand{\mm}{\unit{mm}}             % millimeter
+\newcommand{\m}{\unit{m}}               % meter
+\newcommand{\s}{\unit{s}}               % second
+\newcommand{\ns}{\unit{ns}}             % nanosecond
+\newcommand{\K}{\unit{K}}               % Kelvin
+\newcommand{\T}{\unit{T}}               % Tesla
+\newcommand{\Tesla}{\unit{Tesla}}
+\newcommand{\pbI}{\unit{pb}^{-1}}
+\newcommand{\fbI}{\unit{fb}^{-1}}
+\newcommand{\mum}{\mu\unit{m}}
+
+%Kinematic information
+\newcommand{\pT}{p_{\rm T}}
+\newcommand{\ET}{E_{\rm T}}
+\newcommand{\px}{p_{\rm x}}
+\newcommand{\py}{p_{\rm y}}
+\newcommand{\pz}{p_{\rm z}}
+\newcommand{\kT}{k_{\rm T}}
+
+% Program names
+\newcommand{\FORTRAN}{\texttt{FORTRAN}}
+\newcommand{\Pythia}{\texttt{PYTHIA}}
+\newcommand{\FASTSIM}{\texttt{FASTSIM}}
+\newcommand{\MGME}{\texttt{MadGraph/MadEvent}}
+\newcommand{\Herwig}{\texttt{HERWIG}}
+\newcommand{\Geant}{\texttt{GEANT4}}
+\newcommand{\Madgraph}{\texttt{MADGRAPH}}
+\newcommand{\Madweight}{\texttt{MADWEIGHT}}
+\newcommand{\Powheg}{\texttt{PowHeg}}
+\newcommand{\MCNLO}{\texttt{MC@NLO}}
+
+%QCD coupling
+\newcommand{\alpS}{\alpha_{S}}
+
+%Missing transverse energy
+\def\eslash{\ensuremath{{\hbox{$E$\kern-0.6em\lower-.05ex\hbox{/}\kern0.10em}}}}
+\def\vecmet{\mbox{$\vec{\eslash}_T$}\xspace} %missing ET vector
+\def\met{\mbox{$\eslash_T$}\xspace}
+
+%Indent when using special paragraph listing
+\newcommand{\indPar}{\hspace{3.5ex}}
+
+%-------------------------------------------------------------------------------------------------
+
+% % Units
+% \newcommand{\unit}[1]{\, \mathrm{#1}}	% units: roman + small space before
+% \newcommand{\eV}{\unit{eV}}		% electronvolt
+% \newcommand{\MeV}{\unit{MeV}}		% mega-electronvolt
+% \newcommand{\GeV}{\unit{GeV}}		% giga-electronvolt
+% \newcommand{\TeV}{\unit{TeV}}		% tera-electronvolt
+% \newcommand{\mb}{\unit{mb}}		% millibarn
+% \newcommand{\mub}{\unit{\mu b}}		% microbarn
+% \newcommand{\nb}{\unit{nb}}		% nanobarn
+% \newcommand{\pb}{\unit{pb}}		% picobarn
+% \newcommand{\pbinv}{\pb^{-1}}		% 1/picobarn
+% \newcommand{\fb}{\unit{fb}}		% femtobarn
+% \newcommand{\fbinv}{\fb^{-1}}		% 1/femtobarn
+% \newcommand{\km}{\unit{km}}		% kilometer
+% \newcommand{\m}{\unit{m}}		% meter
+% \newcommand{\cm}{\unit{cm}}		% centimeter
+% \newcommand{\mm}{\unit{mm}}		% millimeter
+% \newcommand{\mum}{\unit{\mu m}}		% micrometer
+% \newcommand{\fm}{\unit{fm}}		% femtometer
+% \newcommand{\second}{\unit{s}}		% second
+% \newcommand{\mus}{\unit{\mu s}}		% nanosecond
+% \newcommand{\ns}{\unit{ns}}		% nanosecond
+% \newcommand{\ps}{\unit{ps}}		% picosecond
+% \newcommand{\Hz}{\unit{Hz}}		% hertz
+% \newcommand{\MHz}{\unit{MHz}}		% megahertz
+% \newcommand{\rad}{\unit{rad}}           % rad
+% % Particles
+% \newcommand{\pr}{$p$}		% proton
+% \newcommand{\uq}{$u$}		% up quark
+% \newcommand{\dq}{$d$}		% down quark
+% \newcommand{\sq}{$s$}		% strange quark
+% \newcommand{\cq}{$c$}		% charm quark
+% \newcommand{\bq}{$b$}		% bottom quark
+% \newcommand{\tq}{$t$}		% top quark
+% \newcommand{\qq}{$q$}		% general quark q
+% \newcommand{\Qq}{$Q$}		% heavy quark Q
+% \newcommand{\gl}{$g$}		% gluon
+% \newcommand{\uds}{$uds$}            % uds quarks
+% \newcommand{\udsg}{$udsg$}          % udsg partons
+% \newcommand{\jet}{$j$}		% jet in general
+% \newcommand{\Z}{$Z$}		% Z boson
+% \newcommand{\W}{$W$}		% W boson
+% \newcommand{\Wpm}{\W$^{\pm}$}		% W+-
+% \newcommand{\cH}{$H^{\pm}$}         % charged Higgs boson
+% % Processes
+% \newcommand{\ttbar}{\tq\bar{\tq}}
+% \newcommand{\bbbar}{\bq\bar{\bq}}
+% \newcommand{\ttbttj}{\tq\bar{\tq}\bq/\tq\bar{\tq}\jet}
+% \newcommand{\ttbb}{\tq\bar{\tq}\bq\bar{\bq}}
+% \newcommand{\ttjj}{\tq\bar{\tq}\jet\jet}
+% \newcommand{\chhtotb}{\cH \to \tq\bq}
+% \newcommand{\chhtotaunu}{\cH \to \tau\nu}
+% % Special things
+% \newcommand{\fixme}[1]{\textcolor{magenta}{{\bf FIX[}#1{\bf]}}}
+% \newcommand{\todo}[1]{\textcolor{red}{{\bf TODO[}#1{\bf]}}}
+% \newcommand{\ud}{\mathrm{d}}		% differential
+% \newcommand{\Dcov}{\mathcal{D}}         % covariant derivative
+% \newcommand{\LQCD}{\Lambda_\mathrm{QCD}}
+% \newcommand{\tanbeta}{\tan \! \beta}
+% \newcommand{\cotbeta}{\cot \! \beta}
+% \newcommand{\BR}{{\rm BR}}		% branching ratio
+% \newcommand{\LR}{\mathcal{L}}
+% \newcommand{\DR}{\Delta R}
+% \newcommand{\ET}{E_{\rm T}}
+% \newcommand{\ETmiss}{E_{\rm T}^{\rm miss}}
+% \newcommand{\pT}{p_{\rm T}}
+% \newcommand{\pTmin}{p_{\rm T,min}}
+% \newcommand{\kT}{k_{\rm T}}
+% \newcommand{\mT}{m_{\rm T}}
+% % Program names
+% \newcommand{\FORTRAN}{\texttt{FORTRAN}}
+% \newcommand{\VER}[1]{\texttt{#1}}
+% \newcommand{\Pythia}{\texttt{PYTHIA}}
+% \newcommand{\PYTHIAVER}[1]{\PYTHIA{} \VER{#1}}
+% \newcommand{\HDECAY}{\texttt{HDECAY}}
+% \newcommand{\HDECAYVER}[1]{\HDECAY{} \VER{#1}}
+% \newcommand{\CMSJET}{\texttt{CMSJET}}
+% \newcommand{\CMSJETVER}[1]{\CMSJET{} \VER{#1}}
+% \newcommand{\FASTSIM}{\texttt{FASTSIM}}
+% \newcommand{\MGME}{\texttt{MadGraph/MadEvent}}
+% \newcommand{\Herwig}{\texttt{HERWIG}}
+% \newcommand{\COMPHEP}{\texttt{CompHEP}}
+% \newcommand{\COMPHEPVER}[1]{\COMPHEP{} \VER{#1}}
+% \newcommand{\ALPGEN}{\texttt{ALPGEN}}
+% \newcommand{\ALPGENVER}[1]{\ALPGEN{} \VER{#1}}
+% \newcommand{\CMKIN}{\texttt{CMKIN}}
+% \newcommand{\CMKINVER}[3]{\CMKIN{}\VER{\_#1\_#2\_#3}}
+% \newcommand{\CMSIM}{\texttt{CMSIM}}
+% \newcommand{\CMSIMVER}[1]{\CMSIM{}\VER{#1}}
+% \newcommand{\COBRA}{\texttt{COBRA}}
+% \newcommand{\OSCAR}{\texttt{OSCAR}}
+% \newcommand{\OSCARVER}[3]{\OSCAR{}\VER{\_#1\_#2\_#3}}
+% \newcommand{\ORCA}{\texttt{ORCA}}
+% \newcommand{\ORCAVER}[3]{\ORCA{}\VER{\_#1\_#2\_#3}}
+% \newcommand{\FAMOS}{\texttt{FAMOS}}
+% \newcommand{\FAMOSVER}[3]{\FAMOS{}\VER{\_#1\_#2\_#3}}
+% \newcommand{\GEANT}{\texttt{GEANT}}
+% \newcommand{\GEANTVER}[1]{\GEANT{}\VER{#1}}
+% \newcommand{\CRAB}{\texttt{CRAB}}
+% \newcommand{\Madgraph}{\texttt{MADGRAPH}}
+% \newcommand{\Madweight}{\texttt{MADWEIGHT}}
+% % Colliders, Experiments,...
+% \newcommand{\CERN}{CERN}
+% \newcommand{\LEP}{{\sc LEP}}
+% \newcommand{\Tevatron}{{\sc Tevatron}}
+% \newcommand{\HERA}{{\sc HERA}}
+% \newcommand{\DESY}{{\sc DESY}}
+% \newcommand{\Delphi}{DELPHI}
+% \newcommand{\Babar}{{\sc BaBar}}
+% \newcommand{\Belle}{{\sc Belle}}
+% \newcommand{\TOTEM}{{\sc Totem}}
+% \newcommand{\ATLAS}{ATLAS}
+% \newcommand{\ALICE}{ALICE}
+% \newcommand{\LHCB}{LHCb}
+% \newcommand{\LHCF}{LHCf}
+% \newcommand{\CDF}{CDF}
+% \newcommand{\DO}{D\O}
+% %CHAPTER3
+% \newcommand{\alpS}{\alpha_{S}}
+
+% Random stuff
+\newenvironment{myindentpar}%
+{\begin{list}{}%
+        {\setlength{\leftmargin}{0.5cm}}%
+        \item[]%
+}
+{\end{list}}
+
+\def\eslash{\ensuremath{{\hbox{$E$\kern-0.6em\lower-.05ex\hbox{/}\kern0.10em}}}}
+\def\vecmet{\mbox{$\vec{\eslash}_T$}\xspace} %missing ET vector
+\def\met{\mbox{$\eslash_T$}\xspace}

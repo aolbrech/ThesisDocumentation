@@ -1,58 +1,51 @@
 \chapter{Recovering signal event topology} \label{chp:labelTitle}
 
-The previous chapter described in detail how the individual physics objects can be identified and reconstructed.
-However, due to the enormeous amount of proton-proton collisions produced at the LHC and collected by the CMS experiment, the main challenge of any physics analysis is achieving a succesful combination of identifying the relevant physics objects and ensuring the separation of the event topology of interest from the large bulk of background events.
-This can be realized by developing an elaborate event selection procedure that excludes events based on specific kinematic requirements in a sequential manner, as will be discussed here.
+The previous chapter described in detail how the individual physics objects can be identified and reconstructed, however, in practice the enormeous amount of proton-proton collisions produced at the LHC and collected by the CMS experiment significantly complicates this matter.
+As a result the biggest challenge of any physics analyis is to obtain, besides a succesful object identification, an efficient separation of the event topology of interest from the large bulk of background events.
+This can be achieved by developing an effective event selection procedure that excludes events based on specific kinematic requirements, as will be demonstrated clearly in this chapter.
 \\
 \\
-Such an event selection follows a logical order and  \\
-This event selection process generally starts from 
-%\\
-%\\
-%In the previous section it was thoroughly described how the different physics objects can be identified and reconstructed.
-%However, in order to study a specific type of interactions, semi-leptonically decaying top-quark events in this thesis, special attention should be devoted in order to select exactly these event topologies.
-%This ... occurs in a sequential manner, starting from the general and centrally managed trigger system which aims to only store the events matching some predefined requirements and ranges up to an analysis-specific event optimisation to discard particular event signatures.
-%\\
-%\\
-%This multi-layered event selection procedure will be explained in detail here, first focusing in Section~\ref{sec::MainSelec} on the more general steps such as triggering and cleaning of the relevant events together with the main selection criteria.
-%Afterwards the additional selection constraints applied in order to single out the specific characterisations of this analysis will be discussed in Section~\ref{sec::SpecificSelec}.
+Such an event selection starts off with some basic identification and cleaning conditions and proceeds by fine-tuning the kinematic constraints in order to perfectly match with the analysis-specific requirements. Hence the selected event signatures are sequentially \textbf{narrowed down} until the desired event topology is almost completely retrieved. This chapter will first focus on the general kinematic requirements needed to be fullfilled in order to select semi-leptonically decaying top-quark pair topologies, Section~\ref{sec::MainSelec}, and then discuss in Section~\ref{sec::SpecificSelec} the various additional selection conditions introduced in order to optimise the event reconstruction efficiency in this analysis specifically.
 
 \section{Selecting (clean) $\ttbar$+$\mu$ event topologies}\label{sec::MainSelec}
-An important part of any physics analysis consists of selecting the event topologies compatible with the considered decay process and avoiding similar signatures by noisy events mimicking the requested final state particles. Hence a dedicated selection and cleaning procedure should be applied in order to remain with only the expected event topology. This is in general achieved by combining the online trigger system with a dedicated offline event selection (as will be discussed below).
+An important aspect of any physics analysis is to select only the event topologies compatible with the considered decay process and avoid detector noise mimicking the signal signature. 
+Therefore a dedicated selection and cleaning procedure is applied by combining the online trigger system with an offline event selection in order to reduce the stored event rate while specifying which type of final state particles should be kept for further analysis.
 
 \subsection{Triggering and cleaning of events}\label{subsec::Trigger}
-As was already briefly mentioned in Chapter~\ref{chp:CERN}, CMS possesses a complex trigger system consisting of two levels in order to first perform a fast online decision to decide whether the event is deemed interesting enough to be calculated in more detail and eventually stored.
-This trigger system contains an exhaustive list of slightly distinct trigger paths which all aim to identify a specific type of final state particles and rejecting the events not corresponding with the desired event topology, hence drastically reducing the stored event rate.
+As was already briefly mentioned in Chapter~\ref{chp:CERN}, CMS possesses a complex trigger system that decides whether the considered event is deemed interesting enough to be stored and processed further.
+This trigger system uses an exhaustive list of distinct trigger paths, all designed to single out a specific type of final state signature and thus drastically reduce the event rate.
+\\
 
-The final state signature expected for semi-leptonically decaying $\ttbar$ events can be distinghuished from the enormeous background in a rather straightforward manner by simply requiring the presence of a well-isolated lepton.
-Hence the applied trigger asks for at least one isolated muon with the specific kinematic requirements of $\pT$ $>$ 24 $\GeV$ and $\vert \eta \vert$ $<$ 2.4 to be fullfilled.
+In this analysis the event topology of interest is that of semi-leptonically ($l$ = $\mu$) decaying top-quark pairs, which can be distinguished rather efficiently from background by demanding a muon to be present in each event. This muon signature is rather distinct and will reduce a large portion of the background which is dominated by low-energetic jet processes.
+Therefore the trigger path applied in this thesis only keeps events with at least one \textbf{isolated} muon for which the kinematic requirements fullfill $\pT$ $>$ 24 $\GeV$ and $\vert \eta \vert$ $<$ 2.4.
 \\
 \textit{Is the cleaning part of the triggering? Or is this a separate thing which has to be applied by hand?}
 
 \subsection{Lepton selection criteria}
-Even though the chosen trigger path has restricted the lepton kinematics, the analysis-specific lepton selection should still be applied in order to further exclude unwanted events.
-This because a trigger path is kept as general as possible such that it can be applied by various analyses.
-The considered trigger for example is not specific enough for semi-leptonic $\ttbar$ events, which contain exactly one lepton originating from one of the W-bosons.
-Therefore the offline selection criteria applied afterwards rejects events that contain more than one isolated muon for which the kinematic constraints are rather similar with the ones applied in the trigger: $\pT$ $>$ 26 $\GeV$ and $\vert \eta \vert$ $<$ 2.1. 
-
-The next step in the event selection procedure focusses less on the kinematic information but aims to determine whether the considered lepton can be identified as a well-reconstructed one. 
-In the case of the muon channel, these so-called muon identification criteria start from Particle-Flow muons, as discussed in Section~\ref{subsec::PF}, are responsible to suppress hadronic punch-throughs, cosmic muons and muons from decays in flight of other particles.
-Therefore it is required that the candidate muon is reconstructed as a global muon for which the global-muon track fit, with normalised $\chi^{2}$ $<$ 10, should at least contain one muon chamber hit. 
-Moreover the muon track should have at least two muon stations with matched segments, contain at least one pixel hit and more than five tracker layers with hits. The latter requirement will guarantee, besides suppressing muons from decays in flight, a good $\pT$ measurement for the muon.
-Finally the muon candidate should originate from the primary vertex, which can be ensured by limiting both the longitudinal and transverse impact parameters ($\vert d_0 \vert$ $<$ 0.2 and $\vert \Delta z \vert$ $<$ 0.5).
-
-Another important identification variable is the isolation which allows to distinghuish prompt muons with high purity from the ones embedded in jets since it determines the hadronic (what about photon) activity around the muon candidate at the interaction vertex. %in a cone of radius $\Delta R$ = 0.4 around the muon candidate. 
-The isolation variable is defined as the scalar sum of the transverse energy of all the reconstructed particles contained within a cone of radius $\Delta R$ = 0.4, excluding the contribution of the muon itself.
+Since the applied trigger path is not specifically developed for identifying top-quark pairs decaying semi-leptonically, additional selection criteria are required for the leptons in order to further exclude incorrect event signatures. As a result the kinematic requirements are tightened a bit by requiring: $\pT$ $>$ 26 $\GeV$ and $\vert \eta \vert$ $<$ 2.1.
+However, the more important lepton selection criteria necessary to apply are responsible for ensuring that the stored muon is a well-defined one.
 \\
-However the large number of additional proton-proton interactions complicates the identification of the interaction vertex such that a correction variable should be applied to ensure correct treatment of these supplementary interactions. Hence for the charged hadrons (CH) only the ones associated with the primary vertex are included in the scalar sum and for the neutral ones (NH and $\gamma$) a correction is applied which substracts the estimated PU contribution. This can be calculated by halving the PU contribution for charged particles since jets contain on average twice more charged PF particles than neutral ones~\cite{CHContrVsN}.
-The $\Delta \beta$-corrected definition for the isolation variable is given in Equation (\ref{eq::DeltaBetaIso}) and is required to be fullfill $I_{\textrm{rel}}^{\Delta \beta}$ $<$ 0.12.
+These so-called muon identification criteria start from Particle-Flow muons, which have been discussed in Section~\ref{subsec::PF}, and are designed to suppress hadronic punch-throughs, cosmic muons and muons from decays in flight of other particles.
+They require the candidate muon to be reconstructed as a global one, and the global-muon track fit, with normalised $\chi^{2}$ $<$ 10, to contain at least one muon chamber hit.
+Moreover the muon track should have a minimum of two muon stations with matched segments, contain at least one pixel hit and have more than five tracker layers which have been hit. The latter requirement will guarantee, besides suppressing muons from decays in flight, a good $\pT$ measurement for the muon.
+Finally muon candidates not originating from the primary vertex are rejected by limiting both the longitudinal and transverse impact parameter: $\vert d_0 \vert$ $<$ 0.2 and $\vert \Delta z \vert$ $<$ 0.5.
+
+Another important identification criterion is the isolation variable which allows to distinghuish prompt muons with high purity from the ones embedded in jets since it determines the hadronic (what about photon) activity around the muon candidate at the interaction vertex. %in a cone of radius $\Delta R$ = 0.4 around the muon candidate. 
+It is defined as the scalar sum of the transverse energy of all the reconstructed particles contained within a cone of radius $\Delta R$ = 0.4, excluding the contribution of the muon itself.
+However the large number of additional proton-proton interactions significantly complicates the identification of the interaction vertex requiring a correction variable to be applied in order to ensure a correct treatment of these supplementary interactions. 
+For this reason a $\Delta \beta$-corrected isolation variable has been developed, which includes for the charged hadrons (CH) only the partons associated with the primary vertex while for the neutral ones (NH and $\gamma$) the estimated PU contribution is substracted. This contribution can be calculated by halving the PU contribution for charged particles since jets contain on average twice more charged PF particles than neutral ones~\cite{CHContrVsN}. The formula to determine this $\Delta \beta$-corrected isolation variable is given in Equation (\ref{eq::DeltaBetaIso}) and in this analysis $I_{\textrm{rel}}^{\Delta \beta}$ is required to be smaller than 0.12 in order to guarantee the reconstructed muon is well isolated.
 \begin{equation}\label{eq::DeltaBetaIso}
  I_{\textrm{rel}}^{\Delta \beta} = \frac{1}{\pT^{\mu}} \left( \sum_{\textrm{CH}} \pT^{\textrm{CH}} + \max(0, \sum_{\textrm{NH}} \pT^{NH} + \sum_{\gamma} \pT^{\gamma} - 0.5 \sum_{PU} \pT^{PU}) \right)
 \end{equation}
 \textit{Is it pT or ET?}\\
-\textit{Need plots?}
+\textit{Need plots?}\\
+\textit{Muon veto discussed?}
 
 \subsection{Jet selection criteria}
+With the lepton selection clearly established, the next step consists of applying a similar type of identification and cleaning criteria to the selected events.
+\\
+\\
+
 An notable difference in contrast to the leptons discussed before is that the PF jets require a few calibrations in order to correct for the small discrepancies observed between data and simulation (see \ref{subsec::jetReco}). These corrections need to be applied prior to the event selection for all jets \textbf{accounted for} in the event with $\pT$ $>$ 10 $\GeV$: charged hadron subtraction (CHS) which removes all the contributions of charged pileup, energy calibration using the L1L2L3 corrections and energy smearing in simulated events.
 \\
 
@@ -84,13 +77,15 @@ Top-quark pair-production events for which one of the W-bosons decays hadronical
 Exploiting this latter property is an effective manner of distinguishing the event topology from the background, since the decay of the b-quarks has the peculiar feature that it gives rise to a displaced vertex. This is due to the relatively long lifetime of the b-quark such that the decay does not occur at the interaction vertex, as has previously been discussed in Section~\ref{subsec::jetReco}.
 \\ 
 
-For this analysis the b-jet identification is a crucial asset in reducing the background contribution since there has been opted for only selecting events for which at least two jets survive the b-tagging requirement. Since the main background samples for semi-leptonically decaying top-quark events might have events with one jet fullfilling this condition, the probability of having two such jets is significantly smaller (\textbf{Possible to give percentages?}). Hence the considered background samples; W-boson production in association with jets (W+jets), Z-boson production in association with jets (Z+jets) and single-top production in the t-, tW- and s-channel; will almost completely vanish/dissapear. (\textit{Check if this is also in someway the case when only a double light is applied! .. Yes, main background of W+jets is only 10 $\%$ of ttbar sample! (Total is 20$\%$ of ttbar)})
+For this analysis the b-jet identification is a crucial asset in reducing the background contribution since there has been opted for only selecting events for which at least two jets survive the b-tagging requirement. Since the main background samples for semi-leptonically decaying top-quark events might have events with one jet fullfilling this condition, the probability of having two such jets is significantly smaller (\textbf{Possible to give percentages?}). Hence the considered background samples; W-boson production in association with jets (W+jets), Z-boson production in association with jets (Z+jets) and single-top production in the t-, tW- and s-channel; will almost completely be excluded by applying this constraint.
+%(\textit{Check if this is also in someway the case when only a double light is applied! .. Yes, main background of W+jets is only 10 $\%$ of ttbar sample! (Total is 20$\%$ of ttbar)})
 \\
 
-The b-jet identification algorithms developed by the CMS collaboration are recommended to only be deployed at specific working points defined as \textit{Loose}, \textit{Medium} and \textit{Tight}.
-These correspond to a predefined tagging and misidentification probability of around 85$\%$, 69$\%$ and 52$\%$ and a mistagging efficiency of 19$\%$, 5$\%$ and 1$\%$, respectively, for the Combined Secondary Vertex (CSV) b-tagging algorithm. (\textit{Good to repeat again ?})\\
-Since for this analysis priority is given to selecting event topologies matching with the expected topology as much as possible the double Tight b-tagging requirement is expected to result in the most desirable outcome, which is indeed the conclusion from Table~\ref{table::bTagResults}.
-This table summarizes the number of events for which all four jets are correctly picked out from the collection of reconstructed jets, denoted as signal s, and for which at least one has been wrongly chosen. These two categories, together with the events for which the no information about the underlying parton is available, represents the background such that the $s/b$ value gives an idea of the jet reconstruction efficiency for the different b-tag working points.
+The b-jet identification algorithms developed by the CMS collaboration are recommended to only be deployed at specific working points defined as \textit{Loose}, \textit{Medium} and \textit{Tight} and this advice has been followed here.
+These working points correspond to a predefined tagging probability of around 85$\%$, 69$\%$ and 52$\%$ and a misidentification one of 19$\%$, 5$\%$ and 1$\%$, respectively, for the Combined Secondary Vertex (CSV) b-tagging algorithm. (\textit{Good to repeat again ?})
+\\
+Since for this analysis priority is given to selecting event topologies matching with the expected topology as much as possible the double Tight b-tagging requirement is expected to result in the most desirable outcome, which can indeed be concluded from Table~\ref{table::bTagResults}.
+This table summarizes the number of events for which all four jets are correctly picked out from the collection of reconstructed jets, denoted as signal s, and for which at least one has been wrongly chosen. These two categories, together with the events for which no information about the underlying parton is available, represents the background such that the $s/b$ value gives an idea of the jet reconstruction efficiency for the different b-tag working points.
 \\
 It has also been studied whether an improvement can be achieved by limiting the CSV discriminant of the light jets using an anti-tagging algorithm, but since the effect was close to negligible it will not be considered further.
 \begin{table}[h!t]
@@ -104,9 +99,11 @@ It has also been studied whether an improvement can be achieved by limiting the 
  \end{tabular} 
 \end{table}
 
-The only relevant sample of background events comes from the single-top quark contribution, and especially the tW-channel. \\
+After these double b-tagging requirement the background samples have been significantly reduced and the only remaining contribution comes from the single-top quark events, and then in particular the tW-channel.
+This can be explained 
+\\
 \textit{Now maybe give a Feynman diagram of single top to explain why it remains important.}\\
-This double b-tag requirement is also the reason why, besides the background samples discussed before, no other background samples have been considered for this analysis as they will become completely negligible.
+The application of this double Tight b-tagging algorithm is also the motivation why, besides the background samples discussed before, no other background contributions have been considered for this analysis as they will become completely redundant.
 \\
 
 -----------------------------------------------------------------------------------------------------------------------------------------------
@@ -127,7 +124,7 @@ This double b-tag requirement is also the reason why, besides the background sam
  \centering
  \caption{b-tag efficiency for the different working points of the CSV b-tagger.}
  \begin{tabular}{c|c|c|c|c}
-  b-tag workin point 	& b-jet efficiency 	& udscg efficiency 	& c-jet efficiency 	& udsg efficiency 	\\
+  b-tag working point 	& b-jet efficiency 	& udscg efficiency 	& c-jet efficiency 	& udsg efficiency 	\\
   \hline
   double Loose 		& 83.79 $\%$		& 18.91 $\%$		& 42.44 $\%$ 		& 13.4 $\%$		\\
   double Medium 	& 68.71 $\%$		& 4.57 $\%$		& 18.88 $\%$		& 1.21 $\%$		\\
