@@ -201,7 +201,9 @@ The small improvement compared to the individual results, mainly dominated by th
 \section{Influence of full event selection} %Kinematics of remaining events/Finalized event selection}\label{sec::DataMC} 
 The full event selection consists of the triggering and cleaning conditions discussed in Section~\ref{sec::MainSelec} combined with the analysis-specific supplementary fine-tunings introduced in Section~\ref{sec::SpecificSelec}.
 The additional event selection constraints applied here have all been developed with the intention to reduce the contribution from the different background processes and to remain with a selected sample dominated by well reconstructed events.
-This is clearly achieved under the influence of the considered selection requirements, 2 jets fullfilling the Tight Combined Secondary Vertex b-tagging requirement; $\chi^{2}$-value of the chosen jet-combination choice smaller than 10; and both the reconstructed top-quark and W-boson mass located within the $2\sigma$ interval around its expectation value, since for 79.33$\%$ of the semi-leptonic $\ttbar$ events the correct jet assignment is chosen.
+This goal is clearly achieved under the influence of the considered selection requirements
+%, 2 jets fullfilling the Tight Combined Secondary Vertex b-tagging requirement; $\chi^{2}$-value of the chosen jet-combination choice smaller than 10; and both the reconstructed top-quark and W-boson mass located within the $2\sigma$ interval around its expectation value, 
+since for 79.33$\%$ of the semi-leptonic $\ttbar$ events the correct jet assignment is chosen.
 \\
 
 The selected sample of both simulated and data events are determined using the same event selection constraints, and before the actual analysis can be carried out a detailed comparison between the two is performed to ensure the data is well described by the considered simulated samples.
@@ -213,7 +215,7 @@ Most of these corrections have been discussed earlier, see Section~\ref{sec::xx}
 \textbf{What about PU?}
 \\
 \\
-One of the more significant scale factors is associated with the choice of using the b-jet identification algorithm at the Tight working point. 
+One of the more significant calibrations is associated with the choice of using the b-jet identification algorithm at the Tight working point. 
 %The only exception, a calibration with corresponding \textbf{large} scale factor, follows from the choice of using the CSV b-jet identification algorithm while requiring two Tight b-tags.
 Detailed studies have proven that the b-jet identification efficiency and the misidentification probability to identify a non-b jet as a b jet is not completely similar in data and simulation. 
 Therefore b-tag efficiency scale factors have been determined, depending on the event kinematics, in order to correct for these discrepancies~\cite{BTagSF}.
@@ -221,14 +223,55 @@ Therefore b-tag efficiency scale factors have been determined, depending on the 
 \\
 \textit{Now shortly explain what it does!}
 
-\paragraph{Scale factors for b-tag efficiency} \hfill \\
+\begin{equation}
+ P_{sim} = \prod_{i = tagged} \varepsilon_{i} \prod_{j = non-tagged} (1-\varepsilon_{j})
+\end{equation}
 
-\paragraph{Event count} \hfill \\
+Here the scale-factor is applied to the simulated samples such that it is denoted as data.
+\begin{equation}
+ P_{data} = \prod_{i = tagged} SF_{i} ~ \varepsilon_{i} \prod_{j = non-tagged} (1- SF_{i} ~ \varepsilon_{j})
+\end{equation}
 
-\paragraph{Kinematic distributions} \hfill \\
+The obtained event-weight is:
+\begin{equation}
+ w = \dfrac{P_{data}}{P_{sim}}
+\end{equation}
 
----------------------------------------------------------------------------------------------------------------
-\\
+Once all the necessary calibration factors have been applied the actual comparison between data and simulated events can be performed. 
+To start Table~\ref{table::DataMCComp} contains the obtained event numbers for data and all of the considered simulation samples after \textit{sending through} the full event selection.
+
+\begin{table}[h!t]
+ \caption{TITLE} \label{table::DataMCComp}
+ \centering
+ \begin{tabular}{c|c}
+  \hline
+  Sample 			& Number of events 	\\
+  \hline
+  \hline
+  Semi-leptonic $\ttbar$ 	& all together?		\\
+  Full-leptonic $\ttbar$ 	& all together?		\\
+  Full-hadronic $\ttbar$ 	& all together?		\\
+  %\hline
+  W+jets 			& 			\\
+  Z+jets (why $\gamma$?)	& 			\\
+  Single top 			& 			\\
+  \hline
+  Total				& 			\\
+  \hline
+  \hline
+  Observed			&			\\
+  \hline
+ \end{tabular}
+\end{table}
+
+
+
+%\paragraph{Scale factors for b-tag efficiency} \hfill \\
+
+%\paragraph{Event count} \hfill \\
+
+%\paragraph{Kinematic distributions} \hfill \\
+
 
 %\begin{table}[h!t]
 % \centering
@@ -242,23 +285,23 @@ Therefore b-tag efficiency scale factors have been determined, depending on the 
 % \end{tabular}
 %\end{table}
 
-\begin{table}[h!t]
- \centering
- \begin{tabular}{c|c|c|c}
-		& $\hat{M_{lb}}$ ($\GeV$) 	& $\hat{M_{qqb}}$ ($\GeV$) 	& $\hat{M_{W}}$ ($\GeV$) 	\\
-  \hline
-  no b-tag 	& 106.9388 $\pm$ 32.0410 	& 174.5792 $\pm$ 17.5196 	& 83.7810 $\pm$ 10.2311 	\\
-  b-tag 	& 107.7945 $\pm$ 32.4255 	& 175.0311 $\pm$ 17.0589 	& 83.6161 $\pm$ 10.2171 	
- \end{tabular}
- \caption{Obtained masses from Gaussian fit on distribution obtained before and after the application of the b-tagging requirement.}
-\end{table}
+%\begin{table}[h!t]
+% \centering
+% \begin{tabular}{c|c|c|c}
+%		& $\hat{M_{lb}}$ ($\GeV$) 	& $\hat{M_{qqb}}$ ($\GeV$) 	& $\hat{M_{W}}$ ($\GeV$) 	\\
+%  \hline
+%  no b-tag 	& 106.9388 $\pm$ 32.0410 	& 174.5792 $\pm$ 17.5196 	& 83.7810 $\pm$ 10.2311 	\\
+%  b-tag 	& 107.7945 $\pm$ 32.4255 	& 175.0311 $\pm$ 17.0589 	& 83.6161 $\pm$ 10.2171 	
+% \end{tabular}
+% \caption{Obtained masses from Gaussian fit on distribution obtained before and after the application of the b-tagging requirement.}
+%\end{table}
 
-\begin{figure}[h!t]
- \centering
- \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter4_EvtSel/Figures/GoodVsBadChiSq_4Jets.pdf}
+%\begin{figure}[h!t]
+% \centering
+% \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter4_EvtSel/Figures/GoodVsBadChiSq_4Jets.pdf}
  %\includegraphics[width = 0.45 \textwidth]{Chapters/Chapter4_EvtSel/Figures/GoodVsBadChiSq.pdf}
- \caption{Difference between good and wrong jet combinations (also create this for 5-jet case). ... Is this in any way relevant??} \label{fig::GoodVsBadChiSq}
-\end{figure}
+ %\caption{Difference between good and wrong jet combinations (also create this for 5-jet case). ... Is this in any way relevant??} \label{fig::GoodVsBadChiSq}
+%\end{figure}
 
-\textit{And will also need to get these numbers for muon channel events alone ... Currently everything is done for muon and electron channel combined!}
+%\textit{And will also need to get these numbers for muon channel events alone ... Currently everything is done for muon and electron channel combined!}
 
