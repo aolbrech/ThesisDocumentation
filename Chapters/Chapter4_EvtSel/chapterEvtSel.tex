@@ -209,30 +209,51 @@ since for 79.33$\%$ of the semi-leptonic $\ttbar$ events the correct jet assignm
 The selected sample of both simulated and data events are determined using the same event selection constraints, and before the actual analysis can be carried out a detailed comparison between the two is performed to ensure the data is well described by the considered simulated samples.
 %With the full event selection finalized, a comparison between data and simulation is a practical tool to ensure the considered background processes are sufficient to describe the studied interaction.
 In order for this comparison to be correct, the different calibrations accounting for the different response of data and simulated events in specific conditions have to be applied.
-%However, before such an agreement can be achieved, the different calibrations need to be applied to simulation to account for the minor discrepancies between data and simulated events. 
-Most of these corrections have been discussed earlier, see Section~\ref{sec::xx}, and have a relatively small influence: \textit{List the different ones!! + some minor explanation. Most of these have mean of 1!}
-\\
-\textbf{What about PU?}
+%However, before such an agreement can be achieved, the different calibrations need to be applied to simulation to account for the minor discrepancies between data and simulated events.
 \\
 \\
-One of the more significant calibrations is associated with the choice of using the b-jet identification algorithm at the Tight working point. 
+%At first the simulation has to be reweighted in order to correctly describe the number of pileup interactions.
+As has been explained in Section~\ref{sec::DetectorSim}, the simulation samples are generated using a distribution for the number of pileup interactions meant to correspond with the expected conditions for the considered data-taking period. However, these conditions might vary slightly and thus need to be corrected for once the exact pileup information in data is known.
+Therefore the number of pileup interactions in simulation is reweighted to the distribution observed in data using a luminosity-based pileup estimate.
+This method determines the total number of interactions in each bunch crossing from the measured instantaneous luminosity for the corresponding bunch crossing and the total inelastic proton-proton collision cross-section. \textbf{Existing reference?}
+%Info found on: https://twiki.cern.ch/twiki/bin/view/CMS/PileupJSONFileforData
+\\
+\\
+Second one: lepton scalefactor (best place to add this?)\\
+Is there a twiki?
+\\
+\\
+The last but definitely not least important calibration that needs to be applied corrects for the slightly different efficiency of the b-jet identification algorithm in data and simulation.
+This aspect has been studied in great detail and has resulted in the development of b-tag efficiency scale-factors, analytic functions depending on the transverse momentum of the jets, to account for these discrepancies~\cite{BTagSF}.
+%since detailed studies have indicated that the b-jet identification efficiency and the misidentification are slightly different for data than for simulated events.
+%Since here the Combined Secondary Vertex b-jet identification algorithm is used at the Tight working point, the minor discrepancies are enlarged such that the overall correction factor obtained becomes rather significant.
+\\
+These scale-factors are used to correct the measured jet-dependent efficiencies in simulation in order to obtain an overall event efficiency as expected in data, which is then compared to the corresponding event efficiency in simulation. %\textit{The in this way determined event-weight is thus analysis-specific since it will only use events passing the selection requirements.}
+%These scale-factors are used to determine where the overall event efficiency for data is obtained from simulation by taking into account the corresponding scale-factor.
+%Since they are jet-specific 
+\\
+%However, this area has been studied in great detail and b-tag efficiency scale-factors have been determined in order to correct the simulated events for the observed disagreement~\cite{BTagSF}.
+%The calculated scale-factors take the form of an analytic function depending on the transverse momentum $\pT$ of each individual jet. % and will therefore adjust every jet present in the simulated event such that it corresponds with the data expectation.
+These allow to adjust every jet present in the simulated event such that it corresponds with the data expectation such that the overall event outcome between actual simulation and the data-corrected simulation events can be compared.
+%Hence the event-weight is calculated by first adjusting each jet present in the simulated event to correspond with the data expectation and afterwards comparing the overall event outcome between actual simulation and data-corrected simulation events.
+The benefit of this approach is that the obtained event-weight only uses events passing the selection requirements.
+the analysis-specificness of the obtained event-weight since only the events passing the selection requirements will be used.
+\\
+\\
+The b-tag event-weight determination starts by computing the the probability $\varepsilon_{f}$ for a jet of flavour $f$ to identified as a b-jet using the simulated semi-leptonic $\ttbar$ events.
+%At first the probability $\varepsilon_{f}$ for a jet of flavour $f$ to identified as a b-jet has to be determined from the simulated semi-leptonic $\ttbar$ events.
+From this an overall event probability $P_{sim}$, see Equation (\ref{eq::PSim}), is obtained by multiplying the probabilities of all jets\footnote{It is important to note that in Equation (\ref{eq::PSim}) the labels \textit{tagged} and \textit{non-tagged} refer to whether the considered jet fullfilled the applied b-tag requirement and not whether it has been labelled as one of the two b-jet or light jet candidates in the event selection.}.
+The corresponding probability as expected in data, $P_{data}$ in Equation(\ref{eq::PData}), is determined similarly by scaling the calculated efficiencies in order to correspond with those expected in data.
+%One of the more significant calibrations, since it does not average out to unity and thus influences the event count, is associated with the choice of using the b-jet identification algorithm at the Tight working point. 
 %The only exception, a calibration with corresponding \textbf{large} scale factor, follows from the choice of using the CSV b-jet identification algorithm while requiring two Tight b-tags.
-Detailed studies have proven that the b-jet identification efficiency and the misidentification probability to identify a non-b jet as a b jet is not completely similar in data and simulation. 
-Therefore b-tag efficiency scale factors have been determined, depending on the event kinematics, in order to correct for these discrepancies~\cite{BTagSF}.
+%Detailed studies have proven that the b-jet identification efficiency and the misidentification probability to identify a non-b jet as a b jet is not completely similar in data and simulation. 
+%Therefore b-tag efficiency scale factors have been determined, depending on the event kinematics, in order to correct for these discrepancies~\cite{BTagSF}.
 %In the case considered here, a very stringent requirement, this additional correction factor becomes very relevant and significantly influences the overall event scale-factor.
-\\
-\textit{Now shortly explain what it does!}
-
-\begin{equation}
- P_{sim} = \prod_{i = tagged} \varepsilon_{i} \prod_{j = non-tagged} (1-\varepsilon_{j})
-\end{equation}
-
-Here the scale-factor is applied to the simulated samples such that it is denoted as data.
-\begin{equation}
- P_{data} = \prod_{i = tagged} SF_{i} ~ \varepsilon_{i} \prod_{j = non-tagged} (1- SF_{i} ~ \varepsilon_{j})
-\end{equation}
-
-The obtained event-weight is:
+\begin{eqnarray} 
+ P_{sim} & = & \prod_{i = tagged} \varepsilon_{i} \prod_{j = non-tagged} (1-\varepsilon_{j})  \label{eq::PSim} \\
+ P_{data} & = & \prod_{i = tagged} SF_{i} ~ \varepsilon_{i} \prod_{j = non-tagged} (1- SF_{i} ~ \varepsilon_{j}) \label{eq::PData}
+\end{eqnarray}
+The overall event-weight then follows in a straight-forward manner by dividing the data probability with the simulation probability:
 \begin{equation}
  w = \dfrac{P_{data}}{P_{sim}}
 \end{equation}
@@ -264,7 +285,12 @@ To start Table~\ref{table::DataMCComp} contains the obtained event numbers for d
  \end{tabular}
 \end{table}
 
-
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter4_EvtSel/Figures/nPV_AllCuts_noPU_mu_Stack.pdf}
+ \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter4_EvtSel/Figures/nPV_AllCuts_mu_Stack.pdf}
+ \caption{Influence of pu reweighting (FILL) -- first explain all scalefactors and only then show plots!!! (leptonSF and b-tag is applied ..)} \label{fig::PUInfluence}
+\end{figure}
 
 %\paragraph{Scale factors for b-tag efficiency} \hfill \\
 
