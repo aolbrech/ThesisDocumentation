@@ -1,14 +1,14 @@
-\chapter{Recovering signal event topology} \label{chp:labelTitle}
+\chapter{Event topology reconstruction} \label{chp:labelTitle}
 
 The previous chapter described in detail how the individual physics objects can be identified and reconstructed, however, in practice the enormeous amount of proton-proton collisions produced at the LHC and collected by the CMS experiment significantly complicates this matter.
 As a result the biggest challenge of any physics analyis is to obtain, besides a succesful object identification, an efficient separation of the event topology of interest from the large bulk of background events.
 This can be achieved by developing an effective event selection procedure that excludes events based on specific kinematic requirements, as will be demonstrated clearly in this chapter.
 \\
 \\
-Such an event selection starts off with some basic identification and cleaning conditions and proceeds by fine-tuning the kinematic constraints in order to perfectly match with the analysis-specific requirements. Hence the selected event signatures are sequentially \textbf{narrowed down} until the desired event topology is almost completely retrieved. This chapter will first focus on the general kinematic requirements needed to be fullfilled in order to select semi-leptonically decaying top-quark pair topologies, Section~\ref{sec::MainSelec}, and then discuss in Section~\ref{sec::SpecificSelec} the various additional selection conditions introduced in order to optimise the event reconstruction efficiency in this analysis specifically.
+Such an event selection starts off with some basic identification and cleaning conditions and proceeds by fine-tuning the kinematics in order to perfectly match with the analysis-specific requirements. Hence the selected event signatures are sequentially \textbf{narrowed down} until the desired event topology is almost completely retrieved. This chapter will first focus on the general kinematic requirements needed to be fullfilled in order to select semi-leptonically decaying top-quark pair topologies, Section~\ref{sec::MainSelec}, and then discuss in Section~\ref{sec::SpecificSelec} the various additional selection conditions introduced in order to optimise the event reconstruction efficiency in this analysis specifically.
 To finalize, Section~\ref{sec::DataMC} will give an overview of the applied event selection and will demonstrate the obtained (statistical) agreement between data and simulation (illustrated with a selection of kinematic properties).
 
-\section{Selecting (clean) $\ttbar$+$\mu$ event topologies}\label{sec::MainSelec}
+\section{Baseline event selection}\label{sec::MainSelec}
 An important aspect of any physics analysis is to select only the event topologies compatible with the considered decay process and avoid detector noise mimicking the signal signature. 
 Therefore a dedicated selection and cleaning procedure is applied by combining the online trigger system with an offline event selection in order to reduce the stored event rate while specifying which type of final state particles should be kept for further analysis.
 
@@ -38,16 +38,29 @@ For this reason a $\Delta \beta$-corrected isolation variable has been developed
 \begin{equation}\label{eq::DeltaBetaIso}
  I_{\textrm{rel}}^{\Delta \beta} = \frac{1}{\pT^{\mu}} \left( \sum_{\textrm{CH}} \pT^{\textrm{CH}} + \max(0, \sum_{\textrm{NH}} \pT^{NH} + \sum_{\gamma} \pT^{\gamma} - 0.5 \sum_{PU} \pT^{PU}) \right)
 \end{equation}
-\textit{Is it pT or ET?}\\
-\textit{Need plots?}\\
-\textit{Muon veto discussed?}
+%\textit{Is it pT or ET?}\\
+% Twiki (https://twiki.cern.ch/twiki/bin/view/CMSPublic/SWGuideMuonId#Muon_Isolation) shows ET but uses further in text pT!
+%
+%\textit{Need plots?}\\
+%   --> Can add this in case there is time left!
+
+The events considered in this analysis are required to contain exactly one such a well-identified muon, with $\pT$ $>$ 30 $\GeV$ and $\vert \eta \vert$ $<$ 2.1. Any event containing an additional lepton, either a PF muon reconstructed as global or tracker muon with $\pT$ $>$ 10 $\GeV$, $\vert \eta \vert$ $<$ 2.5 and $I_{\textrm{rel}}^{\Delta \beta}$ $<$ 0.2 or otherwise an electron with $\pT$ $>$ 20 $\GeV$, $\vert \eta \vert$ $<$ 2.5, $I_{\textrm{rel}}^{EA}$ $<$ 0.15 and $mvaId$ $>$ 0, are rejected. 
+\\
+The latter two variables, $I_{\textrm{rel}}^{EA}$ and $mvaId$, are two of the electron selection criteria that are applied to all electrons present in the event in order to limit the influence of background sources for the electron identification~\cite{ElId8TeV}. In contrast to the muon identification, which is based on a cut-based method, the electron identification uses a multivariate approach where different variables are combined into the single $mvaId$ variable.
+The electron-isolation $I_{\textrm{rel}}^{EA}$ is determined in a similar manner as the muon-isolation, but using a different cone size ($\Delta R$ = 0.3) and a different pileup subtraction approach. For the electrons this is done by using an effective area $A_{eff}$ and an average energy density $\rho$, which has proven to be rather efficient in reducing the pileup dependency.% on the number of vertices.
+% Check citation ElId8TeV on page 18 for some more detailed explanation on this rho!!!
+\begin{equation}\label{eq::DeltaBetaIso}
+ I_{\textrm{rel}}^{EA} = \frac{1}{\pT^{e}} \left( \sum_{\textrm{CH}} \pT^{\textrm{CH}} + \max(0, \sum_{\textrm{NH}} \pT^{NH} + \sum_{\gamma} \pT^{\gamma} - \rho \cdot A_{eff}) \right)
+\end{equation}
+
+The lepton selection is then finalized by introducing a correction-factor taking into account the trigger, identification and isolation efficiencies of the selected muons.
+These values have been determined centrally by the CMS collaboration~\cite{MuonPerf8TeV}, and, although they are almost identical for data and simulation, will be applied in order to ensure an optimal agreement between both.
 
 \subsection{Jet selection criteria}   %Info on: https://twiki.cern.ch/twiki/bin/view/CMS/TopJMERun1#Jets
-With the lepton selection clearly established, the next step consists of applying a similar type of identification and cleaning criteria to the selected events.
+With the lepton selection clearly established, the next step consists of applying a similar type of identification and cleaning criteria to the selected jets.
 The goal here is to drastically reduce the fake, badly reconstructed and noise jets while keeping close to 99 $\%$ of the real jets. These jet identification criteria have been studied in detail on 7 TeV data~\cite{JetId7TeV} (is probably private...), and only minor adaptations have been suggested for the 8 TeV data-taking period.
 \\
-The jet-identification criteria should be applied on the ParticleFlow jets after the different corrections discussed in Section~\ref{subsec::jetReco}: L1L2L3 correction, charged hadron subtraction (\textbf{Is this discussed in a previous chapter?)} %to remove all contributions from charged pileup 
-and jet-energy smearing. These calibrations are needed in order to correct for the small discrepancies observed between data and simulation.
+The jet-identification criteria should be applied on the PF jets after the L1L2L3 correction, the jet-energy smearing; both discussed in Section~\ref{subsec::jetReco}; and the charged hadron subtraction responsible of removing all contributions from charged pileup. These calibrations are needed in order to correct for the small discrepancies observed between data and simulation.
 \\
 \\
 In order to select top-quark pairs decaying semi-leptonically, characterised by a well-isolated lepton and four high-energetic jets, each event has to contain at least four jets fullfilling the requirements: $\pT$ $>$ 30 $\GeV$ and $\vert \eta \vert$ $<$ 2.4.
@@ -55,25 +68,19 @@ Since each of these jets have to be well separated from the muon identified in t
 \\
 The actual jet-identification criteria look at the distribution of the energy fractions and the composition of the different jet constituents.
 They reject the noise jets by constraining the energy fraction carried by the charged electromagnetic PF particles ($f_{CEM}$ $<$ 0.99), the energy fraction carried by the charged PF hadrons ($f_{CH}$ $>$ 0), the energy fraction carried by the neutral electromagnetic PF particles ($f_{NEM}$ $<$ 0.99) and the energy fraction carried by the neutral PF hadrons ($f_{NH}$ $<$ 0.99).
-\\
-\textit{What about number of constituents and muon fraction ?? (+ what is this fHPD (0.98) and n90Hits in event selection file?)}
-\\
+Moreover, each PF jet is required to contain at least two constituents ($n_{\textrm{PFparticles}}$ $>$ 1) and at least one charged particle ($n_{\textrm{charged}}$ $>$ 0).
 
-Another interesting jet-selection contraint, which will be discussed in more detail in Section~\ref{subsec::BTag}, is the requirement to have some of the jets present in the event to be identified as originating from b-quark decays. Even if most of the backgrounds considered for $\ttbar$ decays can have events containing mulitple jets, the possibility that they are labelled as a b-jet is significantly smaller.
+\section{Additional fine-tuning criteria}\label{sec::SpecificSelec}
 
-\section{Fine-tuning of the event selection}\label{sec::SpecificSelec}
-
-The event selection constraints discussed in the previous section are kept as general as possible in order to be applicable for numerous analyses examining a similar event topology.
-Since these selection criteria are centrally managed, their performance is continiously monitored and changing detector conditions are easily taken into account.
-In addition, the various synchronization exercises between the different analyses using the same selection criteria significantly improves the selection efficiency. (\textbf{Be sure this is the case!})
+The event selection criteria discussed in the previous section are kept as general as possible in order to be applicable for various analyses examining similar event topologies.
+These centrally managed selection and cleaning criteria should however be optimised in order to incorporate the necessary analysis-specific requirements.
 \\
-
-The above-mentioned selection criteria, however, still have to be fine-tuned in order to incorporate the analysis-specific requirements.
-The analysis discussed in this thesis actually requires a very stringent event selection mainly motivated by the choice to use a Matrix Element method, see Chapter~\ref{ch::MW}. Such a technique examines each event using the full kinematic information and thus needs a large processing time. Therefore it has been opted to restrict the selected number of events as much as possible to avoid spending computational resources on incorrect event topologies.
+The analysis discussed in this thesis, for example, needs a very stringent event selection due to the choice of using a Matrix Element method.
+This method will be explained in detail in Chapter~\ref{ch::MW}, but for the event-selection optimisation it is sufficient to understand that such a technique examines each event using the full kinematic information, thus requiring a significant processing time. As a result, it has been here opted to restrict the selected number of events as much as possible to avoid spending computational resources on incorrect event topologies.
 \\
 \\
-Two important background-reduction constraints have been applied, each focussing on a different kinematic property and thus aiming to exclude distinct types of events. 
-The first one, which is discussed in Section~\ref{subsec::BTag}, exploits the characteristic signature of semi-leptonical decaying top-quark pair events that two of the jets originate from the decay of a b-quark. The second requirement, Section~\ref{subsec::MassCuts}, focuses more on the kinematic properties of the reconstructed jets by demanding their mass combinations to correspond with expectations.
+Two important background-reduction criteria will be applied, each focussing on a different kinematic property and thus aiming to exclude distinct types of events. 
+The first one, which is discussed in Section~\ref{subsec::BTag}, exploits the characteristic signature of semi-leptonical decaying top-quark pair events that two of the jets originate from the decay of a b-quark. The second requirement, Section~\ref{subsec::MassCuts}, focuses more on the kinematic properties of the reconstructed jets by restricting the reconstructed invariant masses.
 
 \subsection{Background reduction using b-jet identification}\label{subsec::BTag}
 
@@ -81,7 +88,11 @@ Top-quark pair-production events for which one of the W-bosons decays hadronical
 Exploiting this latter property is an effective manner of distinguishing the event topology from the background, since the decay of the b-quarks has the peculiar feature that it gives rise to a displaced vertex. This because the relatively long lifetime of the b-quark implies that the decay does not occur at the interaction vertex; for more detail see Section~\ref{subsec::jetReco}.
 \\ 
 
-In this analysis b-jet identification plays a crucial role in reducing the background contribution since only events with two jets identified as b-jets will be considered. The main background samples for semi-leptonical decaying top-quark events might have events with one jet fullfilling this condition, having two  is less likely (\textbf{Possible to give percentages?}). Hence the considered background samples; W-boson production in association with jets (W+jets), Z-boson production in association with jets (Z+jets) and single-top production in the t-, tW- and s-channel; will almost be completely negligible after applying this b-tagging requirement.
+In this analysis b-jet identification plays a crucial role in reducing the background contribution since only events with two jets identified as b-jets will be considered. The main background samples for semi-leptonical decaying top-quark events might have events with one jet fullfilling this condition, having two  is less likely. %(\textbf{Possible to give percentages?}). 
+%************************
+% If possible, give percentages of this statement! (09/12/15)
+%***********************
+Hence the considered background samples; W-boson production in association with jets (W+jets), Z-boson production in association with jets (Z+jets) and single-top production in the t-, tW- and s-channel; will almost be completely negligible after applying this b-tagging requirement.
 %(\textit{Check if this is also in someway the case when only a double light is applied! .. Yes, main background of W+jets is only 10 $\%$ of ttbar sample! (Total is 20$\%$ of ttbar)})
 \\
 
@@ -95,12 +106,9 @@ The impressive efficiency for this b-jet identification procedure can be underst
 \end{figure}
 
 Since in this analysis priority is given to selecting event topologies which closely agree with the expected topology the double Tight CSV b-tagging requirement is expected to be the optimal choice.
-This is indeed the case, the fraction of selecting the good jet combination increases from 0.409 up to 0.497 and finally reaches a value of 0.547 when tightening the CSV discriminant value from Loose to Tight. These values have been determined considering simulated semi-leptonic $\ttbar$ events for which information about the corresponding partons is available. (\textbf{Correct this way?})
-%This fraction represents the number of events for which all four jets have been assigned to the correct final state particle compared to the number of events with at least one jet reconstructed incorrectly.
-%This is indeed retrieved when comparing the number of events for which the four leading $\pT$ jets in the event are correctly picked out from the collection of reconstructed jets for the different b-tag working points. The corresponding fraction of selecting good jet combinations increases from 0.409 up to 0.497 and ends at 0.547 when tightening the CSV discriminant value.
-%, which is indeed what can be concluded from Table~\ref{table::bTagResults}.
-%This table gives an idea for how many events the four leading $\pT$ jets in the event are correctly picked out from the collection of reconstructed events. This number has been denoted as signal $s$ and will background
-%summarizes the number of events for which all four jets are correctly picked out from the collection of reconstructed jets, denoted as signal s, and for which at least one has been wrongly chosen. These two categories, together with the events for which no information about the underlying parton is available, represents the background such that the $s/b$ value gives an idea of the jet reconstruction efficiency for the different b-tag working points.
+This is indeed the case, the fraction of selecting the good jet combination increases from 0.409 up to 0.497 and finally reaches a value of 0.547 when tightening the CSV discriminant value from Loose to Tight. 
+These fractions are determined from simulated semi-leptonic $\ttbar$ events for which the four generator-level partons corresponding to the four jets are available.
+\\
 It has also been investigated whether an improvement could be observed when the CSV discriminant of the light jet candidates is restricted, but since the effect was almost negligible it will not be considered further.
 \\
 
@@ -146,7 +154,7 @@ Allowing the third light jet to be part of the chosen jet combination significan
 With these extra jet combinations to choose the most plausible one from, the possibility to select the correct two light jets increases from $63.13 \%$ to $76.21 \%$.
 Due to this more correct determination of the light jet candidates the overall fraction of selecting good events, mentioned earlier to be 0.547, has improved to $0.666$.
 This positive influence can also be seen when comparing the two distributions given in Figure~\ref{fig::ChiSq_4vs5Jets}. 
-Here the left-handed distribution contains the $\chi^{2}$ distribution for the chosen jet combination with and without the inclusion of this third jet, while the right-handed one shows the difference in shape of this $\chi^{2}$ distribution (\textit{Shape of a distribution, overkill?}) for the non-chosen jet combinations.
+Here the left-handed figure contains the $\chi^{2}$ distribution for the chosen jet combination with and without the inclusion of this third jet, while the right-handed one shows the difference in shape of this $\chi^{2}$ distribution for the non-chosen jet combinations.
 %improvement is also visible from the two $\chi^{2}$ distributions given in Figure~\ref{fig::ChiSq_4vs5Jets}, for which the left-handed one represents the $\chi^{2}$ distribution of the chosen jet combination with and without the inclusion of this third jet while the right-handed one describes the difference in shape of the wrong jet combinations $\chi^{2}$ for the same two options.
 \begin{figure}[h!t]
  \centering
@@ -157,8 +165,8 @@ Here the left-handed distribution contains the $\chi^{2}$ distribution for the c
 %\textit{Possible to find a summarising plot? Apply pileup reweighting on numbers...?}\\
 %\textit{Mention the improvement when allowing this third jet, if present.}
 
-\subsection{Improving the jet-assignment choice}\label{subsec::MassCuts}
-Even though the application of a b-jet identification algorithm will significantly reduce the different background contributions, the reconstruction efficiency can still be enhanced by excluding events using specific kinematic constraints, as will be demonstrated here.
+\subsection{Improving the jet assignment}\label{subsec::MassCuts}
+Even though the application of a b-jet identification algorithm will significantly reduce the different background contributions, the reconstruction efficiency can still be enhanced by excluding events using specific kinematic criteria, as will be demonstrated here.
 This follows from the fact that the Matrix Element method treats all events as it were semi-leptonical top-quark pair decays such that a visible amelioration can be achieved when augmenting the possibility of choosing the correct event topology.
 \\
 The two methods that have been considered in order to improve the jet-assignment probability both rely on invariant mass distributions. %(of the hadronical and leptonical decaying top-quark system.)
@@ -174,8 +182,8 @@ This correlation, $\chi^{2}$ and $m_{t}$ on the one hand and $\chi^{2}$ and $m_{
 \end{figure}
 
 Restricting the mass values of both the hadronical decaying top quark and the W-boson is a rather effective \textbf{manner/approach} of ensuring the reconstructed top-quark topology actually corresponds to a top-quark decay (process).
-In order to apply both mass constraint simultaneously, it has been decided to use the measured mass values together with a specific number of standard deviations to create an allowed mass range.
-The expected W-boson mass has been determined by fitting the obtained invariant mass distribution after all event selection constraints have been applied with a Gaussian function, as was the case for the top-quark mass in the $\chi^{2}$-based method ($\hat{m}_{t}$ = $175.03$ $\pm$ $17.06$ $\GeV$). For the W-boson mass this resulted in a value of $\hat{m}_{W}$ $=$ $83.62$ $\pm$ $17.06$ $\GeV$, retrieved from the distribution given in Figure~\ref{fig::InvWMass}.
+In order to apply both mass constraints simultaneously, it has been decided to use the measured mass values together with a specific number of standard deviations to create an allowed mass range.
+The expected W-boson mass has been determined by fitting the obtained invariant mass distribution after all event selection criteria have been applied with a Gaussian function, as was the case for the top-quark mass in the $\chi^{2}$-based method ($\hat{m}_{t}$ = $175.03$ $\pm$ $17.06$ $\GeV$). For the W-boson mass this resulted in a value of $\hat{m}_{W}$ $=$ $83.62$ $\pm$ $17.06$ $\GeV$, retrieved from the distribution given in Figure~\ref{fig::InvWMass}.
 \\
 %It has been determined that 
 The optimal cut-value, which sufficiently improves the reconstruction efficiency without drastically reducing the event count, has been identified as the $2\sigma$ interval. For this mass range the number of selected semi-leptontic $\ttbar$ events fullfilling the double b-tag requirement is halved while the reconstruction fraction has increased to 0.791.
@@ -189,24 +197,24 @@ The optimal cut-value, which sufficiently improves the reconstruction efficiency
 The second considered requirement, limiting the $\chi^{2}$ variable of the chosen jet combination, aims to exclude the events less likely to be well reconstructed.
 For the events residing in the tail of this $\chi^{2}$ distribution the possibility to correctly assign all four jets to the considered event topology is as low as 20 $\%$.
 In order to ensure the $\chi^{2}$ restriction results in a cleaner event sample without rejecting the majority of the events, as was the case for the invariant mass constraint, the cut-value to be fullfilled for the chosen jet combination is: $\chi^{2}$ $<$ $10$.
-This allows to enhance the reconstruction efficiency (slightly) to 0.699, without the previously discussed mass restriction being applied, and reduce the event count with a factor (\textbf{1.3?}) .
+Without the mass restrictions being applied, this requirement slightly enhances the reconstruction to 0.699 while reducing the event count for the considered simulated semi-leptonic $\ttbar$ sample with 23 $\%$.
 \\
 
-The effect of these two additional event selection constraints will have less of on impact on the final result than the b-jet identification algorithm, but is nonetheless an efficient way to reduce the contribution of poorly reconstructed events.
-When demanding both the invariant mass constraint and the $\chi^{2}$ limitation to be fullfilled, the possibility to correctly reconstruct the entire top-quark pair event topology reaches a value of $79.33\%$.
+The effect of these two additional event selection criteria will have less of on impact on the final result than the b-jet identification algorithm, but is nonetheless an efficient way to reduce the contribution of poorly reconstructed events.
+When demanding both the invariant mass and the $\chi^{2}$ restriction to be fullfilled, the possibility to correctly reconstruct the entire top-quark pair event topology reaches a value of $79.33\%$.
 The small improvement compared to the individual results, mainly dominated by the mass requirement, can be understood from the large correlation between both methods.
 %The high correlation between both methods explains why the combined application does not strongly enhance the reconstruction efficiency obtained individually.
 %Since both methods are highly correlated it is not expected that their combined application will strongly enhance the reconstruction efficiencies already achieved individually. However, a very small %improvement is still obtained 
 
 \section{Influence of full event selection} %Kinematics of remaining events/Finalized event selection}\label{sec::DataMC} 
 The full event selection consists of the triggering and cleaning conditions discussed in Section~\ref{sec::MainSelec} combined with the analysis-specific supplementary fine-tunings introduced in Section~\ref{sec::SpecificSelec}.
-The additional event selection constraints applied here have all been developed with the intention to reduce the contribution from the different background processes and to remain with a selected sample dominated by well reconstructed events.
+The additional event selection criteria applied here have all been developed with the intention to reduce the contribution from the different background processes and to remain with a selected sample dominated by well reconstructed events.
 This goal is clearly achieved under the influence of the considered selection requirements
 %, 2 jets fullfilling the Tight Combined Secondary Vertex b-tagging requirement; $\chi^{2}$-value of the chosen jet-combination choice smaller than 10; and both the reconstructed top-quark and W-boson mass located within the $2\sigma$ interval around its expectation value, 
 since for 79.33$\%$ of the semi-leptonic $\ttbar$ events the correct jet assignment is chosen.
 \\
 
-The selected sample of both simulated and data events are determined using the same event selection constraints, and before the actual analysis can be carried out a detailed comparison between the two is performed to ensure the data is well described by the considered simulated samples.
+The selected sample of both simulated and data events are determined using the same event selection criteria, and before the actual analysis can be carried out a detailed comparison between the two is performed to ensure the data is well described by the considered simulated samples.
 %With the full event selection finalized, a comparison between data and simulation is a practical tool to ensure the considered background processes are sufficient to describe the studied interaction.
 In order for this comparison to be correct, the different calibrations accounting for the different response of data and simulated events in specific conditions have to be applied.
 %However, before such an agreement can be achieved, the different calibrations need to be applied to simulation to account for the minor discrepancies between data and simulated events.
@@ -219,11 +227,7 @@ This method determines the total number of interactions in each bunch crossing f
 %Info found on: https://twiki.cern.ch/twiki/bin/view/CMS/PileupJSONFileforData
 \\
 \\
-Second one: lepton scalefactor (best place to add this?)\\
-Is there a twiki?
-\\
-\\
-The last, but definitely not least important, calibration that needs to be applied corrects for the slightly different efficiency of the b-jet identification algorithm in data and simulation~\cite{BTagSF}.
+The second calibration that needs to be applied corrects for the slightly different efficiency of the b-jet identification algorithm in data and simulation~\cite{BTagSF}.
 This aspect has been studied in great detail and has resulted in the development of b-tag efficiency scale-factors, analytic functions depending on the transverse momentum of the jets, to account for these discrepancies by correcting the measured jet-dependent efficiencies in simulation.
 %**********************
 %Important to note: No eta-dependency for Tight CSV!
@@ -234,6 +238,9 @@ This aspect has been studied in great detail and has resulted in the development
 The determination of the b-tag event-weight starts by computing the efficiency $\varepsilon_{f}$ for a jet of flavour $f$ to be identified as a b-jet using simulated semi-leptonic $\ttbar$ events.
 From these efficiencies an overall event probability $P_{sim}$, see Equation (\ref{eq::PSim}), can be calculated by multiplying the efficiencies of all jets residing in the event\footnote{It is important to note that in Equation (\ref{eq::PSim}) the labels \textit{tagged} and \textit{non-tagged} refer to whether the considered jet fullfilled the applied b-tag requirement and not whether it has been labelled as one of the two b-jet or light jet candidates in the event selection.}.
 The corresponding event probability as expected in data, $P_{data}$ in Equation(\ref{eq::PData}), is determined in the same way, but every jet-efficiency is corrected using the aforementioned scale-factor $SF$.
+%****************************************
+% Remark: If b-tag is leading systematic the SF distributions can maybe be added as a plot!!
+%****************************************
 \begin{eqnarray} 
  P_{sim} & = & \prod_{i = tagged} \varepsilon_{i} \prod_{j = non-tagged} (1-\varepsilon_{j})  \label{eq::PSim} \\
  P_{data} & = & \prod_{i = tagged} SF_{i} ~ \varepsilon_{i} \prod_{j = non-tagged} (1- SF_{j} ~ \varepsilon_{j}) \label{eq::PData}
@@ -243,9 +250,10 @@ From these two probabilities the overall event-weight can be determined in a str
  \textrm{event-weight } w = \dfrac{P_{data}}{P_{sim}}
 \end{equation}
 
-Once all necessary calibrations have been included, the actual comparison between data and simulation can be performed.
-The triggers applied in this analysis, based on a single isolated muon, collected a total of 19.6 $\pm$ xx $\fbinv$ during the 2012 data-taking period.
-The final number of events obtained after applying the full event-selection chain (at this luminosity) for both data and the different simulation samples considered can be found in Table~\ref{table::DataMCComp}.
+Once all necessary calibrations have been included the actual comparison between data and simulation can be performed at a luminosity of 19.6 $\pm$ xx $\fbinv$, which is the amount of data collected by the considered isolated-muon triggers during the 2012 data-taking period.
+%The trigger paths applied in this analysis, based on a single isolated muon, collected a total of 19.6 $\pm$ xx $\fbinv$ during the 2012 data-taking period.
+The final number of events obtained after demanding both the data and the simulated samples pass through the complete event-selection chain are given in Table~\ref{table::DataMCComp}.
+As expected, the background contribution is almost negligible due to the stringent event-selection criteria.
 %Once all the necessary calibration factors have been applied the actual comparison between data and simulated events can be performed.
 %To start Table contains the obtained event numbers for data and all of the considered simulation samples after \textit{sending through} the full event selection.
 \begin{table}[h!t]
@@ -256,15 +264,12 @@ The final number of events obtained after applying the full event-selection chai
   Sample 			& Number of events 	\\
   \hline
   \hline
-  Semi-leptonic $\ttbar$ 	& all together? $\pm$ 		\\
-  Full-leptonic $\ttbar$ 	& all together? $\pm$ 		\\
-  Full-hadronic $\ttbar$ 	& all together? $\pm$ 		\\
-  %\hline
-  W+jets 			&  $\pm$ 			\\
-  Z+jets (why $\gamma$?)	&  $\pm$ 			\\
-  Single top 			&  $\pm$ 			\\
+  Semi-leptonic $\ttbar$ 	& 16173 $\pm$ 41 	\\
+  W+jets 			& 66 $\pm$ 7		\\
+  Z+jets (why $\gamma$?)	& 17 $\pm$ 4		\\
+  Single top 			& 359 $\pm$ 24		\\
   \hline
-  Total				&  $\pm$ 			\\
+  Total				& 16 615 $\pm$ 76	\\
   \hline
   \hline
   Observed			& 16943			\\
@@ -272,57 +277,66 @@ The final number of events obtained after applying the full event-selection chai
  \end{tabular}
 \end{table}
 
-The three considered calibrations all influence the kinematics of the individual events and will therefore change the shape of the kinematic distributions in a significant manner, as will be shown afterwards.
-The overall event count obtained in simulation, however, is not affected by the pileup reweighting and the muon scale-factor since these two calibrations are on average close to $1$ (\textbf{average out to unity}).
-The b-tag event-weight, on the other hand, does not share this characteristic, (mainly) due to the stringent requirement of asking for two jets to pass the Tight working-point constraint of the CSV algorithm.
-With an average of about 0.87 $\pm$  (\textit{Get the uncertainty from up/down}), the event count in simulation has been largely overestimated and should therefore be scaled down in order to correctly take into account the difference in b-jet identification efficiency.
-The uncertainty on this latter scale-factor also largely covers the small statistical disagreement which is visible between data and simulation, as can be seen from Table~\ref{table::DataMCCompBTag}.
-%since on average they are almost equal to unity, they do not have a significant effect on the overall event count obtained in simulation. The only exception is the b-tag event weight, wich is, due to the stringent requirement of asking for a double Tight b-tag.
-%Even though the pileup reweighting and muon scalefactor have a significant effect on specific distributions as will be shown further, on average they are equal to unity meaning they do not influence the overall event count. The b-tag event-weight on the contrary modifies both the shapes and the simulated event count due to the stringent requirement of asking for two jets to pass the Tight working point.
+The considered calibrations both influence the individual event kinematics and therefore modify the shape of the kinematic distributions.
+The overall event count obtained in simulation, however, is not affected by the pileup reweighting since this correction factors is on average close to $1$ (\textbf{averages out to unity}).
+The importance of this correction can be visualized \textbf{from/in} Figure~\ref{fig::PUInfl}, which contains the primary vertex multiplicity with and without the reweighting applied.
+Comparing the two distributions clearly illustrates a better shape description, and thus significantly improved Data/MC agreement, when taking into account the calibration factor.
 \\
-The relative effect of the three calibrations can be visualized in Figures~\ref{fig::PUInfl} - \ref{fig::BTagInfl}, where each time one of the more relevant distributions is given before and after the considered scale-factor is applied.
+The b-tag event-weight, on the other hand, has an average value of about 0.87 $\pm$  (\textbf{Get the uncertainty from up/down}), mainly due to the stringent requirement of demanding two jets to fullfill the Tight working-point requirement of the CSV algorithm.
+%does not share this characteristic of an average equal to 1
+%With an average of about 0.87 $\pm$  (\textit{Get the uncertainty from up/down}), 
+Hence the event count in simulation is largely overestimated and should therefore be scaled down in order to correctly take into account the difference in b-jet identification efficiency.
+%The uncertainty on this latter scale-factor also largely covers the small statistical disagreement which exists between data and simulation, as can be seen from Table~\ref{table::DataMCCompBTag}.
+%\\
+%\begin{table}[h!t]
+% \caption{TITLE} \label{table::DataMCCompBTag}
+% \centering
+% \begin{tabular}{c|c|c}
+%  \hline
+%  \multirow{2}{*}{Sample} 	& \multicolumn{2}{c}{Number of events} 	\\
+%				& Statistical uncertainty & b-tag uncertainty \\
+%  \hline
+%  \hline
+%  $\ttbar$ 			& separate or combined?	& useful? \\
+%  W+jets 			& 			& \\
+%  Z+jets (why $\gamma$?)	& 			& \\
+%  Single top 			& 			& \\
+%  \hline
+%  Total				& 			& \\
+%  \hline
+%  \hline
+%  Observed			&			& \\
+%  \hline
+% \end{tabular}
+%\end{table}
 
-\begin{table}[h!t]
- \caption{TITLE} \label{table::DataMCCompBTag}
- \centering
- \begin{tabular}{c|c}
-  \hline
-  Sample 			& Number of events 	\\
-  \hline
-  \hline
-  $\ttbar$ 			& Include b-tag unc?	\\
-  W+jets 			& 			\\
-  Z+jets (why $\gamma$?)	& 			\\
-  Single top 			& 			\\
-  \hline
-  Total				& 			\\
-  \hline
-  \hline
-  Observed			&			\\
-  \hline
- \end{tabular}
-\end{table}
+%The relative contribution of the three calibrations can be visualized \textbf{from/in} Figures~\ref{fig::PUInfl} - \ref{fig::BTagInfl}, where each time one of the more relevant distributions is given before and after the specific scale-factor is applied. 
+
+%The first Figure (\textit{include this way?}) contains the primary vertex multiplicity, the variable altered by the pileup reweighting procedure, and clearly illustrates the importance of this calibration factor since the shape is much better described after the reweighting resulting in a significantly improved Data/MC agreement.
+%Secondly the influence of the lepton scale-factor is described using the distribution of the transverse momentum of the selected muon. 
 
 \begin{figure}[h!t]
  \centering
  \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter4_EvtSel/Figures/nPV_AllCuts_noPU_mu_Stack.pdf}
  \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter4_EvtSel/Figures/nPV_AllCuts_mu_Stack.pdf}
- \caption{Influence of pu reweighting (FILL) -- first explain all scalefactors and only then show plots!!! (leptonSF and b-tag is applied ..)} \label{fig::PUInfl}
+ \caption{Influence of pu reweighting (FILL) -- first explain all scalefactors and only then show plots!!! (leptonSF and b-tag is applied ..)\\ Still need to change the x-axis to go from -0.5 to 35.5!} \label{fig::PUInfl}
 \end{figure}
 
-\begin{figure}[h!t]
- \centering
- \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter4_EvtSel/Figures/LeptonPt_AllCuts_noMuSF_mu_Stack.pdf}
- \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter4_EvtSel/Figures/LeptonPt_AllCuts_mu_Stack.pdf}
- \caption{Influence of lepton SF (FILL) (PU and b-tag applied ..)} \label{fig::LeptonSFInfl}
-\end{figure}
+%\begin{figure}[h!t]
+% \centering
+% \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter4_EvtSel/Figures/LeptonPt_AllCuts_noMuSF_mu_Stack.pdf}
+% \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter4_EvtSel/Figures/LeptonPt_AllCuts_mu_Stack.pdf}
+% \caption{Influence of lepton SF (FILL) (PU and b-tag applied ..) \\ Limit the range!!} \label{fig::LeptonSFInfl}
+%\end{figure}
 
-\begin{figure}[h!t]
- \centering
- \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter4_EvtSel/Figures/JetPt_LeadingJet_AllCuts_noBTagSF_mu_Stack.pdf}
- \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter4_EvtSel/Figures/JetPt_LeadingJet_AllCuts_mu_Stack.pdf}
- \caption{Influence of b-tag SF (FILL) (leptonSF and PU applied ..)} \label{fig::BTagInfl}
-\end{figure}
+%\begin{figure}[h!t]
+% \centering
+% \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter4_EvtSel/Figures/JetPt_LeadingJet_AllCuts_noBTagSF_mu_Stack.pdf}
+% \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter4_EvtSel/Figures/JetPt_LeadingJet_AllCuts_mu_Stack.pdf}
+% \caption{Influence of b-tag SF (FILL) (leptonSF and PU applied ..)} \label{fig::BTagInfl}
+%\end{figure}
+
+To finalize this chapter some of the more important variables for this analysis will be given.
 
 %\paragraph{Scale factors for b-tag efficiency} \hfill \\
 
