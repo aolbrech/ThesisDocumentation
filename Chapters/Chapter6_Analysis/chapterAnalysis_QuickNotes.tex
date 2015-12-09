@@ -1,0 +1,154 @@
+\chapter{Measurement of the anomalous couplings in the Wtb interaction vertex} \label{ch::Analysis}
+
+\section{Additional event selection ...} \label{sec::Prep}
+\subsection{Cross-section determination for reconstructed events}
+The benefit of studying generator-level events is that the MadGraph software can be used to determine the  $\ttbar$ cross-section, which is not possible anymore when considering actual reconstructed events. 
+Hence the previously determined generator-level cross-section values for each of the anomalous coupling coefficient parameters should be extrapolated to the actual $\ttbar$ cross-section.
+\\
+
+The main problem in obtaining these reco-level cross-section values for the different parameters of the $\gR$ anomalous couplings coefficient is that the measured $\ttbar$ cross-section cannot be recovered in MadGraph. And unless a FastSim sample is created for a non-SM $\gR$ coefficient there is no information about the $\ttbar$ cross-section for non-SM coupling coefficients.
+\\
+Hence the calculated MadGraph cross-sections should be scaled in such a way to correspond to the measured $\ttbar$ cross-section at the Standard Model configuration. In order to be as precise as possible the MadGraph cross-section have been calculated using $\ttbar$ events with $0$ and $1$ additional jets. Adding this single additional jet allows to correspond a bit more to the actual reconstructed environment where $\ttbar$ events with multiple additional jets are considered. The case where 2 additional jets are allowed has omitted since this requires a very long CPU time to produce the MadGraph cross-section and only has a very small influence on the overall cross-section. 
+\\
+
+A summary of the cross-section values obtained for the two considered $\ttbar$ processes is given in Table~\ref{table::MGXS_ttbarCut}. The event selection cuts which have been applied on MadGraph level are rather basic and simply require the $\pT$ of the jets to be larger than $30$ $\GeV$, of the leptons larger than $26$ $\GeV$ and of the neutrino larger than $25$ $\GeV$. Additionally the pseudorapidity should be smaller than 2.5 for all considered particles (2.1 even for leptons) and the $\Delta R$ values for all the objects should be maximally 0.3 in order to be consistent to what is applied for reconstructed events.
+\begin{table}[h!t]
+ \caption{Cross-section values obtained from MadGraph for various $\gR$ coefficients after application of a basic event selection.} \label{table::MGXS_ttbarCut}
+ \centering
+ \begin{tabular}{|c||c|c|c|c|c|c|c|}
+  \hline
+  $\gR$ coefficient 		& -0.3 		& -0.2 		& -0.1 		& 0.0 		& 0.1 		& 0.2 		& 0.3 		\\
+  \hline
+  XS $\ttbar$ + 0 jet ($1/pb$) 	& 1.279 	& 1.825 	& 2.639 	& 3.809 	& 5.457 	& 7.668 	& 10.632 	\\
+  XS $\ttbar$ + 1 jet ($1/pb$) 	& 0.745 	& 1.0653 	& 1.545 	& 2.233 	& 3.200 	& 4.501 	& 6.2363 	\\
+  \hline
+ \end{tabular}
+\end{table}
+
+Apart from determining the cross-section with MadGraph, the expected Standard Model $\ttbar$ cross-section after the full event selection chain should be determined. This value can be determined by using the luminosity of the considered Monte Carlo sample together with the number of events surviving the applied event selection cuts.\\
+\textcolor{blue}{\textbf{\underline{Remark:}} Should still double-check whether this number of events is the one before or after the additional mass-window cuts which will be applied !!! This will still significantly change the cross-section values ....}\\
+\begin{equation}
+ XS = \frac{\# events}{Luminosity ~ \mathcal{L}} = \frac{434125}{220488.346} = 1.960816083 1/pb
+\end{equation}
+
+This reconstructed cross-section value can then be used to rescale the MadGraph cross-sections such that a RECO-level cross-section value exists for each of the $\gR$ coefficients considered.
+The exact way how this should be done should still be revised since a simple scaling down of the third order polynomial fitted through the individual MadGraph cross-sections would result in negative cross-section values which is ofcourse not possible. The method currently adopted is an separate scaling of each of the individual cross-sections with the ratio of the SM reco value and the SM generator value. The cross-section values then obtained are summarized in Figure~\ref{fig::XSRecoFromMG}.
+
+\begin{figure}[h!t]
+  \centering
+  \includegraphics[width = 0.9 \textwidth]{Chapters/Chapter6_Analysis/Afbeeldingen/XSDistributions.pdf}
+  \caption{Conversion from MadGraph cross-section to reco-level cross-section.}
+  \label{fig::XSRecoFromMG}
+\end{figure}
+
+The reason why it is allowed to use the same acceptance-ratio for all the considered $\gR$ values is because previous generator-level studies have proven that the event selection has a rather stable influence throughout the entire $\gR$ range. This can be seen from Table~\ref{table::AccInfl} which contains the influence of the basic event selection on the MadGraph samples.
+\begin{table}[h!t]
+ \caption{Influence of the event selection on the different MadGraph samples.} \label{table::AccInfl}
+ \begin{tabular}{|c||c|c|c|c|c|c|c|}
+  \hline
+  $\gR$ coefficient 	& -0.3 		& -0.2 		& -0.1 		& 0.0 		& 0.1 		& 0.2 		& 0.3 		\\
+  \hline
+  MG XS ($1/pb$) 	& 5.5612	& 8.24066	& 12.39876	& 18.54042	& 27.3093	& 39.4799	& 55.9507	\\
+  MG XS cuts ($1/pb$) 	& 1.27966	& 1.825208	& 2.6393	& 3.80921	& 5.45665	& 7.66805	& 10.63243 	\\
+  \hline
+  Acceptance ($\%$) 	& 23.0105	& 22.1488	& 21.2868	& 20.5454	& 19.9809	& 19.4227	& 19.0032	\\
+  \hline
+ \end{tabular}
+
+\end{table}
+
+
+\subsection{Improvement when applying additional cuts}
+Since MadWeight requires a significant amount of time for processing a huge benefit could be obtained when some additional event selection cuts are applied specifically for removing the badly reconstructed $\ttbar$ events. For this reason two separate, but slightly overlapping cuts have been studied:
+\begin{itemize}
+ \item Restricting the $\chi^{2}$ value for the Mlb-Mqqb value: 
+ \begin{equation}
+  \chi^{2}_{Mlb-Mqqb} = \frac{(\hat{Mlb} - Mlb)^{2}}{\sigma_{Mlb}^{2}} + \frac{(\hat{Mqqb} - Mqqb)^{2}}{\sigma_{Mqqb}^{2}}
+ \end{equation}
+ \item Restricting the obtained hadronic top and W-boson mass.
+\end{itemize}
+
+These two cuts are applied after the requirement of having at least two jets which are identified as Tight b-jets by the Combined Secondary Vertex b-tagging algorithm. At first the influence of the two cuts have been studied independently in order to find the most optimal cut values and afterwards they have been combined. In case of the $\chi^{2}_{Mlb-Mqqb}$ value a simple cut-value has been chosen while for the mass-window case the allowed deviation from the expected (fitted) mass values for reconstructed $\ttbar$ events is based on the standard deviation obtained from the gaussian fit.\\
+A summary of the applied cuts can be found in Table~\ref{table::CutInfl}.
+
+\begin{table}[h!b]
+ \caption{Influence of the two considered event selection cuts applied after the general event selection (muon and electron channel).} \label{table::CutInfl}
+ \centering
+ \begin{tabular}{|c|c|c|c|c|c|c|}
+  \hline
+				& Cut ($<$) 	& $\#$ Correct 	& $\#$ Wrong 	& $\#$ Unmatched 	& Reduction ($\%$)  	& s/b ($\%$) 	\\
+  \hline
+  Original 			& 		& 241222 	& 119925 	& 423807 		& 	 	 	& 30.7307 	\\
+  \hline
+  \hline
+  $\chi^{2}_{Mlb-Mqqb}$		& 10 		& 239009 	& 99506 	& 261893 		& 23.5104 		& 39.8078 	\\
+  \hline
+  Mass-window $\sigma$  	& 2 		& 214535 	& 54246 	& 116967 		& 50.8572 		& 55.6153 	\\
+  \hline
+  \hline
+  Combined 			& 		& 214510 	& 53558 	& 114629 		& 51.2459 		& 56.0522 	\\
+  \hline
+ \end{tabular}
+\end{table}
+From the table is perfectly clear that the considered event selection mainly remove the wrong and unmatched events and almost does not influence the already correctly reconstructed $\ttbar$ events. The $s/b$ is almost doubled by these simple constraints and the data sample which need to be processed by MadWeight is halved resulting in a significant reduction in required CPU time. From the results for the wrong and unmatched events can also directly be concluded that these constraints will also reduce the actual background samples even further.
+\\
+
+The results which will be discussed from now on will all have these two constraints applied, besides the general event selection explained before.
+
+\section{Likelihood extraction method} \label{sec::Method}
+\subsection{Obtaining minimum from Likelihood distribution}
+In order to transform the MadWeight output into a minimum value of $\gR$ in the most optimal way possible three different likelihood fit methods have been tested and compared. At first it seemed that applying a separate fit on each of the individual MadWeight event likelihoods would allow to extract information from each event and therefore result in the most precise measurement. However studying these individual likelihood distributions clearly shows that quite a lot of the considered events actually do not have the expected distribution. Even worse is that some events tend to have large fluctuations in the MadWeight probabilities implying that this specific event should not be given the same importance as a weight with a smooth distribution.
+\\
+In order to be able to still keep the individual fiting method it was also studied how the fit behaves when the $\gR$ coefficients which deviate the most from the expected quadratic distribution are removed and then the remaining points are refitted. This approach seemed to work decently when a lot of coefficients are considered at the same time, something which is rather uninteresting for CPU sake. So since in the configuration used in the actual analysis only contains 9 $\gR$ coefficients even removing only 2 coefficients is too much and results in unstable results.
+\\
+And even using the individual fit output to reject specific types of events did not result in the desired improvement for generator-level results. Hence not much advantage can be gained by using this rather complex fitting method.
+\\
+
+Therefore the method used to extract the $\gR$ information from the likelihood distribution is just the general MadWeight method which sums the probabilities of each $\gR$ configuration. This overall distribution is then fitted with a quadratic distribution in order to obtain the minimum of the $\gR$ coefficient.\\
+From Figure~\ref{fig::FitComp} can however be concluded that the basic MadWeight method does not differ that much from the two other methods and is hence thrustworthy.
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.9 \textwidth]{Chapters/Chapter6_Analysis/Afbeeldingen/Comparison_EventTypes_ExtraCuts_FitTypes.pdf}
+ \caption{Comparison between the three different fitting methods considered for extracting the MadWeight output. For this measurement only correctly reconstructed $\ttbar$ events have been considered after the full event selection.} \label{fig::FitComp}
+\end{figure}
+
+\subsection{Calibrating MadWeight output}
+The first generator-level obtained over the full range of $\gR$ coefficients indicated that the measurement introduces a bias and does not perfectly recovers the coefficient value used to create the MadGraph sample. Hence this effect will also be visible for the reconstructed events and should therefere be corrected.
+\\
+In order to be certain that it is really a specification of the measurement and not just an error for some of the $\gR$ coefficients the obtained generator-level results have been fitted with a straight line. In case the slope of this fit would indeed be close to $1$ the considered effect is stable throughout the considered range and is certainly an effect of a small bias.
+\\
+
+The obtained result, done for the three fitting methods, indeed shows a shape very similar to a straight line as can be seen in Figure~\ref{fig::CalibCurve}. And again the result obtained by the general MadWeight fitting method does not differ that much from the fit on the best points. However the fit on the full $\gR$ range actually deviates the most from expected distribution and is clearly not the most optimal method. The range has been restricted from $-0.2$ to $0.2$ since this is the main region of interest for the actual measurement, especially since if any deviations from the Standard Model would occur they are not expected to be larger than this range. So this restricted range should definitely be enough to have an accurate and wide enough calibration distribution.
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.9 \textwidth]{Chapters/Chapter6_Analysis/Afbeeldingen/ComparisonDifferentFits_CutsAlsoOnMET.pdf}
+ \caption{Calibration curve for generator-level results.} \label{fig::CalibCurve}
+\end{figure}
+
+This calibration curve can now be applied by either fit the individual minimum measurements with a quadratic function in order to take into account the small deviation from the straight line. The other possibility is to keep the fit shown in Figure~\ref{fig::CalibCurve} and use the result of the full $\ttbar$ Monte Carlo sample to reposition the origin of this calibration curve.
+\\
+So when looking back at the result obtained in Figure~\ref{fig::FitComp} (which is currently only for correctly reconstructed $\ttbar$ events) the origin should correspond to a measured value of $\gR$ = $-0.023$. This distribution can then be used to translate the measured data, and background, result into an actual unbiased measurement of the right-handed tensor coupling.
+
+\subsection{Cos $\theta^{*}$ reweighting}
+One last individual event correction which can be applied in order to remove any introduced bias of the event selection is the application of the $\csTh$ reweighting. This can be applied both for generator-level events as for reconstructed events and actually just reweights the events to correct for the different influence of the event selection on the $\csTh$ value. This because events with a very low $\csTh$ are more easily removed by the event selection cuts (or the other way around, check with plot) ...
+\\
+
+So the above studies have been repeated with this additional reweighting procedure and result in the following output.
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.9 \textwidth]{Chapters/Chapter6_Analysis/Afbeeldingen/Comparison_EventTypes_ExtraCuts_CosTheta_FitTypes.pdf}
+ \caption{Comparison between the three different fitting methods considered for extracting the MadWeight output. For this measurement only correctly reconstructed $\ttbar$ events have been considered after the full event selection and the $\csTh$ reweighting procedure.} \label{fig::FitCompCos}
+\end{figure}
+
+Comparing Figure~\ref{fig::FitComp} and \ref{fig::FitCompCos} is actually rather surprising, especially since previous generator-level studied indicated that the influence of this $\csTh$ reweighting was minimal while for the reconstructed events this is rather significant. So maybe it should be double-checked that the application of this $\csTh$ reweighting is done in the correct way for the $\ttbar$ events...
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.9 \textwidth]{Chapters/Chapter6_Analysis/Afbeeldingen/ComparisonDifferentFits_CutsAlsoOnMET_CosTheta.pdf}
+ \caption{Calibration curve for generator-level results after $\csTh$ reweighting has been applied.} \label{fig::CalibCurveCos}
+\end{figure}
+\section{Results and systematics} \label{sec::Results}
+
