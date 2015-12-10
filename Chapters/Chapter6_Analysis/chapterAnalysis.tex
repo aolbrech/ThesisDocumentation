@@ -1,3 +1,82 @@
 \chapter{Measurement of anomalous couplings in top-quark decays} \label{ch::Analysis}
 
-All the different aspects discussed in the previous chapters are linked as a whole and finally allow to focus on the actual measurement performed in this thesis.
+All the different aspects discussed in the previous chapters are linked as a whole and are now understood with sufficient detail in order to focus on the actual measurement performed in this thesis.
+The goal is to determine whether any hint of new-physics influences can be observed in the top-quark decay interaction vertex using a Matrix Element technique.
+\\
+
+In order to do so the machinery, as explained in Chapter~\ref{ch::MW} using an example of a top-quark mass determination, requires a profound adaptation in order to cope with the challenging environment of simulated and actual data events. This procedure will to be outlined in detail before the actual measurement can be discussed and is the subject of the first \textbf{two ?} sections here.
+%***********************
+% Check this once chapter is more finalized!
+%***********************
+At first the necessary calibration of the method needs to be determined since such a Matrix Element method is not always perfectly described, as will be outlined in Section~\ref{sec::CalibCurve}.
+Secondly an event cleaning procedure will be introduced in Section~\ref{sec::EvtCleaning}, responsible for ensuring the weights are correctly determined, even under the influence of detector or kinematic inefficiencies.
+Finally a detailed discussion of the measurement itself will be given in Section~\ref{sec::Meas}, complete with all the considered systematic uncertainties relevant for this specific analysis.
+
+\section{Adaptations for obtaining reco-level measurement} \label{sec::RecoAdapt}
+In order to correctly apply the Matrix Element method on reconstructed collision events, a different approach than the one used for generator-level events is required.
+At first, the ease \textbf{with which} generator-level samples with an alternative mass or coupling (\textit{Check whether any example of couplings is given ...}) could be created can not be repeated for these reconstructed events. Therefore, the linearity test performed to test the validity of the considered model assumptions will be performed using generator-level events, as explained in Section~\ref{subsec::CalibCurve}. Also the cross-section values at non-SM coupling coefficients for the reconstructed events need to be derived from these generator-level events, a procedure which will be discussed in Section~\ref{subsec::XSReco}.
+\\
+Secondly, and more related to the actual application of the technique, the possible influence of detector inefficiencies, ill-defined kinematic variables or wrongly reconstructed event topologies has a detrimental effect on the calculation of the event probability. 
+Therefore an additional event cleaning procedure, outlined in detail in Section~\ref{subsec::EvtCleaning}, is required in order to limit the importance of these type of events. 
+
+\subsection{Linearity test of Matrix Element method}\label{subsec::CalibCurve}
+
+The absence of simulated samples with alternative coupling coefficients necessitates the created model to be tested using generator-level results. This linearity test verifies whether the different model approximations did not enter a bias for the obtained result by measuring the parameter of interest in a wide range around the expectation.
+\\
+As was mentioned in Section~\ref{sec::SubWtb}, this analysis will focus on the right-handed tensor coupling of the Wtb interaction, $g_{R}$, which has an expectation value of $0$ in the Standard Model. Therefore the performed linearity test will only considered the range $\gR$ $\in$ $\left[-0.15, 0.15\right]$, which will be sufficient to obtain a precise determination of any possible bias present in either the model or method.
+\\
+
+Since the event selection is a rather likely source for introducing a bias, due to the possible different kinematic behaviour caused by the alternative coupling coefficient in the interaction Lagrangian, the linearity test will be performed using generator-level events with a basic event selection applied.
+This does not perfectly match with the full event selection that will be applied for the reconstructed events, but by applying the major kinematic constraints a large fraction of the cuts can be incorporated. Also because the effects of applying the fine-tuning criteria, discussed in Section~\ref{sec::SpecificSelec}, are expected to be less influenced by the value of the coupling coefficient. The different cuts applied to the generator-level events have been summarised in Table~\ref{table::GenCuts}.
+
+\begin{table}[h!t]
+ \centering
+ \caption{TITLE} \label{table::GenCuts}
+ \begin{tabular}{c|c|c}
+  Particle 	& $\pT$ cut 	& $\eta$ cut 	\\
+  \hline
+  Jets 		&		&		\\
+  Lepton	&		&		\\
+  Neutrino 	&		&		
+ \end{tabular}
+\end{table}
+
+The different generator-level samples considered here all contain 20 000 events, a value chosen to be close to the number of selected data events, and have been created using the MadGraph event-generation process. A total of 13 samples have been created, each with a different coupling coefficient ranging between $-0.4$ and $0.4$, to ensure the entire range of interest was covered. 
+However, afterwards it has been decided not no considered the samples lying outside of the above-mentioned range of $\left[-0.15, 0.15\right]$. This because the obtained results indicated that the considered measurement is precise enough to ensure the observed bias does not become larger than $0.15$.
+%Question: Mention that this decision was also driven by the fact that the fit is not accurate enough because there is not enough bin-information outside this range??
+\\
+
+All these samples have then been analysed by the Matrix Element method and the corresponding minimum of each sample determined, which can then be compared with the expected value of this sample.
+Since for a consistent model and method these two values have to agree, their distribution should be described by a straight line with a slope equal to $1$. Such a shape has indeed been retrieved and is shown in Figure~\ref{fig::CalibCurve}. 
+%This minimum is then compared with the coefficient value of the sample and  in order to ensure consistency of the both the method and model. This is clearly achieved, as can be seen from Figure~\ref{fig::CalibCurve}, 
+%Question: Fit also done by excluding the outer bins?
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.5 \textwidth]{image.png}
+ \caption{Outcome of the linearity test for the created model, indicating the absence of a bias due to the assumed model approximations. The calibration is therefore described perfectly since it can be represented by a straight line with slope $1$.} \label{fig::CalibCurve}
+\end{figure}
+
+Since the performed linearity proves that the introduced model does not result in a bias and thus the measurements obtained with the discussed model can be trusted, no calibration will be applied to the obtained outcome. The small deviation from the expected curve is perfectly covered by the corresponding uncertainty (\textbf{Check if this is also the case for the intersect value}) and should thus not be taken into account.
+
+%This means that the linearity test to check whether the model approximations might have introduced a bias has to be performed using the generator-level results and afterwards the entire curve needs to be shifted to the correspond with the result obtained from the signal $\ttbar$ sample.
+
+\subsection{Cross-section calculation} \label{subsec::XSReco}
+
+Also here there is an additional complexity when considering reconstructed events, since the cross-section of the $\ttbar$ decay depends on the value of the coupling coefficients in the interaction vertex. For generator-level events, these values are accesible for each generated sample since MadGraph automatically determines the cross-section of each generated process.
+\\
+Hence the cross-sections for these reconstructed events are derived from the MadGraph predictions by carefully calculating the generator-level cross-sections in a regime comparable to data. 
+This condition has been achieved by combining the cross-sections for each $\gR$ coefficients when no, one and two additional jets are included in the event. (\textbf{Is this LO, NLO and NNLO or is this in the case of event-generators still something different??})
+This will not result in a perfect match to data, but will bring the considered configuration a bit closer to reality.
+
+\subsection{Matrix element event cleaning} \label{subsec::EvtCleaning}
+
+%\subsection{Generator-level calibration}
+
+%\subsection{Cross-section determination}
+
+\section{Results and systematics} \label{sec::Meas}
+
+\subsection{Bias of reconstructed events}
+The linearity test discussed in Section~\ref{subsec::CalibCurve} has indicated that the considered model does not introduce any biases and thus perfectly describes the decay of the top-quark. However, since this calibration has been determined using generator-level events, a final cross-check is required to ensure no bias is introduced when applying the full event-selection chain.
+As mentioned before, the only simulation sample available describes the Standard Model configuration and can thus only be used to shift the calibration curve up or down depending on the obtained outcome.
+\\
