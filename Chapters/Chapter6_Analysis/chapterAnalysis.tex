@@ -1,13 +1,15 @@
 \chapter{Measurement of anomalous couplings in top-quark decays} \label{ch::Analysis}
 
-In this chapter the events passing the full event selection chain, outlined in Chapter~\ref{ch::EvtSel}, will be processed by the Matrix Element method, which has been discussed in detail in Chapter~\ref{ch::MW}. As has been mentioned in Chapter~\ref{chp::SM}, the measurement performed in this thesis will focus on the right-handed tensor coupling $\gR$ of the Wtb interaction vertex. All other coupling coefficients will be constraint to their Standard Model expectation value. The full Lagrangian of the top-quark pair decay vertex is repeated in Equation (\ref{eq::FullWtbLagrMeas}), which simplifies to a single $V_L$-contribution in the absence of new-physics influences.
-\begin{eqnarray} \label{eq::FullWtbLagrMeas}
-  \mathcal{L}_{Wtb} & = & - \frac{g}{\sqrt{2}} \bar{b} \gamma^{\mu} \left( V_L P_L + V_R P_R \right) t W_{\mu}^{-} + h.c. \nonumber \\
-		    &   & - \frac{g}{\sqrt{2}} \bar{b} \frac{i\sigma^{\mu \nu} q_{\nu}}{m_{W}} \left( g_L P_L + g_R P_R \right) t W_{\mu}^{-} + h.c.
-\end{eqnarray}
+In this chapter the events passing the full event selection chain, outlined in Chapter~\ref{ch::EvtSel}, will be processed by the Matrix Element method, which has been discussed in detail in Chapter~\ref{ch::MW}. As has been mentioned in Chapter~\ref{chp::SM}, the measurement performed in this thesis will focus on the right-handed tensor coupling $\gR$ of the Wtb interaction vertex. All other coupling coefficients will be \textit{constraint to their Standard Model expectation value/will be kept as predicted by the Standard Model.}
+%The full Lagrangian of the top-quark pair decay vertex is repeated in Equation (\ref{eq::FullWtbLagrMeas}), which simplifies to a single $V_L$-contribution in the absence of new-physics influences.
+%\begin{eqnarray} \label{eq::FullWtbLagrMeas}
+%  \mathcal{L}_{Wtb} & = & - \frac{g}{\sqrt{2}} \bar{b} \gamma^{\mu} \left( V_L P_L + V_R P_R \right) t W_{\mu}^{-} + h.c. \nonumber \\
+%		    &   & - \frac{g}{\sqrt{2}} \bar{b} \frac{i\sigma^{\mu \nu} q_{\nu}}{m_{W}} \left( g_L P_L + g_R P_R \right) t W_{\mu}^{-} + h.c.
+%\end{eqnarray}
 %*********************************
 % --> Good idea to repeat this equation here?
 %*********************************
+\\
 
 However, in contrast to the top-mass measurement discussed in Section~\ref{sec::TopMass}, quite a few improvements to the method are required in order for it to be successfully applicable on reconstructed collision events.
 \textit{The list of necessary adaptations will be introduced in Section~\ref{sec::RecoAdapt}, after which the framework of the Matrix Element method will be completely finalized to perform the actual measurement.
@@ -17,6 +19,8 @@ The determination of the coupling coefficient $\gR$ together with the systematic
 %*******************************
 % Check the final section division!!!
 %*******************************
+
+\section{Linearity test of the Matrix Element method}
 
 \section{Required MEM framework adaptations} \label{sec::RecoAdapt}
 %**********************
@@ -72,8 +76,7 @@ As a result, it has been opted for in this thesis to derive the cross-section va
 \\
 
 The chosen approach of deriving the cross-sections from generator-level events significantly facilitates the cross-section determination since any generated process by MadGraph automatically calculates the cross-section of the considered process.
-In order to ensure that the obtained generator-level cross-sections can easily be related to the reconstructed ones, the conditions present for the reconstructed collision events will be mimicked as closely as possible during the generation process. Hence the generator events have to fullfill a couple of rather basic event selection requirements, which have been listed in Table~\ref{table::GenCuts}.
-Once these selection criteria have been applied to the generated events, the obtained cross-section will actually be a combination of the cross-section of the underlying physics process and the acceptance of the considered event selection. Hence from now on the term ``cross-section normalisation'' will \textbf{implicitely} mean the combined normalisation $\sigma \times A$ in Equation~\ref{eq::MWEvtProb}.
+In order to ensure that the obtained generator-level cross-sections can easily be related to the reconstructed ones, the conditions present for the reconstructed collision events will be mimicked as closely as possible during the generation process. Hence the generator events have to fullfill a couple of rather basic event selection requirements\footnote{Important to note here is that once these selection criteria are applied to the generated events, the obtained cross-section will actually be a combination of the cross-section of the underlying physics process and the acceptance of the considered event selection. Hence the term ``cross-section normalisation'' will \textbf{implicitely} imply the combined normalisation $\sigma \times A$ mentioned in Equation~\ref{eq::MWEvtProb}.}, which have been listed in Table~\ref{table::GenCuts}.
 
 \begin{table}[h!t]
  \centering
@@ -105,7 +108,7 @@ The different decays for which generator-level samples have been created are the
 \end{figure}
 
 
-This strategy is not able to perfectly describe the situation as it occurs for the selected events since, for example, it is not possible to include the effect of the applied b-tagging requirement \textit{in exactly the same way as in data}. Hence, the obtained cross-section values will need to be scaled in order to take into account the influence of the b-jet identification algorithm and other non-included event selection criteria such as the isolation, the invariant mass constraints, $\dots$ (\textbf{etc.}?).
+This approach is not able to exactly describe the situation as it occurs for the selected events since, for example, it is not possible to include the effect of the applied b-tagging requirement \textit{in exactly the same way as in data}. Hence, the obtained cross-section values will need to be scaled in order to take into account the influence of the b-jet identification algorithm and other non-included event selection criteria such as the isolation, the invariant mass constraints, $\dots$ (\textbf{etc.}?).
 For this scaling a flat behaviour throughout the entire $\gR$ range is assumed such that each cross-section value is multiplied with the factor $\sigma_{SM}^{reco}$/$\sigma_{SM}^{gen}$. 
 %********************************************
 % --> Think of any other non-included effects!!
@@ -164,8 +167,11 @@ A closer look at the issue indicated that the method is actually heavily influen
 This because the Matrix Element method will treat all events as if they were real semi-leptonic top-quark pair decays, and any inconsistency from the expected topology is likely to result in the underlying mathematical framework to misdetermine the event probability.
 \\
 
-The reason why these misdetermined events become particularly significant is because the Matrix Element method assigns events for which the underlying mathematical framework cannot converge on average a lower probability. So even though the event probability is small compared to well-converging events, the conversion of the probability into a $\chiSqMEM$, or identically a $-\ln(\mathcal{L}_{MEM})$, implies that the former type of events will actually contribute the most to the overall $\chiSqMEM$ distribution.
-%Hence the need of a dedicated cleaning procedure which limits the contribution of these type of events the Matrix Element method does not handle perfectly.
+The reason why these misdetermined events become particularly significant can be explained by the fact that the Matrix Element method assigns events for which the underlying mathematical framework cannot converge on average a lower probability. So even though the event probability is small compared to well-converging events, the conversion of the probability into a $\chiSqMEM$, or identically a $-\ln(\mathcal{L}_{MEM})$, implies that the former type of events will actually contribute the most to the overall $\chiSqMEM$ distribution.
+\\
+
+Before any action can be taken in order to reduce the contribution of the events not perfectly handled by the Matrix Element method, the origin of this \textit{behaviour} should be established.
+Only after this is understood in detail, a dedicated event cleaning procedure can be developed in order to limit the influence of these type of events.
 %
 %Analysing reconstructed collision events using a Matrix Element method deviates significantly from any generator-level study, mainly because the former type of events tend to be influenced by detector inefficiencies, ill-defined kinematic variables or wrongly reconstructed event topologies. However, the Matrix Element method will treat all events as if they were real semi-leptonic top-quark pair decays, and any inconsistency from the expected topology is likely to result in the underlying mathematical framework to misdetermine the event probability.
 %Therefore it is of crucial importance a procedure is developed in order to exclude the contribution of these sort of events, for which the details will be given in Section~\ref{subsec::EvtCleaning}.
@@ -175,48 +181,120 @@ The reason why these misdetermined events become particularly significant is bec
 %
 %Unfortunately these type of events can become rather significant since on average they appear to get a lower value assigned than well-converging events. Since the event probability is converted into a $\chi^{2}_{MEM}$ or $-\ln(\mathcal{L}_{MEM})$, events with a lower value actually contribute the strongest to the overall result. Hence, special care should be awarded to these type of misidentified events and they should be excluded in order not to bias the outcome.
 %The influence of these type of events can be seen from Figure~\ref{fig::SMLik}, which contains the $\chiSqMEM$ of the $\gR$ = $0.0$ configuration for each event. This distributions shows a clear tail which does not exist for generator-level events, given in the right-handed figure.
-\begin{figure}[h!t]
- \centering
- \includegraphics[width = 0.35 \textwidth]{image.png} \hspace{0.3cm}
- \includegraphics[width = 0.35 \textwidth]{image.png}
- \caption{Distribution of the $\chi^{2}_{MEM}$-value for the $\gR$ = $0.0$ configuration for both the reconstructed (left) and generator-level (right) events.} \label{Fig::SMLik}
-\end{figure}
 
-\paragraph{Understanding the nature of the bad events} \hfill \\
+\paragraph{Understanding the nature of the \textit{bad} events} \hfill \\
 
-Before a dedicated cleaining procedure can be developed it should be understood in detail which type of events is causing this undesired behaviour and what is the optimal way of excluding them.
+Simply applying the minimisation calculation of the Matrix Element method on the semi-leptonic $\ttbar$ sample containing all the reconstructed events for which the chosen jet combination correctly assigned each jet did not resulted in the expected (Standard Model) outcome. The curve describing the $\chiSqMEM$ distribution corresponded to a decreasing straight line such that the minimum was actually located at the edge of the considered range.
+\\
+However, since this simulated sample has been created using the Standard Model configuration, the minimisation calculation should retrieve a value located in the vicinity of the Standard Model expectation.
+Especially because the detailed generator-level studies performed earlier indicated that both the model and method behave as expected.
+%*********************
+% Maybe still best to put the linearity test earlier since then it can be mentioned that the method can be trusted ...
+%*********************
 \\
 
-The importance of developing a dedicated cleaning procedure limiting the contribution of the events not perfectly handled by the Matrix Element method has been captured by Figure~\ref{fig::SMLik}.
-This shows the distribution of the $\chiSqMEM$-variable at the $\gR$ = $0.0$ point, exhibiting a significant tail not present for the generator-level events. 
-
-Understanding in detail the nature of the events responsible for the 
-
-\textit{Show the distribution for good and wrong events!}
-
-\paragraph{Developing the actual cleaning procedure} \hfill \\
-
-\textit{Determine this cut-value using all background samples}
-
-%---------------------------------------------------------------------------------------------------
-Comparing the generator-level distribution with the one for the reconstructed events clearly shows that the events residing in the tail should be rejected. Considering different resolution functions has indicated that the shape and amplitude of the tail depends heavily on the applied resolution, indicating again that these type of events are less likely to be well reconstructed.
-Hence, the considered event-cleaning procedure will require the $\chi^{2}_{MEM}$ of each value to be lower than a specific cut-value. 
+In order to determine whether the events exhibiting this undesired behaviour have a specfic signature, \textit{a detailed investigation/an exhaustive study} has been performed.
+\textit{\textbf{Comprehending}/Understanding/Grasping} the cause of this \textit{aberration/abnormality} inherent to the use of reconstructed collision events is a necessary first step towards the formation of a strategy to reduce \textit{\textbf{its}/this/their} contribution.
 \\
-In order to determine the optimal value for this limitation the individual events have been studied in more detail.
-\textit{Now show the 2D distributions ...}
+Numerous variables have been looked at in order to find any indication for the disagreement between the generator- and reconstructed-level measurement, and the most promising one appeared to be the value of the $\chiSqMEM$-distribution evaluated at the Standard Model configuration ($\gR$ = 0.0).
+\\
+\\
+Comparing the shape of this distribution for generator-level events and reconstructed collision events shows a distinctive difference, as can be seen from Figure~\ref{fig::SMLik}.
+The dissimilarity (\textit{existing}) between the two is most prominent(\textit{ly visible}) in the tail, which is almost absent for the generated events but becomes extremely relevant for the selected ones.
+Hence this seems to confirm that the Matrix Element method is heavily influenced by \textit{inefficiencies related to reconstructed events which do not occur for generator-level events.}
+%***********************
+% Try to be a bit more precise ...
+%***********************
+\\
 \begin{figure}[h!t]
  \centering
- \includegraphics[width = 0.35 \textwidth]{image.png}
- \includegraphics[width = 0.35 \textwidth]{image.png}
- \caption{} \label{fig::SMLik2D}
+ \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/SMLikelihoodValue_GenEventsSM.pdf} \hspace{0.3cm}
+ %Taken from directory: Events_CalibCurve/CalibCurve_SemiMu_RgR_AllDeltaTF_MGSampleSM_20000Evts_CutsAlsoOnMET/SMLikelihoodValue_GenEventsSM.pdf
+ \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/SMLikelihoodValue_RecoEvents_MyTF.pdf}
+ %--> Update this!!
+ \caption{Distribution of the $\chi^{2}_{MEM}$-value for the $\gR$ = $0.0$ configuration for both the generator- (left) and reconstructed-level (right) events.} \label{fig::SMLik}
+\end{figure}
+%
+%When comparing the generator-level distribution with the one for the reconstructed events can clearly be concluded that shape of the tail is the main distintion between the two.
+%Hence, it has been studied whether by excluding the events residing in the tail a better minimum can be obtained.
+%\\
+%\\
+
+The suggestion that this $\chiSqMEM$-variable is able to distinguish well reconstructed collision events from events influenced by inefficiencies is confirmed by the distributions shown in Figure~\ref{fig::SMLikCorrVSWr}.
+\\
+A confirmation of this interpretation is presented in Figure~\ref{fig::SMLikCorrVSWr}, which shows this $\chiSqMEM$-distribution for reconstructed $\ttbar$ events for which the topology has been correctly reconstructed and on the other hand events for which at least one jet has not been matched with the correct generator-level parton.
+The distribution corresponding to the latter type of events is clearly shifted towards higher $\chiSqMEM$ values while the correctly reconstructed events peak at much lower values of $\chiSqMEM$.
+\\
+The second visible difference between the two sorts of reconstructed top-quark pair decays is the contrasting shape and amplitude of the tail.
+This is significantly lower for the correctly reconstructed events, especially in the intermediate region of the $\chiSqMEM$ distribution which is thus more likely to be populated by badly reconstructed events.
+\\
+However, the slight increase of the tail around the region of $\chiSqMEM$ = 65 (\textbf{Will need to revise this value in case the $\chiSqMEM$ value is actually used in stead of currently the $\chiSqMEM/2$ one!!!}) seems to suggest that even for correctly reconstructed events a noteworthy number of events are located within the tail of the distribution. This reinforces the idea of the incorrect outcome being caused by inefficiencies by which the reconstructed events are more likely to be influenced even further. \textit{because it clearly seems to be related to the ...}
+%**************************
+% Think of some clear explanation
+% --> Since it also appears for correctly reconstructed events it is shown to be inherent to the method and should thus be taken into account or corrected for ..!
+%**************************
+\\
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.65 \textwidth]{Chapters/Chapter6_Analysis/Figures/ScaledContribution_CWU_LumiNorm.pdf}
+ \caption{\textit{Distribution for good (green) and wrong (red) reconstructed events ... Should still remove data and unmatched!}} \label{fig::SMLikCorrVSWr}
 \end{figure}
 
-The mentioned dependence on the resolution functions introduced for the reconstructed collision events can be visualised in Figure~\ref{fig::SMLikTF}, which contains this $\chiSqMEM$ variable at the $\gR$ = 0.0 point in case the resolution function developed in Section~\ref{sec::TF} is considered and in case a basic Gaussian function is used to describe the smearing of the \textbf{what exactly?}. 
+%*************************
+% Decide: Interesting to keep this??
+%*************************
+Finally, the importance of the applied resolution function can be visualised in Figure~\ref{fig::SMLikTF} which shows this $\chiSqMEM$ variable in case the resolution function developed in Section~\ref{sec::TF} is considered and otherwise in case the basic Gaussian function is used to describe the smearing of the \textbf{what exactly?}.
+Comparing these two shows a clear dependence on this resolution function, again indicating that the events in the end of the tail cannot converge since the reconstructed kinematic information does not agree with the expectation within the range allowed by the resolution function.
 \begin{figure}[h!t]
  \centering
  \includegraphics[width = 0.35 \textwidth]{image.png} %Maybe show the two on top of each other? This way repeating the same figure can be avoided!!
  \caption{Distribution of the $\chi^{2}_{MEM}$-value for the $\gR$ = $0.0$ configuration for the resolution functions created specifically for this analysis (green) and for the basic Gaussian resolution function of the Matrix Element method (blue).} \label{Fig::SMLikTF}
 \end{figure}
+
+\paragraph{Developing the actual cleaning procedure} \hfill \\
+
+Now that has been established how the discrepancy between generator-level events and reconstructed collision events can be identified, a procedure to get rid of the events causing it can be constructed.
+Before deciding to just exclude all events above a specific $\chiSqMEM$ value, it has been examined whether some events with useful information actually reside in the tail of this distribution.
+\\
+Within the Matrix Element method events containing useful information are supposed to be characterised by a $\chiSqMEM$ curve \\
+\textit{From the added 2D plots no real conclusion can be drawn unfortunately. The second derivative distribution was a possibility, but since it is just almost symmetric around zero it would only raise more questions when adding this distribution ...\\ So it seems that no actual explanation will be able to be given for this cut ...\\ Especially because the 2D plots which can be given indeed show that something goes wrong at the outer x-axis range but the behaviour at lower x-values is not as expected either ...}
+%This has been done by investigating whether 
+%This by probing into the specific characteristics of the individual events;
+\\
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/LnLikCut_ScatterPlot_SMLikvsMaxDelta_AllTT.pdf}
+ \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/SMLik_vs_ScdDerFine_CorrectTTbar.pdf}
+ \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/SMLik_vs_RightDeltaLnLik_CorrectTT.pdf}
+ \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/SMLik_vs_LeftDeltaLnLik_CorrectTT.pdf}
+ \caption{2D plot for all $\ttbar$ events (so CWU combined -- scdDer only for correct ...). The two lower plots contain on the y-axis the $\chiSqMEM$ difference between $\gR$ = 0.0 and $\gR$ = $\pm$ 0.2. Hence in order to have minimum at zero, both should actually be negative!} \label{fig::SMLik2D}
+\end{figure}
+
+Another important remark to make is that the applied cut on this $\chiSqMEM$ should not be set to tight since the contribution of badly reconstructed events is supposed to be rather low due to the stringent event selection criteria applied on the reconstructed events. Hence it is not the goal to reduce the events in the intermediate region of this $\chiSqMEM$ distribution, since their contribution is negligible compared to the total number of reconstructed events. This can be seen in Figure~\ref{fig::SMLikCorrVSWrUnSc}, which contains the same distributions as in Figure~\ref{fig::SMLikCorrVSWr} but now the histograms are not scaled and thus represent their actual contribution to the overall result. From this can be clearly seen that these simulated events are dominated by well-reconstructed event topologies.
+\\
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.65 \textwidth]{Chapters/Chapter6_Analysis/Figures/RelativeContribution_CWU_LumiNorm.pdf}
+ \caption{\textit{Remove the unmatched and data!}} \label{fig::SMLikCorrVSWrUnSc}
+\end{figure}
+
+
+\textit{Determine this cut-value using all background samples}\\
+\textit{Show the fit-function used to get this optimal value!}
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.65 \textwidth]{Chapters/Chapter6_Analysis/Figures/Data_vs_SeparateTTbarJetsSemiLept_NotLumiScaled.pdf}
+ \caption{} \label{fig::OptCutValue}
+\end{figure}
+
+
+--------------------------------------------------------------------------------------------------- \\
+Comparing the generator-level distribution with the one for the reconstructed events clearly shows that the events residing in the tail should be rejected. Considering different resolution functions has indicated that the shape and amplitude of the tail depends heavily on the applied resolution, indicating again that these type of events are less likely to be well reconstructed.
+Hence, the considered event-cleaning procedure will require the $\chi^{2}_{MEM}$ of each value to be lower than a specific cut-value. 
+\\
+
+The mentioned dependence on the resolution functions introduced for the reconstructed collision events can be visualised in Figure~\ref{fig::SMLikTF}, which contains this $\chiSqMEM$ variable at the $\gR$ = 0.0 point in case the resolution function developed in Section~\ref{sec::TF} is considered and in case a basic Gaussian function is used to describe the smearing of the \textbf{what exactly?}. 
+
 
 \section{Linearity test of Matrix Element method}\label{sec::CalibCurve}
 
