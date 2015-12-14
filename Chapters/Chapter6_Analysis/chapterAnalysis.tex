@@ -5,46 +5,9 @@ The goal of this measurement, for which all aspects will be rigorously discussed
 \\
 
 However, before the measurement can be performed, additional research is still required to ensure the developed procedure to extract information from the Matrix Element method is behaving properly. This because such a technique is likely to be negatively influenced by the applied model approximations, a property that should be tested using a \textit{linearity test/bias determination} for which the details can be found in Section~\ref{sec::CalibCurve}.
-%(for example). Hence, it is possible for a bias to occur, which would clearly have a detrimental effect on the outcome. Therefore a \textit{linearity test} has been performed, as will be explained in Section~\ref{sec::CalibCurve}.
-%\\
 Afterwards some specific characteristics of the analysis should be discussed, as will be done in Section~\ref{sec::RecoAdapt}.
 Main focus will be on understanding the challenges associated with applying a Matrix Element method on reconstructed collision events.
 Once the entire framework necessary to investigate these type of events is set up, the actual measurement will be discussed in Section~\ref{sec::Meas}. Also an overview of the relevant systematic uncertainties will be given here.
-%Section~\ref{sec::RecoAdapt} will focus on some specific characteristics of the analysis, mainly related to the challenges associated with applying the Matrix Element method on reconstructed collision events.
-%First of all, the cross-section for these type of events for all the considered coupling coefficients should be determined, which is not as straightforward as was the case for the generator-level events discussed in the previous chapter. The approach opted for in this thesis will be discussed in Section~\ref{sec::RecoAdapt}.
-%The second characteristic to be discussed here focusses on the adaptations necessary to have the Matrix Element method correctly deal with reconstructed events. 
-%The fact that these events are more prone to detector inefficiencies or misdetermined kinematics significantly complicates the calculations.
-%\\
-%Finally the actual measurement will be discussed in Section~\ref{sec::Meas}, together with the relevant systematics.
-%At first the cross-section of these type events is not as easy to determine as was the case for the generator-level events in the previous chapter. The method considered in this thesis can be found in Section~\ref{sec::RecoAdapt}.
-%Here will also be explained which adaptations are necessary in order to have the Matrix Element method correctly cope with reconstructed events, which have the tendancy to be influenced by detector inefficiencies or misdetermined kinematics. Also the much wider energy regime which is allowed by the applied resolution function significantly complicates the calculations.
-%\\
-%Section~\ref{sec::Meas}, finally, will discuss the actual measurement and the relevant systematic uncertainties.
-
-%how the Matrix Element method copes with reconstructed collision events.
-
-%In this chapter the events passing the full event selection chain, outlined in Chapter~\ref{ch::EvtSel}, will be processed by the Matrix Element method, which has been discussed in detail in Chapter~\ref{ch::MW}. As has been mentioned in Chapter~\ref{chp::SM}, the measurement performed in this thesis will focus on the right-handed tensor coupling $\gR$ of the Wtb interaction vertex. All other coupling coefficients will be \textit{constraint to their Standard Model expectation value/will be kept as predicted by the Standard Model.}
-%The full Lagrangian of the top-quark pair decay vertex is repeated in Equation (\ref{eq::FullWtbLagrMeas}), which simplifies to a single $V_L$-contribution in the absence of new-physics influences.
-%\begin{eqnarray} \label{eq::FullWtbLagrMeas}
-%  \mathcal{L}_{Wtb} & = & - \frac{g}{\sqrt{2}} \bar{b} \gamma^{\mu} \left( V_L P_L + V_R P_R \right) t W_{\mu}^{-} + h.c. \nonumber \\
-%		    &   & - \frac{g}{\sqrt{2}} \bar{b} \frac{i\sigma^{\mu \nu} q_{\nu}}{m_{W}} \left( g_L P_L + g_R P_R \right) t W_{\mu}^{-} + h.c.
-%\end{eqnarray}
-%*********************************
-% --> Good idea to repeat this equation here?
-%*********************************
-%\\
-%
-%A final cross-check which has to be performed before the actual measurement can be done determines whether the designed anomalous couplings model or the minimisation/likelihood extraction procedure does not introduce a bias. This is done by a so-called linearity test, which will be discussed in detail in Section~\ref{sec::CalibCurve}.
-%\\
-%
-%However, in contrast to the top-mass measurement discussed in Section~\ref{sec::TopMass}, quite a few improvements to the method are required in order for it to be successfully applicable on reconstructed collision events.
-%\textit{The list of necessary adaptations will be introduced in Section~\ref{sec::RecoAdapt}, after which the framework of the Matrix Element method will be completely finalized to perform the actual measurement.
-%Due to some inefficiencies specifically connected with the imperfections of reconstructed collision events, an additional event cleaning procedure will be outlined in Section~\ref{sec::Cleaning}
-%Then both the method and the model should be tested, which is done in Section~\ref{sec::CalibCurve}.
-%The determination of the coupling coefficient $\gR$ together with the systematic uncertainties by which the measurement is influenced, will be given in Section~\ref{sec::Meas}.}
-%*******************************
-% Check the final section division!!!
-%*******************************
 
 \section{Linearity test of the Matrix Element method} \label{sec::CalibCurve}
 %--> Maybe even get a stronger title ...
@@ -54,29 +17,17 @@ In addition, the developed procedure to extract the relevant information from th
 Hence in order to ensure neither the constructed model nor the developed minimisation procedure hamper the applicability of the Matrix Element method, a detailed \textit{linearity test} will be performed. 
 \\
 \\
-This \textit{calibration procedure} starts by determining whether for the different coupling coefficients any deviation the expectation can be observed. For this, various samples created with alternative coupling coefficients will need to be created. In case the Matrix Element method behaves as should be, the minimum retrieved for each of these samples should correspond to the value used to create them. Otherwise the result is influenced by a bias such that afterwards the final result will have to be corrected for.
+This \textit{calibration procedure} starts by determining whether for the different coupling coefficients any deviation the expectation can be observed. For this, various samples created with alternative coupling coefficients will need to be created. In case the Matrix Element method behaves as should be, the minimum retrieved for each of these samples should correspond to the value used to create them. \textit{Otherwise the result is influenced by a bias such that afterwards the final result will have to be corrected for.}
+%*************************
+% Interesting to mention such a statement already here ??
+% --> First stick to the generator-level result and the testing of the method, and only then discuss the reco results!
+%*************************
 \\
 
 One of the more difficult aspects of this \textit{linearity test} is obtaining samples of reconstructed collision events generated with alternative coupling coefficients, this in contrast to the ease with which generator-level events can be created. As a result, it has been opted for in this thesis to perform this \textit{linearity test} with the latter type of events.
 However, since the event-selection is one of the more likely candidates to expect a different effect depending on the considered coupling coefficient, the generated events will have to fullfill some basic selection requirements.
 \\
-%This calibration procedure first determines whether any deviation from the expected result can be observed and afterwards, if necessary, incorporates this as a correction term for the minimum-extraction method.
-%In order to obtain this correction factor samples generated using various non Standard Model (\textit{non-SM}) coupling coefficients will be considered.
-%If the Matrix Element method would behave properly, the retrieved minimum corresponding to each of these alternative samples should be found in the vicinity of the $\gR$ value used for the generation process.
-%\textit{Hence the curve describing all the considered points has to correspond to a straight line with slope equal to $1$.}
-%\\
-%
-%Creating simulation samples containing reconstructed events with non-SM coupling coefficients is a rather \textbf{challenging} and especially time-consuming process. For this reason, it has been opted for in this thesis to determine the linearity test using generator-level samples.
-%However, since the event-selection is one of the more likely aspects of the analysis where a different impact can be expected depending on the coupling coefficient considered, the generated-level events will have to fullfill some basic selection requirements.  
-%\\
 These event-selection criteria, which have been summarised in Table~\ref{table::GenCuts}, are chosen to be in close agreement with the kinematic constraints applied in the full event-selection chain discussed in Chapter~\ref{ch::EvtSel}. Unfortunately the identification and additional fine-tuning criteria cannot be taken into account, but are on the other hand not expected to be as dependent on the value of the coupling coefficient.
-%With the kinematic constraints listed here, it is believed that a major fraction of the cuts has been incorporated...
-%Hence, their effect will only be taken into account further in the analysis by calibrating the minimum-extraction the method for the outcome of the simulated background samples.
-%*************************
-% Interesting to mention such a statement already here ??
-% --> First stick to the generator-level result and the testing of the method, and only then discuss the reco results!
-%*************************
-%\\
 \begin{table}[h!t]
  \centering
  \caption{Basic event selection applied to the generator-level events in order to partially mimic the situation existing for the reconstructed collision events.} \label{table::GenCuts}
@@ -92,39 +43,25 @@ These event-selection criteria, which have been summarised in Table~\ref{table::
 The generator-level samples created for this linearity test using the MadGraph event-generation process contain \textcolor{red}{20 000} events, a value comparable in size to the number of selected data events. 
 Since the considered right-handed tensor coupling, $\gR$, is supposed to be equal to $0$ in the Standard Model, the linearity test has been restricted to the range $\left[-0.15, 0.15\right]$.
 This because the minimum-extraction procedure has proven to give rise to rather accurate/precise results, such that in case any bias would exist it has to be recovered in this limited range.
-%Restricting the calibration curve to this limited range is supposed to be sufficient since the minimum-extraction method has proven to result in a precisely determined outcome. 
-%Hence, in case any bias would be observed, it should be recovered within this restricted range.
-\\
-\\
-%The goal of this calibration procedure is two-fold, at first it will establish \textit{goodness} of the considered method and afterwards, in case any deviation from expectations is retrieved, correct the obtained result.
-%\\
-%
-%The absence of simulated samples with alternative coupling coefficients necessitates the created model to be tested using generator-level results. This linearity test verifies whether the different model approximations did not enter a bias for the obtained result by measuring the parameter of interest in a wide range around the expectation.
-%\\
-%As was mentioned in Section~\ref{sec::SubWtb}, this analysis will focus on the right-handed tensor coupling of the Wtb interaction, $g_{R}$, which has an expectation value of $0$ in the Standard Model. Therefore the performed linearity test will only considered the range $\gR$ $\in$ $\left[-0.15, 0.15\right]$, which will be sufficient to obtain a precise determination of any possible bias present in either the model or method.
-%
-%Since the event selection is a rather likely source for introducing a bias, due to the possible different kinematic behaviour caused by the alternative coupling coefficient in the interaction Lagrangian, the linearity test will be performed using generator-level events with a basic event selection applied.
-%This does not perfectly match with the full event selection that will be applied for the reconstructed events, but by applying the major kinematic constraints a large fraction of the cuts can be incorporated. Also because the effects of applying the fine-tuning criteria, discussed in Section~\ref{sec::SpecificSelec}, are expected to be less influenced by the value of the coupling coefficient. The different cuts applied to the generator-level events have been summarised in Table~\ref{table::GenCuts}.
-%
-%A total of 13 samples have been created, each with a different coupling coefficient ranging between $-0.4$ and $0.4$, to ensure the entire range of interest was covered. 
-%However, afterwards it has been decided not no considered the samples lying outside of the above-mentioned range of $\left[-0.15, 0.15\right]$. This because the obtained results indicated that the considered measurement is precise enough to ensure the observed bias does not become larger than $0.15$.
 %Question: Mention that this decision was also driven by the fact that the fit is not accurate enough because there is not enough bin-information outside this range??
+\\
+\\
 Each generated sample has been analysed by the Matrix Element method and its minimum has been determined following the exact same method as will be applied for the reconstructed collision events.
 This result can then be compared with the expected value of the corresponding sample, which should correspond to the coefficient imposed during the generation process.
-%and the corresponding minimum of each sample determined, which can then be compared with the expected value of this sample.
 In order to have both a consistent model and method, the overall shape of the obtained results should be consistent with a straight line through the origin with slope equal to $1$.
 This resemblance is indeed recovered, as can be seen in Figure~\ref{fig::CalibCurve}, for which the relevant parameters are given in Equation (\ref{eq::CalibCurveResults}).
 \begin{equation} \label{eq::CalibCurveResults}
  \textrm{slope} = xxx \pm xxx \qquad \& \qquad \textrm{off-set} = xxx \pm xxx  
 \end{equation}
-%Since for a consistent model and method these two values have to agree, their distribution should be described by a straight line with a slope equal to $1$. Such a shape has indeed been retrieved and is shown in Figure~\ref{fig::CalibCurve}. 
-%This minimum is then compared with the coefficient value of the sample and  in order to ensure consistency of the both the method and model. This is clearly achieved, as can be seen from Figure~\ref{fig::CalibCurve}, 
-%Question: Fit also done by excluding the outer bins?
+
 \begin{figure}[h!t]
  \centering
  \includegraphics[width = 0.65 \textwidth]{Chapters/Chapter6_Analysis/Figures/CalibrationCurve_SlopeComparision_DifferentCuts.pdf}
  \caption{Outcome of the linearity test for the created model, indicating the absence of a bias due to the assumed model approximations. The calibration is therefore described perfectly since it can be represented by a straight line with slope $1$.} \label{fig::CalibCurve}
 \end{figure}
+%********************************
+%Question: Fit also done by excluding the outer bins?
+%********************************
 
 From the performed linearity test is clearly visible that the introduced model (and method) do not result in a bias.
 However, in order to reinforce this statement/conclusion, a chi-sq test has been carried out.
@@ -141,6 +78,10 @@ Since the performed linearity proves that the introduced model does not result i
 % Can also just make the section about the event cleaning but give this XS calculation as an introduction!
 %  --> Work with paragraphs maybe ? (not so interesting to use paragrapsh in section ...)
 %**********************
+
+%First of all, the cross-section for these type of events for all the considered coupling coefficients should be determined, which is not as straightforward as was the case for the generator-level events discussed in the previous chapter. The approach opted for in this thesis will be discussed in Section~\ref{sec::RecoAdapt}.
+%The second characteristic to be discussed here focusses on the adaptations necessary to have the Matrix Element method correctly deal with reconstructed events. 
+%The fact that these events are more prone to detector inefficiencies or misdetermined kinematics significantly complicates the calculations.
 
 An important aspect of the Matrix Element method is the normalisation of the event probability using the cross-section and acceptance, which might vary significantly for the different configurations considered. For the top-quark mass example, the effect of this normalisation was negligible but for the measurement of the anomalous coupling coefficient this factor has proven to be rather important. 
 Hence a dedicated calculation of these cross-section values has been done, as will be explained in Section~\ref{subsec::XSReco}.
