@@ -1,7 +1,7 @@
 \chapter{Measurement of anomalous couplings in top-quark decays} \label{ch::Analysis}
 
-With all necessary objects and methods clearly established in the previous chapters, the focus can now finally shift towards the actual topic of this thesis.
-The goal of the performed measurement, of which all aspects will be rigorously discussed in this chapter, is to determine the right-handed tensor coupling of the Wtb interaction vertex using a Matrix Element method.
+\textit{With all necessary objects and methods clearly established in the previous chapters, the focus can now finally shift towards the actual topic of this thesis./the actual measurement performed in this thesis.}
+The goal of the performed/this measurement, of which all aspects will be rigorously discussed in this chapter, is to determine the right-handed tensor coupling of the Wtb interaction vertex using a Matrix Element method.
 \\
 
 However, before the actual measurement can be done, additional research is still required in order to ensure that the procedure developed to extract the result/minimum from the Matrix Element method is behaving properly. This because such a method can be negatively influenced by the applied model approximations, a \textit{condition/ option/ possibility/ property} that should be tested using a \textit{linearity test/bias determination} for which the details can be found in Section~\ref{sec::CalibCurve}.
@@ -213,54 +213,34 @@ The final result of the cross-section calculation can be found in Figure~\ref{fi
 
 \subsection{Matrix element event cleaning} \label{subsec::EvtCleaning}
 
-A first glance at the measurement of the right-handed tensor coupling indicated that the expected result has not been recovered.
-
-
-With the correct reconstructed-level cross-sections determined, the actual measurement of the right-handed tensor coupling of the Wtb interaction vertex can be performed.
-However, \textbf{at first sight} it appears that the Matrix Element method does not display similar behaviour as observed for the various generator-level studies since the outcome provided by the minimisation is not compatible with the expectations.
-\\
-A closer look at the issue indicated that the method is actually heavily influenced by badly calculated event topologies and the wider kinematic range allowed by the corresponding to the resolution functions developed for the reconstructed collision events.
-This because the Matrix Element method will treat all events as if they were real semi-leptonic top-quark pair decays, and any inconsistency from the expected topology is likely to result in the underlying mathematical framework to misdetermine the event probability.
+A first glance at the measurement of the right-handed tensor coupling did not resulted in the expected outcome to be retrieved.
+However, since the cross-section values have been determined with great care and moreover the linearity test has proven that both the developed model and method behave accordingly, this discrepancy is most probably caused by the/a different \textbf{nature/performance} of reconstructed events.
 \\
 
-The reason why these misdetermined events become particularly significant can be explained by the fact that the Matrix Element method assigns events for which the underlying mathematical framework cannot converge on average a lower probability. So even though the event probability is small compared to well-converging events, the conversion of the probability into a $\chiSqMEM$, or identically a $-\ln(\mathcal{L}_{MEM})$, implies that the former type of events will actually contribute the most to the overall $\chiSqMEM$ distribution.
-\\
-
-Before any action can be taken in order to reduce the contribution of the events not perfectly handled by the Matrix Element method, the origin of this \textit{behaviour} should be established.
-Only after this is understood in detail, a dedicated event cleaning procedure can be developed in order to limit the influence of these type of events.
+A closer look at the issue seemed to indicate that the deviating effect originates from events badly handled by the Matrix Element method, an occurence that should be investigated in detail.
+Before any action can be taken to limit the influence of these events, the main difference between generator-level and reconstructed events should completely be understood.
 %
 %Analysing reconstructed collision events using a Matrix Element method deviates significantly from any generator-level study, mainly because the former type of events tend to be influenced by detector inefficiencies, ill-defined kinematic variables or wrongly reconstructed event topologies. However, the Matrix Element method will treat all events as if they were real semi-leptonic top-quark pair decays, and any inconsistency from the expected topology is likely to result in the underlying mathematical framework to misdetermine the event probability.
 %Therefore it is of crucial importance a procedure is developed in order to exclude the contribution of these sort of events, for which the details will be given in Section~\ref{subsec::EvtCleaning}.
 %\\
-%
-%Even with the knowledge that the method behaving as should be and that the cross-section normalisation is applying the correct factor, the results obtained from the Matrix Element method need to surpass an additional cleaning procedure. This is a quality inherent to the inprecise determination of both the event kinematics and the event topology when considering reconstructed events. Any deviation from the expected topology might result in the the calculation technique not converging and thus misdetermining the event probability.
-%
 %Unfortunately these type of events can become rather significant since on average they appear to get a lower value assigned than well-converging events. Since the event probability is converted into a $\chi^{2}_{MEM}$ or $-\ln(\mathcal{L}_{MEM})$, events with a lower value actually contribute the strongest to the overall result. Hence, special care should be awarded to these type of misidentified events and they should be excluded in order not to bias the outcome.
 %The influence of these type of events can be seen from Figure~\ref{fig::SMLik}, which contains the $\chiSqMEM$ of the $\gR$ = $0.0$ configuration for each event. This distributions shows a clear tail which does not exist for generator-level events, given in the right-handed figure.
 
-\paragraph{Understanding the nature of the \textit{bad} events} \hfill \\
+\paragraph{Characteristics of reconstructed events} \hfill \\ %Understanding the nature of the \textit{bad} events
 
-Simply applying the minimisation calculation of the Matrix Element method on the semi-leptonic $\ttbar$ sample containing all the reconstructed events for which the chosen jet combination correctly assigned each jet did not resulted in the expected (Standard Model) outcome. The curve describing the $\chiSqMEM$ distribution corresponded to a decreasing straight line such that the minimum was actually located at the edge of the considered range.
+The first measurement of the $\gR$ coefficient has been performed using reconstructed $\ttbar$ events for which the four jets have been correctly matched with the generator-level parton, in order to ensure the Standard Model configuration would be retrieved. This simulation sample should not be influenced by badly reconstructed event topologies and, especially due to the stringent event-selection applied, result in an almost impeccable agreement with the expectation.
 \\
-However, since this simulated sample has been created using the Standard Model configuration, the minimisation calculation should retrieve a value located in the vicinity of the Standard Model expectation.
-Especially because the detailed generator-level studies performed earlier indicated that both the model and method behave as expected.
-%*********************
-% Maybe still best to put the linearity test earlier since then it can be mentioned that the method can be trusted ...
-%*********************
+However, this was certainly not the case since the obtained $-\ln(\mathcal{L}_{MEM})$ distribution corresponded to a decreasing straight line such that the minimum was located at the edge of the considered range. This large discrepancy, in contradiction with the credibility established (on the model) by the linearity test, necessitated a thorough comparison of the (different) treatment of generator-level and reconstructed events by the Matrix Element method.
 \\
 
-In order to determine whether the events exhibiting this undesired behaviour have a specfic signature, \textit{a detailed investigation/an exhaustive study} has been performed.
-\textit{\textbf{Comprehending}/Understanding/Grasping} the cause of this \textit{aberration/abnormality} inherent to the use of reconstructed collision events is a necessary first step towards the formation of a strategy to reduce \textit{\textbf{its}/this/their} contribution.
+In order to identify whether a specific type of events with a distinguishing signature is responsible for this \textbf{discrepancy}, an exhaustive study has been performed.
+Numerous variables have been looked at in order to find any indication for the disagreement between the generator- and reconstructed-level measurement, and the most promising one appeared to be the value of the $\chiSqMEM$-distribution evaluated at the Standard Model configuration.
 \\
-Numerous variables have been looked at in order to find any indication for the disagreement between the generator- and reconstructed-level measurement, and the most promising one appeared to be the value of the $\chiSqMEM$-distribution evaluated at the Standard Model configuration ($\gR$ = 0.0).
-\\
-\\
-Comparing the shape of this distribution for generator-level events and reconstructed collision events shows a distinctive difference, as can be seen from Figure~\ref{fig::SMLik}.
-The dissimilarity (\textit{existing}) between the two is most prominent(\textit{ly visible}) in the tail, which is almost absent for the generated events but becomes extremely relevant for the selected ones.
-Hence this seems to confirm that the Matrix Element method is heavily influenced by \textit{inefficiencies related to reconstructed events which do not occur for generator-level events.}
-%***********************
-% Try to be a bit more precise ...
-%***********************
+This distribution has a significantly different shape for generator-level and reconstructed events, as can be seen in Figure~\ref{fig::SMLik}.
+The latter one \textit{contains} a prominent(\textit{ly visible}) tail, which is on the other hand completely absent for the generator-level events.
+%***************************
+% Necessary to mention something about the different starting value??
+%***************************
 \\
 \begin{figure}[h!t]
  \centering
@@ -270,52 +250,92 @@ Hence this seems to confirm that the Matrix Element method is heavily influenced
  %--> Update this!!
  \caption{Distribution of the $\chi^{2}_{MEM}$-value for the $\gR$ = $0.0$ configuration for both the generator- (left) and reconstructed-level (right) events.} \label{fig::SMLik}
 \end{figure}
-%
-%When comparing the generator-level distribution with the one for the reconstructed events can clearly be concluded that shape of the tail is the main distintion between the two.
-%Hence, it has been studied whether by excluding the events residing in the tail a better minimum can be obtained.
-%\\
-%\\
 
-The suggestion that this $\chiSqMEM$-variable is able to distinguish well reconstructed collision events from events influenced by inefficiencies is confirmed by the distributions shown in Figure~\ref{fig::SMLikCorrVSWr}.
+Now that a variable has been discovered which is capable of identifying the events most likely responsible for the observed discrepancy, the origin of this phenomenon should be understood in detail.
 \\
-A confirmation of this interpretation is presented in Figure~\ref{fig::SMLikCorrVSWr}, which shows this $\chiSqMEM$-distribution for reconstructed $\ttbar$ events for which the topology has been correctly reconstructed and on the other hand events for which at least one jet has not been matched with the correct generator-level parton.
-The distribution corresponding to the latter type of events is clearly shifted towards higher $\chiSqMEM$ values while the correctly reconstructed events peak at much lower values of $\chiSqMEM$.
-\\
-The second visible difference between the two sorts of reconstructed top-quark pair decays is the contrasting shape and amplitude of the tail.
-This is significantly lower for the correctly reconstructed events, especially in the intermediate region of the $\chiSqMEM$ distribution which is thus more likely to be populated by badly reconstructed events.
-\\
-However, the slight increase of the tail around the region of $\chiSqMEM$ = 65 (\textbf{Will need to revise this value in case the $\chiSqMEM$ value is actually used in stead of currently the $\chiSqMEM/2$ one!!!}) seems to suggest that even for correctly reconstructed events a noteworthy number of events are located within the tail of the distribution. This reinforces the idea of the incorrect outcome being caused by inefficiencies by which the reconstructed events are more likely to be influenced even further. \textit{because it clearly seems to be related to the ...}
-%**************************
-% Think of some clear explanation
-% --> Since it also appears for correctly reconstructed events it is shown to be inherent to the method and should thus be taken into account or corrected for ..!
-%**************************
+First of all, the same minimum-extraction procedure has been applied onto a sample containing simulated $\ttbar$ events for which at least one jet has not been matched with the correct generator-level parton.
+This allowed to compare both the outcome and this $\chi^{2}_{MEM}$ distribution with the previously considered sample containing only correctly reconstructed $\ttbar$ events.
+The obtained results were identical, the minimum was also here located at the edge of the considered range and the $\chiSqMEM$ distribution was characterised by exactly the same tail, as can be seen in Figure~\ref{fig::SMLikCorrVSWr}.
+%In case the tail of this distribution would be influenced by badly reconstructed event topologies, this would become clearly visible from this comparison.
 \\
 \begin{figure}[h!t]
  \centering
- \includegraphics[width = 0.65 \textwidth]{Chapters/Chapter6_Analysis/Figures/ScaledContribution_CWU_LumiNorm.pdf}
- \caption{\textit{Distribution for good (green) and wrong (red) reconstructed events ... Should still remove data and unmatched!}} \label{fig::SMLikCorrVSWr}
+ \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter6_Analysis/Figures/ScaledContribution_CWU_LumiNorm.pdf}
+ \caption{Distribution of the $\chi^{2}_{MEM}$-variable evaluated at the Standard Model configuration for correctly reconstructed (green) and wronly reconstructed $\ttbar$ events. Both distribution have been \textbf{scaled accordingly}. \textit{Should still remove data and unmatched!}} \label{fig::SMLikCorrVSWr}
 \end{figure}
+From this comparison can thus clearly be concluded that the incorrect determination of the event topology is not causing the peculiar behaviour of the Matrix Element method.
+This was already expected, since otherwise the discrepancy would not have been observed for the sample containing only correctly reconstructed events.
+\\
+\\
+Next it has been investigated how such a significant tail can arise and why the Matrix Element seems to be incapable of handling a specific type of reconstructed events.
+One of the more obvious differences between generator-level and reconstructed events is the tendancy to be influenced by detector inefficiencies and ill-determined kinematic variables. For the reconstructed events this is a significant point of concern, amplified by the fact that the resolution functions of these events allow the kinematics to \textit{vary} in a much wider range.
+\\
+Due to the conversion from the MadWeight likelihood distribution $\mathcal{L}_{MEM}$ into a $\chi^{2}$ distribution, the events residing in the tail correspond to events with a on average lower event probability.
+This seems to suggest that the Matrix Element method assigns events for which the underlying mathematical framework cannot converge a lower event probability, which should thus be excluded.
 
 %*************************
-% Decide: Interesting to keep this??
+% Decide: Interesting to keep this TF part???
 %*************************
-Finally, the importance of the applied resolution function can be visualised in Figure~\ref{fig::SMLikTF} which shows this $\chiSqMEM$ variable in case the resolution function developed in Section~\ref{sec::TF} is considered and otherwise in case the basic Gaussian function is used to describe the smearing of the \textbf{what exactly?}.
-Comparing these two shows a clear dependence on this resolution function, again indicating that the events in the end of the tail cannot converge since the reconstructed kinematic information does not agree with the expectation within the range allowed by the resolution function.
+%Finally, the importance of the applied resolution function can be visualised in Figure~\ref{fig::SMLikTF} which shows this $\chiSqMEM$ variable in case the resolution function developed in Section~\ref{sec::TF} is considered and otherwise in case the basic Gaussian function is used to describe the smearing of the \textbf{what exactly?}.
+%Comparing these two shows a clear dependence on this resolution function, again indicating that the events in the end of the tail cannot converge since the reconstructed kinematic information does not agree with the expectation within the range allowed by the resolution function.
+%\\
+%\begin{figure}[h!t]
+% \centering
+% \includegraphics[width = 0.35 \textwidth]{image.png} %Maybe show the two on top of each other? This way repeating the same figure can be avoided!!
+% \caption{Distribution of the $\chi^{2}_{MEM}$-value for the $\gR$ = $0.0$ configuration for the resolution functions created specifically for this analysis (green) and for the basic Gaussian resolution %function of the Matrix Element method (blue).} \label{Fig::SMLikTF}
+%\end{figure}
+
+\paragraph{Developing the event-cleaning procedure} \hfill \\
+
+Even though the process responsible for the deviating behaviour is not completely mastered, it seems more than plausible that the reconstructed events are heavily influenced by inefficiencies non-existing for generator-level events. Moreover, the Matrix Element method is developed to treat every event as if it is a perfectly described semileptonic top-quark pair decay. Any inconsistency from the expected topology is likely to result in the event probability being misdetermined since the mathematical framework of the method is unable to converge.
+Nonetheless, it has been established that the origin of this abnormal behaviour is not caused by the applied event-selection procedure but is a \textbf{true} feature of the Matrix Element method such that a strategy should be developed to reduce the contribution of these type of events.
+\\
+
+This event-cleaning procedure should be created carefully since only the events residing in the tail should be excluded. It is not the goal of this additional event-selection requirement to distinguish between well and badly reconstructed events since this is taken care of by the event selection criteria formulated in Chapter~\ref{ch::EvtSel}.
+Especially since the fraction of these latter type of events is small compared to the former type, as can be seen from Figure~\ref{fig::SMLikCorrVSWrUnSc}. This contains the same two distributions as shown in Figure~\ref{fig::SMLikCorrVSWr}, with the only difference that now they are drawn on scale.
+\\
 \begin{figure}[h!t]
  \centering
- \includegraphics[width = 0.35 \textwidth]{image.png} %Maybe show the two on top of each other? This way repeating the same figure can be avoided!!
- \caption{Distribution of the $\chi^{2}_{MEM}$-value for the $\gR$ = $0.0$ configuration for the resolution functions created specifically for this analysis (green) and for the basic Gaussian resolution function of the Matrix Element method (blue).} \label{Fig::SMLikTF}
+ \includegraphics[width = 0.65 \textwidth]{Chapters/Chapter6_Analysis/Figures/RelativeContribution_CWU_LumiNorm.pdf}
+ \caption{Distribution of the $\chi^{2}_{MEM}$-variable evaluated at the Standard Model configuration for correctly reconstructed (green) and wronly reconstructed $\ttbar$ events drawn on scale. \textit{Should still remove data and unmatched!}} \label{fig::SMLikCorrVSWrUnSc}
 \end{figure}
 
-\paragraph{Developing the actual cleaning procedure} \hfill \\
-
-Now that has been established how the discrepancy between generator-level events and reconstructed collision events can be identified, a procedure to get rid of the events causing it can be constructed.
-Before deciding to just exclude all events above a specific $\chiSqMEM$ value, it has been examined whether some events with useful information actually reside in the tail of this distribution.
+In this analysis it has been opted for to decide on the optimal cut-value using the full sample of semi-leptonic $\ttbar$ events and selecting the value for which no bias in the outcome is observed.
+Hence, several cut-values have been applied onto this sample for which the corresponding minimum has been determined, as can be seen in Figure~\ref{fig::CutValueFit}.
+The considered cut-values range between 60 and 70, and can thus all be found in the outer range of the $\chiSqMEM$ distribution.
 \\
-Within the Matrix Element method events containing useful information are supposed to be characterised by a $\chiSqMEM$ curve \\
+Figure~\ref{fig::CutValueFit} also indicates the strong dependence of the obtained minimum on the applied cut-value, implying that its optimal value should be determined with great care in order to avoid introducing a significant bias. It also confirms that only the events in the tail should be excluded since the events located more in the intermediate region of the $\chiSqMEM$ distribution, so between $60$ and $65$ approximately, still contain relevant information and should be preserved for further analysis.
+\\
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.65 \textwidth]{Chapters/Chapter6_Analysis/Figures/LikCutFit_TTbarSemiLept.pdf}
+ \caption{Minima obtained by applying different cut-values. This distribution has been fitted with a polynomial in order to determine the optimal cut-value, which correspond to the value for which no bias is recovered. \textit{Will zoom in on the region between 58 and 72! + put optimal point!}} \label{fig::CutValueFit}
+\end{figure}
+
+The overall distribution containing the minima corresponding to each cut-value is then fitted with a polynomial function, represented by the red curve in Figure~\ref{fig::CutValueFit}.
+From this the optimal cut-value, corresponding to the outcome of $\gR$ = 0, can easily be determined as being $64.62$ $\pm$ $xx?$.
+The effect of this event-cleaning procedure on the different samples has been summarised in Table~\ref{table::CutInfl}, which varies significantly for the considered samples.
+\\
+\begin{table}[h!t]
+ \centering
+ \caption{Influence of the event-cleaning procedure on the different samples.} \label{table::CutInfl}
+ \renewcommand{\arraystretch}{1.2}
+ \begin{tabular}{c|c}
+  Sample 	& Event reduction 	\\
+  \hline
+  $\ttbar$ 	& $\%$ 			\\
+  Single top 	& $\%$ 			\\
+  W+jets 	& $\%$ 			\\
+  Z+jets 	& $\%$ 			\\
+  \hline
+  Data 		& $\%$ 			
+ \end{tabular}
+\end{table}
+
+%Even with the knowledge that the method behaving as should be and that the cross-section normalisation is applying the correct factor, the results obtained from the Matrix Element method need to surpass an additional cleaning procedure. This is a quality inherent to the inprecise determination of both the event kinematics and the event topology when considering reconstructed events. Any deviation from the expected topology might result in the the calculation technique not converging and thus misdetermining the event probability.
+
+Within the Matrix Element method events containing useful information are supposed to be characterised by a $\chiSqMEM$ curve ...\\
 \textit{From the added 2D plots no real conclusion can be drawn unfortunately. The second derivative distribution was a possibility, but since it is just almost symmetric around zero it would only raise more questions when adding this distribution ...\\ So it seems that no actual explanation will be able to be given for this cut ...\\ Especially because the 2D plots which can be given indeed show that something goes wrong at the outer x-axis range but the behaviour at lower x-values is not as expected either ...}
-%This has been done by investigating whether 
-%This by probing into the specific characteristics of the individual events;
 \\
 \begin{figure}[h!t]
  \centering
@@ -326,27 +346,11 @@ Within the Matrix Element method events containing useful information are suppos
  \caption{2D plot for all $\ttbar$ events (so CWU combined -- scdDer only for correct ...). The two lower plots contain on the y-axis the $\chiSqMEM$ difference between $\gR$ = 0.0 and $\gR$ = $\pm$ 0.2. Hence in order to have minimum at zero, both should actually be negative!} \label{fig::SMLik2D}
 \end{figure}
 
-Another important remark to make is that the applied cut on this $\chiSqMEM$ should not be set to tight since the contribution of badly reconstructed events is supposed to be rather low due to the stringent event selection criteria applied on the reconstructed events. Hence it is not the goal to reduce the events in the intermediate region of this $\chiSqMEM$ distribution, since their contribution is negligible compared to the total number of reconstructed events. This can be seen in Figure~\ref{fig::SMLikCorrVSWrUnSc}, which contains the same distributions as in Figure~\ref{fig::SMLikCorrVSWr} but now the histograms are not scaled and thus represent their actual contribution to the overall result. From this can be clearly seen that these simulated events are dominated by well-reconstructed event topologies.
-\\
-\begin{figure}[h!t]
- \centering
- \includegraphics[width = 0.65 \textwidth]{Chapters/Chapter6_Analysis/Figures/RelativeContribution_CWU_LumiNorm.pdf}
- \caption{\textit{Remove the unmatched and data!}} \label{fig::SMLikCorrVSWrUnSc}
-\end{figure}
-
-\textit{Determine this cut-value using all background samples}\\
-\textit{Show the fit-function used to get this optimal value!}
-\begin{figure}[h!t]
- \centering
- \includegraphics[width = 0.65 \textwidth]{Chapters/Chapter6_Analysis/Figures/Data_vs_SeparateTTbarJetsSemiLept_NotLumiScaled.pdf}
- \caption{} \label{fig::OptCutValue}
-\end{figure}
-
-\begin{figure}[h!t]
- \centering
- \includegraphics[width = 0.65 \textwidth]{Chapters/Chapter6_Analysis/Figures/LikCutFit_TTbarSemiLept.pdf}
- \caption{} \label{fig::CutValueFit}
-\end{figure}
+%\begin{figure}[h!t]
+% \centering
+% \includegraphics[width = 0.65 \textwidth]{Chapters/Chapter6_Analysis/Figures/Data_vs_SeparateTTbarJetsSemiLept_NotLumiScaled.pdf}
+% \caption{} \label{fig::OptCutValue}
+%\end{figure}
 
 
 %--------------------------------------------------------------------------------------------------- \\
@@ -359,9 +363,12 @@ Another important remark to make is that the applied cut on this $\chiSqMEM$ sho
 
 \section{Results and systematics} \label{sec::Meas}
 
-\subsection{Bias of reconstructed events}
-The linearity test discussed in Section~\ref{subsec::CalibCurve} has indicated that the considered model does not introduce any biases and thus perfectly describes the decay of the top-quark. However, since this calibration has been determined using generator-level events, a final cross-check is required to ensure no bias is introduced when applying the full event-selection chain.
-As mentioned before, the only simulation sample available describes the Standard Model configuration and can thus only be used to shift the calibration curve up or down depending on the obtained outcome.
+%\subsection{Bias of reconstructed events}
+%The linearity test discussed in Section~\ref{subsec::CalibCurve} has indicated that the considered model does not introduce any biases and thus perfectly describes the decay of the top-quark. However, since %this calibration has been determined using generator-level events, a final cross-check is required to ensure no bias is introduced when applying the full event-selection chain.
+%As mentioned before, the only simulation sample available describes the Standard Model configuration and can thus only be used to shift the calibration curve up or down depending on the obtained outcome.
+%*****************************
+% --> Not necessary since the cut-value is chosen as such that no bias is found!
+%*****************************
 
 \subsection{Pulls}
 
