@@ -1,37 +1,55 @@
-\chapter{Measurement of anomalous couplings in top-quark decays} \label{ch::Analysis}
+\chapter{Measurement of anomalous couplings in top-quark pair decays} \label{ch::Analysis}
 
-\textit{With all necessary objects and methods clearly established in the previous chapters, the focus can now finally shift towards the actual topic of this thesis./the actual measurement performed in this thesis.}
-The goal of the performed/this measurement, of which all aspects will be rigorously discussed in this chapter, is to determine the right-handed tensor coupling of the Wtb interaction vertex using a Matrix Element method.
+The previous chapter has described in detail the technicalities of the Matrix Element method and demonstrated its applicability using a simple example.
+The main idea behind this method is that it combines all the individual event probabilities into an overall likelihood $\mathcal{L}_{MEM}$.
+This likelihood distribution is then transformed into a negative log likelihood, which is minimized in order to extract the Matrix Element estimator $\hat{\epsilon}_{MEM}$.
+In this chapter, which will focus on the measurement of the right-handed tensor coupling of the Wtb interaction vertex, the estimator of interest is denoted as $\gREst$.
+\\
+%***********************
+% Repeat MEM likelihood equation??
+%***********************
+
+Before the actual measurement can be performed, a number of tests have to be carried out in order to ensure the Matrix Element estimator is behaving properly.
+Investigating the performance of this estimator, explained meticulously in Section~\ref{sec::EstimatorProp}, is crucial since the Matrix Element method can be influenced by the introduced simplifications/assumptions.
+%the sometimes simplified \textit{representations}.
+Determining the correspondence between the result obtained from the Matrix Element estimator and the expected $\gR$-value will be done using simulated samples, for which the Standard Model configuration should be recovered.
+%Hence, comparing the obtained result of simulated samples, where the outcome is known, with the value of the estimator allows to fix the correspondence between the estimator and the actual outcome.
+%
+%In the ideal case, the estimator $\hat{g_{R}}$ should be identical to the $\gR$ value extracted from the event-likelihood. 
+%Nevertheless, this perfect behaviour can be influenced by ... (\textit{What can be responsible for a slope different from 1? Is it also just a bias?}) and result in a ... or a bias.
+%
+\\
+Once all the ... the measurement itself will be discussed in Section~\ref{sec::gRMeas}.
+
+\section{Performance of the Matrix Element estimator} \label{sec::EstimatorProp} %Is method needed here? --> Otherwise call it 'Performance of the estimator $\hat{g_{R}}$'
+
+The applicability of the Matrix Element method can be seriously hampered by either the constructed model and the approximations made herein or otherwise by the procedure developed to extract the estimator from the event likelihood.
+Here the two possible deviations from the perfect behaviour will be discussed separately, first the linearity test which focusses on the slope and afterwards the presence of an offset will be checked.
+
+\begin{equation}
+ \hat{g_R} = a \cdot \gR^{Lik} + bias
+\end{equation}
+The final performance check will focus on the statistical properties of the estimator.
+
+\subsection{Linearity test}
+
+%Why separate linearity test?
+The choice to perform the linearity test separately from the offset determination is driven by fact that the linearity test requires information from several samples generated with different coupling coefficients. Since creating such samples for reconstructed events is a non-trivial task, especially compared to the ease with which generator-level samples can be created, it has been opted for in this thesis to use generator-level events for the linearity test.
+The influence of the reconstructed events will be incorporated afterwards in the offset determination, which only requires the result of the Standard Model configuration.
 \\
 
-However, before the actual measurement can be done, additional research is still required in order to ensure that the procedure developed to extract the result/minimum from the Matrix Element method is behaving properly. This because such a method can be negatively influenced by the applied model approximations, a \textit{condition/ option/ possibility/ property} that should be tested using a \textit{linearity test/bias determination} for which the details can be found in Section~\ref{sec::CalibCurve}.
-Afterwards some specific characteristics of the performed analysis will be discussed in Section~\ref{sec::RecoAdapt}.
-Main focus here will lie/be on understanding the challenges associated with applying a Matrix Element method on reconstructed collision events.
-Once the entire framework required to investigate these type of events is established, the actual measurement will be discussed in Section~\ref{sec::Meas}. 
-%\textit{Also an overview of the relevant systematic uncertainties will be given here.}
-
-\section{Linearity test of the Matrix Element method} \label{sec::CalibCurve}
-%--> Maybe even get a stronger title ...
-
-In order to ensure neither the constructed model nor the developed minimisation procedure hampers the applicability of the Matrix Element method, a detailed \textit{linearity test} will be performed.
-This because the complexity of this method necessitates the introduction of some model approximations, all of which have the potential to influence the obtained result in a significant manner.
-In addition, the technique used to extract the relevant information from the likelihood retrieved from the Matrix Element method can also (possibly) bias the outcome.
+%What does the linearity test do, why a non-linear result can be obtained
+The goal of the linearity test is to determine whether the outcome of the Matrix Element method depends on the coupling coefficient considered.
+Such a behaviour can be expected in case the created model does not perfectly describes the physics processes taking place when moving away from the well-established Standard Model configuration.
+%depicts the physics processes in a too simplified manner.
+Therefore various samples will be created, each generated with a different coupling coefficient, and the obtained minimum of each sample will be compared with the value used to create it.
 \\
 \\
-The \textit{calibration procedure} will determine whether for the different coupling coefficients any deviation from the expectation is observed.
-Hence, various samples created with alternative coupling coefficients are needed for which the retrieved minimum should correspond to the value used to create them. Any deviation between the two would indicate the Matrix Element method has been affected with a bias, for which should be corrected for afterwards.
-%*************************
-% Interesting to mention such a statement already here ??
-% --> First stick to the generator-level result and the testing of the method, and only then discuss the reco results!
-%*************************
-\\
-
-Obtaining samples of reconstructed collision events with alternative coupling coefficients is not a trivial task, especially when compared to the ease with which generator-level events can be created.
-%One of the more difficult aspects of this \textit{linearity test} is obtaining samples of reconstructed collision events generated with alternative coupling coefficients, this in contrast to the ease with which generator-level events can be created. 
-Therefore, it has been opted for in this thesis to perform this \textit{linearity test} with the latter type of events.
-However, since the event-selection is one of the more likely candidates to expect a different effect depending on the considered coupling coefficient, the generated events will have to fullfill some basic selection requirements.
-\\
-These event-selection criteria, which have been summarised in Table~\ref{table::GenCuts}, are chosen to be in close agreement with the kinematic constraints applied in the full event-selection chain discussed in Chapter~\ref{ch::EvtSel}. Unfortunately the identification and additional fine-tuning criteria cannot be taken into account, but are on the other hand not expected to be as dependent on the value of the coupling coefficient.
+%Want to include some event selection cuts in order to take into account some discrepancies from here.
+Besides a simplified model, the event-selection procedure is also a viable candidate to cause a dependency of the outcome on the coupling coefficient.
+This because the selection efficiency might change significantly due to the altered kinematics of the Wtb interaction when varying the coupling coefficients.
+However, since generator-level events are considered the full event-selection chain cannot be applied but, in order to mimic the conditions of the reconstructed events partially, the generated events will have to fullfill some basic event-selection criteria. These have been summarised in Table~\ref{table::GenCuts}.
+The identification and additional fine-tuning criteria cannot be taken into account, but are on the other hand not expected to depend on the considered value of the coupling coefficient.
 \begin{table}[h!t]
  \centering
  \caption{Basic event selection applied to the generator-level events in order to partially mimic the situation existing for the reconstructed collision events.} \label{table::GenCuts}
@@ -45,23 +63,16 @@ These event-selection criteria, which have been summarised in Table~\ref{table::
  \end{tabular}
 \end{table}
 
-The generator-level samples used for this linearity test have been created with the MadGraph event generator and contain \textcolor{red}{20 000} events, a value comparable in size to the number of selected data events. 
-Since the considered right-handed tensor coupling, $\gR$, is supposed to be equal to $0$ in the Standard Model, the linearity test has been restricted to the range $\left[-0.15, 0.15\right]$.
-This because the minimum-extraction procedure has proven to give rise to sufficiently accurate/precise results such that, in case any bias would exist, it has to be recovered within this limited range.
-%Question: Mention that this decision was also driven by the fact that the fit is not accurate enough because there is not enough bin-information outside this range??
+%What is done and what is expected
+The generated samples, each containing 20 000 events in order to be comparable in size to the data sample, are then analysed by the Matrix Element method and the correspondence between the obtained minimum and the coupling coefficient imposed during the generation process is determined. 
+In the ideal case these two values should be identical, implying that both the model and the procedure developed to extract the estimator are behaving properly.
+The outcome of the linearity test for this analysis is given in Figure~\ref{fig::CalibCurve}, which clearly indicates that the distribution of the minima can be described by a straight line with slope almost equal to $1$ ($a$ = 0.9713).
 \\
+%What is shown in the figure, and which range is important.
+The fit on the distribution, the actual linearity test, has only been applied in the range $\left[-0.17, 0.17\right]$ since this is the relevant region to where the Standard Model configuration should be recovered. However, due to the precision of the obtained results, the region of interest can be limited further to values of $\vert \gR \vert$ smaller than 0.1, for which the linear behaviour is clearly visible.
 \\
-Each generated sample has been analysed by the Matrix Element method and its minimum has been determined using exactly the same method as will be applied for the reconstructed collision events.
-The obtained minimum is then compared to the expected value of the corresponding sample, which should correspond to the coefficient imposed during the generation process.
-In order to ensure both the model and method are not biased, the overall shape of the obtained results should be consistent with a straight line through the origin with a slope of $1$.
-\\
-%\textit{This resemblance is indeed recovered, as can be seen in Figure~\ref{fig::CalibCurve}, for which the relevant parameters are given in Equation (\ref{eq::CalibCurveResults}).}
-%\begin{equation} \label{eq::CalibCurveResults}
-% \textrm{slope} = xxx \pm xxx \qquad \& \qquad \textrm{off-set} = xxx \pm xxx  
-%\end{equation}
-
-For this analysis an almost perfect match has been recovered, as can be seen from Figure~\ref{fig::CalibCurve}. 
-This agreement is confirmed when the obtained shape of the linearity test is compared with the expected one, resulting in a $\chi^{2}$-value of $xxx \pm xxx$ such that can be concluded that both distributions are statistically compatible. Hence, the measurements obtained with the introduced model can be trusted and no calibration should be applied to the final result.
+%Why deviation outside range!
+The deviation from the expected distribution outside the considered range are most likely caused by the simplifications applied in the constructed model. In order to perfectly describe the physics processes over the entire $\gR$ range a more profound theoretical description of the Wtb interaction vertex is required, which lies beyond the scope of this thesis.
 \begin{figure}[h!t]
  \centering
  \includegraphics[width = 0.65 \textwidth]{Chapters/Chapter6_Analysis/Figures/CalibrationCurve_SlopeComparision_DifferentCuts.pdf}
@@ -71,145 +82,33 @@ This agreement is confirmed when the obtained shape of the linearity test is com
 %Question: Fit also done by excluding the outer bins?
 %********************************
 %
-%From the performed linearity test is clearly visible that the introduced model (and method) do not result in a bias.
-%However, in order to reinforce this statement/conclusion, a chi-sq test has been carried out.
-%\\
-%Since the performed linearity proves that the introduced model does not result in a bias and thus the measurements obtained with the discussed model can be trusted, no calibration will be applied to the obtained outcome. The small deviation from the expected curve is perfectly covered by the corresponding uncertainty (\textbf{Check if this is also the case for the intersect value}) and should thus not be taken into account.
-%\\
-%
-%\textbf{Statistically compatible with a straight line --> do a chi-sq test!}
-%
-%This means that the linearity test to check whether the model approximations might have introduced a bias has to be performed using the generator-level results and afterwards the entire curve needs to be shifted to the correspond with the result obtained from the signal $\ttbar$ sample.
 
-\section{Required MEM framework adaptations} \label{sec::RecoAdapt}
-%**********************
-% Can also just make the section about the event cleaning but give this XS calculation as an introduction!
-%  --> Work with paragraphs maybe ? (not so interesting to use paragrapsh in section ...)
-%**********************
+%Some conclusions
+The performed linearity test has clearly indicated that both the model and method are behaving accordingly and that the obtained results are independent of the considered coupling coefficient.
+Hence, no calibration is required to reinstore the expected linear behaviour of the Matrix Element method.
+%The method can still be affected by a bias, but will be discussed in the next section since it should be determined using reconstructed events.
+%An offset is still possible, but will be determined in the following section since the linearity test has been based purely on generator-level events.
+%Any discrepancy caused by the use of reconstructed events will be investigated in the offset determination.
 
-%First of all, the cross-section for these type of events for all the considered coupling coefficients should be determined, which is not as straightforward as was the case for the generator-level events discussed in the previous chapter. The approach opted for in this thesis will be discussed in Section~\ref{sec::RecoAdapt}.
+
+\subsection{Offset calibration}
+\textit{Build up this subsection by first mentioning that there is a definite bias, but that a sophisticated method should be developed in order to reduce its influence.}
+\\
+
+Besides an almost perfect linear behaviour, the linearity test also indicated that no offset exists for generator-level events. This statement can not be generalised to reconstructed events since they can be influenced differently .... However simply applying the full analysis on the simulated collision events did not resulted in the expected outcome. On the contrary, the obtained Matrix Element method $-\ln(L_{MEM})$ distribution corresponded to a decreasing line such that the minimum is located at the edge of the considered range.
+\\
+
+The large contrast with the generator-level events seems to suggest that the Matrix Element method is not as efficient with reconstructed events as was the case for the generator events. This different behaviour is most likely caused by ...
+\\
+
 %The second characteristic to be discussed here focusses on the adaptations necessary to have the Matrix Element method correctly deal with reconstructed events. 
 %The fact that these events are more prone to detector inefficiencies or misdetermined kinematics significantly complicates the calculations.
-
-An important aspect of the Matrix Element method is the normalisation of the event probability using the cross-section and acceptance, which might vary significantly for the considered configurations. For the top-quark mass example given in Section~\ref{sec::TopMass}, the effect of this normalisation was negligible but for the measurement of the anomalous coupling coefficient this factor has proven to be rather important. The method opted for in this analysis to determine these cross-section values will be explained in Section~\ref{subsec::XSReco}.
-%*********************************
-% --> Check if this XS is actually important for the top-mass ..
-%*********************************
-\\
 
 Another essential/vital feature that should be investigated thoroughly is the less optimal behaviour of the Matrix Element method when considering reconstructed collision events.
 This because these type of events are more likely to be affected by detector inefficiencies, ill-defined kinematic variables and wrongly reconstructed event topologies.
 %Analysing reconstructed collision events using a Matrix Element method deviates significantly from any generator-level study, mainly because the former type of events tend to be influenced by detector inefficiencies, ill-defined kinematic variables or wrongly reconstructed event topologies.
 Since the Matrix Element method will treat all events as if they were real semi-leptonic top-quark pair decays, any inconsistency from the expected topology is likely to result in the underlying mathematical framework to misdetermine the event probability.
 Therefore it is of crucial importance a procedure is developed in order to exclude the contribution of these sort of events, for which the details will be given in Section~\ref{subsec::EvtCleaning}.
-
-%In order to correctly apply the Matrix Element method on reconstructed collision events, a different approach than the one used for generator-level events is required.
-%At first, the ease \textbf{with which} generator-level samples with an alternative mass or coupling (\textit{Check whether any example of couplings is given ...}) could be created can not be repeated for these reconstructed events. Therefore, the linearity test performed to test the validity of the considered model assumptions will be performed using generator-level events, as explained in Section~\ref{subsec::CalibCurve}. Also the cross-section values at non-SM coupling coefficients for the reconstructed events need to be extrapolated from these generator-level events, a procedure which will be discussed in Section~\ref{subsec::XSReco}.
-%\\
-%Secondly, and more related to the actual application of the technique, the possible influence of detector inefficiencies, ill-defined kinematic variables or wrongly reconstructed event topologies has a detrimental effect on the calculation of the event probability. 
-%Therefore an additional event cleaning procedure, outlined in detail in Section~\ref{subsec::EvtCleaning}, is required in order to limit the importance of these type of events. 
-
-\subsection{Determining the cross-section for reconstructed events} \label{subsec::XSReco}
-
-For the measurement of the right-handed tensor coupling the cross-section normalisation is a vital component.
-Independent whether generator-level or reconstructed events are considered, without this normalisation applied the Matrix Element method does not result in the correct outcome.
-The substantial influence of this normalisation component has been summarised in Figure~\ref{fig::XSInflGen}, which shows the overall $\chiSqMEM$ distribution prior to and after the cross-section normalisation has been taken into account. The considered sample has been created using the Standard Model configuration such that the minimum of the distribution should correspond to $0$.
-%This because the observed variations of the overall event probability for the coupling coefficient are much smaller than was the case for the top-quark mass measurement such that the cross-section normalisation actually has a significant influence on the obtained outcome.
-%***********************************
-% --> Certain this is the reason?
-% ==> Maybe good to think of an explanation why this cross-section normalisation is so much more important
-%***********************************
-\begin{figure}[h!t]
- \centering
- % Add here the gR gen-level result of FitDistributions_CalibCurve_SemiMu_RgR_AllDeltaTF_MGSampleSM_20000Evts_NoCuts_OuterBinsExclForFit_20000Evts.root with and without XS normalisation
- % Important: Cannot yet use the sample after the event-selection is applied because this still has to be explained!!
- % --> Do this without the fit maybe .. ?
- \includegraphics[width = 0.3 \textwidth]{image.png} \hspace{0.5cm}
- \includegraphics[width = 0.3 \textwidth]{image.png}
- \caption{Distribution of the overall $\chiSqMEM$-value obtained by analysing the right-handed tensor coupling using 20 000 generator-level events. The distribution on the left is without any normalisation applied while the right one corresponds to the normalised result.} \label{fig::XSInflGen}
-\end{figure}
-
-The significant impact of the cross-section normalisation on the outcome of the measurement implies that the cross-section values for the reconstructed-level analysis should be determined with great care.
-However, in contrast to the easy access to generator-level samples with alternative coupling coefficients, generating similar samples containing reconstructed events is a rather challenging and time-consuming process.
-As a result, it has been opted for in this thesis to derive the cross-section values for the reconstructed events from the generator-level ones.
-This approach significantly facilitates the cross-section determination since any generated process by MadGraph automatically calculates the cross-section of the considered process.
-%**********************
-% Any other motivation why FastSim has not been considered?
-% --> Certain that it would perfectly describe the SM samples??
-%**********************
-\\
-\\
-In order to ensure that the obtained generator-level cross-sections can easily be related to the reconstructed ones, the conditions present for the reconstructed collision events will be mimicked as closely as possible during the generation process. Hence the generator events have to fullfill the basic event selection requirements\footnote{Important to note here is that once these selection criteria are applied to the generated events, the obtained cross-section will actually be a combination of the cross-section of the underlying physics process and the acceptance of the considered event selection. Hence the term ``cross-section normalisation'' will \textbf{implicitely} imply the combined normalisation $\sigma \times A$ mentioned in Equation~\ref{eq::MWEvtProb}.} listed in Table~\ref{table::GenCuts}.
-By applying a significant fraction of the full event selection chain onto the generated events, the expected relative difference in behaviour of each $\gR$ value on the considered kinematic constraints will be incorporated. As previously mentioned in Section~\ref{sec::CalibCurve}, the remaining event-selection criteria are supposed to be less sensitive to the value of the coupling coefficient.
-%The remaining event selection criteria are believed to be less sensitive to the value of the coupling coefficient, thus their relative dependence will not be taken into account.
-\\
-\\
-In addition, the generated processes are also selected in order to remain with a similar event signature as is the case in data. Hence the cross-section values have been determined using a combination of top-quark pair decay processes surrounded with additional jets. The actual number of considered processes has been limited to the $\ttbar$ decay with none, one and two additional jets since the contribution of the following decays quickly becomes negligible.
-%********************************************
-% --> Does this correspond to LO, NLO and NNLO or is this still something different??
-% Question: Interesting to give some of the Feynman diagrams belonging to the different processes?
-%********************************************
-\begin{figure}[h!t]
- \centering
- \includegraphics[width = 0.15 \textwidth]{image.png} \hspace{0.2cm}
- \includegraphics[width = 0.15 \textwidth]{image.png} \hspace{0.2cm}
- \includegraphics[width = 0.15 \textwidth]{image.png}
- \caption{Feynman diagrams for the different generator-level processes considered for the calculation of the cross-sections. \textbf{Relevant?}}
-\end{figure}
-
-Even with these two optimisations applied, this approach will not result in a perfect agreement with the selected events. For instance, it is simply not possible to include every aspect of the full event-selection chain in exactly the same way when generating the different processes.
-Hence, the obtained cross-section values will be scaled in order to take into account the influence of these non-included event selection criteria.
-For this an identical behaviour throughout the entire $\gR$ range is assumed such that each cross-section value will be multiplied with the factor $\sigma_{SM}^{reco}$/$\sigma_{SM}^{gen}$. 
-%********************************************
-% --> Think of any other non-included effects!!
-%********************************************
-\\
-In this factor the term $\sigma_{SM}^{reco}$ represents the measured cross-section of the selected events while the cross-section obtained for the combined generator-level sample created using the Standard Model configuration is denoted by $\sigma_{SM}^{gen}$.
-The cross-section of the selected events is determined by dividing the semi-leptonic $\ttbar$ event count obtained after the full event selection chain with the luminosity of this sample, which has been given previously in Table~\ref{table::Samples}. 
-\\
-
-The final result of the cross-section calculation can be found in Figure~\ref{fig::XSDistr}, which shows the distribution of the cross-section values obtained for the generator-level events using the approach discussed above. The cross-section values for the selected events are also given in this Figure, obtained by multiplying each of the former cross-sections with the fixed scaling factor $\sigma_{SM}^{reco}$/$\sigma_{SM}^{gen}$ = $0.326$. \textbf{Recalculate!}
-\\
-\textbf{Remark: Used luminosity and number of events do not seem to be correct!}
-\begin{figure}[h!t]
- \centering
- \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter6_Analysis/Figures/XSDistributions.pdf}
- \caption{Overview of the distribution of the generator-level cross-sections for different $\gR$ values and the reconstructed ones derived from them by applying the ratio $\sigma_{SM}^{reco}$/$\sigma_{SM}^{gen}$.} \label{fig::XSDistr}
-\end{figure}
-
-%--------------------------------------------------------------------------------------------------------- \\
-%Also here there is an additional complexity when considering reconstructed events, since the cross-section of the $\ttbar$ decay depends on the value of the coupling coefficients in the interaction vertex. For generator-level events, these values are accesible for each generated sample since MadGraph automatically determines the cross-section of each generated process.
-%\\
-%Hence the cross-sections for these reconstructed events are derived from the MadGraph predictions by carefully calculating the generator-level cross-sections in a regime comparable to data. 
-%This condition has been achieved by combining the cross-sections for each $\gR$ coefficients when no, one and two additional jets are included in the event. 
-%This will not result in a perfect match to data, but will bring the considered configuration a bit closer to reality. 
-%\\
-%Since the cross-section should be include the effect of the event selection, the different MadGraph samples have to fullfill the different kinematic requirements given in Table~\ref{table::GenCuts}. The three different contributions are then added in order to obtain an overall cross-section for the \textbf{inclusive} 2-jet case, for which the results have been summarised in the second column of Table~\ref{table::XSValues}.
-%The third column contains the cross-section values that will be applied for the measurement using the reconstructed events, and have been obtained by scaling the cross-section for each $\gR$ value with the fraction $\sigma_{SM}^{reco}$/$\sigma_{SM}^{gen}$. This ratio corrects the generator-level cross-sections to the expected reco-level one and can be applied onto all $\gR$ configurations since the relative effect of the event selection is already been incorporated by applying the basic event selection requirements on the MadGraph samples. The value $\sigma_{SM}^{reco}$ has been determined by dividing the number of selected events with the total number of events present in the sample and multiplying this with the cross-section of the semi-leptonic $\ttbar$ sample, which thus corresponds to multiplying the selected number of events with the luminosity of the simulated sample. The distribution of the generator-level cross-sections and the reconstructed ones is given in Figure~\ref{fig::XSDistr} and serves as an easy way to determine the reconstructed cross-section for other $\gR$ values if required.
-%
-%\begin{table}[h!t]
-%  \centering
-%  \caption{Overview of the cross-section values used for the reconstructed events together with the inclusive $\ttbar$+2jet events from which they have been derived. \textbf{Maybe redundant if figure is %given ..}} \label{table::XSValues}
-%  \small
-%  %\begin{tabular}{|c||c|c|c|c||c|}
-%  \begin{tabular}{|c|c|c|}
-%   \hline
-%%   $\gR$ coefficient 	& $\ttbar$+0j ($\pbinv$) 	& $\ttbar$+1j ($\pbinv$) 	& $\ttbar$+2j ($\pbinv$) 	& Incl. $\ttbar$+2j 	& $\ttbar$ reco ($\pbinv$) 	\\
-%   $\gR$ coefficient 	& Incl. $\ttbar$ + 2 jets ($\pbinv$) 	& $\ttbar$ reco ($\pbinv$) 	\\
-%   \hline
-%   \hline
-%   -0.2  		& 3.34036				& 0.947244 			\\
-%   -0.15		& 4.01717				& 1.13624			\\
-%   -0.1 		& 4.84056				& 1.36448			\\
-%   -0.05		& 5.82329 				& 1.63952			\\
-%   0.0 		& 6.98981 				& 1.96892			\\
-%   0.05		& 8.37733 				& 2.36027			\\
-%   0.1 		& 10.0153 				& 2.82111			\\
-%   0.15		& 11.9024 				& 3.35903			\\
-%   0.2 		& 14.0873 				& 3.98157			\\
-%   \hline
-%  \end{tabular}
-%\end{table}
 
 \subsection{Matrix element event cleaning} \label{subsec::EvtCleaning}
 
@@ -308,12 +207,12 @@ Figure~\ref{fig::CutValueFit} also indicates the strong dependence of the obtain
 \\
 \begin{figure}[h!t]
  \centering
- \includegraphics[width = 0.65 \textwidth]{Chapters/Chapter6_Analysis/Figures/LikCutFit_TTbarSemiLept.pdf}
- \caption{Minima obtained by applying different cut-values. This distribution has been fitted with a polynomial in order to determine the optimal cut-value, which correspond to the value for which no bias is recovered. \textit{Will zoom in on the region between 58 and 72! + put optimal point!}} \label{fig::CutValueFit}
+ \includegraphics[width = 0.65 \textwidth]{Chapters/Chapter6_Analysis/Figures/LikCutFit_TTbarSemiLept_UpdatedXS.pdf}
+ \caption{Minima obtained by applying different cut-values. This distribution has been fitted with a polynomial in order to determine the optimal cut-value, which correspond to the value for which no bias is recovered. \textit{Will highlight optimal point!}} \label{fig::CutValueFit}
 \end{figure}
 
 The overall distribution containing the minima corresponding to each cut-value is then fitted with a polynomial function, represented by the red curve in Figure~\ref{fig::CutValueFit}.
-From this the optimal cut-value, corresponding to the outcome of $\gR$ = 0, can easily be determined as being $64.62$ $\pm$ $xx?$.
+From this the optimal cut-value can easily be determined as being $63.92$ $\pm$ $xx?$ for which a minimum equal to $\gR$ = -0.001 $\pm$ 0.009 is recovered, which is clearly statistically compatible with 0.
 The effect of this event-cleaning procedure on the different samples has been summarised in Table~\ref{table::CutInfl}, which varies significantly for the considered samples.
 \\
 \begin{table}[h!t]
@@ -321,14 +220,10 @@ The effect of this event-cleaning procedure on the different samples has been su
  \caption{Influence of the event-cleaning procedure on the different samples.} \label{table::CutInfl}
  \renewcommand{\arraystretch}{1.2}
  \begin{tabular}{c|c}
-  Sample 	& Event reduction 	\\
+  Sample 		& Event reduction 	\\
   \hline
-  $\ttbar$ 	& $\%$ 			\\
-  Single top 	& $\%$ 			\\
-  W+jets 	& $\%$ 			\\
-  Z+jets 	& $\%$ 			\\
-  \hline
-  Data 		& $\%$ 			
+  $\ttbar$ (good)	& $\%$ 			\\
+  $\ttbar$ (wrong) 	& $\%$ 			\\
  \end{tabular}
 \end{table}
 
@@ -360,29 +255,121 @@ Within the Matrix Element method events containing useful information are suppos
 %
 %The mentioned dependence on the resolution functions introduced for the reconstructed collision events can be visualised in Figure~\ref{fig::SMLikTF}, which contains this $\chiSqMEM$ variable at the $\gR$ = 0.0 point in case the resolution function developed in Section~\ref{sec::TF} is considered and in case a basic Gaussian function is used to describe the smearing of the \textbf{what exactly?}. 
 
+\paragraph{Data-MC discrepancy}
+Not a perfect agreement between data and MC (Yes, is within 1 sigma interval ...) AND should use the unweighted uncertainty for MC!:
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter6_Analysis/Figures/CutValueFitted_DataVsAllMC.pdf}
+ \caption{Minimum values obtained for the different cut-values considered for data (red) and all simulated (black) samples. Hence also the optimal cut-value differs slightly: 63.396 for data and 63.8764 for all simulated samples.}
+\end{figure}
 
-\section{Results and systematics} \label{sec::Meas}
+Shape is almost identical for the $\chi^{2}$ distribution evaluated at the Standard Model configuration.
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter6_Analysis/Figures/StackedPlot_SMLikValue_AllMCAndData.pdf}
+ \caption{Distribution of the $-\ln(\mathcal{L})$ distribution for data (red) and all simulated samples (black). This shows a nice agreement between the two.}
+\end{figure}
 
-%\subsection{Bias of reconstructed events}
-%The linearity test discussed in Section~\ref{subsec::CalibCurve} has indicated that the considered model does not introduce any biases and thus perfectly describes the decay of the top-quark. However, since %this calibration has been determined using generator-level events, a final cross-check is required to ensure no bias is introduced when applying the full event-selection chain.
-%As mentioned before, the only simulation sample available describes the Standard Model configuration and can thus only be used to shift the calibration curve up or down depending on the obtained outcome.
-%*****************************
-% --> Not necessary since the cut-value is chosen as such that no bias is found!
-%*****************************
 
-\subsection{Pulls}
+
+\subsection{Statistical properties}
+The developed technique to extract the relevant information from the Matrix Element method has proven to be uninfluenced by any bias, as has been shown in Section~\ref{sec::CalibCurve}.
+Furthermore, the optimal cut-value for the event-cleaning procedure is chosen as such that the expected Standard Model value is recovered for the simulated signal events, top-quark pairs decay(ing semi-leptonical). Since the remaining simulation samples are all almost negligible compared to this one, the leading background contribution in this analysis is single-top production in the tW-channel which is about 50 times smaller, no significant influence on the overall outcome is expected from these types of events.
+\\
+
+However, additional research is still required in order to make sure the statistical properties of this analysis are well described.
+This can be performed using a resampling technique which generates a set of samples by randomly selecting events from the considered simulated samples in accordance with a previously specified luminosity, in general the luminosity of the data sample.
+This allows to obtain a representation of actual data and to verify whether the average result can be compared with expectation.
+%Each of these generated samples is then treated as an actual data sample and the full analysis is applied in order to determine the distribution of both the 
+\\
+\\
+Width of pull = 1.00395 $\pm$ 0.0240723 (using only ttbar semileptonic events)\\
+Width of pull = 0.957432 $\pm$ 0.0238748 (using all ttbar events)\\
+Width of pull = 0.987126 $\pm$ 0.0221517 (all MC)
 
 \begin{figure}[h!t]
  \centering
- \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/PseudoExp_MinimumDistr_AllTTbarSemiLept.pdf}
- \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/PseudoExp_UncDistr_AllTTbarSemiLept.pdf}
- \caption{Minimum and uncertainty distribution obtained for the 1000 considered pseudo experiments. (all semiLept TT)}  \caption{fig::MinAndUnc}
+ \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/PseudoExp_MinimumDistr_AllTTbarSemiLept_UpdatedXS.pdf}
+ \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/PseudoExp_UncDistr_AllTTbarSemiLept_UpdatedXS.pdf}
+ \caption{Minimum and uncertainty distribution obtained for the 1000 considered pseudo experiments. (all semiLept TT)}  \label{fig::MinAndUnc}
 \end{figure}
 
 \begin{figure}[h!t]
  \centering
- \includegraphics[width = 0.65 \textwidth]{Chapters/Chapter6_Analysis/Figures/PullDistr_AllTTbarSemiLept.pdf}
+ \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter6_Analysis/Figures/PullDistr_AllTTbarSemiLept_UpdatedXS.pdf}
  \caption{Pull distribution} \label{fig::PullDistr}
 \end{figure}
 
+\section{Measurement of $\gR$ using the Matrix Element method} \label{sec::gRMeas}
+
+\subsection{Data result}
+\paragraph{MC results } \hfill \\
+
+Nominal result is (Figure~\ref{fig::MinNominal}):
+\begin{equation}
+ \gR = -0.00139091 \pm 0.00912391
+\end{equation}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter6_Analysis/Figures/FittedGraph_NominalResult_TTbarJets.pdf}
+ \caption{Obtained minimum distribution for the nominal case.} \label{fig::MinNominal}
+\end{figure}
+
+Separate events on the different background samples are not always perfectly described:
+\begin{table}[h!t]
+ \centering
+ \caption{} \label{table::BckInfl}
+ \renewcommand{\arraystretch}{1.2}
+ \begin{tabular}{c|c}
+  Sample 						& Minimum 			\\
+  \hline
+  semi-leptonic $\ttbar$ 				& -0.00142159 $\pm$ 0.00912416 	\\
+  semi-leptonic $\ttbar$ + full-leptonic $\ttbar$ 	&  	\\
+  semi-leptonic $\ttbar$ + W-jets (4j) 			&  	\\
+  semi-leptonic $\ttbar$ + Z-jets (4j) 			&  		\\
+  semi-leptonic $\ttbar$ + ST tChannel 			&  	\\
+  semi-leptonic $\ttbar$ + ST tW-Channel  		&  	\\
+  \hline
+  Total MC 			& -0.000199381 $\pm$ 0.00888694 
+ \end{tabular}
+\end{table}
+
+The curve obtained when considering all MC samples is given in Figure~\ref{fig::MinNominalAll}
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter6_Analysis/Figures/FittedGraph_NominalResult_AllMC.pdf}
+ \caption{Obtained minimum distribution for the nominal case.} \label{fig::MinNominal}
+\end{figure}
+
+\paragraph{Actual Data result} \hfill \\
+
+The obtained data-result is (shown in Figure~\ref{fig::MinData}):
+\begin{equation}
+ \gR = 0.00915763 \pm 0.00829786
+\end{equation}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter6_Analysis/Figures/FittedGraph_DataResult.pdf}
+ \caption{Obtained minimum distribution for the data events.} \label{fig::MinData}
+\end{figure}
+
+
+\subsection{Systematic uncertainties}
+
+Obtained distribution is not perfectly Gaussian, so herefore should be corrected for.
+Hence an additional systematic will be introduced which takes into account the deviation from a Gaussian distribution.
+\\
+
+Result obtained for JESMinus is (Figure~\ref{fig::MinJESMinus}):
+\begin{equation}
+ \gR = 0.00376009 (\pm 0.00898 \qquad \textrm{using data-lumi})
+\end{equation}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter6_Analysis/Figures/FittedGraph_JESMinusResult_TTbarJets.pdf}
+ \caption{Obtained minimum distribution for the JES minus case.} \label{fig::MinJESMinus}
+\end{figure}
 
