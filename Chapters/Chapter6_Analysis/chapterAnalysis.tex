@@ -76,7 +76,7 @@ The deviation from the expected distribution outside the considered range are mo
 \begin{figure}[h!t]
  \centering
  \includegraphics[width = 0.65 \textwidth]{Chapters/Chapter6_Analysis/Figures/CalibrationCurve_SlopeComparision_DifferentCuts.pdf}
- \caption{Outcome of the linearity test for the created model, indicating the absence of a bias due to the assumed model approximations. The calibration is therefore described perfectly since it can be represented by a straight line with slope $1$.} \label{fig::CalibCurve}
+ \caption{Outcome of the linearity test based on generator-level events, for wich the obtained curve is perfectly described by a straight line. Hence both the developed model and method behave as expected and no calibration is required.} \label{fig::CalibCurve}
 \end{figure}
 %********************************
 %Question: Fit also done by excluding the outer bins?
@@ -85,58 +85,40 @@ The deviation from the expected distribution outside the considered range are mo
 
 %Some conclusions
 The performed linearity test has clearly indicated that both the model and method are behaving accordingly and that the obtained results are independent of the considered coupling coefficient.
-Hence, no calibration is required to reinstore the expected linear behaviour of the Matrix Element method.
-%The method can still be affected by a bias, but will be discussed in the next section since it should be determined using reconstructed events.
-%An offset is still possible, but will be determined in the following section since the linearity test has been based purely on generator-level events.
-%Any discrepancy caused by the use of reconstructed events will be investigated in the offset determination.
-
+Hence, no calibration is required to restore the expected linear behaviour of the Matrix Element method.
 
 \subsection{Offset calibration}
-\textit{Build up this subsection by first mentioning that there is a definite bias, but that a sophisticated method should be developed in order to reduce its influence.}
+
+The aim of this second performance test is to determine whether the outcome of the Matrix Element estimator is \textit{shifted with an offset}.
+Even though the linearity test has proven that an excellent agreement exists when analysing generator-level events, both for the slope and the bias, this cannot be generalised to reconstructed events.
+Since this bias might be affected by the different nature of reconstructed events, its value should be determined using the simulated events fullfilling the entire event-selection chain introduced in Chapter~\ref{ch::EvtSel}.
+\\
+Applying the full analysis procedure on this sample of recontstructed events would ideally result in the Standard Model configuration to be retrieved.
+In case a deviation from the expectation is observed, this difference will be taken into account as a bias of the developed model and the final result will be calibrated accordingly. 
 \\
 
-Besides an almost perfect linear behaviour, the linearity test also indicated that no offset exists for generator-level events. This statement can not be generalised to reconstructed events since they can be influenced differently .... However simply applying the full analysis on the simulated collision events did not resulted in the expected outcome. On the contrary, the obtained Matrix Element method $-\ln(L_{MEM})$ distribution corresponded to a decreasing line such that the minimum is located at the edge of the considered range.
+However, the obtained result was inconsistent with the Standard Model prediction, implying that the developed analysis procedure should be adapted in order to correctly handle reconstructed events.
+Since the overall $\NegLL$ distribution corresponded to a decreasing line with minimum located at the edge of the considered range, the observed discrepancy is more than merely a bias introduced by the \textit{procedure}.
 \\
+A closer look at the issue indicated that the discrepancy is most likely caused by a certain type of events the Matrix Element method is unable to analyse properly.
+Hence before the actual measurement can proceed/be performed, the reason behind this deviating/specific behaviour should be understood thoroughly such that a procedure can be developed to limit their influence.
 
-The large contrast with the generator-level events seems to suggest that the Matrix Element method is not as efficient with reconstructed events as was the case for the generator events. This different behaviour is most likely caused by ...
+\paragraph{(Specific) characteristics of reconstructed events} \hfill \\ %Understanding the nature of the \textit{bad} events
+
+The inconsistent outcome obtained for generator-level and reconstructed events suggest that the Matrix Element method behaves differently for the two types of events.
+This is not completely unexpected since reconstructed events tend to be influenced by detector inefficiencies or ill-determined event kinematics.
+However, the Matrix Element will treat all events as actual semi-leptonic top-quark pair decays, and any deviation from the expected topology is thus likely to result in an incorrect event probability.
 \\
-
-%The second characteristic to be discussed here focusses on the adaptations necessary to have the Matrix Element method correctly deal with reconstructed events. 
-%The fact that these events are more prone to detector inefficiencies or misdetermined kinematics significantly complicates the calculations.
-
-Another essential/vital feature that should be investigated thoroughly is the less optimal behaviour of the Matrix Element method when considering reconstructed collision events.
-This because these type of events are more likely to be affected by detector inefficiencies, ill-defined kinematic variables and wrongly reconstructed event topologies.
-%Analysing reconstructed collision events using a Matrix Element method deviates significantly from any generator-level study, mainly because the former type of events tend to be influenced by detector inefficiencies, ill-defined kinematic variables or wrongly reconstructed event topologies.
-Since the Matrix Element method will treat all events as if they were real semi-leptonic top-quark pair decays, any inconsistency from the expected topology is likely to result in the underlying mathematical framework to misdetermine the event probability.
-Therefore it is of crucial importance a procedure is developed in order to exclude the contribution of these sort of events, for which the details will be given in Section~\ref{subsec::EvtCleaning}.
-
-\subsection{Matrix element event cleaning} \label{subsec::EvtCleaning}
-
-A first glance at the measurement of the right-handed tensor coupling did not resulted in the expected outcome to be retrieved.
-However, since the cross-section values have been determined with great care and moreover the linearity test has proven that both the developed model and method behave accordingly, this discrepancy is most probably caused by the/a different \textbf{nature/performance} of reconstructed events.
+The performed study will first focus on a sample of selected $\ttbar$ events for which the four jets have been correctly matched with the generator-level parton to exclude the contribution from badly reconstructed event topologies.
+In case the bias is also observed for this sample, (it) can be concluded that the deviation is definitely inherent to the nature of reconstructed events and not caused by a lower reconstruction efficiency.
 \\
-
-A closer look at the issue seemed to indicate that the deviating effect originates from events badly handled by the Matrix Element method, an occurence that should be investigated in detail.
-Before any action can be taken to limit the influence of these events, the main difference between generator-level and reconstructed events should completely be understood.
-%
-%Analysing reconstructed collision events using a Matrix Element method deviates significantly from any generator-level study, mainly because the former type of events tend to be influenced by detector inefficiencies, ill-defined kinematic variables or wrongly reconstructed event topologies. However, the Matrix Element method will treat all events as if they were real semi-leptonic top-quark pair decays, and any inconsistency from the expected topology is likely to result in the underlying mathematical framework to misdetermine the event probability.
-%Therefore it is of crucial importance a procedure is developed in order to exclude the contribution of these sort of events, for which the details will be given in Section~\ref{subsec::EvtCleaning}.
-%\\
-%Unfortunately these type of events can become rather significant since on average they appear to get a lower value assigned than well-converging events. Since the event probability is converted into a $\chi^{2}_{MEM}$ or $-\ln(\mathcal{L}_{MEM})$, events with a lower value actually contribute the strongest to the overall result. Hence, special care should be awarded to these type of misidentified events and they should be excluded in order not to bias the outcome.
-%The influence of these type of events can be seen from Figure~\ref{fig::SMLik}, which contains the $\chiSqMEM$ of the $\gR$ = $0.0$ configuration for each event. This distributions shows a clear tail which does not exist for generator-level events, given in the right-handed figure.
-
-\paragraph{Characteristics of reconstructed events} \hfill \\ %Understanding the nature of the \textit{bad} events
-
-The first measurement of the $\gR$ coefficient has been performed using reconstructed $\ttbar$ events for which the four jets have been correctly matched with the generator-level parton, in order to ensure the Standard Model configuration would be retrieved. This simulation sample should not be influenced by badly reconstructed event topologies and, especially due to the stringent event-selection applied, result in an almost impeccable agreement with the expectation.
 \\
-However, this was certainly not the case since the obtained $-\ln(\mathcal{L}_{MEM})$ distribution corresponded to a decreasing straight line such that the minimum was located at the edge of the considered range. This large discrepancy, in contradiction with the credibility established (on the model) by the linearity test, necessitated a thorough comparison of the (different) treatment of generator-level and reconstructed events by the Matrix Element method.
-\\
-
-In order to identify whether a specific type of events with a distinguishing signature is responsible for this \textbf{discrepancy}, an exhaustive study has been performed.
-Numerous variables have been looked at in order to find any indication for the disagreement between the generator- and reconstructed-level measurement, and the most promising one appeared to be the value of the $\chiSqMEM$-distribution evaluated at the Standard Model configuration.
+In order to determine whether the observed discrepancy is caused by a specific type of events with a distinct signature, an exhaustive study has been performed with the aim of finding an explanation for the significant disagreement between the generator- and reconstructed-level measurement.
+The most promising variable encountered to differentiate between well and less behaving events is the value of the $\NegLLEvt$ distribution evaluated for each event at the Standard Model configuration.
 \\
 This distribution has a significantly different shape for generator-level and reconstructed events, as can be seen in Figure~\ref{fig::SMLik}.
-The latter one \textit{contains} a prominent(\textit{ly visible}) tail, which is on the other hand completely absent for the generator-level events.
+For the correctly reconstructed $\ttbar$ events, shown on the left, a tail is clearly visible, which is on the other hand completely absent for the generator-level distribution on the right.
+The reconstructed-level distribution seems to suggest that a fraction of events have a lower event probability, and thus higher $\NegLLEvt$ value, assigned in case the Matrix Element is unable to correctly analyse the kinematics of the considered event.
 %***************************
 % Necessary to mention something about the different starting value??
 %***************************
@@ -147,30 +129,26 @@ The latter one \textit{contains} a prominent(\textit{ly visible}) tail, which is
  %Taken from directory: Events_CalibCurve/CalibCurve_SemiMu_RgR_AllDeltaTF_MGSampleSM_20000Evts_CutsAlsoOnMET/SMLikelihoodValue_GenEventsSM.pdf
  \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/SMLikelihoodValue_RecoEvents_MyTF.pdf}
  %--> Update this!!
- \caption{Distribution of the $\chi^{2}_{MEM}$-value for the $\gR$ = $0.0$ configuration for both the generator- (left) and reconstructed-level (right) events.} \label{fig::SMLik}
+ \caption{Distribution of the $\NegLLEvt$ value for the $\gR$ = $0.0$ configuration for both the generator- (left) and reconstructed-level (right) events.} \label{fig::SMLik}
 \end{figure}
 
-Now that a variable has been discovered which is capable of identifying the events most likely responsible for the observed discrepancy, the origin of this phenomenon should be understood in detail.
+In order to ensure this behaviour is not influenced by wrongly reconstructed event topologies, the same procedure has also been applied onto a sample containing simulated $\ttbar$ events for which at least one jet has not been matched with the correct generator-level parton.
+This allowed to compare both the outcome of the Matrix Element estimator and the distribution of this $\NegLLEvt$ variable with the previously considered sample containing only correctly reconstructed $\ttbar$ events, which were both identical.
+Hence, it can be concluded that the incorrect determination of the event topology is not causing the peculiar behaviour of the Matrix Element method, but that it is a undesirable drawback of applying this complex technique on reconstructed collision events.
 \\
-First of all, the same minimum-extraction procedure has been applied onto a sample containing simulated $\ttbar$ events for which at least one jet has not been matched with the correct generator-level parton.
-This allowed to compare both the outcome and this $\chi^{2}_{MEM}$ distribution with the previously considered sample containing only correctly reconstructed $\ttbar$ events.
-The obtained results were identical, the minimum was also here located at the edge of the considered range and the $\chiSqMEM$ distribution was characterised by exactly the same tail, as can be seen in Figure~\ref{fig::SMLikCorrVSWr}.
-%In case the tail of this distribution would be influenced by badly reconstructed event topologies, this would become clearly visible from this comparison.
+Figure~\ref{fig::SMLikCorrVSWr} shows the normalised distributions of the $\NegLLEvt$ variable evaluated at the SM configuration for the two considered $\ttbar$ samples, drawn together to allow for a clear comparison.\\
+\textbf{CONTINUE FROM HERE !!!}
 \\
 \begin{figure}[h!t]
  \centering
  \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter6_Analysis/Figures/ScaledContribution_CWU_LumiNorm.pdf}
- \caption{Distribution of the $\chi^{2}_{MEM}$-variable evaluated at the Standard Model configuration for correctly reconstructed (green) and wronly reconstructed $\ttbar$ events. Both distribution have been \textbf{scaled accordingly}. \textit{Should still remove data and unmatched!}} \label{fig::SMLikCorrVSWr}
+ \caption{Distribution of the $\NegLL$-variable evaluated at the Standard Model configuration for correctly reconstructed (green) and wronly reconstructed $\ttbar$ events. Both distribution have been \textbf{scaled accordingly}. \textit{Should still remove data and unmatched! + SCALE TO 1!}} \label{fig::SMLikCorrVSWr}
 \end{figure}
-From this comparison can thus clearly be concluded that the incorrect determination of the event topology is not causing the peculiar behaviour of the Matrix Element method.
-This was already expected, since otherwise the discrepancy would not have been observed for the sample containing only correctly reconstructed events.
-\\
-\\
+
+%Relevant to keep?? --> Maybe move this to the conclusion part of the section??
 Next it has been investigated how such a significant tail can arise and why the Matrix Element seems to be incapable of handling a specific type of reconstructed events.
 One of the more obvious differences between generator-level and reconstructed events is the tendancy to be influenced by detector inefficiencies and ill-determined kinematic variables. For the reconstructed events this is a significant point of concern, amplified by the fact that the resolution functions of these events allow the kinematics to \textit{vary} in a much wider range.
 \\
-Due to the conversion from the MadWeight likelihood distribution $\mathcal{L}_{MEM}$ into a $\chi^{2}$ distribution, the events residing in the tail correspond to events with a on average lower event probability.
-This seems to suggest that the Matrix Element method assigns events for which the underlying mathematical framework cannot converge a lower event probability, which should thus be excluded.
 
 %*************************
 % Decide: Interesting to keep this TF part???
@@ -184,7 +162,9 @@ This seems to suggest that the Matrix Element method assigns events for which th
 % \caption{Distribution of the $\chi^{2}_{MEM}$-value for the $\gR$ = $0.0$ configuration for the resolution functions created specifically for this analysis (green) and for the basic Gaussian resolution %function of the Matrix Element method (blue).} \label{Fig::SMLikTF}
 %\end{figure}
 
-\paragraph{Developing the event-cleaning procedure} \hfill \\
+\paragraph{Matrix Element event-cleaning procedure} \hfill \\
+
+%Unfortunately these type of events can become rather significant since on average they appear to get a lower value assigned than well-converging events. Since the event probability is converted into a $\chi^{2}_{MEM}$ or $-\ln(\mathcal{L}_{MEM})$, events with a lower value actually contribute the strongest to the overall result. Hence, special care should be awarded to these type of misidentified events and they should be excluded in order not to bias the outcome.
 
 Even though the process responsible for the deviating behaviour is not completely mastered, it seems more than plausible that the reconstructed events are heavily influenced by inefficiencies non-existing for generator-level events. Moreover, the Matrix Element method is developed to treat every event as if it is a perfectly described semileptonic top-quark pair decay. Any inconsistency from the expected topology is likely to result in the event probability being misdetermined since the mathematical framework of the method is unable to converge.
 Nonetheless, it has been established that the origin of this abnormal behaviour is not caused by the applied event-selection procedure but is a \textbf{true} feature of the Matrix Element method such that a strategy should be developed to reduce the contribution of these type of events.
