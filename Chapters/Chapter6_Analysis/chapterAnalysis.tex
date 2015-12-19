@@ -134,10 +134,11 @@ The reconstructed-level distribution seems to suggest that a fraction of events 
 
 In order to ensure this behaviour is not influenced by wrongly reconstructed event topologies, the same procedure has also been applied onto a sample containing simulated $\ttbar$ events for which at least one jet has not been matched with the correct generator-level parton.
 This allowed to compare both the outcome of the Matrix Element estimator and the distribution of this $\NegLLEvt$ variable with the previously considered sample containing only correctly reconstructed $\ttbar$ events, which were both identical.
-Hence, it can be concluded that the incorrect determination of the event topology is not causing the peculiar behaviour of the Matrix Element method, but that it is a undesirable drawback of applying this complex technique on reconstructed collision events.
+Hence, it can be concluded that the incorrect determination of the event topology is not causing the peculiar behaviour of the Matrix Element method, but that it is an undesirable drawback of applying this complex technique on reconstructed collision events.
 \\
-Figure~\ref{fig::SMLikCorrVSWr} shows the normalised distributions of the $\NegLLEvt$ variable evaluated at the SM configuration for the two considered $\ttbar$ samples, drawn together to allow for a clear comparison.\\
-\textbf{CONTINUE FROM HERE !!!}
+Figure~\ref{fig::SMLikCorrVSWr} contains the normalised distributions of the $\NegLLEvt$ variable evaluated at the SM configuration for the two considered $\ttbar$ samples.
+Even though some differences clearly exist between the two samples, the position of the peak and the \textit{importance/relevance/size} of the intermediate region, the tail is almost identical.
+So this comparison indeed confirms that the Matrix Element method is definitely affected by wrong event topologies, but that this is not the cause of the observed discrepancy for reconstructed events.
 \\
 \begin{figure}[h!t]
  \centering
@@ -145,22 +146,8 @@ Figure~\ref{fig::SMLikCorrVSWr} shows the normalised distributions of the $\NegL
  \caption{Distribution of the $\NegLL$-variable evaluated at the Standard Model configuration for correctly reconstructed (green) and wronly reconstructed $\ttbar$ events. Both distribution have been \textbf{scaled accordingly}. \textit{Should still remove data and unmatched! + SCALE TO 1!}} \label{fig::SMLikCorrVSWr}
 \end{figure}
 
-%Relevant to keep?? --> Maybe move this to the conclusion part of the section??
-Next it has been investigated how such a significant tail can arise and why the Matrix Element seems to be incapable of handling a specific type of reconstructed events.
-One of the more obvious differences between generator-level and reconstructed events is the tendancy to be influenced by detector inefficiencies and ill-determined kinematic variables. For the reconstructed events this is a significant point of concern, amplified by the fact that the resolution functions of these events allow the kinematics to \textit{vary} in a much wider range.
-\\
-
-%*************************
-% Decide: Interesting to keep this TF part???
-%*************************
-%Finally, the importance of the applied resolution function can be visualised in Figure~\ref{fig::SMLikTF} which shows this $\chiSqMEM$ variable in case the resolution function developed in Section~\ref{sec::TF} is considered and otherwise in case the basic Gaussian function is used to describe the smearing of the \textbf{what exactly?}.
-%Comparing these two shows a clear dependence on this resolution function, again indicating that the events in the end of the tail cannot converge since the reconstructed kinematic information does not agree with the expectation within the range allowed by the resolution function.
-%\\
-%\begin{figure}[h!t]
-% \centering
-% \includegraphics[width = 0.35 \textwidth]{image.png} %Maybe show the two on top of each other? This way repeating the same figure can be avoided!!
-% \caption{Distribution of the $\chi^{2}_{MEM}$-value for the $\gR$ = $0.0$ configuration for the resolution functions created specifically for this analysis (green) and for the basic Gaussian resolution %function of the Matrix Element method (blue).} \label{Fig::SMLikTF}
-%\end{figure}
+Hence, the only remaining option to reduce the influence of the events the Matrix Element is incapable of handling, is by limiting the value of this $\NegLLEvt$ variable for each event.
+This is necessary since events residing in the tail of this distribution become rather important because they contribute on average the most to the overall $\NegLL$ distribution from which the value of the Matrix Element estimator is \textit{extracted/determined}.
 
 \paragraph{Matrix Element event-cleaning procedure} \hfill \\
 
@@ -234,6 +221,25 @@ Within the Matrix Element method events containing useful information are suppos
 %\\
 %
 %The mentioned dependence on the resolution functions introduced for the reconstructed collision events can be visualised in Figure~\ref{fig::SMLikTF}, which contains this $\chiSqMEM$ variable at the $\gR$ = 0.0 point in case the resolution function developed in Section~\ref{sec::TF} is considered and in case a basic Gaussian function is used to describe the smearing of the \textbf{what exactly?}. 
+
+
+
+
+%Relevant to keep?? --> Maybe move this to the conclusion part of the section??
+%Next it has been investigated how such a significant tail can arise and why the Matrix Element seems to be incapable of handling a specific type of reconstructed events.
+%One of the more obvious differences between generator-level and reconstructed events is the tendancy to be influenced by detector inefficiencies and ill-determined kinematic variables. For the reconstructed events this is a significant point of concern, amplified by the fact that the resolution functions of these events allow the kinematics to \textit{vary} in a much wider range.
+%
+%*************************
+% Decide: Interesting to keep this TF part???
+%*************************
+%The importance of the applied resolution function can be visualised in Figure~\ref{fig::SMLikTF} which shows this $\chiSqMEM$ variable in case the resolution function developed in Section~\ref{sec::TF} is considered and otherwise in case the basic Gaussian function is used to describe the smearing of the \textbf{what exactly?}.
+%Comparing these two shows a clear dependence on this resolution function, again indicating that the events in the end of the tail cannot converge since the reconstructed kinematic information does not agree with the expectation within the range allowed by the resolution function.
+%\\
+%\begin{figure}[h!t]
+% \centering
+% \includegraphics[width = 0.35 \textwidth]{image.png} %Maybe show the two on top of each other? This way repeating the same figure can be avoided!!
+% \caption{Distribution of the $\chi^{2}_{MEM}$-value for the $\gR$ = $0.0$ configuration for the resolution functions created specifically for this analysis (green) and for the basic Gaussian resolution %function of the Matrix Element method (blue).} \label{Fig::SMLikTF}
+%\end{figure}
 
 \paragraph{Data-MC discrepancy}
 Not a perfect agreement between data and MC (Yes, is within 1 sigma interval ...) AND should use the unweighted uncertainty for MC!:
