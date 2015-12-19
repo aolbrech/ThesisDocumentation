@@ -207,13 +207,12 @@ The procedure followed now will adapt the output of the Matrix Element method in
 \\
 
 The actual determination of this cut-value starts by scanning over the relevant region of the $\NegLLEvt$ distribution.
-Since the previous studies have indicated that this is most likely located around $65$, the considered range has been restricted to $\left[60, 70\right]$.
+Since the previously performed studies have indicated that the most optimal cut-value is most likely located around $65$, the considered range has been restricted between 60 and 70.
+For each applied cut-value, the obtained value of the Matrix Element estimator $\gREst$ is determined.  % and stored in Figure~\ref{fig::CutValueFit}.
+The overall distribution is given in Figure~\ref{fig::CutValueFit} and clearly indicates that the output of the Matrix Element method is very sensitive to this cut-value.
 \\
-CONTINUE FROM HERE!\\
-Hence, several cut-values have been applied onto this sample for which the corresponding minimum has been determined, as can be seen in Figure~\ref{fig::CutValueFit}.
-The considered cut-values range between 60 and 70, and can thus all be found in the outer range of the $\chiSqMEM$ distribution.
-\\
-Figure~\ref{fig::CutValueFit} also indicates the strong dependence of the obtained minimum on the applied cut-value, implying that its optimal value should be determined with great care in order to avoid introducing a significant bias. Hence, the events located more in the intermediate region of the $\chiSqMEM$ distribution, between $60$ and $65$ approximately, still contain relevant information and should be preserved for further analysis.
+The procedure then continues by fitting this distribution with a polynomial of degree $3$ to ensure the curve perfectly describes the minima in the interested region. From this fit the cut-value of the $\NegLLEvt$ variable at the Standard Model configuration is determined for which the obtained minima of the $\gR$ coupling coefficient corresponds to $0$.
+Hence, a cut-value of $63.869$ has been recovered, which results in a $\gR$-value equal to $-0.001$ $\pm$ $0.009$; statistically compatible with $0$.
 \\
 \begin{figure}[h!t]
  \centering
@@ -221,9 +220,12 @@ Figure~\ref{fig::CutValueFit} also indicates the strong dependence of the obtain
  \caption{Minima obtained by applying different cut-values. This distribution has been fitted with a polynomial in order to determine the optimal cut-value, which correspond to the value for which no bias is recovered.} \label{fig::CutValueFit}
 \end{figure}
 
-The overall distribution containing the minima corresponding to each cut-value is then fitted with a polynomial function, in Figure~\ref{fig::CutValueFit}.
-From this the optimal cut-value can easily be determined as being $63.869$ for which a minimum equal to $\gR$ = -0.001 $\pm$ 0.009 is recovered, which is clearly statistically compatible with 0.
+%Hence, the events located more in the intermediate region of the $\chiSqMEM$ distribution, between $60$ and $65$ approximately, still contain relevant information and should be preserved for further analysis.
+%\\
 
+%*********************************
+% Relevant to mention something of the influence of this cut??
+%*********************************
 %The effect of this event-cleaning procedure on the different samples has been summarised in Table~\ref{table::CutInfl}, which varies significantly for the considered samples.
 %\begin{table}[h!t]
 % \centering
@@ -240,7 +242,6 @@ From this the optimal cut-value can easily be determined as being $63.869$ for w
 %*************************
 % Decide: Interesting to keep this TF part???
 %*************************
-%Relevant to keep?? --> Maybe move this to the conclusion part of the section??
 %Next it has been investigated how such a significant tail can arise and why the Matrix Element seems to be incapable of handling a specific type of reconstructed events.
 %One of the more obvious differences between generator-level and reconstructed events is the tendancy to be influenced by detector inefficiencies and ill-determined kinematic variables. For the reconstructed events this is a significant point of concern, amplified by the fact that the resolution functions of these events allow the kinematics to \textit{vary} in a much wider range.
 %
@@ -255,19 +256,8 @@ From this the optimal cut-value can easily be determined as being $63.869$ for w
 
 %Possible conclusion:
 Even though the process responsible for the deviating behaviour is not completely mastered, it seems more than plausible that the reconstructed events are heavily influenced by inefficiencies non-existing for generator-level events. Moreover, the Matrix Element method is developed to treat every event as if it is a perfectly described semileptonic top-quark pair decay. Any inconsistency from the expected topology is likely to result in the event probability being misdetermined since the mathematical framework of the method is unable to converge.
-Nonetheless, it has been established that the origin of this abnormal behaviour is not caused by the applied event-selection procedure but is a \textbf{true} feature of the Matrix Element method such that a strategy should be developed to reduce the contribution of these type of events.
-
-\paragraph{Data-MC discrepancy}
-Nice agreement between data and MC (within 1 sigma interval if unweighted MC uncertainty is used). 
-Shape is also almost identical for the $\chi^{2}$ distribution evaluated at the Standard Model configuration.\\
-Optimal cut-value differs slightly: 63.396 for data and 63.8764 for all simulated samples.
-
-\begin{figure}[h!t]
- \centering
- \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/StackedPlot_SMLikValue_AllMCAndData.pdf}
- \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/MinComp_MSPlot_StraightLineAtZero.pdf}            %Same lumi used (data)!
- \caption{Distribution of the $\NegLLEvt$ variable evaluated at the SM configruation point and the obtained minimum-values for the different cut-values considered both for data (red) and all simulated (black) samples.}
-\end{figure}
+Nonetheless, it has been established that the origin of this abnormal behaviour is not caused by the applied event-selection procedure but is a true feature of the Matrix Element method.
+Hence a detailed event-cleaning procedure has been established with the goal of reducing the contribution of these type of events, which is accomplished by restricting the value of the $\NegLLEvt$ variable at the Standard Model configuration to be lower than $63.869$. 
 
 \subsection{Statistical properties}
 The developed technique to extract the relevant information from the Matrix Element method has proven to be uninfluenced by any bias, as has been shown in Section~\ref{sec::CalibCurve}.
@@ -370,3 +360,14 @@ Result obtained for JESMinus is (Figure~\ref{fig::MinJESMinus}):
  \caption{Obtained minimum distribution for the JES minus case.} \label{fig::MinJESMinus}
 \end{figure}
 
+\paragraph{Data-MC discrepancy -- Only need this to mention that no syst uncertainty is needed!!}
+Nice agreement between data and MC (within 1 sigma interval if unweighted MC uncertainty is used). 
+Shape is also almost identical for the $\chi^{2}$ distribution evaluated at the Standard Model configuration.\\
+Optimal cut-value differs slightly: 63.396 for data and 63.8764 for all simulated samples.
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/StackedPlot_SMLikValue_AllMCAndData.pdf}
+ \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/MinComp_MSPlot_StraightLineAtZero.pdf}            %Same lumi used (data)!
+ \caption{Distribution of the $\NegLLEvt$ variable evaluated at the SM configruation point and the obtained minimum-values for the different cut-values considered both for data (red) and all simulated (black) samples.}
+\end{figure}
