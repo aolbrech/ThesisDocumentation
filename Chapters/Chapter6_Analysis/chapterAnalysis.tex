@@ -138,100 +138,112 @@ Hence, it can be concluded that the incorrect determination of the event topolog
 \\
 Figure~\ref{fig::SMLikCorrVSWr} contains the normalised distributions of the $\NegLLEvt$ variable evaluated at the SM configuration for the two considered $\ttbar$ samples.
 Even though some differences clearly exist between the two samples, the position of the peak and the \textit{importance/relevance/size} of the intermediate region, the tail is almost identical.
-So this comparison indeed confirms that the Matrix Element method is definitely affected by wrong event topologies, but that this is not the cause of the observed discrepancy for reconstructed events.
+So this comparison demonstrates that the Matrix Element method definitely treats events with a wrong event topology differently, but also that these type of events are not the responsible for the discrepancy observed for reconstructed events.
 \\
 \begin{figure}[h!t]
  \centering
  \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter6_Analysis/Figures/ScaledContribution_CWU_LumiNorm.pdf}
- \caption{Distribution of the $\NegLL$-variable evaluated at the Standard Model configuration for correctly reconstructed (green) and wronly reconstructed $\ttbar$ events. Both distribution have been \textbf{scaled accordingly}. \textit{Should still remove data and unmatched! + SCALE TO 1!}} \label{fig::SMLikCorrVSWr}
+ \caption{Normalised distribution of the $\NegLL$-variable evaluated at the Standard Model configuration for correctly reconstructed (green) and wronly reconstructed $\ttbar$ events. \textit{Should still remove data and unmatched! + SCALE TO 1!}} \label{fig::SMLikCorrVSWr}
 \end{figure}
 
-Hence, the only remaining option to reduce the influence of the events the Matrix Element is incapable of handling, is by limiting the value of this $\NegLLEvt$ variable for each event.
-This is necessary since events residing in the tail of this distribution become rather important because they contribute on average the most to the overall $\NegLL$ distribution from which the value of the Matrix Element estimator is \textit{extracted/determined}.
-
-\paragraph{Matrix Element event-cleaning procedure} \hfill \\
-
-%Unfortunately these type of events can become rather significant since on average they appear to get a lower value assigned than well-converging events. Since the event probability is converted into a $\chi^{2}_{MEM}$ or $-\ln(\mathcal{L}_{MEM})$, events with a lower value actually contribute the strongest to the overall result. Hence, special care should be awarded to these type of misidentified events and they should be excluded in order not to bias the outcome.
-
-Even though the process responsible for the deviating behaviour is not completely mastered, it seems more than plausible that the reconstructed events are heavily influenced by inefficiencies non-existing for generator-level events. Moreover, the Matrix Element method is developed to treat every event as if it is a perfectly described semileptonic top-quark pair decay. Any inconsistency from the expected topology is likely to result in the event probability being misdetermined since the mathematical framework of the method is unable to converge.
-Nonetheless, it has been established that the origin of this abnormal behaviour is not caused by the applied event-selection procedure but is a \textbf{true} feature of the Matrix Element method such that a strategy should be developed to reduce the contribution of these type of events.
+A final study which has been performed attempts to find an explanation for the peculiar behaviour observed for the reconstructed events by investigating the dependence of other event variables on this $\NegLLEvt$.
+The goal of this study is to search for a distinguishing feature that could be used to reject the events negatively affecting the output of the Matrix Element method.
+In order to be unaffected by other influences, only the $\ttbar$ sample containing events for which the topology is correctly reconstructed has been considered.
 \\
-
-This event-cleaning procedure should be created carefully since only the events residing in the tail should be excluded. It is not the goal of this additional event-selection requirement to distinguish between well and badly reconstructed events since this is taken care of by the event selection criteria formulated in Chapter~\ref{ch::EvtSel}.
-Especially since the fraction of these latter type of events is small compared to the former type, as can be seen from Figure~\ref{fig::SMLikCorrVSWrUnSc}. This contains the same two distributions as shown in Figure~\ref{fig::SMLikCorrVSWr}, with the only difference that now they are drawn on scale.
+It has been decided to focus on the distribution of the $\NegLLEvt$ variable, which sould correspond in the ideal case to a parabola with minimum value located at $\gR$ = 0.
+Hence the different variables which have been considered are related to the steepness of this distribution such that can be visualised for how many events the expected behaviour is recovered.
+The dependence of these variables on the $\NegLLEvt$ variable are shown in Figure~\ref{fig::SMLik2D}, where this variable is placed each time on the $x$-axis.
+However, it should be noted that studying event-based variables for the Matrix Element method is rather challenging since this technique requires enough statistics in order to be sufficiently accurate/precise.
 \\
-\begin{figure}[h!t]
- \centering
- \includegraphics[width = 0.65 \textwidth]{Chapters/Chapter6_Analysis/Figures/RelativeContribution_CWU_LumiNorm.pdf}
- \caption{Distribution of the $\chi^{2}_{MEM}$-variable evaluated at the Standard Model configuration for correctly reconstructed (green) and wronly reconstructed $\ttbar$ events drawn on scale. \textit{Should still remove data and unmatched!}} \label{fig::SMLikCorrVSWrUnSc}
-\end{figure}
-
-In this analysis it has been opted for to decide on the optimal cut-value using the full sample of semi-leptonic $\ttbar$ events and selecting the value for which no bias in the outcome is observed.
-Hence, several cut-values have been applied onto this sample for which the corresponding minimum has been determined, as can be seen in Figure~\ref{fig::CutValueFit}.
-The considered cut-values range between 60 and 70, and can thus all be found in the outer range of the $\chiSqMEM$ distribution.
 \\
-Figure~\ref{fig::CutValueFit} also indicates the strong dependence of the obtained minimum on the applied cut-value, implying that its optimal value should be determined with great care in order to avoid introducing a significant bias. It also confirms that only the events in the tail should be excluded since the events located more in the intermediate region of the $\chiSqMEM$ distribution, so between $60$ and $65$ approximately, still contain relevant information and should be preserved for further analysis.
+The upper left histogram contains the maximum difference observed for the $\NegLLEvt$ distribution, thus indicating the significance of this event in the overall Matrix Element method likelihood since events with a large \textit{amplitude} influence the overall shape the most. 
+This clearly indicates that most events have a rather flat shape, with the exception of some outliers mainly located at low values of this $\NegLLEvt$ variable. However, a significantly deviation behaviour is visible once the $\NegLLEvt$ variable becomes larger than approximately $65$, which is also the position of the tail in Figure~\ref{fig::SMLikCorrVSWr}.
 \\
-\begin{figure}[h!t]
- \centering
- \includegraphics[width = 0.65 \textwidth]{Chapters/Chapter6_Analysis/Figures/LikCutFit_TTbarSemiLept_UpdatedXS.pdf}
- \caption{Minima obtained by applying different cut-values. This distribution has been fitted with a polynomial in order to determine the optimal cut-value, which correspond to the value for which no bias is recovered. \textit{Will highlight optimal point!}} \label{fig::CutValueFit}
-\end{figure}
-
-The overall distribution containing the minima corresponding to each cut-value is then fitted with a polynomial function, represented by the red curve in Figure~\ref{fig::CutValueFit}.
-From this the optimal cut-value can easily be determined as being $63.92$ $\pm$ $xx?$ for which a minimum equal to $\gR$ = -0.001 $\pm$ 0.009 is recovered, which is clearly statistically compatible with 0.
-The effect of this event-cleaning procedure on the different samples has been summarised in Table~\ref{table::CutInfl}, which varies significantly for the considered samples.
+The upper right histogram shows the value of the second derivative when a parabola is drawn through the point $\gR$ = $0$ and the two points surrounding it ($\gR$ = $\pm$ $0.05$).
+For the main bulk of events this value is close to $0$, but still slightly positive, indicating that the corresponding parabola is rather flat. However, for higher values of this $\NegLLEvt$ variable, the value of the second derivative starts to behave unexpectedly.
 \\
-\begin{table}[h!t]
- \centering
- \caption{Influence of the event-cleaning procedure on the different samples.} \label{table::CutInfl}
- \renewcommand{\arraystretch}{1.2}
- \begin{tabular}{c|c}
-  Sample 		& Event reduction 	\\
-  \hline
-  $\ttbar$ (good)	& $\%$ 			\\
-  $\ttbar$ (wrong) 	& $\%$ 			\\
- \end{tabular}
-\end{table}
-
-%Even with the knowledge that the method behaving as should be and that the cross-section normalisation is applying the correct factor, the results obtained from the Matrix Element method need to surpass an additional cleaning procedure. This is a quality inherent to the inprecise determination of both the event kinematics and the event topology when considering reconstructed events. Any deviation from the expected topology might result in the the calculation technique not converging and thus misdetermining the event probability.
-
-Within the Matrix Element method events containing useful information are supposed to be characterised by a $\chiSqMEM$ curve ...\\
-\textit{From the added 2D plots no real conclusion can be drawn unfortunately. The second derivative distribution was a possibility, but since it is just almost symmetric around zero it would only raise more questions when adding this distribution ...\\ So it seems that no actual explanation will be able to be given for this cut ...\\ Especially because the 2D plots which can be given indeed show that something goes wrong at the outer x-axis range but the behaviour at lower x-values is not as expected either ...}
+In the lower two histograms the difference of the $\NegLLEvt$ variable between the Standard Model configuration and the outer left or right $\gR$ value is plotted.
+This value is slightly related with the maximum observed difference, with the exception that the former one depends more on the expected shape of the $\NegLLEvt$ distribution.
+In order to have a nice parabola with minimum located at $\gR$ = 0, implying that this difference should be negative for the outer left $\gR$ variable and positive for the outer right one.
+Also here the desired behaviour is recovered partially for events with a low $\NegLLEvt$ value, but starts to act rather abnormal once this variable becomes larger than approximately $65$.
 \\
 \begin{figure}[h!t]
  \centering
  \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/LnLikCut_ScatterPlot_SMLikvsMaxDelta_AllTT.pdf}
  \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/SMLik_vs_ScdDerFine_CorrectTTbar.pdf}
- \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/SMLik_vs_RightDeltaLnLik_CorrectTT.pdf}
  \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/SMLik_vs_LeftDeltaLnLik_CorrectTT.pdf}
+ \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/SMLik_vs_RightDeltaLnLik_CorrectTT.pdf}
  \caption{2D plot for all $\ttbar$ events (so CWU combined -- scdDer only for correct ...). The two lower plots contain on the y-axis the $\chiSqMEM$ difference between $\gR$ = 0.0 and $\gR$ = $\pm$ 0.2. Hence in order to have minimum at zero, both should actually be negative!} \label{fig::SMLik2D}
 \end{figure}
 
-%\begin{figure}[h!t]
+Unfortunately, the different variables considered did not result in conclusive/sufficient(?) proof in order to decide which effect is causing the Matrix Element method to misdetermine the event probabilities of some specific events.
+However, the presented distributions clearly indicated that for each of these variables some unexpected effects takes place once the $\NegLLEvt$ becomes larger than a specific value.
+Hence, the only option to reduce the influence of the events the Matrix Element is incapable of handling, is by limiting the value of this $\NegLLEvt$ variable for each event.
+This is necessary since the events located in the tail of the distribution become rather important because they contribute on average the most to the overall $\NegLL$ distribution from which the value of the Matrix Element estimator is \textit{extracted/determined}.
+
+
+\paragraph{Matrix Element event-cleaning procedure} \hfill \\
+
+The required event-cleaning procedure should be developed carefully since it should only exclude the events residing in the actual tail of the $\NegLLEvt$ distribution.
+No attempt should be made to reduce the contribution of badly reconstructed event topologies since this is already taken care of by the event selection criteria formulated in Chapter~\ref{ch::EvtSel}.
+Especially since the fraction of these type of events is almost negligible compared to the correctly reconstructed events, as can be seen in Figure~\ref{fig::SMLikCorrVSWrUnSc}. 
+This shows the distribution of the $\NegLLEvt$ variable for both type of events, as was the case in Figure~\ref{fig::SMLikCorrVSWr}, without normalising the number of entries.
+Hence the relative importance of the two considered samples is clearly visible, which is dominated by the sample containing the correctly reconstructed event topologies
+\\
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.65 \textwidth]{Chapters/Chapter6_Analysis/Figures/RelativeContribution_CWU_LumiNorm.pdf}
+ \caption{Distribution of the $\NegLLEvt$ variable evaluated at the Standard Model configuration for correctly reconstructed (green) and wronly reconstructed $\ttbar$ events. \textit{Should still remove data and unmatched!}} \label{fig::SMLikCorrVSWrUnSc}
+\end{figure}
+
+From the performed studies could be concluded that the output of the Matrix Element method starts to behave incorrect as soon as the value of the $\NegLLEvt$ variable becomes larger than approximately $65$.
+However, in order to choose the optimal cut-value to apply, it has been opted for in this thesis to determine the influence of several cut-values and select the one for which no offset exists.
+For this the entire collection of selected events passing the full event-selection chain will be used.
+\\
+This is an acceptable approach since in case the Matrix Element method would have capable of dealing with reconstructed events from the start, any observed bias would have been corrected for.
+The procedure followed now will adapt the output of the Matrix Element method in order to ensure these type of events are treated correctly and thus unaffected by an offset.
+%In contrast, the procedure followed now requires to adapt the output of the Matrix Element method in order to be capable of analysing these type of events.
+%Hence it is correct to choose the necessary improvements in such a way that the outcome obtained from the Matrix Element estimator $\gR$ correspond with the Standard Model prediction.
+\\
+
+The actual determination of this cut-value starts by scanning over the relevant region of the $\NegLLEvt$ distribution.
+Since the previous studies have indicated that this is most likely located around $65$, the considered range has been restricted to $\left[60, 70\right]$.
+\\
+CONTINUE FROM HERE!\\
+Hence, several cut-values have been applied onto this sample for which the corresponding minimum has been determined, as can be seen in Figure~\ref{fig::CutValueFit}.
+The considered cut-values range between 60 and 70, and can thus all be found in the outer range of the $\chiSqMEM$ distribution.
+\\
+Figure~\ref{fig::CutValueFit} also indicates the strong dependence of the obtained minimum on the applied cut-value, implying that its optimal value should be determined with great care in order to avoid introducing a significant bias. Hence, the events located more in the intermediate region of the $\chiSqMEM$ distribution, between $60$ and $65$ approximately, still contain relevant information and should be preserved for further analysis.
+\\
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.65 \textwidth]{Chapters/Chapter6_Analysis/Figures/MinComp_MCOnly_StraightLineAtZero.pdf}  %Data lumi used (be consistent)!
+ \caption{Minima obtained by applying different cut-values. This distribution has been fitted with a polynomial in order to determine the optimal cut-value, which correspond to the value for which no bias is recovered.} \label{fig::CutValueFit}
+\end{figure}
+
+The overall distribution containing the minima corresponding to each cut-value is then fitted with a polynomial function, in Figure~\ref{fig::CutValueFit}.
+From this the optimal cut-value can easily be determined as being $63.869$ for which a minimum equal to $\gR$ = -0.001 $\pm$ 0.009 is recovered, which is clearly statistically compatible with 0.
+
+%The effect of this event-cleaning procedure on the different samples has been summarised in Table~\ref{table::CutInfl}, which varies significantly for the considered samples.
+%\begin{table}[h!t]
 % \centering
-% \includegraphics[width = 0.65 \textwidth]{Chapters/Chapter6_Analysis/Figures/Data_vs_SeparateTTbarJetsSemiLept_NotLumiScaled.pdf}
-% \caption{} \label{fig::OptCutValue}
-%\end{figure}
+% \caption{Influence of the event-cleaning procedure on the different samples. RELEVANT??} \label{table::CutInfl}
+% \renewcommand{\arraystretch}{1.2}
+% \begin{tabular}{c|c}
+%  Sample 		& Event reduction 	\\
+%  \hline
+%  $\ttbar$ (good)	& $\%$ 			\\
+%  $\ttbar$ (wrong) 	& $\%$ 			\\
+% \end{tabular}
+%\end{table}
 
-
-%--------------------------------------------------------------------------------------------------- \\
-%Comparing the generator-level distribution with the one for the reconstructed events clearly shows that the events residing in the tail should be rejected. Considering different resolution functions has indicated that the shape and amplitude of the tail depends heavily on the applied resolution, indicating again that these type of events are less likely to be well reconstructed.
-%Hence, the considered event-cleaning procedure will require the $\chi^{2}_{MEM}$ of each value to be lower than a specific cut-value. 
-%\\
-%
-%The mentioned dependence on the resolution functions introduced for the reconstructed collision events can be visualised in Figure~\ref{fig::SMLikTF}, which contains this $\chiSqMEM$ variable at the $\gR$ = 0.0 point in case the resolution function developed in Section~\ref{sec::TF} is considered and in case a basic Gaussian function is used to describe the smearing of the \textbf{what exactly?}. 
-
-
-
-
+%*************************
+% Decide: Interesting to keep this TF part???
+%*************************
 %Relevant to keep?? --> Maybe move this to the conclusion part of the section??
 %Next it has been investigated how such a significant tail can arise and why the Matrix Element seems to be incapable of handling a specific type of reconstructed events.
 %One of the more obvious differences between generator-level and reconstructed events is the tendancy to be influenced by detector inefficiencies and ill-determined kinematic variables. For the reconstructed events this is a significant point of concern, amplified by the fact that the resolution functions of these events allow the kinematics to \textit{vary} in a much wider range.
 %
-%*************************
-% Decide: Interesting to keep this TF part???
-%*************************
 %The importance of the applied resolution function can be visualised in Figure~\ref{fig::SMLikTF} which shows this $\chiSqMEM$ variable in case the resolution function developed in Section~\ref{sec::TF} is considered and otherwise in case the basic Gaussian function is used to describe the smearing of the \textbf{what exactly?}.
 %Comparing these two shows a clear dependence on this resolution function, again indicating that the events in the end of the tail cannot converge since the reconstructed kinematic information does not agree with the expectation within the range allowed by the resolution function.
 %\\
@@ -241,22 +253,21 @@ Within the Matrix Element method events containing useful information are suppos
 % \caption{Distribution of the $\chi^{2}_{MEM}$-value for the $\gR$ = $0.0$ configuration for the resolution functions created specifically for this analysis (green) and for the basic Gaussian resolution %function of the Matrix Element method (blue).} \label{Fig::SMLikTF}
 %\end{figure}
 
+%Possible conclusion:
+Even though the process responsible for the deviating behaviour is not completely mastered, it seems more than plausible that the reconstructed events are heavily influenced by inefficiencies non-existing for generator-level events. Moreover, the Matrix Element method is developed to treat every event as if it is a perfectly described semileptonic top-quark pair decay. Any inconsistency from the expected topology is likely to result in the event probability being misdetermined since the mathematical framework of the method is unable to converge.
+Nonetheless, it has been established that the origin of this abnormal behaviour is not caused by the applied event-selection procedure but is a \textbf{true} feature of the Matrix Element method such that a strategy should be developed to reduce the contribution of these type of events.
+
 \paragraph{Data-MC discrepancy}
-Not a perfect agreement between data and MC (Yes, is within 1 sigma interval ...) AND should use the unweighted uncertainty for MC!:
+Nice agreement between data and MC (within 1 sigma interval if unweighted MC uncertainty is used). 
+Shape is also almost identical for the $\chi^{2}$ distribution evaluated at the Standard Model configuration.\\
+Optimal cut-value differs slightly: 63.396 for data and 63.8764 for all simulated samples.
+
 \begin{figure}[h!t]
  \centering
- \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter6_Analysis/Figures/CutValueFitted_DataVsAllMC.pdf}
- \caption{Minimum values obtained for the different cut-values considered for data (red) and all simulated (black) samples. Hence also the optimal cut-value differs slightly: 63.396 for data and 63.8764 for all simulated samples.}
+ \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/StackedPlot_SMLikValue_AllMCAndData.pdf}
+ \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/MinComp_MSPlot_StraightLineAtZero.pdf}            %Same lumi used (data)!
+ \caption{Distribution of the $\NegLLEvt$ variable evaluated at the SM configruation point and the obtained minimum-values for the different cut-values considered both for data (red) and all simulated (black) samples.}
 \end{figure}
-
-Shape is almost identical for the $\chi^{2}$ distribution evaluated at the Standard Model configuration.
-\begin{figure}[h!t]
- \centering
- \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter6_Analysis/Figures/StackedPlot_SMLikValue_AllMCAndData.pdf}
- \caption{Distribution of the $-\ln(\mathcal{L})$ distribution for data (red) and all simulated samples (black). This shows a nice agreement between the two.}
-\end{figure}
-
-
 
 \subsection{Statistical properties}
 The developed technique to extract the relevant information from the Matrix Element method has proven to be uninfluenced by any bias, as has been shown in Section~\ref{sec::CalibCurve}.
