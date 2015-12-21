@@ -1,55 +1,81 @@
 \chapter{Measurement of anomalous couplings in top-quark pair decays} \label{ch::Analysis}
 
-The previous chapter has described in detail the technicalities of the Matrix Element method and demonstrated its applicability using a simple example.
-The main idea behind this method is that it combines all the individual event probabilities into an overall likelihood $\mathcal{L}_{MEM}$.
-This likelihood distribution is then transformed into a negative log likelihood, which is minimized in order to extract the Matrix Element estimator $\hat{\epsilon}_{MEM}$.
-In this chapter, which will focus on the measurement of the right-handed tensor coupling of the Wtb interaction vertex, the estimator of interest is denoted as $\gREst$.
+The technicalities of the Matrix Element method have been described in detail in Chapter~\ref{ch::MW} and will now be put to use in order to measure the anomalous couplings in the Wtb interaction vertex.
+The main idea of the Matrix Element method, combining individual events probabilities into an overall negative log likelihood $\NegLL$, has been demonstrated with the simplified example of the top-quark mass determination.
+The Matrix Element estimator $\hat{\epsilon}_{MEM}$ is obtained by minimising this distribution, and will be denoted as $\gREst$ for the measurement of the right-handed tensor coupling.
+%The main idea of the Matrix Element method is that it combines all the individual event probabilities into an overall likelihood $\mathcal{L}_{MEM}$.
+%This likelihood distribution is then transformed into a negative log likelihood, which is minimized in order to extract the Matrix Element estimator $\hat{\epsilon}_{MEM}$.
+%In this chapter, which will focus on the measurement of the right-handed tensor coupling of the Wtb interaction vertex, the estimator of interest is denoted as $\gREst$.
+However, before this measurement can be performed, a number of tests have to be carried out in order to ensure the Matrix Element estimator is behaving properly.
 \\
 %***********************
 % Repeat MEM likelihood equation??
 %***********************
-
-Before the actual measurement can be performed, a number of tests have to be carried out in order to ensure the Matrix Element estimator is behaving properly.
-Investigating the performance of this estimator, explained meticulously in Section~\ref{sec::EstimatorProp}, is crucial since the Matrix Element method can be influenced by the introduced simplifications/assumptions.
+\\
+The performance of the Matrix Element estimator has to be studied carefully since this complex technique is likely to be influenced by the introduced assumptions.
+Some of these simplifications might cause the value of this estimator to significantly deviate from the actual outcome expected from the Matrix Element method.
+Hence a detailed investigation of the correspondence between the estimator and expectation will be performed in Section~\ref{sec::EstimatorProp}.
+%Investigating the performance of the Matrix Element estimator, explained meticulously in Section~\ref{sec::EstimatorProp}, is crucial since the Matrix Element method can be influenced by the introduced simplifications/assumptions.
 %the sometimes simplified \textit{representations}.
-Determining the correspondence between the result obtained from the Matrix Element estimator and the expected $\gR$-value will be done using simulated samples, for which the Standard Model configuration should be recovered.
-%Hence, comparing the obtained result of simulated samples, where the outcome is known, with the value of the estimator allows to fix the correspondence between the estimator and the actual outcome.
+%Determining the correspondence between the result obtained from the Matrix Element estimator and the expected $\gR$-value will be done using simulated samples, for which the Standard Model configuration should be recovered.
 %
 %In the ideal case, the estimator $\hat{g_{R}}$ should be identical to the $\gR$ value extracted from the event-likelihood. 
 %Nevertheless, this perfect behaviour can be influenced by ... (\textit{What can be responsible for a slope different from 1? Is it also just a bias?}) and result in a ... or a bias.
 %
-\\
-Once all the ... the measurement itself will be discussed in Section~\ref{sec::gRMeas}.
+Once the required calibrations have been identified, the developed procedure to determine the Matrix Element estimator can be applied on the collision events collected by the CMS detector.
+The final results obtained for the measurement of the right-handed tensor coupling of the Wtb interaction will be given in Section~\ref{sec::gRMeas}.
 
 \section{Performance of the Matrix Element estimator} \label{sec::EstimatorProp} %Is method needed here? --> Otherwise call it 'Performance of the estimator $\hat{g_{R}}$'
 
-The applicability of the Matrix Element method can be seriously hampered by either the constructed model and the approximations made herein or otherwise by the procedure developed to extract the estimator from the event likelihood.
-Here the two possible deviations from the perfect behaviour will be discussed separately, first the linearity test which focusses on the slope and afterwards the presence of an offset will be checked.
+In order to ensure the Matrix Element method behaves accordingly and results in the correct outcome, the entire procedure to calculate the estimator will be applied onto simulation samples.
+For these types of events, which have been generated using the Standard Model configuration, the expected outcome is known. Hence any discrepancy between the value obtained for the Matrix Element estimator and the Standard Model ($\gR$ = 0) implies the developed procedure needs to be calibrated.
+\\
+The presence of such a discrepancy does not imply the Matrix Element method cannot be used, but simply means its outcome should be corrected for the non-optimal behaviour.
+Possible reasons for such a deviation to occur are most likely found in the assumptions made for the created model describing the anomalous couplings or in the simplifications applied in the developed procedure.
+\\
 
-\begin{equation}
- \hat{g_R} = a \cdot \gR^{Lik} + bias
+The first two performance tests focus on this correspondence between the outcome of the Matrix Element estimator $\gREst$ and the expectation $\gR^{MEM}$, which are supposed to be identical in the ideal case.
+This has been visualised in Equation (\ref{eq::SlopeBias}) where the slope $a$ is the subject of the first test, the so-called linearity test, and is supposed to be equal to $1$. The bias $b$ for the developed procedure will be studied in the offset determination.
+The third and last performance test which has been considered will focus on the statistical properties of the Matrix Element estimator.
+
+%The value obtained from the Matrix Element estimator is supposed to correspond exactly to the information stored within the overall likelihood of the Matrix Element method.
+%However, this ideal behaviour can be seriously influenced by assumptions made in the constructed model or by simplifications applied in the developed procedure and thus resultin a significant deviation from %the correct result.
+%This is represented in Equation (\ref{eq::SlopeBias}), which shows the two aspects which will be studied in the first performance tests that have been carried out.
+%These have as goal to determine the relation that exists between the result obtained from the estimator, $\gREst$, and the expected outcome of the $\chiSqMEM$ distribution, $\gR^{MEM}$.
+%The final performance check will focus on the statistical properties of the estimator.
+%Hence, two performance tests will be performed in order to determine the relation between the expected result and the obtained estimator value.  
+%
+%The applicability of the Matrix Element method can be seriously hampered by either the constructed model and the approximations made herein or otherwise by the procedure developed to extract the estimator from the event likelihood.
+%Here the two possible deviations from the perfect behaviour will be discussed separately, first the linearity test which focusses on the slope and afterwards the presence of an offset will be checked.
+\begin{equation} \label{eq::SlopeBias}
+ \hat{g_R} = a \cdot \gR^{MEM} + b
 \end{equation}
-The final performance check will focus on the statistical properties of the estimator.
+%For all these studies simulated events will be used since for these types of events the outcome should correspond to the Standard Model configuration.
 
 \subsection{Linearity test}
 
 %Why separate linearity test?
-The choice to perform the linearity test separately from the offset determination is driven by fact that the linearity test requires information from several samples generated with different coupling coefficients. Since creating such samples for reconstructed events is a non-trivial task, especially compared to the ease with which generator-level samples can be created, it has been opted for in this thesis to use generator-level events for the linearity test.
-The influence of the reconstructed events will be incorporated afterwards in the offset determination, which only requires the result of the Standard Model configuration.
+In this thesis it has been opted for to perform the linearity test separately from the offset determination, because the first one requires several samples generated with different coupling coefficients to be generated. Since this is a rather non-trivial task for reconstructed events, especially compared to the ease with which generator-level samples can be created, it has been decided generator-level events will be used for the linearity test. The created samples will contain 20 000 events in order to be comparable in size to the considered data sample.
+The influence of the reconstructed events will be incorporated afterwards in the offset-determination study, which will thus only look at the outcome obtained for the Standard Model configuration.
 \\
 
 %What does the linearity test do, why a non-linear result can be obtained
-The goal of the linearity test is to determine whether the outcome of the Matrix Element method depends on the coupling coefficient considered.
-Such a behaviour can be expected in case the created model does not perfectly describes the physics processes taking place when moving away from the well-established Standard Model configuration.
+The goal of the linearity test is to determine whether the outcome of the Matrix Element method depends on the considered coupling coefficient.
+Such a behaviour can be expected in case the created model did not perfectly incorporate the physics processes taking place further away from the well-established Standard Model configuration.
 %depicts the physics processes in a too simplified manner.
-Therefore various samples will be created, each generated with a different coupling coefficient, and the obtained minimum of each sample will be compared with the value used to create it.
+This effect will be studied by comparing the calculated minimum of various samples, each generated with a different coupling coefficient, against the value used to create the sample.
+%Therefore various samples will be created, each generated with a different coupling coefficient, and the obtained minimum of each sample will be compared with the value used to create it.
 \\
 \\
 %Want to include some event selection cuts in order to take into account some discrepancies from here.
-Besides a simplified model, the event-selection procedure is also a viable candidate to cause a dependency of the outcome on the coupling coefficient.
+Another viable candidate to cause the obtained outcome to depend on the coupling coefficient is the applied event-selection procedure.
+%Besides a simplified model, the event-selection procedure is also a viable candidate to cause a dependency of the outcome on the coupling coefficient.
 This because the selection efficiency might change significantly due to the altered kinematics of the Wtb interaction when varying the coupling coefficients.
-However, since generator-level events are considered the full event-selection chain cannot be applied but, in order to mimic the conditions of the reconstructed events partially, the generated events will have to fullfill some basic event-selection criteria. These have been summarised in Table~\ref{table::GenCuts}.
-The identification and additional fine-tuning criteria cannot be taken into account, but are on the other hand not expected to depend on the considered value of the coupling coefficient.
+However, the full event-selection chain cannot be applied since the linearity test has been performed using generator-level events.
+Nevertheless, the conditions existing for the reconstructed events will be mimicked partially by requiring the generated events to fulfil some basic event-selection criteria, which have been summarised in Table~\ref{table::GenCuts}.
+%However, since generator-level events are considered the full event-selection chain cannot be applied but, in order to mimic the conditions of the reconstructed events partially, the generated events will have to fullfill some basic event-selection criteria. These have been summarised in Table~\ref{table::GenCuts}.
+The identification and additional fine-tuning criteria are not taken into account, but are on the other hand not expected to depend on the considered value of the coupling coefficient.
+\\
 \begin{table}[h!t]
  \centering
  \caption{Basic event selection applied to the generator-level events in order to partially mimic the situation existing for the reconstructed collision events.} \label{table::GenCuts}
@@ -64,61 +90,66 @@ The identification and additional fine-tuning criteria cannot be taken into acco
 \end{table}
 
 %What is done and what is expected
-The generated samples, each containing 20 000 events in order to be comparable in size to the data sample, are then analysed by the Matrix Element method and the correspondence between the obtained minimum and the coupling coefficient imposed during the generation process is determined. 
-In the ideal case these two values should be identical, implying that both the model and the procedure developed to extract the estimator are behaving properly.
-The outcome of the linearity test for this analysis is given in Figure~\ref{fig::CalibCurve}, which clearly indicates that the distribution of the minima can be described by a straight line with slope almost equal to $1$ ($a$ = 0.9713).
+The actual linearity test then proceeds and compares the minimum obtained from the Matrix Element method with the coupling coefficient imposed during the generation process, which should be identical in the ideal case.
+%The generated samples, each containing 20 000 events in order to be comparable in size to the data sample, are then analysed by the Matrix Element method and the correspondence between the obtained minimum and the coupling coefficient imposed during the generation process is determined. 
+%In the ideal case these two values should be identical, implying that both the model and the procedure developed to extract the estimator are behaving properly.
+The outcome of the linearity test for this analysis is given in Figure~\ref{fig::CalibCurve}, which clearly indicates that the distribution of the minima can be described by a straight line with slope almost equal to $1$ ($a$ = 0.97). Even though the actual bias of the method bias will be determined afterwards using reconstructed events, the offset obtained here corresponds with the expectations ($b$ = 0.005) such that can be concluded that the Matrix Element method behaves properly when considering generator-level events.
 \\
 %What is shown in the figure, and which range is important.
-The fit on the distribution, the actual linearity test, has only been applied in the range $\left[-0.17, 0.17\right]$ since this is the relevant region to where the Standard Model configuration should be recovered. However, due to the precision of the obtained results, the region of interest can be limited further to values of $\vert \gR \vert$ smaller than 0.1, for which the linear behaviour is clearly visible.
-\\
+The fit on the distribution, the actual linearity test, has only been applied in the range $\left[-0.17, 0.17\right]$ since this is the relevant region where the Standard Model configuration should be recovered. 
+%However, due to the precision of the obtained results, the region of interest can be limited further to values of $\vert \gR \vert$ smaller than 0.1, for which the linear behaviour is clearly visible.
+%\\
 %Why deviation outside range!
-The deviation from the expected distribution outside the considered range are most likely caused by the simplifications applied in the constructed model. In order to perfectly describe the physics processes over the entire $\gR$ range a more profound theoretical description of the Wtb interaction vertex is required, which lies beyond the scope of this thesis.
+The deviation from the expected distribution outside the region of interest are most likely caused by the simplifications applied in the constructed model. In order to perfectly describe the physics processes over the entire $\gR$ range a more profound theoretical description of the Wtb interaction vertex is required, which lies beyond the scope of this thesis.
 \begin{figure}[h!t]
  \centering
- \includegraphics[width = 0.65 \textwidth]{Chapters/Chapter6_Analysis/Figures/CalibrationCurve_SlopeComparision_DifferentCuts.pdf}
- \caption{Outcome of the linearity test based on generator-level events, for wich the obtained curve is perfectly described by a straight line. Hence both the developed model and method behave as expected and no calibration is required.} \label{fig::CalibCurve}
+ %\includegraphics[width = 0.65 \textwidth]{Chapters/Chapter6_Analysis/Figures/CalibrationCurve_SlopeComparision_DifferentCuts.pdf}
+ \includegraphics[width = 0.65 \textwidth]{Chapters/Chapter6_Analysis/Figures/LinearityTest_FitResult.pdf}
+ \caption{Outcome of the linearity test based on generator-level events, for which the obtained curve is perfectly described by a straight line. Hence both the developed model and method behave as expected and no calibration is required.} \label{fig::CalibCurve}
 \end{figure}
 %********************************
 %Question: Fit also done by excluding the outer bins?
 %********************************
-%
 
 %Some conclusions
-The performed linearity test has clearly indicated that both the model and method are behaving accordingly and that the obtained results are independent of the considered coupling coefficient.
-Hence, no calibration is required to restore the expected linear behaviour of the Matrix Element method.
+%The performed linearity test has clearly indicated that both the model and method are behaving accordingly and that the obtained results are independent of the considered coupling coefficient.
+%Hence, no calibration is required to restore the expected linear behaviour of the Matrix Element method.
 
 \subsection{Offset calibration}
 
-The aim of this second performance test is to determine whether the outcome of the Matrix Element estimator is \textit{shifted with an offset}.
+The goal of this second performance test is to determine whether the outcome of the Matrix Element estimator is influenced by a bias.
 Even though the linearity test has proven that an excellent agreement exists when analysing generator-level events, both for the slope and the bias, this cannot be generalised to reconstructed events.
-Since this bias might be affected by the different nature of reconstructed events, its value should be determined using the simulated events fullfilling the entire event-selection chain introduced in Chapter~\ref{ch::EvtSel}.
-\\
-Applying the full analysis procedure on this sample of recontstructed events would ideally result in the Standard Model configuration to be retrieved.
-In case a deviation from the expectation is observed, this difference will be taken into account as a bias of the developed model and the final result will be calibrated accordingly. 
+Since this bias might be affected by the different nature of reconstructed events, it has been determined using the simulated events fulfilling the entire event-selection chain introduced in Chapter~\ref{ch::EvtSel}.
+Applying the full analysis procedure on this sample of reconstructed events would ideally result in the Standard Model configuration.
+In case a deviation from the expectation is observed, this bias will be taken into account and the final result will be calibrated accordingly. 
 \\
 
-However, the obtained result was inconsistent with the Standard Model prediction, implying that the developed analysis procedure should be adapted in order to correctly handle reconstructed events.
-Since the overall $\NegLL$ distribution corresponded to a decreasing line with minimum located at the edge of the considered range, the observed discrepancy is more than merely a bias introduced by the \textit{procedure}.
-\\
-A closer look at the issue indicated that the discrepancy is most likely caused by a certain type of events the Matrix Element method is unable to analyse properly.
-Hence before the actual measurement can proceed/be performed, the reason behind this deviating/specific behaviour should be understood thoroughly such that a procedure can be developed to limit their influence.
+However, from the first application of the Matrix Element method on reconstructed events could be concluded that the method should be adapted to ensure it is capable of handling these type of events.
+Since the obtained $\NegLL$ distribution corresponded to a decreasing line with minimum located at the edge of the considered range, the observed discrepancy is more than merely a bias introduced by the developed procedure to determine the Matrix Element estimator.
+A closer look at the issue indicated that this is most likely caused by a certain type of events the Matrix Element method is unable to analyse properly.
+Hence before the actual measurement can proceed, the reason behind this deviating behaviour should be understood thoroughly such that a procedure can be developed to limit its influence.
 
-\paragraph{(Specific) characteristics of reconstructed events} \hfill \\ %Understanding the nature of the \textit{bad} events
+\paragraph{Understanding the nature of reconstructed events} \hfill \\ %Understanding the nature of the \textit{bad} events
 
-The inconsistent outcome obtained for generator-level and reconstructed events suggest that the Matrix Element method behaves differently for the two types of events.
+The inconsistent outcome obtained for generator-level on the one hand and reconstructed events on the other hand clearly suggest that the Matrix Element method behaves differently for the two types of events.
 This is not completely unexpected since reconstructed events tend to be influenced by detector inefficiencies or ill-determined event kinematics.
 However, the Matrix Element will treat all events as actual semi-leptonic top-quark pair decays, and any deviation from the expected topology is thus likely to result in an incorrect event probability.
 \\
-The performed study will first focus on a sample of selected $\ttbar$ events for which the four jets have been correctly matched with the generator-level parton to exclude the contribution from badly reconstructed event topologies.
-In case the bias is also observed for this sample, (it) can be concluded that the deviation is definitely inherent to the nature of reconstructed events and not caused by a lower reconstruction efficiency.
+
+The study, which has been performed in order to understand this deviating behaviour observed for reconstructed events, will first focus on a sample of selected $\ttbar$ events for which the four jets have been correctly matched with the generator-level parton.
+This way the contribution from badly reconstructed event topologies can be excluded and, in case the bias is also observed for this sample, can be concluded that the deviation is definitely inherent to the nature of reconstructed events.
+%to exclude the contribution from badly reconstructed event topologies.
+%In case the bias would also observed for this sample, it can be concluded that the deviation is definitely inherent to the nature of reconstructed events and not caused by a lower reconstruction efficiency.
+\\
+In order to determine whether the observed discrepancy is caused by a specific type of events with a distinct signature, several event-variables have been considered which allow to differentiate between well and badly behaving events.
+%might explain the significant disagreement between the generator- and reconstructed-level measurement.
+%an exhaustive study has been performed with the aim of finding an explanation for the 
+The most promising variable encountered turned out to be the value of the $\NegLLEvt$ distribution evaluated for each event at the Standard Model configuration.
 \\
 \\
-In order to determine whether the observed discrepancy is caused by a specific type of events with a distinct signature, an exhaustive study has been performed with the aim of finding an explanation for the significant disagreement between the generator- and reconstructed-level measurement.
-The most promising variable encountered to differentiate between well and less behaving events is the value of the $\NegLLEvt$ distribution evaluated for each event at the Standard Model configuration.
-\\
-This distribution has a significantly different shape for generator-level and reconstructed events, as can be seen in Figure~\ref{fig::SMLik}.
-For the correctly reconstructed $\ttbar$ events, shown on the left, a tail is clearly visible, which is on the other hand completely absent for the generator-level distribution on the right.
-The reconstructed-level distribution seems to suggest that a fraction of events have a lower event probability, and thus higher $\NegLLEvt$ value, assigned in case the Matrix Element is unable to correctly analyse the kinematics of the considered event.
+The distribution of this $\NegLLEvt$ variable a significantly different shape for generator-level and reconstructed events, as can be seen in Figure~\ref{fig::SMLik}.
+For the correctly reconstructed $\ttbar$ events, shown on the left, a tail is clearly visible, which is on the other hand completely absent for the generator-level distribution, shown on the right.
+The reconstructed-level distribution seems to suggest that a fraction of events are given a lower event probability, and thus higher $\NegLLEvt$ value, in case the Matrix Element is unable to correctly analyse the kinematics of the considered event.
 %***************************
 % Necessary to mention something about the different starting value??
 %***************************
@@ -133,86 +164,94 @@ The reconstructed-level distribution seems to suggest that a fraction of events 
 \end{figure}
 
 In order to ensure this behaviour is not influenced by wrongly reconstructed event topologies, the same procedure has also been applied onto a sample containing simulated $\ttbar$ events for which at least one jet has not been matched with the correct generator-level parton.
-This allowed to compare both the outcome of the Matrix Element estimator and the distribution of this $\NegLLEvt$ variable with the previously considered sample containing only correctly reconstructed $\ttbar$ events, which were both identical.
-Hence, it can be concluded that the incorrect determination of the event topology is not causing the peculiar behaviour of the Matrix Element method, but that it is an undesirable drawback of applying this complex technique on reconstructed collision events.
+This allowed to compare both the outcome of the Matrix Element estimator and the distribution of this $\NegLLEvt$ variable with the previously considered sample containing only correctly reconstructed $\ttbar$ events.
+The obtained results were both identical such that can be concluded that the incorrect determination of the event topology is not causing the peculiar behaviour of the Matrix Element method, but that it is an undesirable drawback of applying this complex technique on reconstructed collision events.
 \\
 Figure~\ref{fig::SMLikCorrVSWr} contains the normalised distributions of the $\NegLLEvt$ variable evaluated at the SM configuration for the two considered $\ttbar$ samples.
-Even though some differences clearly exist between the two samples, the position of the peak and the \textit{importance/relevance/size} of the intermediate region, the tail is almost identical.
-So this comparison demonstrates that the Matrix Element method definitely treats events with a wrong event topology differently, but also that these type of events are not the responsible for the discrepancy observed for reconstructed events.
+Even though some differences clearly exist between the two samples, the position of the peak and the relevance of the intermediate region for example, the tail of this distribution is almost identical.
+So this clearly demonstrates that the Matrix Element method treats events with a wrong event topology differently, but also confirms that these type of events are not responsible for the discrepancy observed for reconstructed events.
 \\
 \begin{figure}[h!t]
  \centering
  \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter6_Analysis/Figures/ScaledContribution_CWU_LumiNorm.pdf}
- \caption{Normalised distribution of the $\NegLL$-variable evaluated at the Standard Model configuration for correctly reconstructed (green) and wronly reconstructed $\ttbar$ events. \textit{Should still remove data and unmatched! + SCALE TO 1!}} \label{fig::SMLikCorrVSWr}
+ \caption{Normalised distribution of the $\NegLL$-variable evaluated at the Standard Model configuration for correctly reconstructed (green) and wrongly reconstructed $\ttbar$ events. \textit{Should still remove data and unmatched! + SCALE TO 1!}} \label{fig::SMLikCorrVSWr}
 \end{figure}
 
-A final study which has been performed attempts to find an explanation for the peculiar behaviour observed for the reconstructed events by investigating the dependence of other event variables on this $\NegLLEvt$.
-The goal of this study is to search for a distinguishing feature that could be used to reject the events negatively affecting the output of the Matrix Element method.
+A final study which has been performed attempts to find an explanation for the peculiar behaviour observed for the reconstructed events by investigating the dependence of other event variables on this $\NegLLEvt$ variable.
+The goal is to find a distinguishing feature that could be used to reject the events negatively affecting the output of the Matrix Element method.
 In order to be unaffected by other influences, only the $\ttbar$ sample containing events for which the topology is correctly reconstructed has been considered.
 \\
-It has been decided to focus on the distribution of the $\NegLLEvt$ variable, which sould correspond in the ideal case to a parabola with minimum value located at $\gR$ = 0.
-Hence the different variables which have been considered are related to the steepness of this distribution such that can be visualised for how many events the expected behaviour is recovered.
-The dependence of these variables on the $\NegLLEvt$ variable are shown in Figure~\ref{fig::SMLik2D}, where this variable is placed each time on the $x$-axis.
-However, it should be noted that studying event-based variables for the Matrix Element method is rather challenging since this technique requires enough statistics in order to be sufficiently accurate/precise.
+In this study it has been chosen to focus on the distribution of the event probabilities calculated by the Matrix Element method.
+This distribution should, once the probabilities are converted into a negative log likelihood, correspond to a parabola with minimum located at the Standard Model configuration.
+However, it should be noted that studying event-based variables for the Matrix Element method is rather challenging since this technique requires enough statistics in order to be sufficiently accurate.
+%which should correspond in the ideal case to a parabola with minimum value located at $\gR$ = 0 once converted into a negative log likelihood.
+%The different variables which have been considered are all related to the steepness of this distribution such that can be visualised for how many events the expected behaviour is recovered.
 \\
+
+The dependence of these variables on the $\NegLLEvt$ variable are shown in Figure~\ref{fig::SMLik2D}, where this variable is each time placed on the $x$-axis.
+The upper left histogram contains the maximum difference observed for the $\NegLLEvt$ distribution, thus indicating the importance of this event in the overall Matrix Element method likelihood since events with a large difference influence the overall shape the most. 
+This clearly indicates that most events have a rather flat shape, with the exception of some outliers located mainly at low values of this $\NegLLEvt$ variable. However, a significant deviation is visible once the $\NegLLEvt$ variable becomes larger than approximately $65$, which is also the position of the tail in Figure~\ref{fig::SMLikCorrVSWr}.
 \\
-The upper left histogram contains the maximum difference observed for the $\NegLLEvt$ distribution, thus indicating the significance of this event in the overall Matrix Element method likelihood since events with a large \textit{amplitude} influence the overall shape the most. 
-This clearly indicates that most events have a rather flat shape, with the exception of some outliers mainly located at low values of this $\NegLLEvt$ variable. However, a significantly deviation behaviour is visible once the $\NegLLEvt$ variable becomes larger than approximately $65$, which is also the position of the tail in Figure~\ref{fig::SMLikCorrVSWr}.
-\\
-The upper right histogram shows the value of the second derivative when a parabola is drawn through the point $\gR$ = $0$ and the two points surrounding it ($\gR$ = $\pm$ $0.05$).
-For the main bulk of events this value is close to $0$, but still slightly positive, indicating that the corresponding parabola is rather flat. However, for higher values of this $\NegLLEvt$ variable, the value of the second derivative starts to behave unexpectedly.
+The upper right histogram shows the value of the second derivative of the parabola drawn through the point $\gR$ = $0$ and the two surrounding points ($\gR$ = $\pm$ $0.05$). 
+%\textbf{This will be the standard method!!}
+For the main bulk of events this value is small but still slightly positive, indicating that the corresponding parabola is rather flat. However, for higher values of this $\NegLLEvt$ variable, the value obtained for this second derivative starts to behave unexpectedly.
 \\
 In the lower two histograms the difference of the $\NegLLEvt$ variable between the Standard Model configuration and the outer left or right $\gR$ value is plotted.
-This value is slightly related with the maximum observed difference, with the exception that the former one depends more on the expected shape of the $\NegLLEvt$ distribution.
-In order to have a nice parabola with minimum located at $\gR$ = 0, implying that this difference should be negative for the outer left $\gR$ variable and positive for the outer right one.
-Also here the desired behaviour is recovered partially for events with a low $\NegLLEvt$ value, but starts to act rather abnormal once this variable becomes larger than approximately $65$.
-\\
+%This value is related with the maximum observed difference, with the exception that the former one depends more on the expected shape of the $\NegLLEvt$ distribution.
+This difference should be negative for the outer left $\gR$ variable and positive for the outer right one in order to have a parabola with minimum located at $\gR$ = 0.
+%In order to have a nice parabola with minimum located at $\gR$ = 0, implying that this difference should be negative for the outer left $\gR$ variable and positive for the outer right one.
+Also here the desired behaviour is recovered partially for events with a low $\NegLLEvt$ value, but starts to deviate once this variable becomes larger than $65$.
 \begin{figure}[h!t]
  \centering
  \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/LnLikCut_ScatterPlot_SMLikvsMaxDelta_AllTT.pdf}
  \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/SMLik_vs_ScdDerFine_CorrectTTbar.pdf}
  \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/SMLik_vs_LeftDeltaLnLik_CorrectTT.pdf}
  \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/SMLik_vs_RightDeltaLnLik_CorrectTT.pdf}
- \caption{2D plot for all $\ttbar$ events (so CWU combined -- scdDer only for correct ...). The two lower plots contain on the y-axis the $\chiSqMEM$ difference between $\gR$ = 0.0 and $\gR$ = $\pm$ 0.2. Hence in order to have minimum at zero, both should actually be negative!} \label{fig::SMLik2D}
+ \caption{Dependence of some event-variables on the $\NegLLEvt$ variable, which is always depicted on the $x$-axis. The considered values are the maximum difference of the $\NegLLEvt$ distribution (upper left), the value of the second derivative in the Standard Model configuration (upper right) and the difference between the $\NegLLEvt$ variable at $\gR$ = 0 and $\gR$ = $\pm$ 0.2.} \label{fig::SMLik2D}
 \end{figure}
 
-Unfortunately, the different variables considered did not result in conclusive/sufficient(?) proof in order to decide which effect is causing the Matrix Element method to misdetermine the event probabilities of some specific events.
-However, the presented distributions clearly indicated that for each of these variables some unexpected effects takes place once the $\NegLLEvt$ becomes larger than a specific value.
+Unfortunately, the different variables that have been considered did not allow to verify which effect is causing the Matrix Element method to misdetermine the event probabilities of some specific events.
+However, the distributions in Figure~\ref{fig::SMLik2D} clearly indicate that for each of these variables some unexpected behaviour occurs once the $\NegLLEvt$ becomes larger than a specific value.
 Hence, the only option to reduce the influence of the events the Matrix Element is incapable of handling, is by limiting the value of this $\NegLLEvt$ variable for each event.
-This is necessary since the events located in the tail of the distribution become rather important because they contribute on average the most to the overall $\NegLL$ distribution from which the value of the Matrix Element estimator is \textit{extracted/determined}.
-
+It is rather important to discard the events located in the tail of the distribution since they contribute on average the most to the overall $\NegLL$ distribution from which the Matrix Element estimator is extracted.
+%This is necessary since the events located in the tail of the distribution become rather important because they contribute on average the most to the overall $\NegLL$ distribution from which the value of the Matrix Element estimator is \textit{extracted/determined}.
 
 \paragraph{Matrix Element event-cleaning procedure} \hfill \\
 
-The required event-cleaning procedure should be developed carefully since it should only exclude the events residing in the actual tail of the $\NegLLEvt$ distribution.
-No attempt should be made to reduce the contribution of badly reconstructed event topologies since this is already taken care of by the event selection criteria formulated in Chapter~\ref{ch::EvtSel}.
-Especially since the fraction of these type of events is almost negligible compared to the correctly reconstructed events, as can be seen in Figure~\ref{fig::SMLikCorrVSWrUnSc}. 
-This shows the distribution of the $\NegLLEvt$ variable for both type of events, as was the case in Figure~\ref{fig::SMLikCorrVSWr}, without normalising the number of entries.
-Hence the relative importance of the two considered samples is clearly visible, which is dominated by the sample containing the correctly reconstructed event topologies
+The event-cleaning procedure needs to be developed carefully in order to ensure it only excludes the events residing in the tail of the $\NegLLEvt$ distribution.
+No attempt should be made to reduce the contribution of badly reconstructed event topologies since this is already taken care of by the event-selection criteria formulated in Chapter~\ref{ch::EvtSel}.
+In addition, the fraction of these type of events is almost negligible compared to the correctly reconstructed events, as can be seen in Figure~\ref{fig::SMLikCorrVSWrUnSc}. 
+This again shows the distribution of the $\NegLLEvt$ variable for both type of events, as was the case in Figure~\ref{fig::SMLikCorrVSWr}, with the exception that here the number of events has not been normalised.
+Hence the relative contribution of the two considered samples is clearly dominated by the sample containing the correctly reconstructed event topologies
 \\
 \begin{figure}[h!t]
  \centering
  \includegraphics[width = 0.65 \textwidth]{Chapters/Chapter6_Analysis/Figures/RelativeContribution_CWU_LumiNorm.pdf}
- \caption{Distribution of the $\NegLLEvt$ variable evaluated at the Standard Model configuration for correctly reconstructed (green) and wronly reconstructed $\ttbar$ events. \textit{Should still remove data and unmatched!}} \label{fig::SMLikCorrVSWrUnSc}
+ \caption{Distribution of the $\NegLLEvt$ variable evaluated at the Standard Model configuration for correctly reconstructed (green) and wrongly reconstructed $\ttbar$ events. \textit{Should still remove data and unmatched!}} \label{fig::SMLikCorrVSWrUnSc}
 \end{figure}
 
-From the performed studies could be concluded that the output of the Matrix Element method starts to behave incorrect as soon as the value of the $\NegLLEvt$ variable becomes larger than approximately $65$.
-However, in order to choose the optimal cut-value to apply, it has been opted for in this thesis to determine the influence of several cut-values and select the one for which no offset exists.
-For this the entire collection of selected events passing the full event-selection chain will be used.
+From the studies performed previously could be concluded that the output of the Matrix Element method starts to behave incorrect as soon as the value of the $\NegLLEvt$ variable becomes larger than about $65$.
+However in order to decide on the optimal cut-value to apply, it has been opted for in this thesis to determine the influence of several cut-values and select the one for which no offset exists.
+%For this 
 \\
-This is an acceptable approach since in case the Matrix Element method would have capable of dealing with reconstructed events from the start, any observed bias would have been corrected for.
-The procedure followed now will adapt the output of the Matrix Element method in order to ensure these type of events are treated correctly and thus unaffected by an offset.
+This is an acceptable approach since in case the Matrix Element method would originally have been capable of dealing with reconstructed events, any observed bias would have been corrected for.
+In contrast, the procedure followed now will adapt the procedure to extract the Matrix Element estimator by ensuring that the reconstructed events treated correctly and thus unaffected by an offset.
+For this cut-value determination, the entire collection of selected events passing the full event-selection chain will be used.
 %In contrast, the procedure followed now requires to adapt the output of the Matrix Element method in order to be capable of analysing these type of events.
 %Hence it is correct to choose the necessary improvements in such a way that the outcome obtained from the Matrix Element estimator $\gR$ correspond with the Standard Model prediction.
 \\
 
-The actual determination of this cut-value starts by scanning over the relevant region of the $\NegLLEvt$ distribution.
-Since the previously performed studies have indicated that the most optimal cut-value is most likely located around $65$, the considered range has been restricted between 60 and 70.
-For each applied cut-value, the obtained value of the Matrix Element estimator $\gREst$ is determined.  % and stored in Figure~\ref{fig::CutValueFit}.
-The overall distribution is given in Figure~\ref{fig::CutValueFit} and clearly indicates that the output of the Matrix Element method is very sensitive to this cut-value.
+%The actual determination of this cut-value starts by scanning over the relevant region of the $\NegLLEvt$ distribution.
+Since the most optimal cut-value is most likely located around $65$, the range of interest of the $\NegLLEvt$ distribution has been restricted between 60 and 70.
+This region has been scanned over in steps of $1$ and for each cut-value, the obtained value of the Matrix Element estimator $\gREst$ is determined.  % and stored in Figure~\ref{fig::CutValueFit}.
+The result for the different cut-values is given in Figure~\ref{fig::CutValueFit} and clearly shows the sensitivity of the Matrix Element estimator outcome on the applied cut-value.
 \\
-The procedure then continues by fitting this distribution with a polynomial of degree $3$ to ensure the curve perfectly describes the minima in the interested region. From this fit the cut-value of the $\NegLLEvt$ variable at the Standard Model configuration is determined for which the obtained minima of the $\gR$ coupling coefficient corresponds to $0$.
-Hence, a cut-value of $63.869$ has been recovered, which results in a $\gR$-value equal to $-0.001$ $\pm$ $0.009$; statistically compatible with $0$.
+The overall distribution of the obtained minima is then fitted with a polynomial of degree $3$ in order to ensure the distribution is perfectly described by the curve of the fit in the region of interest.
+From this the $\NegLLEvt$ value is determined for which no bias is observed, corresponding to a cut-value of $63.87$.
+%In order to determine for which $\NegLLEvt$ cut-value no bias is observed, the overall distribution is fitted with a polynomial of degree $3$ to ensure the obtained curve is perfectly described in the region of interest.
+%This has resulted in a cut-value of $63.87$, for which a corresponding $\gR$-value of $-0.001$ $\pm$ $0.009$ is recovered. % statistically compatible with $0$.
+%The procedure then continues by fitting this distribution with a polynomial of degree $3$ to ensure the curve perfectly describes the minima in the interested region. From this fit the cut-value of the $\NegLLEvt$ variable at the Standard Model configuration is determined for which the obtained minima of the $\gR$ coupling coefficient corresponds to $0$.
+%Hence, a cut-value of $63.869$ has been recovered, which results in a $\gR$-value equal to $-0.001$ $\pm$ $0.009$; statistically compatible with $0$.
 \\
 \begin{figure}[h!t]
  \centering
@@ -255,46 +294,69 @@ Hence, a cut-value of $63.869$ has been recovered, which results in a $\gR$-valu
 %\end{figure}
 
 %Possible conclusion:
-Even though the process responsible for the deviating behaviour is not completely mastered, it seems more than plausible that the reconstructed events are heavily influenced by inefficiencies non-existing for generator-level events. Moreover, the Matrix Element method is developed to treat every event as if it is a perfectly described semileptonic top-quark pair decay. Any inconsistency from the expected topology is likely to result in the event probability being misdetermined since the mathematical framework of the method is unable to converge.
+Even though the process responsible for the deviating behaviour is not completely mastered, it seems more than plausible that the reconstructed events are heavily influenced by inefficiencies non-existing for generator-level events. Moreover, the Matrix Element method is developed to treat every event as if it is a perfectly described semi-leptonic top-quark pair decay. 
+Hence, any inconsistency from the expected topology is likely to result in the event probability being misdetermined since the mathematical framework of the method is unable to converge.
 Nonetheless, it has been established that the origin of this abnormal behaviour is not caused by the applied event-selection procedure but is a true feature of the Matrix Element method.
-Hence a detailed event-cleaning procedure has been established with the goal of reducing the contribution of these type of events, which is accomplished by restricting the value of the $\NegLLEvt$ variable at the Standard Model configuration to be lower than $63.869$. 
+This implies it is allowed to develop a detailed event-cleaning procedure, which is intended to reduce the contribution of these type of events.
+This can be accomplished if the value of the $\NegLLEvt$ variable evaluated at the Standard Model configuration is restricted for each event to be lower than $63.87$ and will therefore be applied in the remainder of this analysis.
 
 \subsection{Statistical properties}
-The developed technique to extract the relevant information from the Matrix Element method has proven to be uninfluenced by any bias, as has been shown in Section~\ref{sec::CalibCurve}.
-Furthermore, the optimal cut-value for the event-cleaning procedure is chosen as such that the expected Standard Model value is recovered for the simulated signal events, top-quark pairs decay(ing semi-leptonical). Since the remaining simulation samples are all almost negligible compared to this one, the leading background contribution in this analysis is single-top production in the tW-channel which is about 50 times smaller, no significant influence on the overall outcome is expected from these types of events.
-\\
 
-However, additional research is still required in order to make sure the statistical properties of this analysis are well described.
-This can be performed using a resampling technique which generates a set of samples by randomly selecting events from the considered simulated samples in accordance with a previously specified luminosity, in general the luminosity of the data sample.
-This allows to obtain a representation of actual data and to verify whether the average result can be compared with expectation.
+The third and final test which has been performed in order to ensure the Matrix Element estimator $\gREst$ behaves properly is related to its statistical properties.
+This is a necessary aspect to study since it allows to understand whether the uncertainty obtained from the estimator is correct. If this value would be over- or underestimated, the uncertainty of the final result will need to be calibrated accordingly.
+\\
+%The developed technique to extract the relevant information from the Matrix Element method has proven to be uninfluenced by any bias, as has been shown in Section~\ref{sec::CalibCurve}.
+%Furthermore, the optimal cut-value for the event-cleaning procedure is chosen as such that the expected Standard Model value is recovered for the simulated events. 
+%Since the remaining simulation samples are all almost negligible compared to this one, the leading background contribution in this analysis is single-top production in the tW-channel which is about 50 times smaller, no significant influence on the overall outcome is expected from these types of events.
+\\
+%However, additional research is still required in order to make sure the statistical properties of this analysis are well described.
+The statistical properties of this estimator are evaluated using a resampling technique which generates a set of samples by randomly selecting events from the full collection of simulated samples until the data luminosity of $19.6$ $\fbinv$ is reached.
+The considered events are all required to pass the full set of event-selection criteria, including the $\NegLLEvt$ cut-value discussed earlier, such that their average result should correspond to the Standard Model configuration.
+%in accordance with a previously specified luminosity, in general the luminosity of the data sample.
+%This allows to obtain a representation of actual data and to verify whether the average result can be compared with expectation.
 %Each of these generated samples is then treated as an actual data sample and the full analysis is applied in order to determine the distribution of both the 
 \\
-\\
-Width of pull = 1.00395 $\pm$ 0.0240723 (using only ttbar semileptonic events)\\
-Width of pull = 0.957432 $\pm$ 0.0238748 (using all ttbar events)\\
-Width of pull = 0.987126 $\pm$ 0.0221517 (all MC)
 
+Due to the considerable size of the simulated samples compared to the data sample, $1 000$ of these samples, or so-called pseudo-experiments, can be created without introducing a significant correlation between the different pseudo-experiments.
+Each of these samples is a representation of the data sample and will be treated as such by the developed procedure to extract the Matrix Element estimator, for which the distribution of the minimum $g_{R,i}$ and corresponding uncertainty $\sigma_i$ is given in Figure~\ref{fig::MinAndUnc}.
 \begin{figure}[h!t]
  \centering
- \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/PseudoExp_MinimumDistr_AllTTbarSemiLept_UpdatedXS.pdf}
- \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/PseudoExp_UncDistr_AllTTbarSemiLept_UpdatedXS.pdf}
- \caption{Minimum and uncertainty distribution obtained for the 1000 considered pseudo experiments. (all semiLept TT)}  \label{fig::MinAndUnc}
+ \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/PseudoExperiments_MinimumDistr_AllMC.pdf} \hspace{0.5cm}
+ \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/PseudoExperiments_UncDistr_AllMC.pdf}
+ \caption{Minimum and uncertainty distribution obtained for the 1000 considered pseudo experiments. The average value of the minimum distribution corresponds to $-0.0018$ $\pm$ $0.0089$, implying that no bias exists for the Matrix Element estimator $\gREst$.}  \label{fig::MinAndUnc}
 \end{figure}
 
+From the outcome of the Matrix Element estimator, shown on the left in Figure~\ref{fig::MinAndUnc}, the mean value of the right-handed tensor coupling $\left\langle \gR \right\rangle$ can be obtained using a Gaussian fit.
+This value corresponds to the average bias observed for the $1 000$ considered pseudo-experiments and, since it is equal to $\gR$ = $-0.0018$ $\pm$ $0.0089$, confirms that the presence of an offset is taken care of by the applied cut-value.
+The pull, for which the distribution should correspond to a Gaussian function with mean of $0$ and width of $1$, can then be obtained using:
+%then allows to determine the bias and pull distribution via
+%From the distribution on the right, containing the result of the estimator $\gREst$, the mean value of the right-handed tensor coupling can be determined.
+%This value, denoted as $\left\langle \gR \right\rangle$ then allows to determine the bias and pull distribution via
+%These values are then compared to the expected results such that the average bias and pull distribution can be determined via
+\begin{equation}
+ \textrm{pull}_{i} = \frac{g_{R,i} - \left\langle \gR \right\rangle}{\sigma_{i}}
+\end{equation}
+%The obtained bias is equal to , which is as expected statistically compatible to $0$ since the cut-value has been chosen as such to be free of any offset.
+The obtained distribution for the pull is given in Figure~\ref{fig::PullDistr}, which clearly corresponds with the expected behaviour.
+The value of the width is equal to $0.979$ $\pm$ $0.025$, implying a perfect agreement is observed and thus no calibration is required in order to describe the statistical properties of the Matrix Element estimator.
+\newpage
 \begin{figure}[h!t]
  \centering
- \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter6_Analysis/Figures/PullDistr_AllTTbarSemiLept_UpdatedXS.pdf}
- \caption{Pull distribution} \label{fig::PullDistr}
+ \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter6_Analysis/Figures/PseudoExperiments_PullDistr_AllMC.pdf}
+ \caption{Pull distribution obtained for the 1000 considered pseudo-experiments, which can be described by a Gaussian function with mean = $-0.0003$ $\pm$ $0.0316$ and width = $0.979$ $\pm$ $0.025$ is found.} \label{fig::PullDistr}
 \end{figure}
 
+%Pull = sort of relative deviation for each pseudo-experiment
+\newpage
 \section{Measurement of $\gR$ using the Matrix Element method} \label{sec::gRMeas}
+DO THIS LATER!!!
 
 \subsection{Data result}
 \paragraph{MC results } \hfill \\
 
 Nominal result is (Figure~\ref{fig::MinNominal}):
 \begin{equation}
- \gR = -0.00139091 \pm 0.00912391
+ \gR = -0.00146672 \pm 0.00889585
 \end{equation}
 
 \begin{figure}[h!t]
@@ -333,7 +395,7 @@ The curve obtained when considering all MC samples is given in Figure~\ref{fig::
 
 The obtained data-result is (shown in Figure~\ref{fig::MinData}):
 \begin{equation}
- \gR = 0.00915763 \pm 0.00829786
+ \gR = 0.00709461 \pm 0.0083034
 \end{equation}
 
 \begin{figure}[h!t]
@@ -345,7 +407,7 @@ The obtained data-result is (shown in Figure~\ref{fig::MinData}):
 
 \subsection{Systematic uncertainties}
 
-Obtained distribution is not perfectly Gaussian, so herefore should be corrected for.
+Obtained distribution is not perfectly Gaussian, so here-fore should be corrected for.
 Hence an additional systematic will be introduced which takes into account the deviation from a Gaussian distribution.
 \\
 
@@ -360,6 +422,11 @@ Result obtained for JESMinus is (Figure~\ref{fig::MinJESMinus}):
  \caption{Obtained minimum distribution for the JES minus case.} \label{fig::MinJESMinus}
 \end{figure}
 
+\paragraph{Deviation from Gaussian behaviour} \hfill \\
+Instead of using the parabola through the three inner points as standard method, maybe it is more useful to start with the full fit on all the points and use the 3-point parabola as a systematic check.
+\\
+This because the linearity test using this parabola option is not that successful due to some fluctuations for the $\gR$ = -0.05 case. 
+
 \paragraph{Data-MC discrepancy -- Only need this to mention that no syst uncertainty is needed!!}
 Nice agreement between data and MC (within 1 sigma interval if unweighted MC uncertainty is used). 
 Shape is also almost identical for the $\chi^{2}$ distribution evaluated at the Standard Model configuration.\\
@@ -369,5 +436,5 @@ Optimal cut-value differs slightly: 63.396 for data and 63.8764 for all simulate
  \centering
  \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/StackedPlot_SMLikValue_AllMCAndData.pdf}
  \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/MinComp_MSPlot_StraightLineAtZero.pdf}            %Same lumi used (data)!
- \caption{Distribution of the $\NegLLEvt$ variable evaluated at the SM configruation point and the obtained minimum-values for the different cut-values considered both for data (red) and all simulated (black) samples.}
+ \caption{Distribution of the $\NegLLEvt$ variable evaluated at the SM configuration point and the obtained minimum-values for the different cut-values considered both for data (red) and all simulated (black) samples.}
 \end{figure}
