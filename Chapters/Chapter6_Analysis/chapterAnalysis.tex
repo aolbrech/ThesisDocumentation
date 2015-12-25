@@ -343,7 +343,7 @@ The value of the width is equal to $0.979$ $\pm$ $0.025$, implying a perfect agr
 \begin{figure}[h!t]
  \centering
  \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter6_Analysis/Figures/PseudoExperiments_PullDistr_AllMC.pdf}
- \caption{Pull distribution obtained for the 1000 considered pseudo-experiments, which can be described by a Gaussian function with mean = $-0.0003$ $\pm$ $0.0316$ and width = $0.979$ $\pm$ $0.025$ is found.} \label{fig::PullDistr}
+ \caption{Pull distribution obtained for the 1000 considered pseudo-experiments, which can be described by a Gaussian function with mean = $-0.0003$ $\pm$ $0.0316$ and width = $0.979$ $\pm$ $0.025$.} \label{fig::PullDistr}
 \end{figure}
 
 %Pull = sort of relative deviation for each pseudo-experiment
@@ -366,24 +366,39 @@ Nominal result is (Figure~\ref{fig::MinNominal}):
 \end{figure}
 
 Separate events on the different background samples are not always perfectly described:
+%\begin{table}[h!t]                         Table containing the detailed numbers!!!
+% \centering
+% \caption{} \label{table::BckInfl}
+% \renewcommand{\arraystretch}{1.2}
+% \begin{tabular}{c|c|c}
+%  Sample 					& Minimum 				& Minimum (without full-lept $\ttbar$) 	\\
+%  \hline
+%  semi-lept $\ttbar$ 				&  -0.00266928 $\pm$ 0.00913376		& x					\\
+%  semi-lept $\ttbar$ + full-lept $\ttbar$ 	&  0.00131988 $\pm$ 0.00900069		& x					\\
+%  semi-lept $\ttbar$ + W-jets (4j) 		&  0.000861019 $\pm$ 0.00898589		& -0.0031283 $\pm$ 0.00911829		\\
+%  semi-lept $\ttbar$ + Z-jets (4j) 		&  0.00133939 $\pm$ 0.0089963		& -0.0026453 $\pm$ 0.00912918		\\
+%  semi-lept $\ttbar$ + Single top 		&  -0.00104577 $\pm$ 0.00891448		& -0.00502578 $\pm$ 0.00904371		\\
+%  \hline
+%  Total MC 					& -0.00146672 \pm 0.00889585 	& x
+% \end{tabular}
+%\end{table}
+
 \begin{table}[h!t]
  \centering
  \caption{} \label{table::BckInfl}
  \renewcommand{\arraystretch}{1.2}
- \begin{tabular}{c|c}
-  Sample 						& Minimum 			\\
+ \begin{tabular}{c|c|c}
+  Sample 					& Minimum 			& Minimum (without full-lept $\ttbar$) 	\\
   \hline
-  semi-leptonic $\ttbar$ 				& -0.00142159 $\pm$ 0.00912416 	\\
-  semi-leptonic $\ttbar$ + full-leptonic $\ttbar$ 	&  	\\
-  semi-leptonic $\ttbar$ + W-jets (4j) 			&  	\\
-  semi-leptonic $\ttbar$ + Z-jets (4j) 			&  		\\
-  semi-leptonic $\ttbar$ + ST tChannel 			&  	\\
-  semi-leptonic $\ttbar$ + ST tW-Channel  		&  	\\
+  semi-lept $\ttbar$ 				&  -0.0027 $\pm$ 0.0091 	& x					\\
+  semi-lept $\ttbar$ + full-lept $\ttbar$ 	&  0.0013 $\pm$ 0.0090		& x					\\
+  semi-lept $\ttbar$ + W-jets (4j) 		&  0.0009 $\pm$ 0.0090		& -0.0031 $\pm$ 0.0091		\\
+  semi-lept $\ttbar$ + Z-jets (4j) 		&  0.0013 $\pm$ 0.0090		& -0.0026 $\pm$ 0.0091		\\
+  semi-lept $\ttbar$ + Single top 		&  -0.0010 $\pm$ 0.0089		& -0.0050 $\pm$ 0.0090		\\
   \hline
-  Total MC 			& -0.000199381 $\pm$ 0.00888694 
+  Total MC 					& -0.0015 $\pm$ 0.0089 		& x
  \end{tabular}
 \end{table}
-
 The curve obtained when considering all MC samples is given in Figure~\ref{fig::MinNominalAll}
 \begin{figure}[h!t]
  \centering
@@ -407,14 +422,25 @@ The obtained data-result is (shown in Figure~\ref{fig::MinData}):
 
 \subsection{Systematic uncertainties}
 
-Obtained distribution is not perfectly Gaussian, so here-fore should be corrected for.
-Hence an additional systematic will be introduced which takes into account the deviation from a Gaussian distribution.
-\\
+Result obtained for JES is (Figure~\ref{fig::MinJESMinus}):
+\begin{eqnarray}
+ \textrm{JES Minus: } & \gR = 0.00463076 \pm 0.002599 \\
+ \textrm{JES Plus: }  & \gR = -0.00655865 \pm 0.00257043
+\end{eqnarray}
 
-Result obtained for JESMinus is (Figure~\ref{fig::MinJESMinus}):
-\begin{equation}
- \gR = 0.00376009 (\pm 0.00898 \qquad \textrm{using data-lumi})
-\end{equation}
+Results obtained for matching are:
+\begin{eqnarray}
+ \textrm{Matching down: } & \gR = 0.00733939 \pm 0.00810279 \\
+ \textrm{Matching up: }   & \gR = 0.0267044 \pm 0.00856545
+\end{eqnarray}
+
+Results for b-tag systematic have to be combined for the light and b/c result.
+Obtained values are (only using AllTT):
+\begin{eqnarray}
+ \textrm{Plus:} & \gR^{bc} = 0.00130204 \pm 0.00258509 \textrm{ and } \gR^{l} = 0.00139988 \pm 0.00264932 \\
+ \textrm{Minus:} & \gR^{bc} = 0.00133473 \pm 0.00272017 \textrm{ and } \gR^{l} = 0.00123783 \pm 0.00265251
+\end{eqnarray}
+
 
 \begin{figure}[h!t]
  \centering
@@ -425,10 +451,26 @@ Result obtained for JESMinus is (Figure~\ref{fig::MinJESMinus}):
 \paragraph{Deviation from Gaussian behaviour} \hfill \\
 Instead of using the parabola through the three inner points as standard method, maybe it is more useful to start with the full fit on all the points and use the 3-point parabola as a systematic check.
 \\
-This because the linearity test using this parabola option is not that successful due to some fluctuations for the $\gR$ = -0.05 case. 
+This because the linearity test using this parabola option is not that successful due to some fluctuations for the $\gR$ = -0.05 case.
+\\
 
-\paragraph{Data-MC discrepancy -- Only need this to mention that no syst uncertainty is needed!!}
-Nice agreement between data and MC (within 1 sigma interval if unweighted MC uncertainty is used). 
+Obtained distribution is not perfectly Gaussian, so here-fore should be corrected for.
+Hence an additional systematic will be introduced which takes into account the deviation from a Gaussian distribution.
+\\
+Result obtained for all MC samples is:
+\begin{eqnarray}
+ \textrm{2nd order fit:}     & \gR = -0.00146674 \pm 0.00261996\\
+ \textrm{3-point parabola: } & \gR = -0.00857933 \pm 0.0020886
+\end{eqnarray}
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.65 \textwidth]{Chapters/Chapter6_Analysis/Figures/ComparisonOfTwoFitMethods.pdf}
+ \caption{Shows deviation of Gaussian behaviour.}
+\end{figure}
+
+\paragraph{Cut-value} \hfill \\
+Nice agreement between data and MC (within 1 sigma interval if unweighted MC uncertainty is used), so no systematic needed! 
 Shape is also almost identical for the $\chi^{2}$ distribution evaluated at the Standard Model configuration.\\
 Optimal cut-value differs slightly: 63.396 for data and 63.8764 for all simulated samples.
 
