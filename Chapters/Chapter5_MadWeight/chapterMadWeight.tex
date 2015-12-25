@@ -1,22 +1,109 @@
 \chapter{Matrix Element method} \label{ch::MW}
 
+The Matrix Element method is a powerful analysis technique widely used in experimental high energy physics.
+It was originally developed after the discovery of the top quark with the purpose of maximally exploiting both the kinematic information available in a considered final state configuration and the theoretical knowledge of the matter and has now gained in significance due to the challenging conditions at the LHC.
+\\
+The main advantage of this method is that it calculates a propability for each event that represents whether the event kinematics correspond with the theoretical assumed model restrictions. These are then combined into an overall likelihood, which allows to identify the most optimal parameter value. (REWRITE)
+\\
+\\
+All the necessary aspects of this Matrix Element method will be discussed in detail in this chapter, starting with the \textit{explanation} of the \textit{mathematical} framework of the method in Section~\ref{sec::MWTheory}.
+Afterwards the necessary normalisations and calibrations (\textit{How can you call the TFs?)}) in order to apply this method on the collisions produced at the Large Hadron collider will be introduced in Section~\ref{sec::TF}.
+Finally, the entire framework will be applied on a toy-model example in Section~\ref{sec::MEMExample}, where the mass of the top quark will be determined as an illustration.
+
 \section{Theoretical framework} \label{sec::MWTheory}
-\subsection{MadWeight}
+
+The Matrix Element method is an appropriate analysis technique to apply in case the process of interest is a complex final state, typically containing several jets and missing energy.
+Hence, for this reason it has been used extensively in top-quark physics and has even been applied more recently for the discovery of the Brout-Englert-Higgs boson. (\textbf{Refs!})
+%the \textit{'aangewezen'} choice in case 
+\\
+
+As the name of the method suggests, the Matrix Element method extracts the desired theoretical information by explicitely calculating the leading-order matrix-element of the considered process.
+Hence, in order to correctly apply this method on reconstructed events, which are influenced by ..., this matrix-element is multiplied with the parton distribution functions, discussed previously in Section~\ref{sec::PDF}. %(and the phase-space measure (d$\Phi$) -- relevant for this hadron-level part?).
+Finally, in order to ensure the detector effects influencing the reconstructed events are transfered to the parton-level configuration a resolution function is introduced.
+%The goal of the Matrix Element method is to extract theoretical information, in the form of a set of parameters $\alpha$, from a sample of experimental events (NOT OWN WORDS).
+The full formula, defined as the event weight, takes the following form:
 
 \begin{equation} \label{eq::MWEvtProb}
- P(y \vert a) = \frac{1}{\sigma A} \int
+ P(x \vert \alpha) = \frac{1}{\sigma_{\alpha}} \int d\Phi(y) \, dq_{1} \, dq_{2} ~ f_{1}(q_{1}) \, f_{2}(q_{2}) \, \vert M_{\alpha}(y) \vert^{2} \, W(x,y)
+\end{equation}
+with $x$ the reconstructed event, $y$ the parton-level configuration, $\vert M_{\alpha}(y) \vert^{2}$ the squared matrix-element, d$\Phi$ the phase-space measure, $f_{i}(q_{i})$ the parton distribution functions and $W(x,y)$ the resolution or transfer function.
+This event weight has to be normalised by the total cross-section, denoted as $\sigma_{\alpha}$, to ensure it corresponds to a probability density ($\int P(x \vert \alpha) = 1)$.
+\\
+
+These individual event probabilities are then combined into an overall Matrix Element method likelihood from which the optimal value of the considered variables $\alpha$ can be extracted.
+The actual determination of the most probable value of $\alpha$ is performed through a likelihood maximisation method. However, in practice the event likelihoods are converted into negative likelihood values such that this optimal value is obtained by minimising $\NegLL$. 
+%This extraction procedure is done by maximising the obtained likelihood $\mathcal{L}_{MEM}$, or more generally minimising the logarithmic likelihood values $\NegLL$.
+\\
+\begin{equation}
+ \mathcal{L}_{MEM}(x \vert \alpha) = \prod_{i=1}^{n} P(x \vert \alpha)
 \end{equation}
 
+The Matrix Element method can be applied in two different manners, either by studying two competing hypotheses or otherwise by determining the most optimal parameter of the considered theoretical model.
+In this analysis the second method will be applied in order to determine the anomalous couplings of the top-quark pair decay vertex, as will be explained in Chapter~\ref{ch::Analysis}. Hence several parameters $\alpha$, representing the right-handed tensor coupling $\gR$, will be scanned over such that the most optimal value can accurately be determined.
+%Two general ways of applying this technique exist, either it compares two competing hypotheses or otherwise, as is the case in this analysis, it is used to determine the most optimal parameter of the introduced theoretical model.
+\\
+
+\textit{Need to mention somewhere that the event should be given completely and what is given as input! (Maybe then continue with the integration...}
+
+\subsection{Evaluation of the event weights}
+
+In principle, the Matrix Element method is supposed to provide the most powerful tool to extract theoretical information from a sample of experimental events.
+In practice however, the challenging computation procedure is considered a serious limitation on the applicability of the method.
+This because the Matrix Element method has to integrate over the convolution of the hard scattering process, the actual matrix-element, with the experimental information available on the final state, obtained from the transfer functions.
+Such an integration technique is far from numerical efficient, such that a considerable amount of time is required to analyse a limited number of these experimental events.
+\\
+\\
+Another serious difficulty the Matrix Element method is faced with is the fact that for each considered process a separate integration procedure has to be developed.
+However, during the last decade significant effort has been \textit{put into place} in order to ensure this integration technique is efficiently adapted to the process that is calculated.
+This resulted in the development of the MadWeight phase-space generator, which is based on the adaptive Monte Carlo integrator VEGAS~\cite{VEGAS}.
+\\
+The main advantage of this program is that it takes care of the integration in a fully automated manner.
+In addition, the fact that this program is fully integrated in the MadGraph framework allows for an easy access to the matrix-element amplitudes and to the topology of the different Feynman diagrams of the considered process.
+%As a solution, MadWeight~\cite{MadWeightPaper} has been developed, which takes care of this integration in a fully automated manner. In addition, since it is incorporated in hte MadGraph framework, it has access to the Feynman diagrams and thus the corresponding matrix-elements.
+%This phase-space generator is based on the adaptive Monte Carlo integrator VEGAS~\cite{VEGAS} and creates an optimized phase-space mapping in order to efficiently integrate the product of the squared matrix-element and the transfer function.
+\\
+\textit{now something about this phase-space mapping... (?)}
+\\
+
+One important drawback of this complex integration procedure, besides the numerical inefficiency, is that for a tiny fraction of events it appears that the integration does not converge.
+Hence when analysing the sample of experimental events after they have been calculated by MadWeight, the events for which an event weight equal to zero is recovered will be removed from the set of events.
+This because only events should be analysed for which an likelihood value is calculated for each of the considered $\alpha$ parameters since otherwise it could introduce a bias.
+However, this will not influence the overall result since for the sample which has been affected the most by this feature only about $0.7\%$ of the events had to be excluded. For the majority of considered samples none of the events had to be rejected.
 
 \subsection{Details on model construction}
 
+The fact that the matrix-element calculation is embedded in the MadGraph framework also facilitates the study of new physics models since they can be easily incorporated.
+This feature has been exploited in this thesis where the theoretical description of the Wtb integration vertex included in the MadGraph Standard Model has been extended to include the anomalous coupling contributions.
+\\
+Hence, a model has been developed using the FeynRules~\cite{} software program ...
+
+
 \subsection{Optimisations}
+\textit{Are there more optimisations? Otherwise seperate section not really relevant ...}
+\\
 
-Removed the b-jet permutations
-\textit{Maybe mention something that a tiny fraction of events is removed due to incomplete reconstruction of the event or due to failing converging (weight = 0). Is the case both on generator and reconstructed level.}
+Since the Matrix Element method is very time-consuming, the calculation of the weights has to be performed in the most optimal manner and the number of permuations should be reduced if possible.
+Hence, as was already mentioned in Section~\ref{subsec::JetCombi}, in this thesis only the permutations between the two light jets will be considered since the two jets originating from the b-quark decay have been assigned to a specific top-quark decay channel.
 
-\section{Resolution functions and cross-section normalisaton} \label{sec::TF}
-%First of all, the cross-section for these type of events for all the considered coupling coefficients should be determined, which is not as straightforward as was the case for the generator-level events discussed in the previous chapter. The approach opted for in this thesis will be discussed in Section~\ref{sec::RecoAdapt}.
+\subsection{Extraction example}
+\textit{Maybe give an example of how the likelihood looks like? Or maybe keep this for the actual example...}
+
+\section{Normalisations and calibrations (of hadron-level events)} \label{sec::TF}
+
+\textit{Some general introduction relevant for both XS and TF ...}
+
+Since the Matrix Element method uses the generator-level information of the hard scattering interaction, the energy of the partons in the event has to be smeared out in order to correspond with the situation existing for reconstructed events. Hence resolution functions has to be taken into account for the different types of considered partons, which specifies the kinematic region allowed during the integration procedure.
+The details of these transfer functions are given in Section~\ref{subsec::TF}, which are described by either double Gaussian functions or delta-functions in this analysis.
+
+\subsection{Resolution functions} \label{subsec::TF}
+
+Besided the assumptions made in the developed theoretical model implemented in MadGraph, the most important simplificant of the Matrix Element method can be found in the resolution functions.
+In order to determine this energy smearing of the generator-level events, has to be imposed that the transfer functions are factorised for the different kinematic variables.
+Hence, it is assumed that the (transverse) energy $E$, the pseudo-rapidity $\eta$ and the \textit{azimuthal angle} $\phi$ are uncorrelated such that the transfer functions for these variables can be determined separately.
+
+\begin{equation}
+ W(x,y) = \prod_{i=1}^{n} W_{i}(x^{i},y^{1}) = W_{i}^{E}(x^{i},y^i) \, W_{i}^{\eta}(x^i, y^i) \, W_{i}^{\phi}(x^i,y^i)
+\end{equation}
 
 \subsection{Cross-section  normalisation}
 \textit{Since it is here a rather general case, first the method for generator-level events can be mentioned and then the difference with reconstructed collision events can be made perfectly clear.}
@@ -123,82 +210,10 @@ The final result of the cross-section calculation can be found in Figure~\ref{fi
 %  \end{tabular}
 %\end{table}
 
-\subsection{Resolution functions}
-
-
-\paragraph{Update of Friday 16 October 2015 :} 
-Important issue about the Transfer Functions discovered by looking at their distribution beyond the fitted range!
-\\
-
-The way the TF's were determined was by optimizing the fitted range and making sure that the fit corresponded well with the measured MC points. However this way there is no control about what happens beyond this range, and looking at the full fit function clearly indicated strange shapes and peaks in this area. This was also neatly visible in the comparison of the ``old'' and ``new'' TF's (b-jets mainly). 
-\\
-\textit{ \underline{Remark: } The strange behaviour of the ``old'' TF is not really understood. When looking at the individual fit distributions when creating these shapes the minimum was always positioned at the expected position.}
-\begin{figure}[h!t]
- \centering
- \includegraphics[width = 0.24 \textwidth]{Chapters/Chapter5_MadWeight/Figures/BJetTF_OldvsNew_Egen50.png}
- \includegraphics[width = 0.24 \textwidth]{Chapters/Chapter5_MadWeight/Figures/BJetTF_OldvsNew_Egen90.png}
- \includegraphics[width = 0.24 \textwidth]{Chapters/Chapter5_MadWeight/Figures/BJetTF_OldvsNew_Egen145.png}
- \includegraphics[width = 0.24 \textwidth]{Chapters/Chapter5_MadWeight/Figures/BJetTF_OldvsNew_Egen200.png}
- \caption{Comparison between the old (blue) and new (red) TF in order to understand why the former does give the correct minimum and the latter one not. From these plots a conclusion cannot really be made since it seems that none of them actually corresponds to the expected distribution. For the most recent one the additional peak at positive $\Delta E$ values should clearly dissapear.}
-\end{figure}
-\hfill \\
-For this reason the method to determine the TF's has been adapted such that the full fit function is visible and not only the fit on the restricted range. In order to better visualize the tail and the double gaussian behaviour further from 0, the considered $\Delta E$ range has also been extended up to $-100$ and $100$. 
-\\
-This new approach indicates that the old method gave rise to completely wrong distributions and that the only way to capture the tail is by giving up the precise determination of the peak a little bit. For each of the $E_{gen}$ bins of the b-jet distribution the position of the main peak is slightly off, but in general the shape can be labelled acceptable (and results in decent parameter results).
-\begin{figure}[h!t]
- \centering
- \includegraphics[width = 0.49 \textwidth]{Chapters/Chapter5_MadWeight/Figures/sliceYbin1And2_BJet_DiffEVsGenE.pdf}
- \includegraphics[width = 0.49 \textwidth]{Chapters/Chapter5_MadWeight/Figures/sliceYbin8_BJet_DiffEVsGenE.pdf}
- \includegraphics[width = 0.49 \textwidth]{Chapters/Chapter5_MadWeight/Figures/sliceYbin1And2_BJet_DiffEVsGenE_OLDRange.pdf}
- \includegraphics[width = 0.49 \textwidth]{Chapters/Chapter5_MadWeight/Figures/sliceYbin8_BJet_DiffEVsGenE_OLDRange.pdf}
- \caption{Upper plots are obtained with the new method (focus on shape outside fitted range) while lower ones are how the TF were created earlier (focus on good fit in range).}
-\end{figure}
-\hfill \\
-When comparing these new TF's with the old ones, the strange shape on the positive side of $\Delta E$ completely dissapeared and now looks more like the expected distribution.
-\begin{figure}[h!t]
- \centering
- \includegraphics[width = 0.24 \textwidth]{Chapters/Chapter5_MadWeight/Figures/BJetTF_OldvsNewvsCurr_Egen50.png}
- \includegraphics[width = 0.24 \textwidth]{Chapters/Chapter5_MadWeight/Figures/BJetTF_OldvsNewvsCurr_Egen90.png}
- \includegraphics[width = 0.24 \textwidth]{Chapters/Chapter5_MadWeight/Figures/BJetTF_OldvsNewvsCurr_Egen145.png}
- \includegraphics[width = 0.24 \textwidth]{Chapters/Chapter5_MadWeight/Figures/BJetTF_OldvsNewvsCurr_Egen200.png} 
- \caption{Overall distribution obtained for the new TF's for different $E_{gen}$ energies.}
-\end{figure}
-\hfill \\
-To finalize the TF discussion for the b-jets, the obtained parameter distributions are given. These represent the obtained mean and width of the two gaussians and their relative weight in the fit formula. The results look rather stable, beside some fluctuations for the wide gaussian, which is also expected since this one can be determined not as precise as the narrow one. However the $E_{gen}$ bins where the wide gaussian is expected to be more important succeeded in measuring the required precise enough to do the fit. 
-\\
-The most thrustworthy result is obtained for the relative constant which clearly shows that the second gaussian only becomes significant for higher values of $E_{gen}$ since the $\Delta E$ distribution becomes significantly broader for these events. However it is also the region where the double gaussian shape matches best with the fitted MC points.
-\begin{figure}[h!t]
- \centering
- \includegraphics[width = 0.32 \textwidth]{Chapters/Chapter5_MadWeight/Figures/BJet_DiffEVsGenE_a1_Fit.pdf}
- \includegraphics[width = 0.32 \textwidth]{Chapters/Chapter5_MadWeight/Figures/BJet_DiffEVsGenE_a2_Fit.pdf}
- \includegraphics[width = 0.32 \textwidth]{Chapters/Chapter5_MadWeight/Figures/BJet_DiffEVsGenE_a3_Fit.pdf}
- \includegraphics[width = 0.32 \textwidth]{Chapters/Chapter5_MadWeight/Figures/BJet_DiffEVsGenE_a4_Fit.pdf}
- \includegraphics[width = 0.32 \textwidth]{Chapters/Chapter5_MadWeight/Figures/BJet_DiffEVsGenE_a5_Fit.pdf}
-\end{figure}
-
-For some (currently unexplained) reason the result obtained for the light jets did not encounter the same issue and here the distributions for the ``old'' and ``new'' TF's were almost identically. Hence only effort has been awarded to the b-jet fixing in order to run a quick test whether this would already result in the expected outcome.
-\begin{figure}[h!t]
- \centering
- \includegraphics[width = 0.3 \textwidth]{Chapters/Chapter5_MadWeight/Figures/LightTF_OldvsNew_Egen50.png}
- \includegraphics[width = 0.3 \textwidth]{Chapters/Chapter5_MadWeight/Figures/LightTF_OldvsNew_Egen90.png}
- \includegraphics[width = 0.3 \textwidth]{Chapters/Chapter5_MadWeight/Figures/LightTF_OldvsNew_Egen145.png}
- \caption{Comparison of TF's for the light jets, which are clearly almost identical. Hence no update for these has been done for the moment.}
-\end{figure}
-\hfill \\
-In order to be sure the light jets really behave properly, some examples of individual fit distributions have been added anyway. This indeed shows that the double Gaussian shape correctly takes both the peak and the tail. However some minor improvement can still be achieved in the negative side of the $\Delta E$ distribution for low values of $E_{gen}$. As a final cross-check the range of the muon distributions will also be extended up to $-75$ and $75$ in order to check whether some improvement can be reached, as was the case for the b-jet distributions.
-\begin{figure}[h!t]
- \centering
- \includegraphics[width = 0.49 \textwidth]{Chapters/Chapter5_MadWeight/Figures/sliceYbin1And2_Light_DiffEVsGenE.pdf}
- \includegraphics[width = 0.49 \textwidth]{Chapters/Chapter5_MadWeight/Figures/sliceYbin8_Light_DiffEVsGenE.pdf}
- \caption{Fit distributions for light jets which again indicate that the original method works out-of-the-box for the light jets and do not experience the same strange behaviour as the b-jets.}
-\end{figure}
-
-For the moment, to quickly check the influence of these updated b-jet TF's, it has been decided to use delta-functions for the muons. However looking at the narrow $\Delta E$ distributions for the muon events, it is maybe sufficient to use delta-functions for the actual analysis.
-%As a final remark, it has been decided to use delta-functions for the muons since this will be good enough. (Also paper of Kelly goes out with delta for muons and this will be made public...). 
-In case electrons would be considered this however requires non-delta shaped TF's.\\
-If really necessary the same procedure can be done in order to provide eta-binned TF's for both the b-jets and the light jets, but this will again require a lot of time ... And as long als the final TF's haven't been decided on, the full list of MC samples cannot be send through MadWeight!
-
-\section{Matrix Element method in practice}
+\section{Matrix Element method in practice} \label{sec::MEMExample}
 \subsection{Extracting information from the likelihood}
+Will use parabola through tree inner points! (No, because this does not work for the linearity curve!)\\
+Thus will keep this as a systematic!
+
 \subsection{Determining the top-quark mass using the Matrix Element method}
 Sample created using 4000 correct semi-leptonic $\ttbar$ events.
