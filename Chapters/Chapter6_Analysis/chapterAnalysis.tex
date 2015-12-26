@@ -259,6 +259,17 @@ From this the $\NegLLEvt$ value is determined for which no bias is observed, cor
  \caption{Minima obtained by applying different cut-values. This distribution has been fitted with a polynomial in order to determine the optimal cut-value, which correspond to the value for which no bias is recovered.} \label{fig::CutValueFit}
 \end{figure}
 
+%Result obtained for all MC samples combined!
+With this $\NegLLEvt$ cut applied, not only the minimum is recovered at the correct location but also the obtained distribution corresponds nicely with the expected Gaussian behaviour.
+This distribution, which is fitted with a Gaussian function in order to determine the optimal value of the Matrix Element estimator, is given in Figure~\ref{fig::MinNominal}.
+The value of $\gR$ which is extracted from this distribution for the full collection of simulated events corresponds to -0.0015 $\pm$ 0.0089, which is statistically compatible with $0$.
+\\
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter6_Analysis/Figures/MinimumDistribution_MC.pdf}
+ \caption{Obtained $\DeltaChi$ distribution for all simulated samples after requiring the $\NegLLEvt$ variable evaluated at the Standard Model configuration to be larger than $63.87$. Due to the construction of this cut-value, the obtained minimum is statistically compatible with $0$.} \label{fig::MinNominal}
+\end{figure}
+
 %Hence, the events located more in the intermediate region of the $\chiSqMEM$ distribution, between $60$ and $65$ approximately, still contain relevant information and should be preserved for further analysis.
 %\\
 
@@ -300,7 +311,8 @@ Nonetheless, it has been established that the origin of this abnormal behaviour 
 This implies it is allowed to develop a detailed event-cleaning procedure, which is intended to reduce the contribution of these type of events.
 This can be accomplished if the value of the $\NegLLEvt$ variable evaluated at the Standard Model configuration is restricted for each event to be lower than $63.87$ and will therefore be applied in the remainder of this analysis.
 
-\subsection{Statistical properties}
+
+\subsection{Statistical properties} \label{subsec::StatProp}
 
 The third and final test which has been performed in order to ensure the Matrix Element estimator $\gREst$ behaves properly is related to its statistical properties.
 This is a necessary aspect to study since it allows to understand whether the uncertainty obtained from the estimator is correct. If this value would be over- or underestimated, the uncertainty of the final result will need to be calibrated accordingly.
@@ -339,40 +351,97 @@ The pull, for which the distribution should correspond to a Gaussian function wi
 %The obtained bias is equal to , which is as expected statistically compatible to $0$ since the cut-value has been chosen as such to be free of any offset.
 The obtained distribution for the pull is given in Figure~\ref{fig::PullDistr}, which clearly corresponds with the expected behaviour.
 The value of the width is equal to $0.979$ $\pm$ $0.025$, implying a perfect agreement is observed and thus no calibration is required in order to describe the statistical properties of the Matrix Element estimator.
-\newpage
 \begin{figure}[h!t]
  \centering
  \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter6_Analysis/Figures/PseudoExperiments_PullDistr_AllMC.pdf}
  \caption{Pull distribution obtained for the 1000 considered pseudo-experiments, which can be described by a Gaussian function with mean = $-0.0003$ $\pm$ $0.0316$ and width = $0.979$ $\pm$ $0.025$.} \label{fig::PullDistr}
 \end{figure}
 
-%Pull = sort of relative deviation for each pseudo-experiment
-\newpage
-\section{Measurement of $\gR$ using the Matrix Element method} \label{sec::gRMeas}
-DO THIS LATER!!!
+\section{Measurement of $\gR$ with the Matrix Element method} \label{sec::gRMeas}
 
-\subsection{Data result}
-\paragraph{MC results } \hfill \\
+The different performance tests discussed in the previous section have clearly indicated that the Matrix Element estimator $\gREst$ is behaving accordingly.
+Hence the full analysis procedure can now be applied on the data events collected by the CMS experiment in order to determine the value of the right-handed tensor coupling of the Wtb interaction.
 
-Nominal result is (Figure~\ref{fig::MinNominal}):
-\begin{equation}
- \gR = -0.00146672 \pm 0.00889585
-\end{equation}
-
+\subsection{Results on data}
+Applying the analysis procedure on the actual data events resulted in the $\DeltaChi$ distribution, obtained by converting the negative likelihood values into a $\chi^{2}$ distribution, visible in Figure~\ref{fig::MinData}.
+As was the case for the simulated samples, this distribution indicates a Gaussian behaviour, especially in the proximity of the Standard Model configuration where the theory of the Wtb interaction is well described by the developed model.
 \begin{figure}[h!t]
  \centering
- \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter6_Analysis/Figures/FittedGraph_NominalResult_TTbarJets.pdf}
- \caption{Obtained minimum distribution for the nominal case.} \label{fig::MinNominal}
+ \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter6_Analysis/Figures/MinimumDistribution_Data.pdf}
+ \caption{Obtained $\DeltaChi$ distribution for the data-sample at $8 \TeV$.} \label{fig::MinData}
 \end{figure}
 
+The most optimal value of the scanned theoretical parameter is determined from the minimisation of the Gaussian fit applied on the overall $\DeltaChi$ distribution of Figure~\ref{fig::MinData}.
+Since the most outer points of the considered $\gR$ range deviate the most from the expected Gaussian behaviour, they have been excluded from the fit.
+This corresponds to the general extraction procedure which is applied in this thesis, as was explained in Section~\ref{}.
+Hence, the obtained value for the right-handed tensor coupling calculated using the selected data events is:
+\begin{equation} \label{eq::DataResult}
+ \gR = 0.0071 \pm 0.0083
+\end{equation}
+Comparing the uncertainty of the data sample with the value expected from the statistical properties of the Matrix Element estimator, discussed in Section~\ref{subsec::StatProp}, indicates an excellent agreement is retrieved.
+The obtained result is statistically compatible with $0$, implying that no deviation from the Standard Model is observed.
+
+\subsection{Systematic uncertainties}
+
+The outcome of the Matrix Element estimator can be significantly affected by ..., or so-called systematic uncertainties.
+This influence is determined purely from simulated samples, by varying the corresponding parameter up and down with one standard deviation.
+Both the up and down contribution is then compared to the nominal value and the two are added quadratically.
+\\
+\\
+For this analysis, not every systematic uncertainty will be determined using the full collection of simulation samples due to the long processing time this would require.
+Since the event selection procedure, discussed in detail in Section~\ref{ch::EvtSel}, has been developed to reduce the contribution of the background samples as much as possible, the considered simulated samples are supposed to be dominated by $\ttbar$ events.
+This is indeed the case, the main background corresponds to a fraction of $...\%$ of the total simulation, and the influence of these background samples on the outcome of the Matrix Element estimator is summarised in Table~\ref{table::BckInfl}.
+\\
+Here the value obtained from the minimisation procedure for the different simulation samples combined with the main $\ttbar$ sample is given. Hence the individual influence of each background sample can be estimated by comparing the combined results\footnote{The reason why the effect of the different background samples is not given separately is because the Matrix Element method is not capable of correctly determining the value of the estimator for such a reduced number of events. Hence the statistical fluctuations on the $\NegLLEvt$ values are significantly larger such that no Gaussian behaviour can be recovered. Hence their influence can only be determined using this combined approach.} with the result of this main $\ttbar$ sample given in the first row.
+Even though some deviations exist between the different background samples, they are all covered by the corresponding statistical uncertainty.
+\\
+\begin{table}[h!t]
+ \centering
+ \caption{Outcome of the Matrix Element estimator for the different simulation samples considered. The influence of the background samples are determined by combining them with the main $\ttbar$ sample, which is the dominant sample remaining after the stringent event selection that is applied. (\textit{Should the MC lumi uncertainty be used here?})} \label{table::BckInfl}
+ \renewcommand{\arraystretch}{1.2}
+ \begin{tabular}{c|c}
+  Sample 			& Minimum 			\\
+  \hline
+  $\ttbar$ 			&  0.0013 $\pm$ 0.0090		\\
+  $\ttbar$ + Single top 	&  -0.0010 $\pm$ 0.0089		\\
+  $\ttbar$ + W-jets (4j) 	&  0.0009 $\pm$ 0.0090		\\
+  $\ttbar$ + Z-jets (4j) 	&  0.0013 $\pm$ 0.0090		\\
+  \hline
+  Total MC 			& -0.0015 $\pm$ 0.0089 		
+ \end{tabular}
+\end{table}
+
+Hence for most of the considered systematic uncertainties, which will be discussed in detail below, only the main $\ttbar$ sample will be considered. 
+The only exception is for the influence observed when varying the \textit{energy scale of the jets }, where the contribution of the single-top events, the main background, will be taken into account.
+\\
+\textit{Give a reason why!!}
+
+\begin{myindentpar}
+  \begin{description}
+    \item[Jet Energy scale] \hfill \\
+    
+    \item[Jet Energy resolution] \hfill \\
+    
+    \item[b-tag (better name)] \hfill \\
+    
+    \item[Background contribution] \hfill \\
+        
+    \item[Pileup (?)] \hfill \\
+        
+    \item[Likelihood extraction procedure] \hfill \\
+        
+    \item[Determination of cut-value] \hfill \\
+        
+    \item[Background contribution] \hfill \\
+        
+    \item[Matching and scaling] \hfill \\
+        
+    \item[Top $\pT$ reweighting (Still to check!!)] \hfill \\
+        
+   \end{description}
+\end{myindentpar}
+
 Separate events on the different background samples are not always perfectly described:
-%\begin{table}[h!t]                         Table containing the detailed numbers!!!
-% \centering
-% \caption{} \label{table::BckInfl}
-% \renewcommand{\arraystretch}{1.2}
-% \begin{tabular}{c|c|c}
-%  Sample 					& Minimum 				& Minimum (without full-lept $\ttbar$) 	\\
-%  \hline
 %  semi-lept $\ttbar$ 				&  -0.00266928 $\pm$ 0.00913376		& x					\\
 %  semi-lept $\ttbar$ + full-lept $\ttbar$ 	&  0.00131988 $\pm$ 0.00900069		& x					\\
 %  semi-lept $\ttbar$ + W-jets (4j) 		&  0.000861019 $\pm$ 0.00898589		& -0.0031283 $\pm$ 0.00911829		\\
@@ -380,47 +449,7 @@ Separate events on the different background samples are not always perfectly des
 %  semi-lept $\ttbar$ + Single top 		&  -0.00104577 $\pm$ 0.00891448		& -0.00502578 $\pm$ 0.00904371		\\
 %  \hline
 %  Total MC 					& -0.00146672 \pm 0.00889585 	& x
-% \end{tabular}
-%\end{table}
 
-\begin{table}[h!t]
- \centering
- \caption{} \label{table::BckInfl}
- \renewcommand{\arraystretch}{1.2}
- \begin{tabular}{c|c|c}
-  Sample 					& Minimum 			& Minimum (without full-lept $\ttbar$) 	\\
-  \hline
-  semi-lept $\ttbar$ 				&  -0.0027 $\pm$ 0.0091 	& x					\\
-  semi-lept $\ttbar$ + full-lept $\ttbar$ 	&  0.0013 $\pm$ 0.0090		& x					\\
-  semi-lept $\ttbar$ + W-jets (4j) 		&  0.0009 $\pm$ 0.0090		& -0.0031 $\pm$ 0.0091		\\
-  semi-lept $\ttbar$ + Z-jets (4j) 		&  0.0013 $\pm$ 0.0090		& -0.0026 $\pm$ 0.0091		\\
-  semi-lept $\ttbar$ + Single top 		&  -0.0010 $\pm$ 0.0089		& -0.0050 $\pm$ 0.0090		\\
-  \hline
-  Total MC 					& -0.0015 $\pm$ 0.0089 		& x
- \end{tabular}
-\end{table}
-The curve obtained when considering all MC samples is given in Figure~\ref{fig::MinNominalAll}
-\begin{figure}[h!t]
- \centering
- \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter6_Analysis/Figures/FittedGraph_NominalResult_AllMC.pdf}
- \caption{Obtained minimum distribution for the nominal case.} \label{fig::MinNominal}
-\end{figure}
-
-\paragraph{Actual Data result} \hfill \\
-
-The obtained data-result is (shown in Figure~\ref{fig::MinData}):
-\begin{equation}
- \gR = 0.00709461 \pm 0.0083034
-\end{equation}
-
-\begin{figure}[h!t]
- \centering
- \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter6_Analysis/Figures/FittedGraph_DataResult.pdf}
- \caption{Obtained minimum distribution for the data events.} \label{fig::MinData}
-\end{figure}
-
-
-\subsection{Systematic uncertainties}
 
 Result obtained for JES is (Figure~\ref{fig::MinJESMinus}):
 \begin{eqnarray}
@@ -442,11 +471,11 @@ Obtained values are (only using AllTT):
 \end{eqnarray}
 
 
-\begin{figure}[h!t]
- \centering
- \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter6_Analysis/Figures/FittedGraph_JESMinusResult_TTbarJets.pdf}
- \caption{Obtained minimum distribution for the JES minus case.} \label{fig::MinJESMinus}
-\end{figure}
+%\begin{figure}[h!t]
+% \centering
+% \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter6_Analysis/Figures/FittedGraph_JESMinusResult_TTbarJets.pdf}
+% \caption{Obtained minimum distribution for the JES minus case.} \label{fig::MinJESMinus}
+%\end{figure}
 
 \paragraph{Deviation from Gaussian behaviour} \hfill \\
 Instead of using the parabola through the three inner points as standard method, maybe it is more useful to start with the full fit on all the points and use the 3-point parabola as a systematic check.

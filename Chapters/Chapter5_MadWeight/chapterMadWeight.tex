@@ -69,6 +69,9 @@ One important drawback of this complex integration procedure, besides the numeri
 Hence when analysing the sample of experimental events after they have been calculated by MadWeight, the events for which an event weight equal to zero is recovered will be removed from the set of events.
 This because only events should be analysed for which an likelihood value is calculated for each of the considered $\alpha$ parameters since otherwise it could introduce a bias.
 However, this will not influence the overall result since for the sample which has been affected the most by this feature only about $0.7\%$ of the events had to be excluded. For the majority of considered samples none of the events had to be rejected.
+\\
+
+\textit{Important to mention about the fact that no uncertainty is available on the weights!}
 
 \subsection{Details on model construction}
 
@@ -100,10 +103,21 @@ The details of these transfer functions are given in Section~\ref{subsec::TF}, w
 Besided the assumptions made in the developed theoretical model implemented in MadGraph, the most important simplificant of the Matrix Element method can be found in the resolution functions.
 In order to determine this energy smearing of the generator-level events, has to be imposed that the transfer functions are factorised for the different kinematic variables.
 Hence, it is assumed that the (transverse) energy $E$, the pseudo-rapidity $\eta$ and the \textit{azimuthal angle} $\phi$ are uncorrelated such that the transfer functions for these variables can be determined separately.
-
+\\
 \begin{equation}
  W(x,y) = \prod_{i=1}^{n} W_{i}(x^{i},y^{1}) = W_{i}^{E}(x^{i},y^i) \, W_{i}^{\eta}(x^i, y^i) \, W_{i}^{\phi}(x^i,y^i)
 \end{equation}
+
+Besides this factorised approach, the transfer function development is affected by several other assumptions in order to simplify the parametrisation of the different particles.
+At first, the transfer functions for the pseudo-rapidity and azimuthal angle will be modelled by a Dirac delta function $\delta$ since they are believed to be well described.
+Hence, the considered $\ttbar$ decay process still requies three separate resolution functions: one for the muons and the two remaining to describe the light-flavoured jets and the b-quark jets.
+In this analysis, it is assumed that the transfer function of the muons can also be represented by a Dirac delta function since its energy is determined rather accurately by the CMS detector. (\textit{Maybe show a distribution to strengthen this statement!.})
+\\
+As a result, only the transfer functions for the two types of jets will have to be calculated. 
+The most accurate parameterisation of describing the distribution of the energy difference $E_{parton} - E_{reco}$ is by a double Gaussian distribution.
+This type of function allows for an accurate description of both the peak and the tail of the distribution, such that the energy smearing of the created transfer function will be correct for a wide energy regime.
+Obtaining such an accurate description is rather important since it will allow to reduce the influence of the hadron-level corrections on the obtained outcome. Due to the introduced assumptions, the applicability of the Matrix Element method will need to be tested in detail in order to ensure it is not affected by a bias, as will be discussed in Section~\ref{sec::EstimatorProp}.
+
 
 \subsection{Cross-section  normalisation}
 \textit{Since it is here a rather general case, first the method for generator-level events can be mentioned and then the difference with reconstructed collision events can be made perfectly clear.}
