@@ -40,10 +40,13 @@ Normalising the obtained event weight with the total cross-section $\sigma_{\alp
 More detail on this normalisation procedure will be given in Section~\ref{sec::Norm}.
 \\
 
-The overall likelihood $\mathcal{L}_{MEM}$ from which the Matrix Element method will extract the most optimal value of the theoretical parameter $\alpha$, is obtained by multiplying all these individual event probabilities.
-The actual extraction is done by minimising these likelihood values or, following a more general approach, minimising the negative logarithmic likelihood values.
+The overall likelihood $\mathcal{L}_{MEM}$ from which the Matrix Element method will extract the most optimal value of the theoretical parameter $\alpha$, is obtained by multiplying all these individual event probabilities. The actual extraction is done by minimising these likelihood values.
 \begin{equation}
  \mathcal{L}_{MEM}(x \vert \alpha) = \prod_{i=1}^{n} P(x \vert \alpha)
+\end{equation}
+In practice it is more convenient to convert the likelihood values using $\chi^{2}$ = $-2 \ln \mathcal{L}$ such that the log-likelihood curves of the event can be summed and that the overall $\DeltaChi$ = $\chi^{2}_{MEM} - \chi^{2}_{MEM,min}$ can be minimised. \textbf{Mention this MEM estimator stuff ...}
+\begin{equation}
+ \chi^{2}(x \vert \alpha) = -2 \ln \mathcal{L}_{MEM}(x \vert \alpha) = -2 \sum_{i=1}^{n} \ln P(x \vert \alpha)
 \end{equation}
 
 The Matrix Element method is supposed to provide the most powerful tool to extract theoretical information from a sample of experimental events.
@@ -67,9 +70,7 @@ Even with the implementation of the MadWeight integrator, the Matrix Element met
 Therefore it should be avoided to calculate the probabilities of events for which the expected final state particles are not, or incompletely, recovered; hence the stringent event-selection criteria imposed in Chapter~\ref{ch::EvtSel}.
 Also the choice to distinguish the two b-quark jets originating from the W-boson decay in top-quark pair events has been applied for the purpose of reducing the necessary computing time, since this reduces the number of permutations to be considered with a factor of $2$.
 Hence for this analysis, where the semi-muonic decay of the $\ttbar$ events is studied, this implies that only the permutations between the two light jets have to be performed during the integration procedure. 
-\\
 
-\textit{Necessary to mention that no uncertainty is available on the weights! (?)}
 
 \subsection{Implementation of the anomalous Wtb Lagrangian} \label{subsec::FRModel}
 
@@ -344,7 +345,9 @@ The measurement has been performed both on generator-level events and on a limit
 %In order to ensure the reconstructed events bear sufficient information to perform the measurement using the limited statistics, 
 %In order to ensure the considered events had sufficient information for providing an accurate measurement, the study of the reconstructed events has been restricted to $\ttbar$ events for which each jet in the reconstructed event topology has been correctly matched with the corresponding parton.
 Since this measurement serves merely as an illustrative example, the study of the reconstructed events will be restricted to $4000$ $\ttbar$ events for which each jet in the reconstructed event topology has been correctly matched with the corresponding parton. 
-\textit{Hence, this will allow to obtain an accurate top-quark mass measurement with the considered limited statistics.}
+The resolution functions applied for the generator-level events have been significantly simplified by restricting all of them to a Dirac-$\delta$ function while for the reconstructed events the ones discussed in Section~\ref{sec::TF} will be applied.
+Six different values of the top-quark mass have been scanned over between $170 \GeV$ and $175\GeV$. \textbf{Change range?}
+%\textit{Hence, this will allow to obtain an accurate top-quark mass measurement with the considered limited statistics.}
 \\
 \\
 Before the actual measurement of the top-quark mass can be performed, the cross-section values for the reconstructed events have to be determined following the same procedure as explained in Section~\ref{sec::Norm}. The obtained results is shown in Figure~\ref{fig::XSDistrTop} and clearly indicates that the top-quark mass depends less heavily on the cross-section than the $\gR$ coefficient in Figure~\ref{fig::XSDistr}. 
@@ -359,39 +362,51 @@ Before the actual measurement of the top-quark mass can be performed, the cross-
 The strenght of the Matrix Element method finds its origin in the fact that it analyses each event individually, assigns a probability to corresponds with the presumed hypothesis and then combines this information into one overall likelihood.
 Hence events for which the reconstructed event topology and kinematic information corresponds well with the considered process will therefore contain the most relevent information and are supposed to contribute on average the most to the overall result.
 \\
-The difficulty of extracting information on an event-by-event basis can be visualised in Figure~\ref{fig::EvtProbsMTGen} where a number of event probabilities are shown for the top-quark mass measurement using generator-level events. This clearly indicates that a large fraction of the events actually has little relevant information available on the theoretical assumption.
-Nevertheles, the Matrix Element method is capable of combinining all the separate event probabilities into a overall likelihood from which the theoretical parameter can be extracted in a very accurate manner, as can be seen from the bottom plot in Figure~\ref{fig::EvtProbsMTGen}.
+The difficulty of extracting information on an event-by-event basis can be visualised in Figure~\ref{fig::EvtProbsMTGen} where a number of event probabilities are shown for the top-quark mass measurement using generator-level events. The upper row contains events exhibiting the expected behaviour while the individual likelihood values in the middle row clearly indicate that the corresponding event has very little relevant information on the theoretical assumption.
+Nevertheles, the Matrix Element method is capable of combining all the separate event probabilities into a overall likelihood from which the theoretical parameter will be extracted. This overall likelihood is shown as the bottom plot. % in Figure~\ref{fig::EvtProbsMTGen}.
 \\
 \begin{figure}[h!tb]
  \centering
- \includegraphics[width = 0.31 \textwidth]{image.png} \vspace{0.2cm}
- \includegraphics[width = 0.31 \textwidth]{image.png} \vspace{0.2cm}
- \includegraphics[width = 0.31 \textwidth]{image.png} \hspace{0.1cm} \\
- \includegraphics[width = 0.31 \textwidth]{image.png} \vspace{0.2cm}
- \includegraphics[width = 0.31 \textwidth]{image.png} \vspace{0.2cm}
- \includegraphics[width = 0.31 \textwidth]{image.png} \hspace{0.1cm} \\
- \includegraphics[width = 0.4 \textwidth]{image.png}
- \caption{Individual event probabilities for the measurement of the top-quark mass (upper two rows) which eventually result in the overall likelihood (last row) from which the mass can be extracted.} \label{fig::EvtProbsMTGen}
+ \includegraphics[width = 0.31 \textwidth]{Chapters/Chapter5_MadWeight/Figures/EventLikelihood_MG_4000Evts_AllDeltaTF_150.pdf} \vspace{0.2cm}
+ \includegraphics[width = 0.31 \textwidth]{Chapters/Chapter5_MadWeight/Figures/EventLikelihood_MG_4000Evts_AllDeltaTF_450.pdf} \vspace{0.2cm}
+ \includegraphics[width = 0.31 \textwidth]{Chapters/Chapter5_MadWeight/Figures/EventLikelihood_MG_4000Evts_AllDeltaTF_1450.pdf} \hspace{0.1cm} \\
+ \includegraphics[width = 0.31 \textwidth]{Chapters/Chapter5_MadWeight/Figures/EventLikelihood_MG_4000Evts_AllDeltaTF_775.pdf} \vspace{0.2cm}
+ \includegraphics[width = 0.31 \textwidth]{Chapters/Chapter5_MadWeight/Figures/EventLikelihood_MG_4000Evts_AllDeltaTF_1675.pdf} \vspace{0.2cm}
+ \includegraphics[width = 0.31 \textwidth]{Chapters/Chapter5_MadWeight/Figures/EventLikelihood_MG_4000Evts_AllDeltaTF_3975.pdf} \hspace{0.1cm} \\
+ \includegraphics[width = 0.4 \textwidth]{Chapters/Chapter5_MadWeight/Figures/OverallLikelihoodCurve_NoFit_MG_4000Evts_AllDeltaTF.pdf}
+ \caption{Individual event probabilities for the measurement of the top-quark mass (upper two rows) using generator-level events, which get combined into the overall likelihood (bottom) from which the most optimal top-quark mass value can be extracted.} \label{fig::EvtProbsMTGen}
 \end{figure}
 
-The same behaviour is observed 
-
+The most optimal value of the considered theoretical parameter is obtained by minimising the negative logarithmic likelihood values of the full collection of experimental events.
+This is done by fitting the $\DeltaChi$ values with a quadratic function on a predefined range and the obtained minimum value then corresponds to the outcome of the theoretical parameter.
+\\
+It has been investigated whether an improvement can be observed in case each event likelihood is fitted with such a quadratic function. The overall likelihood values is then determined by adding the individual functions instead of adding the likelihood values. 
+The main advantage of this approach is that it would reduce the risk of influencing the overall outcome when one parameter value is badly calculated for a specific event. Hence, using the fitted shape would allow to extract the general shape of the likelihood values from each and be less dependent of one failing integration.
+Unfortunately, due to the large statistical fluctuations present for each event and the generally small difference between the likelihood values, the shape of the individual likelihood values can not be described properly by such a quadratic function.
+\\
+\\
+Applying the developed minimisation procedure on the $\DeltaChi$ values obtained for the top-quark measurement using generator-level events, for which the range is limited between $171 \GeV$ and $175 \GeV$, results in an outcome of the Matrix Element estimator of $173.82 \pm 0.64 \GeV$.
+%For the example of the top-quark mass measurement the range has been restricted between $171 \GeV$ and $175 \GeV$ resulting in a top-quark mass of $m_{t}$ = $173.82 \pm 0.64 \GeV$ for the generator-level events. 
+Since these events have been generated with MadGraph by assuming a top-quark mass of $173 \GeV$ this procedure results in a nice agreement, especially considering the limited statistics available.
+\\
 \begin{figure}[h!tb]
  \centering
- \includegraphics[width = 0.31 \textwidth]{image.png} \vspace{0.2cm}
- \includegraphics[width = 0.31 \textwidth]{image.png} \vspace{0.2cm}
- \includegraphics[width = 0.31 \textwidth]{image.png} \hspace{0.1cm} \\
- \includegraphics[width = 0.31 \textwidth]{image.png} \vspace{0.2cm}
- \includegraphics[width = 0.31 \textwidth]{image.png} \vspace{0.2cm}
- \includegraphics[width = 0.31 \textwidth]{image.png} \hspace{0.1cm} \\
- \includegraphics[width = 0.4 \textwidth]{image.png}
- \caption{Individual event probabilities for the measurement of the top-quark mass (upper two rows) which eventually result in the overall likelihood (last row) from which the mass can be extracted.} \label{fig::EvtProbsMT}
+ \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter5_MadWeight/Figures/OverallLikelihoodCurve_MG_4000Evts_AllDeltaTF.pdf}
+ \caption{$\DeltaChi(x_{gen} \vert m_{t})$ curve obtained for $4000$ generator-level events created in MadGraph with $m_{t}$ $=$ $173 \GeV$ fitted with a quadratic function. Minimisation this function results in a top-quark mass value of $173.82 \pm 0.64 \GeV$.}\label{fig::FitMTGen}
 \end{figure}
 
-\begin{eqnarray}
- m_{top}^{MadGraph} & = &  \\
- m_{top}^{\ttbar ~ MC} & = & 
-\end{eqnarray}
-
-
-
+The same procedure has then been applied to the reconstructed events, for which a similar behaviour of the individual event likelihoods exists as shown in Figure~\ref{fig::EvtProbsMT}.
+Minimising the overall $\DeltaChi$ results in an outcome of this Matrix Element estimator of $173.82 \pm 0.64 \GeV$.
+This deviates slightly from the top-quark mass used in the simulated events, defined as $172.5 \GeV$, which can be explained by both the limited statistics and the more challenging conditions existing for reconstructed events. Hence in order to ensure the obtained value of the Matrix Element estimator can be trusted when considering reconstructed events, a dedicated calibration procedure should be performed as  will be discussed in Chapter~\ref{ch::Analysis} for the measurement of the right-handed tensor coupling.
+Nevertheless, taking into account the large statistical uncertainty and the different systematic effects likely to influence the obtained top-quark mass measurement, this feasibility study has proven that the Matrix Element method is capable of providing very precise and accurate results.
+\begin{figure}[h!tb]
+ \centering
+ \includegraphics[width = 0.31 \textwidth]{Chapters/Chapter5_MadWeight/Figures/EventLikelihood_TTSemiLept_4000Evts_1450.pdf} \vspace{0.2cm}
+ \includegraphics[width = 0.31 \textwidth]{Chapters/Chapter5_MadWeight/Figures/EventLikelihood_TTSemiLept_4000Evts_2025.pdf} \vspace{0.2cm}
+ \includegraphics[width = 0.31 \textwidth]{Chapters/Chapter5_MadWeight/Figures/EventLikelihood_TTSemiLept_4000Evts_3325.pdf} \hspace{0.1cm} \\
+ \includegraphics[width = 0.31 \textwidth]{Chapters/Chapter5_MadWeight/Figures/EventLikelihood_TTSemiLept_4000Evts_875.pdf} \vspace{0.2cm}
+ \includegraphics[width = 0.31 \textwidth]{Chapters/Chapter5_MadWeight/Figures/EventLikelihood_TTSemiLept_4000Evts_2300.pdf} \vspace{0.2cm}
+ \includegraphics[width = 0.31 \textwidth]{Chapters/Chapter5_MadWeight/Figures/EventLikelihood_TTSemiLept_4000Evts_3925.pdf} \hspace{0.1cm} \\
+ \includegraphics[width = 0.4 \textwidth]{Chapters/Chapter5_MadWeight/Figures/OverallLikelihoodCurve_TTSemiLept_4000Evts.pdf}
+ \caption{Individual event probabilities for the measurement of the top-quark mass (upper two rows) using reconstructed events, which get combined in the overall likelihood (last row) from which the most optimal value of the top-quark mass is extracted.} \label{fig::EvtProbsMT}
+\end{figure}
