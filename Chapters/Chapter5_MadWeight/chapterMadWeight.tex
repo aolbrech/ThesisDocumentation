@@ -1,125 +1,246 @@
-\chapter{Matrix Element method} \label{ch::MW}
+\chapter{The Matrix Element method} \label{ch::MW}
 
-The Matrix Element method is a powerful analysis technique widely used in experimental high energy physics.
-It was originally developed after the discovery of the top quark with the purpose of maximally exploiting both the kinematic information available in a considered final state configuration and the theoretical knowledge of the matter and has now gained in significance due to the challenging conditions at the LHC.
+The measurement of the right-handed tensor coupling of the Wtb interaction discussed in this thesis is performed using the Matrix Element method.
+This is an advanced analysis technique which allows to extract theoretical information from experimental events without requiring prior knowledge of the possible new-physics scenarios.
+%The method finds its name in the fact that 
+%\textit{The Matrix Element method has been developed several years ago and has been used extensively at the Tevatron, especially in the top-quark physics sector.}
+%\\
 \\
-The main advantage of this method is that it calculates a propability for each event that represents whether the event kinematics correspond with the theoretical assumed model restrictions. These are then combined into an overall likelihood, which allows to identify the most optimal parameter value. (REWRITE)
+The Matrix Element method assigns a probability to each theoretical hypothesis on an event-by-event basis, by calculating the matrix element of the considered process.
+The obtained event probabilities are then combined into a likelihood and the most probable hypothesis is determined using a likelihood-maximisation method.
 \\
 \\
-All the necessary aspects of this Matrix Element method will be discussed in detail in this chapter, starting with the \textit{explanation} of the \textit{mathematical} framework of the method in Section~\ref{sec::MWTheory}.
-Afterwards the necessary normalisations and calibrations (\textit{How can you call the TFs?)}) in order to apply this method on the collisions produced at the Large Hadron collider will be introduced in Section~\ref{sec::TF}.
-Finally, the entire framework will be applied on a toy-model example in Section~\ref{sec::MEMExample}, where the mass of the top quark will be determined as an illustration.
+A detailed overview of the technicalities and applicability of the Matrix Element method can be found in this Chapter.
+At first, the theoretical framework used to calculate these event probabilities will be discussed in Section~\ref{sec::MWTheory}.
+In order to demonstrate the use of the Matrix Element method, the measurement of the top-quark mass will be presented as an example/feasibility study in Section~\ref{sec::MEMExample}.
 
-\section{Theoretical framework} \label{sec::MWTheory}
+\section{Theoretical framework (IMPROVE)} \label{sec::MWTheory}
 
-The Matrix Element method is an appropriate analysis technique to apply in case the process of interest is a complex final state, typically containing several jets and missing energy.
-Hence, for this reason it has been used extensively in top-quark physics and has even been applied more recently for the discovery of the Brout-Englert-Higgs boson. (\textbf{Refs!})
-%the \textit{'aangewezen'} choice in case 
+The Matrix Element method has been developed several years ago in order to make maximal use of the kinematic information available.
+Since this method capable of analysing processes with a complex final state, typically containing several jets and missing energy, it has been used extensively in the top-quark physics sector at the Tevatron~\cite{MEMTevatron}.
+Given the challenging conditions the LHC is faced with, the use of the Matrix Element method has been revived recently and it has found applications in different physics areas; including the discovery of the Brout-Englert-Higgs boson~\cite{HiggsMEM}.
+\\
+\\
+The fact that the Matrix Element is capable of dealing in an efficient manner with event signatures involving missing energy together with the option it provides to determine the most optimal theoretical parameter of any imposed theoretical model\footnote{The Matrix Element method also has a second widely used application, where it analyses two competing hypotheses and determines which one corresponds the most with the available experimental information.}, has made it the appropriate analysis technique to use for the measurement of the $\gR$ coefficient.
 \\
 
-As the name of the method suggests, the Matrix Element method extracts the desired theoretical information by explicitely calculating the leading-order matrix-element of the considered process.
-Hence, in order to correctly apply this method on reconstructed events, which are influenced by ..., this matrix-element is multiplied with the parton distribution functions, discussed previously in Section~\ref{sec::PDF}. %(and the phase-space measure (d$\Phi$) -- relevant for this hadron-level part?).
-Finally, in order to ensure the detector effects influencing the reconstructed events are transfered to the parton-level configuration a resolution function is introduced.
-%The goal of the Matrix Element method is to extract theoretical information, in the form of a set of parameters $\alpha$, from a sample of experimental events (NOT OWN WORDS).
-The full formula, defined as the event weight, takes the following form:
+Section~\ref{subsec::MWLik} will focus on the determination of the Matrix Element method and the procedure followed to calculate the matrix-elements of each event. Section~\ref{subsec::FRModel} will discuss the details of the imposed theoretical model specifically developed for the study of the anomalous couplings in the Wtb interaction vertex.
 
+\subsection{Likelihood definition and evaluation} \label{subsec::MWLik}
+
+The probability for each experimental event to agree with the considered theoretical model, for which the information is provided by the squared matrix-element, 
+is defined as:
 \begin{equation} \label{eq::MWEvtProb}
  P(x \vert \alpha) = \frac{1}{\sigma_{\alpha}} \int d\Phi(y) \, dq_{1} \, dq_{2} ~ f_{1}(q_{1}) \, f_{2}(q_{2}) \, \vert M_{\alpha}(y) \vert^{2} \, W(x,y)
 \end{equation}
-with $x$ the reconstructed event, $y$ the parton-level configuration, $\vert M_{\alpha}(y) \vert^{2}$ the squared matrix-element, d$\Phi$ the phase-space measure, $f_{i}(q_{i})$ the parton distribution functions and $W(x,y)$ the resolution or transfer function.
-This event weight has to be normalised by the total cross-section, denoted as $\sigma_{\alpha}$, to ensure it corresponds to a probability density ($\int P(x \vert \alpha) = 1)$.
+with $x$ the reconstructed event, $y$ the parton-level configuration, $\alpha$ the set of parameters, $\vert M_{\alpha}(y) \vert^{2}$ the squared matrix-element, d$\Phi$ the phase-space measure, $f_{i}(q_{i})$ the parton distribution functions and $W(x,y)$ the resolution or transfer function.
+\\
+This resolution function, which will be discussed in detail in Section~\ref{sec::TF}, ensures the detector effects influencing the reconstructed events are transfered to the parton-level configuration.
+Normalising the obtained event weight with the total cross-section $\sigma_{\alpha}$ is necessary in order to obtain a probability density. Hence this should incorporate both the different cross-section values of the process and the different selection efficiency when varying the theoretical parameter $\alpha$ in the considered model. 
+More detail on this normalisation procedure will be given in Section~\ref{sec::Norm}.
 \\
 
-These individual event probabilities are then combined into an overall Matrix Element method likelihood from which the optimal value of the considered variables $\alpha$ can be extracted.
-The actual determination of the most probable value of $\alpha$ is performed through a likelihood maximisation method. However, in practice the event likelihoods are converted into negative likelihood values such that this optimal value is obtained by minimising $\NegLL$. 
-%This extraction procedure is done by maximising the obtained likelihood $\mathcal{L}_{MEM}$, or more generally minimising the logarithmic likelihood values $\NegLL$.
-\\
+The overall likelihood $\mathcal{L}_{MEM}$ from which the Matrix Element method will extract the most optimal value of the theoretical parameter $\alpha$, is obtained by multiplying all these individual event probabilities.
+The actual extraction is done by minimising these likelihood values or, following a more general approach, minimising the negative logarithmic likelihood values.
 \begin{equation}
  \mathcal{L}_{MEM}(x \vert \alpha) = \prod_{i=1}^{n} P(x \vert \alpha)
 \end{equation}
 
-The Matrix Element method can be applied in two different manners, either by studying two competing hypotheses or otherwise by determining the most optimal parameter of the considered theoretical model.
-In this analysis the second method will be applied in order to determine the anomalous couplings of the top-quark pair decay vertex, as will be explained in Chapter~\ref{ch::Analysis}. Hence several parameters $\alpha$, representing the right-handed tensor coupling $\gR$, will be scanned over such that the most optimal value can accurately be determined.
-%Two general ways of applying this technique exist, either it compares two competing hypotheses or otherwise, as is the case in this analysis, it is used to determine the most optimal parameter of the introduced theoretical model.
-\\
-
-\textit{Need to mention somewhere that the event should be given completely and what is given as input! (Maybe then continue with the integration...}
-
-\subsection{Evaluation of the event weights}
-
-In principle, the Matrix Element method is supposed to provide the most powerful tool to extract theoretical information from a sample of experimental events.
-In practice however, the challenging computation procedure is considered a serious limitation on the applicability of the method.
-This because the Matrix Element method has to integrate over the convolution of the hard scattering process, the actual matrix-element, with the experimental information available on the final state, obtained from the transfer functions.
-Such an integration technique is far from numerical efficient, such that a considerable amount of time is required to analyse a limited number of these experimental events.
+The Matrix Element method is supposed to provide the most powerful tool to extract theoretical information from a sample of experimental events.
+However, the applicability of the method is seriously limited by the challenging computation procedure of the individual event probabilities.
+The evaluation of each individual event requires a non-trivial multi-dimensional integration over the combined theoretical the hard-scattering process, and the experimental information, the transfer functions.
+Hence even to analyse a limited data sample, a significant processing time has to be foreseen.
 \\
 \\
-Another serious difficulty the Matrix Element method is faced with is the fact that for each considered process a separate integration procedure has to be developed.
-However, during the last decade significant effort has been \textit{put into place} in order to ensure this integration technique is efficiently adapted to the process that is calculated.
-This resulted in the development of the MadWeight phase-space generator, which is based on the adaptive Monte Carlo integrator VEGAS~\cite{VEGAS}.
-\\
-The main advantage of this program is that it takes care of the integration in a fully automated manner.
-In addition, the fact that this program is fully integrated in the MadGraph framework allows for an easy access to the matrix-element amplitudes and to the topology of the different Feynman diagrams of the considered process.
-%As a solution, MadWeight~\cite{MadWeightPaper} has been developed, which takes care of this integration in a fully automated manner. In addition, since it is incorporated in hte MadGraph framework, it has access to the Feynman diagrams and thus the corresponding matrix-elements.
-%This phase-space generator is based on the adaptive Monte Carlo integrator VEGAS~\cite{VEGAS} and creates an optimized phase-space mapping in order to efficiently integrate the product of the squared matrix-element and the transfer function.
-\\
-\textit{now something about this phase-space mapping... (?)}
+Due to the increasing number of possible applications of the Matrix Element method at the LHC and in phenomenological studies, a dedicated algorithm aimed at evaluating these event weights using a fully automated approach has been developed. This highly flexible phase-space generator (\textbf{not integrator?}), which uses the adaptive Monte Carlo integrator VEGAS~\cite{VEGAS}, has been denoted as MadWeight~\cite{MadWeightPaper}.
+%\\
+Before this tool was available, a separate integration procedure had to be developed for each considered process and detailed knowledge on the technical details of both matrix-element generation and phase-space integration was required to apply the Matrix Element method.
+%\textit{This is no longer the case since the MadWeight integrator optimises the phase-space mapping.}
+%***********************
+% The notation of calling MadWeight a phase-space generator can be found on their twiki!!
+% https://cp3.irmp.ucl.ac.be/projects/madgraph/wiki/MadWeight
+%***********************
 \\
 
-One important drawback of this complex integration procedure, besides the numerical inefficiency, is that for a tiny fraction of events it appears that the integration does not converge.
-Hence when analysing the sample of experimental events after they have been calculated by MadWeight, the events for which an event weight equal to zero is recovered will be removed from the set of events.
-This because only events should be analysed for which an likelihood value is calculated for each of the considered $\alpha$ parameters since otherwise it could introduce a bias.
-However, this will not influence the overall result since for the sample which has been affected the most by this feature only about $0.7\%$ of the events had to be excluded. For the majority of considered samples none of the events had to be rejected.
+%Now mention the fact that it is still slow and thus a stringent event selection has been asked for + limited the permutations of the b-jets!
+Even with the implementation of the MadWeight integrator, the Matrix Element method remains a very time-consuming analysis technique.
+Therefore it should be avoided to calculate the probabilities of events for which the expected final state particles are not, or incompletely, recovered; hence the stringent event-selection criteria imposed in Chapter~\ref{ch::EvtSel}.
+Also the choice to distinguish the two b-quark jets originating from the W-boson decay in top-quark pair events has been applied for the purpose of reducing the necessary computing time, since this reduces the number of permutations to be considered with a factor of $2$.
+Hence for this analysis, where the semi-muonic decay of the $\ttbar$ events is studied, this implies that only the permutations between the two light jets have to be performed during the integration procedure. 
 \\
 
-\textit{Important to mention about the fact that no uncertainty is available on the weights!}
+\textit{Necessary to mention that no uncertainty is available on the weights! (?)}
 
-\subsection{Details on model construction}
+\subsection{Implementation of the anomalous Wtb Lagrangian} \label{subsec::FRModel}
 
-The fact that the matrix-element calculation is embedded in the MadGraph framework also facilitates the study of new physics models since they can be easily incorporated.
-This feature has been exploited in this thesis where the theoretical description of the Wtb integration vertex included in the MadGraph Standard Model has been extended to include the anomalous coupling contributions.
-\\
-Hence, a model has been developed using the FeynRules~\cite{} software program ...
-
-
-\subsection{Optimisations}
-\textit{Are there more optimisations? Otherwise seperate section not really relevant ...}
+Since it has been opted for to implement the MadWeight integration procedure in the MadGraph framework, the option to analyse personally created theoretical models describing new-physics phenomena has been significantly facilitated.
+%\textit{This approach allows to go from theory to simulation to comparison with experiment in a quick, efficient and accurate manner (Not completely own words!)}
+%\\
+Hence, any model can be created with FeynRules~\cite{FeynRules}, which is a Mathematica-based package to calculate Feynman rules, and be translated to MadGraph using the dedicated interface.
+The developed model should only contain some basic information, such as the particle content, the parameters and the lagrangian, which allows the FeynRules package to derive the Feynman rules.
 \\
 
-Since the Matrix Element method is very time-consuming, the calculation of the weights has to be performed in the most optimal manner and the number of permuations should be reduced if possible.
-Hence, as was already mentioned in Section~\ref{subsec::JetCombi}, in this thesis only the permutations between the two light jets will be considered since the two jets originating from the b-quark decay have been assigned to a specific top-quark decay channel.
-
-\subsection{Extraction example}
-\textit{Maybe give an example of how the likelihood looks like? Or maybe keep this for the actual example...}
-
-\section{Normalisations and calibrations (of hadron-level events)} \label{sec::TF}
-
-\textit{Some general introduction relevant for both XS and TF ...}
-
-Since the Matrix Element method uses the generator-level information of the hard scattering interaction, the energy of the partons in the event has to be smeared out in order to correspond with the situation existing for reconstructed events. Hence resolution functions has to be taken into account for the different types of considered partons, which specifies the kinematic region allowed during the integration procedure.
-The details of these transfer functions are given in Section~\ref{subsec::TF}, which are described by either double Gaussian functions or delta-functions in this analysis.
-
-\subsection{Resolution functions} \label{subsec::TF}
-
-Besided the assumptions made in the developed theoretical model implemented in MadGraph, the most important simplificant of the Matrix Element method can be found in the resolution functions.
-In order to determine this energy smearing of the generator-level events, has to be imposed that the transfer functions are factorised for the different kinematic variables.
-Hence, it is assumed that the (transverse) energy $E$, the pseudo-rapidity $\eta$ and the \textit{azimuthal angle} $\phi$ are uncorrelated such that the transfer functions for these variables can be determined separately.
+In this analysis a new model has been created using this FeynRules package since no anomalous couplings for the top-quark pair decay vertex are expected in the Standard Model Lagrangian.
+This so-called Wtb-model is constructed as an addition of the Standard Model, hence the entire particle content and parameters of this model has been kept.
+The description of the anomalous couplings is then included by introducing four new complex parameters, the four coupling coefficients, and the full lagrangian described in Equation (\ref{eq::FullWtbLagr}).
+Since the parameter of interest for this analysis, the $\gR$ coefficient of this Wtb interaction vertex, is associated with the decay of the top-quark and is thus not foreseen to change the final state particles, the particle content has not been altered.
 \\
+Within the model some simplifications have been added since the complexity of the developed model is directly related to the processing time needed for the MadWeight integration procedure to evaluate an event. %described by the introduced theoretical model.
+Hence, the light-flavoured quarks (u-, d-, c- and s-quark) are assumed to be massless and, just as is the case for the Standard Model decays, the CKM-suppressed W-boson decays have been suppressed.
+\\
+
+Besides calculating the Feynman rules for the developed theoretical model, the FeynRules package also ensures the introduced lagrangian fulfills the basic set of requirements, such as hermicity, gauge invariance, $etc. $.
+Nevertheless, the downside of developing such a brand new model is that there is no straightforward way to determine whether the obtained output for the various unknown parameters \textit{corresponds to the expectations/is well described}.
+For the top-quark decay interaction vertex some influences of the coupling coefficients can be visualised by looking at the distortions of the angular distribution of the \textbf{top-quark decay products}, as has been mentioned in Section~\ref{sec::SubWtb}. 
+Hence, a thorough comparison has been performed with the distributions obtained when simulating events with different values for the coupling coefficients using the developed Wtb-model, resulting in an excellent agreement as can be seen in Figure~\ref{fig::ModelTest}.
+In addition, the model has also been used to calculate the most optimal value of some of the well-known parameters of the Standard Model, for which no unexpected deviations have been observed. 
+
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.3 \textwidth]{image.png}
+ \caption{\textbf{Comparison between theory and MadGraph model output.}} \label{fig::ModelTest}
+\end{figure}
+
+
+\section{Resolution functions} \label{sec::TF}
+
+As mentioned in the previous section, the Matrix Element method uses the parton-level information extracted from the actual matrix element of the considered theoretical model to calculate the event probability.
+Hence, in order to \textit{match/link} the three momenta of these final-state \textit{particles/partons} with the corresponding momenta of the reconstructed physics objects, carefully calculated resolution functions are \textit{required/needed/necessary}. 
+\\
+\textbf{Combined effect of parton showering, hadronisation and detector response.}
+\\
+\\
+Nevertheless (its importance), this aspect of the Matrix Element method has some strong simplifications imposed.
+Since such a resolution function should be determined for each particle type, describing both its direction ($\phi$ and $\theta$) and energy, it is assumed that these functions are uncorrelated.
+This allows to reformulate the resolution function $W(x,y)$ in Equation (\ref{eq::MWEvtProb}) using a factorised approach:
 \begin{equation}
- W(x,y) = \prod_{i=1}^{n} W_{i}(x^{i},y^{1}) = W_{i}^{E}(x^{i},y^i) \, W_{i}^{\eta}(x^i, y^i) \, W_{i}^{\phi}(x^i,y^i)
+ W(x,y) = \prod_{i}^{N} W(x_i, y_i) = \prod_{i}^{N} W_{i}^{E}(x^{i},y^i) \, W_{i}^{\eta}(x^i, y^i) \, W_{i}^{\phi}(x^i,y^i)
 \end{equation}
-
-Besides this factorised approach, the transfer function development is affected by several other assumptions in order to simplify the parametrisation of the different particles.
-At first, the transfer functions for the pseudo-rapidity and azimuthal angle will be modelled by a Dirac delta function $\delta$ since they are believed to be well described.
-Hence, the considered $\ttbar$ decay process still requies three separate resolution functions: one for the muons and the two remaining to describe the light-flavoured jets and the b-quark jets.
-In this analysis, it is assumed that the transfer function of the muons can also be represented by a Dirac delta function since its energy is determined rather accurately by the CMS detector. (\textit{Maybe show a distribution to strengthen this statement!.})
+where the index $i$ runs over the different types of physics objects in the considered event topology.
 \\
-As a result, only the transfer functions for the two types of jets will have to be calculated. 
-The most accurate parameterisation of describing the distribution of the energy difference $E_{parton} - E_{reco}$ is by a double Gaussian distribution.
-This type of function allows for an accurate description of both the peak and the tail of the distribution, such that the energy smearing of the created transfer function will be correct for a wide energy regime.
-Obtaining such an accurate description is rather important since it will allow to reduce the influence of the hadron-level corrections on the obtained outcome. Due to the introduced assumptions, the applicability of the Matrix Element method will need to be tested in detail in order to ensure it is not affected by a bias, as will be discussed in Section~\ref{sec::EstimatorProp}.
+\\
+This \textit{factorised} description can be simplified even further since (\textit{the transfer functions of}) both object directions can be respresented with a Dirac-$\delta$ function.
+This because both angles are determined very precisely (\textit{in the CMS detector/hadron detectors}) and therefore correspond very well with the measured objects, as can be seen from Figure~\ref{fig::TFAngles}. The differences shown in these distributions are determined using the parton-level and reconstructed physics object to have an angular distance $\Delta R$ smaller than 0.3, a similar condition as what is applied in Chapter~\ref{ch::EvtSel}.
+As a result, the only remaining phase-space variable for which a transfer function should be determined is the energy, for which the introduced assumption is not correct due to the finite resolution on its measurement. The transfer function of the energy variable will therefore be represented with a Gaussian-like function.
+\\
+\begin{figure}[h!tp]
+ \centering
+ \includegraphics[width = 0.31 \textwidth]{image.png} \hspace{0.1cm} 
+ \includegraphics[width = 0.31 \textwidth]{image.png} \hspace{0.1cm}
+ \includegraphics[width = 0.31 \textwidth]{image.png}
+ \caption{Draw the $\Delta \phi$ and $\Delta \theta$ to show this is very narrow! + Show difference with $\Delta E$. (Kinematic variables are the ones with all corrections as discussed in Chapter~\ref{ch::EvtSel})} \label{fig::TFAngles}
+\end{figure}
 
+In this analysis, which focusses on the semi-muonic decay of top-quark pairs, a dedicated transfer function should be developed for the jets and the muon in the event.
+However, due to the possible different behaviour of the light- and heavy-flavoured jets, it has been opted for to determine two separate transfer functions for the jets.
+Hence, the two jets identified as originating from the decay of the W-boson and the two jets assigned to the b-quark decay will be treated independently. 
+The transfer function for the muons on the other hand will also be represented with a Dirac-$\delta$ function since its energy is determined very precisely. The different behaviour for the muon and the jets, the light-flavoured ones in this case, can be seen in Figure~\ref{fig::TFJetEDistr}.
+%\textit{Looking at the energy difference for the muons also indicated that this is actually determined very precisely and can therefore also be respresented with a Dirac-$\delta$ function.}
+\\
+Besides simplifying the transfer-function calculation, this approach of using Dirac-$\delta$ functions for various phase-space variables and particles also significantly speeds up the Matrix Element method.
+Fixing the properties of the reconstructed objects to those of the parton-level ones implies that the method does not have to integrate over the corresponding phase-space variables.
+%*****************************************
+% This non-integration is mentioned on page 3 of main MadWeight paper (discusses there the ideal case of no TF)
+%*****************************************
+\\
+\begin{figure}[h!tp]
+ \centering
+ \includegraphics[width = 0.3 \textwidth]{image.png} \hspace{0.2cm}
+ \includegraphics[width = 0.3 \textwidth]{image.png} \\ \vspace{0.2cm}
+ \includegraphics[width = 0.3 \textwidth]{image.png} \hspace{0.2cm}
+ \includegraphics[width = 0.3 \textwidth]{image.png}
+ \caption{$Delta E$ distributions for different parton energies.} \label{fig::TFJetEDistr}
+\end{figure}
 
-\subsection{Cross-section  normalisation}
+The transfer function of the both the light- and heavy-flavoured jets will be described using a double-Gaussian distribution, for which the formula is given in Equation (\ref{eq::DblGausTF}).
+%The factor $(a_2 + a_3 a_5)$ ensures the obtained transfer function is normalised such that the event-probability remains a probability density.
+This double-Gaussian representation is the optimal choice to describe the energy difference ($\Delta E$ = $E_{parton}$ - $E_{jet}$) of jets, which is characterised by a sharp peak combined with an asymmetric tail. 
+From Figure~\ref{fig::TFJetEDistr} can furthermore be concluded that the width of the overall $\Delta E$ distribution increases for higher energies of the matched parton. Hence an accurate description of both the peak and the tail is necessary in order to ensure the transfer function remains valid for a wide energy regime.
+\begin{equation} \label{eq::DblGausTF}
+ W^{E}(parton, jet) = \frac{1}{\sqrt{2\pi}} \frac{1}{a_2 + a_3 a_5} \left( \exp \frac{-(\Delta E - a_1)^2}{2 a_2 \,^{2}} + a_3 \exp \frac{-(\Delta E - a_4)^2}{2 a_5 \,^{2}} \right) 
+\end{equation}
+where the parameters $a_1$ and $a_4$ represent the mean of the first and second Gaussian, respectively, while the parameters $a_2$ and $a_5$ give the width of those respective Gaussian distributions.
+The remaining parameter $a_3$ takes into account the relative contribution of both distributions.
+\\
+
+The actual determination of the two remaining transfer functions will be performed by applying a double-Gaussian fit on the obtained $\Delta E$ distribution for various $E_{parton}$ values.
+For the light jets 16 bins are considered between $25 \GeV$ and $160 \GeV$, while for the b-quark jets 18 bins are used between $30 \GeV$ and $230 \GeV$.
+In order to ensure sufficient statistics is available throughout the entire energy-range, only the basic event-selection requirements have been applied. So the fine-tuning criteria discussed in Section~\ref{sec::SpecificSelec} are not taken into account when determining the transfer functions.
+\\
+Hence for each of the considered $E_{parton}$-bins a measurement of the five $E$-dependent parameters representing the double-Gaussian transfer function is obtained.
+The $E$-dependency of these transfer-function parameters is based on the parametrisation of the calorimeter energy resolution, which corresponds to $y$ = $a + b \sqrt{E} + c E$.
+However, in order to ensure the parameters are well described by this parameterisation, a quadratic term, or for some parameters even a cubic term, has been added. An overview of the imposed $E$-dependency for the different $a_i$ parameters can be found in Table~\ref{table::EDependency}.
+\\
+\begin{table}[h!tp]
+ \centering
+ \caption{Imposed $E$-dependency of the different transfer-function parameters. Only in three cases the additional cubic function was necessary to obain a good description of the corresponding parameter.} \label{table::EDependency}
+ \renewcommand{\arraystretch}{1.2}
+ \begin{tabular}{|c|c|}
+  \hline
+  Light-jet parameters 								& b-quark jet parameters 							\\
+  \hline
+  $a_{1,0} + a_{1,1}\sqrt{E} + a_{1,2} E + a_{1,3} E^{2} + a_{1,4} E^{3}$ 	& $a_{1,0} + a_{1,1}\sqrt{E} + a_{1,2} E + a_{1,3} E^{2} + a_{1,4} E^{3}$ 	\\
+  $a_{2,0} + a_{2,1}\sqrt{E} + a_{2,2} E + a_{2,3} E^{2}$ 			& $a_{2,0} + a_{2,1}\sqrt{E} + a_{2,2} E + a_{2,3} E^{2}$		 	\\
+  $a_{3,0} + a_{3,1}\sqrt{E} + a_{3,2} E + a_{3,3} E^{2}$		 	& $a_{3,0} + a_{3,1}\sqrt{E} + a_{3,2} E + a_{3,3} E^{2} + a_{3,4} E^{3}$ 	\\
+  $a_{4,0} + a_{4,1}\sqrt{E} + a_{4,2} E + a_{4,3} E^{2}$		 	& $a_{4,0} + a_{4,1}\sqrt{E} + a_{4,2} E + a_{4,3} E^{2}$		 	\\
+  $a_{5,0} + a_{5,1}\sqrt{E} + a_{5,2} E + a_{5,3} E^{2}$		 	& $a_{5,0} + a_{5,1}\sqrt{E} + a_{5,2} E + a_{5,3} E^{2}$ 			\\
+  \hline
+ \end{tabular}
+\end{table}
+
+The two-dimensional histogram showing the $E_{parton}$ distribution with respect to the $\Delta E$ distribution for both the light- and heavy-flavoured jets can be found in Figure~\ref{fig::TF2DPlot}, respectively the left and right plot.
+Comparing the two distributions allows to conclude that it is indeed beneficial to treat both types of jets independently since a wider $\Delta E$ distribution is clearly visible for the b-quark jets.
+\\
+Figure~\ref{fig::TFSlices} contains some examples of the $\Delta E$ distribution obtained for some specific parton-level energy bins. The two upper plots correspond to the light-flavoured jets while the two lower ones depict the situation for the heavy-flavoured ones.
+In order to visualise the importance of using a double-Gaussian description for the transfer functions of the jet energies, the left distribution gives the distribution for the relatively low parton energies while the right corresponds to one of the more outer bins of the considered energy range.
+As can be seen, the range where the double-Gaussian fit is applied has been optimised for each of the considered bins of $E_{parton}$.
+
+\begin{figure}[h!tp]
+ \centering
+ \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter5_MadWeight/Figures/Light_DiffEVsGenE.pdf} \hspace{0.2cm}
+ \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter5_MadWeight/Figures/BJet_DiffEVsGenE.pdf} 
+ \caption{Two-dimensional histogram showing the parton energy $E_{parton}$ with respect to the difference in energy with the matched jet, $\Delta E$ for the light jets (left) and the b-quark jets (right). The transfer-function is determined from these histograms by fitting the $y$-axis projection of each considered $x$-axis bin with a double-Gaussian.} \label{fig::TF2DPlot}
+\end{figure}
+
+\begin{figure}[h!tp]
+ \centering
+ \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter5_MadWeight/Figures/sliceYbin2And3_Light_DiffEVsGenE.pdf} \hspace{0.2cm}
+ \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter5_MadWeight/Figures/sliceYbin12And13_Light_DiffEVsGenE.pdf} \vspace{0.1cm} \\
+ \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter5_MadWeight/Figures/sliceYbin3_BJet_DiffEVsGenE.pdf} \hspace{0.2cm}
+ \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter5_MadWeight/Figures/sliceYbin12And14_BJet_DiffEVsGenE.pdf}
+ \caption{Distribution of the difference in energy between the parton-level and reconstructed object for both the light jets (upper two) and the b-quark jets (lower two) fitted with a double-Gaussian function. The different shape for lower (left) and higher (right) energy values is clearly visible.} 
+\end{figure}
+
+Finally, the obtained $E$-dependent shape of the five parameters describing the double-Gaussian transfer function is given in Figure~\ref{fig::TFLight} and \ref{fig::TFBJet} for the light and b-quark jets, respectively. In case some of the considered $\Delta E$ distributions was low on statistics, it has been combined with one of the surrounding bins in order to ensure sufficient information was available for the double-Gaussian fit.
+This effect is clearly visible in the depicted measurement points, especially at the edges of the considered energy range where the number of events started to decrease.
+
+\begin{figure}[h!tp]
+ \centering
+ \includegraphics[width = 0.46 \textwidth]{Chapters/Chapter5_MadWeight/Figures/Light_DiffEVsGenE_a1_Fit.pdf} \hspace{0.2cm}
+ \includegraphics[width = 0.46 \textwidth]{Chapters/Chapter5_MadWeight/Figures/Light_DiffEVsGenE_a2_Fit.pdf} \vspace{0.3cm} \\
+ \includegraphics[width = 0.46 \textwidth]{Chapters/Chapter5_MadWeight/Figures/Light_DiffEVsGenE_a3_Fit.pdf} \hspace{0.2cm}
+ \includegraphics[width = 0.46 \textwidth]{Chapters/Chapter5_MadWeight/Figures/Light_DiffEVsGenE_a4_Fit.pdf} \vspace{0.3cm} \\
+ \includegraphics[width = 0.46 \textwidth]{Chapters/Chapter5_MadWeight/Figures/Light_DiffEVsGenE_a5_Fit.pdf}
+ \caption{Obtained shape for the five $E$-dependent parameters describing the double-Gaussian transfer function for the light-flavoured jets. This has been fitted with the corresponding parametrisation given in Table~\ref{table::EDependency}.} \label{fig::TFLight}
+\end{figure}
+
+\begin{figure}[h!tp]
+ \centering
+ \includegraphics[width = 0.46 \textwidth]{Chapters/Chapter5_MadWeight/Figures/BJet_DiffEVsGenE_a1_Fit.pdf} \hspace{0.2cm}
+ \includegraphics[width = 0.46 \textwidth]{Chapters/Chapter5_MadWeight/Figures/BJet_DiffEVsGenE_a2_Fit.pdf} \vspace{0.2cm} \\
+ \includegraphics[width = 0.46 \textwidth]{Chapters/Chapter5_MadWeight/Figures/BJet_DiffEVsGenE_a3_Fit.pdf} \hspace{0.2cm}
+ \includegraphics[width = 0.46 \textwidth]{Chapters/Chapter5_MadWeight/Figures/BJet_DiffEVsGenE_a4_Fit.pdf} \vspace{0.2cm} \\
+ \includegraphics[width = 0.46 \textwidth]{Chapters/Chapter5_MadWeight/Figures/BJet_DiffEVsGenE_a5_Fit.pdf}
+ \caption{Obtained shape for the five $E$-dependent parameters describing the double-Gaussian jet transfer function for the b-flavoured jets. This has been fitted with the corresponding parametrisation given in Table~\ref{table::EDependency}.} \label{fig::TFBJet}
+\end{figure}
+
+~~~
+
+%Due to the introduced assumptions, the applicability of the Matrix Element method will need to be tested in detail in order to ensure it is not affected by a bias, as will be discussed in Section~\ref{sec::EstimatorProp}.
+%\\
+%\textit{But in my case linearity test is not performed using the Transfer Functions discussed here!!}
+
+\section{Cross-section  normalisation} \label{sec::Norm}
 \textit{Since it is here a rather general case, first the method for generator-level events can be mentioned and then the difference with reconstructed collision events can be made perfectly clear.}
 
 An important aspect of the Matrix Element method is the normalisation of the event probability using the cross-section and acceptance, which might vary significantly for the considered configurations. For the top-quark mass example given in Section~\ref{sec::TopMass}, the effect of this normalisation was negligible but for the measurement of the anomalous coupling coefficient this factor has proven to be rather important. The method opted for in this analysis to determine these cross-section values will be explained in Section~\ref{subsec::XSReco}.
@@ -186,7 +307,7 @@ The final result of the cross-section calculation can be found in Figure~\ref{fi
 \textbf{Remark: Used luminosity and number of events do not seem to be correct!}
 \begin{figure}[h!t]
  \centering
- \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter6_Analysis/Figures/XSDistributions.pdf}
+ \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter5_MadWeight/Figures/DerivedXSDistribution_gRCoefficient.pdf}
  \caption{Overview of the distribution of the generator-level cross-sections for different $\gR$ values and the reconstructed ones derived from them by applying the ratio $\sigma_{SM}^{reco}$/$\sigma_{SM}^{gen}$.} \label{fig::XSDistr}
 \end{figure}
 
@@ -199,35 +320,78 @@ The final result of the cross-section calculation can be found in Figure~\ref{fi
 %\\
 %Since the cross-section should be include the effect of the event selection, the different MadGraph samples have to fullfill the different kinematic requirements given in Table~\ref{table::GenCuts}. The three different contributions are then added in order to obtain an overall cross-section for the \textbf{inclusive} 2-jet case, for which the results have been summarised in the second column of Table~\ref{table::XSValues}.
 %The third column contains the cross-section values that will be applied for the measurement using the reconstructed events, and have been obtained by scaling the cross-section for each $\gR$ value with the fraction $\sigma_{SM}^{reco}$/$\sigma_{SM}^{gen}$. This ratio corrects the generator-level cross-sections to the expected reco-level one and can be applied onto all $\gR$ configurations since the relative effect of the event selection is already been incorporated by applying the basic event selection requirements on the MadGraph samples. The value $\sigma_{SM}^{reco}$ has been determined by dividing the number of selected events with the total number of events present in the sample and multiplying this with the cross-section of the semi-leptonic $\ttbar$ sample, which thus corresponds to multiplying the selected number of events with the luminosity of the simulated sample. The distribution of the generator-level cross-sections and the reconstructed ones is given in Figure~\ref{fig::XSDistr} and serves as an easy way to determine the reconstructed cross-section for other $\gR$ values if required.
-%
-%\begin{table}[h!t]
-%  \centering
-%  \caption{Overview of the cross-section values used for the reconstructed events together with the inclusive $\ttbar$+2jet events from which they have been derived. \textbf{Maybe redundant if figure is %given ..}} \label{table::XSValues}
-%  \small
-%  %\begin{tabular}{|c||c|c|c|c||c|}
-%  \begin{tabular}{|c|c|c|}
-%   \hline
-%%   $\gR$ coefficient 	& $\ttbar$+0j ($\pbinv$) 	& $\ttbar$+1j ($\pbinv$) 	& $\ttbar$+2j ($\pbinv$) 	& Incl. $\ttbar$+2j 	& $\ttbar$ reco ($\pbinv$) 	\\
-%   $\gR$ coefficient 	& Incl. $\ttbar$ + 2 jets ($\pbinv$) 	& $\ttbar$ reco ($\pbinv$) 	\\
-%   \hline
-%   \hline
-%   -0.2  		& 3.34036				& 0.947244 			\\
-%   -0.15		& 4.01717				& 1.13624			\\
-%   -0.1 		& 4.84056				& 1.36448			\\
-%   -0.05		& 5.82329 				& 1.63952			\\
-%   0.0 		& 6.98981 				& 1.96892			\\
-%   0.05		& 8.37733 				& 2.36027			\\
-%   0.1 		& 10.0153 				& 2.82111			\\
-%   0.15		& 11.9024 				& 3.35903			\\
-%   0.2 		& 14.0873 				& 3.98157			\\
-%   \hline
-%  \end{tabular}
-%\end{table}
 
-\section{Matrix Element method in practice} \label{sec::MEMExample}
-\subsection{Extracting information from the likelihood}
-Will use parabola through tree inner points! (No, because this does not work for the linearity curve!)\\
-Thus will keep this as a systematic!
+\section{The Matrix Element method in practice} \label{sec::MEMExample}   %Practical application of the Matrix Element method
 
-\subsection{Determining the top-quark mass using the Matrix Element method}
-Sample created using 4000 correct semi-leptonic $\ttbar$ events.
+In order to apply the Matrix Element method, or more specifically the MadWeight integration procedure, the experimental information should be provided in a predefined format. For each particle in the event topology, including the missing energy representing the neutrino, the transverse momentum, the pseudo-rapidity, the azimuthal angle and the mass should be given.
+The transverse momentum is then internally converted into a transverse energy, using the provided mass value, to ensure the available phase-space information can be accessed by the transfer functions.
+\\
+The actual integration procedure is performed in a straightforward manner and can be applied on any parameter described by the considered theoretical model. 
+The different parameter values that need to be calculated have to be specified, and the integration procedure will then provide an event probability for each of these parameter values.
+%The corresponding weight that is obtained from this integration procedure is merely a representation of the integration procedure and can not be used
+\\
+\\
+Unfortunately for a tiny fraction of events the integration procedure fails to converge and is thus not capable of providing an event probability. 
+In some cases this occurs for merely one of the considered parameter values, but nevertheless the entire event should be excluded in order to avoid having a biased overall likelihood.
+This is however not a significant effect since even for the most affected sample, this corresponds to less than $0.7\%$ of the events in this analysis.
+It has been ensured that the data sample is unaffected by this feature and thus has the full statistics available.
+\\
+
+The practical application of the Matrix Element method will be demonstrated by measuring the top-quark mass, a parameter for which this advanced technique has been used extensively.
+Since the top-quark mass is accurately determined in the Standard Model, this measurement allows to observe any possible bias which can be introduced by applying this procedure.
+The measurement has been performed both on generator-level events and on a limited number of simulated $\ttbar$ events fulfilling the full list of event-selection criteria discussed before.
+\\
+%In order to ensure the reconstructed events bear sufficient information to perform the measurement using the limited statistics, 
+%In order to ensure the considered events had sufficient information for providing an accurate measurement, the study of the reconstructed events has been restricted to $\ttbar$ events for which each jet in the reconstructed event topology has been correctly matched with the corresponding parton.
+Since this measurement serves merely as an illustrative example, the study of the reconstructed events will be restricted to $4000$ $\ttbar$ events for which each jet in the reconstructed event topology has been correctly matched with the corresponding parton. 
+\textit{Hence, this will allow to obtain an accurate top-quark mass measurement with the considered limited statistics.}
+\\
+\\
+Before the actual measurement of the top-quark mass can be performed, the cross-section values for the reconstructed events have to be determined following the same procedure as explained in Section~\ref{sec::Norm}. The obtained results is shown in Figure~\ref{fig::XSDistrTop} and clearly indicates that the top-quark mass depends less heavily on the cross-section than the $\gR$ coefficient in Figure~\ref{fig::XSDistr}. 
+\textit{This implies that the importance of this cross-section normalisation is less significant for the measurement of the top-quark mass and that an incorrect determination will influence the overall result less.}
+\\
+\begin{figure}[h!t]
+ \centering
+ \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter5_MadWeight/Figures/DerivedXSDistribution_TopMass.pdf}
+ \caption{Overview of the distribution of the generator-level cross-sections for different top-quark mass values and the reconstructed ones derived from them by applying the ratio $\sigma_{SM}^{reco}$/$\sigma_{SM}^{gen}$.} \label{fig::XSDistrTop}
+\end{figure}
+
+The strenght of the Matrix Element method finds its origin in the fact that it analyses each event individually, assigns a probability to corresponds with the presumed hypothesis and then combines this information into one overall likelihood.
+Hence events for which the reconstructed event topology and kinematic information corresponds well with the considered process will therefore contain the most relevent information and are supposed to contribute on average the most to the overall result.
+\\
+The difficulty of extracting information on an event-by-event basis can be visualised in Figure~\ref{fig::EvtProbsMTGen} where a number of event probabilities are shown for the top-quark mass measurement using generator-level events. This clearly indicates that a large fraction of the events actually has little relevant information available on the theoretical assumption.
+Nevertheles, the Matrix Element method is capable of combinining all the separate event probabilities into a overall likelihood from which the theoretical parameter can be extracted in a very accurate manner, as can be seen from the bottom plot in Figure~\ref{fig::EvtProbsMTGen}.
+\\
+\begin{figure}[h!tb]
+ \centering
+ \includegraphics[width = 0.31 \textwidth]{image.png} \vspace{0.2cm}
+ \includegraphics[width = 0.31 \textwidth]{image.png} \vspace{0.2cm}
+ \includegraphics[width = 0.31 \textwidth]{image.png} \hspace{0.1cm} \\
+ \includegraphics[width = 0.31 \textwidth]{image.png} \vspace{0.2cm}
+ \includegraphics[width = 0.31 \textwidth]{image.png} \vspace{0.2cm}
+ \includegraphics[width = 0.31 \textwidth]{image.png} \hspace{0.1cm} \\
+ \includegraphics[width = 0.4 \textwidth]{image.png}
+ \caption{Individual event probabilities for the measurement of the top-quark mass (upper two rows) which eventually result in the overall likelihood (last row) from which the mass can be extracted.} \label{fig::EvtProbsMTGen}
+\end{figure}
+
+The same behaviour is observed 
+
+\begin{figure}[h!tb]
+ \centering
+ \includegraphics[width = 0.31 \textwidth]{image.png} \vspace{0.2cm}
+ \includegraphics[width = 0.31 \textwidth]{image.png} \vspace{0.2cm}
+ \includegraphics[width = 0.31 \textwidth]{image.png} \hspace{0.1cm} \\
+ \includegraphics[width = 0.31 \textwidth]{image.png} \vspace{0.2cm}
+ \includegraphics[width = 0.31 \textwidth]{image.png} \vspace{0.2cm}
+ \includegraphics[width = 0.31 \textwidth]{image.png} \hspace{0.1cm} \\
+ \includegraphics[width = 0.4 \textwidth]{image.png}
+ \caption{Individual event probabilities for the measurement of the top-quark mass (upper two rows) which eventually result in the overall likelihood (last row) from which the mass can be extracted.} \label{fig::EvtProbsMT}
+\end{figure}
+
+\begin{eqnarray}
+ m_{top}^{MadGraph} & = &  \\
+ m_{top}^{\ttbar ~ MC} & = & 
+\end{eqnarray}
+
+
+
