@@ -110,12 +110,12 @@ The deviation from the expected distribution outside the region of interest are 
 %********************************
 %Question: Fit also done by excluding the outer bins?
 %********************************
-
+%
 %Some conclusions
 %The performed linearity test has clearly indicated that both the model and method are behaving accordingly and that the obtained results are independent of the considered coupling coefficient.
 %Hence, no calibration is required to restore the expected linear behaviour of the Matrix Element method.
 
-\subsection{Offset calibration}
+\subsection{Offset calibration} \label{subsec::CutValue}
 
 The goal of this second performance test is to determine whether the outcome of the Matrix Element estimator is influenced by a bias.
 Even though the linearity test has proven that an excellent agreement exists when analysing generator-level events, both for the slope and the bias, this cannot be generalised to reconstructed events.
@@ -156,11 +156,11 @@ The reconstructed-level distribution seems to suggest that a fraction of events 
 \\
 \begin{figure}[h!t]
  \centering
- \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/SMLikelihoodValue_GenEventsSM.pdf} \hspace{0.3cm}
+ \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/SMLikelihoodValue_MG.pdf} \hspace{0.3cm}
  %Taken from directory: Events_CalibCurve/CalibCurve_SemiMu_RgR_AllDeltaTF_MGSampleSM_20000Evts_CutsAlsoOnMET/SMLikelihoodValue_GenEventsSM.pdf
- \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/SMLikelihoodValue_RecoEvents_MyTF.pdf}
+ \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/SMLikelihoodValue_RECO.pdf}
  %--> Update this!!
- \caption{Distribution of the $\NegLLEvt$ value for the $\gR$ = $0.0$ configuration for both the generator- (left) and reconstructed-level (right) events.} \label{fig::SMLik}
+ \caption{Normalised distribution of the $\NegLLEvt$ value for the $\gR$ = $0.0$ configuration for both the generator- (left) and reconstructed-level (right) events.} \label{fig::SMLik}
 \end{figure}
 
 In order to ensure this behaviour is not influenced by wrongly reconstructed event topologies, the same procedure has also been applied onto a sample containing simulated $\ttbar$ events for which at least one jet has not been matched with the correct generator-level parton.
@@ -260,9 +260,9 @@ From this the $\NegLLEvt$ value is determined for which no bias is observed, cor
 \end{figure}
 
 %Result obtained for all MC samples combined!
-With this $\NegLLEvt$ cut applied, not only the minimum is recovered at the correct location but also the obtained distribution corresponds nicely with the expected Gaussian behaviour.
-This distribution, which is fitted with a Gaussian function in order to determine the optimal value of the Matrix Element estimator, is given in Figure~\ref{fig::MinNominal}.
-The value of $\gR$ which is extracted from this distribution for the full collection of simulated events corresponds to -0.0015 $\pm$ 0.0089, which is statistically compatible with $0$.
+With this $\NegLLEvt$ cut applied, not only the minimum is recovered at the correct location but also the obtained $\DeltaChi$ curve corresponds nicely with the expected Gaussian behaviour.
+This curve, which is fitted with a quadratic function in order to determine the optimal value of the Matrix Element estimator, is given in Figure~\ref{fig::MinNominal}.
+The value of $\gR$ which is extracted from this function for the full collection of simulated events corresponds to -0.0015 $\pm$ 0.0089, which is statistically compatible with $0$.
 \\
 \begin{figure}[h!t]
  \centering
@@ -363,149 +363,242 @@ The different performance tests discussed in the previous section have clearly i
 Hence the full analysis procedure can now be applied on the data events collected by the CMS experiment in order to determine the value of the right-handed tensor coupling of the Wtb interaction.
 
 \subsection{Results on data}
-Applying the analysis procedure on the actual data events resulted in the $\DeltaChi$ distribution, obtained by converting the negative likelihood values into a $\chi^{2}$ distribution, visible in Figure~\ref{fig::MinData}.
-As was the case for the simulated samples, this distribution indicates a Gaussian behaviour, especially in the proximity of the Standard Model configuration where the theory of the Wtb interaction is well described by the developed model.
+Following the same procedure, the $\DeltaChi$ values obtained from the integration of the Matrix Element method for each $\gR$ configuration in the considered range are given in Figure~\ref{fig::MinData}.
+The outcome of the Matrix Element estimator is then determined by fitting the obtained $\DeltaChi$ curve with a 2$^{nd}$ degree polynomial, since a Gaussian behaviour is assumed.
 \begin{figure}[h!t]
  \centering
- \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter6_Analysis/Figures/MinimumDistribution_Data.pdf}
+ \includegraphics[width = 0.75 \textwidth]{Chapters/Chapter6_Analysis/Figures/MinimumDistribution_Data.pdf}
  \caption{Obtained $\DeltaChi$ distribution for the data-sample at $8 \TeV$.} \label{fig::MinData}
 \end{figure}
 
-The most optimal value of the scanned theoretical parameter is determined from the minimisation of the Gaussian fit applied on the overall $\DeltaChi$ distribution of Figure~\ref{fig::MinData}.
-Since the most outer points of the considered $\gR$ range deviate the most from the expected Gaussian behaviour, they have been excluded from the fit.
-This corresponds to the general extraction procedure which is applied in this thesis, as was explained in Section~\ref{}.
-Hence, the obtained value for the right-handed tensor coupling calculated using the selected data events is:
+Applying the minimisation method on this fitted function results in a $\gR$-value for the selected data events of:
 \begin{equation} \label{eq::DataResult}
  \gR = 0.0071 \pm 0.0083
 \end{equation}
-Comparing the uncertainty of the data sample with the value expected from the statistical properties of the Matrix Element estimator, discussed in Section~\ref{subsec::StatProp}, indicates an excellent agreement is retrieved.
-The obtained result is statistically compatible with $0$, implying that no deviation from the Standard Model is observed.
+This value of the right-handed tensor coupling of the Wtb interaction vertex indicates an excellent agreement with the Standard Model, indicating that this measurement did not observe any influence of anomalous couplings in the decay of top-quark pairs.
+The statistical uncertainty obtained for the data events can be compared with the uncertainty expected from the study of the statistical properties of the Matrix Element estimator, which have been discussed in Section~\ref{subsec::StatProp}.
+Also here an excellent agreement is obtained.
 
 \subsection{Systematic uncertainties}
 
-The outcome of the Matrix Element estimator can be significantly affected by ..., or so-called systematic uncertainties.
-This influence is determined purely from simulated samples, by varying the corresponding parameter up and down with one standard deviation.
-Both the up and down contribution is then compared to the nominal value and the two are added quadratically.
+Several systematic effects might change the outcome of the Matrix Element estimator and their influence should be carefully investigated.
+Such a systematic uncertainty can can be caused by several sources: an incomplete understanding of the detector performance which then results in an incorrect modelling of the simulation, the assumptions made in the likelihood-extraction procedure, or even by the algorithms used during the reconstruction process.
+%*************************
+% Is this last one correct ? Is there any systematic that I'm studying which is influenced by this ... (Or should jet reconstruction actually be insensitive to JES if it would be well reconstructed)...
+%*************************
 \\
+Their effect can in general be determined by varying the parameter responsible for the considered systematic uncertainty up- and downwards with one standard deviaton for the entire collection of considered simulation samples.
+The average difference between the two obtained $\gR$-values is defined as the systematic uncertainy in this analysis, unless if the corresponding statistical uncertainty is larger than the actual systematic uncertainty.
+\begin{equation} \label{eq::Syst}
+ \Delta \gR =  \frac{\vert \gR^{\textrm{down}} - \gR^{\textrm{up}} \vert}{2} %\pm \frac{\sqrt{\sigma(\gR^{down})^2 + \sigma(\gR^{up})^2}}{2}
+\end{equation}
+
+The complexity of the Matrix Element method has an important consequence for the way the systematic uncertainties are evaluated in this analysis.
+Since for some of the considered systematic effects this up- and downwards shift results in altered kinematics, the entire Matrix Element method has to be repeated.
+Normally this should be done for all considered simulation samples but due to the long processing time this would involve, it has been opted for to only consider the relevant samples.
 \\
-For this analysis, not every systematic uncertainty will be determined using the full collection of simulation samples due to the long processing time this would require.
-Since the event selection procedure, discussed in detail in Section~\ref{ch::EvtSel}, has been developed to reduce the contribution of the background samples as much as possible, the considered simulated samples are supposed to be dominated by $\ttbar$ events.
-This is indeed the case, the main background corresponds to a fraction of $...\%$ of the total simulation, and the influence of these background samples on the outcome of the Matrix Element estimator is summarised in Table~\ref{table::BckInfl}.
-\\
-Here the value obtained from the minimisation procedure for the different simulation samples combined with the main $\ttbar$ sample is given. Hence the individual influence of each background sample can be estimated by comparing the combined results\footnote{The reason why the effect of the different background samples is not given separately is because the Matrix Element method is not capable of correctly determining the value of the estimator for such a reduced number of events. Hence the statistical fluctuations on the $\NegLLEvt$ values are significantly larger such that no Gaussian behaviour can be recovered. Hence their influence can only be determined using this combined approach.} with the result of this main $\ttbar$ sample given in the first row.
-Even though some deviations exist between the different background samples, they are all covered by the corresponding statistical uncertainty.
+This is an acceptable approach to take since the contribution of the considered background samples is almost negligible due to the stringent event selection.
+Their small relative contribution to the overall $\NegLL$ value implies that the background samples almost do not influence the overall $\gR$-value.
+However, since the different background samples are statistically limited, no individual $\gR$ measurement can be performed. 
+Nevertheless, a combination with the signal sample is possible such that a $\gR$-value can be extracted from the corresponding combined $\DeltaChi$ curve.
+The outcome obtained for the different background samples is summarised in Table~\ref{table::BckInfl}.
 \\
 \begin{table}[h!t]
  \centering
- \caption{Outcome of the Matrix Element estimator for the different simulation samples considered. The influence of the background samples are determined by combining them with the main $\ttbar$ sample, which is the dominant sample remaining after the stringent event selection that is applied. (\textit{Should the MC lumi uncertainty be used here?})} \label{table::BckInfl}
+ \caption{Obtained result of the Matrix Element estimator when combining the signal sample ($\ttbar$) with the different background samples considered. (\textit{Use MC lumi for unc?})} \label{table::BckInfl}
  \renewcommand{\arraystretch}{1.2}
- \begin{tabular}{c|c}
-  Sample 			& Minimum 			\\
+ \begin{tabular}{|c|c|}
+  \hline
+  Sample 			& Extracted $\gR$-value 			\\
   \hline
   $\ttbar$ 			&  0.0013 $\pm$ 0.0090		\\
   $\ttbar$ + Single top 	&  -0.0010 $\pm$ 0.0089		\\
-  $\ttbar$ + W-jets (4j) 	&  0.0009 $\pm$ 0.0090		\\
-  $\ttbar$ + Z-jets (4j) 	&  0.0013 $\pm$ 0.0090		\\
+  $\ttbar$ + W-jets  		&  0.0009 $\pm$ 0.0090		\\
+  $\ttbar$ + Z-jets 	 	&  0.0013 $\pm$ 0.0090		\\
   \hline
-  Total MC 			& -0.0015 $\pm$ 0.0089 		
+  Total simulation 		& -0.0015 $\pm$ 0.0089 		\\
+  \hline
  \end{tabular}
 \end{table}
 
-Hence for most of the considered systematic uncertainties, which will be discussed in detail below, only the main $\ttbar$ sample will be considered. 
-The only exception is for the influence observed when varying the \textit{energy scale of the jets }, where the contribution of the single-top events, the main background, will be taken into account.
+Table~\ref{table::BckInfl} clearly indicates that only the contribution of the single-top quark decays affects the obtained $\gR$-value.
+Hence this simulation sample will still be taken into account for the computation of the jet energy scale uncertainty, which is expected to be one of the dominating systematic effects of this measurement.
+The systematic uncertainty corresponding to the jet energy resolution on the other hand is presumed to be much smaller and will therefore be determined using only the signal $\ttbar$ sample.
+Nevertheless, since the up- and downwards shift of the relevant parameter are compared to eachother, the obtained systematic uncertainty is not supposed to depend heavily on the set of simulation samples considered.
 \\
-\textit{Give a reason why!!}
+\\
+The remaining systematic uncertainties that have been studied do not change the kinematics of the event, but simply alter the relative contribution of each event to the overall $\NegLL$ value. 
+Hence the full set of simulation samples will be considered for these systematic effects, which are believed to be less significant in this analysis since they only shift the overall $\DeltaChi$ curve up- or downwards without actually altering its shape.
+Besides the fact that the samples already have been created and thus no effort is required to use all simulated samples, this also has as advantage that in case the considered systematic is dominated by the corresponding statistical uncertainty this value is determined using all the available statistics.
+\\
 
+Once the method to assess the different systematic uncertainties has been established, their effect has been propagated to the outcome of the Matrix Element estimator.
+The influence of each considered systematic uncertainty can be found in Table~\ref{table::SystValues}, where the values highlighted using boldface font represent the actual uncertainty used to determine the total systematic effect.
+From this summarised overview can directly be concluded that the majority of the considered systematic uncertainties is dominated by the corresponding statistical uncertainty and thus have a very small
+influence.
+A more detailed evaluation of the different systematic uncertainties can be found below.
+\\
+\begin{table}[h!t]
+ \centering
+ \caption{Overview of the different systematic uncertainties considered for the measurement of the right-handed tensor coupling $\gR$. For each contribution the larger among the estimated shift and its statistical uncertainty is quoted, as indicated by the bold script.} \label{table::SystValues}
+ \renewcommand{\arraystretch}{1.2}
+ \begin{tabular}{|c|c|}
+  \hline
+  Source 				& Estimated effect on $\gR$ 	\\
+  \hline
+  Likelihood extraction procedure 	& \textbf{0.0071} $\pm$ 0.0030 	\\
+  Jet energy scale 	 		& \textbf{0.0056} $\pm$ 0.0018 	\\
+  Jet energy resolution 		& 0.0010 $\pm$  \textbf{0.0019} 				\\
+  b-tagging efficiency 			& 0.00001 $\pm$ \textbf{0.00185} 	\\
+  mis-tagging efficiency  		& 0.00004 $\pm$ \textbf{0.00185} 	\\
+  Pileup reweighting  			& 0.0008 $\pm$ \textbf{0.0019} 	\\
+  Background composition 	 	& 0.0011 $\pm$ \textbf{0.0019} 	\\
+  %Matching 				& \textcolor{red}{0.0097 $\pm$ 0.0059}		\\
+  %Scaling 				& \textcolor{red}{Something wrong ...}		\\
+  \hline
+  Total 				& 0.010				\\
+  \hline
+ \end{tabular}
+\end{table}
+
+%\newpage
 \begin{myindentpar}
   \begin{description}
+    \item[Likelihood-extraction procedure -- Maybe give this later, or just drop] \hfill \\
+    The most important systematic uncertainty of the performed measurement is related to the procedure developed to extract the $\gR$ coefficient from the $\DeltaChi$-curve obtained from the Matrix Element method.
+    In this procedure it is assumed that the curve describing the $\DeltaChi$ points calculated by the Matrix Element method exhibits a Gaussian behaviour and can thus be fitted by a quadratic function.
+    However, for the points located at the edges of the considered range, deviations from the expected shape start to appear and might influence the outcome.
+    \\
+    This possible systematic effect is taken into account by calculating the value of the Matrix Element estimator when the fit is restricted to the inner lowest points of the $\DeltaChi$ curve.
+    Since this systematic has no up- and downscaling component, the uncertainty quoted in Table~\ref{table::SystValues} corresponds to the difference in result observed for the two methods.
+    \\
+    The obtained systematic uncertainty is rather large, which emphasises the significant difference between both approaches. This can be visualised in Figure~\ref{fig::MethodDiff} where both procedures have been applied on the entire collection of simulated events. 
+    However, even though the alternative method is more precise it is missing valuable information obtained from the Matrix Element method further away from the Standard Model point. % where the contribution of the anomalous couplings is likely to be observed. 
+    The discrepancy between the two methods can most likely be reduced if the scanned $\gR$-range is refined in the proximity of Standard Model configuration.
+    %can be explained by the limited number of configuration points measured in the proximity of the minimum (and the lack of uncertainty of the Matrix Element method).
+    \begin{figure}[h!t]
+      \centering
+      \includegraphics[width = 0.65 \textwidth]{Chapters/Chapter6_Analysis/Figures/MinimumExtractionMethod_MC.pdf}
+      \caption{Comparison between the two considered likelihood-extraction procedures in order to determine the systematic uncertainty related to the curve used in the minimisation method. The dashed light-blue curve is obtained using only the three inner points while the solid red line corresponds to the standard method where only the two outer points are discarded from the fit.} \label{fig::MethodDiff}
+     \end{figure}
+
     \item[Jet Energy scale] \hfill \\
+    The energy of the reconstructed PF jets is calibrated using dedicated $\pT$- and $\eta$-dependent jet energy scale calibrations, as was explained in Section~\ref{subsec::JetReco}.
+    Since the Matrix Element method evaluates in a direct manner the kinematics of the different final state particles in the event, this uncertainty should be propagated to the Matrix Element estimator.
+    The effect of changing the jet energy on the outcome of the $\gR$ measurement is rather significant, but understandable since the considered event topology consists of four jets.
+    %Since the considered event topology consists of four jets, it is expected that changing the jet energy has a significant effect on the $\gR$ measurement.
+    %Due to the presence of four jets in the event topology, this is the most dominant systematic uncertainty for this analysis. (\textbf{Certain this is correct ...?})    
+    
+    %Since this probably affects the Transfer Functions the most, it would have been more correctly to calculate separate transfer functions for the JES up and down case ...
     
     \item[Jet Energy resolution] \hfill \\
+    The different energy resolution observed in data and simulation requires the energy of the simulated events to be smeared using the JER correction factor.
+    %However, since this change in energy can result in a different outcome of the Matrix Element method, the uncertainty on this $\eta$-dependent correction is taken into account.
+    In order to evaluate the possible effect on the Matrix Element estimator, the systematic uncertainty originating from this $\eta$-dependent correction has been calculated but appears to be dominated by the corresponding statistical uncertainty.     
     
-    \item[b-tag (better name)] \hfill \\
+    \item[Efficiency of the b-jet identification] \hfill \\   %Is efficiency the correct word??
+    The different efficiency for the b-jet identification algorithm resulted in $\pT$-dependent scale-factors, which are determined separately for light-flavoured and b- and c-flavoured jets.
+    Even though the scale-factor itself is identical for the $b$- and $c$-quark jets, the uncertainty of the latter one is defined to be double as large. 
+    Since the uncertainties of the light- and heavy-flavoured jets are assumed to be uncorrelated, they have been determined separately.
+    In both cases, the obtained systematic uncertainty is negligible and is dominated by the statistical uncertainty.
+    %\\
+    %Here it has been chosen to determine the systematic uncertainty for the light- and heavy-flavoured jets separately, in order to follow the same procedure as is applied for the other systematic uncertainties. 
+    %Both are dominated by the statistical uncertainty, which is expected since the applied event-selection criteria are developed to . 
+    %It also implies that the Matrix Element method is capable of identifying the event topologies containing relevant information and is not influenced by these b-tag scale-factors. 
+    %\textit{Should it be mentioned that especially the misTag effect is almost invisible?}
     
-    \item[Background contribution] \hfill \\
+    \item[Pileup reweighting] \hfill \\
+    %Shift the number of interactions with $\pm$ $5\%$.
+    The number of additional pile-up interactions in simulation is obtained by reweighting the mean number of interactions in each event. 
+    In order to estimate the effect of this systematic uncertainty, this mean number of interactions has to be shifted with $\pm$ $5\%$.  
+    This takes into account the luminosity uncertainty, the uncertainty on the total inelastic cross-section and even an additional uncertainty to cover the pileup modeling.
+    However, the performed measurementis insensitive to this reweighting procedure and the obtained systematic uncertainty is again dominated by the statistical uncertainty.
         
-    \item[Pileup (?)] \hfill \\
+    \item[Background composition] \hfill \\
+    A different composition of the background samples might alter the obtained $\gR$ value since it will change the relative contribution to the $\DeltaChi$ distribution.
+    The corresponding uncertainty is calculated by varying the background fractions with $100\%$ while keeping the signal $\ttbar$ fraction fixed, which is an extremely conservative approach.
+    However, as already could be deduced from the small effect of the different background samples on the overall simulated result, this systematic uncertainty is dominated by the statistical uncertainty.
+    Hence no effort has been put into changing the background fractions with a less conservative value since the dominating contribution will remain the statistical uncertainty.
+                
+    %\item[Determination of cut-value] \hfill \\
+                
+    %\item[Matching and scaling] \hfill \\
+    %Need to understand what is going wrong for these two samples ...!!
         
-    \item[Likelihood extraction procedure] \hfill \\
-        
-    \item[Determination of cut-value] \hfill \\
-        
-    \item[Background contribution] \hfill \\
-        
-    \item[Matching and scaling] \hfill \\
-        
-    \item[Top $\pT$ reweighting (Still to check!!)] \hfill \\
+    %\item[Top $\pT$ reweighting (Still to check!!)] \hfill \\
+    %Should this be added? (Hope this doesn't mean running MadWeight again ...)
+    
+    %\item[Muon SF (?)] \hfill \\
         
    \end{description}
 \end{myindentpar}
 
-Separate events on the different background samples are not always perfectly described:
-%  semi-lept $\ttbar$ 				&  -0.00266928 $\pm$ 0.00913376		& x					\\
-%  semi-lept $\ttbar$ + full-lept $\ttbar$ 	&  0.00131988 $\pm$ 0.00900069		& x					\\
-%  semi-lept $\ttbar$ + W-jets (4j) 		&  0.000861019 $\pm$ 0.00898589		& -0.0031283 $\pm$ 0.00911829		\\
-%  semi-lept $\ttbar$ + Z-jets (4j) 		&  0.00133939 $\pm$ 0.0089963		& -0.0026453 $\pm$ 0.00912918		\\
-%  semi-lept $\ttbar$ + Single top 		&  -0.00104577 $\pm$ 0.00891448		& -0.00502578 $\pm$ 0.00904371		\\
-%  \hline
-%  Total MC 					& -0.00146672 \pm 0.00889585 	& x
-
-
-Result obtained for JES is (Figure~\ref{fig::MinJESMinus}):
-\begin{eqnarray}
- \textrm{JES Minus: } & \gR = 0.00463076 \pm 0.002599 \\
- \textrm{JES Plus: }  & \gR = -0.00655865 \pm 0.00257043
-\end{eqnarray}
-
-Results obtained for matching are:
-\begin{eqnarray}
- \textrm{Matching down: } & \gR = 0.00733939 \pm 0.00810279 \\
- \textrm{Matching up: }   & \gR = 0.0267044 \pm 0.00856545
-\end{eqnarray}
-
-Results for b-tag systematic have to be combined for the light and b/c result.
-Obtained values are (only using AllTT):
-\begin{eqnarray}
- \textrm{Plus:} & \gR^{bc} = 0.00130204 \pm 0.00258509 \textrm{ and } \gR^{l} = 0.00139988 \pm 0.00264932 \\
- \textrm{Minus:} & \gR^{bc} = 0.00133473 \pm 0.00272017 \textrm{ and } \gR^{l} = 0.00123783 \pm 0.00265251
-\end{eqnarray}
-
-
-%\begin{figure}[h!t]
-% \centering
-% \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter6_Analysis/Figures/FittedGraph_JESMinusResult_TTbarJets.pdf}
-% \caption{Obtained minimum distribution for the JES minus case.} \label{fig::MinJESMinus}
-%\end{figure}
-
-\paragraph{Deviation from Gaussian behaviour} \hfill \\
-Instead of using the parabola through the three inner points as standard method, maybe it is more useful to start with the full fit on all the points and use the 3-point parabola as a systematic check.
+%Mention why the cut-value and background contribution is not added as a systematic!
+Besides the systematic uncertainties discussed above, this measurement is viable to an additional systematic effect that should be investigated in detail.
+This corresponds to the application of the $\NegLLEvt$ cut-value, for which the optimal value is determined using simulation events as was discussed in Section~\ref{subsec::CutValue}.
+In case the conditions for this $\NegLLEvt$ variable in data deviate from those in simulation, implementing this cut might introduce a bias for the data events and thus result in a systematic effect that should be taken into account.
 \\
-This because the linearity test using this parabola option is not that successful due to some fluctuations for the $\gR$ = -0.05 case.
+Hence it has been investigated whether the conditions are similar for data and simulation and whether the optimal cut-value for data corresponds with the one obtained from simulation.
+At first the $\NegLLEvt$ variable evaluated at the Standard Model configuration is compared, as can be seen from the left distribution in Figure~\ref{fig::CutValue}.
+Taking into account the statistical uncertainties on the data sample, an excellent agreement is observed. 
+As a result, it is not expected that the determination of the optimal cut-value will introduce a discrepancy between data and simulation since the behaviour of the tail is similar for both.
+The scan on the different cut-values is shown as the right plot of Figure~\ref{fig::CutValue} and, within the statistical uncertainties, confirms this statement.
 \\
-
-Obtained distribution is not perfectly Gaussian, so here-fore should be corrected for.
-Hence an additional systematic will be introduced which takes into account the deviation from a Gaussian distribution.
 \\
-Result obtained for all MC samples is:
-\begin{eqnarray}
- \textrm{2nd order fit:}     & \gR = -0.00146674 \pm 0.00261996\\
- \textrm{3-point parabola: } & \gR = -0.00857933 \pm 0.0020886
-\end{eqnarray}
-
+The perfect agreement between data and simulation for this cut-value determination indicates that no systematic uncertainty needs to be taken into account for this procedure.
+%Except for the systematic uncertainties listed above, another possible source responsible for introducing a systematic uncertainty on the performed measurement has been studied.
+%It has been investigated whether the chosen $\NegLLEvt$ cut-value does not result in a systematic effect which might change the outcome of the Matrix Element estimator.
+%Since such an effect can only occur in case the conditions in data events deviate from those in simulated events, which is used to calculate the optimal value, an excellent agreement between both should be %recovered.
+%Hence the overall shape obtained distribution for this $\NegLLEvt$ variable evaluated at the Standard Model configuration has been compared and the cut-value determination has also been applied for the data %sample, as can be seen from Figure~\ref{fig::CutValue}.
+%Taking into account the statistical uncertainties on data, this results in an almost identical outcome such that no additional systematic uncertainty for this cut-value is necessary.
+\\
 \begin{figure}[h!t]
  \centering
- \includegraphics[width = 0.65 \textwidth]{Chapters/Chapter6_Analysis/Figures/ComparisonOfTwoFitMethods.pdf}
- \caption{Shows deviation of Gaussian behaviour.}
+ \includegraphics[width = 0.51 \textwidth]{Chapters/Chapter6_Analysis/Figures/StackedPlot_SMLikValue_AllMCAndData.pdf} \hspace{0.3cm}
+ \includegraphics[width = 0.41 \textwidth]{Chapters/Chapter6_Analysis/Figures/MinComp_MSPlot_StraightLineAtZero.pdf}   %Same lumi used (data)!
+ \caption{Evaluation of a possible systematic effect caused by the procedure to determine the optimal cut-value. The perfect agreement obtained for the distribution of the $\NegLLEvt$ variable (left) and the similar outcome, within the statistical uncertainties, for this cut-value (right) indicate no shift should be taken into account.} 
+ \label{fig::CutValue}
 \end{figure}
 
-\paragraph{Cut-value} \hfill \\
-Nice agreement between data and MC (within 1 sigma interval if unweighted MC uncertainty is used), so no systematic needed! 
-Shape is also almost identical for the $\chi^{2}$ distribution evaluated at the Standard Model configuration.\\
-Optimal cut-value differs slightly: 63.396 for data and 63.8764 for all simulated samples.
+%Result obtained for JES is (Maybe possible to give the influence on this SMLik value and the different minimum functions?):
+%\begin{eqnarray}
+% \textrm{JES Minus: } & \gR = 0.00463076 \pm 0.002599 \\
+% \textrm{JES Plus: }  & \gR = -0.00655865 \pm 0.00257043
+%\end{eqnarray}
 
-\begin{figure}[h!t]
- \centering
- \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/StackedPlot_SMLikValue_AllMCAndData.pdf}
- \includegraphics[width = 0.45 \textwidth]{Chapters/Chapter6_Analysis/Figures/MinComp_MSPlot_StraightLineAtZero.pdf}            %Same lumi used (data)!
- \caption{Distribution of the $\NegLLEvt$ variable evaluated at the SM configuration point and the obtained minimum-values for the different cut-values considered both for data (red) and all simulated (black) samples.}
-\end{figure}
+%Results obtained for matching are:
+%\begin{eqnarray}
+% \textrm{Matching down: } & \gR = 0.00733939 \pm 0.00810279 \\
+% \textrm{Matching up: }   & \gR = 0.0267044 \pm 0.00856545
+%\end{eqnarray}
+
+%Results for b-tag systematic have to be combined for the light and b/c result.
+%Obtained values are (only using AllTT):
+%\begin{eqnarray}
+% \textrm{Plus:} & \gR^{bc} = 0.00130204 \pm 0.00258509 \textrm{ and } \gR^{l} = 0.00139988 \pm 0.00264932 \nonumber \\
+% \textrm{Minus:} & \gR^{bc} = 0.00133473 \pm 0.00272017 \textrm{ and } \gR^{l} = 0.00123783 \pm 0.00265251 \nonumber \\
+% \textrm{Nominal:} & \gR = 0.00131995 \pm 0.00265084
+%\end{eqnarray}
+%Obtained values are (only using systMC):
+%\begin{eqnarray}
+% \textrm{Plus:} & \gR^{bc} = -0.00101574 \pm 0.00256493 \textrm{ and } \gR^{l} =  -0.000946789 \pm 0.00262858 \nonumber \\
+% \textrm{Minus:} & \gR^{bc} = -0.00100316 \pm 0.00269887 \textrm{ and } \gR^{l} = -0.00107116 \pm 0.00263181 \nonumber \\
+% \textrm{Nomina:} & \gR = -0.00100778 \pm 0.00263012
+%\end{eqnarray}
+
+%Results obtained for pileup reweighting (AllTT):
+%\begin{eqnarray}
+% \textrm{Plus:} & \gR =  0.000543221 \pm 0.00265971\\
+% \textrm{Minus:} & \gR = 0.00225299 \pm 0.00264266 \\
+% \textrm{Nominal:} & \gR = 0.00131995 \pm 0.00265084
+%\end{eqnarray}
+
+
+The combination of the considered systematic uncertainties with the $\gR$ measurement from the data sample results in a final $\gR$ value equal to:
+\begin{equation}
+ \gR = 0.0071 \, \pm \, 0.0083 \, (\textrm{stat.}) \, \pm \, 0.010  \, (\textrm{syst.})
+\end{equation}
+%This is compatible with the Standard Model hypothesis, which predicts the Wtb interaction is purely represented by the left-handed vector coupling $V_R$.
+%Hence the absence of any anomalous couplings implies $\gR$ is supposed to be equal to $0$.
+This is compatible with the Standard Model hypothesis, which corresponds to a right-handed tensor coupling of $0$; as is the case for the other anomalous couplings; such that the Wtb interaction can be uniquely represented by the left-handed vector coupling $V_L$.
+
