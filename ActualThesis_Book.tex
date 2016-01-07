@@ -139,9 +139,6 @@
 %        \vskip 100\p@
 %  }}
 
-% my hyphenations
-%\hyphenation{si-mu-la-ted stu-died middle-ware re-nor-ma-li-za-tion}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% The document itself %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -149,7 +146,7 @@
 \begin{document}
 %\begin{linenumbers}
 
-% \frontmatter     %Commented temporarily during writing to have the pagenumbers matching with the counter
+\frontmatter     %Commented temporarily during writing to have the pagenumbers matching with the counter
 
 % the titlepage
 %\cleardoublepage
@@ -161,19 +158,19 @@
 %\addcontentsline{toc}{chapter}{Contents}
 \tableofcontents
 
-%\mainmatter        %Commented temporarily during writing to have the pagenumbers matching with the counter
+\mainmatter        %Commented temporarily during writing to have the pagenumbers matching with the counter
 
 % the introduction
 \cleardoublepage
 \phantomsection
-%\addcontentsline{toc}{chapter}{Introduction}
-%\include{Chapters/introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+\include{FrontMatter/introduction}
 
 % the chapters
-%\include{Chapters/Chapter1_SM/chapterSM}
-%\include{Chapters/Chapter2_CERN/chapterCERN}
-%\include{Chapters/Chapter3/chapter3}
-%\include{Chapters/Chapter4_EvtSel/chapterEvtSel}
+\include{Chapters/Chapter1_SM/chapterSM}
+\include{Chapters/Chapter2_CERN/chapterCERN}
+\include{Chapters/Chapter3/chapter3}
+\include{Chapters/Chapter4_EvtSel/chapterEvtSel}
 \include{Chapters/Chapter5_MadWeight/chapterMadWeight}
 \include{Chapters/Chapter6_Analysis/chapterAnalysis}
 %\include{Chapters/Chapter6_Analysis/chapterAnalysis_QuickNotes}
@@ -199,19 +196,25 @@
 \cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{Summary}
-%\include{BackMatter/summary}
+\include{BackMatter/summary}
 
 % resume in dutch
 \cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{Samenvatting}
-%\include{BackMatter/summarydutch}
+\include{BackMatter/summarydutch}
 
 % acknowledgments
 \cleardoublepage
 \phantomsection
 \addcontentsline{toc}{chapter}{Acknowledgements}
 %\include{BackMatter/acknowledgements}
+
+% Abstract Merel
+%\cleardoublepage
+%\phantomsection
+%\addcontentsline{toc}{chapter}{Abstract}
+%\include{BackMatter/abstract}
 
 \cleardoublepage
 

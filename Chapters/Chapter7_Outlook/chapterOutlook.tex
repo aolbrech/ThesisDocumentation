@@ -1,0 +1,93 @@
+\chapter{Conclusions}\label{ch::Concl}
+
+The discovery of the Brout-Englert-Higgs boson in the summer of 2012 provided once again a confirmation of the correctness and the predictive power of the Standard Model.
+Nevertheless several questions remain unanswered and the possible presence of beyond the Standard Model phenomena should be studied in detail.
+The discovery of the top-quark in 1995 by the CDF and D\O~ has provided for an excellent window to search for such effects due to its high mass and large production cross-section at the LHC.
+\\
+The decay of the top-quark is described by the Wtb interaction vertex, which is in the Standard Model exclusively characterised by the left-handed vector coupling.
+The existence of a new-physics phenomena could possibly alter this interaction vertex such that the presence of anomalous couplings should be investigated.
+One of these contributions is represented by the right-handed tensor coupling, which is the coupling coefficient that has been studied in this thesis.
+%The top-quark decays almost exclusively into a W-boson and a bottom quark
+\\
+\\
+All currently available information on this right-handed tensor coupling, and the two remaining anomalous couplings coefficients in the Wtb interaction vertex, is obtained from indirect exclusion limits via the measurement of the W-boson helicity fractions.
+The measurement discussed in detail in Chapter~\ref{ch::Analysis} is the first direct measurement of this right-handed anomalous tensor coupling in the top-quark pair decay vertex.
+%and has been performed using top-quark pair events produced during 
+%In this thesis a first measurement of the right-handed tensor coupling of the anomalous couplings in the top-quark pair decay vertex has been performed using top-quark pair events produced during 2012 at the LHC and recorded by the CMS experiment at a centre-of-mass energy of 8$\TeV$.
+%
+%The measurement of the right-handed tensor coupling performed in this thesis is the first measurement of this coupling coefficient using a direct analysis technique.
+%All previous information about this coupling coefficient, and , have been obtained using exclusion limits from indirect measurements.
+This detailed study has been conducted based on top-quark pair events produced during the 2012 LHC run and recorded by the CMS experiment at a centre-of-mass energy of 8$\TeV$.
+\\
+\\
+As analysis technique it has been opted to use a Matrix Element method since such a technique allows to determine potentially the best estimate of any theoretical parameter given a set of experimental events.
+The Matrix Element method, or more precisely the MadWeight integrator, calculates for each event a probability which represents whether the available kinematic information of this experimental event corresponds with the imposed theoretical assumption, as explained in Section~\ref{sec::MWTheory}. 
+%This calculation has been provided by the fully automated MadWeight integration procedure, which ensures an optimised phase-space mapping of the considered final-state particles in order to allow for a more efficient calculation.
+%Such a Matrix Element method starts from the tree-level matrix-element, which is provided by the MadGraph event generator for the MadWeight integrator, and takes into account the detector inefficiencies through resolution functions.
+\\
+%
+%The Matrix Element method is capable of making maximal use of the information available in an experimental events but is, as a result, a rather computing intensive analysis technique.
+%Hence in this measurement the 
+The measurement obtained using this technique is given below and is in perfect agreement with the predictions of the Standard Model.
+\begin{equation}
+ \gR = -0.0071 \, \pm \, 0.0083 \, (\textrm{stat.}) \, \pm \, 0.0137  \, (\textrm{syst.}) = -0.0071 \, \pm \, 0.0160
+\end{equation}
+
+The uncertainty for this measurement is dominated by the systematic uncertainty, for which the leading ones correspond to the Matrix-Element and Parton-Shower matching and the jet energy scale uncertainties, as was shown in Table~\ref{table::SystValues}.
+Hence a significant improvement for the total uncertainty can be achieved if both systematic effects can be reduced.
+\\
+\\
+The leading systematic, related to the ME-PS matching, is determined using dedicated $\ttbar$ samples but with rather limited statistics. Hence for this systematic effect the corresponding uncertainty is relatively large implying that the actual influence of altering this threshold for the matrix-element matching with the parton-shower cannot be determined accurately enough using the currently available samples.
+A significant gain could possibly be achieved for this systematic effect by for example using NLO generators and using constraints from data.
+%Since the details of this effect are not yet completely mastered, 
+In addition, the applied upwards and downwards scaling with a factor $2$ is also overconservative and should be evaluated.
+\\
+\\
+The second systematic, associated with the jet energy scale uncertainty, can be reduced partially by tightening the event-selection criteria for the transverse momentum $\pT$ since these uncertainties become more significant for lower $\pT$ values.
+In this thesis the applied $\pT$ requirement is rather loose since all jets with $\pT$ above $30 \GeV$ have been considered.
+%This because these uncertainties are more significant for lower $\pT$ jets and in this thesis a rather loose requirement has been applied for the reconstructed jets since their transverse momentum 
+\\
+\\
+The remainder of the systematic uncertainties have been determined in a rather conservative manner.
+Hence once the two leading systematics would be reduced, some minor improvements can still be obtained by looking into the details of the different considered systematics and, if possible, applying a less conservative approach.
+In addition, the strong correlation between the different systematic samples used to determine the effect of the background composition, the b- and mis-tagging efficiency and the pile-up reweighting implies their associated statistical uncertainty is in reality much lower than what is mentioned in Table~\ref{table::SystValues}. This can significantly be improved in case a dedicated resampling technique~\cite{Jackknife} is used to determine the statistical uncertainty on each of these systematic effects.
+\\
+\\
+The statistical uncertainty obtained for this measurement can be improved in a rather straightforward manner by including the electron channel of the semi-leptonic top-quark pair decay.
+%Since this requires a significant processing time and the current measurement is dominated by systematic effects, the electron channel has not been considered.
+This has currently not yet been included since the overall uncertainty on the obtained measurement is dominated by the systematic uncertainties. In addition, adding this electron channel would have doubled the necessary computing time for this analysis and would only result in a limited improvement on the overall uncertainty.
+\\
+\\
+The final result can be compared with the indirect limits obtained from the W-boson helicity measurements performed both by the ATLAS and CMS experiments.
+The most recent limits have been determined by the CMS experiment using $8 \TeV$ data, but have been obtained with single-top quark events.
+These exclusion limits have been given before in Figure~\ref{fig::WtbResults}.
+For the top-quark pair studies, the exclusion limits have currently only been provided for the data recorded at 7$\TeV$, and for the ATLAS experiment even for a limited dataset of merely $1.04 \fbI$.
+\\
+\\
+The 7 TeV exclusion limit from the CMS experiment can be found in Figure~\ref{fig::gRLimitConc}, which shows the real components of the anomalous tensor couplings.
+%single-top quark events at 8 TeV data while the remaining two consider top-quark pair events at 7 TeV.
+%Unfortunately no indirect limit has yet been determined in top-quark pair decays using the entire collection of recorded data at a centre-of-mass energy of $8\TeV$.
+%\\
+%The exclusion limits shown in Figure~\ref{fig::gRLimitConc} for the real components of the anomalous tensor couplings corresponds to the top-quark pair study performed with the most integrated luminosity ($5 \fbI$ recorded by the CMS experiment).
+The $\gR$ value obtained using the direct method discussed in this thesis is clearly in agreement with this $68 \%$ confidence interval and can be used to strengthen the currently existing exclusion limits for this tensor coupling.
+\begin{figure}[h!tp]
+ \centering
+ \includegraphics[width = 0.7 \textwidth]{Chapters/Chapter7_Outlook/Figures/gRLimit_CMSLeptonJets_7TeV.pdf}
+ \caption{Limits on the real components of the anomalous couplings $\gR$ and $g_L$ at $68 \%$ and $95 \%$ CL.} \label{fig::gRLimitConc}
+\end{figure}
+
+
+%\section{Outlook and perspectives}
+
+%The strength of the Matrix Element method, which extracts the theoretical information from a final state directly from the matrix-element, is also its limitation since it can only consider leading-order contributions.
+%Hence, a more correct description of the realistic experimental situation can be achieved if additional initial- or final-state partons can be included and analysed.
+%A detailed study has been performed~\cite{MEMISRFSR} using the MadWeight integration procedure, which has clearly indicated that 
+
+%\subsection{Possible result for VR when applying the cut?}
+
+%\subsection{What about MEM at NLO?}
+
+%\subsection{Possible improvements for MadWeight (?)}
+
+%\subsection{Optimisation of the fitting procedure}
+%Possible to repeat the analysis using the fit on the limited range ... (?)
